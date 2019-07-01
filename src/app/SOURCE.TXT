@@ -1,0 +1,16 @@
+
+1_JavaScript ES6
+https://www.youtube.com/playlist?list=PLL2zWZTDFZzilx_LJ_mCRDETtDOyBg0UT
+
+
+2_SASS
+SASS GUIDE
+https://sass-lang.com/guide
+OR
+Elzero Web School cource
+https://www.youtube.com/playlist?list=PLDoPjvoNmBAz6bF7qObm2a1mLN_WHAWQo
+
+
+3_Angular 
+Angular 7 from A to R
+https://www.youtube.com/playlist?list=PLL2zWZTDFZzjSjy7yeJwpj2QkJd8NKo-O

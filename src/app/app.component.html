@@ -1,0 +1,36 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<div class=" container cardContainer pl-5">
+  <div class="select-container d-flex my-3">
+    <div class="form-check m-2 border rounded px-3">
+      <input type="radio" class="form-check-input" name="veiw" value="all" [(ngModel)]="inputValue" id="all">
+      <label class="form-check-label" for="all"> all </label>
+    </div>
+    <div class="form-check m-2 border rounded px-3">
+      <input type="radio" class="form-check-input" name="veiw" value="img" [(ngModel)]="inputValue" id="img">
+      <label class="form-check-label" for="img"> img </label>
+    </div>
+    <div class="form-check m-2 border rounded px-3">
+      <input type="radio" class="form-check-input" name="veiw" value="list" [(ngModel)]="inputValue" id="list">
+      <label class="form-check-label" for="list">list</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="text-align:center" class="card text-center col-3" style="width: 18rem;" [attr.data-selected]="inputValue" *ngFor="let item of items">
+      <div data-img="false" data-all="true" data-list="false" class="my-3 id"> ID: {{item.id}}</div>
+      <div data-img="true" data-all="true" data-list="true" class="mt-3 img-circle image card-img-top"> 
+        <img [src]="item.thumbnailUrl">
+      </div>
+      <div class="card-body">
+        <h5 data-img="false" data-all="true" data-list="true" class="my-3 name card-title"> Name: <br>{{item.title}} </h5>
+        <h6 data-img="false" data-all="true" data-list="true" class="my-3 description card-subtitle">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ratione culpa cum rerum consectetur</h6>
+        <p data-img="false" data-all="true" data-list="false" class="my-3 category card-text"> Category: media,music,art</p>
+        <p data-img="false" data-all="true" data-list="false" class="my-3 price card-text"> Price: 9999$</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
