@@ -1,18 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from "./user.model";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
 export class DataService {
-  customerInput = '';
-  apiUrl = 'http://jsonplaceholder.typicode.com/photos';
-  
-  constructor(private http: HttpClient) { }
+  apiUrl = "http://jsonplaceholder.typicode.com/photos";
+  constructor(private httpClient: HttpClient) {}
 
   getConfig() {
-    return this.http.get<User>(this.apiUrl);
+    return this.httpClient.get(this.apiUrl);
   }
 }
