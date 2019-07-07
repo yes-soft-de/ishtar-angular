@@ -9,17 +9,14 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ItemComponent implements OnInit {
   item;
-  id;
   apiUrl = 'http://jsonplaceholder.typicode.com/photos/';
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
-  }
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   ngOnInit() {
-    this.id = this.route.paramMap.subscribe(params => params.get('id'));
-    // this.route.paramMap.source._value.id
-    console.log(this.route.paramMap.subscribe());
-    // return this.httpClient.get(this.apiUrl + this.id).subscribe(data => (this.item = data));
+    this.route.paramMap.subscribe(params => {
+      this.httpClient.get(this.apiUrl + params.get('id')).subscribe(data => this.item = data);
+    });
   }
 
 }

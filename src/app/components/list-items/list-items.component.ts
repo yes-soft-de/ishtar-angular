@@ -1,17 +1,20 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { User } from "../../User.model";
-import { DataService } from "../../data.service";
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../User.model';
+import {DataService} from '../../data.service';
 
 @Component({
-  selector: "app-list-items",
-  templateUrl: "./list-items.component.html",
-  styleUrls: ["./list-items.component.sass"]
+  selector: 'app-list-items',
+  templateUrl: './list-items.component.html',
+  styleUrls: ['./list-items.component.sass']
 })
 export class ListItemsComponent implements OnInit {
-  inputValue = "all";
+  inputValue = 'all';
   items = User;
-
-  constructor(private dataService: DataService) {}
+  openUrl = function openUrl(id) {
+    return location.href = '/item/' + id;
+  }
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
     // @ts-ignore

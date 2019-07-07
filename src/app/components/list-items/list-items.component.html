@@ -15,10 +15,10 @@
   </div>
 
   <div class="row">
-    <div style="text-align:center" class="card text-center col-3" style="width: 18rem;" [attr.data-selected]="inputValue" *ngFor="let item of items">
+    <a style="text-align:center; width: 18rem;" class="card text-center col-3" [attr.data-selected]="inputValue" *ngFor="let item of items" (click)="openUrl(item.id)">
       <div data-img="false" data-all="true" data-list="false" class="my-3 id"> ID: {{item.id}}</div>
-      <div data-img="true" data-all="true" data-list="true" class="mt-3 img-circle image card-img-top">
-        <img [src]="item.thumbnailUrl">
+      <div data-img="true" data-all="true" data-list="true" style="overflow: hidden" class="img-circle mt-3 image card-img-top ">
+        <img  [src]="item.thumbnailUrl">
       </div>
       <div class="card-body">
         <h5 data-img="false" data-all="true" data-list="true" class="my-3 name card-title"> Name: <br>{{item.title}} </h5>
@@ -26,6 +26,6 @@
         <p data-img="false" data-all="true" data-list="false" class="my-3 category card-text"> Category: media,music,art</p>
         <p data-img="false" data-all="true" data-list="false" class="my-3 price card-text"> Price: 9999$</p>
       </div>
-    </div>
+    </a>
   </div>
 </div>
