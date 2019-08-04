@@ -1,26 +1,22 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ListItemsComponent} from './components/list-items/list-items.component';
-import {ItemComponent} from './components/item/item.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {TabsModule} from 'ngx-bootstrap';
+import {NgxUIModule} from '@swimlane/ngx-ui';
+import { BestsComponent } from './bests/bests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListItemsComponent,
-    ItemComponent,
-    NotFoundComponent,
+    BestsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    MDBBootstrapModule.forRoot(),
+    TabsModule.forRoot(),
+    NgxUIModule
   ],
   providers: [],
   bootstrap: [AppComponent]
