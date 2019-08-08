@@ -1,1 +1,49 @@
-<p>home-page works!</p>
+<div class="d-flex justify-content-center p-5">
+  <div class="col-8">
+    <div class="card">
+      <div id="featured-section" class="d-flex justify-content-center">
+        <div id="exhibition-area" class="col-12 row align-items-center ">
+          <div class="col-8">
+            <img class="img-fluid" src="{{featured.img}}" alt="cover-image">
+          </div>
+          <div class="col-4">
+            <h6>{{featured.type}}</h6>
+            <h4>{{featured.title}}</h4>
+            <p>{{featured.desc}}</p>
+            <a href="{{featured.img}}">
+              <button mdbBtn type="button" color="black" outline="true" mdbWavesEffect>More info</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br class="m-5">
+    <!-- #cards-images -->
+    <div class="d-flex row">
+      <div class="col-6 p-3" *ngFor="let i of [1,2,3]">
+        <mdb-card>
+          <mdb-card-header>
+            Painting
+          </mdb-card-header>
+          <mdb-card-img src="../../../../assets/1x/img-01.jpg"></mdb-card-img>
+          <mdb-card-body>
+            <mdb-card-title>
+              <h5 id="featured-title">
+                By the Light of the Silvery Moon: A Century of Lunar Photographs
+              </h5>
+            </mdb-card-title>
+            <mdb-card-text>
+              West Building, Ground Floor - Gallery 22
+            </mdb-card-text>
+            <a routerLink="/painting/5">
+              <button mdbBtn type="button" color="black" outline="true" mdbWavesEffect>More info...</button>
+            </a>
+          </mdb-card-body>
+          <mdb-card-footer>
+            On view through January 5, 2020
+          </mdb-card-footer>
+        </mdb-card>
+      </div>
+    </div>
+  </div>
+</div>

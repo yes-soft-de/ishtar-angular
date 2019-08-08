@@ -7,6 +7,7 @@ import {Artist} from '../../entity/artist/artist';
 import {Config} from '../../config/config';
 import {ArtistFeaturedInterface} from '../../entity/artist-painting/artist-featured-interface';
 import {PaintingInterface} from '../../entity/painting/painting-interface';
+import {FeaturedInterface} from '../../entity/featured/featuredInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,12 @@ export class NetworkConnectorService {
   requestPaintingDetails(paintingId: string) {
     return this.httpClient.get<PaintingInterface>(
       `${Config.paintingAPI}${paintingId}`, {responseType: 'json'}
+    );
+  }
+
+  requestFeatured() {
+    return this.httpClient.get<FeaturedInterface>(
+      `${Config.featuredAPI}`, {responseType: 'json'}
     );
   }
 }
