@@ -6,6 +6,7 @@ import {map, tap} from 'rxjs/operators';
 import {Artist} from '../../entity/artist/artist';
 import {Config} from '../../config/config';
 import {ArtistFeaturedInterface} from '../../entity/artist-painting/artist-featured-interface';
+import {PaintingInterface} from '../../entity/painting/painting-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,12 @@ export class NetworkConnectorService {
   requestArtistFeatured(artistId: string) {
     return this.httpClient.get<ArtistFeaturedInterface>(
       `${Config.artistFeaturedPaintings}${artistId}`, {responseType: 'json'}
+    );
+  }
+
+  requestPaintingDetails(paintingId: string) {
+    return this.httpClient.get<PaintingInterface>(
+      `${Config.paintingAPI}${paintingId}`, {responseType: 'json'}
     );
   }
 }

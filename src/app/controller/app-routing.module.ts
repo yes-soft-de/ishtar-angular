@@ -5,7 +5,6 @@ import {NotFoundComponent} from '../ui/user/not-found/not-found.component';
 import {PaintingComponent} from '../ui/user/painting/painting.component';
 import {ArtistPageComponent} from '../ui/user/artist-page/artist-page.component';
 
-
 const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'artist/:id', component: ArtistPageComponent},

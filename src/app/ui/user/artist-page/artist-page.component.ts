@@ -23,7 +23,6 @@ export class ArtistPageComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe((data: ArtistInterface) => {
       this.artist = data;
-      console.log(data);
     }, error1 => {
       console.log(error1);
     });

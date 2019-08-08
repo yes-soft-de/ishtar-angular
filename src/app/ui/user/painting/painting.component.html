@@ -1,1 +1,121 @@
-<p>painting works!</p>
+<div *ngIf="mPainting != null">
+
+  <!--Start Painting Page-->
+  <div class="painting-page py-5">
+    <div class="container">
+      <h1 class="text-center mb-3">{{ mPainting.pageTitle }}</h1>
+      <div class="row">
+        <div class="col-sm-6 text-center border p-2 mb-2">
+          <h5>Artist Name: <a class="text-info">{{mPainting.artistName}}</a></h5>
+          <p>Follow By: <span class="text-warning">{{mPainting.artistFollow}}</span></p>
+        </div>
+        <div class="col-sm-6 text-center border p-2 mb-2">
+          <h5>Art Type: <a class="text-info">{{mPainting.artType}}</a></h5>
+          <p>Follow By: <span class="text-warning">{{mPainting.artFollow}}</span></p>
+        </div>
+      </div>
+      <h4 class="text-dark text-center mt-5">{{mPainting.paintingName}}</h4>
+      <p class="text-muted text-center">{{mPainting.paintingDesc}}</p>
+
+      <!--Start Carousel Section-->
+      <!--Carousel Wrapper-->
+      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+          <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+          <li data-target="#multi-item-example" data-slide-to="1"></li>
+        </ol>
+        <!--/.Indicators-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+
+          <!--First slide-->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.First slide-->
+
+          <!--Second slide-->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                       alt="Card image cap">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/.Second slide-->
+
+        </div>
+        <!--/.Slides-->
+
+      </div>
+      <!--/.Carousel Wrapper-->
+      <!--End Carousel Section-->
+
+      <!--Start Story Section-->
+      <div class="painting-story py-4">
+        <h5 class="text-center">{{mPainting.paintingName}} Story</h5>
+        <p class="col-6 mx-auto text-center text-muted">{{mPainting.paintingStory}}</p>
+      </div>
+      <hr>
+      <!--End Story Section-->
+
+      <!--Start Painting Videos-->
+      <div class="text-center">
+        <video src="../../../../assets/painting_video.mp4" loop preload="auto" controls width height
+               poster="...jpg"></video>
+      </div>
+      <!--End Painting Videos-->
+    </div>
+  </div>
+
+  <!--End Painting Page-->
+</div>
+<div *ngIf="mPainting == null">
+  <h5>Loading Paining Info...</h5>
+</div>
