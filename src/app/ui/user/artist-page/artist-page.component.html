@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-4 container-fluid d-flex justify-content-center" *ngIf="artist!=null">
+    <mdb-card class="col-12">
+      <mdb-card-header>{{artist.name}}</mdb-card-header>
+      <mdb-card-img src="{{artist.image}}"></mdb-card-img>
+      <mdb-card-body>
+        <mdb-card-text>{{artist.story}}</mdb-card-text>
+        <div class="row">
+          <a class="m-2" href="https://www.facebook.com/{{artist.facebook}}">
+            <mdb-icon fab icon="facebook" size="2x"></mdb-icon>
+          </a>
+          <a class="m-2" href="https://www.linkedin.com/in/{{artist.linkedin}}">
+            <mdb-icon fab icon="linkedin" size="2x"></mdb-icon>
+          </a>
+          <a class="m-2" href="https://www.instagram.com/{{artist.instagram}}">
+            <mdb-icon fab icon="instagram" size="2x"></mdb-icon>
+          </a>
+          <a class="m-2" href="https://www.twitter.com/{{artist.twitter}}">
+            <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
+          </a>
+        </div>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+  <div *ngIf="artist == null">
+    <h5>Loading Artist Info...</h5>
+  </div>
+  <div class="col-8" *ngIf="featuredPaintings != null">
+    <mdb-carousel [isControls]="true" [animation]="'slide'">
+      <mdb-carousel-item>
+        <div class="view">
+          <img class="d-block img-fluid" src="{{featuredPaintings.img01}}"
+               alt="First slide" style="width: 100vw">
+          <div class="mask flex-center rgba-black-light">
+          </div>
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <div class="view">
+          <img class="d-block img-fluid" src="{{featuredPaintings.img02}}"
+               alt="Second slide" style="width: 100vw">
+          <div class="mask flex-center rgba-black-light">
+          </div>
+        </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <div class="view">
+          <img class="d-block img-fluid" src="{{featuredPaintings.img03}}"
+               alt="Third slide" style="width: 100vw">
+          <div class="mask flex-center rgba-black-light">
+          </div>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+  <div *ngIf="artist == null">
+    <h5>Loading Artist Paintings...</h5>
+  </div>
+</div>

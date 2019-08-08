@@ -1,29 +1,36 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {ListItemsComponent} from './components/list-items/list-items.component';
-import {ItemComponent} from './components/item/item.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AppRoutingModule } from './controller/app-routing.module';
+import { AppComponent } from './ui/app/app/app.component';
+import { ArtistPageComponent } from './ui/user/artist-page/artist-page.component';
+import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
+import {NgxUIModule} from '@swimlane/ngx-ui';
+import {HttpClientModule} from '@angular/common/http';
+import { HomePageComponent } from './ui/user/home-page/home-page.component';
+import { NotFoundComponent } from './ui/user/not-found/not-found.component';
+import { PaintingComponent } from './ui/user/painting/painting.component';
+import { HeaderComponent } from './ui/app/header/header.component';
+import { FooterComponent } from './ui/app/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListItemsComponent,
-    ItemComponent,
+    ArtistPageComponent,
+    HomePageComponent,
     NotFoundComponent,
+    PaintingComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    MDBBootstrapModule.forRoot(),
+    NgxUIModule, IconsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
