@@ -12,6 +12,8 @@ import { NotFoundComponent } from './ui/user/not-found/not-found.component';
 import { PaintingComponent } from './ui/user/painting/painting.component';
 import { HeaderComponent } from './ui/app/header/header.component';
 import { FooterComponent } from './ui/app/footer/footer.component';
+import {ParallaxModule, ParallaxConfig } from 'ngx-parallax';
+import { NgwWowModule } from 'ngx-wow';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FooterComponent } from './ui/app/footer/footer.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     NgxUIModule, IconsModule,
-    HttpClientModule
+    HttpClientModule,
+    ParallaxModule,
+    NgwWowModule
   ],
   providers: [],
   bootstrap: [AppComponent]
