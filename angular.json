@@ -41,7 +41,7 @@
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js",
-              "node_modules/wowjs/dist/wow.js"
+              "node_modules/masonry-layout/dist/masonry.pkgd.min.js"
             ]
           },
           "configurations": {

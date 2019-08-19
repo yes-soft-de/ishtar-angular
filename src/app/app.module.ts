@@ -14,6 +14,7 @@ import { HeaderComponent } from './ui/app/header/header.component';
 import { FooterComponent } from './ui/app/footer/footer.component';
 import {ParallaxModule, ParallaxConfig } from 'ngx-parallax';
 import { NgwWowModule } from 'ngx-wow';
+import { PaintingListComponent } from './ui/user/painting-list/painting-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgwWowModule } from 'ngx-wow';
     NotFoundComponent,
     PaintingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PaintingListComponent
   ],
   imports: [
     BrowserModule,
