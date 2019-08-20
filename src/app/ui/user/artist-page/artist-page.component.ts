@@ -36,5 +36,4 @@ export class ArtistPageComponent implements OnInit {
       console.log(error1);
     });
   }
-
 }

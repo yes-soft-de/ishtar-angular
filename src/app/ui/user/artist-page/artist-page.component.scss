@@ -1,26 +1,27 @@
 .comment-box img {
-  max-width: 100px;
-  height: 100px;
-  margin: auto auto 10px;
-  display: block
-}
-
-.comment-box p {
-  background-color: #e1e1e1;
-  padding: 10px;
-  position: relative;
-  margin-top: 25px;
-}
-
-.comment-box p:before {
-  content: '';
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 10px;
-  left: -24px;
-  border-color: transparent #e1e1e1 transparent transparent;
-  border-width: 12px;
-  border-style: solid;
-}
-
+    max-width: 100px;
+    height: 100px;
+    margin: auto auto 10px;
+    display: block
+  }
+  
+  .comment-box p {
+    background-color: #e1e1e1;
+    padding: 10px;
+    position: relative;
+    margin-top: 25px;
+  }
+  
+  .comment-box p:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 10px;
+    left: -24px;
+    border-color: transparent #e1e1e1 transparent transparent;
+    border-width: 12px;
+    border-style: solid;
+  }
+  
+  
