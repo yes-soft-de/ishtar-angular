@@ -5,6 +5,7 @@ import {ArtistInterface} from '../../../entity/artist/artist-interface';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtistFeaturedInterface} from '../../../entity/artist-painting/artist-featured-interface';
 import {ArtistFeatured} from '../../../entity/artist-painting/artist-featured';
+import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 
 @Component({
   selector: 'app-artist-page',
@@ -14,11 +15,21 @@ import {ArtistFeatured} from '../../../entity/artist-painting/artist-featured';
 export class ArtistPageComponent implements OnInit {
   artist: Artist;
   featuredPaintings: ArtistFeatured;
+  artistInfoSwitcher = true;
+  private photos;
 
-  constructor(private activatedRoute: ActivatedRoute, private networkClient: NetworkConnectorService) {
+  constructor(private photosService: PhotosListService, private activatedRoute: ActivatedRoute,
+              private networkClient: NetworkConnectorService) {
   }
 
   ngOnInit() {
+
+    this.photosService.getPhotosList().subscribe(
+      data => {
+        this.photos = data.data.slice(0, 3);
+      }
+    );
+
     this.networkClient.requestArtistDetails(
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe((data: ArtistInterface) => {

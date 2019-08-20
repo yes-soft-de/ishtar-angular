@@ -1,59 +1,78 @@
-<div class="row">
-  <div class="col-4 container-fluid d-flex justify-content-center" *ngIf="artist!=null">
-    <mdb-card class="col-12">
-      <mdb-card-header>{{artist.name}}</mdb-card-header>
-      <mdb-card-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Diego_Vel%C3%A1zquez_Autorretrato_45_x_38_cm_-_Colecci%C3%B3n_Real_Academia_de_Bellas_Artes_de_San_Carlos_-_Museo_de_Bellas_Artes_de_Valencia.jpg/220px-Diego_Vel%C3%A1zquez_Autorretrato_45_x_38_cm_-_Colecci%C3%B3n_Real_Academia_de_Bellas_Artes_de_San_Carlos_-_Museo_de_Bellas_Artes_de_Valencia.jpg"></mdb-card-img>
-      <mdb-card-body>
-        <mdb-card-text>{{artist.story}}</mdb-card-text>
-        <div class="row">
-          <a class="m-2" href="https://www.facebook.com/{{artist.facebook}}">
-            <mdb-icon fab icon="facebook" size="2x"></mdb-icon>
-          </a>
-          <a class="m-2" href="https://www.linkedin.com/in/{{artist.linkedin}}">
-            <mdb-icon fab icon="linkedin" size="2x"></mdb-icon>
-          </a>
-          <a class="m-2" href="https://www.instagram.com/{{artist.instagram}}">
-            <mdb-icon fab icon="instagram" size="2x"></mdb-icon>
-          </a>
-          <a class="m-2" href="https://www.twitter.com/{{artist.twitter}}">
-            <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
-          </a>
-        </div>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
-  <div *ngIf="artist == null">
-    <h5>Loading Artist Info...</h5>
-  </div>
-  <div class="col-8" *ngIf="featuredPaintings != null">
+<section id="artist-page">
+  <section id="banner">
     <mdb-carousel [isControls]="true" [animation]="'slide'">
-      <mdb-carousel-item>
-        <div class="view">
-          <img class="d-block img-fluid" src="{{featuredPaintings.img01}}"
-               alt="First slide" style="width: 100vw">
-          <div class="mask flex-center rgba-black-light">
-          </div>
+      <mdb-carousel-item active>
+        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" width="100%" height="auto">
+        <div class="carousel-info-box">
+          <h6 class="carousel-info-title">Waves</h6>
+          <p class="carousel-info-text">Some Text Should Be Here</p>
         </div>
       </mdb-carousel-item>
       <mdb-carousel-item>
-        <div class="view">
-          <img class="d-block img-fluid" src="{{featuredPaintings.img02}}"
-               alt="Second slide" style="width: 100vw">
-          <div class="mask flex-center rgba-black-light">
-          </div>
+        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" width="100%" height="auto">
+        <div class="carousel-info-box">
+          <h6 class="carousel-info-title">Waves</h6>
+          <p class="carousel-info-text">Some Text Should Be Here</p>
         </div>
       </mdb-carousel-item>
       <mdb-carousel-item>
-        <div class="view">
-          <img class="d-block img-fluid" src="{{featuredPaintings.img03}}"
-               alt="Third slide" style="width: 100vw">
-          <div class="mask flex-center rgba-black-light">
-          </div>
+        <!-- This Need some Fixing -_- -->
+        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" width="100%" height="auto">
+        <div class="carousel-info-box">
+          <h6 class="carousel-info-title">Waves</h6>
+          <p class="carousel-info-text">Some Text Should Be Here</p>
         </div>
+
       </mdb-carousel-item>
     </mdb-carousel>
-  </div>
-  <div *ngIf="artist == null">
-    <h5>Loading Artist Paintings...</h5>
-  </div>
-</div>
+  </section> <!-- banner -->
+
+  <section id="avatar" class="d-flex">
+    <img src="../../../../assets/1x/img-01.jpg">
+    <div id="artist-info-area" class="align-self-end">
+      <h3 id="artist-name" class="align-self-end">Artist Name</h3>
+      <div class="d-flex">
+        <a class="artist-social" href="#">
+          <mdb-icon fab icon="facebook-square" size="2x"></mdb-icon>
+        </a>
+        <a class="artist-social" href="#">
+          <mdb-icon fab icon="twitter-square" size="2x"></mdb-icon>
+        </a>
+        <a class="artist-social" href="#">
+          <mdb-icon fab icon="linkedin" size="2x"></mdb-icon>
+        </a>
+      </div>
+    </div>
+
+    <button mdbBtn class="align-self-center">Follow!</button>
+  </section><!-- #avatar -->
+
+  <section id="artist-info-section" class="d-flex justify-content-center">
+    <tabset [justified]="true" class="w-50">
+      <tab heading="Biography">
+        Louis Tomlinson's new single 'Back To You' featuring Bebe Rexha & Digital Farm Animals is out NOW.
+        Get it here:
+      </tab>
+      <tab heading="Gallery">
+        <div class="d-flex justify-content-center">
+          <section id="artist-photos" class="grid">
+            <img class="grid-item" src="{{p.url}}" *ngFor="let p of photos">
+          </section>
+        </div>
+      </tab>
+    </tabset>
+  </section><!-- #info-section -->
+
+
+  <section id="artist-cards" class="row d-flex justify-content-center">
+    <div class="col-8 row d-flex">
+      <div class="col-4 p-4" *ngFor="let i of [1,2,3,4,5,6]">
+        <img src="../../../../assets/1x/img-01.jpg" class="img-fluid">
+        <h5>
+          Louis Tomlinson's new single 'Back To You' featuring Bebe Rexha & Digital Farm Animals is out NOW.
+          Get it here:
+        </h5>
+      </div>
+    </div>
+  </section>
+</section> <!-- #artist-page -->

@@ -15,6 +15,7 @@ import { FooterComponent } from './ui/app/footer/footer.component';
 import {ParallaxModule, ParallaxConfig } from 'ngx-parallax';
 import { NgwWowModule } from 'ngx-wow';
 import { PaintingListComponent } from './ui/user/painting-list/painting-list.component';
+import {TabsModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { PaintingListComponent } from './ui/user/painting-list/painting-list.com
     NgxUIModule, IconsModule,
     HttpClientModule,
     ParallaxModule,
-    NgwWowModule
+    NgwWowModule, TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,26 +1,99 @@
-.comment-box img {
-  max-width: 100px;
-  height: 100px;
-  margin: auto auto 10px;
-  display: block
+#artist-page {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-style: normal;
+  font-variant: normal;
 }
 
-.comment-box p {
-  background-color: #e1e1e1;
-  padding: 10px;
-  position: relative;
-  margin-top: 25px;
+// region Banner Area
+#banner {
+  height: 26rem;
+  overflow: hidden;
 }
 
-.comment-box p:before {
-  content: '';
-  width: 0;
-  height: 0;
+#artist-name {
+}
+
+.carousel-info-bg {
+  background-size: cover;
+  height: 26rem;
+  width: 100%;
+}
+
+.carousel-info-box {
+  background: rgba(255, 255, 255, 0.5);
   position: absolute;
-  top: 10px;
-  left: -24px;
-  border-color: transparent #e1e1e1 transparent transparent;
-  border-width: 12px;
-  border-style: solid;
+  top: 6rem;
+  right: 6rem;
+  padding: 1rem;
 }
 
+.carousel-info-title {
+  font-size: 6rem;
+  text-align: center;
+}
+
+.carousel-info-text {
+  font-size: 1rem;
+  text-align: center;
+}
+
+// endregion
+
+// region Avatar Area
+#avatar {
+  position: relative;
+  margin-top: -7.5rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
+
+  img {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+  }
+
+  button {
+    background: #b22143;
+    color: white;
+    border-color: transparent;
+    position: absolute;
+    right: 0;
+  }
+}
+
+#artist-info-area {
+  margin-left: 3rem;
+}
+
+#artist-name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.artist-social {
+  margin: .5rem;
+  color: rgba(0, 0, 0, .7);
+}
+
+// endregion
+
+// region artist-info-section
+#artist-info-section {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  font-size: 1rem;
+}
+
+// endregion
+
+// region artist-cards
+#artist-cards {
+  img{
+    padding: 1rem;
+  }
+  h5 {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+// endregion
