@@ -1,39 +1,86 @@
-		<div class="container">
+		<div *ngIf="artists!==null">
+    <div class="container-fluid">
 			<h1 class="text-center my-4">Manage Artist Page</h1>
 			<a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
 				<i class="fa fa-plus"></i>
 				Add New Artist
 			</a>
 			<div class="table-responsive text-center">
-				<table class="table table-bordered main-table">
-					<tr class="bg-dark text-white">
-						<td>#ID</td>
-						<td>Name</td>
-						<td>Username</td>
-                        <td>Email</td>
-                        <td>Address</td>
-						<td>FullName</td>
-						<td>Register Date</td>
-						<td>Control</td>
-					</tr>
+<!--				<table class="table table-bordered main-table">-->
+<!--					<tr class="bg-dark text-white">-->
+<!--						<td>#ID</td>-->
+<!--            <td>Image</td>-->
+<!--            <td>Art Type</td>-->
+<!--            <td>Name</td>-->
+<!--            <td>Nationality</td>-->
+<!--            <td>Residence</td>-->
+<!--            <td>Birth Date</td>-->
+<!--            <td>Story</td>-->
+<!--            <td>Details</td>-->
+<!--            <td>Video</td>-->
+<!--            <td>Facebook</td>-->
+<!--            <td>Instagram</td>-->
+<!--            <td>Twitter</td>-->
+<!--            <td>Linkedin</td>-->
+<!--            <td>Control</td>-->
+<!--					</tr>-->
 
-						<tr>
-							<td>2</td>
-							<td><img src="" class="img-thumbnail img-custom" alt="avatar"></td>
-							<td>talal</td>
-							<td>tl@gmail.com</td>
-							<td>taal danoon</td>
-							<td>2/2/2019</td>
-							<td>
-								<a class="btn btn-success btn-sm mr-1" 
-										href="?action=Edit&userid=' . $getMember['User_ID'] . '">Edit</a>
-								<a class="btn btn-danger confirm btn-sm mr-1" 
-										href="?action=Delete&userid=' . $getMember['User_ID'] . '">Delete</a>
-							
-							</td>
-						</tr>
+<!--						<tr>-->
+<!--							<td>2</td>-->
+<!--							<td><img src="" class="img-thumbnail img-custom" alt="avatar"></td>-->
+<!--							<td>talal</td>-->
+<!--							<td>tl@gmail.com</td>-->
+<!--							<td>taal danoon</td>-->
+<!--							<td>2/2/2019</td>-->
+<!--              <td>talal</td>-->
+<!--              <td>tl@gmail.com</td>-->
+<!--              <td>taal danoon</td>-->
+<!--              <td>2/2/2019</td>-->
+<!--              <td>talal</td>-->
+<!--              <td>tl@gmail.com</td>-->
+<!--              <td>taal danoon</td>-->
+<!--              <td>2/2/2019</td>-->
+<!--							<td>-->
+<!--								<a class="btn btn-success btn-sm mr-1"-->
+<!--										href="">Edit</a>-->
+<!--								<a class="btn btn-danger confirm btn-sm mr-1"-->
+<!--										href="">Delete</a>-->
+<!--							</td>-->
+<!--						</tr>-->
+<!--				</table>-->
 
+        <table class="table table-bordered main-table">
+          <tr class="bg-dark text-white">
+            <td>#ID</td>
+            <td>name</td>
+            <td>username</td>
+            <td>email</td>
+            <td>address</td>
+            <td>Control</td>
+          </tr>
 
-				</table>
+          <tr *ngFor="let artist of artists">
+            <td>{{artist.id}}</td>
+            <td>{{artist.name}}</td>
+            <td>{{artist.username}}</td>
+            <td>{{artist.email}}</td>
+            <td>{{artist.address.street}}</td>
+            <td>
+              <a routerLink="/admin/edit-artist" class="btn btn-success btn-sm mr-1">Edit</a>
+              <a href="#" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+            </td>
+          </tr>
+        </table>
+
 			</div>
 		</div>
+    </div>
+    <div *ngIf="artists==null">
+      <div class="container">
+      <div class="alert alert-primary text-center mt-5">There Isn't Artist To Show</div>
+      <a routerLink="/admin/add-artist" class="btn btn-primary btn-sm mb-2 float-right">
+        <i class="fa fa-plus"></i>
+        Add New Artist
+        </a>
+      </div>
+    </div>

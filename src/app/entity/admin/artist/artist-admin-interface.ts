@@ -1,15 +1,18 @@
 // export interface ArtistAdminInterface {
 //   id: number;
-//   createdAt: string;
+//   art_type_ID: number;
 //   name: string;
-//   image: string;
 //   nationality: string;
-//   birth_date: string;
+//   residence: string;
+//   birth_date: number;
 //   story: string;
+//   details: string;
+//   image: string;
+//   video: string;
 //   facebook: string;
-//   linkedin: string;
 //   instagram: string;
 //   twitter: string;
+//   linkedin: string;
 // }
 export interface ArtistAdminInterface {
   id: number;

@@ -65,7 +65,7 @@ export class NetworkConnectorService {
       },
       error => {
         // TODO insert ngx-toastr Message
-        console.log('there error from fetching the data', error)
+        console.log('there error from fetching the data', error);
       }
     );
   }
