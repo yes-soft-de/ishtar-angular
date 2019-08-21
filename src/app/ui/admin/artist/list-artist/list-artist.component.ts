@@ -18,6 +18,7 @@ export class ListArtistComponent implements OnInit {
     this.networkClient.requestListAdminArtists().subscribe(
       (data: ArtistAdminInterface) => {
         this.artists = data;
+        console.log(this.artists);
     }, error1 => {
       console.log(error1);
     });
