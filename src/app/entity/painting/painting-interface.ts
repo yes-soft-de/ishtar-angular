@@ -1,5 +1,5 @@
 export interface PaintingInterface {
-
+  paintingUrl: string;
   pageTitle: string;
   artistName: string;
   artistFollow: number;

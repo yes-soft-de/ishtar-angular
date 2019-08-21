@@ -5,6 +5,7 @@ export class Painting {
   artType: string;
   artFollow: number;
   paintingName: string;
+  paintingUrl: string;
   paintingDesc: string;
   paintingStory: string;
 }
