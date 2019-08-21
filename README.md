@@ -9,7 +9,7 @@ Create a Front End Project.
 ### Current Status:
 
 1. Merged project, Trying to Achieve Architecture.
-2. Header, Footer and Artist Page is finished
+2. Header, Footer and ArtistAdmin Page is finished
 
 
 

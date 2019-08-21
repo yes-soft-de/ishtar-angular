@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NetworkConnectorService} from '../../../service/NetworkConnectorService/network-connector.service';
-import {Painting} from '../../../entity/painting/painting';
+import {Painting} from '../../../entity/user/painting/painting';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

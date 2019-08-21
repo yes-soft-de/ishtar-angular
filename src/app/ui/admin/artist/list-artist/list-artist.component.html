@@ -1,2 +1,39 @@
-<p>list-artist works!</p>
-<button routerLink="/admin/add-artist" class="btn btn-primary btn-sm">Add Artist</button>
+		<div class="container">
+			<h1 class="text-center my-4">Manage Artist Page</h1>
+			<a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
+				<i class="fa fa-plus"></i>
+				Add New Artist
+			</a>
+			<div class="table-responsive text-center">
+				<table class="table table-bordered main-table">
+					<tr class="bg-dark text-white">
+						<td>#ID</td>
+						<td>Name</td>
+						<td>Username</td>
+                        <td>Email</td>
+                        <td>Address</td>
+						<td>FullName</td>
+						<td>Register Date</td>
+						<td>Control</td>
+					</tr>
+
+						<tr>
+							<td>2</td>
+							<td><img src="" class="img-thumbnail img-custom" alt="avatar"></td>
+							<td>talal</td>
+							<td>tl@gmail.com</td>
+							<td>taal danoon</td>
+							<td>2/2/2019</td>
+							<td>
+								<a class="btn btn-success btn-sm mr-1" 
+										href="?action=Edit&userid=' . $getMember['User_ID'] . '">Edit</a>
+								<a class="btn btn-danger confirm btn-sm mr-1" 
+										href="?action=Delete&userid=' . $getMember['User_ID'] . '">Delete</a>
+							
+							</td>
+						</tr>
+
+
+				</table>
+			</div>
+		</div>
