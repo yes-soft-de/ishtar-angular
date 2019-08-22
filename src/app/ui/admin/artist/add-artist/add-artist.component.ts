@@ -22,7 +22,7 @@ export class AddArtistComponent implements OnInit {
     // artist.email = form.value.email;
     // artist.address = form.value.address;
     this.artist.postAddArtist(artist);
-    // TODO insert success message
+    // TODO insert ngx-toastr Message
   }
 
 }
