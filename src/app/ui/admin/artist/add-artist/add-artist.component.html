@@ -1,31 +1,13 @@
 <div class="container">
   <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #addArtistForm="ngForm" (ngSubmit)="mySubmit(addArtistForm)">
-    <h2 class="h1 ml-5 text-center">Add ArtistAdmin</h2>
+    <h2 class="h1 ml-5 text-center">Add New Artist</h2>
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
       <div class="col-10">
         <input class="form-control" type="text" name="name" ngModel placeholder="Type The Name">
       </div>
     </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Username</label>
-      <div class="col-10">
-        <input class="form-control" type="text" name="username" ngModel placeholder="Type The username">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Email</label>
-      <div class="col-10">
-        <input class="form-control" type="text" name="email" ngModel placeholder="Type The Email">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Address</label>
-      <div class="col-10">
-        <input class="form-control" type="text" name="address" ngModel placeholder="Type The address">
-      </div>
-    </div>
-    <!-- <div class="form-group row">
+     <div class="form-group row">
       <label class="col-2 col-form-label">Nationality</label>
       <div class="col-10">
         <input class="form-control" type="text" name="nationality" ngModel placeholder="Type The Nationality">
@@ -40,13 +22,13 @@
     <div class="form-group row">
        <label class="col-2 col-form-label">Birth</label>
        <div class="col-10">
-         <input class="form-control" type="date" name="birth_date" ngModel placeholder="Type Full Name">
+         <input class="form-control" type="date" name="birthDate" ngModel placeholder="Type Full Name">
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Facebook</label>
        <div class="col-10">
-         <input class="form-control" type="text" name="facebook" ngModel placeholder="Type Facebook Link">
+         <input class="form-control" type="text" name="faceBook" ngModel placeholder="Type Facebook Link">
        </div>
      </div>
      <div class="form-group row">
@@ -66,8 +48,8 @@
        <div class="col-10">
          <input class="form-control" type="text" name="linkedin" ngModel placeholder="Type Linkedin Link">
        </div>
-     </div> -->
-     <!-- <div class="form-group row">
+     </div>
+      <div class="form-group row">
        <label class="col-2 col-form-label">Image</label>
        <div class="col-10 input-group mb-3">
          <div class="custom-file">
@@ -84,9 +66,9 @@
            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
          </div>
        </div>
-     </div> -->
+     </div>
 
-     <!-- <div class="form-group row">
+      <div class="form-group row">
        <label class="col-2 col-form-label">image</label>
        <div class="col-10">
          <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
@@ -97,8 +79,8 @@
        <div class="col-10">
          <input class="form-control" type="text" name="video" ngModel placeholder="Type video Link">
        </div>
-     </div> -->
-         <!-- <div class="form-group row">
+     </div>
+          <div class="form-group row">
            <label class="col-2 col-form-label">Art Type</label>
            <div class="col-10">
              <select class="form-control" name="art_type" ngModel>
@@ -109,8 +91,8 @@
                <option value="4">Old</option>
              </select>
            </div>
-         </div> -->
-     <!-- <div class="form-group row">
+         </div>
+      <div class="form-group row">
        <label class="col-2 col-form-label">Details</label>
        <div class="col-10">
          <textarea class="form-control" name="details" ngModel placeholder="Type The Details"></textarea>
@@ -121,11 +103,11 @@
        <div class="col-10">
          <textarea class="form-control" name="story" ngModel placeholder="Type The Story"></textarea>
        </div>
-     </div>-->
+     </div>
 
 
     <div class="form-group offset-md-2 mt-3">
-      <input class="btn btn-primary" type="submit" value="Add ArtistAdmin">
+      <input class="btn btn-primary btn-block" type="submit" value="Add New Artist">
     </div>
   </form>
 </div>

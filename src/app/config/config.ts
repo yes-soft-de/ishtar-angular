@@ -9,4 +9,5 @@ export class Config {
   public static fullImagesListAPI = 'http://localhost:3000/painting-full-list';
   public static artistPaintingsAPI = 'http://localhost:8000/paintings/createArtist';
   public static addArtTypeAPI = 'http://127.0.0.1:8000/createArtType';
+  public static  allArtTypeAPI = 'https://jsonplaceholder.typicode.com/photos'
 }

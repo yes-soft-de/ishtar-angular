@@ -15,11 +15,6 @@ constructor(private router: Router,
             private route: ActivatedRoute,
             private httpClient: HttpClient) {}
 
-  getAllArtists() {
-    return this.httpClient.get<ArtistInterface>(
-      `${Config.allArtistsAPI}`, {responseType: 'json'}
-    );
-  }
 
   getArtistInfo(artistId: string) {
     // This Should Take the List From the API

@@ -5,5 +5,4 @@ export class ArtType {
   public story: string;
   public image: string;
   public video: string;
-  // public ArtType_ID: number;
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Config} from '../../config/config';
-import {ArtType} from '../../entity/art-type/art-type';
+import {ArtTypeInterface} from '../../entity/art-type/art-type-interface';
 
 
 @Injectable({
@@ -16,14 +16,14 @@ export class ArtTypeService {
 
 
   // Add New Art Type Using Http POST Request
-  postAddArtType(artType: ArtType) {
-    return this.httpClient.post<ArtType>(
+  postAddArtType(artType: ArtTypeInterface) {
+    return this.httpClient.post<ArtTypeInterface>(
       `${Config.addArtTypeAPI}`, JSON.stringify(artType)
     ).subscribe(
       data => {
         // TODO insert ngx-toastr Message
         console.log('POST Request Was Successfully done', data);
-        // this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
+        // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.route});
       },
       error => {
         console.log(error);
@@ -32,6 +32,6 @@ export class ArtTypeService {
         console.log('done');
         this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
       }
-    )
+    );
   }
 }

@@ -5,5 +5,4 @@ export interface ArtTypeInterface {
   story: string;
   image: string;
   video: string;
-  ArtType_ID: number;
 }
