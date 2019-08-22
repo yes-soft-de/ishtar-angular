@@ -2,18 +2,24 @@
 
 ### Project Overview:
 
-Create a Front End Project.
+Upload Component
 
 
 
-### Current Status:
-
-1. Merged project, Trying to Achieve Architecture.
-2. Header, Footer and Artist Page is finished
+Note: Do NOT MERGE
 
 
 
-### Usage:
+change log:
 
-use the link `http://localhost:4200/artist/15` you may use any id.
+* Directories:
+  ```
+  src/app/upload
+  ```
+* Files:
+  ```
+  app.module.ts
+  app-routing.module.ts
+  ```
+  
 
