@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from '../../controller/admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -28,6 +30,8 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     AdminRoutingModule,
     MDBBootstrapModule.forRoot(),
+    HttpClientModule,
+    FormsModule,
     RouterModule,
   ]
 })

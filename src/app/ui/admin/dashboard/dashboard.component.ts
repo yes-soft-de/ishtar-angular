@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ArtistService} from '../../../service/artist/artist.service';
+import {Artist} from '../../../entity/artist/artist';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  artists: Artist;
+  constructor(private artist: ArtistService) { }
 
   ngOnInit() {
+    // Fetch All Artists Number
+    this.artist.getAllArtists().subscribe(
+      (data: ArtistInterface) => {
+        this.artists = data;
+      }, error1 => {
+        console.log(error1);
+      })
   }
 
 }

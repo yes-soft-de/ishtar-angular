@@ -1,88 +1,131 @@
-  <div class="container">
-    <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" action="?action=Insert" method="post">
-      <h2 class="h1 ml-5 text-center">Add Artist</h2>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Name</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="name" placeholder="Type The Name">
-        </div>
+<div class="container">
+  <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #addArtistForm="ngForm" (ngSubmit)="mySubmit(addArtistForm)">
+    <h2 class="h1 ml-5 text-center">Add ArtistAdmin</h2>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="name" ngModel placeholder="Type The Name">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nationality</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="nationality" placeholder="Type The Nationality">
-        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Username</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="username" ngModel placeholder="Type The username">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Residence</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="residence" placeholder="Type The Residence">
-        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Email</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="email" ngModel placeholder="Type The Email">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Birth</label>
-        <div class="col-10">
-          <input class="form-control" type="date" name="birth_date" placeholder="Type Full Name">
-        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Address</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="address" ngModel placeholder="Type The address">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Facebook</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="facebook" placeholder="Type Facebook Link">
-        </div>
+    </div>
+    <!-- <div class="form-group row">
+      <label class="col-2 col-form-label">Nationality</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="nationality" ngModel placeholder="Type The Nationality">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Instagram</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="instagram" placeholder="Type Instagram Link">
-        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Residence</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="residence" ngModel placeholder="Type The Residence">
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Twitter</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="twitter" placeholder="Type Twitter Link">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Linkedin</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="linkedin" placeholder="Type Linkedin Link">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Image</label>
-        <div class="col-10 input-group mb-3">
-          <div class="custom-file">
-            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
-            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Video</label>
-        <div class="col-10 input-group mb-3">
-          <div class="custom-file">
-            <input type="file" name="video" class="custom-file-input" id="inputGroupFile02">
-            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Details</label>
-        <div class="col-10">
-          <textarea class="form-control" name="details" placeholder="Type The Details"></textarea>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Story</label>
-        <div class="col-10">
-          <textarea class="form-control" name="story" placeholder="Type The Story"></textarea>
-        </div>
-      </div>
+    </div>
+    <div class="form-group row">
+       <label class="col-2 col-form-label">Birth</label>
+       <div class="col-10">
+         <input class="form-control" type="date" name="birth_date" ngModel placeholder="Type Full Name">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Facebook</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="facebook" ngModel placeholder="Type Facebook Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Instagram</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="instagram" ngModel placeholder="Type Instagram Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Twitter</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="twitter" ngModel placeholder="Type Twitter Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Linkedin</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="linkedin" ngModel placeholder="Type Linkedin Link">
+       </div>
+     </div> -->
+     <!-- <div class="form-group row">
+       <label class="col-2 col-form-label">Image</label>
+       <div class="col-10 input-group mb-3">
+         <div class="custom-file">
+           <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+         </div>
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Video</label>
+       <div class="col-10 input-group mb-3">
+         <div class="custom-file">
+           <input type="file" name="video" class="custom-file-input" id="inputGroupFile02">
+           <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+         </div>
+       </div>
+     </div> -->
+     
+     <!-- <div class="form-group row">
+       <label class="col-2 col-form-label">image</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">video</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="video" ngModel placeholder="Type video Link">
+       </div>
+     </div> -->
+         <!-- <div class="form-group row">
+           <label class="col-2 col-form-label">Art Type</label>
+           <div class="col-10">
+             <select class="form-control" name="art_type" ngModel>
+               <option value="0">....</option>
+               <option value="1">New</option>
+               <option value="2">Like New</option>
+               <option value="3">Used</option>
+               <option value="4">Old</option>
+             </select>
+           </div>
+         </div> -->
+     <!-- <div class="form-group row">
+       <label class="col-2 col-form-label">Details</label>
+       <div class="col-10">
+         <textarea class="form-control" name="details" ngModel placeholder="Type The Details"></textarea>
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Story</label>
+       <div class="col-10"> -->
+         <textarea class="form-control" name="story" ngModel placeholder="Type The Story"></textarea>
+       </div>
+     </div>
 
 
-      <div class="form-group offset-md-2 mt-3">
-        <input class="btn btn-primary" type="submit" value="Add Artist">
-      </div>
-    </form>
-  </div>
+    <div class="form-group offset-md-2 mt-3">
+      <input class="btn btn-primary" type="submit" value="Add ArtistAdmin">
+    </div>
+  </form>
+</div>
