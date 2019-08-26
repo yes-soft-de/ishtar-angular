@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ParallaxModule, ParallaxConfig} from 'ngx-parallax';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
+import {UploadModule} from './upload/upload.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {TabsModule} from 'ngx-bootstrap';
     HttpClientModule,
     ParallaxModule,
     NgwWowModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    UploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
