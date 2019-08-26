@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ArtistService} from '../../../../service/artist/artist.service';
+import {ArtistInterface} from '../../../../entity/artist/artist-interface';
 import {Artist} from '../../../../entity/artist/artist';
 
 @Component({
@@ -13,6 +14,15 @@ export class ListArtistComponent implements OnInit {
   constructor(private artist: ArtistService) { }
 
   ngOnInit() {
+    // Fetch All Artists
+    this.artist.getAllArtists().subscribe(
+      (data: ArtistInterface) => {
+        this.artists = data;
+        console.log(this.artists);
+      }, error1 => {
+        console.log(error1);
+      });
+
   }
 
 }
