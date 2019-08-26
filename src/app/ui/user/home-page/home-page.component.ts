@@ -11,19 +11,42 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  featured: Featured;
+  public paintings = [];
+  public schools = [];
 
-  constructor(private network: NetworkConnectorService) {
+  constructor() {
+    const painting = {
+      url: 'https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/b5cd4cfb-c5d9-4147-a72b-452d2f04bb73',
+      head: 'History Of Syrian Art',
+      description: 'History Of Syrian Art History Of Syrian Art History Of Syrian Art'
+    };
+
+    this.paintings.push(painting, painting, painting);
+
+    let school = {
+      name: 'Cubism',
+      img: 'http://cdn.shopify.com/s/files/1/0969/9128/products/Indian_Art_-_Acrylic_Painting_-_Krishna_With_Peacock_grande.jpg?v=1476088975'
+    };
+    this.schools.push(school);
+    school = {
+      name: 'Abstract',
+      img: 'http://cdn.shopify.com/s/files/1/0969/9128/products/Indian_Art_-_Acrylic_Painting_-_Krishna_With_Peacock_grande.jpg?v=1476088975'
+    };
+    this.schools.push(school);
+    school = {
+      name: 'Realist',
+      img: 'http://cdn.shopify.com/s/files/1/0969/9128/products/Indian_Art_-_Acrylic_Painting_-_Krishna_With_Peacock_grande.jpg?v=1476088975'
+    };
+    this.schools.push(school);
+    school = {
+      name: 'Cubism',
+      img: 'http://cdn.shopify.com/s/files/1/0969/9128/products/Indian_Art_-_Acrylic_Painting_-_Krishna_With_Peacock_grande.jpg?v=1476088975'
+    };
+    this.schools.push(school);
   }
 
   ngOnInit() {
-    this.network.requestFeatured().subscribe(
-      data => {
-        this.featured = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    );
+
   }
 
 }

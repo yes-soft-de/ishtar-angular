@@ -1,121 +1,88 @@
-@import "../../../../variables";
-
-@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Scope+One&display=swap');
-
-$painting01: "https://anotherimg-dazedgroup.netdna-ssl.com/979/azure/another-prod/350/9/359694.jpeg";
-$gallery-bg: "https://www.gallerysystem.com/sites/gallerysystem/files/styles/content_two_thirds/public/2016-06/800-Cliff-Gallery-System-5_0.jpg?itok=TdoQ8Qny";
-
-.heading {
-  font-size: 5rem;
-  padding-top: 8rem;
-  font-weight: 300;
-
-  @media screen and (max-width: $bp-sm) {
-    font-size: 1rem;
-  }
-
-  @media screen and (min-width: $bp-sm) and (max-width: $bp-lg){
-    font-size: 3.5rem;
-  }
-
-  @media screen and (min-width: $bp-lg){
-    font-size: 5rem;
-  }
+#hero-main {
+  height: 43rem;
+  overflow: hidden;
 }
 
-#featured-container{
+#hero-side {
   background: #333333;
+  height: 100%;
 }
 
 
-a{
-  color: white;
-}
-
-.font-weight-normal {
-  font-weight: 400 !important;
-}
-
-#featured-title {
-
-}
-
-#bg-welcome {
-  background: url("#{$gallery-bg}") no-repeat;
-  background-size: 100%;
-  .intro-content {
-    background: white;
-    margin-top: 5rem;
-    margin-bottom: 10rem;
-    font-size: 1.5rem;
-    max-width: 23rem;
-
-    .welcome {
-      border-bottom: 2px solid #b22143;
-      color: #b22143;
-      font-size: 2.25rem;
-      margin: 0 1rem 1.5rem -1.5rem;
-      padding: 0 0 0.5rem 1.5rem;
-      font-weight: 300;
+#header-nav {
+  ul {
+    li {
+      display: inline-block;
+      margin: 1rem;
     }
   }
 }
 
-#featured-collection{
-  p {
-    font-size: 2.5rem;
-    padding-bottom: 8rem;
-    font-weight: 200;
-  }
-}
+.carousel-mask {
+  padding-top: 10rem;
+  padding-left: 3rem;
+  position: absolute;
 
-#bg-exhibitions {
-  background: url("#{$painting01}") no-repeat top;
-  background-size: cover;
-
-  a {
-    color: white;
-  }
-  .overlay-content {
-    position: relative;
-    z-index: 2;
-    text-align: center !important;
-  }
-}
-
-#featured-section{
-  background: #333333;
-  font-family: 'Cinzel Decorative', cursive;
-  #section-title{
-    margin-bottom: 5rem;
-  }
-  #featured-images {
-    margin-bottom: 5rem;
-    img {
-      min-width: 150%;
-      height: auto;
-    }
-    .featured-container{
-      height: 25rem;
-    }
-    h3 {
-      font-family: 'Scope One', serif;
-      padding-top: 8rem;
-    }
-  }
-}
-
-
-#featured-functions{
-  img {
-    min-width: 100%;
-  }
-  .featured-container{
-    height: 25rem;
-  }
   h3 {
-    font-family: 'Scope One', serif;
-    padding-top: 8rem;
+    font-size: 4em;
   }
+
+  p {
+    font-size: 2em;
+  }
+}
+
+.carousel-background {
+  width: 100%;
+
+  img {
+    object-fit: fill;
+    width: 100%;
+  }
+}
+
+#alternate-list {
+  padding-left: 10rem ;
+  padding-right: 10rem;
+
+  .alternate-list-item {
+    overflow: hidden;
+    height: 50vh;
+  }
+  .list-image{
+    border-color: gold;
+    border-style: solid;
+    padding: 2rem;
+    height: 50vh;
+    img {
+      width: 100%;
+    }
+  }
+}
+#main-auction {
+  width: 100%;
+  height: 53rem;
+  overflow: hidden;
+  display: flex;
+  #main-auction-fg {
+    position: absolute;
+  }
+  #main-auction-bg {
+    min-width: 100%;
+    img {
+      min-width: 100%;
+    }
+  }
+}
+
+.school-container{
+  h3 {
+    position: absolute;
+    color: rgba(255,255,255);
+  }
+}
+
+#school-info {
+  background: url("https://afremov.com/images/product/image_851.jpeg");
+  background-size: cover;
 }
