@@ -1,0 +1,35 @@
+<div id="home-header" class="row p-0 m-0">
+  <div id="hero-side" class="col-3 p-3 d-flex justify-content-center">
+    <img src="#" alt="Logo">
+  </div>
+  <div id="header" class="col-9 p-0">
+    <nav id="header-nav">
+      <ul>
+        <li><a href="http://localhost:4200/">Home</a></li>
+        <li><a href="http://localhost:4200/artist-list">Artists</a></li>
+        <li>Art Schools</li>
+        <li><a href="http://localhost:4200/painting-list">Paintings</a></li>
+        <li class="float-right">Sign in</li>
+        <li class="float-right">En/Ar</li>
+        <li class="float-right">
+          <label>
+            <input type="text" placeholder="Search">
+          </label>
+        </li>
+      </ul>
+    </nav><!-- #header-nav -->
+    <div id="header-main">
+      <mdb-carousel>
+        <mdb-carousel-item *ngFor="let p of paintings">
+          <div class="carousel-background">
+            <img src="{{p.url}}" alt="#" class="img-fluid">
+          </div>
+          <div class="carousel-mask col-6">
+            <h3>{{p.head}}</h3>
+            <p>{{p.description}}</p>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+    </div> <!-- #header-main -->
+  </div><!-- #header -->
+</div>

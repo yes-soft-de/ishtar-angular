@@ -1,0 +1,20 @@
+.alternateListRow {
+  overflow: hidden;
+  height: 20rem;
+
+  .list-image {
+    padding: 2.5rem;
+    height: 20rem;
+    border-color: gold;
+    border-style: solid;
+
+    img {
+      width: 100%;
+      display: block;
+      height: 15rem;
+      object-fit: scale-down;
+      overflow: hidden;
+    }
+  }
+
+}

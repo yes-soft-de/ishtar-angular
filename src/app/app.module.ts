@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ParallaxModule, ParallaxConfig} from 'ngx-parallax';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
+import {UserModule} from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,12 @@ import {TabsModule} from 'ngx-bootstrap';
     HttpClientModule,
     ParallaxModule,
     NgwWowModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    UserModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,51 @@
+#home-header {
+  // The Size of the Header
+  height: 43rem;
+  overflow: hidden;
+
+
+  #hero-side {
+    background: #333333;
+    height: 100%;
+  }
+
+  #header {
+    // region Site Navigation
+    #header-nav {
+      li {
+        display: inline-block;
+        margin: 1rem;
+      }
+    }
+    // endregion
+
+    // region Header Carousel
+    #header-main {
+      height: 100%;
+      .carousel-mask {
+        padding-top: 10rem;
+        padding-left: 3rem;
+        position: absolute;
+
+        h3 {
+          font-size: 4em;
+        }
+
+        p {
+          font-size: 2em;
+        }
+      }
+
+      .carousel-background {
+        width: 100%;
+
+        img {
+          object-fit: fill;
+          width: 100%;
+        }
+      }
+    }
+    // endregion
+  }
+
+}
