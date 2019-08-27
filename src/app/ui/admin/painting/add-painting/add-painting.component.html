@@ -1,0 +1,91 @@
+<div class="container">
+  <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #addPaintingForm="ngForm" (ngSubmit)="mySubmit(addPaintingForm)">
+    <h2 class="h1 ml-5 text-center">Add New Painting</h2>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="name" ngModel placeholder="Type Painting Name">
+      </div>
+    </div>
+     <div class="form-group row">
+      <label class="col-2 col-form-label">Dimension</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="deminsions" ngModel placeholder="Type The Dimension">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">C-Type</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="colorsType" ngModel placeholder="Type The Colors Type">
+      </div>
+    </div>
+    <div class="form-group row">
+       <label class="col-2 col-form-label">Price</label>
+       <div class="col-10">
+         <input class="form-control" type="number" name="price" ngModel placeholder="Type The Price">
+       </div>
+     </div>
+<!--      <div class="form-group row">-->
+<!--       <label class="col-2 col-form-label">Image</label>-->
+<!--       <div class="col-10 input-group mb-3">-->
+<!--         <div class="custom-file">-->
+<!--           <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">-->
+<!--           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>-->
+<!--         </div>-->
+<!--       </div>-->
+<!--     </div>-->
+      <div class="form-group row">
+       <label class="col-2 col-form-label">image</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
+       </div>
+     </div>
+    <div class="form-group row">
+     <label class="col-2 col-form-label">Artist</label>
+     <div class="col-10">
+       <select class="form-control" name="artist" ngModel>
+         <option value="">Select The Artist For This Painting</option>
+         <option value="1">Ahmad</option>
+         <option value="2">Ali</option>
+         <option value="3">Rami</option>
+         <option value="4">sami</option>
+       </select>
+     </div>
+   </div>
+      <div class="form-group row">
+       <label class="col-2 col-form-label">State</label>
+       <div class="col-10">
+         <select class="form-control" name="state" ngModel>
+           <option value="">Select Painting State</option>
+           <option value="1">New</option>
+           <option value="2">Like New</option>
+           <option value="3">Used</option>
+           <option value="4">Old</option>
+         </select>
+       </div>
+     </div>
+    <div class="form-group row">
+     <label class="col-2 col-form-label">Art Type</label>
+     <div class="col-10">
+       <select class="form-control" name="art_type" ngModel>
+         <option value="">Select Art Type For This Painting</option>
+         <option value="1">New</option>
+         <option value="2">Like New</option>
+         <option value="3">Used</option>
+         <option value="4">Old</option>
+       </select>
+     </div>
+   </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Story</label>
+       <div class="col-10">
+         <textarea class="form-control" name="story" ngModel placeholder="Type The Story"></textarea>
+       </div>
+     </div>
+
+
+    <div class="form-group offset-md-2 mt-3">
+      <input class="btn btn-primary btn-block" type="submit" value="Add New painting">
+    </div>
+  </form>
+</div>

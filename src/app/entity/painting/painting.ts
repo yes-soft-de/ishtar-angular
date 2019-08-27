@@ -1,11 +1,12 @@
 export class Painting {
-  pageTitle: string;
-  artistName: string;
-  artistFollow: number;
-  artType: string;
-  artFollow: number;
-  paintingName: string;
-  paintingUrl: string;
-  paintingDesc: string;
-  paintingStory: string;
+  public id: number;
+  public name: string;
+  public image: string;
+  public artist: number;
+  public artType: number;
+  public deminsions: string;
+  public state: number;
+  public colorsType: string;
+  public price: number;
+  public story: string;
 }
