@@ -18,7 +18,6 @@ export class ListPaintingComponent implements OnInit {
     this.photosListService.getAllPainting().subscribe(
         (res: PaintingInterface) => {
         this.paintings = res.Data;
-        console.log(this.paintings);
       }, error1 => {
         console.log(error1);
       });

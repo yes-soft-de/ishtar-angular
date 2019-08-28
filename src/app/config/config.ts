@@ -20,5 +20,6 @@ export class Config {
   public static featuredAPI = 'http://localhost:3000/featured';
 
   // Art Type API
-  
+  // getartistpatingin
+  // getpaintinginsbyid
 }
