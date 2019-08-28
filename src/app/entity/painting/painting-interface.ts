@@ -1,9 +1,10 @@
 export interface PaintingInterface {
   id: number;
   name: string;
-  image: string;
+  // image: string;
   artist: number;
   artType: number;
+  addingDate: string;
   deminsions: string;
   state: number;
   colorsType: string;

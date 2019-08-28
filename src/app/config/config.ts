@@ -10,7 +10,7 @@ export class Config {
   public static addPaintingAPI = 'http://127.0.0.1:8000/createPainting';
   public static editPaintingAPI = 'http://127.0.0.1:8000/updatePainting';
   public static deletePaintingAPI = 'http://127.0.0.1:8000/deletePainting';
-  public static allPaintingAPI = 'http://127.0.0.1:8000/getAllPainting';
+  public static allPaintingsAPI = 'http://127.0.0.1:8000/getAllPainting';
   public static paintingAPI = 'http://5d402c85c516a90014e89669.mockapi.io/painting/';
   public static fullImagesListAPI = 'http://localhost:3000/painting-full-list';
   

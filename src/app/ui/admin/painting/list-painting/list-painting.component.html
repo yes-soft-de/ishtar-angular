@@ -10,7 +10,7 @@
             <tr class="bg-dark text-white">
                 <td>#ID</td>
                 <td>Name</td>
-                <td>Image</td>
+                <!-- <td>Image</td> -->
                 <td>Artist</td>
                 <td>Art Type</td>
                 <td>Dimension</td>
@@ -24,13 +24,13 @@
             <tr *ngFor="let painting of paintings">
                 <td>{{painting.id}}</td>
                 <td>{{painting.name}}</td>
-                <td>{{painting.Image}}</td>
-                <td>{{painting.artist}}</td>
-                <td>{{painting.artType}}</td>
+                <!-- <td>{{painting.Image}}</td> -->
+                <td>{{painting.artist.name}}</td>
+                <td>{{painting.artType.name}}</td>
                 <td>{{painting.deminsions}}</td>
-                <td>{{painting.state}}</td>
+                <td>{{painting.state ? 'Sold' : 'available'}}</td>
                 <td>{{painting.colorsType}}</td>
-                <td>{{painting.price}}</td>
+                <td>{{painting.price}} $</td>
                 <td>{{painting.story}}</td>
                 <td>{{painting.addingDate}}</td>
                 <td>

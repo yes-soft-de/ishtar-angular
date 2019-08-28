@@ -14,6 +14,12 @@
       </div>
     </div>
     <div class="form-group row">
+     <label class="col-2 col-form-label">Date</label>
+     <div class="col-10">
+       <input class="form-control" type="date" name="addingDate" ngModel placeholder="Type The Date">
+     </div>
+   </div>
+    <div class="form-group row">
       <label class="col-2 col-form-label">C-Type</label>
       <div class="col-10">
         <input class="form-control" type="text" name="colorsType" ngModel placeholder="Type The Colors Type">
@@ -34,12 +40,12 @@
 <!--         </div>-->
 <!--       </div>-->
 <!--     </div>-->
-      <div class="form-group row">
+      <!-- <div class="form-group row">
        <label class="col-2 col-form-label">image</label>
        <div class="col-10">
          <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
        </div>
-     </div>
+     </div> -->
     <div class="form-group row">
      <label class="col-2 col-form-label">Artist</label>
      <div class="col-10">
@@ -67,7 +73,7 @@
     <div class="form-group row">
      <label class="col-2 col-form-label">Art Type</label>
      <div class="col-10">
-       <select class="form-control" name="art_type" ngModel>
+       <select class="form-control" name="artType" ngModel>
          <option value="">Select Art Type For This Painting</option>
          <option value="1">New</option>
          <option value="2">Like New</option>

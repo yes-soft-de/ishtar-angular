@@ -36,14 +36,14 @@ export class PhotosListService {
   // Get All Painting List
   getAllPainting() {
     return this.httpClient.get<PaintingInterface>(
-        `${Config.fullImagesListAPI}`, {responseType: 'json'}
+        `${Config.allPaintingsAPI}`, {responseType: 'json'}
     ).pipe(catchError(this.errorHandler));
   }
 
   // Admin Section - POST Add New Painting
   postAddPainting(painting: Painting) {
     return this.httpClient.post<Painting>(
-        `${Config.addArtistAPI}`, JSON.stringify(painting), {responseType: 'json'}
+        `${Config.addPaintingAPI}`, JSON.stringify(painting), {responseType: 'json'}
     ).subscribe(
         data => {
           // TODO insert ngx-toastr Message
