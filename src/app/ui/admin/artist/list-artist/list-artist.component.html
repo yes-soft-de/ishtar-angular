@@ -9,15 +9,13 @@
       				<table class="table table-bordered main-table">
       					<tr class="bg-dark text-white">
       						<td>#ID</td>
-                  <td>name</td>
-                  <td>Art Type</td>
                   <td>Name</td>
                   <td>Nationality</td>
                   <td>Residence</td>
                   <td>Birth Date</td>
-                  <td>Image</td>
                   <td>Story</td>
                   <td>Details</td>
+                  <td>Image</td>
                   <td>Video</td>
                   <td>Facebook</td>
                   <td>Instagram</td>
@@ -25,10 +23,9 @@
                   <td>Linkedin</td>
                   <td>Control</td>
       					</tr>
-      						<tr *ngFor="let artist of artists">
+      						<tr *ngFor="let artist of artists">                    
                     <td>{{artist.id}}</td>
                     <td>{{artist.name}}</td>
-                    <td>Art Type</td>
                     <td>{{artist.nationality}}</td>
                     <td>{{artist.residence}}</td>
                     <td>{{artist.birthDate}}</td>

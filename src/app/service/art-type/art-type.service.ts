@@ -6,32 +6,32 @@ import {ArtTypeInterface} from '../../entity/art-type/art-type-interface';
 
 
 @Injectable({
-  providedIn: 'root'
+providedIn: 'root'
 })
 export class ArtTypeService {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private httpClient: HttpClient) { }
+constructor(private router: Router,
+            private route: ActivatedRoute,
+            private httpClient: HttpClient) { }
 
 
   // Add New Art Type Using Http POST Request
-  postAddArtType(artType: ArtTypeInterface) {
-    return this.httpClient.post<ArtTypeInterface>(
-      `${Config.addArtTypeAPI}`, JSON.stringify(artType)
-    ).subscribe(
-      data => {
-        // TODO insert ngx-toastr Message
-        console.log('POST Request Was Successfully done', data);
-        // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.route});
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        console.log('done');
-        this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
-      }
-    );
-  }
+  // postAddArtType(artType: ArtTypeInterface) {
+  //   return this.httpClient.post<ArtTypeInterface>(
+  //     `${Config.addArtTypeAPI}`, JSON.stringify(artType)
+  //   ).subscribe(
+  //     data => {
+  //       // TODO insert ngx-toastr Message
+  //       console.log('POST Request Was Successfully done', data);
+  //       // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.route});
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       console.log('done');
+  //       this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
+  //     }
+  //   );
+  // }
 }

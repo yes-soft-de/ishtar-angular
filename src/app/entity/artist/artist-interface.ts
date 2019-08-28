@@ -1,16 +1,15 @@
 export interface ArtistInterface {
-  id: number;
+  // id: number;
   name: string;
   nationality: string;
   residence: string;
   birthDate: string;
-  // tslint:disable-next-line:variable-name
-  story: string;
-  details: string;
-  image: string;
-  video: string;
-  faceBook: string;
+  facebook: string;
   instagram: string;
   linkedin: string;
   twitter: string;
+  image: string;
+  video: string;
+  details: string;
+  story: string;
 }

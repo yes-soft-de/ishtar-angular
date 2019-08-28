@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {PaintingFullList} from '../../entity/painting-full-list/painting-full-list';
 import {FeaturedInterface} from '../../entity/featured/featuredInterface';
 import {Config} from '../../config/config';
@@ -8,6 +8,8 @@ import {PaintingInterface} from '../../entity/painting/painting-interface';
 import {Artist} from '../../entity/artist/artist';
 import {Painting} from '../../entity/painting/painting';
 import {Router} from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,12 @@ export class PhotosListService {
 
   constructor(private router: Router,
               private httpClient: HttpClient) {
+  }
+
+
+  // Handling the error
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error || "Server Error");
   }
 
   getPhotosList() {
@@ -29,7 +37,7 @@ export class PhotosListService {
   getAllPainting() {
     return this.httpClient.get<PaintingInterface>(
         `${Config.fullImagesListAPI}`, {responseType: 'json'}
-    );
+    ).pipe(catchError(this.errorHandler));
   }
 
   // Admin Section - POST Add New Painting
