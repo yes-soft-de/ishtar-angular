@@ -12,7 +12,8 @@ import { AddArtistComponent } from './artist/add-artist/add-artist.component';
 import { EditArtistComponent } from './artist/edit-artist/edit-artist.component';
 import { ListArtistComponent } from './artist/list-artist/list-artist.component';
 import {RouterModule} from '@angular/router';
-
+import { AddPaintingComponent } from './painting/add-painting/add-painting.component';
+import { ListPaintingComponent } from './painting/list-painting/list-painting.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import {RouterModule} from '@angular/router';
     AddArtistComponent,
     EditArtistComponent,
     ListArtistComponent,
+    AddPaintingComponent,
+    ListPaintingComponent
   ],
   exports: [
     AdminComponent,

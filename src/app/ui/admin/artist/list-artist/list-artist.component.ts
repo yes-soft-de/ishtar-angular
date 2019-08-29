@@ -17,10 +17,10 @@ export class ListArtistComponent implements OnInit {
     // Fetch All Artists
     this.artist.getAllArtists().subscribe(
       (data: ArtistInterface) => {
-        this.artists = data;
-        console.log(this.artists);
+        this.artists = data.Data;
       }, error1 => {
-        console.log(error1);
+        // TODO think if there is some to do here ex : display message if there is error
+        console.log('Error :', error1);
       });
 
   }
