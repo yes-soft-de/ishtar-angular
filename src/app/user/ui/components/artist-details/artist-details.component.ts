@@ -7,11 +7,11 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
-
   constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.activatedRoute.snapshot.paramMap.get('id');
   }
 
 }

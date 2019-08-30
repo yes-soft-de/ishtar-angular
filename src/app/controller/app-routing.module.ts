@@ -5,7 +5,7 @@ import {NotFoundComponent} from '../user/ui/Pages/not-found/not-found.component'
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('../user/user.module').then(m => m.UserModule)},
-  {path: 'admin', loadChildren: () => import('../ui/admin/admin.module').then(m => m.AdminModule)},
+  {path: 'admin', loadChildren: () => import('../admin/ui/admin/admin.module').then(m => m.AdminModule)},
   {path: '**', component: NotFoundComponent}
 ];
 

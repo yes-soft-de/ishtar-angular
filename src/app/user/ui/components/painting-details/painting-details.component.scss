@@ -1,0 +1,30 @@
+#artist-area {
+  flex-basis: 25%;
+  max-width: 25%;
+  img{
+  }
+}
+
+#main-painting{
+  flex-basis: 75%;
+  img {
+    min-width: 100%;
+    object-fit: fill;
+  }
+}
+
+#painting-carousel {
+  img {
+    min-width: 100%;
+  }
+}
+
+.image-link {
+  min-width: 100%;
+  height: 20rem;
+  img{
+    min-width: 100%;
+    object-fit: fill;
+    object-position: center;
+  }
+}

@@ -19,11 +19,4 @@ export class ArtistService {
       `${Config.artistAPI}/${artistId}`,
       {responseType: 'json'});
   }
-
-  getArtistPainting(artistId: string) {
-    // This Should Take the List From the API
-    return this.httpClient.get<PaintingFullList>(
-      `${Config.artistPaintingsAPI}/${artistId}`,
-      {responseType: 'json'});
-  }
 }

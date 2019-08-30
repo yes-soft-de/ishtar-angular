@@ -1,8 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Painting} from '../../../../entity/painting/painting';
-import {NetworkConnectorService} from '../../../../service/NetworkConnectorService/network-connector.service';
-import {ActivatedRoute} from '@angular/router';
-import {PaintingDetailsService} from '../../../service/painting-details/painting-details.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 
 @Component({
   selector: 'app-painting-details',
@@ -10,21 +7,12 @@ import {PaintingDetailsService} from '../../../service/painting-details/painting
   styleUrls: ['./painting-details.component.scss']
 })
 export class PaintingDetailsComponent implements OnInit {
-  private mPainting: Painting;
+  @Input() painting: PaintingDetails;
 
-  constructor(private paintingService: PaintingDetailsService, private activatedRoute: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.paintingService.requestPaintingDetails(
-      this.activatedRoute.snapshot.paramMap.get('id')
-    ).subscribe(
-      data => {
-        this.mPainting = data;
-      }, error1 => {
-        console.log(error1);
-      }
-    );
   }
 
 

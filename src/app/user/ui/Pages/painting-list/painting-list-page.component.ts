@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {ImageListService} from '../../../service/images-list/image-list.service';
+import {PaintingListAdapter} from '../../../bussiness-logic/painting-list-adapter/painting-list-adapter';
+import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-painting-list',
@@ -7,12 +11,18 @@ import {PaintingListService} from '../../../service/painting-list/painting-list.
   styleUrls: ['./painting-list-page.component.scss']
 })
 export class PaintingListPageComponent implements OnInit {
-  // TODO Use Input and Make use of Service Here, Not in Component
-  constructor() {
+  formattedList: PaintingListItem[];
+  constructor(private paintingService: PaintingListService, private toaster: ToastrService) {
   }
 
   ngOnInit() {
-    // TODO: Add Painting List Details Here
+    this.paintingService.requestPaintingList().subscribe(
+      data => {
+        this.formattedList = data.data;
+      }, error1 => {
+        this.toaster.error(JSON.stringify(error1));
+      }
+    );
   }
 
 }

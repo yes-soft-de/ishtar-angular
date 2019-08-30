@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Featured} from '../../../../entity/featured/featured';
-import {NetworkConnectorService} from '../../../../service/NetworkConnectorService/network-connector.service';
+import {Featured} from '../../../../admin/entity/featured/featured';
+import {NetworkConnectorService} from '../../../../admin/service/NetworkConnectorService/network-connector.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {NgwWowService} from 'ngx-wow';
 import {Subscription} from 'rxjs';

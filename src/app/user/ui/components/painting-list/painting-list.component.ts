@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingListAdapter} from '../../../bussiness-logic/painting-list-adapter/painting-list-adapter';
+import {ImageListService} from '../../../service/images-list/image-list.service';
+import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -7,12 +10,11 @@ import {PaintingListService} from '../../../service/painting-list/painting-list.
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
-  private paintingList;
+  @Input() formattedPaintingList: PaintingListItem[];
 
-  constructor(private paintingService: PaintingListService) {
+  constructor() {
   }
 
   ngOnInit() {
-    // TODO: Add Painting List Details Here
   }
 }

@@ -1,7 +1,9 @@
 <div class="d-flex justify-content-center">
   <div class="col-lg-8 col-12 d-block">
     <section id="photos" class="grid">
-      <img class="grid-item" src="{{p.image}}" *ngFor="let p of artistList">
+      <a href="http://localhost:4200/painting-list-by-artist/{{p.id}}" *ngFor="let p of artistList">
+        <img class="grid-item" src="{{p.image}}" >
+      </a>
     </section>
   </div>
 </div>

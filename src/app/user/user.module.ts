@@ -24,6 +24,9 @@ import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details
 import {AlternatingListComponent} from './ui/components/alternating-list/alternating-list.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/grid-list/school-list.component';
+import {ToastrModule} from 'ngx-toastr';
+import {CarouselModule} from 'ngx-carousel-lib';
+import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import {SchoolListComponent} from './ui/components/grid-list/school-list.compone
     HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    ImagesByArtistPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -60,6 +64,7 @@ import {SchoolListComponent} from './ui/components/grid-list/school-list.compone
     HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    ImagesByArtistPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -78,7 +83,8 @@ import {SchoolListComponent} from './ui/components/grid-list/school-list.compone
     ParallaxModule,
     NgwWowModule,
     UserRoutingModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ToastrModule.forRoot(), CarouselModule
   ]
 })
 export class UserModule {
