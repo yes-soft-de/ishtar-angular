@@ -4,7 +4,7 @@ import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {pipe} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {Artist} from '../../entity/artist/artist';
-import {Config} from '../../config/config';
+import {AdminConfig} from '../../AdminConfig';
 import {ArtistFeaturedInterface} from '../../entity/artist-painting/artist-featured-interface';
 import {PaintingInterface} from '../../entity/painting/painting-interface';
 import {FeaturedInterface} from '../../entity/featured/featuredInterface';
@@ -18,25 +18,25 @@ export class NetworkConnectorService {
 
   requestArtistDetails(id: string) {
     return this.httpClient.get<ArtistInterface>(
-      `${Config.artistAPI}${id}`, {responseType: 'json'}
+      `${AdminConfig.artistAPI}${id}`, {responseType: 'json'}
     );
   }
 
   requestArtistFeatured(artistId: string) {
     return this.httpClient.get<ArtistFeaturedInterface>(
-      `${Config.artistFeaturedPaintings}${artistId}`, {responseType: 'json'}
+      `${AdminConfig.artistFeaturedPaintings}${artistId}`, {responseType: 'json'}
     );
   }
 
   requestPaintingDetails(paintingId: string) {
     return this.httpClient.get<PaintingInterface>(
-      `${Config.paintingAPI}${paintingId}`, {responseType: 'json'}
+      `${AdminConfig.paintingAPI}${paintingId}`, {responseType: 'json'}
     );
   }
 
   requestFeatured() {
     return this.httpClient.get<FeaturedInterface>(
-      `${Config.featuredAPI}`, {responseType: 'json'}
+      `${AdminConfig.featuredAPI}`, {responseType: 'json'}
     );
   }
 }

@@ -1,0 +1,51 @@
+<div *ngIf="paintings!= null">
+  <div class="container-fluid">
+    <h1 class="text-center my-4">Manage Painting Page</h1>
+    <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-painting">
+      <i class="fa fa-plus"></i>
+      Add New Painting
+    </a>
+    <div class="table-responsive text-center">
+        <table class="table table-bordered main-table">
+            <tr class="bg-dark text-white">
+                <td>#ID</td>
+                <td>Name</td>
+                <!-- <td>Image</td> -->
+                <td>Artist</td>
+                <td>Art Type</td>
+                <td>Dimension</td>
+                <td>State</td>
+                <td>Colors Type</td>
+                <td>Price</td>
+                <td>Story</td>
+                <td>Adding Date</td>
+                <td>Control</td>
+            </tr>
+            <tr *ngFor="let painting of paintings">
+                <td>{{painting.id}}</td>
+                <td>{{painting.name}}</td>
+                <!-- <td>{{painting.Image}}</td> -->
+                <td>{{painting.deminsions}}</td>
+                <td>{{painting.state ? 'Sold' : 'available'}}</td>
+                <td>{{painting.colorsType}}</td>
+                <td>{{painting.price}} $</td>
+                <td>{{painting.story}}</td>
+                <td>{{painting.addingDate}}</td>
+                <td>
+                  <a routerLink="/admin/edit-painting" class="btn btn-success btn-sm mr-1">Edit</a>
+                  <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="paintings == null">
+  <div class="container">
+    <div class="alert alert-primary text-center mt-5">There Isn't Any Painting To Show</div>
+    <a routerLink="/admin/add-painting" class="btn btn-primary btn-sm mb-2 float-right">
+      <i class="fa fa-plus"></i>
+      Add New Painting
+    </a>
+  </div>
+</div>

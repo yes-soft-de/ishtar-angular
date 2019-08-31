@@ -1,14 +1,16 @@
 export class Artist {
   public id: number;
-  public createdAt: string;
   public name: string;
-  public image: string;
   public nationality: string;
-  // tslint:disable-next-line:variable-name
-  public birth_date: string;
-  public story: string;
+  public residence: string;
+  public birthDate: string;
   public facebook: string;
-  public linkedin: string;
   public instagram: string;
+  public linkedin: string;
   public twitter: string;
+  // tslint:disable-next-line:variable-name
+  public image: string;
+  public video: string;
+  public details: string;
+  public story: string;
 }

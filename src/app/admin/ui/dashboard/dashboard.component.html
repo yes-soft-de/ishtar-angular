@@ -1,0 +1,125 @@
+<div *ngIf="artists != null && paintings != null" class="w-100">
+<div class="container">
+  <!--Start Home Statis Page-->
+  <div class="home-stat">
+    <h1 class="my-4 text-center text-monospace">Dashboard Page </h1>
+    <div class="row">
+      <div class="col-md-6 col-lg-3">
+        <div class="stat st_member">
+          <i class="fa fa-users fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Artists</h6>
+
+            <span><a routerLink="/admin/list-artist">{{artists.length}}</a></span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="stat st_pending">
+          <i class="far fa-images fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Paintings</h6>
+
+            <span><a routerLink="/admin/list-painting">{{paintings.length}}</a></span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="stat st_item">
+          <i class="fas fa-balance-scale-right fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Auctions</h6>
+
+            <span><a>50</a></span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="stat st_comment">
+          <i class="fa fa-comments fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Comments</h6>
+            <span><a>9</a></span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Start Latest Section-->
+  <div class="latest mt-5">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <!--Start Latest ArtistAdmin-->
+        <div class="late mb-3">
+          <div class="card">
+            <div class="card-header">
+              Latest 5 ArtistAdmin
+            </div>
+            <div class="card-body">
+              <div class="late_info">
+                Talal
+                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Start Latest Painting-->
+      <div class="col-12 col-md-6">
+        <div class="late mb-3">
+          <div class="card">
+            <div class="card-header">
+              Latest 5 Painting
+            </div>
+            <div class="card-body">
+              <div class="late_info">
+                Sky Painting
+                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Start Latest Auctions-->
+      <div class="col-12 col-md-6">
+        <div class="late mb-3">
+          <div class="card">
+            <div class="card-header">
+              Latest 5 Auctions
+            </div>
+            <div class="card-body">
+              <div class="late_info">
+                Golden Painting
+                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Start Latest Comment-->
+      <div class="col-12 col-md-6">
+        <div class="late mb-3">
+          <div class="card">
+            <div class="card-header">
+              Latest 2 Comments
+            </div>
+            <div class="card-body">
+              <div class="member_comment">
+                <span>Talal</span>
+                <p>My Painting is amazing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf="artists == null || paintings == null" class="w-100">
+  <h3 class="text-center text-primary">Loading Stats!</h3>
+</div>

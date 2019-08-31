@@ -7,7 +7,6 @@
         <img src="{{img.url}}" width="100%" height="auto">
         <div class="carousel-info-box">
           <h6 class="carousel-info-title">{{img.name}}</h6>
-          <p class="carousel-info-text">{{img.desc}}</p>
         </div>
       </mdb-carousel-item>
     </mdb-carousel>
@@ -44,9 +43,6 @@
     <div class="col-8 row d-flex">
       <div class="col-4 p-4" *ngFor="let img of featuredPaintings.slice(0,6)">
         <img src="{{img.url}}" class="img-fluid">
-        <h5>
-          {{img.desc}}
-        </h5>
       </div>
     </div>
   </section><!-- #artist-cards -->

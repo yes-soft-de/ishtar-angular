@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./alternating-list.component.scss']
 })
 export class AlternatingListComponent implements OnInit {
-  private list = [];
+  list = [];
 
   constructor() {
   }

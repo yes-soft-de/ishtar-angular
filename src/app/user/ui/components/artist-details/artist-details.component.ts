@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {ArtistDetails} from '../../../entity/artist/artist-details';
 
 @Component({
   selector: 'app-artist-page',
@@ -7,6 +9,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
+  featuredPaintings: PaintingListItem[];
+  artist: ArtistDetails;
   constructor(private activatedRoute: ActivatedRoute) {
   }
 

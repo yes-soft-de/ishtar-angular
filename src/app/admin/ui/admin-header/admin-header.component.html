@@ -1,0 +1,50 @@
+
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue-gradient" [containerInside]="true">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">Admin Area</a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="/admin" class="nav-link waves-light" mdbWavesEffect>Dashboard<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/list-painting" class="nav-link waves-light" mdbWavesEffect>Painting</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/list-artist" class="nav-link waves-light" mdbWavesEffect>Artists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect>Auctions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect>Comments</a>
+      </li>
+
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+              <a routerLink="/" class="dropdown-item">Visit Site</a>
+              <a class="dropdown-item" href="#">Edit Profile</a>
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
