@@ -1,0 +1,94 @@
+<!--Start Painting Page-->
+<section class="container-fluid">
+  <div class="d-flex">
+    <div class="row" id="artist-area">
+      <img class="col-12" id="artist-image" src="{{painting.artistImageUrl}}" alt="">
+      <div class="col-12 p-3">
+        <h4 class="text-center" id="artist-name">{{painting.artistName}}</h4>
+      </div>
+    </div>
+    <div id="main-painting">
+      <img src="{{painting.paintingImages[0].url}}" class="img-fluid" id="main-image">
+    </div>
+  </div>
+
+  <!--Start Carousel Section-->
+  <section id="painting-carousel">
+    <mdb-carousel>
+      <mdb-carousel-item *ngFor="let i of painting.paintingImages" class="col-4">
+        <img src="{{i.url}}" alt="" class="img-fluid">
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </section>
+
+  <!--End Carousel Section-->
+
+  <!--Start Story Section-->
+  <div class="col-8 mx-auto story-section my-5">
+    <h5 class="text-center">Story</h5>
+    <p class="text-center">
+      {{painting.story}}
+    </p>
+  </div>
+  <!--End Story Section-->
+
+  <!--Start Painting Video-->
+  <div class="painting-video">
+    <div class="row">
+      <div class="col-9">
+        <div class="paint-video text-center">
+          <video loop preload="auto" controls class="mx-auto" src="../../../../../assets/1x/painting_video.mp4"></video>
+        </div>
+
+        <!-- region Comments -->
+        <div class="paint-comments mt-5">
+          <h4 class="">Comments :</h4>
+          <hr class="bg-dark">
+          <div class="comment-box mb-3">
+            <div class="row">
+              <div class="col-md-2 text-center">
+                <img class="img-fluid rounded-circle" src="../../../../../assets/1x/img-01.jpg" alt="avatar">
+                Mechil Gandy
+              </div>
+              <div class="col-md-10">
+                <p class="rounded">Woooooow It's beautiful</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment-box mb-3">
+            <div class="row">
+              <div class="col-md-2 text-center">
+                <img class="img-fluid rounded-circle" src="../../../../../assets/1x/img-01.jpg" alt="avatar">
+                Melissa Rohan
+              </div>
+              <div class="col-md-10">
+                <p class="rounded">this is goooooood</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- endregion -->
+      </div>
+      <div class="col-3 bg-dark"></div>
+    </div>
+  </div>
+  <!--End Painting Video-->
+
+
+  <!--Start Carousel Section-->
+  <div class="row">
+    <div class="col-9 bg-dark px-3 py-5">
+      <carousel-component [mode]="'horizontal'" [timeToSlide]="200">
+        <div class="item-carousel" *ngFor="let p of painting.otherPaintingsByArtist">
+          <div class="row">
+            <a href="http://localhost:4200/painting/{{p.id}}" class="image-link">
+              <img src="{{p.url}}" alt="" class="col-12">
+              <p>{{p.name}}</p>
+            </a>
+          </div>
+        </div>
+      </carousel-component>
+    </div>
+    <!--End Carousel Section-->
+  </div>
+</section>

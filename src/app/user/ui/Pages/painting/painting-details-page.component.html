@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<div *ngIf="paintingDetails !== null" class="w-100">
+  <app-painting-details [painting]="paintingDetails"></app-painting-details>
+</div>
+
+<div *ngIf="paintingDetails === null">
+  <h3 class="text-center">Loading...</h3>
+</div>
+<app-footer></app-footer>

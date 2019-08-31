@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+  <div class="col-lg-8 col-12 d-block">
+    <section id="photos" class="grid">
+      <a class="grid-item" href="http://localhost:4200/painting/{{p.id}}" *ngFor="let p of formattedPaintingList">
+        <img src="{{p.url}}" alt="">
+      </a>
+    </section>
+  </div>
+</div>
