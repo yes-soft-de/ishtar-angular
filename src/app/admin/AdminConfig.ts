@@ -3,10 +3,10 @@ export class AdminConfig {
   public static addArtistAPI = 'http://localhost:1337/localhost:8000/createArtist';
   public static editArtistAPI = 'http://localhost:1337/localhost:8000/updateArtist';
   public static deleteArtistAPI = 'http://localhost:1337/127.0.0.1:8000/deleteArtist';
-  public static allArtistsAPI = 'http://localhost:8000/getAllArtist';
+  public static allArtistsAPI = 'http://localhost:3200/getAllArtist';
   public static artistAPI = 'http://localhost:1337/localhost:8000/getArtistById';
   // Painting API
-  public static addPaintingAPI = 'http://localhost:1337/localhost:8000/createPainting';
+  public static addPaintingAPI = 'http://localhost:3200/createPainting';
   public static editPaintingAPI = 'http://localhost:1337/localhost:8000/updatePainting';
   public static deletePaintingAPI = 'http://localhost:1337/localhost:8000/deletePainting';
   public static allPaintingsAPI = 'http://localhost:8000/getAllPainting';

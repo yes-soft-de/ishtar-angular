@@ -10,4 +10,5 @@ export class Painting {
   public colorsType: string;
   public price: number;
   public story: string;
+  public imageUrl: string;
 }

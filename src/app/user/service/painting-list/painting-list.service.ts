@@ -15,9 +15,14 @@ export class PaintingListService {
   }
 
   requestPaintingList() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
     return this.httpClient.get<PaintingListResponse>(
       `${UserConfig.PaintingListAPI}`,
-      {responseType: 'json'}
+      httpOptions
     );
   }
 

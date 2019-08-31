@@ -21,6 +21,7 @@ export class PaintingListPageComponent implements OnInit {
         this.formattedList = data.data;
       }, error1 => {
         this.toaster.error(JSON.stringify(error1));
+        console.log(JSON.stringify(error1));
       }
     );
   }

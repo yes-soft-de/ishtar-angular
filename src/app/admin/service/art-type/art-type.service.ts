@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminConfig} from '../../AdminConfig';
@@ -6,13 +6,14 @@ import {ArtTypeInterface} from '../../entity/art-type/art-type-interface';
 
 
 @Injectable({
-providedIn: 'root'
+  providedIn: 'root'
 })
 export class ArtTypeService {
 
-constructor(private router: Router,
-            private route: ActivatedRoute,
-            private httpClient: HttpClient) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private httpClient: HttpClient) {
+  }
 
 
   // Add New Art Type Using Http POST Request
@@ -34,4 +35,8 @@ constructor(private router: Router,
   //     }
   //   );
   // }
+
+  public getAllArtType() {
+    return this.httpClient.get<ArtTypeInterface>('http://localhost:3200/getAllArtType');
+  }
 }
