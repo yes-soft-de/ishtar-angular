@@ -1,20 +1,30 @@
 <header>
-  <nav id="header-nav" class="container-fluid row">
-    <div class="col-3 d-flex justify-content-end">
+  <nav id="header-nav" class="row">
+    <div class="row container-fluid">
+      <div class="col-3 d-flex justify-content-end">
+        <li><a href="http://localhost:4200/">LOGO</a></li>
+      </div>
+      <div class="col-9">
+        <ul>
+          <li class="float-right">En/Ar</li>
+          <li class="float-right">Sign in</li>
+          <li class="float-right"><a href="http://localhost:4200/painting-list">Paintings</a></li>
+          <li class="float-right"><a href="http://localhost:4200/painting-list">Art Schools</a></li>
+          <li class="float-right"><a href="http://localhost:4200/artist-list">Artists</a></li>
+          <li class="float-right"><a href="http://localhost:4200/artist-list">Home</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-9">
-      <ul>
-        <li><a href="http://localhost:4200/">Home</a></li>
-        <li><a href="http://localhost:4200/artist-list">Artists</a></li>
-        <li><a href="http://localhost:4200/painting-list">Paintings</a></li>
-        <li class="float-right">Sign in</li>
-        <li class="float-right">En/Ar</li>
-        <li class="float-right">
-          <label>
-            <input type="text" placeholder="Search">
-          </label>
-        </li>
-      </ul>
+    <div class="row container-fluid d-flex justify-content-center align-items-baseline">
+
+        <div class="md-form mx-5">
+          <mdb-icon fas icon="search" class="prefix"></mdb-icon>
+          <input mdbInput type="text" id="form2" class="form-control">
+          <label for="form2">Search</label>
+        </div>
+        <button mdbBtn id="btn-wish-list" mdbWavesEffect>Wish List</button>
+        <button mdbBtn id="btn-favorite" mdbWavesEffect>Favorite</button>
+
     </div>
   </nav><!-- #header-nav -->
 </header>

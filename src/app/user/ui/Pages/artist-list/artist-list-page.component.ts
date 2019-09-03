@@ -8,20 +8,11 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./artist-list-page.component.scss']
 })
 export class ArtistListPageComponent implements OnInit {
-  public artistList: any;
 
-  constructor(private artistService: ArtistListService, private toaster: ToastrService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.artistService.requestPaintingList().subscribe(
-      data => {
-        this.artistList = data.Data;
-      }, error => {
-        console.log(error);
-        this.toaster.error(error.message);
-      }
-    );
   }
 
 }
