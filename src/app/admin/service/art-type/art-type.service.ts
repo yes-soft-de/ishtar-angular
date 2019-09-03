@@ -1,8 +1,13 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminConfig} from '../../AdminConfig';
 import {ArtTypeInterface} from '../../entity/art-type/art-type-interface';
+import {throwError} from 'rxjs';
+import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
+import {catchError} from 'rxjs/operators';
+import {ArtTypeResponse} from '../../entity/art-type/art-type-response';
+
 
 
 @Injectable({
@@ -13,6 +18,11 @@ export class ArtTypeService {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private httpClient: HttpClient) {
+  }
+
+  // Handling the error
+  private static errorHandler(error: HttpErrorResponse) {
+    return throwError(error || 'Server Error');
   }
 
 
@@ -36,7 +46,12 @@ export class ArtTypeService {
   //   );
   // }
 
-  public getAllArtType() {
-    return this.httpClient.get<ArtTypeInterface>('http://localhost:3200/getAllArtType');
+
+  // Get All Art Type
+  getAllArtType() {
+    return this.httpClient.get<ArtTypeResponse>(
+        `${AdminConfig.allArtTypeAPI}`, {responseType: 'json'}
+    ).pipe(catchError(ArtTypeService.errorHandler));
   }
+
 }

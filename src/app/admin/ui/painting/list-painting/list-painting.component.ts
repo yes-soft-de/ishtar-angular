@@ -25,20 +25,6 @@ export class ListPaintingComponent implements OnInit {
       }, error1 => {
         console.log(error1);
       });
-    // get Artist By ID
-    // this.photosListService.getPaintingInfo(
-    //   this.route.snapshot.queryParamMap.get('id')
-    // ).subscribe(
-    //     data => {
-    //       console.log(data);
-    //     },
-    //     error => {
-    //       console.log('There is an error : ', error);
-    //     },
-    //     () => {
-    //       console.log('done');
-    //     }
-    // );
 
   }
 
@@ -52,7 +38,7 @@ export class ListPaintingComponent implements OnInit {
           console.log('Sorry There Is Error : ', error);
         },
         () => {
-          this.router.navigate(['/admin/list-painting']);
+          this.router.navigate(['/admin/list-paintings']);
         }
     );
   }

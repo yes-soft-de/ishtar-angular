@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {Painting} from '../../../entity/painting/painting';
-import {ArtistService} from '../../../service/artist/artist.service';
-import {Artist} from '../../../entity/artist/artist';
+import {HttpClient} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
+import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 
 
 @Component({
@@ -13,42 +13,71 @@ import {ArtType} from '../../../entity/art-type/art-type';
   styleUrls: ['./add-painting.component.scss']
 })
 export class AddPaintingComponent implements OnInit {
-  artistList: Artist[];
-  artTypeList: ArtType[];
+  uploadForm: FormGroup;
+  artTypes: ArtType[];
 
-  constructor(private photosListService: PhotosListService, private artistService: ArtistService, private artTypeService: ArtTypeService) {
-  }
+  constructor(private formBuilder: FormBuilder,
+              private photoListService: PhotosListService,
+              private artTypeService: ArtTypeService,
+              private httpClient: HttpClient) {}
 
   ngOnInit() {
-    this.artistService.getAllArtists().subscribe(data => {
-        this.artistList = data.Data;
-    }, error1 => {
-      console.log(error1);
-    });
-
+    // Fetch All Art Type
     this.artTypeService.getAllArtType().subscribe(
-      data => {
-        this.artTypeList = data.Data;
-      }
+        (data: ArtTypeResponse) => {
+          if (data) {
+            this.artTypes = data.Data;
+          }
+        },
+        error => {
+          console.log(error);
+        }
+    );
+    // Storing From Data
+    this.uploadForm = this.formBuilder.group({
+      name: [''],
+      artist: [''],
+      height: [''],
+      width: [''],
+      colorsType: [''],
+      price: [''],
+      state: [''],
+      story: [''],
+      image: [''],
+      active: [''],
+      artType: [''],
+      gallery: ['']
+    });
+    console.log(this.uploadForm);
+  }
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('image').setValue(file);
+    }
+  }
+
+  mySubmit() {
+    const formData = new FormData();
+    formData.append('name', this.uploadForm.get('name').value);
+    formData.append('artist', this.uploadForm.get('artist').value);
+    formData.append('height', this.uploadForm.get('height').value);
+    formData.append('width', this.uploadForm.get('width').value);
+    formData.append('colorsType', this.uploadForm.get('colorsType').value);
+    formData.append('price', this.uploadForm.get('price').value);
+    formData.append('state', this.uploadForm.get('state').value);
+    formData.append('story', this.uploadForm.get('story').value);
+    formData.append('image', this.uploadForm.get('image').value);
+    formData.append('active', this.uploadForm.get('active').value);
+    formData.append('artType', this.uploadForm.get('artType').value);
+    formData.append('gallery', this.uploadForm.get('gallery').value);
+    // console.log(formData.value);
+    // this.photoListService.postAddPainting(formData);
+    this.httpClient.post<any>('url', formData).subscribe(
+        (res) => console.log(res),
+        (error) => console.log(error)
     );
   }
 
-  mySubmit(form) {
-    const painting: Painting = new Painting();
-    // TODO inserting new real data
-    painting.name = form.value.name;
-    // painting.image = form.value.image;
-    painting.artist = form.value.artist;
-    painting.artType = form.value.artType.id;
-    painting.deminsions = form.value.deminsions;
-    painting.addingDate = form.value.addingDate;
-    painting.state = form.value.state;
-    painting.colorsType = form.value.colorsType;
-    painting.price = form.value.price;
-    painting.story = form.value.story;
-    painting.imageUrl = form.value.url;
-    this.photosListService.postAddPainting(painting);
-    // TODO insert ngx-toastr Message
-  }
 
 }

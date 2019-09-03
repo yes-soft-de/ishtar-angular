@@ -74,7 +74,7 @@ export class ArtistService {
           console.log('there error from fetching the data', error);
         },
         () => {
-          this.router.navigate(['admin/list-artist'], {relativeTo: this.route});
+          this.router.navigate(['admin/list-artists'], {relativeTo: this.route});
         }
     );
   }

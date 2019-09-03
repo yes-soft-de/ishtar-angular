@@ -3,6 +3,5 @@ export class ArtType {
   public name: string;
   public history: string;
   public story: string;
-  public image: string;
-  public video: string;
+  public path: string;
 }

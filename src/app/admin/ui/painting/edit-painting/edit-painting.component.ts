@@ -64,7 +64,7 @@ export class EditPaintingComponent implements OnInit {
           console.log(error);
         },
         () => {
-          this.router.navigate(['admin/list-painting']);
+          this.router.navigate(['admin/list-paintings']);
         }
     );
   }

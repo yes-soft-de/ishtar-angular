@@ -9,31 +9,37 @@
         <table class="table table-bordered main-table">
             <tr class="bg-dark text-white">
                 <td>#ID</td>
-                <td>Name</td>
-                <!-- <td>Image</td> -->
+                <td>Name>
                 <td>Artist</td>
-                <td>Art Type</td>
-                <td>Dimension</td>
-                <td>State</td>
+                <td>Height</td>
+                <td>Width</td>
                 <td>Colors Type</td>
                 <td>Price</td>
+                <td>State</td>
+                <td>ArtType</td>
+                <td>Gallery</td>
                 <td>Story</td>
-                <td>Adding Date</td>
                 <td>Control</td>
             </tr>
             <tr *ngFor="let painting of paintings">
                 <td>{{painting.id}}</td>
                 <td>{{painting.name}}</td>
-                <!-- <td>{{painting.Image}}</td> -->
-                <td>{{painting.deminsions}}</td>
+                <td><img src="{{painting.image}}" alt="{{painting.name}} Image" class="img-fluid img-thumbnail"</td>
+                <td>{{painting.image}}</td>
+                <td>{{painting.artist}}</td>
+                <td>{{painting.artType}}</td>
                 <td>{{painting.state ? 'Sold' : 'available'}}</td>
                 <td>{{painting.colorsType}}</td>
                 <td>{{painting.price}} $</td>
+                <td>{{painting.height}}</td>
+                <td>{{painting.width}} $</td>
+                <td>{{painting.gallery}}</td>
+                <td>{{painting.price}} $</td>
                 <td>{{painting.story}}</td>
-                <td>{{painting.addingDate}}</td>
                 <td>
                   <a routerLink="/admin/edit-painting" class="btn btn-success btn-sm mr-1">Edit</a>
                   <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                  <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Edit</a>
                 </td>
             </tr>
         </table>

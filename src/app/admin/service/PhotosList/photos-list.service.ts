@@ -59,7 +59,7 @@ export class PhotosListService {
   }
 
   // Admin Section - POST Add New Painting
-  postAddPainting(painting: Painting) {
+  postAddPainting(paintingData: Painting) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ export class PhotosListService {
     };
     return this.httpClient.post<Painting>(
       AdminConfig.addPaintingAPI,
-      JSON.stringify(painting),
+      JSON.stringify(paintingData),
       httpOptions
     ).subscribe(
       data => {
@@ -80,7 +80,7 @@ export class PhotosListService {
       },
       () => {
         // If Success Navigate to Admin Dashboard Page
-        this.router.navigate(['admin/list-painting']);
+        this.router.navigate(['admin/list-paintings']);
       }
     );
   }

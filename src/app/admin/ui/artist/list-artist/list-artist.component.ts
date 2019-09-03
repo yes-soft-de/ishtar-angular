@@ -35,7 +35,7 @@ export class ListArtistComponent implements OnInit {
     this.artist.deleteArtist(artistId).subscribe(
       data => {
         console.log('the delete request was successfully done', data);
-        this.router.navigate(['/admin/list-artist']);
+        this.router.navigate(['/admin/list-artists']);
       },
       error => {
         console.log('Sorry There Is Error : ', error);

@@ -1,5 +1,7 @@
-import {ArtType} from './art-type';
-
-export interface ArtTypeInterface {
-  Data: ArtType[];
+export class ArtTypeInterface {
+  id: number;
+  name: string;
+  history: string;
+  story: string;
+  path: string;
 }

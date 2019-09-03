@@ -3,9 +3,6 @@ import {Artist} from '../../entity/artist/artist';
 import {Painting} from '../../entity/painting/painting';
 import {ArtistService} from '../../service/artist/artist.service';
 import {PhotosListService} from '../../service/PhotosList/photos-list.service';
-import {ArtistInterface} from '../../entity/artist/artist-interface';
-import {PaintingInterface} from '../../entity/painting/painting-interface';
-import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
 
 

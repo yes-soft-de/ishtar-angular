@@ -1,13 +1,14 @@
 export interface PaintingInterface {
   id: number;
   name: string;
-  // image: string;
   artist: number;
-  artType: number;
-  addingDate: string;
-  deminsions: string;
-  state: number;
+  height: number;
+  width: number;
   colorsType: string;
   price: number;
+  state: number;
+  active: number;
+  artType: number;
+  gallery: number;
   story: string;
 }
