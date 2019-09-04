@@ -18,6 +18,7 @@ import {EditPaintingComponent} from './ui/painting/edit-painting/edit-painting.c
 import {AddClientComponent} from './ui/client/add-client/add-client.component';
 import {ListClientComponent} from './ui/client/list-client/list-client.component';
 import {EditClientComponent} from './ui/client/edit-client/edit-client.component';
+import { AddImagesComponent } from './ui/images/add-images/add-images.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {EditClientComponent} from './ui/client/edit-client/edit-client.component
     EditPaintingComponent,
     AddClientComponent,
     ListClientComponent,
-    EditClientComponent
+    EditClientComponent,
+    AddImagesComponent
    ],
   exports: [
     AdminComponent,

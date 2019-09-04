@@ -8,6 +8,10 @@ export class Painting {
   public price: number;
   public state: number;
   public active: number;
+  public createdBy: string;
+  public updatedBy: string;
+  public createDate: Date;
+  public updateDate: Date;
   public artType: number;
   public gallery: number;
   public story: string;

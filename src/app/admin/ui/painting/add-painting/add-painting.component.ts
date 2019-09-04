@@ -46,6 +46,10 @@ export class AddPaintingComponent implements OnInit {
       story: [''],
       image: [''],
       active: [''],
+      createdBy: [''],
+      updatedBy: [''],
+      createDate: [''],
+      updateDate: [''],
       artType: [''],
       gallery: ['']
     });
@@ -74,17 +78,18 @@ export class AddPaintingComponent implements OnInit {
     formData.append('price', this.uploadForm.get('price').value);
     formData.append('state', this.uploadForm.get('state').value);
     formData.append('story', this.uploadForm.get('story').value);
-    formData.append('image', this.uploadForm.get('image').value);
+    formData.append('createdBy', this.uploadForm.get('createdBy').value);
+    formData.append('updatedBy', this.uploadForm.get('updatedBy').value);
+    formData.append('createDate', this.uploadForm.get('createDate').value);
+    formData.append('updateDate', this.uploadForm.get('updateDate').value);
+    formData.append('image', this.uploadForm.get('image').value, this.uploadForm.get('image').value.name);
     formData.append('active', this.uploadForm.get('active').value);
     formData.append('artType', this.uploadForm.get('artType').value);
-
-    this.httpClient.post<PaintingInterface>('http://localhost:1337/localhost:8000/createPainting', formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).subscribe(
-        (res) => console.log('talal successfully', res),
-        (error) => console.log('talal errors : ', error)
-    );
+    console.log(JSON.stringify(formData));
+    // this.httpClient.post('http://localhost:1337/localhost:8000/createPainting', JSON.stringify(formData)).subscribe(
+    //     (res) => console.log('talal successfully', res),
+    //     (error) => console.log('talal errors : ', error)
+    // );
   }
 
 

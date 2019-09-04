@@ -10,6 +10,7 @@ import {ListPaintingComponent} from '../admin/ui/painting/list-painting/list-pai
 import {ListClientComponent} from '../admin/ui/client/list-client/list-client.component';
 import {AddClientComponent} from '../admin/ui/client/add-client/add-client.component';
 import {EditClientComponent} from '../admin/ui/client/edit-client/edit-client.component';
+import {AddImagesComponent} from '../admin/ui/images/add-images/add-images.component';
 
 
 
@@ -26,7 +27,9 @@ const routes: Routes = [
       {path: 'list-paintings', component: ListPaintingComponent},
       {path: 'list-clients', component: ListClientComponent},
       {path: 'add-client', component: AddClientComponent},
-      {path: 'edit-client', component: EditClientComponent}
+      {path: 'edit-client', component: EditClientComponent},
+      {path: 'add-images', component: AddImagesComponent},
+      // {path}
     ]
   }
 ];
