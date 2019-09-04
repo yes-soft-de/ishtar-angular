@@ -8,32 +8,19 @@ import {ArtistListService} from '../../../service/artist-list/artist-list.servic
   styleUrls: ['./artist-list.component.scss']
 })
 export class ArtistListComponent implements OnInit {
+  public artistList: any;
 
-  public artistList: {
-    image: string,
-    artist: string,
-    paintingNumber: number,
-    artistFollowers: number
-  }[];
-
-  constructor() {
+  constructor(private artistService: ArtistListService) {
   }
 
   ngOnInit() {
-    this.artistList = [];
-    const item = {
-      image: 'some.url',
-      artist: 'Mohammad',
-      paintingNumber: 204,
-      artistFollowers: 22
-    };
-    this.artistList.push(item);
-    this.artistList.push(item);
-    this.artistList.push(item);
-    this.artistList.push(item);
-    this.artistList.push(item);
-    this.artistList.push(item);
-    this.artistList.push(item);
+    this.artistService.requestPaintingList().subscribe(
+      data => {
+        this.artistList = data.Data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 }
