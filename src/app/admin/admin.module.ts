@@ -15,9 +15,9 @@ import {ListArtistComponent} from './ui/artist/list-artist/list-artist.component
 import {AddPaintingComponent} from './ui/painting/add-painting/add-painting.component';
 import {ListPaintingComponent} from './ui/painting/list-painting/list-painting.component';
 import {EditPaintingComponent} from './ui/painting/edit-painting/edit-painting.component';
-import { AddUserComponent } from './ui/user/add-user/add-user.component';
-import {ListUserComponent} from './ui/user/list-user/list-user.component';
-import {EditUserComponent} from './ui/user/edit-user/edit-user.component';
+import {AddClientComponent} from './ui/client/add-client/add-client.component';
+import {ListClientComponent} from './ui/client/list-client/list-client.component';
+import {EditClientComponent} from './ui/client/edit-client/edit-client.component';
 
 
 @NgModule({
@@ -31,9 +31,9 @@ import {EditUserComponent} from './ui/user/edit-user/edit-user.component';
     AddPaintingComponent,
     ListPaintingComponent,
     EditPaintingComponent,
-    AddUserComponent,
-    ListUserComponent,
-    EditUserComponent
+    AddClientComponent,
+    ListClientComponent,
+    EditClientComponent
    ],
   exports: [
     AdminComponent,

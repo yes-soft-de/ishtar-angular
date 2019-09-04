@@ -36,15 +36,15 @@ export class EditPaintingComponent implements OnInit {
     this.photosListService.getPaintingInfo(this.paintingID).subscribe(
         data => {
           if (data) {
-            this.paintingData.name = data.name;
-            this.paintingData.artist = `${data.artist}`;
-            this.paintingData.artType = `${data.artType}`;
-            this.paintingData.addingDate = data.addingDate;
-            this.paintingData.deminsions = data.deminsions;
-            this.paintingData.state = `${data.state}`;
-            this.paintingData.colorsType = data.colorsType;
-            this.paintingData.price = `${data.price}`;
-            this.paintingData.story = data.story;
+            // this.paintingData.name = data.name;
+            // this.paintingData.artist = `${data.artist}`;
+            // this.paintingData.artType = `${data.artType}`;
+            // this.paintingData.addingDate = data.addingDate;
+            // this.paintingData.deminsions = data.deminsions;
+            // this.paintingData.state = `${data.state}`;
+            // this.paintingData.colorsType = data.colorsType;
+            // this.paintingData.price = `${data.price}`;
+            // this.paintingData.story = data.story;
             console.log(this.paintingData);
           }
         },

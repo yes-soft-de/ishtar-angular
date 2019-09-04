@@ -40,19 +40,19 @@ export class EditArtistComponent implements OnInit {
         data => {
           console.log(data.id);
           if (data) {
-            this.artistData.id = `${data.id}`;
-            this.artistData.name = data.name;
-            this.artistData.nationality = data.nationality;
-            this.artistData.residence = data.residence;
-            this.artistData.birthDate = data.birthDate;
-            this.artistData.facebook = data.facebook;
-            this.artistData.instagram = data.instagram;
-            this.artistData.linkedin = data.linkedin;
-            this.artistData.twitter = data.twitter;
-            this.artistData.image = data.image;
-            this.artistData.video = data.video;
-            this.artistData.details = data.details;
-            this.artistData.story = data.story;
+            // this.artistData.id = `${data.id}`;
+            // this.artistData.name = data.name;
+            // this.artistData.nationality = data.nationality;
+            // this.artistData.residence = data.residence;
+            // this.artistData.birthDate = data.birthDate;
+            // this.artistData.facebook = data.facebook;
+            // this.artistData.instagram = data.instagram;
+            // this.artistData.linkedin = data.linkedin;
+            // this.artistData.twitter = data.twitter;
+            // this.artistData.image = data.image;
+            // this.artistData.video = data.video;
+            // this.artistData.details = data.details;
+            // this.artistData.story = data.story;
             console.log(this.artistData);
           }
         },

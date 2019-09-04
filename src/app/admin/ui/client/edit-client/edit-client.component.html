@@ -1,6 +1,6 @@
 <div class="container">
     <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #editUserForm="ngForm" (ngSubmit)="myEditSubmit(editUserForm)">
-        <h2 class="h1 ml-5 text-center">Edit New User</h2>
+        <h2 class="h1 ml-5 text-center">Edit New Client</h2>
         <div class="form-group row">
             <label class="col-2 col-form-label">ID</label>
             <div class="col-10">
@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label">User Name</label>
+            <label class="col-2 col-form-label">Client Name</label>
             <div class="col-10">
-                <input class="form-control" type="text" name="userName" [(ngModel)]="userData.userName" placeholder="Type The User Name">
+                <input class="form-control" type="text" name="userName" [(ngModel)]="userData.userName" placeholder="Type The Client Name">
             </div>
         </div>
         <div class="form-group row">
@@ -34,7 +34,7 @@
 
 
         <div class="form-group offset-md-2 mt-3">
-            <input class="btn btn-primary btn-block" type="submit" value="Edit New User">
+            <input class="btn btn-primary btn-block" type="submit" value="Edit New Client">
         </div>
     </form>
 </div>

@@ -7,9 +7,9 @@ import {AddArtistComponent} from '../admin/ui/artist/add-artist/add-artist.compo
 import {EditArtistComponent} from '../admin/ui/artist/edit-artist/edit-artist.component';
 import {AddPaintingComponent} from '../admin/ui/painting/add-painting/add-painting.component';
 import {ListPaintingComponent} from '../admin/ui/painting/list-painting/list-painting.component';
-import {ListUserComponent} from '../admin/ui/user/list-user/list-user.component';
-import {AddUserComponent} from '../admin/ui/user/add-user/add-user.component';
-import {EditUserComponent} from '../admin/ui/user/edit-user/edit-user.component';
+import {ListClientComponent} from '../admin/ui/client/list-client/list-client.component';
+import {AddClientComponent} from '../admin/ui/client/add-client/add-client.component';
+import {EditClientComponent} from '../admin/ui/client/edit-client/edit-client.component';
 
 
 
@@ -24,9 +24,9 @@ const routes: Routes = [
       {path: 'edit-artist/:id', component: EditArtistComponent},
       {path: 'add-painting', component: AddPaintingComponent},
       {path: 'list-paintings', component: ListPaintingComponent},
-      {path: 'list-users', component: ListUserComponent},
-      {path: 'add-user', component: AddUserComponent},
-      {path: 'edit-user', component: EditUserComponent}
+      {path: 'list-clients', component: ListClientComponent},
+      {path: 'add-client', component: AddClientComponent},
+      {path: 'edit-client', component: EditClientComponent}
     ]
   }
 ];

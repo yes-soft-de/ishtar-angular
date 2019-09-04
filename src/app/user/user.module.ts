@@ -30,7 +30,7 @@ import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/imag
 
 @NgModule({
   declarations: [
-    // User
+    // Client
     UserComponent,
     // General
     HeaderComponent,
@@ -53,7 +53,7 @@ import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/imag
     ItemBriefComponent
   ],
   exports: [
-    // User
+    // Client
     UserComponent,
     // General
     HeaderComponent,

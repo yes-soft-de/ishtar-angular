@@ -2,17 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminConfig} from '../../AdminConfig';
-import {UserInterface} from '../../entity/user/user-interface';
-import {User} from '../../entity/user/user';
+import {ClientInterface} from '../../entity/client/client-interface';
+import {Client} from '../../entity/client/client';
 import { catchError } from 'rxjs/operators';
 import {pipe, throwError} from 'rxjs';
-import {UserListResponse} from '../../entity/UserList/user-list-response';
+import {ClientListResponse} from '../../entity/ClientList/client-list-response';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ClientService {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -23,35 +23,35 @@ export class UserService {
     return throwError(error || 'Server Error');
   }
 
-  getAllUsers() {
-    return this.httpClient.get<UserListResponse>(
-      `${AdminConfig.allUsersAPI}`, {responseType: 'json'}
-    ).pipe(catchError(UserService.errorHandler));
+  getAllClients() {
+    return this.httpClient.get<ClientListResponse>(
+      `${AdminConfig.allClientsAPI}`, {responseType: 'json'}
+    ).pipe(catchError(ClientService.errorHandler));
   }
 
-  getUserByUser(userId: string) {
+  getClientByClient(clientId: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<UserInterface>(
-        AdminConfig.userAPI,
-        JSON.stringify({user: userId}),
+    return this.httpClient.post<ClientInterface>(
+        AdminConfig.clientAPI,
+        JSON.stringify({client: clientId}),
         httpOptions
     );
   }
 
-  // Admin Section - Add User Page
-  postAddUser(user: User) {
+  // Admin Section - Add Client Page
+  postAddClient(client: Client) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<User>(
-        AdminConfig.addUserAPI,
-        JSON.stringify(user),
+    return this.httpClient.post<Client>(
+        AdminConfig.addClientAPI,
+        JSON.stringify(client),
         httpOptions
     ).subscribe(
         data => {
@@ -64,37 +64,37 @@ export class UserService {
           console.log('there error from fetching the data', error);
         },
         () => {
-          this.router.navigate(['admin/list-users']);
+          this.router.navigate(['admin/list-clients']);
         }
     );
   }
 
-  // Admin Section - Update User
-  updateUser(userId: string, data) {
+  // Admin Section - Update Client
+  updateUser(clientId: string, data) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<UserInterface>(
-        AdminConfig.editUserAPI,
+    return this.httpClient.post<ClientInterface>(
+        AdminConfig.editClientAPI,
         JSON.stringify(data),
         httpOptions
-    ).pipe(catchError(UserService.errorHandler));
+    ).pipe(catchError(ClientService.errorHandler));
   }
 
-  // Admin Section - Delete User
-  deleteUser(userId: any) {
+  // Admin Section - Delete Client
+  deleteClient(clientId: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
     return this.httpClient.post(
-        AdminConfig.deleteUserAPI,
-        JSON.stringify({id: userId}),
+        AdminConfig.deleteClientAPI,
+        JSON.stringify({id: clientId}),
         httpOptions
-    ).pipe(catchError(UserService.errorHandler));
+    ).pipe(catchError(ClientService.errorHandler));
   }
 
 }

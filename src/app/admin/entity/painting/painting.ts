@@ -1,5 +1,5 @@
 export class Painting {
-  public id: number;
+  // public id: number;
   public name: string;
   public artist: number;
   public height: number;

@@ -1,5 +1,5 @@
 export interface PaintingInterface {
-  id: number;
+  // id: number;
   name: string;
   artist: number;
   height: number;

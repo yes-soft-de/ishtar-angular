@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../../../entity/user/user';
-import {UserService} from '../../../service/user/user.service';
-import {UserListResponse} from '../../../entity/UserList/user-list-response';
+import {Client} from '../../../entity/client/client';
+import {ClientService} from '../../../service/client/client.service';
+import {ClientListResponse} from '../../../entity/ClientList/client-list-response';
 
 @Component({
   selector: 'app-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  templateUrl: './list-client.component.html',
+  styleUrls: ['./list-client.component.scss']
 })
-export class ListUserComponent implements OnInit {
-  users: User[];
+export class ListClientComponent implements OnInit {
+  clients: Client[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private userService: UserService ) { }
+              private clientService: ClientService ) { }
 
   ngOnInit() {
     // Fetch All Users
-    this.userService.getAllUsers().subscribe(
-        (data: UserListResponse) => {
+    this.clientService.getAllClients().subscribe(
+        (data: ClientListResponse) => {
             if (data) {
-                this.users = data.Data;
+                this.clients = data.Data;
             }
       }, error => {
         // TODO think if there is some to do here ex : display message if there is error
@@ -30,12 +30,12 @@ export class ListUserComponent implements OnInit {
 
   }
 
-  // Delete The User
-  delete(userId) {
-    this.userService.deleteUser(userId).subscribe(
+  // Delete The Client
+  delete(clientId) {
+    this.clientService.deleteClient(clientId).subscribe(
       data => {
         console.log('the delete request was successfully done', data);
-        this.router.navigate(['/admin/list-users']);
+        this.router.navigate(['/admin/list-clients']);
       },
       error => {
         console.log('Sorry There Is Error : ', error);

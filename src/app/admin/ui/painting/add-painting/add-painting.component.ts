@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
+import {PaintingInterface} from '../../../entity/painting/painting-interface';
 
 
 @Component({
@@ -48,8 +49,8 @@ export class AddPaintingComponent implements OnInit {
       artType: [''],
       gallery: ['']
     });
-    console.log(this.uploadForm);
   }
+
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -58,7 +59,13 @@ export class AddPaintingComponent implements OnInit {
   }
 
   mySubmit() {
-    const formData = new FormData();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    const formData: FormData = new FormData();
+    // formData.append('id', this.uploadForm.get('id').value);
     formData.append('name', this.uploadForm.get('name').value);
     formData.append('artist', this.uploadForm.get('artist').value);
     formData.append('height', this.uploadForm.get('height').value);
@@ -70,12 +77,13 @@ export class AddPaintingComponent implements OnInit {
     formData.append('image', this.uploadForm.get('image').value);
     formData.append('active', this.uploadForm.get('active').value);
     formData.append('artType', this.uploadForm.get('artType').value);
-    formData.append('gallery', this.uploadForm.get('gallery').value);
-    // console.log(formData.value);
-    // this.photoListService.postAddPainting(formData);
-    this.httpClient.post<any>('url', formData).subscribe(
-        (res) => console.log(res),
-        (error) => console.log(error)
+
+    this.httpClient.post<PaintingInterface>('http://localhost:1337/localhost:8000/createPainting', formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).subscribe(
+        (res) => console.log('talal successfully', res),
+        (error) => console.log('talal errors : ', error)
     );
   }
 

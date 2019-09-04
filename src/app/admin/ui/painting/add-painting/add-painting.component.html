@@ -67,10 +67,8 @@
      <label class="col-2 col-form-label">Art Type</label>
      <div class="col-10">
        <select class="form-control" name="artType" formControlName="artType">
-         <option value="">Select Art Type For This Painting</option>
-<!--         <option value="{{i.id}}" *ngFor="let i of artTypeList">{{i.name}}</option>-->
-           <option value="2">Like New</option>
-           <option value="3">Used</option>
+           <option value="">Select Art Type For This Painting</option>
+           <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
        </select>
      </div>
    </div>

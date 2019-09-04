@@ -1,98 +1,88 @@
 <div class="container">
-  <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #addArtistForm="ngForm" (ngSubmit)="mySubmit(addArtistForm)">
+  <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
     <h2 class="h1 ml-5 text-center">Add New Artist</h2>
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
       <div class="col-10">
-        <input class="form-control" type="text" name="name" ngModel placeholder="Type The Name">
+        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Type The Name">
       </div>
     </div>
      <div class="form-group row">
       <label class="col-2 col-form-label">Nationality</label>
       <div class="col-10">
-        <input class="form-control" type="text" name="nationality" ngModel placeholder="Type The Nationality">
+        <input class="form-control" type="text" name="nationality" formControlName="nationality" placeholder="Type The Nationality">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Residence</label>
       <div class="col-10">
-        <input class="form-control" type="text" name="residence" ngModel placeholder="Type The Residence">
+        <input class="form-control" type="text" name="residence"  formControlName="residence" placeholder="Type The Residence">
       </div>
     </div>
     <div class="form-group row">
        <label class="col-2 col-form-label">Birth</label>
        <div class="col-10">
-         <input class="form-control" type="date" name="birthDate" ngModel placeholder="Type Full Name">
+         <input class="form-control" type="date" name="birthDate"  formControlName="birthDate" placeholder="Type Full Name">
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Facebook</label>
        <div class="col-10">
-         <input class="form-control" type="text" name="facebook" ngModel placeholder="Type Facebook Link">
+         <input class="form-control" type="text" name="facebook"  formControlName="name" placeholder="Type Facebook Link">
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Instagram</label>
        <div class="col-10">
-         <input class="form-control" type="text" name="instagram" ngModel placeholder="Type Instagram Link">
+         <input class="form-control" type="text" name="instagram"  formControlName="instagram" placeholder="Type Instagram Link">
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Twitter</label>
        <div class="col-10">
-         <input class="form-control" type="text" name="twitter" ngModel placeholder="Type Twitter Link">
+         <input class="form-control" type="text" name="twitter"  formControlName="twitter" placeholder="Type Twitter Link">
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Linkedin</label>
        <div class="col-10">
-         <input class="form-control" type="text" name="linkedin" ngModel placeholder="Type Linkedin Link">
+         <input class="form-control" type="text" name="linkedin"  formControlName="linkedin" placeholder="Type Linkedin Link">
        </div>
      </div>
-<!--      <div class="form-group row">-->
-<!--       <label class="col-2 col-form-label">Image</label>-->
-<!--       <div class="col-10 input-group mb-3">-->
-<!--         <div class="custom-file">-->
-<!--           <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">-->
-<!--           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>-->
-<!--         </div>-->
-<!--       </div>-->
-<!--     </div>-->
-
       <div class="form-group row">
-       <label class="col-2 col-form-label">image</label>
-       <div class="col-10">
-         <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
-       </div>
-     </div>
-     <div class="form-group row">
-        <label class="col-2 col-form-label">Video</label>
-        <div class="col-10">
-          <input class="form-control" type="text" name="video" ngModel placeholder="Type video Link">
-        </div>
+          <label class="col-2 col-form-label">Upload</label>
+          <div class="col-10 input-group">
+              <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="onFileSelect($event)">
+                  <label class="custom-file-label" for="inputGroupFile04">Choose Artist Image</label>
+              </div>
+          </div>
       </div>
-<!--          <div class="form-group row">-->
-<!--           <label class="col-2 col-form-label">Art Type</label>-->
-<!--           <div class="col-10">-->
-<!--             <select class="form-control" name="art_type" ngModel>-->
-<!--               <option value="0">....</option>-->
-<!--               <option value="1">New</option>-->
-<!--               <option value="2">Like New</option>-->
-<!--               <option value="3">Used</option>-->
-<!--               <option value="4">Old</option>-->
-<!--             </select>-->
-<!--           </div>-->
-<!--         </div>-->
+<!--     <div class="form-group row">-->
+<!--        <label class="col-2 col-form-label">Video</label>-->
+<!--        <div class="col-10">-->
+<!--          <input class="form-control" type="text" name="video"  formControlName="name" placeholder="Type video Link">-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Art Type</label>
+          <div class="col-10">
+              <select class="form-control" name="artType" formControlName="artType">
+                  <option value="">Select Art Type For This Artist</option>
+                  <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
+              </select>
+          </div>
+      </div>
       <div class="form-group row">
        <label class="col-2 col-form-label">Details</label>
        <div class="col-10">
-         <textarea class="form-control" name="details" ngModel placeholder="Type The Details"></textarea>
+         <textarea class="form-control" name="details"  formControlName="details" placeholder="Type The Details"></textarea>
        </div>
      </div>
      <div class="form-group row">
        <label class="col-2 col-form-label">Story</label>
        <div class="col-10">
-         <textarea class="form-control" name="story" ngModel placeholder="Type The Story"></textarea>
+         <textarea class="form-control" name="story"  formControlName="story" placeholder="Type The Story"></textarea>
        </div>
      </div>
 
