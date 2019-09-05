@@ -14,6 +14,7 @@ import {PaintingInterface} from '../../../entity/painting/painting-interface';
   styleUrls: ['./add-painting.component.scss']
 })
 export class AddPaintingComponent implements OnInit {
+  options: { content: FormData };
   uploadForm: FormGroup;
   artTypes: ArtType[];
 
@@ -70,23 +71,24 @@ export class AddPaintingComponent implements OnInit {
     };
     const formData: FormData = new FormData();
     // formData.append('id', this.uploadForm.get('id').value);
-    formData.append('name', this.uploadForm.get('name').value);
-    formData.append('artist', this.uploadForm.get('artist').value);
-    formData.append('height', this.uploadForm.get('height').value);
-    formData.append('width', this.uploadForm.get('width').value);
-    formData.append('colorsType', this.uploadForm.get('colorsType').value);
-    formData.append('price', this.uploadForm.get('price').value);
-    formData.append('state', this.uploadForm.get('state').value);
-    formData.append('story', this.uploadForm.get('story').value);
-    formData.append('createdBy', this.uploadForm.get('createdBy').value);
-    formData.append('updatedBy', this.uploadForm.get('updatedBy').value);
-    formData.append('createDate', this.uploadForm.get('createDate').value);
-    formData.append('updateDate', this.uploadForm.get('updateDate').value);
-    formData.append('image', this.uploadForm.get('image').value, this.uploadForm.get('image').value.name);
-    formData.append('active', this.uploadForm.get('active').value);
-    formData.append('artType', this.uploadForm.get('artType').value);
-    console.log(JSON.stringify(formData));
-    // this.httpClient.post('http://localhost:1337/localhost:8000/createPainting', JSON.stringify(formData)).subscribe(
+    formData.append('name', JSON.stringify(this.uploadForm.get('name').value));
+    formData.append('artist', JSON.stringify(this.uploadForm.get('artist').value));
+    formData.append('height', JSON.stringify(this.uploadForm.get('height').value));
+    formData.append('width', JSON.stringify(this.uploadForm.get('width').value));
+    formData.append('colorsType', JSON.stringify(this.uploadForm.get('colorsType').value));
+    formData.append('price', JSON.stringify(this.uploadForm.get('price').value));
+    formData.append('state', JSON.stringify(this.uploadForm.get('state').value));
+    formData.append('story', JSON.stringify(this.uploadForm.get('story').value));
+    formData.append('createdBy', JSON.stringify(this.uploadForm.get('createdBy').value));
+    formData.append('updatedBy', JSON.stringify(this.uploadForm.get('updatedBy').value));
+    formData.append('createDate', JSON.stringify(this.uploadForm.get('createDate').value));
+    formData.append('updateDate', JSON.stringify(this.uploadForm.get('updateDate').value));
+    formData.append('image', JSON.stringify(this.uploadForm.get('image').value, this.uploadForm.get('image').value.name));
+    formData.append('active', JSON.stringify(this.uploadForm.get('active').value));
+    formData.append('artType', JSON.stringify(this.uploadForm.get('artType').value));
+    this.options = {content: formData};
+    console.log(this.options);
+    // this.httpClient.post('http://localhost:1337/localhost:8000/createPainting', this.options).subscribe(
     //     (res) => console.log('talal successfully', res),
     //     (error) => console.log('talal errors : ', error)
     // );
