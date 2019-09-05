@@ -2,35 +2,49 @@
     <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
         <h2 class="h1 ml-5 text-center">Add New Images</h2>
         <div class="form-group row">
+            <label class="col-2 col-form-label">Select Media</label>
+            <div class="col-10">
+                <select class="form-control" name="media" formControlName="media" required>
+                    <option value="">Select The Media To Upload</option>
+                    <option value="1">Image</option>
+                    <option value="2">Video</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-2 col-form-label">Section Name</label>
             <div class="col-10">
-                <select class="form-control" name="tableName" formControlName="tableName">
+                <select class="form-control" name="entity" formControlName="entity">
                     <option value="">Select Section To Add Images</option>
-                    <option value="1">Artist</option>
-                    <option value="2">Painting</option>
+                    <option value="1">Painting</option>
+                    <option value="2">Artist</option>
                     <option value="3">Art Type</option>
+                    <option value="4">Auction</option>
+                    <option value="5">Client</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Select One</label>
             <div class="col-10">
-                <select class="form-control" name="selectedOne" formControlName="selectedOne">
-                    <option value="">Select One To </option>
+                <select class="form-control" name="row" formControlName="row">
+                    <option value="">Select One</option>
                     <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label">Password</label>
-            <div class="col-10">
-                <input class="form-control" type="password" name="password" ngModel placeholder="Type The Password">
+            <label class="col-2 col-form-label">Upload</label>
+            <div class="col-10 input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="onFileSelect($event)" multiple>
+                    <label class="custom-file-label" for="inputGroupFile04">Choose Media To Upload</label>
+                </div>
             </div>
         </div>
 
-
         <div class="form-group offset-md-2 mt-3">
-            <input class="btn btn-primary btn-block" type="submit" value="Add New Client">
+            <input class="btn btn-primary btn-block" type="submit" value="Add New Media">
         </div>
     </form>
 </div>

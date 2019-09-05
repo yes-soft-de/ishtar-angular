@@ -21,7 +21,8 @@ export class ListArtistComponent implements OnInit {
     this.artist.getAllArtists().subscribe(
         (data) => {
             if (data) {
-                this.artists = data.Data;
+              this.artists = data.Data;
+              console.log(data);
             }
       }, error1 => {
         // TODO think if there is some to do here ex : display message if there is error

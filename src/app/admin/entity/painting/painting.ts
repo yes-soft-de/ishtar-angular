@@ -7,7 +7,7 @@ export class Painting {
   public colorsType: string;
   public price: number;
   public state: number;
-  public active: number;
+  public active: boolean;
   public createdBy: string;
   public updatedBy: string;
   public createDate: Date;

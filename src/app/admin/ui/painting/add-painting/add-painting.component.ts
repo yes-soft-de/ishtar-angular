@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 import {PaintingInterface} from '../../../entity/painting/painting-interface';
+import {Artist} from '../../../entity/artist/artist';
+import {ArtistService} from '../../../service/artist/artist.service';
 
 
 @Component({
@@ -14,20 +16,31 @@ import {PaintingInterface} from '../../../entity/painting/painting-interface';
   styleUrls: ['./add-painting.component.scss']
 })
 export class AddPaintingComponent implements OnInit {
-  options: { content: FormData };
   uploadForm: FormGroup;
+  artists: Artist[];
   artTypes: ArtType[];
 
   constructor(private formBuilder: FormBuilder,
               private photoListService: PhotosListService,
-              private artTypeService: ArtTypeService,
-              private httpClient: HttpClient) {}
+              private artistService: ArtistService,
+              private artTypeService: ArtTypeService) {}
 
   ngOnInit() {
+    // Fetch All Artists
+    this.artistService.getAllArtists().subscribe(
+    (data) => {
+      if (data) {
+        this.artists = data.Data;
+      }
+    }, error => {
+      // TODO think if there is some to do here ex : display message if there is error
+      console.log('Error :', error);
+    });
     // Fetch All Art Type
     this.artTypeService.getAllArtType().subscribe(
         (data: ArtTypeResponse) => {
           if (data) {
+            console.log(data);
             this.artTypes = data.Data;
           }
         },
@@ -46,6 +59,7 @@ export class AddPaintingComponent implements OnInit {
       state: [''],
       story: [''],
       image: [''],
+      // TODO tey it with radiobox
       active: [''],
       createdBy: [''],
       updatedBy: [''],
@@ -58,40 +72,16 @@ export class AddPaintingComponent implements OnInit {
 
   onFileSelect(event) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
+      const file = event.target.files[0].name;
       this.uploadForm.get('image').setValue(file);
     }
   }
 
   mySubmit() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    const formData: FormData = new FormData();
-    // formData.append('id', this.uploadForm.get('id').value);
-    formData.append('name', JSON.stringify(this.uploadForm.get('name').value));
-    formData.append('artist', JSON.stringify(this.uploadForm.get('artist').value));
-    formData.append('height', JSON.stringify(this.uploadForm.get('height').value));
-    formData.append('width', JSON.stringify(this.uploadForm.get('width').value));
-    formData.append('colorsType', JSON.stringify(this.uploadForm.get('colorsType').value));
-    formData.append('price', JSON.stringify(this.uploadForm.get('price').value));
-    formData.append('state', JSON.stringify(this.uploadForm.get('state').value));
-    formData.append('story', JSON.stringify(this.uploadForm.get('story').value));
-    formData.append('createdBy', JSON.stringify(this.uploadForm.get('createdBy').value));
-    formData.append('updatedBy', JSON.stringify(this.uploadForm.get('updatedBy').value));
-    formData.append('createDate', JSON.stringify(this.uploadForm.get('createDate').value));
-    formData.append('updateDate', JSON.stringify(this.uploadForm.get('updateDate').value));
-    formData.append('image', JSON.stringify(this.uploadForm.get('image').value, this.uploadForm.get('image').value.name));
-    formData.append('active', JSON.stringify(this.uploadForm.get('active').value));
-    formData.append('artType', JSON.stringify(this.uploadForm.get('artType').value));
-    this.options = {content: formData};
-    console.log(this.options);
-    // this.httpClient.post('http://localhost:1337/localhost:8000/createPainting', this.options).subscribe(
-    //     (res) => console.log('talal successfully', res),
-    //     (error) => console.log('talal errors : ', error)
-    // );
+    // Fetch All Form Data On Json Type
+    const formObj = this.uploadForm.getRawValue();
+    console.log(formObj);
+    this.photoListService.postAddPainting(formObj);
   }
 
 

@@ -7,7 +7,7 @@ export interface PaintingInterface {
   colorsType: string;
   price: number;
   state: number;
-  active: number;
+  active: boolean;
   createdBy: string;
   updatedBy: string;
   createDate: Date;
