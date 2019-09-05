@@ -1,4 +1,6 @@
 export class AdminConfig {
+  // Create Uploading Media
+  public static addMediaAPI = 'http://localhost:1337/localhost:8000/createMedia';
   // Art Type API
   public static allArtTypeAPI = 'http://localhost:1337/localhost:8000/getAllArtType';
   // artist API
