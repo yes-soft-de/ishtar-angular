@@ -8,7 +8,7 @@ import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart
 })
 export class AdminComponent implements OnInit {
 
-  showLoadingIndicator = true;
+  showLoadingIndicator = false;
   constructor(private router: Router) {
     this.router.events.subscribe((routerEvent: Event) => {
       // Check if the Data is Fetching Or Not

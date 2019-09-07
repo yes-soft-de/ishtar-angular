@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
-import {PaintingInterface} from '../../../entity/painting/painting-interface';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
 
@@ -16,6 +14,7 @@ import {ArtistService} from '../../../service/artist/artist.service';
   styleUrls: ['./add-painting.component.scss']
 })
 export class AddPaintingComponent implements OnInit {
+  isSubmitted = false;
   uploadForm: FormGroup;
   artists: Artist[];
   artTypes: ArtType[];
@@ -61,6 +60,7 @@ export class AddPaintingComponent implements OnInit {
       image: [''],
       // TODO tey it with radiobox
       active: [''],
+      // active: ['male', [Validators.required]],
       keyWords: [''],
       // createdBy: [''],
       // updatedBy: [''],
@@ -71,6 +71,12 @@ export class AddPaintingComponent implements OnInit {
     });
   }
 
+  // Getter method to access form control
+  // get myForm() {
+    // console.log(this.uploadForm.get('active').value);
+  //   return this.uploadForm.get('active');
+  // }
+
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0].name;
@@ -79,9 +85,14 @@ export class AddPaintingComponent implements OnInit {
   }
 
   mySubmit() {
+    this.isSubmitted = true;
+    if (!this.uploadForm.valid) {
+      console.log('Form Is InValid');
+      return false;
+    }
     // Fetch All Form Data On Json Type
     const formObj = this.uploadForm.getRawValue();
-    console.log(formObj);
+    // console.log(formObj);
     this.photoListService.postAddPainting(formObj);
   }
 

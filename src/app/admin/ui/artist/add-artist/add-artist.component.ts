@@ -12,6 +12,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./add-artist.component.scss']
 })
 export class AddArtistComponent implements OnInit {
+  // isSubmitted = false;   // For Form Valid
   uploadForm: FormGroup;
   artTypes: ArtType[];
 
@@ -61,6 +62,11 @@ export class AddArtistComponent implements OnInit {
   }
 
   mySubmit() {
+    // this.isSubmitted = true;   // Check if The Form Is Submit
+    if (!this.uploadForm.valid) {
+      console.log('Form Is InValid');
+      return false;
+    }
     // Fetch All Form Data On Json Type
     const formObj = this.uploadForm.getRawValue();
     this.artistService.postAddArtist(formObj);
