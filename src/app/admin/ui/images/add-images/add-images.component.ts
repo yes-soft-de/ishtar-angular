@@ -66,30 +66,31 @@ export class AddImagesComponent implements OnInit {
 
   mySubmit() {
     const formObj = this.uploadForm.getRawValue();
+    console.log(formObj);
     // Start Http Request
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<Painting>(
-        'http://localhost:1337/localhost:8000/createMedia',
-        JSON.stringify(formObj),
-        httpOptions
-    ).subscribe(
-        data => {
-          // TODO insert ngx-toastr Message
-          console.log('the post request was successfully done', data);
-        },
-        error => {
-          // TODO insert ngx-toastr Message
-          console.log('there error from fetching the data', error);
-        },
-        () => {
-          // If Success Navigate to Admin Dashboard Page
-          this.router.navigate(['../'], {relativeTo: this.route});
-        }
-    );
+    // return this.httpClient.post<Painting>(
+    //     'http://localhost:1337/localhost:8000/createMedia',
+    //     JSON.stringify(formObj),
+    //     httpOptions
+    // ).subscribe(
+    //     data => {
+    //       // TODO insert ngx-toastr Message
+    //       console.log('the post request was successfully done', data);
+    //     },
+    //     error => {
+    //       // TODO insert ngx-toastr Message
+    //       console.log('there error from fetching the data', error);
+    //     },
+    //     () => {
+    //       // If Success Navigate to Admin Dashboard Page
+    //       this.router.navigate(['../'], {relativeTo: this.route});
+    //     }
+    // );
 
   /***** Uploadin Multi Images
      // const formData: FormData = new FormData();

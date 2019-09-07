@@ -61,10 +61,11 @@ export class AddPaintingComponent implements OnInit {
       image: [''],
       // TODO tey it with radiobox
       active: [''],
-      createdBy: [''],
-      updatedBy: [''],
-      createDate: [''],
-      updateDate: [''],
+      keyWords: [''],
+      // createdBy: [''],
+      // updatedBy: [''],
+      // createDate: [''],
+      // updateDate: [''],
       artType: [''],
       gallery: ['']
     });
