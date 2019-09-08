@@ -15,23 +15,18 @@ export class PaintingListService {
   }
 
   requestPaintingList() {
-    return this.httpClient.get<PaintingListResponse>(
-      `${UserConfig.PaintingListAPI}`,
-      {responseType: 'json'}
-    );
+    return this.httpClient.get<PaintingListResponse>(UserConfig.PaintingListAPI);
   }
 
   requestPaintingListByArtist(artistId: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
     return this.httpClient.post<PaintingListResponse>(
-      UserConfig.PaintingPaintingListByArtistAPI,
-      JSON.stringify({artist: artistId}),
-      httpOptions
+      UserConfig.getByAPI,
+      JSON.stringify({
+        parm: 'artist',
+        value: artistId
+      })
     );
+
   }
 
   requestPaintingListbyArtType(artId: string) {

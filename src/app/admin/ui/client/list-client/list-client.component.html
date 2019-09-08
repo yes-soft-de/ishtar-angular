@@ -1,0 +1,40 @@
+<div *ngIf="clients != null">
+  <div class="container-fluid">
+    <h1 class="text-center my-4">Manage Client Page</h1>
+    <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-client">
+      <i class="fa fa-plus"></i>
+      Add New Client
+    </a>
+    <div class="table-responsive text-center">
+      <table class="table table-bordered main-table">
+        <tr class="bg-dark text-white">
+          <td>#ID</td>
+          <td>Name</td>
+          <td>UserName</td>
+          <td>Password</td>
+          <td>Email</td>
+        </tr>
+        <tr *ngFor="let client of clients">
+          <td>{{client.id}}</td>
+          <td>{{client.name}}</td>
+          <td>{{client.userName}}</td>
+          <td>{{client.password}}</td>
+          <td>{{client.email}}</td>
+          <td>
+            <a [routerLink]="['/admin/edit-client', client.id]" class="btn btn-success btn-sm mr-1">Edit</a>
+            <a (click)="delete(client.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div *ngIf="clients == null">
+  <div class="container">
+    <div class="alert alert-primary text-center mt-5">There Isn't Any Client To Show</div>
+    <a routerLink="/admin/add-client" class="btn btn-primary btn-sm mb-2 float-right">
+      <i class="fa fa-plus"></i>
+      Add New Client
+    </a>
+  </div>
+</div>

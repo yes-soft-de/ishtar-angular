@@ -1,9 +1,27 @@
 <div class="d-flex justify-content-center">
-  <div class="col-lg-8 col-12 d-block">
-    <section id="photos" class="grid">
-      <a class="grid-item" href="http://localhost:4200/painting/{{p.id}}" *ngFor="let p of formattedPaintingList">
-        <img src="{{p.url}}" alt="">
-      </a>
-    </section>
+  <div id="painting-list-sidebar" class="col-4">
+    <div>
+      <h5>Filter By Art Type</h5>
+      <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
+              (click)="filterByArtType(artType)">{{artType}}</button>
+      <hr>
+      <h5>Filter By Artist</h5>
+      <button mdbBtn class="btn-light" *ngFor="let artist of artists; index as i"
+              (click)="filterByArtist(artist)">{{artist}}</button>
+      <hr>
+
+    </div>
+  </div>
+  <div id="painting-list" class="col-8 row">
+    <div class="painting-list-item col-4 p-3" *ngFor="let painting of paintingList">
+      <img class="img-fluid" src="{{painting.image}}"
+           (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
+      <p class="text-center">{{painting.name}}</p>
+      <h5 class="text-center">{{painting.artist}}</h5>
+      <p class="text-center">
+        <mdb-icon fas icon="eye"></mdb-icon>
+        Seen By 25
+      </p>
+    </div>
   </div>
 </div>

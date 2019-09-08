@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule, routingComponents} from './controller/app-routing.module';
-import {AppComponent} from './admin/ui/app/app/app.component';
+import {AppComponent} from './app/app.component';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
@@ -10,8 +10,11 @@ import {ParallaxModule, ParallaxConfig} from 'ngx-parallax';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
 import {UserModule} from './user/user.module';
+import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ImagesByArtistPageComponent } from './user/ui/Pages/images-by-artist-page/images-by-artist-page.component';
+import {CloudinaryModule} from '@cloudinary/angular-5.x';
+import {Cloudinary} from 'cloudinary-core';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { ImagesByArtistPageComponent } from './user/ui/Pages/images-by-artist-pa
     ParallaxModule,
     NgwWowModule,
     TabsModule.forRoot(),
-    UserModule
+    UserModule,
+    AdminModule,
+    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'micksawy3r'}),
   ],
   providers: [],
   exports: [

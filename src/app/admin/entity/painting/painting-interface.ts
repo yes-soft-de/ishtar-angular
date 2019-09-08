@@ -1,12 +1,19 @@
 export interface PaintingInterface {
-  paintingUrl: string;
-  pageTitle: string;
-  artistName: string;
-  artistFollow: number;
-  artType: string;
-  artFollow: number;
-  paintingName: string;
-  paintingDesc: string;
-  paintingStory: string;
-
+  // id: number;
+  name: string;
+  artist: number;
+  height: number;
+  width: number;
+  colorsType: string;
+  price: number;
+  state: number;
+  active: boolean;
+  // createdBy: string;
+  // updatedBy: string;
+  // createDate: Date;
+  // updateDate: Date;
+  artType: number;
+  gallery: number;
+  keyWords: string;
+  story: string;
 }

@@ -28,3 +28,25 @@
     object-position: center;
   }
 }
+
+#painting-list-images {
+  img {
+    width: 100%;
+    height: 5rem;
+    object-fit: cover;
+    overflow: hidden;
+  }
+}
+
+#main-image {
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+#famous-quote {
+  img {
+    border-radius: 50%;
+  }
+}

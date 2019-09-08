@@ -1,6 +1,11 @@
 <app-header></app-header>
-<app-c-painting-list *ngIf="formattedList != null" [formattedPaintingList]="formattedList"></app-c-painting-list>
-<div *ngIf="formattedList == null">
-  <h3 class="text-center">Loading...</h3>
+<div class="m-5 w-100" *ngIf="formattedList != null">
+  <app-c-painting-list [formattedPaintingList]="formattedList" ></app-c-painting-list>
+</div>
+<div class="m-5 w-100" *ngIf="formattedList == null">
+  <h3 class="text-primary text-center">Loading...</h3>
+  <div class="w-100 d-flex justify-content-center p-5">
+    <img src="../../../../../assets/loading.gif" alt="Loading">
+  </div>
 </div>
 <app-footer></app-footer>

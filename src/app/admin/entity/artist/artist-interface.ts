@@ -1,13 +1,15 @@
 export interface ArtistInterface {
   id: number;
-  createdAt: string;
   name: string;
-  image: string;
   nationality: string;
-  birth_date: string;
-  story: string;
+  residence: string;
+  birthDate: string;
   facebook: string;
-  linkedin: string;
   instagram: string;
+  linkedin: string;
   twitter: string;
+  image: string;
+  video: string;
+  details: string;
+  story: string;
 }

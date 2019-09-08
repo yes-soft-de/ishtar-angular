@@ -7,6 +7,11 @@
   #hero-side {
     background: #333333;
     height: 100%;
+    img {
+      object-fit: contain;
+      max-width: 100%;
+      object-position: top;
+    }
   }
 
   #header {

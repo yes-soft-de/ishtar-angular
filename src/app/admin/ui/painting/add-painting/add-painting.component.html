@@ -1,0 +1,119 @@
+<div class="container">
+  <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
+    <h2 class="h1 ml-5 text-center">Add New Painting</h2>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Type Painting Name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Height</label>
+      <div class="col-10">
+        <input class="form-control" type="number" name="height" formControlName="height"
+               placeholder="Type The Painting Height">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Width</label>
+      <div class="col-10">
+        <input class="form-control" type="number" name="width" formControlName="width"
+               placeholder="Type The Painting Width">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">C-Type</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="colorsType" formControlName="colorsType"
+               placeholder="Type The Colors Type">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Price</label>
+      <div class="col-10">
+        <input class="form-control" type="number" name="price" formControlName="price" placeholder="Type The Price">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Artist</label>
+      <div class="col-10">
+        <select class="form-control" name="artist" formControlName="artist">
+          <option value="">Select The Artist For This Painting</option>
+          <option value="{{artist.id}}" *ngFor="let artist of artists">{{artist.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Key Words</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="keyWords" formControlName="keyWords"
+               placeholder="Type The Key Word">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">State</label>
+      <div class="col-10">
+        <select class="form-control" name="state" formControlName="state">
+          <option value="">Select Painting State</option>
+          <option value="1">New</option>
+          <option value="2">Like New</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Art Type</label>
+      <div class="col-10">
+        <select class="form-control" name="artType" formControlName="artType">
+          <option value="">Select Art Type For This Painting</option>
+          <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Gallery</label>
+      <div class="col-10">
+        <select class="form-control" name="gallery" formControlName="gallery">
+          <option value="">Select Painting Gallery</option>
+          <option value="1">New</option>
+          <option value="2">Like New</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Activation</label>
+      <div class="col-10">
+        <select class="form-control" name="active" formControlName="active">
+          <option value="">Select Activation State</option>
+          <option value="0">Not Active</option>
+          <option value="1">Active</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Upload</label>
+      <div class="input-group col-10">
+        <div class="custom-file">
+          <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input"
+                 (change)="updateName(imageInput)">
+          <label class="custom-file-label" for="file-input">{{imageName}}</label>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" (click)="processFile(imageInput)" [disabled]=!fileSelected>
+            Upload
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row w">
+      <label class="col-2 col-form-label">Story</label>
+      <div class="col-10">
+        <textarea class="form-control" name="story" formControlName="story" placeholder="Type The Story"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group offset-md-2 mt-3">
+      <input class="btn btn-primary btn-block" type="submit" value="Add New painting">
+    </div>
+  </form>
+</div>

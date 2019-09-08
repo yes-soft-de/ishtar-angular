@@ -1,11 +1,19 @@
 export class Painting {
-  pageTitle: string;
-  artistName: string;
-  artistFollow: number;
-  artType: string;
-  artFollow: number;
-  paintingName: string;
-  paintingUrl: string;
-  paintingDesc: string;
-  paintingStory: string;
+  // public id: number;
+  public name: string;
+  public artist: number;
+  public height: number;
+  public width: number;
+  public colorsType: string;
+  public price: number;
+  public state: number;
+  public active: boolean;
+  // public createdBy: string;
+  // public updatedBy: string;
+  // public createDate: Date;
+  // public updateDate: Date;
+  public artType: number;
+  public gallery: number;
+  public keyWords: string;
+  public story: string;
 }

@@ -11,26 +11,25 @@ import {UserArtistService} from '../../../service/user-artist-service/user-artis
   styleUrls: ['./images-by-artist-page.component.scss']
 })
 export class ImagesByArtistPageComponent implements OnInit {
-  artistName: string;
-  formattedList: PaintingListItem[];
-
+  // artistName: string;
+  // formattedList: PaintingListItem[];
+  //
   constructor(private paintingService: PaintingListService, private activatedRoute: ActivatedRoute,
               private artistService: UserArtistService) {
   }
-
   ngOnInit() {
-    this.paintingService.requestPaintingListByArtist(
-      this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
-      data => {
-        this.formattedList = data.data;
-      }
-    );
-    this.artistService.requestArtistDetails(
-      this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
-        data => {
-          this.artistName = data.name;
-        }
-    );
+  //   this.paintingService.requestPaintingListByArtist(
+  //     this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+  //     data => {
+  //       this.formattedList = data.Data;
+  //     }
+  //   );
+  //   this.artistService.requestArtistDetails(
+  //     this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
+  //       data => {
+  //         this.artistName = data.name;
+  //       }
+  //   );
   }
 
 }

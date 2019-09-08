@@ -7,6 +7,7 @@ export interface ArtistDetails {
   story: string;
   details: string;
   image: string;
+  path: string;
   video: null;
   facebook: null;
   instagram: null;

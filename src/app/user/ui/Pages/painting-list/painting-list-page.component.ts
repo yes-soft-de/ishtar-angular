@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {ImageListService} from '../../../service/images-list/image-list.service';
-import {PaintingListAdapter} from '../../../bussiness-logic/painting-list-adapter/painting-list-adapter';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ToastrService} from 'ngx-toastr';
 
@@ -12,15 +10,22 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PaintingListPageComponent implements OnInit {
   formattedList: PaintingListItem[];
+
   constructor(private paintingService: PaintingListService, private toaster: ToastrService) {
   }
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  private fetchData() {
     this.paintingService.requestPaintingList().subscribe(
       data => {
-        this.formattedList = data.data;
+        this.formattedList = data.Data;
       }, error1 => {
-        this.toaster.error(JSON.stringify(error1));
+        this.toaster.error(error1.message);
+        console.log(JSON.stringify(error1));
+        this.fetchData();
       }
     );
   }

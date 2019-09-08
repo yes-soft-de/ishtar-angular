@@ -12,15 +12,15 @@ export class UserArtistService {
   }
 
   requestArtistDetails(artistId: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post<ArtistDetails>(
+    return this.httpClient.post<{
+      Data: ArtistDetails
+    }>(
       UserConfig.ArtistDetailsAPI,
-      JSON.stringify({artist: artistId}),
-      httpOptions
+      JSON.stringify({
+          parm: 'artist',
+          value: artistId
+        }
+      )
     );
   }
 }

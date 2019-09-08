@@ -17,4 +17,10 @@ export class ArtistListService {
       `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
     );
   }
+
+  requestArtistList() {
+    return this.httpClient.get<ArtistListResponse>(
+      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
+    );
+  }
 }

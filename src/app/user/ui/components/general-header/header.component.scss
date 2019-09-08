@@ -1,6 +1,20 @@
+header {
+  nav {
+    margin: 0;
+  }
+}
+
 #header-nav {
   li {
     display: inline-block;
     margin: 1rem;
+    a {
+      color: black;
+    }
   }
+}
+
+
+#btn-wish-list {
+  background: goldenrod;
 }

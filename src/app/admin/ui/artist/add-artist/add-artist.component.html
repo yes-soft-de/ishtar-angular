@@ -1,0 +1,100 @@
+<div class="container">
+  <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
+    <h2 class="h1 ml-5 text-center">Add New Artist</h2>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Type The Name">
+      </div>
+    </div>
+     <div class="form-group row">
+      <label class="col-2 col-form-label">Nationality</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="nationality" formControlName="nationality" placeholder="Type The Nationality">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Residence</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="residence"  formControlName="residence" placeholder="Type The Residence">
+      </div>
+    </div>
+    <div class="form-group row">
+       <label class="col-2 col-form-label">Birth</label>
+       <div class="col-10">
+         <input class="form-control" type="date" name="birthDate"  formControlName="birthDate" placeholder="Type Full Name">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Facebook</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="Facebook"  formControlName="Facebook" placeholder="Type Facebook Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Instagram</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="Instagram"  formControlName="Instagram" placeholder="Type Instagram Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Twitter</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="Twitter"  formControlName="Twitter" placeholder="Type Twitter Link">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Linkedin</label>
+       <div class="col-10">
+         <input class="form-control" type="text" name="Linkedin"  formControlName="Linkedin" placeholder="Type Linkedin Link">
+       </div>
+     </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Upload</label>
+      <div class="input-group col-10">
+        <div class="custom-file">
+          <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input"
+                 (change)="updateName(imageInput)">
+          <label class="custom-file-label" for="file-input">{{imageName}}</label>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" (click)="processFile(imageInput)" [disabled]=!fileSelected>
+            Upload
+          </button>
+        </div>
+      </div>
+    </div>
+<!--     <div class="form-group row">-->
+<!--        <label class="col-2 col-form-label">Video</label>-->
+<!--        <div class="col-10">-->
+<!--          <input class="form-control" type="text" name="video"  formControlName="name" placeholder="Type video Link">-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Art Type</label>
+          <div class="col-10">
+              <select class="form-control" name="artType" formControlName="artType">
+                  <option value="">Select Art Type For This Artist</option>
+                  <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
+              </select>
+          </div>
+      </div>
+      <div class="form-group row">
+       <label class="col-2 col-form-label">Details</label>
+       <div class="col-10">
+         <textarea class="form-control" name="details"  formControlName="details" placeholder="Type The Details"></textarea>
+       </div>
+     </div>
+     <div class="form-group row">
+       <label class="col-2 col-form-label">Story</label>
+       <div class="col-10">
+         <textarea class="form-control" name="story"  formControlName="story" placeholder="Type The Story"></textarea>
+       </div>
+     </div>
+
+
+    <div class="form-group offset-md-2 mt-3">
+      <input class="btn btn-primary btn-block" type="submit" value="Add New Artist">
+    </div>
+  </form>
+</div>

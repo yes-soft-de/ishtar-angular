@@ -1,7 +1,19 @@
-#creator-section{
-  background: black;
+footer {
+  div {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    ul {
+      list-style-type: none;
+    }
+  }
 }
 
-.social-icon {
-  color: white;
+#footer-bottom-left{
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+    }
+  }
 }

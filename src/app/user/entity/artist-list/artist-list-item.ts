@@ -6,10 +6,11 @@ export interface ArtistListItem {
   birthDate: string;
   story: string;
   details: string;
-  image: string;
+  path: string;
   video: string;
-  facebook: string;
-  instagram: string;
-  twitter: string;
-  linkedin: string;
+  Facebook: string;
+  Instagram: string;
+  Twitter: string;
+  Linkedin: string;
+  artType: string;
 }

@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
-import {PaintingInterface} from '../../../admin/entity/painting/painting-interface';
-import {Config} from '../../../admin/config/config';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
-import {PaintingDetailsResponse} from '../../entity/painting-details/painting-details-response';
 import {ImageListResponse} from '../../entity/image/image-list-response';
 import {PaintingDetails} from '../../entity/painting-details/painting-details';
 
@@ -11,9 +8,6 @@ import {PaintingDetails} from '../../entity/painting-details/painting-details';
   providedIn: 'root'
 })
 export class PaintingDetailsService {
-  httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
 
   constructor(private httpClient: HttpClient) {
   }
@@ -21,7 +15,9 @@ export class PaintingDetailsService {
   requestPaintingDetails(paintingId: string) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'sec-fetch-mode': 'no-cors',
+        'sec-fetch-site': 'none'
       })
     };
     const req: { painting: string } = {

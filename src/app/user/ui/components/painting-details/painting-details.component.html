@@ -1,94 +1,100 @@
-<!--Start Painting Page-->
-<section class="container-fluid">
-  <div class="d-flex">
-    <div class="row" id="artist-area">
-      <img class="col-12" id="artist-image" src="{{painting.artistImageUrl}}" alt="">
-      <div class="col-12 p-3">
-        <h4 class="text-center" id="artist-name">{{painting.artistName}}</h4>
-      </div>
+<div class="container-fluid row">
+  <div class="col-2 row d-flex flex-column" id="painting-list-images">
+    <div class="pl-4">
+      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
     </div>
-    <div id="main-painting">
-      <img src="{{painting.paintingImages[0].url}}" class="img-fluid" id="main-image">
+    <div class="pl-4">
+      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
+    </div>
+    <div class="pl-4">
+      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
     </div>
   </div>
-
-  <!--Start Carousel Section-->
-  <section id="painting-carousel">
-    <mdb-carousel>
-      <mdb-carousel-item *ngFor="let i of painting.paintingImages" class="col-4">
-        <img src="{{i.url}}" alt="" class="img-fluid">
-      </mdb-carousel-item>
-    </mdb-carousel>
-  </section>
-
-  <!--End Carousel Section-->
-
-  <!--Start Story Section-->
-  <div class="col-8 mx-auto story-section my-5">
-    <h5 class="text-center">Story</h5>
-    <p class="text-center">
-      {{painting.story}}
-    </p>
+  <div class="col-6 m-0 p-0" id="main-image">
+    <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
   </div>
-  <!--End Story Section-->
+  <div class="col-4 d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column">
+      <h3>Flowers</h3>
+      <p>120cm x 200cm</p>
+      <p>Oil on wood</p>
+      <h5>Artist Name</h5>
+    </div>
+    <button mdbBtn class="btn-outline-secondary m-0 my-2" style="background-color: goldenrod">Add to Wish List</button>
+    <video src="../../../../../assets/1x/painting_video.mp4"></video>
+  </div>
+</div>
 
-  <!--Start Painting Video-->
-  <div class="painting-video">
+<div class="container-fluid row p-5">
+  <ngx-tabs>
+    <ngx-tab label="About the Painting">
+      Layers and Layers
+      There are some things we know for sure about vision.
+
+      The eye acts as a lens. It receives light from the outside world and projects a scale replica of our visual field
+      onto the retina, which sits in the back of the eye. The retina is connected to the visual cortex, the part of the
+      brain in the back of the head.
+
+      However, there’s very little connectivity between the retina and the visual cortex. For a visual area roughly
+      one-quarter the size of a full moon, there are only about 10 nerve cells connecting the retina to the visual
+      cortex. These cells make up the LGN, or lateral geniculate nucleus, the only pathway through which visual
+      information travels from the outside world into the brain.
+
+      Not only are LGN cells scarce — they can’t do much either. LGN cells send a pulse to the visual cortex when they
+      detect a change from dark to light, or vice versa, in their tiny section of the visual field. And that’s all. The
+      lighted world bombards the retina with data, but all the brain has to go on is the meager signaling of a tiny
+      collection of LGN cells. To see the world based on so little information is like trying to reconstruct Moby-Dick
+      from notes on a napkin.
+
+      “You may think of the brain as taking a photograph of what you see in your visual field,” Young said. “But the
+      brain doesn’t take a picture, the retina does, and the information passed from the retina to the visual cortex is
+      sparse.”
+
+      But then the visual cortex goes to work. While the cortex and the retina are connected by relatively few neurons,
+      the cortex itself is dense with nerve cells. For every 10 LGN neurons that snake back from the retina, there are
+      4,000 neurons in just the initial “input layer” of the visual cortex — and many more in the rest of it. This
+      discrepancy suggests that the brain heavily processes the little visual data it does receive.
+
+      “The visual cortex has a mind of its own,” Shapley said.
+
+      For researchers like Young, Shapley and Chariker, the challenge is deciphering what goes on in that mind.
+    </ngx-tab>
+    <ngx-tab label="community">
+      Young and her collaborators have been building their model by incorporating one basic element of vision at a time.
+      They’ve explained how neurons in the visual cortex interact to detect the edges of objects and changes in
+      contrast, and now they’re working on explaining how the brain perceives the direction in which objects are moving.
+
+      Their work is the first of its kind. Previous efforts to model human vision made wishful assumptions about the
+      architecture of the visual cortex. Young, Shapley and Chariker’s work accepts the demanding, unintuitive biology
+      of the visual cortex as is — and tries to explain how the phenomenon of vision is still possible.
+
+      “I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
+      that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of Utah.
+    </ngx-tab>
+  </ngx-tabs>
+
+  <h5>About the Art Type</h5>
+  <p>
+    “I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
+    that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of Utah.
+  </p>
+
+  <div class="p-5" style="background-color: #D9D9D9" id="famous-quote">
+    <div class="row d-flex align-items-center mb-3">
+      <img src="../../../../../assets/1x/img-01.jpg" style="height: 5rem" alt="...">
+      <h5 class="ml-4">Artist Name</h5>
+    </div>
     <div class="row">
-      <div class="col-9">
-        <div class="paint-video text-center">
-          <video loop preload="auto" controls class="mx-auto" src="../../../../../assets/1x/painting_video.mp4"></video>
-        </div>
-
-        <!-- region Comments -->
-        <div class="paint-comments mt-5">
-          <h4 class="">Comments :</h4>
-          <hr class="bg-dark">
-          <div class="comment-box mb-3">
-            <div class="row">
-              <div class="col-md-2 text-center">
-                <img class="img-fluid rounded-circle" src="../../../../../assets/1x/img-01.jpg" alt="avatar">
-                Mechil Gandy
-              </div>
-              <div class="col-md-10">
-                <p class="rounded">Woooooow It's beautiful</p>
-              </div>
-            </div>
-          </div>
-          <div class="comment-box mb-3">
-            <div class="row">
-              <div class="col-md-2 text-center">
-                <img class="img-fluid rounded-circle" src="../../../../../assets/1x/img-01.jpg" alt="avatar">
-                Melissa Rohan
-              </div>
-              <div class="col-md-10">
-                <p class="rounded">this is goooooood</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- endregion -->
-      </div>
-      <div class="col-3 bg-dark"></div>
+      <h3>
+        “I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
+        that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of
+        Utah.
+      </h3>
     </div>
   </div>
-  <!--End Painting Video-->
+</div>
 
-
-  <!--Start Carousel Section-->
-  <div class="row">
-    <div class="col-9 bg-dark px-3 py-5">
-      <carousel-component [mode]="'horizontal'" [timeToSlide]="200">
-        <div class="item-carousel" *ngFor="let p of painting.otherPaintingsByArtist">
-          <div class="row">
-            <a href="http://localhost:4200/painting/{{p.id}}" class="image-link">
-              <img src="{{p.url}}" alt="" class="col-12">
-              <p>{{p.name}}</p>
-            </a>
-          </div>
-        </div>
-      </carousel-component>
-    </div>
-    <!--End Carousel Section-->
-  </div>
-</section>
+<div class="p-5">
+  <h2 class="mb-5">Paintings You May Like</h2>
+  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" *ngIf="featuredList != null"></app-c-painting-list>
+</div>

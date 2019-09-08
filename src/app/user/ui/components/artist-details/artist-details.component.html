@@ -1,55 +1,72 @@
 <!-- ######################################## Artist Page ######################################## -->
 
 <section id="artist-page">
-  <section id="banner">
-    <mdb-carousel [isControls]="true" [animation]="'slide'">
-      <mdb-carousel-item *ngFor="let img of featuredPaintings.slice(6,10)">
-        <img src="{{img.url}}" width="100%" height="auto">
-        <div class="carousel-info-box">
-          <h6 class="carousel-info-title">{{img.name}}</h6>
-          <p class="carousel-info-text">{{img.desc}}</p>
-        </div>
-      </mdb-carousel-item>
-    </mdb-carousel>
-  </section> <!-- banner -->
-  <section id="avatar" class="d-flex">
-    <img src="{{artist.image}}">
-    <div id="artist-info-area" class="align-self-end">
-      <h3 id="artist-name" class="align-self-end">
-        {{artist.name}}
-      </h3>
-      <div class="d-flex">
-        <a class="artist-social" href="{{artist.facebook}}">
-          <mdb-icon fab icon="facebook-square" size="2x"></mdb-icon>
-        </a>
-        <a class="artist-social" href="{{artist.twitter}}">
-          <mdb-icon fab icon="twitter-square" size="2x"></mdb-icon>
-        </a>
-        <a class="artist-social" href="{{artist.linkedin}}">
-          <mdb-icon fab icon="linkedin" size="2x"></mdb-icon>
-        </a>
-      </div>
-    </div> <!-- #artist-info-area -->
 
-    <button mdbBtn class="align-self-center">Follow!</button>
-  </section><!-- #avatar -->
-  <section id="artist-info-section" class="d-flex justify-content-center">
-    <tabset [justified]="true" class="w-50">
-      <tab heading="Biography">
-        {{artist.story}}
-      </tab>
-    </tabset>
-  </section><!-- #info-section -->
-  <section id="artist-cards" class="row d-flex justify-content-center">
-    <div class="col-8 row d-flex">
-      <div class="col-4 p-4" *ngFor="let img of featuredPaintings.slice(0,6)">
-        <img src="{{img.url}}" class="img-fluid">
-        <h5>
-          {{img.desc}}
-        </h5>
+  <div id="artist-header">
+    <div id="artist-header-img" class="d-flex align-items-center">
+      <div class="position-absolute w-100 d-flex justify-content-end">
+        <div class="p-5" id="artist-banner-text">
+          <h3 class="text-center">{{artistMainPainting.name}}</h3>
+          <p class="text-center">{{artistMainPainting.story}}</p>
+        </div>
+      </div>
+      <div parallax id="banner-background">
+        <img src="{{artistMainPainting.image}}" alt="...">
       </div>
     </div>
-  </section><!-- #artist-cards -->
-</section> <!-- #artist-page -->
+    <div class="row d-flex justify-content-center">
+      <div class="col-10 align-items-baseline" style="position: relative; top: -5rem;">
+        <div class="d-flex align-items-baseline">
+          <div class="w-25">
+            <img src="{{artist.path}}" style="width: 15rem; border-radius: 50%;" alt="...">
+          </div>
+          <div class="w-75 m-0 row">
+            <div class="col-6">
+              <h3>{{artist.name}}</h3>
+              <ul style="list-style-type: none; margin: 0; padding: 0">
+                <li style="display: inline-block" class="m-1">
+                  <a href="{{artist.facebook}}">
+                    <mdb-icon fab icon="facebook" size="2x"></mdb-icon>
+                  </a>
+                </li>
+                <li style="display: inline-block" class="m-1">
+                  <a href="{{artist.twitter}}">
+                    <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
+                  </a>
+                </li>
+                <li style="display: inline-block" class="m-1">
+                  <a href="{{artist.linkedin}}">
+                    <mdb-icon fab icon="linkedin" size="2x"></mdb-icon>
+                  </a>
+                </li>
+                <li style="display: inline-block" class="m-1">
+                  <a href="{{artist.facebook}}">
+                    <mdb-icon fab icon="pinterest" size="2x"></mdb-icon>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6" style="position: relative; top: -2rem;">
+              <button mdbBtn class="btn-secondary" mdbWavesEffect (click)="followArtist()">Follow</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="artist-bio">
+    <h3 class="text-primary">Biography</h3>
+    <p>
+      {{artist.details}}
+    </p>
+  </div>
+
+  <div id="artist-images" style="margin-bottom: 5rem;">
+    <app-c-painting-list [formattedPaintingList]="featuredPaintings"
+                         *ngIf="featuredPaintings != null"></app-c-painting-list>
+  </div>
+
+</section>
 
 <!-- ###################################### End Artist Page ###################################### -->

@@ -1,9 +1,29 @@
 <div class="d-flex justify-content-center">
-  <div class="col-lg-8 col-12 d-block">
-    <section id="photos" class="grid">
-      <a href="http://localhost:4200/painting-list-by-artist/{{p.id}}" *ngFor="let p of artistList">
-        <img class="grid-item" src="{{p.image}}" >
-      </a>
+  <div class="col-4 p-3" id="artist-sidebar">
+    <div>
+      <h5>Filter By Art Type</h5>
+      <button mdbBtn class="btn-light" *ngFor="let i of types"
+              [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"
+              (click)="filterByArtType(i)">{{i}}</button>
+    </div>
+  </div>
+  <div class="col-8 d-block">
+    <section id="photos" class="row">
+      <div *ngFor="let artist of artistList"
+           class="col-4">
+        <a routerLink="/artist/{{artist.id}}">
+          <div class="artist-card">
+            <img class="img-fluid" src="{{artist.image}}" alt="...">
+            <div class="details-container">
+              <div class="row">
+                <h3 class="col-12 text-center">{{artist.name}}</h3>
+                <p class="col-12 text-center">{{artist.paintingNumber}} painting</p>
+                <p class="col-12 text-center">{{artist.artistFollowers}} Followers</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </section>
   </div>
 </div>
