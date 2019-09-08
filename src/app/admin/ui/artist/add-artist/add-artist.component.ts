@@ -84,6 +84,7 @@ export class AddArtistComponent implements OnInit {
     const file: File = imageInput.files[0];
     this.imageName = file.name;
     this.fileSelected = true;
+    console.log(this.imageName, this.fileSelected);
   }
 
   processFile(imageInput: any) {

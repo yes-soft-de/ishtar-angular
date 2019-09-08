@@ -27,7 +27,6 @@ import {SchoolListComponent} from './ui/components/grid-list/school-list.compone
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {NgxBootstrapSliderModule} from 'ngx-bootstrap-slider';
 
 @NgModule({
   declarations: [

@@ -14,6 +14,9 @@ import {PaintingListResponse} from '../../entity/PaintingList/painting-list-resp
 export class DashboardComponent implements OnInit {
   artists: Artist[];
   paintings: Painting[];
+  latestArtistNumber = 5;
+  latestPaintingNumber = 5;
+
   constructor(private artist: ArtistService,
               private photosListService: PhotosListService) { }
   ngOnInit() {
@@ -21,15 +24,15 @@ export class DashboardComponent implements OnInit {
     this.artist.getAllArtists().subscribe(
       (data) => {
         this.artists = data.Data;
-      }, error1 => {
-        console.log(error1);
+      }, error => {
+        console.log(error);
       });
     // Fetch All Paintings
     this.photosListService.getAllPainting().subscribe(
       (res: PaintingListResponse) => {
       this.paintings = res.Data;
-    }, error1 => {
-      console.log(error1);
+    }, error => {
+      console.log(error);
     });
   }
 

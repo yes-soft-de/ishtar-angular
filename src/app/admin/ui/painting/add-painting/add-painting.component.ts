@@ -5,10 +5,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
-import {PaintingInterface} from '../../../entity/painting/painting-interface';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
-import {log} from 'util';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
@@ -108,6 +106,7 @@ export class AddPaintingComponent implements OnInit {
         (res) => {
           console.log(res);
           this.imageUrl = res.url;
+          console.log(this.imageUrl);
         },
         (err) => {
           console.log(err);
@@ -142,6 +141,7 @@ export class AddPaintingComponent implements OnInit {
     }
   }
 
+  // Method To Check if The form Fields Is Empty
   isEverythingFilled() {
     if (this.uploadForm.get('name').value.toString().length < 1) {
       return 'name is not filled!';
