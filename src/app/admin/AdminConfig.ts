@@ -1,33 +1,37 @@
 export class AdminConfig {
+    public static sourceAPI = 'http://localhost:1337/localhost:8000/';
+    // Create General Uploading API
+    public static generalUploadAPI = AdminConfig.sourceAPI + 'uploadArtistImage';
     // Create Uploading Media
-    public static addMediaAPI = 'http://localhost:1337/localhost:8000/createMedia';
+    public static addMediaAPI = AdminConfig.sourceAPI + 'createMedia';
     // Art Type API
-    public static allArtTypeAPI = 'http://localhost:1337/localhost:8000/getArtTypeList';
+    public static allArtTypeAPI = AdminConfig.sourceAPI + 'getArtTypeList';
     // name API
-    public static addArtistAPI = 'http://localhost:1337/localhost:8000/createArtist';
-    public static editArtistAPI = 'http://localhost:1337/localhost:8000/updateArtist';
-    public static deleteArtistAPI = 'http://localhost:1337/localhost:8000/deleteArtist';
-    public static allArtistsAPI = 'http://localhost:1337/localhost:8000/getArtistsData';
-    public static artistAPI = 'http://localhost:1337/localhost:8000/getArtistById';
+    public static addArtistAPI = AdminConfig.sourceAPI + 'createArtist';
+    public static editArtistAPI = AdminConfig.sourceAPI + 'updateArtist';
+    public static deleteArtistAPI = AdminConfig.sourceAPI + 'deleteArtist';
+    public static allArtistsAPI = AdminConfig.sourceAPI + 'getArtistsData';
+    public static artistAPI = AdminConfig.sourceAPI + 'getArtistById';
     // Painting API
-    public static addPaintingAPI = 'http://localhost:1337/localhost:8000/createPainting';
-    public static editPaintingAPI = 'http://localhost:1337/localhost:8000/updatePainting';
-    public static deletePaintingAPI = 'http://localhost:1337/localhost:8000/deletePainting';
-    public static allPaintingsAPI = 'http://localhost:1337/localhost:8000/getAllPainting';
-    public static paintingAPI = 'http://localhost:1337/localhost:8000/getPaintingById';
-    public static fullImagesListAPI = 'http://localhost:1337/localhost:8000/painting-full-list';
+    public static addPaintingAPI = AdminConfig.sourceAPI + 'createPainting';
+    public static editPaintingAPI = AdminConfig.sourceAPI + 'updatePainting';
+    public static deletePaintingAPI = AdminConfig.sourceAPI + 'deletePainting';
+    public static allPaintingsAPI = AdminConfig.sourceAPI + 'getAllPainting';
+    public static paintingAPI = AdminConfig.sourceAPI + 'getPaintingById';
+    public static fullImagesListAPI = AdminConfig.sourceAPI + 'painting-full-list';
     // Artist And Painting API
     public static artistFeaturedPaintings = 'http://5d402c85c516a90014e89669.mockapi.io/sample_paintings/';
-    public static artistPaintingsAPI = 'http://localhost:1337/localhost:8000/createArtist';
-    public static featuredAPI = 'http://localhost:1337/localhost:8000/featured';
+    public static artistPaintingsAPI = AdminConfig.sourceAPI + 'createArtist';
+    public static featuredAPI = AdminConfig.sourceAPI + 'featured';
     // client API
-    public static addClientAPI = 'http://localhost:1337/localhost:8000/createClient';
-    public static editClientAPI = 'http://localhost:1337/localhost:8000/updateClient';
-    public static deleteClientAPI = 'http://localhost:1337/localhost:8000/deleteClient';
-    public static allClientsAPI = 'http://localhost:1337/localhost:8000/getAllClient';
-    public static clientAPI = 'http://localhost:1337/localhost:8000/getClientById';
+    public static addClientAPI = AdminConfig.sourceAPI + 'createClient';
+    public static editClientAPI = AdminConfig.sourceAPI + 'updateClient';
+    public static deleteClientAPI = AdminConfig.sourceAPI + 'deleteClient';
+    public static allClientsAPI = AdminConfig.sourceAPI + 'getAllClient';
+    public static clientAPI = AdminConfig.sourceAPI + 'getClientById';
     // Auction API
-    public static addAuctionAPI = 'http://localhost:1337/localhost:8000/createAuction';
+    public static addAuctionAPI = AdminConfig.sourceAPI + 'createAuction';
+    public static allAuctionAPI = AdminConfig.sourceAPI + 'getAllAuction';
 
   // // Create Uploading Media
   // public static addMediaAPI = 'http://ishtar.96.lt/Ishtar/public/createMedia';

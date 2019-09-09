@@ -5,6 +5,8 @@ import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {AdminConfig} from '../../AdminConfig';
 import {Auction} from '../../entity/auction/auction';
+import {AuctionListResponse} from '../../entity/auction/auction-list-response';
+import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,13 @@ export class AuctionService {
   // Handling the error
   public static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
+  }
+
+  // Get All Auction Method
+  getAllAuctions() {
+    return this.httpClient.get(
+        `${AdminConfig.allAuctionAPI}`, {responseType: 'json'}
+    ).pipe(catchError(AuctionService.errorHandler));
   }
 
   // Create New Auction

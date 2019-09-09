@@ -32,7 +32,7 @@
           <div>
             <h6>Total Auctions</h6>
 
-            <span><a>50</a></span>
+            <span><a routerLink="/admin/list-paintings">{{auctions.length}}</a></span>
 
           </div>
         </div>
@@ -93,12 +93,14 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 5 Auctions
+              Latest {{latestAuctionNumber}} Auctions
             </div>
             <div class="card-body">
-              <div class="late_info">
-                Golden Painting
-                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+              <div *ngFor="let auction of auctions; let i = index" class="late_info">
+                <div *ngIf="i <= latestAuctionNumber">
+                  {{auction.name}}
+                  <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                </div>
               </div>
             </div>
           </div>

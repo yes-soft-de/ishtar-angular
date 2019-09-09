@@ -1,2 +1,45 @@
-<p>list-auctions works!</p>
-<button routerLink="/admin/add-auction">Add New Auction</button>
+<div *ngIf="auctions != null">
+    <div class="container-fluid">
+        <h1 class="text-center my-4">Manage Auction Page</h1>
+        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-auction">
+            <i class="fa fa-plus"></i>
+            Add New Auction
+        </a>
+        <div class="table-responsive text-center">
+            <table class="table table-bordered main-table">
+                <tr class="bg-dark text-white">
+                    <td>#ID</td>
+                    <td>Name</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                    <td>Start Price</td>
+                    <td>Final Price</td>
+                    <td>Highiest Price</td>
+                    <td>Control</td>
+                </tr>
+                <tr *ngFor="let auction of auctions">
+                    <td>{{auction.id}}</td>
+                    <td>{{auction.name}}</td>
+                    <td>{{auction.startDate}}</td>
+                    <td>{{auction.endDate}}</td>
+                    <td>{{auction.startPrice}} $</td>
+                    <td>{{auction.finalPrice == null ? 0 : auction.finalPrice}} $</td>
+                    <td>{{auction.highiestPrice}} $</td>
+                    <td>
+                        <a [routerLink]="['/admin/edit-auction', auction.id]" class="btn btn-success btn-sm mr-1">Edit</a>
+                        <a (click)="delete(auction.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="auctions == null">
+    <div class="container">
+        <div class="alert alert-primary text-center mt-5">There Isn't Auctions To Show</div>
+        <a routerLink="/admin/add-auction" class="btn btn-primary btn-sm mb-2 float-right">
+            <i class="fa fa-plus"></i>
+            Add New auction
+        </a>
+    </div>
+</div>

@@ -4,6 +4,10 @@ import {Painting} from '../../entity/painting/painting';
 import {ArtistService} from '../../service/artist/artist.service';
 import {PhotosListService} from '../../service/PhotosList/photos-list.service';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
+import {AuctionListResponse} from '../../entity/auction/auction-list-response';
+import {AuctionService} from '../../service/auction/auction.service';
+import {Auction} from '../../entity/auction/auction';
+import {AuctionList} from '../../entity/auction/auction-list';
 
 
 @Component({
@@ -14,11 +18,14 @@ import {PaintingListResponse} from '../../entity/PaintingList/painting-list-resp
 export class DashboardComponent implements OnInit {
   artists: Artist[];
   paintings: Painting[];
+  auctions: AuctionList[];
   latestArtistNumber = 5;
   latestPaintingNumber = 5;
+  latestAuctionNumber = 5;
 
   constructor(private artist: ArtistService,
-              private photosListService: PhotosListService) { }
+              private photosListService: PhotosListService,
+              private auctionService: AuctionService) { }
   ngOnInit() {
     // Fetch All Artists Number
     this.artist.getAllArtists().subscribe(
@@ -34,6 +41,16 @@ export class DashboardComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+    // Fetch All Auction
+    this.auctionService.getAllAuctions().subscribe(
+        (data: AuctionListResponse) => {
+          this.auctions = data.Data;
+          console.log(data);
+        },
+        error1 => {
+          console.log(error1);
+        }
+    );
   }
 
 }

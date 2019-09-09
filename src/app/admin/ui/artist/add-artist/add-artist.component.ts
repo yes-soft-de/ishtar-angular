@@ -84,7 +84,6 @@ export class AddArtistComponent implements OnInit {
     const file: File = imageInput.files[0];
     this.imageName = file.name;
     this.fileSelected = true;
-    console.log(this.imageName, this.fileSelected);
   }
 
   processFile(imageInput: any) {
@@ -150,24 +149,21 @@ export class AddArtistComponent implements OnInit {
   }
 
   mySubmit() {
-    if (this.isEverythingFilled() === true) {
+    if (this.isEverythingFilled()) {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
-      console.log(JSON.stringify(formObj));
+      console.log(formObj);
       this.artistService.postAddArtist(formObj).subscribe(
         data => {
-          // TODO insert ngx-toastr Message
           console.log('the post request was successfully done', data);
           this.toaster.success('Artist Uploaded');
-          // If Success Navigate to Admin Dashboard Page
         },
-        error => {
-          // TODO insert ngx-toastr Message
+         error => {
           this.toaster.error('there error from fetching the data', JSON.stringify(error));
         },
         () => {
-          // this.router.navigate(['admin/list-artists']);
+          this.router.navigate(['admin/list-artists']);
         }
       );
     } else {
