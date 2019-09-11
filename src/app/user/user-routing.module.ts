@@ -7,6 +7,7 @@ import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.c
 import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
+import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path: 'artist-list', component: ArtistListPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
+      {path: 'art-type/:id', component: ArtTypePageComponent},
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent}
     ]

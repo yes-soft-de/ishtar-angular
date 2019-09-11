@@ -19,17 +19,21 @@ export class PaintingListService {
   }
 
   requestPaintingListByArtist(artistId: string) {
+    const artistRequest: {
+      parm: string,
+      value: string
+    } = {
+      parm: 'artist',
+      value: artistId
+    };
     return this.httpClient.post<PaintingListResponse>(
       UserConfig.getByAPI,
-      JSON.stringify({
-        parm: 'artist',
-        value: artistId
-      })
+      JSON.stringify(artistRequest)
     );
 
   }
 
-  requestPaintingListbyArtType(artId: string) {
+  requestPaintingListByArtType(artId: string) {
     return this.httpClient.post<PaintingListResponse>(
       UserConfig.PaintingListAPI,
       JSON.stringify({artist: artId})

@@ -13,7 +13,7 @@
     </div>
   </div>
   <div id="painting-list" class="col-8 row">
-    <div class="painting-list-item col-4 p-3" *ngFor="let painting of paintingList">
+    <div class="painting-list-item col-4 p-3" *ngFor="let painting of paintingList" routerLink="/painting/{{painting.id}}">
       <img class="img-fluid" src="{{painting.image}}"
            (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
       <p class="text-center">{{painting.name}}</p>

@@ -7,4 +7,5 @@ export class UserConfig {
   public static ArtistListAPI = 'http://ishtar.96.lt/Ishtar/public/getArtistsData';
   public static ArtistDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getBy';
   public static getByAPI = 'http://ishtar.96.lt/Ishtar/public/getBy';
+  public static ArtTypeAPI = 'http://ishtar.96.lt/Ishtar/public/getArtTypeById';
 }

@@ -4,6 +4,13 @@ import {Painting} from '../../entity/painting/painting';
 import {ArtistService} from '../../service/artist/artist.service';
 import {PhotosListService} from '../../service/PhotosList/photos-list.service';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
+<<<<<<< Updated upstream
+=======
+import {AuctionListResponse} from '../../entity/auction/auction-list-response';
+import {AuctionService} from '../../service/auction/auction.service';
+import {Auction} from '../../entity/auction/auction';
+import {AuctionList} from '../../entity/auction/auction-list';
+>>>>>>> Stashed changes
 
 
 @Component({
@@ -31,6 +38,19 @@ export class DashboardComponent implements OnInit {
     }, error1 => {
       console.log(error1);
     });
+<<<<<<< Updated upstream
+=======
+    // Fetch All Auction
+    this.auctionService.getAllAuctions().subscribe(
+        (data: AuctionListResponse) => {
+          this.auctions = data.Data;
+          console.log(data);
+        },
+        error1 => {
+          console.log(error1);
+        }
+    );
+>>>>>>> Stashed changes
   }
 
 }

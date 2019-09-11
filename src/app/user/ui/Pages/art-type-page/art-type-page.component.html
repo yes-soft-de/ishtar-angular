@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-art-type *ngIf="artType != null"></app-art-type>
+<div *ngIf="artType == null" class="d-flex justify-content-center">
+  <div class="d-flex flex-column m-5">
+    <h5 class="text-center">Loading...</h5>
+    <img src="../../../../../assets/loading.gif" alt="Loading" class="img-fluid" style="object-fit: contain">
+  </div>
+</div>
+<app-footer></app-footer>

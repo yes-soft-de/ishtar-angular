@@ -23,4 +23,14 @@ export class ArtistListService {
       `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
     );
   }
+
+  requestPaintingListByArtType(id: string) {
+    return this.httpClient.post<ArtistListResponse>(
+      UserConfig.getByAPI,
+      {
+        parm: 'artist',
+        value: id
+      }
+    );
+  }
 }
