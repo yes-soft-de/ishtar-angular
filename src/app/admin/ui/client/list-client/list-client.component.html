@@ -9,17 +9,24 @@
       <table class="table table-bordered main-table">
         <tr class="bg-dark text-white">
           <td>#ID</td>
-          <td>Name</td>
-          <td>UserName</td>
-          <td>Password</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Person Kind</td>
+          <td>Username</td>
+          <td>Birth Date</td>
           <td>Email</td>
+          <td>Phone</td>
+          <td>Control</td>
         </tr>
         <tr *ngFor="let client of clients">
           <td>{{client.id}}</td>
-          <td>{{client.name}}</td>
+          <td>{{client.firstName}}</td>
+          <td>{{client.lastName}}</td>
+          <td>{{client.roll}}</td>
           <td>{{client.userName}}</td>
-          <td>{{client.password}}</td>
+          <td>{{client.birthDate}}</td>
           <td>{{client.email}}</td>
+          <td>{{client.phone}}</td>
           <td>
             <a [routerLink]="['/admin/edit-client', client.id]" class="btn btn-success btn-sm mr-1">Edit</a>
             <a (click)="delete(client.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>

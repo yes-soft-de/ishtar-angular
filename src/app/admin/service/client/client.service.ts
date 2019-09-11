@@ -5,7 +5,7 @@ import {AdminConfig} from '../../AdminConfig';
 import {ClientInterface} from '../../entity/client/client-interface';
 import {Client} from '../../entity/client/client';
 import { catchError } from 'rxjs/operators';
-import {pipe, throwError} from 'rxjs';
+import {Observable, pipe, throwError} from 'rxjs';
 import {ClientListResponse} from '../../entity/ClientList/client-list-response';
 
 
@@ -44,28 +44,9 @@ export class ClientService {
 
   // Admin Section - Add Client Page
   postAddClient(client: Client) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
     return this.httpClient.post<Client>(
-        AdminConfig.addClientAPI,
-        JSON.stringify(client),
-        httpOptions
-    ).subscribe(
-        data => {
-          // TODO insert ngx-toastr Message
-          console.log('the post request was successfully done', data);
-          // If Success Navigate to Admin Dashboard Page
-        },
-        error => {
-          // TODO insert ngx-toastr Message
-          console.log('there error from fetching the data', error);
-        },
-        () => {
-          this.router.navigate(['admin/list-clients']);
-        }
+        `${AdminConfig.addClientAPI}`,
+        JSON.stringify(client)
     );
   }
 

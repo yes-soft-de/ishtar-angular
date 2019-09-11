@@ -28,21 +28,21 @@ export class EditClientComponent implements OnInit {
       this.clientID = param.get('id');
     });
     // Fetch The Client Data Depends On His ID
-    this.client.getClientByClient(this.clientID).subscribe(
-        data => {
-          if (data) {
-            this.clientData.id = `${data.id}`;
-            this.clientData.name = data.name;
-            this.clientData.userName = data.userName;
-            this.clientData.password = data.password;
-            this.clientData.email = data.email;
-            console.log(this.clientData);
-          }
-        },
-        error => {
-          console.log(error);
-        }
-    );
+    // this.client.getClientByClient(this.clientID).subscribe(
+    //     data => {
+    //       if (data) {
+    //         this.clientData.id = `${data.id}`;
+    //         this.clientData.name = data.name;
+    //         this.clientData.userName = data.userName;
+    //         this.clientData.password = data.password;
+    //         this.clientData.email = data.email;
+    //         console.log(this.clientData);
+    //       }
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     }
+    // );
   }
 
   // Save THe Data After Update It

@@ -6,6 +6,11 @@ import {PhotosListService} from '../../../service/PhotosList/photos-list.service
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AdminConfig} from '../../../AdminConfig';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-add-images',
@@ -13,17 +18,20 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./add-images.component.scss']
 })
 export class AddImagesComponent implements OnInit {
-  // options: any[] = [];
   uploadForm: FormGroup;
   paintings: Painting[];
-  file: string;
-  // myFiles = [];
+  imageName = 'Select File';
+  fileSelected = false;
+  fileUploaded = false;
+  imageUrl: string;
+  selectedFile: ImageSnippet;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private photosListService: PhotosListService,
               private httpClient: HttpClient,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private toast: ToastrService) {
   }
 
   ngOnInit() {
@@ -35,7 +43,6 @@ export class AddImagesComponent implements OnInit {
           console.log(error);
         });
     // Storing Our Form Data
-    // TODO how to get upload file path
     this.uploadForm = this.formBuilder.group({
       media: [''],
       entity: [''],
@@ -46,12 +53,6 @@ export class AddImagesComponent implements OnInit {
   }
 
   onFileSelect(event) {
-    // Uploadin One Media
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0].name;
-      this.uploadForm.get('path').setValue(file);
-    }
-
     /******
     // Uploading Multi Images
     // if (event.target.files.length > 0) {
@@ -64,51 +65,78 @@ export class AddImagesComponent implements OnInit {
   *****/
   }
 
-  mySubmit() {
-    const formObj = this.uploadForm.getRawValue();
-    console.log(formObj);
-    // Start Http Request
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    // return this.httpClient.post<Painting>(
-    //     'http://localhost:1337/localhost:8000/createMedia',
-    //     JSON.stringify(formObj),
-    //     httpOptions
-    // ).subscribe(
-    //     data => {
-    //       // TODO insert ngx-toastr Message
-    //       console.log('the post request was successfully done', data);
-    //     },
-    //     error => {
-    //       // TODO insert ngx-toastr Message
-    //       console.log('there error from fetching the data', error);
-    //     },
-    //     () => {
-    //       // If Success Navigate to Admin Dashboard Page
-    //       this.router.navigate(['../'], {relativeTo: this.route});
-    //     }
-    // );
+  // Get Image Name And Active Upload Button
+  updateName(imageInput: any) {
+   const file = imageInput.files[0];
+   this.imageName = file.name;    // Display Image Name
+   this.fileSelected = true;      // Active Upload Button
+  }
 
-  /***** Uploadin Multi Images
-     // const formData: FormData = new FormData();
-     // for (let i = 0; i < (this.myFiles.length); i++) {
-    // formData.append('path', this.myFiles, this.myFiles.name);
-    // }
-     // formData.append('media', this.uploadForm.get('media').value);
-     // formData.append('entity', this.uploadForm.get('entity').value);
-     // formData.append('row', this.uploadForm.get('row').value);
-     // formData.append('name', this.uploadForm.get('name').value);
-     // formData.forEach((value, key) => {
-    //   this.options[key] = value;
-    // });
-     // console.log(this.options);
-     // this.httpClient.post<any>('http://localhost:1337/localhost:8000/createMedia', this.options).subscribe(
-     //     (res) => console.log(res),
-     //     (err) => console.log(err)
-     // );
-     ***/
+  // Uploading THe File
+  processFile(imageInput: any) {
+    console.log('Progressing File');
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.photosListService.uploadImage(this.selectedFile.file).subscribe(
+        (res) => {
+          console.log(res);
+          this.imageUrl = res.url;
+        },
+        (err) => {
+          console.log(err);
+        });
+    });
+    reader.readAsDataURL(file);
+  }
+
+// Method To Check if The form Fields Is Empty
+  isEverythingFilled() {
+    if (this.uploadForm.get('media').value.toString().length < 1) {
+      return 'Media is not filled!';
+    }
+    if (this.uploadForm.get('entity').value.toString().length < 1) {
+      return 'Entity is not filled!';
+    }
+    if (this.uploadForm.get('row').value.toString().length < 1) {
+      return 'Row is not filled!';
+    }
+    if (this.uploadForm.get('name').value.toString().length < 1) {
+      return 'Name is not filled!';
+    }
+    if (this.uploadForm.get('path').value.toString().length < 1) {
+      return 'Path is not filled!';
+    }
+    return true;
+  }
+
+  // On Submit The Form
+  mySubmit() {
+    if (this.isEverythingFilled()) {
+      // Fetch All Form Data On Json Type
+      const formObj = this.uploadForm.getRawValue();
+      formObj.image = this.imageUrl;
+      console.log(formObj);
+      this.httpClient.post(
+          `${AdminConfig.addMediaAPI}`,
+          JSON.stringify(formObj)
+      ).subscribe(
+          data => {
+            this.toast.success('Media Was Successfully Added');
+            console.log('the post request was successfully done', data);
+          },
+          error => {
+            console.log('there error from fetching the data', error);
+            this.toast.error(`Sorry There is An Error: ${error}`);
+          },
+          () => {
+            // If Success Navigate to Admin Dashboard Page
+            this.router.navigate(['../'], {relativeTo: this.route});
+          }
+      );
+    } else {
+      this.toast.error(`Error: ${this.isEverythingFilled()}`);
+    }
   }
 }

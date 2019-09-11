@@ -8,6 +8,7 @@ import {ArtistListService} from '../../../service/artist-list/artist-list.servic
   styleUrls: ['./artist-list.component.scss']
 })
 export class ArtistListComponent implements OnInit {
+  @Input() filter = true;
   @Input() artistListFormatted: ArtistListItem[];
   public artistList: {
     id: number,

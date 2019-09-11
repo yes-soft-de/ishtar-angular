@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {ArtTypeResponse} from '../../../../admin/entity/art-type/art-type-response';
+import {AdminConfig} from '../../../../admin/AdminConfig';
+import {catchError} from 'rxjs/operators';
+import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
+import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home-header',
@@ -7,10 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeHeaderComponent implements OnInit {
   public paintings = [];
-  constructor() { }
+  artTypeList: ArtTypeListItem[];
+  constructor(private artTpeService: ArtTypeService) { }
 
   ngOnInit() {
-
+    this.artTpeService.getAllArtType().subscribe(
+      data => {
+        this.artTypeList = data.Data;
+      }
+    );
     const painting = {
       url: 'https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/b5cd4cfb-c5d9-4147-a72b-452d2f04bb73',
       head: 'History Of Syrian Art',

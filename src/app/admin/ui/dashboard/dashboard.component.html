@@ -32,11 +32,7 @@
           <div>
             <h6>Total Auctions</h6>
 
-<<<<<<< Updated upstream
-            <span><a>50</a></span>
-=======
             <span><a routerLink="/admin/list-paintings">{{auctions.length}}</a></span>
->>>>>>> Stashed changes
 
           </div>
         </div>
@@ -61,20 +57,14 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 5 ArtistAdmin
+              Latest {{latestArtistNumber}} Artist
             </div>
             <div class="card-body">
-<<<<<<< Updated upstream
-              <div class="late_info">
-                Talal
-                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-=======
               <div *ngFor="let artits of artists; let i = index" class="late_info">
                 <div *ngIf="i <= latestArtistNumber">
                 {{artits.name}}
                 <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                 </div>
->>>>>>> Stashed changes
               </div>
             </div>
           </div>
@@ -88,17 +78,11 @@
               Latest 5 Painting
             </div>
             <div class="card-body">
-<<<<<<< Updated upstream
-              <div class="late_info">
-                Sky Painting
-                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-=======
               <div *ngFor="let painting of paintings; let i = index" class="late_info">
                   <div *ngIf="i <= latestPaintingNumber">
                     {{painting.name}}
                     <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
->>>>>>> Stashed changes
               </div>
             </div>
           </div>
@@ -109,20 +93,14 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 5 Auctions
+              Latest {{latestAuctionNumber}} Auctions
             </div>
             <div class="card-body">
-<<<<<<< Updated upstream
-              <div class="late_info">
-                Golden Painting
-                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-=======
               <div *ngFor="let auction of auctions; let i = index" class="late_info">
                 <div *ngIf="i <= latestAuctionNumber">
                   {{auction.name}}
                   <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                 </div>
->>>>>>> Stashed changes
               </div>
             </div>
           </div>
@@ -149,5 +127,6 @@
 </div>
 </div>
 <div *ngIf="artists == null || paintings == null" class="w-100">
-  <h3 class="text-center text-primary">Loading Stats!</h3>
+<!--  <h3 class="text-center text-primary">Loading Stats!</h3>-->
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>

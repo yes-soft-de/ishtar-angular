@@ -5,10 +5,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
-import {PaintingInterface} from '../../../entity/painting/painting-interface';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
-import {log} from 'util';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 
@@ -34,7 +32,7 @@ export class AddPaintingComponent implements OnInit {
   selectedFile: ImageSnippet;
 
   constructor(private formBuilder: FormBuilder,
-              private photoListService: PhotosListService,
+              private photosListService: PhotosListService,
               private artistService: ArtistService,
               private toaster: ToastrService,
               private artTypeService: ArtTypeService,
@@ -44,25 +42,25 @@ export class AddPaintingComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-      (data) => {
-        if (data) {
-          this.artists = data.Data;
-        }
-      }, error => {
-        // TODO think if there is some to do here ex : display message if there is error
-        console.log('Error :', error);
-      });
+        (data) => {
+          if (data) {
+            this.artists = data.Data;
+          }
+        }, error => {
+          // TODO think if there is some to do here ex : display message if there is error
+          console.log('Error :', error);
+        });
     // Fetch All Art Type
     this.artTypeService.getAllArtType().subscribe(
-      (data: ArtTypeResponse) => {
-        if (data) {
-          console.log(data);
-          this.artTypes = data.Data;
+        (data: ArtTypeResponse) => {
+          if (data) {
+            console.log(data);
+            this.artTypes = data.Data;
+          }
+        },
+        error => {
+          console.log(error);
         }
-      },
-      error => {
-        console.log(error);
-      }
     );
     // Storing From Data
     this.uploadForm = this.formBuilder.group({
@@ -83,12 +81,7 @@ export class AddPaintingComponent implements OnInit {
     });
   }
 
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0].name;
-    }
-  }
-
+  // Select Image And Fetch Image Name
   updateName(imageInput: any) {
     const file: File = imageInput.files[0];
     this.imageName = file.name;
@@ -101,17 +94,15 @@ export class AddPaintingComponent implements OnInit {
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
-
       this.selectedFile = new ImageSnippet(event.target.result, file);
-
-      this.photoListService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-          console.log(res);
-          this.imageUrl = res.url;
-        },
-        (err) => {
-          console.log(err);
-        });
+      this.photosListService.uploadImage(this.selectedFile.file).subscribe(
+          (res) => {
+            console.log(res);
+            this.imageUrl = res.url;
+          },
+          (err) => {
+            console.log(err);
+          });
     });
 
     reader.readAsDataURL(file);
@@ -122,18 +113,18 @@ export class AddPaintingComponent implements OnInit {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
-      console.log(JSON.stringify(formObj));
-      this.photoListService.postAddPainting(formObj).subscribe(
+      console.log(formObj);
+      this.photosListService.postAddPainting(formObj).subscribe(
         data => {
-          // TODO insert ngx-toastr Message
+          this.toaster.success('Painting Was Successfully Added');
           console.log('the post request was successfully done', data);
         },
         error => {
-          // TODO insert ngx-toastr Message
-          console.log(`${JSON.stringify(error)}`);
+          console.log('there error from fetching the data', error);
+          this.toaster.error(`Sorry There is An Error: ${error}`);
         },
         () => {
-          // If Success Navigate to Admin Dashboard Page
+          // If Success Navigate to Admin List Paintings Page
           this.router.navigate(['admin/list-paintings']);
         }
       );
@@ -142,6 +133,7 @@ export class AddPaintingComponent implements OnInit {
     }
   }
 
+  // Method To Check if The form Fields Is Empty
   isEverythingFilled() {
     if (this.uploadForm.get('name').value.toString().length < 1) {
       return 'name is not filled!';

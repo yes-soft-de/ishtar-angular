@@ -4,13 +4,10 @@ import {Painting} from '../../entity/painting/painting';
 import {ArtistService} from '../../service/artist/artist.service';
 import {PhotosListService} from '../../service/PhotosList/photos-list.service';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
-<<<<<<< Updated upstream
-=======
 import {AuctionListResponse} from '../../entity/auction/auction-list-response';
 import {AuctionService} from '../../service/auction/auction.service';
 import {Auction} from '../../entity/auction/auction';
 import {AuctionList} from '../../entity/auction/auction-list';
->>>>>>> Stashed changes
 
 
 @Component({
@@ -21,25 +18,29 @@ import {AuctionList} from '../../entity/auction/auction-list';
 export class DashboardComponent implements OnInit {
   artists: Artist[];
   paintings: Painting[];
+  auctions: AuctionList[];
+  latestArtistNumber = 5;
+  latestPaintingNumber = 5;
+  latestAuctionNumber = 5;
+
   constructor(private artist: ArtistService,
-              private photosListService: PhotosListService) { }
+              private photosListService: PhotosListService,
+              private auctionService: AuctionService) { }
   ngOnInit() {
     // Fetch All Artists Number
     this.artist.getAllArtists().subscribe(
       (data) => {
         this.artists = data.Data;
-      }, error1 => {
-        console.log(error1);
+      }, error => {
+        console.log(error);
       });
     // Fetch All Paintings
     this.photosListService.getAllPainting().subscribe(
       (res: PaintingListResponse) => {
       this.paintings = res.Data;
-    }, error1 => {
-      console.log(error1);
+    }, error => {
+      console.log(error);
     });
-<<<<<<< Updated upstream
-=======
     // Fetch All Auction
     this.auctionService.getAllAuctions().subscribe(
         (data: AuctionListResponse) => {
@@ -50,7 +51,6 @@ export class DashboardComponent implements OnInit {
           console.log(error1);
         }
     );
->>>>>>> Stashed changes
   }
 
 }

@@ -28,13 +28,10 @@ import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {NgxBootstrapSliderModule} from 'ngx-bootstrap-slider';
-<<<<<<< Updated upstream
-=======
 import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 import {ArtTypeComponent} from './ui/components/art-type/art-type.component';
 import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [

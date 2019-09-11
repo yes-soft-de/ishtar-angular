@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <div class="col-4 p-3" id="artist-sidebar">
+  <div class="col-4 p-3" id="artist-sidebar" *ngIf="filter === true">
     <div>
       <h5>Filter By Art Type</h5>
       <button mdbBtn class="btn-light" *ngFor="let i of types"

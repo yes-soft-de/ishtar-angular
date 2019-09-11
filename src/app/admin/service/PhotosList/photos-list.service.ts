@@ -20,8 +20,7 @@ export class PhotosListService {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private httpClient: HttpClient) {
-  }
+              private httpClient: HttpClient) {}
 
 
   // Handling the error
@@ -102,13 +101,12 @@ export class PhotosListService {
     ).pipe(catchError(PhotosListService.errorHandler));
   }
 
+  // Admin Section - Uplaod Image For Painting
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
-
     formData.append('image', image);
-
     return this.httpClient.post<{
       url: string
-    }>('http://ishtar.96.lt/Ishtar/public/uploadArtistImage', formData);
+    }>(`${AdminConfig.generalUploadAPI}`, formData);
   }
 }

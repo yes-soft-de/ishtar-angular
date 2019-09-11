@@ -19,7 +19,8 @@ import {AddClientComponent} from './ui/client/add-client/add-client.component';
 import {ListClientComponent} from './ui/client/list-client/list-client.component';
 import {EditClientComponent} from './ui/client/edit-client/edit-client.component';
 import { AddImagesComponent } from './ui/images/add-images/add-images.component';
-import {AngularFileUploaderModule} from 'angular-file-uploader';
+import {AddAuctionComponent} from './ui/auction/add-auction/add-auction.component';
+import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import {AngularFileUploaderModule} from 'angular-file-uploader';
     AddClientComponent,
     ListClientComponent,
     EditClientComponent,
-    AddImagesComponent
+    AddImagesComponent,
+    AddAuctionComponent,
+    ListAuctionsComponent
    ],
   exports: [
     AdminComponent,
@@ -49,7 +52,7 @@ import {AngularFileUploaderModule} from 'angular-file-uploader';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    AngularFileUploaderModule
+    // AngularFileUploaderModule
   ]
 })
 export class AdminModule { }

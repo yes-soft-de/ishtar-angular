@@ -5,7 +5,7 @@
   <div id="art-type-header">
     <div id="art-type-header-img" class="d-flex align-items-center">
       <div class="position-absolute w-100 d-flex justify-content-end">
-        <div class="p-5" id="art-type-banner-text">
+        <div class="p-5 mt-2" id="art-type-banner-text">
           <h3 class="text-center">{{artType.name}}</h3>
           <p class="text-center">{{artType.history}}</p>
         </div>
@@ -17,22 +17,24 @@
     <div class="row d-flex justify-content-center">
       <div class="col-10 align-items-baseline" style="position: relative; top: -5rem;">
         <div class="d-flex align-items-baseline">
-          <div class="w-25">
-            <img src="https://media.istockphoto.com/photos/oil-painting-of-eiffel-tower-france-art-work-picture-id543465140?k=6&m=543465140&s=612x612&w=0&h=qprvWkD2JR9NPXOqo9EzPtVCnyuKIhuBGbaDTXPtn_Q=" style="width: 15rem; border-radius: 50%;" alt="...">
+          <div class="w-25" >
+            <img src="https://media.istockphoto.com/photos/oil-painting-of-eiffel-tower-france-art-work-picture-id543465140?k=6&m=543465140&s=612x612&w=0&h=qprvWkD2JR9NPXOqo9EzPtVCnyuKIhuBGbaDTXPtn_Q=" style="width: 15rem; border-radius: 50%;" alt="..."
+                 id="art-type-avatar">
           </div>
           <div class="w-75 m-0 row">
-            <div class="col-6">
+            <div class="col-6 d-flex flex-column" id="art-type-info">
               <h3>{{artType.name}}</h3>
               <ul style="list-style-type: none; margin: 0; padding: 0">
                 <li style="display: inline-block" class="m-1">
                   <a>
-                    <mdb-icon fab icon="hand-peace" size="2x"></mdb-icon>
+                    <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
                     Clap
                   </a>
                 </li>
                 <li style="display: inline-block" class="m-1">
                   <a>
-                    <mdb-icon far icon="heart" size="2x">Love</mdb-icon>
+                    <mdb-icon far icon="heart" size="2x"></mdb-icon>
+                    Love
                   </a>
                 </li>
               </ul>
@@ -54,9 +56,9 @@
   </div>
 
   <div id="art-type-images" style="margin-bottom: 5rem;">
-    <app-artist-list [artistListFormatted]="featuredArtists"
-                     *ngIf="!imagesLoaded"></app-artist-list>
-    <div *ngIf="imagesLoaded" class="d-flex p-5 justify-content-center">
+    <app-artist-list [artistListFormatted]="featuredArtists" [filter]="false"
+                     *ngIf="artistLoaded"></app-artist-list>
+    <div *ngIf="!artistLoaded" class="d-flex p-5 justify-content-center">
       <div class="d-flex flex-column">
         <h3 class="text-center"> Loading </h3>
         <img src="../../../../../assets/loading.gif" alt="..." class="m-3" style="object-fit: contain">

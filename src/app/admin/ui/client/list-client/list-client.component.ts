@@ -22,6 +22,7 @@ export class ListClientComponent implements OnInit {
         (data: ClientListResponse) => {
             if (data) {
                 this.clients = data.Data;
+                console.log(this.clients);
             }
       }, error => {
         // TODO think if there is some to do here ex : display message if there is error

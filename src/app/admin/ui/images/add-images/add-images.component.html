@@ -43,8 +43,13 @@
             <label class="col-2 col-form-label">Upload</label>
             <div class="col-10 input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile04" (change)="onFileSelect($event)" multiple>
-                    <label class="custom-file-label" for="inputGroupFile04">Choose Media To Upload</label>
+                    <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input" (change)="updateName(imageInput)">
+                    <label class="custom-file-label" for="file-input">{{imageName}}</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" (click)="processFile(imageInput)">
+                        Upload
+                    </button>
                 </div>
             </div>
         </div>

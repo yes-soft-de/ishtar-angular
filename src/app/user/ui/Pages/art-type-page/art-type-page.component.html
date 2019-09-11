@@ -1,5 +1,5 @@
 <app-header></app-header>
-<app-art-type *ngIf="artType != null"></app-art-type>
+<app-art-type *ngIf="artType != null" [artType]="artType"></app-art-type>
 <div *ngIf="artType == null" class="d-flex justify-content-center">
   <div class="d-flex flex-column m-5">
     <h5 class="text-center">Loading...</h5>

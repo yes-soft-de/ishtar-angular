@@ -13,6 +13,10 @@
 
 }
 
+#art-type-avatar {
+  height: 15rem;
+}
+
 #art-type-header-avatar {
   img {
     width: 15rem;
@@ -40,4 +44,9 @@
   overflow: auto;
   background: rgba(255, 255, 255, .5);
   margin-right: 5rem;
+}
+
+#art-type-info {
+  position: relative;
+  top: 1.5rem;
 }

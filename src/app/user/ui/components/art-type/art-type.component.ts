@@ -14,7 +14,7 @@ import {UserArtTypeService} from '../../../service/art-type/user-art-type.servic
 export class ArtTypeComponent implements OnInit {
   @Input() artType: ArtTypeDetails;
   featuredArtists: ArtistListItem[];
-  imagesLoaded = false;
+  artistLoaded = false;
 
   constructor(private artistList: ArtistListService,
               private activatedRoute: ActivatedRoute,
@@ -32,15 +32,18 @@ export class ArtTypeComponent implements OnInit {
         this.toaster.error(error1.message);
       }
     );
-    this.artistList.requestPaintingListByArtType(
-      this.activatedRoute.snapshot.paramMap.get('id')
-    ).subscribe(
+    this.featuredArtists = [];
+    this.artistList.requestArtistList().subscribe(
       data => {
-        this.featuredArtists = data.Data;
-        this.imagesLoaded = true;
+        for (const i of data.Data) {
+          if (i.artType === this.artType.name) {
+            this.featuredArtists.push(i);
+          }
+          this.artistLoaded = true;
+        }
       }, error1 => {
         this.toaster.error(error1.message);
-        this.imagesLoaded = false;
+        this.artistLoaded = false;
       }
     );
   }

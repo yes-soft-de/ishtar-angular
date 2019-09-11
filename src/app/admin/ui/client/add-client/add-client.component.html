@@ -1,34 +1,78 @@
 <div class="container">
-  <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #addClientForm="ngForm" (ngSubmit)="mySubmit(addClientForm)">
+  <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
     <h2 class="h1 ml-5 text-center">Add New Client</h2>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Name</label>
-      <div class="col-10">
-        <input class="form-control" type="text" name="name" ngModel placeholder="Type The Name">
+      <div class="form-group row">
+          <label class="col-2 col-form-label">First Name</label>
+          <div class="col-10">
+              <input class="form-control" type="text" name="firstName" formControlName="firstName" placeholder="Type The First Name">
+          </div>
       </div>
-    </div>
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Last Name</label>
+          <div class="col-10">
+              <input class="form-control" type="text" name="lastName" formControlName="lastName" placeholder="Type The Last Name">
+          </div>
+      </div>
      <div class="form-group row">
-      <label class="col-2 col-form-label">Client name</label>
+      <label class="col-2 col-form-label">Username</label>
       <div class="col-10">
-        <input class="form-control" type="text" name="username" ngModel placeholder="Type The Username">
+        <input class="form-control" type="text" name="userName" formControlName="userName" placeholder="Type The Username">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Password</label>
       <div class="col-10">
-        <input class="form-control" type="password" name="password" ngModel placeholder="Type The Password">
+        <input class="form-control" type="password" name="password" formControlName="password" placeholder="Type The Password">
       </div>
     </div>
     <div class="form-group row">
        <label class="col-2 col-form-label">Email</label>
        <div class="col-10">
-         <input class="form-control" type="email" name="email" ngModel placeholder="Type The Email">
+         <input class="form-control" type="email" name="email" formControlName="email" placeholder="Type The Email">
        </div>
      </div>
-     
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Birth Date</label>
+          <div class="col-10">
+              <input class="form-control" type="date" name="birthDate" formControlName="birthDate">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Phone</label>
+          <div class="col-10">
+              <input class="form-control" type="number" name="phone" formControlName="phone" placeholder="Type The Phone Number">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Person Kind</label>
+          <div class="col-10">
+              <select class="form-control" name="roll" formControlName="roll">
+                  <option value="">Select The Kind Of Person</option>
+                  <option value="1">Artist</option>
+                  <option value="2">Famous</option>
+                  <option value="3">Admin</option>
+                  <option value="4">Client</option>
+              </select>
+          </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-2 col-form-label">Upload</label>
+          <div class="input-group col-10">
+              <div class="custom-file">
+                  <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input"
+                         (change)="updateName(imageInput)">
+                  <label class="custom-file-label" for="file-input">{{imageName}}</label>
+              </div>
+              <div class="input-group-append">
+                  <button class="btn btn-success" type="button" (click)="processFile(imageInput)" [disabled]=!fileSelected>
+                      Upload
+                  </button>
+              </div>
+          </div>
+      </div>
 
     <div class="form-group offset-md-2 mt-3">
-      <input class="btn btn-primary btn-block" type="submit" value="Add New Client">
+      <input class="btn btn-primary btn-block" type="submit" value="Add New Client" [disabled]=!fileSelected>
     </div>
   </form>
 </div>
