@@ -15,7 +15,7 @@
               </a>
 
               <div class="dropdown-menu dropdown-primary">
-                <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/:id">{{i.name}}</a>
+                <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">{{i.name}}</a>
               </div>
             </div>
           </li>

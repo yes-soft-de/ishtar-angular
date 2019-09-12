@@ -25,7 +25,7 @@ export class ArtistDetailsPageComponent implements OnInit {
   private fetchData() {
     this.artistService.requestArtistDetails(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
-        this.artist = data.Data;
+        this.artist = data.Data[0];
       }, error1 => {
         console.log('Retrying');
         this.fetchData();

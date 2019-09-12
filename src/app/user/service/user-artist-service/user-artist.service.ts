@@ -12,15 +12,14 @@ export class UserArtistService {
   }
 
   requestArtistDetails(artistId: string) {
-    return this.httpClient.post<{
-      Data: ArtistDetails
-    }>(
+    const request: {
+      artist: string
+    } = {
+      artist: artistId
+    };
+    return this.httpClient.post<{ Data: ArtistDetails[] }>(
       UserConfig.ArtistDetailsAPI,
-      JSON.stringify({
-          parm: 'artist',
-          value: artistId
-        }
-      )
+      JSON.stringify(request)
     );
   }
 }

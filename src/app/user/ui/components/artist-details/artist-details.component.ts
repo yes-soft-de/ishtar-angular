@@ -16,8 +16,6 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() artist: ArtistDetails;
   artistMainPainting: PaintingListItem;
 
-  activeArtType: string;
-
   constructor(private activatedRoute: ActivatedRoute,
               private artistPaintings: PaintingListService,
               private artistDetails: UserArtistService,
@@ -25,17 +23,13 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.artistDetails.requestArtistDetails(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
-      data => {
-        this.artist = data.Data;
-      }, error1 => {
-        console.log(error1);
-      }
-    );
     this.artistPaintings.requestPaintingListByArtist(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.featuredPaintings = data.Data;
-        this.artistMainPainting = this.featuredPaintings[Math.random() * 100 % this.featuredPaintings.length];
+        const random = `${Math.random() * 100}`;
+        const randPainting = parseInt(random, 10) % this.featuredPaintings.length;
+        this.artistMainPainting = this.featuredPaintings[randPainting];
+        console.log(`random Painting ${randPainting}`);
       }, error1 => {
         console.log(error1);
       }

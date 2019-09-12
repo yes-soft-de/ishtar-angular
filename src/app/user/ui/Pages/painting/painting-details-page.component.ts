@@ -13,7 +13,8 @@ import {PaintingListItem} from '../../../entity/painting-list/painting-list-item
 export class PaintingDetailsPageComponent implements OnInit {
   paintingDetails: PaintingDetails = null;
 
-  constructor(private toaster: ToastrService, private activatedRoute: ActivatedRoute,
+  constructor(private toaster: ToastrService,
+              private activatedRoute: ActivatedRoute,
               private paintingDetailsService: PaintingDetailsService) {
   }
 
@@ -21,14 +22,14 @@ export class PaintingDetailsPageComponent implements OnInit {
     console.log(this.activatedRoute.snapshot.paramMap.get('id'));
     // region Make Sure the Data arrived
     this.paintingDetailsService.requestPaintingDetails(
-      this.activatedRoute.snapshot.paramMap.get('id'))
-      .subscribe(
-        data => {
-          this.paintingDetails = data;
-          console.log(JSON.stringify(data));
-        }, error1 => {
-          console.log(error1);
-        }
-      );
+      this.activatedRoute.snapshot.paramMap.get('id')
+    ).subscribe(
+      data => {
+        this.paintingDetails = data;
+        console.log(JSON.stringify(data));
+      }, error1 => {
+        console.log(error1);
+      }
+    );
   }
 }

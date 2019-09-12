@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute} from '@angular/router';
-import {ArtTypeDetails} from '../../../entity/art-type-details/art-type-details';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
+import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 
 @Component({
   selector: 'app-art-type-page',
@@ -10,7 +10,7 @@ import {UserArtTypeService} from '../../../service/art-type/user-art-type.servic
   styleUrls: ['./art-type-page.component.scss']
 })
 export class ArtTypePageComponent implements OnInit {
-  artType: ArtTypeDetails = null;
+  artType: ArtTypeListItem = null;
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
@@ -23,7 +23,16 @@ export class ArtTypePageComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe(
       data => {
-        this.artType = data.Data;
+        this.artTypeService.getAllArtTypeWithDetails().subscribe(
+          response => {
+            for (const i of response.Data) {
+              if (i.name === data.Data.name) {
+                this.artType = i;
+                console.log(i.history);
+              }
+            }
+          }
+        );
       }
     );
   }

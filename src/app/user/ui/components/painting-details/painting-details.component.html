@@ -1,12 +1,6 @@
 <div class="container-fluid row">
   <div class="col-2 row d-flex flex-column" id="painting-list-images">
-    <div class="pl-4">
-      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
-    </div>
-    <div class="pl-4">
-      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
-    </div>
-    <div class="pl-4">
+    <div class="pl-4" *ngFor="let i of [1,1,1]">
       <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
     </div>
   </div>

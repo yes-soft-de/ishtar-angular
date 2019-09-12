@@ -8,8 +8,6 @@ import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {catchError} from 'rxjs/operators';
 import {ArtTypeResponse} from '../../entity/art-type/art-type-response';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
