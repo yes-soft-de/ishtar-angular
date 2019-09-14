@@ -8,6 +8,7 @@ import {PaintingListItem} from '../../../entity/painting-list/painting-list-item
 })
 export class PaintingListComponent implements OnInit {
   public defaultImg = '../../../../../assets/1x/img-01.jpg';
+  @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
   @Input() formattedPaintingList: PaintingListItem[];

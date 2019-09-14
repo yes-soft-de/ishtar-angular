@@ -1,77 +1,57 @@
 <div class="container-fluid row">
   <div class="col-2 row d-flex flex-column" id="painting-list-images">
+    <!-- Painting Images List -->
     <div class="pl-4" *ngFor="let i of [1,1,1]">
-      <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
+      <img class="img-fluid" src="{{painting.image}}" alt="...">
     </div>
+    <!-- #Painting Images List -->
   </div>
   <div class="col-6 m-0 p-0" id="main-image">
-    <img class="img-fluid" src="https://afremov.com/images/product/image_2347.jpeg" alt="...">
+    <img class="img-fluid" src="{{painting.image}}" alt="..." style="max-height: 40rem">
   </div>
   <div class="col-4 d-flex flex-column justify-content-between">
     <div class="d-flex flex-column">
-      <h3>Flowers</h3>
-      <p>120cm x 200cm</p>
-      <p>Oil on wood</p>
-      <h5>Artist Name</h5>
+      <h3>{{painting.name}}</h3>
+      <p>{{painting.height}} CM x {{painting.width}} CM</p>
+      <p>{{painting.colorsType}}</p>
+      <h5>{{painting.artist}}</h5>
     </div>
-    <button mdbBtn class="btn-outline-secondary m-0 my-2" style="background-color: goldenrod">Add to Wish List</button>
+    <ul style="list-style-type: none; margin: 0; padding: 0">
+      <li style="display: inline-block" class="m-1">
+        <a (click)="clapThePainting()" *ngIf="!paintingClapped">
+          <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
+          Clap
+        </a>
+        <a *ngIf="paintingClapped">
+          <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
+          Clap
+        </a>
+      </li>
+      <li style="display: inline-block" class="m-1">
+        <a (click)="loveThePainting()" *ngIf="!paintingLiked">
+          <mdb-icon far icon="heart" size="2x"></mdb-icon>
+          Love
+        </a>
+        <a *ngIf="paintingLiked">
+          <mdb-icon fas icon="heart" size="2x"></mdb-icon>
+          Love
+        </a>
+      </li>
+    </ul>
+    <button mdbBtn class="btn-outline-secondary m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()">Add to Wish List</button>
     <video src="../../../../../assets/1x/painting_video.mp4"></video>
   </div>
 </div>
 
-<div class="container-fluid row p-5">
+<div class="container-fluid row p-5 text-dark">
   <ngx-tabs>
-    <ngx-tab label="About the Painting">
-      Layers and Layers
-      There are some things we know for sure about vision.
-
-      The eye acts as a lens. It receives light from the outside world and projects a scale replica of our visual field
-      onto the retina, which sits in the back of the eye. The retina is connected to the visual cortex, the part of the
-      brain in the back of the head.
-
-      However, there’s very little connectivity between the retina and the visual cortex. For a visual area roughly
-      one-quarter the size of a full moon, there are only about 10 nerve cells connecting the retina to the visual
-      cortex. These cells make up the LGN, or lateral geniculate nucleus, the only pathway through which visual
-      information travels from the outside world into the brain.
-
-      Not only are LGN cells scarce — they can’t do much either. LGN cells send a pulse to the visual cortex when they
-      detect a change from dark to light, or vice versa, in their tiny section of the visual field. And that’s all. The
-      lighted world bombards the retina with data, but all the brain has to go on is the meager signaling of a tiny
-      collection of LGN cells. To see the world based on so little information is like trying to reconstruct Moby-Dick
-      from notes on a napkin.
-
-      “You may think of the brain as taking a photograph of what you see in your visual field,” Young said. “But the
-      brain doesn’t take a picture, the retina does, and the information passed from the retina to the visual cortex is
-      sparse.”
-
-      But then the visual cortex goes to work. While the cortex and the retina are connected by relatively few neurons,
-      the cortex itself is dense with nerve cells. For every 10 LGN neurons that snake back from the retina, there are
-      4,000 neurons in just the initial “input layer” of the visual cortex — and many more in the rest of it. This
-      discrepancy suggests that the brain heavily processes the little visual data it does receive.
-
-      “The visual cortex has a mind of its own,” Shapley said.
-
-      For researchers like Young, Shapley and Chariker, the challenge is deciphering what goes on in that mind.
+    <ngx-tab label="About the Painting" class="text-dark">
+      {{painting.story}}
     </ngx-tab>
     <ngx-tab label="community">
-      Young and her collaborators have been building their model by incorporating one basic element of vision at a time.
-      They’ve explained how neurons in the visual cortex interact to detect the edges of objects and changes in
-      contrast, and now they’re working on explaining how the brain perceives the direction in which objects are moving.
-
-      Their work is the first of its kind. Previous efforts to model human vision made wishful assumptions about the
-      architecture of the visual cortex. Young, Shapley and Chariker’s work accepts the demanding, unintuitive biology
-      of the visual cortex as is — and tries to explain how the phenomenon of vision is still possible.
-
-      “I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
-      that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of Utah.
+      <app-comments [pageType]="'painting'"></app-comments>
     </ngx-tab>
   </ngx-tabs>
-
-  <h5>About the Art Type</h5>
-  <p>
-    “I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
-    that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of Utah.
-  </p>
 
   <div class="p-5" style="background-color: #D9D9D9" id="famous-quote">
     <div class="row d-flex align-items-center mb-3">
@@ -90,5 +70,5 @@
 
 <div class="p-5">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" *ngIf="featuredList != null"></app-c-painting-list>
+  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false" *ngIf="featuredList != null"></app-c-painting-list>
 </div>

@@ -1,13 +1,13 @@
-
-import {ImageItem} from '../image/image-item';
-import {PaintingListItem} from '../painting-list/painting-list-item';
-
 export interface PaintingDetails {
+  id: number;
   name: string;
-  artistName: string;
-  artistId: number;
-  artistImageUrl: string;
+  keyWords: string;
+  state: boolean;
+  height: string;
+  width: string;
+  colorsType: string;
+  image: string;
+  active: boolean;
+  artist: string;
   story: string;
-  paintingImages: ImageItem[];
-  otherPaintingsByArtist: PaintingListItem[];
 }

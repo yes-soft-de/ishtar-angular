@@ -1,11 +1,5 @@
-import {ImageItem} from '../image/image-item';
-import {PaintingListItem} from '../painting-list/painting-list-item';
+import {PaintingDetails} from './painting-details';
 
 export interface PaintingDetailsResponse {
-  name: string;
-  artistName: string;
-  artistId: number;
-  artistImageUrl: string;
-  paintingImages: ImageItem[];
-  otherPaintingsByArtist: PaintingListItem[];
+  Data: PaintingDetails[];
 }

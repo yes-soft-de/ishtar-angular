@@ -4,6 +4,7 @@ import {PaintingDetailsService} from '../../../service/painting-details/painting
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {ToastrService} from 'ngx-toastr';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
 
 @Component({
   selector: 'app-painting',
@@ -15,21 +16,21 @@ export class PaintingDetailsPageComponent implements OnInit {
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
-              private paintingDetailsService: PaintingDetailsService) {
+              private paintingDetailsService: PaintingDetailsService,
+              private artTypeService: UserArtTypeService) {
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
-    // region Make Sure the Data arrived
     this.paintingDetailsService.requestPaintingDetails(
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe(
       data => {
-        this.paintingDetails = data;
-        console.log(JSON.stringify(data));
+        this.paintingDetails = data.Data[0];
       }, error1 => {
         console.log(error1);
       }
     );
+
+
   }
 }

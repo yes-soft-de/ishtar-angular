@@ -6,6 +6,7 @@ import {ArtistListService} from '../../../service/artist-list/artist-list.servic
 import {ArtTypeDetails} from '../../../entity/art-type-details/art-type-details';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
+import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 
 @Component({
   selector: 'app-art-type',
@@ -17,9 +18,13 @@ export class ArtTypeComponent implements OnInit {
   featuredArtists: ArtistListItem[];
   artistLoaded = false;
 
+  artTypeClapped = false;
+  artTypeLiked = false;
+
   constructor(private artistList: ArtistListService,
               private activatedRoute: ActivatedRoute,
               private artTypeService: UserArtTypeService,
+              private interactionService: IshtarInteractionService,
               private toaster: ToastrService) {
   }
 
@@ -54,4 +59,17 @@ export class ArtTypeComponent implements OnInit {
   followArtType() {
     this.toaster.success('You Are Now Following the Art Type');
   }
+
+  clapThePainting() {
+    this.interactionService.love(`${this.artType.id}`, 'painting');
+    this.artTypeClapped = true;
+    this.toaster.success('Painting Clapped');
+  }
+
+  loveThePainting() {
+    this.interactionService.love(`${this.artType.id}`, 'painting');
+    this.artTypeLiked = true;
+    this.toaster.success('Painting Loved');
+  }
+
 }

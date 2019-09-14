@@ -26,14 +26,22 @@
               <h3>{{artType.name}}</h3>
               <ul style="list-style-type: none; margin: 0; padding: 0">
                 <li style="display: inline-block" class="m-1">
-                  <a>
+                  <a (click)="clapThePainting()" *ngIf="!artTypeClapped">
                     <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
+                    Clap
+                  </a>
+                  <a *ngIf="artTypeClapped">
+                    <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
                     Clap
                   </a>
                 </li>
                 <li style="display: inline-block" class="m-1">
-                  <a>
+                  <a (click)="loveThePainting()" *ngIf="!artTypeLiked">
                     <mdb-icon far icon="heart" size="2x"></mdb-icon>
+                    Love
+                  </a>
+                  <a *ngIf="artTypeLiked">
+                    <mdb-icon fas icon="heart" size="2x"></mdb-icon>
                     Love
                   </a>
                 </li>

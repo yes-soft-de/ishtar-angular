@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
 import {ImageListResponse} from '../../entity/image/image-list-response';
 import {PaintingDetails} from '../../entity/painting-details/painting-details';
+import {PaintingDetailsResponse} from '../../entity/painting-details/painting-details-response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +14,12 @@ export class PaintingDetailsService {
   }
 
   requestPaintingDetails(paintingId: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'sec-fetch-mode': 'no-cors',
-        'sec-fetch-site': 'none'
-      })
-    };
-    const req: { painting: string } = {
+    const req: { painting: string} = {
       painting: paintingId
     };
-    return this.httpClient.post<PaintingDetails>(
+    return this.httpClient.post<PaintingDetailsResponse>(
       UserConfig.PaintingDetailsAPI,
-      JSON.stringify(req),
-      httpOptions);
+      JSON.stringify(req));
   }
 
   requestPaintingImages(paintingId: string) {

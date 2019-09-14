@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -22,7 +23,7 @@ export class ArtistListComponent implements OnInit {
 
   public activeArtType: string;
 
-  constructor() {
+  constructor(private artistListService: UserArtistService) {
   }
 
   ngOnInit() {

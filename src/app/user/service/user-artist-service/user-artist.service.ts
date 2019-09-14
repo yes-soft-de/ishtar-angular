@@ -22,4 +22,9 @@ export class UserArtistService {
       JSON.stringify(request)
     );
   }
+
+  getPaintingNumber(artistId: string) {
+    const request: { parm: string, value: string } = {parm: 'artist', value: artistId};
+    return this.httpClient.post<{Data: []}>(UserConfig.getByAPI, request);
+  }
 }
