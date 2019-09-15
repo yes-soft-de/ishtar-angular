@@ -18,12 +18,20 @@ class ImageSnippet {
   styleUrls: ['./add-images.component.scss']
 })
 export class AddImagesComponent implements OnInit {
+  isSubmitted = false;
   uploadForm: FormGroup;
   paintings: Painting[];
-  imageName = 'Select File';
+  entityID: number;
+  Entity: any = ['Painting', 'Artist', 'ArtType', 'Auction', 'Client'];
+  rowEntity: {Data: any[]};
+  rowActive = true;
+  uploadButtonValue = 'Upload';
+  imageName = 'Select Image';
   fileSelected = false;
   fileUploaded = false;
   imageUrl: string;
+  imagePathReady = false;
+  submitButtonValue = 'Waiting Uploading Image';
   selectedFile: ImageSnippet;
 
   constructor(private route: ActivatedRoute,
@@ -44,10 +52,10 @@ export class AddImagesComponent implements OnInit {
         });
     // Storing Our Form Data
     this.uploadForm = this.formBuilder.group({
-      media: [''],
-      entity: [''],
-      row: [''],
-      name: [''],
+      media: ['', Validators.required],
+      entity: ['', Validators.required],
+      row: [{value: '', disabled: this.rowActive}, Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       path: ['']
     });
   }
@@ -65,15 +73,58 @@ export class AddImagesComponent implements OnInit {
   *****/
   }
 
+  // Choose Media Using Select Dropdown
+  changeMedia(event) {
+    this.uploadForm.get('media').setValue(event.target.value, {
+      onlySelf : true
+    });
+  }
+  // Choose Row Using Select Dropdown
+  changeRow(event) {
+    this.uploadForm.get('row').setValue(event.target.value, {
+      onlySelf: true
+    });
+  }
+  // Choose Entity Using Select Dropdown
+  changeEntity(event) {
+    // this.uploadForm.get('row').disable();
+    this.entityID = event.target.value[0];
+    const entityName = event.target.value.slice(3);
+    this.uploadForm.get('entity').setValue(event.target.value, {
+      onlySelf : true
+    });
+    // fetch the All Rows For this Entity
+    this.httpClient.post(
+      `${AdminConfig.allRowSelectedEntityAPI}`,
+      JSON.stringify({entity: entityName})
+    ).subscribe(
+        (data: {Data: any}) => {
+          if (entityName === 'Client') {
+            // Create Boolean Variable to Fix this
+          }
+          this.rowEntity = data.Data;
+          this.uploadForm.get('row').enable();
+          // this.rowActive = false;
+          console.log(this.rowEntity);
+      },
+      error => {
+        console.log('Error Fetch Row Entity : ', error);
+      }
+    );
+  }
+
   // Get Image Name And Active Upload Button
   updateName(imageInput: any) {
    const file = imageInput.files[0];
+   this.uploadButtonValue = 'Upload';
    this.imageName = file.name;    // Display Image Name
    this.fileSelected = true;      // Active Upload Button
   }
 
   // Uploading THe File
   processFile(imageInput: any) {
+    this.fileSelected = false;
+    this.uploadButtonValue = 'Uploading...';
     console.log('Progressing File');
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -83,6 +134,9 @@ export class AddImagesComponent implements OnInit {
         (res) => {
           console.log(res);
           this.imageUrl = res.url;
+          this.uploadButtonValue = 'Uploaded';
+          this.imagePathReady = true;
+          this.submitButtonValue = 'Add New Media';
         },
         (err) => {
           console.log(err);
@@ -91,32 +145,17 @@ export class AddImagesComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-// Method To Check if The form Fields Is Empty
-  isEverythingFilled() {
-    if (this.uploadForm.get('media').value.toString().length < 1) {
-      return 'Media is not filled!';
-    }
-    if (this.uploadForm.get('entity').value.toString().length < 1) {
-      return 'Entity is not filled!';
-    }
-    if (this.uploadForm.get('row').value.toString().length < 1) {
-      return 'Row is not filled!';
-    }
-    if (this.uploadForm.get('name').value.toString().length < 1) {
-      return 'Name is not filled!';
-    }
-    if (this.uploadForm.get('path').value.toString().length < 1) {
-      return 'Path is not filled!';
-    }
-    return true;
-  }
-
   // On Submit The Form
   mySubmit() {
-    if (this.isEverythingFilled()) {
+    this.isSubmitted = true;
+    if (!this.uploadForm.valid) {
+      this.toast.error('Error : Form Not Valid');
+      return false;
+    } else {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
-      formObj.image = this.imageUrl;
+    formObj.entity = this.entityID;
+      formObj.path = this.imageUrl;
       console.log(formObj);
       this.httpClient.post(
           `${AdminConfig.addMediaAPI}`,
@@ -124,19 +163,17 @@ export class AddImagesComponent implements OnInit {
       ).subscribe(
           data => {
             this.toast.success('Media Was Successfully Added');
-            console.log('the post request was successfully done', data);
+            console.log('Post request was successfully done', data);
           },
           error => {
             console.log('there error from fetching the data', error);
-            this.toast.error(`Sorry There is An Error: ${error}`);
+            this.toast.error('Error: Media Not Uploaded Successfully');
           },
           () => {
             // If Success Navigate to Admin Dashboard Page
             this.router.navigate(['../'], {relativeTo: this.route});
           }
       );
-    } else {
-      this.toast.error(`Error: ${this.isEverythingFilled()}`);
     }
   }
 }

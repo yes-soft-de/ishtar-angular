@@ -18,7 +18,6 @@ export class ListAuctionsComponent implements OnInit {
     this.auctionService.getAllAuctions().subscribe(
         (data: AuctionListResponse) => {
           this.auctions = data.Data;
-          console.log(data);
         },
         error1 => {
           console.log(error1);

@@ -12,7 +12,7 @@ import {UserArtTypeService} from '../../../service/art-type/user-art-type.servic
   styleUrls: ['./painting-details-page.component.scss']
 })
 export class PaintingDetailsPageComponent implements OnInit {
-  paintingDetails: PaintingDetails = null;
+  paintingDetails: PaintingDetails;
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
@@ -26,6 +26,7 @@ export class PaintingDetailsPageComponent implements OnInit {
     ).subscribe(
       data => {
         this.paintingDetails = data.Data[0];
+        console.log(JSON.stringify(data.Data[0]));
       }, error1 => {
         console.log(error1);
       }

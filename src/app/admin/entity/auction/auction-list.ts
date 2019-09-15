@@ -1,9 +1,9 @@
 export class AuctionList {
-    id: number;
-    name: string;
-    startDate: Date;
-    endDate: Date;
-    startPrice: number;
-    finalPrice: number;
-    highiestPrice: number;
+    public id: number;
+    public name: string;
+    public startDate: Date;
+    public endDate: Date;
+    public startPrice: number;
+    public finalPrice: number;
+    public highiestPrice: number;
 }

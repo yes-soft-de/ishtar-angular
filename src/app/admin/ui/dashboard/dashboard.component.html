@@ -32,7 +32,7 @@
           <div>
             <h6>Total Auctions</h6>
 
-            <span><a routerLink="/admin/list-paintings">{{auctions.length}}</a></span>
+            <span><a routerLink="/admin/list-auctions">{{auctions?.length}}</a></span>
 
           </div>
         </div>
@@ -60,12 +60,14 @@
               Latest {{latestArtistNumber}} Artist
             </div>
             <div class="card-body">
-              <div *ngFor="let artits of artists; let i = index" class="late_info">
-                <div *ngIf="i <= latestArtistNumber">
-                {{artits.name}}
-                <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                </div>
-              </div>
+              <ng-container *ngFor="let artist of artists; let i = index">
+                <ng-container *ngIf="i < latestArtistNumber">
+                  <div class="late_info">
+                    {{artist.name}}
+                    <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                  </div>
+                </ng-container>
+              </ng-container>
             </div>
           </div>
         </div>
@@ -78,12 +80,14 @@
               Latest 5 Painting
             </div>
             <div class="card-body">
-              <div *ngFor="let painting of paintings; let i = index" class="late_info">
-                  <div *ngIf="i <= latestPaintingNumber">
+              <ng-container *ngFor="let painting of paintings; let i = index">
+                <ng-container *ngIf="i < latestPaintingNumber">
+                  <div class="late_info">
                     {{painting.name}}
                     <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
-              </div>
+                </ng-container>
+              </ng-container>
             </div>
           </div>
         </div>
@@ -96,12 +100,14 @@
               Latest {{latestAuctionNumber}} Auctions
             </div>
             <div class="card-body">
-              <div *ngFor="let auction of auctions; let i = index" class="late_info">
-                <div *ngIf="i <= latestAuctionNumber">
-                  {{auction.name}}
-                  <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                </div>
-              </div>
+              <ng-container *ngFor="let auction of auctions; let i = index">
+                <ng-container *ngIf="i < latestAuctionNumber">
+                  <div class="late_info">
+                      {{auction.name}}
+                      <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                  </div>
+                </ng-container>
+              </ng-container>
             </div>
           </div>
         </div>

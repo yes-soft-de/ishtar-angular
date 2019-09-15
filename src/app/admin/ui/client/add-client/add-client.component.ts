@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientService} from '../../../service/client/client.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {Router} from '@angular/router';
@@ -15,12 +15,15 @@ class ImageSnippet {
   styleUrls: ['./add-client.component.scss']
 })
 export class AddClientComponent implements OnInit {
+  isSubmitted = false;
   uploadForm: FormGroup;
-
+  uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
   fileUploaded = false;
   imageUrl: string;
+  imagePathReady = false;
+  submitButtonValue = 'Waiting Uploading Image';
   selectedFile: ImageSnippet;
 
   constructor(private formBuilder: FormBuilder,
@@ -31,14 +34,14 @@ export class AddClientComponent implements OnInit {
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      roll: [''],
-      userName: [''],
-      password: [''],
-      email: [''],
-      birthDate: [''],
-      phone: [''],
+      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      roll: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      birthDate: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       image: ['']
       // createDate: [''],
       // createdBy: [''],
@@ -47,15 +50,25 @@ export class AddClientComponent implements OnInit {
     });
   }
 
+  // Choose Roll Using Select Dropdown
+  changeRoll(event) {
+    this.uploadForm.get('roll').setValue(event.target.value, {
+      onlySelf : true
+    });
+  }
+
   // Select Image And Fetch Image Name
   updateName(imageInput: any) {
     const file: File = imageInput.files[0];
+    this.uploadButtonValue = 'Upload';
     this.imageName = file.name;
     this.fileSelected = true;
   }
 
   //
   processFile(imageInput: any) {
+    this.fileSelected = false;
+    this.uploadButtonValue = 'Uploading...';
     console.log('Processing File');
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -68,6 +81,9 @@ export class AddClientComponent implements OnInit {
           (res) => {
             console.log(res);
             this.imageUrl = res.url;
+            this.uploadButtonValue = 'Uploaded';
+            this.imagePathReady = true;
+            this.submitButtonValue = 'Add New Client';
           },
           (err) => {
             console.log(err);
@@ -77,39 +93,13 @@ export class AddClientComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  // Check IF the Form Fields Is Empty
-  isEverythingFilled() {
-    if (this.uploadForm.get('firstName').value.toString().length.length < 1) {
-      return 'First Name Is Not Filled';
-    }
-    if (this.uploadForm.get('lastName').value.toString().length < 1) {
-      return 'Last Name Is Not Filled';
-    }
-    if (this.uploadForm.get('roll').value.toString().length < 1) {
-      return 'Person Kind Is Not Filled';
-    }
-    if (this.uploadForm.get('userName').value.toString().length < 1) {
-      return 'UserName Is Not Filled';
-    }
-    if (this.uploadForm.get('password').value.toString().length < 1) {
-      return 'Password Is Not Filled';
-    }
-    if (this.uploadForm.get('email').value.toString().length < 1) {
-      return 'Email Is Not Filled';
-    }
-    if (this.uploadForm.get('birthDate').value.toString().length < 1) {
-      return 'Birth Date Is Not Filled';
-    }
-    if (this.uploadForm.get('phone').value.toString().length < 1) {
-      return 'Phone Is Not Filled';
-    }
-    return true;
-  }
 
   mySubmit() {
-    console.log(`out:${this.isEverythingFilled()}`);
-    if (this.isEverythingFilled()) {
-      console.log(`In:${this.isEverythingFilled()}`);
+    this.isSubmitted = true;
+    if (!this.uploadForm.valid) {
+      this.toast.error('Error : Form Not Valid');
+      return false;
+    } else {
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
       console.log(formObj);
@@ -119,16 +109,13 @@ export class AddClientComponent implements OnInit {
             this.toast.success('Client Was Successfully Added');
           },
           error => {
-            console.log('there error from fetching the data', error);
-            this.toast.error(`Sorry There is An Error: ${error}`);
+            console.log('Error from fetching the data :', error);
+            this.toast.error('Error: Client Not Uploaded Successfully');
           },
           () => {
             this.router.navigate(['admin/list-clients']);
           }
       );
-    } else {
-      console.log(this.isEverythingFilled());
-      this.toast.error(`Error: ${this.isEverythingFilled()}`);
     }
   }
 

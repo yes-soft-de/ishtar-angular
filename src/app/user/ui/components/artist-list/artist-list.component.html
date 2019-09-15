@@ -11,16 +11,19 @@
     <section id="photos" class="row">
       <div *ngFor="let artist of artistList"
            class="col-4">
-        <a routerLink="/artist/{{artist.id}}">
-          <div class="artist-card">
-            <img class="img-fluid" src="{{artist.image}}" alt="...">
-            <div class="details-container">
-              <div class="row">
+        <a routerLink="/artist/{{artist.id}}" class="w-100">
+          <div class="artist-card d-flex justify-content-center flex-column">
+            <div class="d-flex justify-content-center w-100">
+              <img class="img-fluid" src="{{artist.image}}" alt="...">
+            </div>
+            <div class="w-100" id="details-container">
+              <div class="inner-details-container">
                 <h3 class="col-12 text-center">{{artist.name}}</h3>
                 <p class="col-12 text-center">{{artist.paintingNumber}} painting</p>
                 <p class="col-12 text-center">{{artist.artistFollowers}} Followers</p>
               </div>
             </div>
+
           </div>
         </a>
       </div>

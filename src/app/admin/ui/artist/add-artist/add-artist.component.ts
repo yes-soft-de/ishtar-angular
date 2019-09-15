@@ -3,18 +3,15 @@ import {ArtistService} from '../../../service/artist/artist.service';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
-
 class ImageSnippet {
-  constructor(public src: string, public file: File) {
-  }
+  constructor(public src: string, public file: File) {}
 }
-
 
 @Component({
   selector: 'app-add-artist',
@@ -22,14 +19,16 @@ class ImageSnippet {
   styleUrls: ['./add-artist.component.scss']
 })
 export class AddArtistComponent implements OnInit {
+  isSubmitted = false;
   uploadForm: FormGroup;
   artTypes: ArtType[];
-
-
+  uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
   fileUploaded = false;
   imageUrl: string;
+  imagePathReady = false;
+  submitButtonValue = 'Waiting Uploading Image';
   selectedFile: ImageSnippet;
 
   constructor(private httpClient: HttpClient,
@@ -38,8 +37,7 @@ export class AddArtistComponent implements OnInit {
               private artTypeService: ArtTypeService,
               private photoListService: PhotosListService,
               private router: Router,
-              private toaster: ToastrService) {
-  }
+              private toaster: ToastrService) {}
 
   ngOnInit() {
     // Fetch All Art Type
@@ -47,6 +45,7 @@ export class AddArtistComponent implements OnInit {
       (data: ArtTypeResponse) => {
         if (data) {
           this.artTypes = data.Data;
+          console.log(data);
         }
       },
       error => {
@@ -55,38 +54,39 @@ export class AddArtistComponent implements OnInit {
     );
     // Fetch Form Data
     this.uploadForm = this.formBuilder.group({
-      name: [''],
-      nationality: [''],
-      residence: [''],
-      birthDate: [''],
-      Facebook: [''],
-      Instagram: [''],
-      Linkedin: [''],
-      Twitter: [''],
-      artType: [''],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      nationality: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      residence: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      birthDate: ['', Validators.required],
+      Facebook: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      Instagram: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      Linkedin: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      Twitter: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      artType: ['', [Validators.required]],
       image: [''],
       // video: [''],
-      details: [''],
-      story: ['']
+      details: ['', [Validators.required, Validators.minLength(2)]],
+      story: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
-  // On Select Image to Upload
-
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0].name;
-      this.uploadForm.get('image').setValue(file);
-    }
+  // Choose Art Type Using Select Dropdown
+  changeArtType(event) {
+    this.uploadForm.get('artType').setValue(event.target.value, {
+      onlySelf : true
+    });
   }
 
   updateName(imageInput: any) {
     const file: File = imageInput.files[0];
+    this.uploadButtonValue = 'Upload';
     this.imageName = file.name;
     this.fileSelected = true;
   }
 
   processFile(imageInput: any) {
+    this.fileSelected = false;
+    this.uploadButtonValue = 'Uploading...';
     console.log('Processing File');
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -99,75 +99,40 @@ export class AddArtistComponent implements OnInit {
         (res) => {
           console.log(res);
           this.imageUrl = res.url;
+          this.uploadButtonValue = 'Uploaded';
+          this.imagePathReady = true;
+          this.submitButtonValue = 'Add New Artist';
         },
         (err) => {
           console.log(err);
         });
     });
-
     reader.readAsDataURL(file);
   }
 
-  isEverythingFilled() {
-    if (this.uploadForm.get('name').value.toString().length < 1) {
-      return 'name is not filled!';
-    }
-    if (this.uploadForm.get('nationality').value.toString().length < 1) {
-      return 'nationality is not filled!';
-    }
-    if (this.uploadForm.get('residence').value.toString().length < 1) {
-      return 'residence is not filled!';
-    }
-    if (this.uploadForm.get('birthDate').value.toString().length < 1) {
-      return 'birthDate is not filled!';
-    }
-    if (this.uploadForm.get('Facebook').value.toString().length < 1) {
-      return 'Facebook is not filled!';
-    }
-    if (this.uploadForm.get('Instagram').value.toString().length < 1) {
-      return 'Instagram is not filled!';
-    }
-    if (this.uploadForm.get('Linkedin').value.toString().length < 1) {
-      return 'Linkedin is not filled!';
-    }
-    if (this.uploadForm.get('Twitter').value.toString().length < 1) {
-      return 'Twitter is not filled!';
-    }
-    if (this.uploadForm.get('artType').value.toString().length < 1) {
-      return 'artType is not filled!';
-    }
-    if (this.uploadForm.get('details').value.toString().length < 1) {
-      return 'details is not filled!';
-    }
-    if (this.uploadForm.get('story').value.toString().length < 1) {
-      return 'story is not filled!';
-    }
-    if (this.imageUrl.length < 1) {
-      return 'file is not Uploaded!';
-    }
-    return true;
-  }
-
   mySubmit() {
-    if (this.isEverythingFilled()) {
+    this.isSubmitted = true;
+    if (!this.uploadForm.valid) {
+      this.toaster.error('Error : Form Not Valid');
+      return false;
+    } else {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
       console.log(formObj);
       this.artistService.postAddArtist(formObj).subscribe(
         data => {
-          console.log('the post request was successfully done', data);
+          console.log('The post request was successfully done', data);
           this.toaster.success('Artist Uploaded');
         },
          error => {
-          this.toaster.error('there error from fetching the data', JSON.stringify(error));
+           this.toaster.error('Error : Artist Not Uploaded Successfully');
+           console.log(error);
         },
         () => {
           this.router.navigate(['admin/list-artists']);
         }
       );
-    } else {
-      this.toaster.error(`Error: ${this.isEverythingFilled()}`);
     }
   }
 

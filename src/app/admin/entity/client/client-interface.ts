@@ -2,6 +2,7 @@ export interface ClientInterface {
   id: number;
   firstName: string;
   lastName: string;
+  image: string;
   roll: number;
   userName: string;
   password: string;

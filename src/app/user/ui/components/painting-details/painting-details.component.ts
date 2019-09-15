@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   featuredList: PaintingListItem[];
+  // activePaintingImage: string;
 
   paintingLiked = false;
   paintingClapped = false;
@@ -20,6 +21,7 @@ export class PaintingDetailsComponent implements OnInit {
   constructor(private paintingService: PaintingListService,
               private interactionService: IshtarInteractionService,
               private toaster: ToastrService) {
+    // this.activePaintingImage = this.painting.image;
   }
 
   ngOnInit() {
@@ -45,6 +47,10 @@ export class PaintingDetailsComponent implements OnInit {
   addToWishList() {
     this.interactionService.addToWishList(`${this.painting.id}`, 'painting');
     this.toaster.success('Painting Added To Your Wish List');
+  }
+
+  setMainPainting(img: string) {
+    // this.activePaintingImage = img;
   }
 
 }

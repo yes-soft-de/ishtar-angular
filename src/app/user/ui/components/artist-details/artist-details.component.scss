@@ -1,4 +1,10 @@
-#artist-header-img {
+#artist-page {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#followBtn {
+  background: goldenrod;
+  color: black;
 }
 
 #banner-background {
@@ -18,7 +24,7 @@
     width: 15rem;
     height: 15rem;
     border-radius: 50%;
-    object-fit: contain;
+    object-fit: cover;
     background-repeat: repeat-y
   }
 
@@ -28,6 +34,7 @@
 
 #artist-bio {
   padding-left: 10rem;
+  padding-right: 10rem;
 }
 
 #artist-images {
@@ -40,4 +47,26 @@
   overflow: auto;
   background: rgba(255, 255, 255, .5);
   margin-right: 5rem;
+}
+
+#artist-image {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#painting-list-header {
+  padding-top: 5rem;
+  padding-left: 10rem;
+  padding-bottom: 5rem;
+}
+
+.parallax {
+  height: 20rem;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -6,7 +6,6 @@ import {AppComponent} from './app/app.component';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
-import {ParallaxModule, ParallaxConfig} from 'ngx-parallax';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
 import {UserModule} from './user/user.module';
@@ -26,7 +25,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NgxUIModule,
     IconsModule,
     HttpClientModule,
-    ParallaxModule,
     NgwWowModule,
     TabsModule.forRoot(),
     UserModule,

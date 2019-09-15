@@ -8,6 +8,8 @@ import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {catchError} from 'rxjs/operators';
 import {ArtTypeResponse} from '../../entity/art-type/art-type-response';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +24,28 @@ export class ArtTypeService {
   private static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
   }
+
+
+  // Add New Art Type Using Http POST Request
+  // postAddArtType(artType: ArtTypeInterface) {
+  //   return this.httpClient.post<ArtTypeInterface>(
+  //     `${AdminConfig.addArtTypeAPI}`, JSON.stringify(artType)
+  //   ).subscribe(
+  //     data => {
+  //       // TODO insert ngx-toastr Message
+  //       console.log('POST Request Was Successfully done', data);
+  //       // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.route});
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       console.log('done');
+  //       this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
+  //     }
+  //   );
+  // }
+
 
   // Get All Art Type
   getAllArtType() {

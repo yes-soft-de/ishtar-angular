@@ -2,6 +2,7 @@ export class Client {
   public id: number;
   public firstName: string;
   public lastName: string;
+  public image: string;
   public roll: number;
   public userName: string;
   public password: string;

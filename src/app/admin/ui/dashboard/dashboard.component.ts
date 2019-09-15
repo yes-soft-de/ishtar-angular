@@ -6,7 +6,6 @@ import {PhotosListService} from '../../service/PhotosList/photos-list.service';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
 import {AuctionListResponse} from '../../entity/auction/auction-list-response';
 import {AuctionService} from '../../service/auction/auction.service';
-import {Auction} from '../../entity/auction/auction';
 import {AuctionList} from '../../entity/auction/auction-list';
 
 
@@ -45,12 +44,9 @@ export class DashboardComponent implements OnInit {
     this.auctionService.getAllAuctions().subscribe(
         (data: AuctionListResponse) => {
           this.auctions = data.Data;
-          console.log(data);
-        },
-        error1 => {
-          console.log(error1);
-        }
-    );
+        }, error => {
+          console.log(error);
+        });
   }
 
 }

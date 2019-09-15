@@ -10,3 +10,26 @@
     background-color: goldenrod !important;
   }
 }
+
+#photos {
+  img {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  a {
+    color: black;
+  }
+
+  #details-container {
+    border-style: solid;
+    border-color: goldenrod;
+    position: relative;
+    top: -2rem;
+  }
+  #details-container {
+    padding-top: 3rem;
+  }
+}

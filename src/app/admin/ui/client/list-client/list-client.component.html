@@ -1,4 +1,5 @@
 <div *ngIf="clients != null">
+  <div *ngIf="clients.length !== 0">
   <div class="container-fluid">
     <h1 class="text-center my-4">Manage Client Page</h1>
     <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-client">
@@ -11,6 +12,7 @@
           <td>#ID</td>
           <td>First Name</td>
           <td>Last Name</td>
+          <td>Image</td>
           <td>Person Kind</td>
           <td>Username</td>
           <td>Birth Date</td>
@@ -22,6 +24,7 @@
           <td>{{client.id}}</td>
           <td>{{client.firstName}}</td>
           <td>{{client.lastName}}</td>
+          <td><img src="{{client.image}}" alt="{{client.firstName}} Image" class="img-fluid img-thumbnail img-custom"></td>
           <td>{{client.roll}}</td>
           <td>{{client.userName}}</td>
           <td>{{client.birthDate}}</td>
@@ -35,13 +38,17 @@
       </table>
     </div>
   </div>
+    </div>
+  <div *ngIf="clients.length === 0">
+    <div class="container">
+      <div class="alert alert-primary text-center mt-5">There Isn't Any Client To Show</div>
+      <a routerLink="/admin/add-client" class="btn btn-primary btn-sm mb-2 float-right">
+        <i class="fa fa-plus"></i>
+        Add New Client
+      </a>
+    </div>
+  </div>
 </div>
 <div *ngIf="clients == null">
-  <div class="container">
-    <div class="alert alert-primary text-center mt-5">There Isn't Any Client To Show</div>
-    <a routerLink="/admin/add-client" class="btn btn-primary btn-sm mb-2 float-right">
-      <i class="fa fa-plus"></i>
-      Add New Client
-    </a>
-  </div>
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>

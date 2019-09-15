@@ -1,8 +1,8 @@
-<div class="container-fluid row">
+<div class="container-fluid row" id="painting-details">
   <div class="col-2 row d-flex flex-column" id="painting-list-images">
     <!-- Painting Images List -->
     <div class="pl-4" *ngFor="let i of [1,1,1]">
-      <img class="img-fluid" src="{{painting.image}}" alt="...">
+      <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting(painting.image)">
     </div>
     <!-- #Painting Images List -->
   </div>
@@ -38,7 +38,7 @@
         </a>
       </li>
     </ul>
-    <button mdbBtn class="btn-outline-secondary m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()">Add to Wish List</button>
+    <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
     <video src="../../../../../assets/1x/painting_video.mp4"></video>
   </div>
 </div>
@@ -56,7 +56,7 @@
   <div class="p-5" style="background-color: #D9D9D9" id="famous-quote">
     <div class="row d-flex align-items-center mb-3">
       <img src="../../../../../assets/1x/img-01.jpg" style="height: 5rem" alt="...">
-      <h5 class="ml-4">Artist Name</h5>
+      <h5 class="ml-4">Mohammad the Artist</h5>
     </div>
     <div class="row">
       <h3>

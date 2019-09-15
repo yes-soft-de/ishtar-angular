@@ -8,6 +8,7 @@ export interface PaintingInterface {
   price: number;
   state: number;
   active: boolean;
+  image: string;
   // createdBy: string;
   // updatedBy: string;
   // createDate: Date;

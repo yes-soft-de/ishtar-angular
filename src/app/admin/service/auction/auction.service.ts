@@ -23,7 +23,7 @@ export class AuctionService {
 
   // Get All Auction Method
   getAllAuctions() {
-    return this.httpClient.get(
+    return this.httpClient.get<AuctionListResponse>(
         `${AdminConfig.allAuctionAPI}`, {responseType: 'json'}
     ).pipe(catchError(AuctionService.errorHandler));
   }

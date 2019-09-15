@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
+
   @Input() featuredPaintings: PaintingListItem[];
   @Input() artist: ArtistDetails;
   artistMainPainting: PaintingListItem;
@@ -29,7 +30,7 @@ export class ArtistDetailsComponent implements OnInit {
         const random = `${Math.random() * 100}`;
         const randPainting = parseInt(random, 10) % this.featuredPaintings.length;
         this.artistMainPainting = this.featuredPaintings[randPainting];
-        console.log(`random Painting ${randPainting}`);
+        console.log(`random Painting ${JSON.stringify(this.artistMainPainting)}`);
       }, error1 => {
         console.log(error1);
       }

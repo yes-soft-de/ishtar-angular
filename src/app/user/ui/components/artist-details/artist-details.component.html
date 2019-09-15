@@ -4,21 +4,20 @@
 
   <div id="artist-header">
     <div id="artist-header-img" class="d-flex align-items-center">
-      <div class="position-absolute w-100 d-flex justify-content-end">
+      <div class="position-absolute w-100 d-flex justify-content-end" *ngIf="artistMainPainting !== null">
         <div class="p-5" id="artist-banner-text">
           <h3 class="text-center">{{artistMainPainting.name}}</h3>
-          <p class="text-center">{{artistMainPainting.story}}</p>
         </div>
       </div>
-      <div parallax id="banner-background">
-        <img src="{{artistMainPainting.image}}" alt="...">
+      <div id="banner-background">
+        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting.image + ')'}" class="parallax" *ngIf="artistMainPainting.image != null"></div>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-10 align-items-baseline" style="position: relative; top: -5rem;">
         <div class="d-flex align-items-baseline">
           <div class="w-25">
-            <img src="{{artist.path}}" style="width: 15rem; border-radius: 50%;" alt="...">
+            <img src="{{artist.path}}" style="width: 15rem; border-radius: 50%;" alt="..." id="artist-image">
           </div>
           <div class="w-75 m-0 row">
             <div class="col-6">
@@ -47,7 +46,7 @@
               </ul>
             </div>
             <div class="col-6" style="position: relative; top: -2rem;">
-              <button mdbBtn class="btn-secondary" mdbWavesEffect (click)="followArtist()">Follow</button>
+              <button mdbBtn id="followBtn" mdbWavesEffect (click)="followArtist()">Follow</button>
             </div>
           </div>
         </div>
@@ -58,16 +57,16 @@
   <div id="artist-bio">
     <h3 class="text-primary">Biography</h3>
     <p>
-      {{artist.details}}
+      {{artist.story}}
     </p>
   </div>
 
+  <h4 id="painting-list-header">Artist Paintings</h4>
+
   <div id="artist-images" style="margin-bottom: 5rem;">
-    <app-c-painting-list [formattedPaintingList]="featuredPaintings"
+    <app-c-painting-list [formattedPaintingList]="featuredPaintings" [filter]="false"
                          *ngIf="featuredPaintings != null"></app-c-painting-list>
   </div>
-
-  <app-comments [pageType]="'artist'"></app-comments>
 
 </section>
 <!-- ###################################### End Artist Page ###################################### -->

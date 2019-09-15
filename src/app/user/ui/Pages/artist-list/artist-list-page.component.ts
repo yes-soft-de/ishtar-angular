@@ -21,7 +21,7 @@ export class ArtistListPageComponent implements OnInit {
     this.artistService.requestArtistList().subscribe(
       data => {
         this.artistList = data.Data;
-        console.log(JSON.stringify(data.Data));
+        // console.log(JSON.stringify(data.Data));
       }, error1 => {
         this.requestArtistList();
       });

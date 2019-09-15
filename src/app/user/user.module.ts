@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
-import {ParallaxModule} from 'ngx-parallax';
 import {NgwWowModule} from 'ngx-wow';
 
 import {UserRoutingModule} from './user-routing.module';
@@ -27,11 +26,11 @@ import {SchoolListComponent} from './ui/components/grid-list/school-list.compone
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {NgxBootstrapSliderModule} from 'ngx-bootstrap-slider';
 import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 import {ArtTypeComponent} from './ui/components/art-type/art-type.component';
 import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ParallaxModule} from 'ngx-parallax';
 
 @NgModule({
   declarations: [
@@ -89,12 +88,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     MDBBootstrapModule.forRoot(),
     NgxUIModule, IconsModule,
     HttpClientModule,
-    ParallaxModule,
     NgwWowModule,
     UserRoutingModule,
     TabsModule.forRoot(),
     ToastrModule.forRoot(), CarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, ParallaxModule
   ]
 })
 export class UserModule {

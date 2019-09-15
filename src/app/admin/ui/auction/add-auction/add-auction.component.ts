@@ -34,27 +34,32 @@ export class AddAuctionComponent implements OnInit {
   }
 
   mySubmit(form) {
-    const auction: Auction = new Auction();
-    auction.name = form.value.name;
-    auction.painting = form.value.painting;
-    auction.startPrice = form.value.startPrice;
-    auction.startDate = form.value.startDate;
-    auction.endDate = form.value.endDate;
-    console.log(auction);
-    this.auctionService.postAddAuction(auction).subscribe(
-        data => {
-          this.toast.success('Your Data Was Added Successfully');
-          console.log('the post request was successfully done', data);
-        },
-        error => {
-          this.toast.error('Sorry There Is An Error Please Check And Try Again');
-          console.log(error);
-        },
-        () => {
-          // If Success Navigate to Admin Dashboard Page
-          this.router.navigate(['admin/list-auctions']);
-        }
-    );
+    if (form.invalid) {
+      this.toast.error('Error : From Not Valid');
+      return false;
+    } else {
+      const auction: Auction = new Auction();
+      auction.name = form.value.name;
+      auction.painting = form.value.painting;
+      auction.startPrice = form.value.startPrice;
+      auction.startDate = form.value.startDate;
+      auction.endDate = form.value.endDate;
+      console.log(auction);
+      this.auctionService.postAddAuction(auction).subscribe(
+          data => {
+            this.toast.success('Auction Was Successfully Added');
+            console.log('the post request was successfully done', data);
+          },
+          error => {
+            this.toast.error('Error Adding Auction, Try Again');
+            console.log(error);
+          },
+          () => {
+            // If Success Navigate to Admin Dashboard Page
+            this.router.navigate(['admin/list-auctions']);
+          }
+      );
+    }
   }
 
 }
