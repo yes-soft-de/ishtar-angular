@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
 
@@ -8,15 +8,12 @@ import {ArtTypeService} from '../../../../admin/service/art-type/art-type.servic
   styleUrls: ['./home-navbar.component.scss']
 })
 export class HomeNavbarComponent implements OnInit {
-  artTypeList: ArtTypeListItem[];
-  constructor(private artTpeService: ArtTypeService) { }
+  @Input() artTypeList: ArtTypeListItem[];
+  @Input() hidden = false;
+  constructor() {
+  }
 
   ngOnInit() {
-    this.artTpeService.getAllArtType().subscribe(
-      data => {
-        this.artTypeList = data.Data;
-      }
-    );
   }
 
 }

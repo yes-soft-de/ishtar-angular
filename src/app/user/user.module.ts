@@ -32,6 +32,7 @@ import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
 import { HomeNavbarComponent } from './ui/components/home-navbar/home-navbar.component';
+import {AuctionPageComponent} from './ui/Pages/auction-page/auction-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HomeNavbarComponent } from './ui/components/home-navbar/home-navbar.com
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
+    AuctionPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -59,7 +61,7 @@ import { HomeNavbarComponent } from './ui/components/home-navbar/home-navbar.com
     ItemBriefComponent,
     ArtTypeComponent,
     CommentsComponent,
-    HomeNavbarComponent
+    HomeNavbarComponent,
   ],
   exports: [
     // User
@@ -74,6 +76,7 @@ import { HomeNavbarComponent } from './ui/components/home-navbar/home-navbar.com
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
+    AuctionPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,

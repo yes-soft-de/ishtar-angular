@@ -1,44 +1,29 @@
-<div id="home-navbar">
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light">
+<div id="home-navbar" [ngStyle]="{'display': hidden ? 'none' : 'inherit'}" class="sticky-top">
 
-    <!-- Collapsible content -->
-    <links>
+  <!-- Links -->
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/artist-list">Artists</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/painting-list">Paintings</a>
+    </li>
 
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="/artist-list">Artists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="/painting-list">Paintings</a>
-        </li>
+    <!-- Dropdown -->
+    <li class="nav-item dropdown" dropdown>
+      <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        Art Types<span class="caret"></span>
+      </a>
+      <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+        <a class="dropdown-item waves-light" *ngFor="let i of artTypeList"
+           routerLink="/art-type/{{i.id}}">{{i.name}}</a>
+      </div>
+    </li>
+  </ul>
+  <!-- Links -->
 
-        <!-- Dropdown -->
-        <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            Art Types<span class="caret"></span>
-          </a>
-          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" *ngFor="let i of artTypeList"
-               routerLink="/art-type/{{i.id}}">{{i.name}}</a>
-          </div>
-        </li>
-
-      </ul>
-      <!-- Links -->
-
-      <!-- Search form -->
-      <form class="form-inline waves-light" mdbWavesEffect>
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        </div>
-      </form>
-    </links>
-    <!-- Collapsible content -->
-
-  </mdb-navbar>
 </div>
 <!--/.Navbar-->
