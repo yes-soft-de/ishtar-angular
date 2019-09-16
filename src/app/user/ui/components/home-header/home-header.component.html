@@ -1,46 +1,70 @@
-<div id="home-header" class="row p-0 m-0">
-  <div id="hero-side" class="col-3 p-3 d-flex justify-content-center">
-    <img src="../../../../../assets/logo.png" alt="Logo">
-  </div>
-  <div id="header" class="col-9 p-0">
-    <nav id="header-nav">
-      <ul>
-        <li><a routerLink="">Home</a></li>
-        <li><a routerLink="/artist-list">Artists</a></li>
-        <li><a routerLink="/painting-list">Paintings</a></li>
-        <li class="float-right">
-          <div class="btn-group" mdbDropdown>
-            <a mdbDropdownToggle class="dropdown-toggle waves-light" mdbWavesEffect>
-              Art Schools
-            </a>
+<!--<div id="home-header" class="row p-0 m-0">-->
+<!--  <div id="hero-side" class="col-3 d-flex justify-content-center w-100">-->
+<!--    <div class="d-flex flex-column align-items-center justify-content-center">-->
+<!--      <img src="../../../../../assets/logo.png" alt="Logo">-->
+<!--      <p class="text-white">Art From it's Origins!</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div id="header" class="col-md-9 p-0 col-sm-12">-->
+<!--    <div id="header-nav">-->
+<!--      <app-home-navbar></app-home-navbar>-->
+<!--    </div>&lt;!&ndash; #header-nav &ndash;&gt;-->
+<!--    <div id="header-main">-->
+<!--      <mdb-carousel>-->
+<!--        <mdb-carousel-item *ngFor="let p of paintings">-->
+<!--          <div class="carousel-background">-->
+<!--            <img src="{{p.url}}" alt="#" class="img-fluid">-->
+<!--          </div>-->
+<!--          <div class="carousel-mask col-6">-->
+<!--            <h3>{{p.head}}</h3>-->
+<!--            <p>{{p.description}}</p>-->
+<!--          </div>-->
+<!--        </mdb-carousel-item>-->
+<!--      </mdb-carousel>-->
+<!--    </div> &lt;!&ndash; #header-main &ndash;&gt;-->
+<!--  </div>&lt;!&ndash; #header &ndash;&gt;-->
+<!--</div>-->
 
-            <div class="dropdown-menu dropdown-primary">
-              <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">{{i.name}}</a>
-            </div>
+
+<div id="main-hero">
+
+  <div id="hero-side">
+    <div>
+      <img src="../../../../../assets/logo.png" alt="LOGO">
+      <p>Art From it's Origins!</p>
+    </div>
+  </div>
+
+  <div id="header-main">
+    <app-home-navbar></app-home-navbar>
+
+    <div id="hero-slider">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../../../../assets/logo.png" alt="LOGO">
           </div>
-        </li>
-        <li class="float-right">
-          <a routerLink="/admin">Admin Area</a>
-        </li>
-        <li class="float-right">
-          <label>
-            <input type="text" placeholder="Search">
-          </label>
-        </li>
-      </ul>
-    </nav><!-- #header-nav -->
-    <div id="header-main">
-      <mdb-carousel>
-        <mdb-carousel-item *ngFor="let p of paintings">
-          <div class="carousel-background">
-            <img src="{{p.url}}" alt="#" class="img-fluid">
+          <div class="carousel-item">
+            <img src="../../../../../assets/logo.png" alt="LOGO">
           </div>
-          <div class="carousel-mask col-6">
-            <h3>{{p.head}}</h3>
-            <p>{{p.description}}</p>
+          <div class="carousel-item">
+            <img src="../../../../../assets/logo.png" alt="LOGO">
           </div>
-        </mdb-carousel-item>
-      </mdb-carousel>
-    </div> <!-- #header-main -->
-  </div><!-- #header -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

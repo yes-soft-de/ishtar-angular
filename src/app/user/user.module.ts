@@ -31,6 +31,7 @@ import {ArtTypeComponent} from './ui/components/art-type/art-type.component';
 import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
+import { HomeNavbarComponent } from './ui/components/home-navbar/home-navbar.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {ParallaxModule} from 'ngx-parallax';
     SchoolListComponent,
     ItemBriefComponent,
     ArtTypeComponent,
-    CommentsComponent
+    CommentsComponent,
+    HomeNavbarComponent
   ],
   exports: [
     // User

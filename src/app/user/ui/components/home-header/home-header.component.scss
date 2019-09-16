@@ -1,60 +1,105 @@
-a {
-  color: black;
-}
+//a {
+//  color: black;
+//}
+//
+//#home-header {
+//  // The Size of the Header
+//  height: 43rem;
+//  overflow: hidden;
+//
+//  @media screen and (max-width: 720px) {
+//    #hero-side {
+//      display: none !important;
+//    }
+//  }
+//
+//  #hero-side {
+//    background: #333333;
+//    height: 100%;
+//    img {
+//      object-fit: contain;
+//      max-width: 100%;
+//      object-position: top;
+//    }
+//
+//  }
+//
+//  #header {
+//    // region Site Navigation
+//    #header-nav {
+//      li {
+//        display: inline-block;
+//        margin: 1rem;
+//      }
+//    }
+//    // endregion
+//
+//    // region Header Carousel
+//    #header-main {
+//      height: 100%;
+//      .carousel-mask {
+//        padding-top: 10rem;
+//        padding-left: 3rem;
+//        position: absolute;
+//
+//        h3 {
+//          font-size: 4em;
+//        }
+//
+//        p {
+//          font-size: 2em;
+//        }
+//      }
+//
+//      .carousel-background {
+//        width: 100%;
+//
+//        img {
+//          object-fit: fill;
+//          width: 100%;
+//        }
+//      }
+//    }
+//    // endregion
+//  }
+//
+//}
 
-#home-header {
-  // The Size of the Header
-  height: 43rem;
-  overflow: hidden;
 
 
+#main-hero {
+  display: flex;
+  width: 100%;
+  height: 30rem;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   #hero-side {
-    background: #333333;
-    height: 100%;
-    img {
-      object-fit: contain;
-      max-width: 100%;
-      object-position: top;
+    @media screen and (min-width: 0) {
+      display: none;
     }
-  }
-
-  #header {
-    // region Site Navigation
-    #header-nav {
-      li {
-        display: inline-block;
-        margin: 1rem;
-      }
-    }
-    // endregion
-
-    // region Header Carousel
-    #header-main {
+    @media screen and (min-width: 768px) {
+      display: flex;
       height: 100%;
-      .carousel-mask {
-        padding-top: 10rem;
-        padding-left: 3rem;
-        position: absolute;
-
-        h3 {
-          font-size: 4em;
-        }
-
-        p {
-          font-size: 2em;
-        }
-      }
-
-      .carousel-background {
-        width: 100%;
-
+      flex-basis: 25%;
+      div  {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #333333;
         img {
-          object-fit: fill;
-          width: 100%;
+          max-width: 100%;
+        }
+        p {
+          text-align: center;
+          color: #ffffff;
+          font-weight: 300;
+          font-size: 24pt;
         }
       }
     }
-    // endregion
   }
 
+  #hero-main {
+
+  }
 }
