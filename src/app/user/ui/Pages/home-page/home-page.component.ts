@@ -3,6 +3,8 @@ import {ArtTypeService} from '../../../../admin/service/art-type/art-type.servic
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
+import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,11 +15,27 @@ export class HomePageComponent implements OnInit {
   position = 0;
   direction = 'down';
   artTypeList: ArtTypeListItem[];
-  public headerSlides = [];
+  public headerSlides = [{
+    url: '../../../../../assets/hero-slide.jpg',
+    title: 'Slide 01',
+    text: 'Some Text Should Go In Here!'
+  },
+    {
+      url: '../../../../../assets/hero-slide.jpg',
+      title: 'Slide 02',
+      text: 'Other Text Should Go In Here!'
+    },
+    {
+      url: '../../../../../assets/hero-slide.jpg',
+      title: 'Slide 03',
+      text: 'Other than Other Text Should Go In Here!'
+    }];
   public paintingList: PaintingListItem[];
   showNavbar = false;
+  artistList: ArtistListItem[];
 
-  constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService) {
+  constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService,
+              private artistService: ArtistListService) {
   }
 
   ngOnInit() {
@@ -27,6 +45,8 @@ export class HomePageComponent implements OnInit {
         this.artTypeList = data.Data;
       }
     );
+
+    this.requestArtistList();
 
     this.paintingService.requestPaintingList().subscribe(
       data => {
@@ -39,11 +59,6 @@ export class HomePageComponent implements OnInit {
   }
 
   initPaintingList() {
-    const painting = {
-      url: 'https://s3-ap-southeast-2.amazonaws.com/ish-oncourse-scc/b5cd4cfb-c5d9-4147-a72b-452d2f04bb73',
-    };
-
-    this.headerSlides.push(painting, painting, painting);
   }
 
   // region Direction Calculator
@@ -77,5 +92,15 @@ export class HomePageComponent implements OnInit {
     }
     // Save Data For Future Calculations
     this.position = window.pageYOffset;
+  }
+
+  requestArtistList() {
+    this.artistService.requestArtistList().subscribe(
+      data => {
+        this.artistList = data.Data;
+        // console.log(JSON.stringify(data.Data));
+      }, error1 => {
+        this.requestArtistList();
+      });
   }
 }

@@ -29,7 +29,8 @@ export class ArtTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.artTypeService.getAllArtType().subscribe(
+    this.artTypeService.getAllArtType()
+      .subscribe(
       artTypeList => {
         for (const i of artTypeList.Data) {
           if (i.name === this.activatedRoute.snapshot.paramMap.get('id')) {

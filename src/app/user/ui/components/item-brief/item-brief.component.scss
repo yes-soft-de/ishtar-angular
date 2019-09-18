@@ -1,11 +1,67 @@
-.school-container{
-  h3 {
+#school-info {
+  position: relative;
+  height: 30rem;
+  overflow: hidden;
+
+  #overlay {
     position: absolute;
-    color: rgba(255,255,255);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+
+    color: white;
+
+    @media screen and (min-width: 0){
+      h5 {
+        font-size: 18pt;
+        max-width: 40em;
+      }
+      p {
+        font-size: 16pt;
+        max-width: 40em;
+      }
+    }
+    @media screen and (min-width: 960px){
+      h5 {
+        font-size: 40pt;
+        max-width: 40em;
+      }
+      p {
+        font-size: 24pt;
+        max-width: 40em;
+      }
+    }
+
+  }
+
+  #bg {
+    img {
+      max-width: 100%;
+      min-width: 100%;
+
+      object-fit: cover;
+    }
   }
 }
 
-#school-info {
-  background: url("https://afremov.com/images/product/image_851.jpeg");
-  background-size: cover;
-}
+
+//.school-container{
+//  h3 {
+//    position: absolute;
+//    color: rgba(255,255,255);
+//  }
+//}
+//
+//#school-info {
+//  background: url("https://afremov.com/images/product/image_851.jpeg");
+//  background-size: cover;
+//}

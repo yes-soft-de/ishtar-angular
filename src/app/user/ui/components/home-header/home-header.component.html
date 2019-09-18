@@ -1,67 +1,48 @@
-<div class="w-100 d-flex flex-column">
-  <div id="main-hero">
-    <div id="hero-side">
-      <div>
-        <img src="../../../../../assets/logo.png" alt="LOGO">
-        <p>Art From it's Origins!</p>
-        <div>
-          <a href="#hero-carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <ol class="carousel-indicators" [innerHTML]="carouselIndicators.innerHTML">
-          </ol>
-        </div>
-      </div>
+<div id="hero">
+  <div id="hero-side">
+    <img src="../../../../../assets/logo.png" alt="...">
+    <div class="text-container">
+      <h5>ISHTAR</h5>
+      <p>Art From it's Origins</p>
     </div>
-    <div id="hero-main">
-      <div class="w-100 d-block" id="hero-main-header">
-        <ul>
-          <li>
-            <a routerLink="/">Home<span
-              class="sr-only">(current)</span></a>
-          </li>
-          <li>
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="/artist-list">Artists</a>
-          </li>
-          <li>
-            <a routerLink="/painting-list">Paintings</a>
-          </li>
+    <ol>
+      <li *ngFor="let i of paintings; index as j" (click)="setActiveSlide(j)"
+          [ngClass]="activeSlide == j? 'active': null"></li>
+    </ol>
+  </div>
 
-          <!-- Dropdown -->
-          <li class="nav-item dropdown" dropdown>
-            <a mdbDropdownToggle class="dropdown-toggle waves-light">
-              Art Types
+  <div id="hero-main">
+    <div id="hero-header">
+      <ul>
+        <li routerLink="/">Home</li>
+        <li routerLink="/painting-list">Paintings</li>
+        <li routerLink="/artist-list">Artists</li>
+        <li>
+          <div class="btn-group" mdbDropdown>
+            <a mdbDropdownToggle class="dropdown-toggle waves-light" mdbWavesEffect>
+              Art Schools
             </a>
-            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" *ngFor="let i of artTypeList"
-                 routerLink="/art-type/{{i.id}}">{{i.name}}</a>
-            </div>
-          </li>
-          <li>
-            <form class="form-inline waves-light" mdbWavesEffect>
-              <div class="md-form my-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-              </div>
-            </form>
-          </li>
-        </ul>
-      </div>
-      <div id="hero-slider">
-        <div id="hero-carousel" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item" *ngFor="let painting of paintings; index as i"
-                 [ngClass]="i === 0 ? 'active': null">
-              <img src="{{painting.url}}" alt="LOGO">
+
+            <div class="dropdown-menu dropdown-primary">
+              <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">{{i.name}}</a>
             </div>
           </div>
-          <ol class="carousel-indicators d-none" #carouselIndicators>
-            <li data-target="#hero-carousel" data-slide-to="0"></li>
-            <li data-target="#hero-carousel" data-slide-to="1"></li>
-            <li data-target="#hero-carousel" data-slide-to="2"></li>
-          </ol>
-        </div>
+        </li>
+        <li routerLink="/" class="float-right">Login</li>
+      </ul>
+    </div>
+    <div id="hero-body">
+      <div class="carousel-fg">
+        <h5>{{paintings[activeSlide].title}}</h5>
+        <p>{{paintings[activeSlide].text}}</p>
       </div>
+      <mdb-carousel (activeSlideChange)="slideChanged($event)" [isControls]="false" #heroSlider>
+        <mdb-carousel-item *ngFor="let i of paintings; index as j">
+          <div class="carousel-bg">
+            <img src="{{i.url}}" alt="...">
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
     </div>
   </div>
 </div>

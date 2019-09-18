@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArtTypeDetails} from '../../../entity/art-type-details/art-type-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {CarouselComponent} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-home-header',
@@ -10,11 +11,22 @@ import {PaintingListItem} from '../../../entity/painting-list/painting-list-item
 export class HomeHeaderComponent implements OnInit {
   @Input() public paintings: any[] = [];
   @Input() artTypeList: ArtTypeDetails[];
-  @ViewChild('carouselIndicators', {static: false}) indicatorsHtml: HTMLOListElement;
-
+  activeSlide = 0;
+  @ViewChild('heroSlider', {static: true}) public carousel: CarouselComponent;
   constructor() {
+    console.log(this.paintings.length);
   }
 
   ngOnInit() {
+  }
+
+  setActiveSlide(activeSlideNumber) {
+    this.carousel.activeSlide = activeSlideNumber;
+    this.activeSlide = activeSlideNumber;
+  }
+
+  slideChanged(event) {
+    console.log(event.relatedTarget);
+    this.activeSlide = event.relatedTarget;
   }
 }
