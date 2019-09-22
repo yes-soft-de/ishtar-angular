@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-artist-list class="pt-5" *ngIf="artistList != null" [artistListFormatted]="artistList"></app-artist-list>
+<div class="d-flex justify-content-center" style="margin-top: 6rem" *ngIf="artistList == null">
+  <div class="d-flex flex-column my-5">
+    <h5 class="text-center">Loading...</h5>
+    <img src="../../../../../assets/loading.gif" alt="Loading" class="img-fluid" style="object-fit: contain">
+  </div>
+</div>
+<app-footer></app-footer>

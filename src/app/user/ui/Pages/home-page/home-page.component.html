@@ -1,0 +1,38 @@
+<div *ngIf="paintingList != null && headerSlides != null && artistList != null">
+  <main class="row m-0 p-0">
+    <app-header id="floating-header" *ngIf="showNavbar"></app-header>
+    <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"></app-home-header>
+    <section>
+      <div class="col-12 d-flex justify-content-center p-5">
+        <h2>Latest Paintings</h2>
+      </div>
+      <app-c-painting-list [formattedPaintingList]="paintingList.slice(0, 6)" [filter]="false"></app-c-painting-list>
+    </section>
+
+    <app-home-auction-section class="w-100"></app-home-auction-section>
+
+    <section class="w-100">
+      <div class="p-5 col-12">
+        <h3 class="text-center">Latest Active Artist</h3>
+      </div>
+
+      <app-artist-list [artistListFormatted]="artistList.slice(0,3)" [filter]="false"></app-artist-list>
+    </section>
+
+    <section class="row w-100 m-0">
+      <div class="p-5 col-12">
+        <h3 class="text-center">Learn About Art Schools</h3>
+      </div>
+      <app-school-list class="w-100"></app-school-list>
+      <app-item-brief class="container-fluid p-0"></app-item-brief>
+    </section>
+  </main>
+  <app-footer></app-footer>
+</div>
+
+<div class="w-100 p-5" *ngIf="paintingList == null || headerSlides == null || artistList == null">
+  <h3 class="text-primary text-center">Loading...</h3>
+  <div class="w-100 d-flex justify-content-center p-5">
+    <img src="../../../../../assets/loading.gif" alt="Loading">
+  </div>
+</div>

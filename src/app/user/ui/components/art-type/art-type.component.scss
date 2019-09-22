@@ -1,0 +1,52 @@
+#art-type-header-img {
+}
+
+#banner-background {
+  width: 100%;
+  height: 20rem;
+  img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+}
+
+#art-type-avatar {
+  height: 15rem;
+}
+
+#art-type-header-avatar {
+  img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit: contain;
+    background-repeat: repeat-y
+  }
+
+  position: relative;
+  top: -5rem;
+}
+
+#art-type-bio {
+  padding-left: 10rem;
+}
+
+#art-type-images {
+  padding-left: 5rem;
+}
+
+#art-type-banner-text {
+  max-width: 20rem;
+  max-height: 10rem;
+  overflow: auto;
+  background: rgba(255, 255, 255, .5);
+  margin-right: 5rem;
+}
+
+#art-type-info {
+  position: relative;
+  top: 1.5rem;
+}

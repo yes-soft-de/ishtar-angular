@@ -1,0 +1,82 @@
+<div class="container">
+    <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
+        <h2 class="h1 ml-5 text-center">Add New Images</h2>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Select Media</label>
+            <div class="col-10">
+                <select class="form-control"
+                        name="media"
+                        formControlName="media"
+                        (change)="changeMedia($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('media').errors}">
+                    <option value="">Select The Media To Upload</option>
+                    <option value="1">Image</option>
+                    <option value="2">Video</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('media').errors?.required">Media Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Section Table</label>
+            <div class="col-10">
+                <select class="form-control"
+                        name="entity"
+                        formControlName="entity"
+                        (change)="changeEntity($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('entity').errors}">
+                    <option value="">Select Section To Add Images</option>
+                    <option *ngFor="let entity of Entity" [ngValue]="entity">{{entity}}</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('entity').errors?.required">Table Name Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Select One</label>
+            <div class="col-10">
+                <select class="form-control"
+                        name="row"
+                        formControlName="row"
+                        (change)="changeRow($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('row').errors}">
+                    <option value="">Select One</option>
+                    <option value="{{row.id}}" *ngFor="let row of rowEntity">{{row.userName || row.name}}</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('row').errors?.required">Table Row Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Name</label>
+            <div class="col-10">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
+                       (uploadForm.get('name').touched || uploadForm.get('name').dirty)}"
+                       type="text"
+                       name="name"
+                       formControlName="name"
+                       placeholder="Type The Name">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.required">Name Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.minlength">Name Must Be Greater Than 2</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than 20</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Upload</label>
+            <div class="col-10 input-group">
+                <div class="custom-file">
+                    <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input" (change)="updateName(imageInput)">
+                    <label class="custom-file-label" for="file-input">{{imageName}}</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" (click)="processFile(imageInput)" [disabled]=!fileSelected>
+                        {{uploadButtonValue}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group offset-md-2 mt-3">
+            <input class="btn btn-primary btn-block" type="submit" value="{{submitButtonValue}}" [disabled]=!imagePathReady>
+        </div>
+    </form>
+</div>
+

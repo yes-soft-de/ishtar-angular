@@ -1,0 +1,91 @@
+<div class="container-fluid" id="painting-details">
+  <div class="row">
+    <!-- For View Image in full screen -->
+    <div id="full-size-img">
+      <img class="img-fluid" src="{{painting.image}}" alt="...">
+      <button (click)="hideFullScreenMode()"><span>&times;</span></button>
+    </div>
+    <!-- #For View Image in full screen -->
+
+    <div class="col-sm-2 col-xs-12" id="painting-list-images">
+      <!-- Painting Images List --> 
+      <div class="pl-4" *ngFor="let i of [1,1,1]">
+        <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting(painting.image)">
+      </div>
+      <!-- #Painting Images List -->
+    </div>
+    <div class="col-sm-6 col-xs-12" id="main-image">
+      <img class="img-fluid" src="{{painting.image}}" alt="...">
+      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size</button>
+    </div>
+    <div class="col-sm-4 col-xs-12 justify-content-between painting-info">
+      <div>
+        <h3>{{painting.name}}</h3>
+        <p>{{painting.height}} CM x {{painting.width}} CM</p>
+        <p>{{painting.colorsType}}</p>
+        <h5>{{painting.artist}}</h5>
+      </div>
+      <ul style="list-style-type: none; margin: 0; padding: 0">
+        <li style="display: inline-block" class="m-1">
+          <a (click)="clapThePainting()" *ngIf="!paintingClapped">
+            <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
+            Clap
+          </a>
+          <a *ngIf="paintingClapped">
+            <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
+            Clap
+          </a>
+        </li>
+        <li style="display: inline-block" class="m-1">
+          <a (click)="loveThePainting()" *ngIf="!paintingLiked">
+            <mdb-icon far icon="heart" size="2x"></mdb-icon>
+            Love
+          </a>
+          <a *ngIf="paintingLiked">
+            <mdb-icon fas icon="heart" size="2x"></mdb-icon>
+            Love
+          </a>
+        </li>
+      </ul>
+      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
+      <div class="video-box">
+        <video src="../../../../../assets/1x/painting_video.mp4"></video>
+        <i class="fas fa-play-circle"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-dark">
+  <div class="row">
+    <ngx-tabs class="col-xs-12">
+      <ngx-tab label="About the Painting" class="text-dark painting-tab">
+        {{painting.story}}
+      </ngx-tab>
+      <ngx-tab label="community" class="painting-tab">
+        <app-comments [pageType]="'painting'"></app-comments>
+      </ngx-tab>
+    </ngx-tabs>
+
+    <div class="col-xs-12" id="famous-quote">
+      <div style="background-color: #D9D9D9" class="p-3">
+        <div class="align-items-center">
+          <img src="../../../../../assets/1x/img-01.jpg" style="height: 5rem" alt="...">
+          <h5 class="ml-4">Mohammad the Artist</h5>
+        </div>
+        <h3>
+          <i class="fas fa-quote-left"></i>
+          I think their model is an improvement in that it’s really founded on the real brain anatomy. They want a model
+          that’s biologically correct or plausible,” said Alessandra Angelucci, a neuroscientist at the University of
+          Utah.
+          <i class="fas fa-quote-right"></i>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="p-5" class="related-paintings">
+  <h2 class="mb-5">Paintings You May Like</h2>
+  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false" *ngIf="featuredList != null"></app-c-painting-list>
+</div>
