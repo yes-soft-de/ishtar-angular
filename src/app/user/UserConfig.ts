@@ -2,8 +2,6 @@ export class UserConfig {
   public static PaintingListAPI = 'http://ishtar.96.lt/Ishtar/public/getAllPainting';
   public static PaintingImageAPI = 'http://localhost:8000/getPaintingImages';
   public static PaintingDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getPaintingById';
-  public static PaintingPaintingListByArtistAPI = 'http://localhost:3200/getArtistPaintings';
-  // public static PaintingDetailsAPI = 'https://webhook.site/977568e3-6e8a-4e02-b60b-27ec5b3c42f1';
   public static ArtistListAPI = 'http://ishtar.96.lt/Ishtar/public/getArtistsData';
   public static ArtistDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getArtistById';
   public static getByAPI = 'http://ishtar.96.lt/Ishtar/public/getBy';
@@ -12,5 +10,6 @@ export class UserConfig {
   public static getInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction';
   public static postInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction';
   public static searchAPI = 'http://ishtar.96.lt/Ishtar/public/search';
-  public static userProfileAPI = 'http://k-symfony.96.lt/user';
+  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/Google';
 }

@@ -15,6 +15,4 @@ export class SearchListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
 }

@@ -13,7 +13,7 @@ import {HttpClient} from '@angular/common/http';
 export class HeaderComponent implements OnInit {
   artTypeList: ArtTypeListItem[];
   showTheHeader = false;
-
+  userLoginLink = UserConfig.userLoginLink;
   userName = '';
 
   // for Requesting User Profile
