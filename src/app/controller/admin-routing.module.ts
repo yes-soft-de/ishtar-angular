@@ -15,17 +15,13 @@ import {AddAuctionComponent} from '../admin/ui/auction/add-auction/add-auction.c
 import {ListAuctionsComponent} from '../admin/ui/auction/list-auctions/list-auctions.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
       {path: '', component: DashboardComponent},
-      {path: 'list-artist', component: ListArtistComponent},
-      {path: 'add-artist', component: AddArtistComponent},
-      {path: 'edit-artist', component: EditArtistComponent},
-      {path: 'add-painting', component: AddPaintingComponent},
-      {path: 'list-painting', component: ListPaintingComponent}
       {path: 'list-artists', component: ListArtistComponent},
       {path: 'add-artist', component: AddArtistComponent},
       {path: 'edit-artist/:id', component: EditArtistComponent},

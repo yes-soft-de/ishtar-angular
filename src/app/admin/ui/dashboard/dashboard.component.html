@@ -10,7 +10,7 @@
           <div>
             <h6>Total Artists</h6>
 
-            <span><a routerLink="/admin/list-artist">{{artists?.length}}</a></span>
+            <span><a routerLink="/admin/list-artists">{{artists.length}}</a></span>
 
           </div>
         </div>
@@ -21,7 +21,7 @@
           <div>
             <h6>Total Paintings</h6>
 
-            <span><a routerLink="/admin/list-painting">{{paintings?.length}}</a></span>
+            <span><a routerLink="/admin/list-paintings">{{paintings.length}}</a></span>
 
           </div>
         </div>
@@ -57,7 +57,6 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 5 ArtistAdmin
               Latest {{latestArtistNumber}} Artist
             </div>
             <div class="card-body">
