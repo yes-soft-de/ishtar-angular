@@ -30,7 +30,7 @@ export class ArtistListComponent implements OnInit {
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
     }
-    this.types = [...new Set(this.types)];
+    this.types = [...new Set(this.types)];    // create array of types after removing the repeated value
     this.artistList = [];
     for (const i of this.artistListFormatted) {
       this.artistList.push({

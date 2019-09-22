@@ -8,6 +8,7 @@ import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
+import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       {path: '', component: HomePageComponent},
+      {path: 'search/:query', component: SearchPageComponent},
       {path: 'artist-list', component: ArtistListPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},

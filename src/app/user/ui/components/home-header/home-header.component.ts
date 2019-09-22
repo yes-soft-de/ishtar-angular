@@ -2,6 +2,8 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArtTypeDetails} from '../../../entity/art-type-details/art-type-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {CarouselComponent} from 'angular-bootstrap-md';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-header',
@@ -13,8 +15,13 @@ export class HomeHeaderComponent implements OnInit {
   @Input() artTypeList: ArtTypeDetails[];
   activeSlide = 0;
   @ViewChild('heroSlider', {static: true}) public carousel: CarouselComponent;
-  constructor() {
-    console.log(this.paintings.length);
+
+  searchFrom = new FormGroup({
+    search: new FormControl('')
+  });
+
+  constructor(private router: Router) {
+    // console.log(this.paintings.length);
   }
 
   ngOnInit() {
@@ -26,7 +33,11 @@ export class HomeHeaderComponent implements OnInit {
   }
 
   slideChanged(event) {
-    console.log(event.relatedTarget);
+    // console.log(event.relatedTarget);
     this.activeSlide = event.relatedTarget;
+  }
+
+  submitSearch() {
+    this.router.navigate(['/search/' + this.searchFrom.get('search').value]);
   }
 }

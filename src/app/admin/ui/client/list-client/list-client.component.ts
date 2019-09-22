@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Client} from '../../../entity/client/client';
 import {ClientService} from '../../../service/client/client.service';
 import {ClientListResponse} from '../../../entity/ClientList/client-list-response';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-client.component.html',
   styleUrls: ['./list-client.component.scss']
 })
-export class ListClientComponent implements OnInit {
+export class ListClientComponent implements OnInit, OnDestroy {
   clients: Client[];
+  allClientObservable: Subscription;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -18,7 +20,7 @@ export class ListClientComponent implements OnInit {
 
   ngOnInit() {
     // Fetch All Users
-    this.clientService.getAllClients().subscribe(
+    this.allClientObservable = this.clientService.getAllClients().subscribe(
         (data: ClientListResponse) => {
             if (data) {
                 this.clients = data.Data;
@@ -31,7 +33,11 @@ export class ListClientComponent implements OnInit {
 
   }
 
-  // Delete The Client
+  ngOnDestroy() {
+      this.allClientObservable.unsubscribe();
+  }
+
+    // Delete The Client
   delete(clientId) {
     this.clientService.deleteClient(clientId).subscribe(
       data => {

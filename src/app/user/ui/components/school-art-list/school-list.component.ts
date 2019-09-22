@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-school-list',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchoolListComponent implements OnInit {
   public schools = [];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     let school = {
@@ -33,6 +35,8 @@ export class SchoolListComponent implements OnInit {
       img: 'http://cdn.shopify.com/s/files/1/0969/9128/products/Indian_Art_-_' +
         'Acrylic_Painting_-_Krishna_With_Peacock_grande.jpg?v=1476088975'
     };
+    this.schools.push(school);
+    this.schools.push(school);
     this.schools.push(school);
   }
 

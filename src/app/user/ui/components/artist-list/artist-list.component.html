@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-center">
-  <div class="col-4 p-3" id="artist-sidebar" *ngIf="filter === true">
+<div class="d-flex justify-content-center artist-list-section">
+  <div class="col-3 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
     <div>
       <h5>Filter By Art Type</h5>
       <button mdbBtn class="btn-light" *ngFor="let i of types"
@@ -7,11 +7,38 @@
               (click)="filterByArtType(i)">{{i}}</button>
     </div>
   </div>
-  <div class="col-8 d-block">
+  <div class="col-12 col-lg-9 px-5">
+    <div class="sort-artist mb-4 mb-lg-2 mt-3">
+      <ul class="navbar-nav nav-flex-icons d-inline-block">
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              Sort By <span class="d-none d-md-block pl-1">Seen Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
+                <a class="dropdown-item">Greatest Number</a>
+                <a class="dropdown-item">Lowest Number</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons d-inline-block d-lg-none ml-3">
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              Filter By <span class="d-none d-md-block pl-1">Art Type</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
+                <a class="dropdown-item" *ngFor="let i of types" (click)="filterByArtType(i)">{{i}}</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
     <section id="photos" class="row">
       <div *ngFor="let artist of artistList"
-           class="col-4">
-        <a routerLink="/artist/{{artist.id}}" class="w-100">
+           class="col-xs-6 col-sm-6 col-md-4 col-xl-3">
+        <a routerLink="/artist/{{artist.id}}">
           <div class="artist-card d-flex justify-content-center flex-column">
             <div class="d-flex justify-content-center w-100">
               <img class="img-fluid" src="{{artist.image}}" alt="...">
@@ -19,14 +46,14 @@
             <div class="w-100" id="details-container">
               <div class="inner-details-container">
                 <h3 class="col-12 text-center">{{artist.name}}</h3>
-                <p class="col-12 text-center">{{artist.paintingNumber}} painting</p>
-                <p class="col-12 text-center">{{artist.artistFollowers}} Followers</p>
+                <p class="col-12 text-center artist-detail-number">{{artist.paintingNumber}} painting</p>
+                <p class="col-12 text-center artist-detail-follower">{{artist.artistFollowers}} Followers</p>
               </div>
             </div>
-
           </div>
         </a>
       </div>
     </section>
   </div>
+
 </div>

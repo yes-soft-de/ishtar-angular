@@ -53,4 +53,12 @@ export class PaintingDetailsComponent implements OnInit {
     // this.activePaintingImage = img;
   }
 
+  showImageInFullSize() {
+    document.getElementById('full-size-img').classList.add('active');
+  }
+  
+  hideFullScreenMode(){
+    document.getElementById('full-size-img').classList.remove('active');
+  }
+
 }

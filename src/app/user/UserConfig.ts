@@ -11,4 +11,6 @@ export class UserConfig {
   public static allArtTypeAPI = 'http://ishtar.96.lt/Ishtar/public/getAllArtType';
   public static getInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction';
   public static postInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction';
+  public static searchAPI = 'http://ishtar.96.lt/Ishtar/public/search';
+  public static userProfileAPI = 'http://k-symfony.96.lt/user';
 }

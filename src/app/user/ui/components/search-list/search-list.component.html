@@ -1,0 +1,40 @@
+<section class="w-100" id="search-list-section">
+  <h2>Paintings</h2>
+  <div *ngIf="paintingList === null || paintingList.length < 1">
+    <h5>Empty List Result</h5>
+  </div>
+  <div id="painting-list">
+    <mdb-card *ngFor="let i of paintingList" >
+      <mdb-card-img src="{{i.path}}"></mdb-card-img>
+      <mdb-card-body>
+        <mdb-card-title>{{i.name}}</mdb-card-title>
+        <a routerLink="/painting/{{i.id}}" mdbBtn color="primary" mdbWavesEffect>Read More...</a>
+      </mdb-card-body>
+    </mdb-card>
+
+  </div>
+  <h2>Artists</h2>
+  <div *ngIf="artistList === null || artistList.length<1">
+    <h5>Empty List Result</h5>
+  </div>
+  <div id="artist-list">
+    <mdb-card *ngFor="let i of artistList" routerLink="/artist/{{i.id}}">
+      <mdb-card-img src="{{i.path}}"></mdb-card-img>
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+      <mdb-card-body>
+        <mdb-card-title>{{i.name}}</mdb-card-title>
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+        <a class="link-text">
+          <h5 class="waves-light" mdbWavesEffect routerLink="/painting/{{i.id}}">Read more
+            <mdb-icon fas icon="chevron-right" class="waves-light" mdbWavesEffect></mdb-icon>
+          </h5>
+        </a>
+      </mdb-card-body>
+    </mdb-card>
+
+  </div>
+</section>

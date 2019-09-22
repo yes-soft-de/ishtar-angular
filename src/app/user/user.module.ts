@@ -22,18 +22,19 @@ import {ArtistDetailsComponent} from './ui/components/artist-details/artist-deta
 import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
 import {AlternatingListComponent} from './ui/components/alternating-list/alternating-list.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
-import {SchoolListComponent} from './ui/components/grid-list/school-list.component';
+import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
+import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 import {ArtTypeComponent} from './ui/components/art-type/art-type.component';
 import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
-import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
-import {AuctionPageComponent} from './ui/Pages/auction-page/auction-page.component';
 import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/home-auction-section.component';
-import { CarouselModule } from 'ngx-bootstrap';
+import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
+import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
+import {SearchListComponent} from './ui/components/search-list/search-list.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import { CarouselModule } from 'ngx-bootstrap';
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
-    AuctionPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -62,8 +62,10 @@ import { CarouselModule } from 'ngx-bootstrap';
     ItemBriefComponent,
     ArtTypeComponent,
     CommentsComponent,
+    HomeAuctionSectionComponent,
     HomeNavbarComponent,
-    HomeAuctionSectionComponent
+    SearchPageComponent,
+    SearchListComponent
   ],
   exports: [
     // User
@@ -78,7 +80,6 @@ import { CarouselModule } from 'ngx-bootstrap';
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
-    AuctionPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -88,7 +89,10 @@ import { CarouselModule } from 'ngx-bootstrap';
     AlternatingListComponent,
     SchoolListComponent,
     ItemBriefComponent,
-    CommentsComponent
+    CommentsComponent,
+    SearchPageComponent,
+    SearchListComponent
+
   ],
   imports: [
     CommonModule,
@@ -98,10 +102,8 @@ import { CarouselModule } from 'ngx-bootstrap';
     NgwWowModule,
     UserRoutingModule,
     TabsModule.forRoot(),
-    ToastrModule.forRoot(),
-    ReactiveFormsModule,
-    ParallaxModule,
-    CarouselModule.forRoot()
+    ToastrModule.forRoot(), CarouselModule,
+    ReactiveFormsModule, ParallaxModule
   ]
 })
 export class UserModule {

@@ -1,21 +1,26 @@
 <footer>
   <div class="w-100 divider-new m-0 p-0"></div>
-  <div class="w-100 d-flex justify-content-center">
-    <div class="w-75 row">
-      <div class="col-4">
-        <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image">
-        <p>Some Info About Ishtar Website Should Come Here</p>
+  <div class="container d-flex justify-content-center">
+    <div class="row">
+      <div class="col-4 d-flex justify-content-end">
+        <div class="row">
+          <div class="col-8 pr-0"><img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image"></div>
+          <div class="col-4 pl-0 align-self-center">
+            <h4 class="mb-0">ISHTAR</h4>
+            <span>Home Of Art</span>
+          </div>
+          <p class="col-12">Some Info About Ishtar Website Should Come Here</p>
+        </div>
       </div>
-
-      <div class="col-4">
+      <div class="col-4 text-center">
         <ul>
-          <li><a>Home</a></li>
-          <li><a>Artist</a></li>
-          <li><a>Art Schools</a></li>
-          <li><a>Paintings</a></li>
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/artist-list">Artist</a></li>
+          <li><a routerLink="/">Art Schools</a></li>
+          <li><a routerLink="/painting-list">Paintings</a></li>
         </ul>
       </div>
-      <div class="col-4">
+      <div class="col-4 text-left">
         <ul>
           <li><a>About Foundation</a></li>
           <li><a>Brand Guidelines</a></li>
@@ -28,18 +33,18 @@
 
   <div class="w-100 divider-new m-0 p-0 mb-2"></div>
 
-  <div class="row container-fluid m-0 p-0">
+  <div class="row container custom-bottom-footer mx-auto p-0">
     <div id="footer-bottom-left" class="col-6 m-0 p-0">
-      <ul>
+      <ul class="p-0">
         <li class="mx-2">Terms</li>
         <li class="mx-2">Privacy</li>
         <li class="mx-2">Licence</li>
       </ul>
     </div>
     <div id="footer-bottom-right" class="col-6 d-flex justify-content-end m-0 p-0">
-      <mdb-icon fab icon="facebook-square" size="2x" class="mx-2"></mdb-icon>
-      <mdb-icon fab icon="twitter" size="2x" class="mx-2"></mdb-icon>
-      <mdb-icon fab icon="linkedin" size="2x" class="mx-2"></mdb-icon>
+      <mdb-icon fab icon="facebook-square" size="2x" class="mx-1"></mdb-icon>
+      <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
+      <mdb-icon fab icon="linkedin" size="2x" class="mx-1"></mdb-icon>
     </div>
   </div>
 </footer>

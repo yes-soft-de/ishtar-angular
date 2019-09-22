@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Painting} from '../../../entity/painting/painting';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {PaintingInterface} from '../../../entity/painting/painting-interface';
 import {PaintingListResponse} from '../../../entity/PaintingList/painting-list-response';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-list-painting',
   templateUrl: './list-painting.component.html',
   styleUrls: ['./list-painting.component.scss']
 })
-export class ListPaintingComponent implements OnInit {
+export class ListPaintingComponent implements OnInit, OnDestroy {
   public paintings: Painting[];
+  allPaintingObservable: Subscription;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -19,16 +21,19 @@ export class ListPaintingComponent implements OnInit {
 
   ngOnInit() {
     // Fetch All Paintings
-    this.photosListService.getAllPainting().subscribe(
+    this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
         (res: PaintingListResponse) => {
           this.paintings = res.Data;
       }, error1 => {
         console.log(error1);
       });
-
   }
 
-  // Delete painting Method
+  ngOnDestroy() {
+    this.allPaintingObservable.unsubscribe();
+  }
+
+    // Delete painting Method
   delete(paintingId: number) {
     this.photosListService.deletePainting(paintingId).subscribe(
         data => {

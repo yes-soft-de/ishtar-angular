@@ -1,0 +1,53 @@
+#school-list-section {
+  max-width: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  #cards-list {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+
+    .school-list-card {
+      position: relative;
+      padding: 2rem;
+
+      #school-bg {
+        img {
+          object-fit: cover;
+          @media screen and (min-width: 0) {
+            height: 22rem;
+            width: 22rem;
+          }
+          @media screen and (min-height: 960px) {
+            height: 25rem;
+            width: 25rem;
+          }
+        }
+      }
+
+      #school-fg {
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 2rem;
+        right: 2rem;
+        background: rgba(0, 0, 0, .5);
+
+        color: white;
+
+        z-index: 15;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

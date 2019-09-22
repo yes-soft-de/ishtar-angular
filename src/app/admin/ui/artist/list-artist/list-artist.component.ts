@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
-import {ArtistInterface} from '../../../entity/artist/artist-interface';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-list-artist',
   templateUrl: './list-artist.component.html',
   styleUrls: ['./list-artist.component.scss']
 })
-export class ListArtistComponent implements OnInit {
+export class ListArtistComponent implements OnInit, OnDestroy{
   public artists: Artist[];
+  allArtistObservable: Subscription;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -18,7 +19,7 @@ export class ListArtistComponent implements OnInit {
 
   ngOnInit() {
     // Fetch All Artists
-    this.artist.getAllArtists().subscribe(
+    this.allArtistObservable = this.artist.getAllArtists().subscribe(
         (data) => {
             if (data) {
               this.artists = data.Data;
@@ -28,7 +29,10 @@ export class ListArtistComponent implements OnInit {
         // TODO think if there is some to do here ex : display message if there is error
         console.log('Error :', error1);
       });
+  }
 
+  ngOnDestroy() {
+    this.allArtistObservable.unsubscribe();
   }
 
   // Delete The Artist
