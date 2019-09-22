@@ -1,0 +1,23 @@
+<section id="home-auction">
+  <div class="custom-carousel-side">
+    <h4>Latest Auction</h4>
+    <ol class="custom-indicators">
+      <li *ngFor="let i of slides;index as j" [ngClass]="j == activeSlide? 'active': null" (click)="setActiveSlide(j)">
+      </li>
+    </ol>
+
+    <div class="info-card-border">
+      <div class="custom-card">
+        <h5>{{slides[activeSlide].title}}</h5>
+        <p>{{slides[activeSlide].details}}</p>
+      </div>
+    </div>
+  </div>
+  <mdb-carousel (activeSlideChange)="slideChanged($event)" [isControls]="false" #auctionSlider>
+    <mdb-carousel-item *ngFor="let i of slides">
+      <div class="custom-image-container">
+        <img src="{{i.url}}" alt="..." class="grow">
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>
+</section>

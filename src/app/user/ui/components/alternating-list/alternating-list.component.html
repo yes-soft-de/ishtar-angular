@@ -1,0 +1,19 @@
+<div id="alternate-list" class="d-flex justify-content-center row m-0">
+  <div *ngFor="let item of list; index as i">
+    <div *ngIf="i%2 === 0" class="d-flex align-items-center m-0 p-0 alternateListRow">
+      <div class="col-6 p-5">
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </div>
+      <div class="list-image col-6">
+        <img class="img-fluid" src="{{item.imgUrl}}"></div>
+    </div>
+    <div *ngIf="i%2 !== 0" class="d-flex align-items-center m-0 p-0 alternateListRow">
+      <div class="list-image col-6"><img class="img-fluid" src="{{item.imgUrl}}"></div>
+      <div class="col-6 p-5">
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </div>
+    </div>
+  </div>
+</div>

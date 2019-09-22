@@ -5,7 +5,7 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 /**
- * @type { import("protractor").Config }
+ * @type { import("protractor").AdminConfig }
  */
 exports.config = {
   allScriptsTimeout: 11000,

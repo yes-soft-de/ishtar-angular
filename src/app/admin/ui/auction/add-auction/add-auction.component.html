@@ -1,0 +1,82 @@
+<div class="container">
+    <form novalidate class="col-md-6 my-5 mx-auto" #addAuctionForm="ngForm" (ngSubmit)="mySubmit(addAuctionForm)">
+        <h2 class="h1 ml-5 text-center">Add New Auction</h2>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Name</label>
+            <div class="col-10">
+                <input class="form-control"
+                       #myName="ngModel"
+                       [ngClass]="{'is-invalid': myName.invalid && myName.touched}"
+                       type="text"
+                       name="name"
+                       ngModel
+                       placeholder="Type The Auction Name"
+                       minlength="2"
+                       maxlength="45"
+                       required>
+                <span class="invalid-feedback" *ngIf="myName.errors?.required && myName.touched">Name Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="myName.errors?.minlength && myName.touched">Name Must Be Greater Than 2</span>
+                <span class="invalid-feedback" *ngIf="myName.errors?.maxlength && myName.touched">Name Must Be Lower Than 45</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Painting</label>
+            <div class="col-10">
+                <select class="form-control"
+                        #myPainting="ngModel"
+                        name="painting"
+                        ngModel
+                        [ngClass]="{ 'is-invalid': myPainting.invalid && myPainting.touched}"
+                        required>
+                    <option value="">Select Painting</option>
+                    <option value="{{painting.id}}" *ngFor="let painting of paintings">{{painting.name}}</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="myPainting.errors?.required && myPainting.touched">Painting Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Start Price</label>
+            <div class="col-10">
+                <input class="form-control"
+                       #myStartPrice="ngModel"
+                       [ngClass]="{'is-invalid': myStartPrice.invalid && myStartPrice.touched}"
+                       type="number"
+                       name="startPrice"
+                       ngModel
+                       placeholder="Type The Price"
+                       required>
+                <span class="invalid-feedback" *ngIf="myStartPrice.errors?.required && myStartPrice.touched">Start Price Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Start Date</label>
+            <div class="col-10">
+                <input class="form-control"
+                       #myStartDate="ngModel"
+                       [ngClass]="{'is-invalid': myStartDate.invalid && myStartDate.touched}"
+                       type="date"
+                       name="startDate"
+                       ngModel
+                       required>
+                <span class="invalid-feedback" *ngIf="myStartDate.errors?.required && myStartDate.touched">Start Date Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">End Date</label>
+            <div class="col-10">
+                <input class="form-control"
+                       #myEndDate="ngModel"
+                       [ngClass]="{'is-invalid': myEndDate.invalid && myEndDate.touched}"
+                       type="date"
+                       name="endDate"
+                       ngModel
+                       required>
+                <span class="invalid-feedback" *ngIf="myEndDate.errors?.required && myEndDate.touched">End Date Field Is Required</span>
+            </div>
+        </div>
+
+        <div class="form-group offset-md-2 mt-3">
+            <input class="btn btn-primary btn-block" type="submit" value="Add New Auction">
+        </div>
+    </form>
+</div>

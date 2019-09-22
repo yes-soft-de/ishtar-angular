@@ -1,0 +1,28 @@
+<div class="container">
+  <!-- Input -->
+  <div class="d-flex align-items-center">
+    <form #commentsForm [formGroup]="commentsForm"
+          (ngSubmit)="submitComment(commentsForm)">
+      <label>
+        <input type="text" formControlName="comment" placeholder="Name:">
+      </label>
+    </form>
+  </div>
+  <!-- #Input -->
+
+  <!-- Prev Comments -->
+  <div class="d-flex flex-column">
+    <div class="row" *ngFor="let i of comments">
+      <div class="d-inline-block mx-3">
+        <img src="{{i.userImage}}" alt="..." class="mx-2">
+        <h5>{{i.userName}}</h5>
+      </div>
+      <div class="d-flex">
+        <p>
+          {{i.comment}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- #Prev Input -->
+</div>
