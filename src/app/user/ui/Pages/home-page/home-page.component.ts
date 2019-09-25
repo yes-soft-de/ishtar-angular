@@ -18,6 +18,7 @@ export class HomePageComponent implements OnInit {
   position = 0;
   direction = 'down';
   artTypeList: ArtTypeListItem[];
+  loadFinished = false;
 
   public headerSlides = [{
     url: '../../../../../assets/hero-slide.jpg',
@@ -43,32 +44,35 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initPaintingList();
+    this.requestArtTypeList();
+    this.getCurrentUserInfo();
+    this.requestArtistList();
+    this.requestPaintingList();
+  }
+
+  requestArtTypeList() {
     this.artTpeService.getAllArtType().subscribe(
       data => {
         this.artTypeList = data.Data;
+        this.checkLoadingFinished();
       }
     );
+  }
 
-    this.getCurrentUserInfo();
-
-    this.requestArtistList();
-
+  requestPaintingList() {
     this.paintingService.requestPaintingList().subscribe(
       data => {
         this.paintingList = [];
         for (const i of data.Data) {
           this.paintingList.push(i);
         }
+        this.checkLoadingFinished();
       }
     );
   }
 
-  initPaintingList() {
-  }
-
   getCurrentUserInfo() {
-    this.httpClient.get('http://k-symfony.96.lt/user').subscribe(
+    this.httpClient.get(UserConfig.userProfileAPI).subscribe(
       data => {
         console.log(JSON.stringify(data));
       }, error => {
@@ -77,9 +81,19 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  requestArtistList() {
+    this.artistService.requestArtistList().subscribe(
+      data => {
+        this.artistList = data.Data;
+        this.checkLoadingFinished();
+      }, error1 => {
+        this.requestArtistList();
+      });
+  }
+
   // region Direction Calculator
   @HostListener('window:scroll', [])
-  doSomething() {
+  ShowHeader() {
     if (window.pageYOffset < 360) {
       this.showNavbar = false;
       return;
@@ -110,13 +124,21 @@ export class HomePageComponent implements OnInit {
     this.position = window.pageYOffset;
   }
 
-  requestArtistList() {
-    this.artistService.requestArtistList().subscribe(
-      data => {
-        this.artistList = data.Data;
-        // console.log(JSON.stringify(data.Data));
-      }, error1 => {
-        this.requestArtistList();
-      });
+  // endregion
+
+  checkLoadingFinished() {
+    if (this.paintingList == null) {
+      return;
+    }
+    if (this.headerSlides == null) {
+      return;
+    }
+    if (this.artistList == null) {
+      return;
+    }
+    if (this.artTypeList == null) {
+      return;
+    }
+    this.loadFinished = true;
   }
 }

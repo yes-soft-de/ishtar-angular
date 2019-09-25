@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 
 @Component({
   selector: 'app-school-list',
@@ -7,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SchoolListComponent implements OnInit {
   public schools = [];
+  @Input() artTypeList: ArtTypeListItem[];
 
   constructor() {
   }

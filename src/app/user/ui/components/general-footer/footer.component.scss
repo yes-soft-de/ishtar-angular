@@ -4,6 +4,12 @@ footer {
     padding-bottom: 0.5rem;
     ul {
       list-style-type: none;
+
+      li {
+        a {
+          color: black;
+        }
+      }
     }
   }
   

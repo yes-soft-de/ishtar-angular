@@ -1,5 +1,5 @@
 export interface ArtistListItem {
-  id: 1;
+  id: number;
   name: string;
   nationality: string;
   residence: string;

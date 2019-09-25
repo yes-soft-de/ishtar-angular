@@ -11,5 +11,5 @@ export class UserConfig {
   public static postInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction';
   public static searchAPI = 'http://ishtar.96.lt/Ishtar/public/search';
   public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
-  public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/Google';
+  public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
 }

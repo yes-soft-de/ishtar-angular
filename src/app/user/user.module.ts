@@ -11,7 +11,6 @@ import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
 import {FooterComponent} from './ui/components/general-footer/footer.component';
 import {HeaderComponent} from './ui/components/general-header/header.component';
 import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
-import {TabsModule} from 'ngx-bootstrap';
 import {ArtistListComponent} from './ui/components/artist-list/artist-list.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
@@ -35,6 +34,10 @@ import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/
 import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {SearchListComponent} from './ui/components/search-list/search-list.component';
+import { ArtTypeListPageComponent } from './ui/Pages/art-type-list-page/art-type-list-page.component';
+import {TabsModule} from 'ngx-bootstrap';
+import { LoginPageComponent } from './ui/Pages/login-page/login-page.component';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,9 @@ import {SearchListComponent} from './ui/components/search-list/search-list.compo
     HomeAuctionSectionComponent,
     HomeNavbarComponent,
     SearchPageComponent,
-    SearchListComponent
+    SearchListComponent,
+    ArtTypeListPageComponent,
+    LoginPageComponent
   ],
   exports: [
     // User
@@ -101,9 +106,9 @@ import {SearchListComponent} from './ui/components/search-list/search-list.compo
     HttpClientModule,
     NgwWowModule,
     UserRoutingModule,
-    TabsModule.forRoot(),
     ToastrModule.forRoot(), CarouselModule,
-    ReactiveFormsModule, ParallaxModule
+    ReactiveFormsModule, ParallaxModule, TabsModule,
+    MatDialogModule
   ]
 })
 export class UserModule {

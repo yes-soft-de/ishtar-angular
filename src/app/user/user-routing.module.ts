@@ -9,6 +9,8 @@ import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
+import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
+import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,9 @@ const routes: Routes = [
       {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
-      {path: 'artist/:id', component: ArtistDetailsPageComponent}
+      {path: 'artist/:id', component: ArtistDetailsPageComponent},
+      {path: 'art-schools-list', component: ArtTypeListPageComponent},
+      {path: 'login', component: LoginPageComponent}
     ]
   }
 ];

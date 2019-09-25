@@ -16,6 +16,13 @@ export class SearchService {
       keyword: query
     };
 
-    return this.httpclient.post<SearchResponse>(UserConfig.searchAPI, JSON.stringify(searchRequest));
+    return this.httpclient.post<{
+      Data: {
+        id: string,
+        name: string,
+        path: string,
+        artist: string
+      }[]
+    }>(UserConfig.searchAPI, JSON.stringify(searchRequest));
   }
 }

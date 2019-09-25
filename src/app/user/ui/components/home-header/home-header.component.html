@@ -12,34 +12,6 @@
   </div>
 
   <div id="hero-main">
-    <div id="hero-header">
-      <ul>
-        <li routerLink="/">Home</li>
-        <li routerLink="/painting-list">Paintings</li>
-        <li routerLink="/artist-list">Artists</li>
-        <li style="color: #000;"><a style="color: #000;" href="http://k-symfony.96.lt/connect/google">Login</a></li>
-        <li>
-          <div class="btn-group" mdbDropdown>
-            <a mdbDropdownToggle class="dropdown-toggle waves-light" mdbWavesEffect>
-              Art Schools
-            </a>
-
-            <div class="dropdown-menu dropdown-primary" *ngIf="artTypeList!=null">
-              <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">{{i.name}}</a>
-            </div>
-          </div>
-        </li>
-
-        <li class="float-right">
-          <div class="md-form p-0 m-0">
-            <form [formGroup]="searchFrom" class="form-inline md-form form-sm" (ngSubmit)="submitSearch()">
-              <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon>
-              <input class="form-control my-0 py-0" type="text" placeholder="Search" formControlName="search">
-            </form>
-          </div>
-        </li>
-      </ul>
-    </div>
     <div id="hero-body">
       <div class="carousel-fg">
         <h5>{{paintings[activeSlide].title}}</h5>

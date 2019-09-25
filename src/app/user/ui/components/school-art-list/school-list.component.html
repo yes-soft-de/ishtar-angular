@@ -1,8 +1,8 @@
 <section id="school-list-section">
   <div id="cards-list">
-    <div class="school-list-card" *ngFor="let i of schools">
+    <div class="school-list-card" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
       <div id="school-bg">
-        <img src="{{i.img}}" alt="...">
+        <img src="{{i.path}}" alt="...">
       </div>
       <div id="school-fg">
         <h5>{{i.name}}</h5>

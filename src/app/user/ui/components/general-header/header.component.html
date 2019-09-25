@@ -1,3 +1,4 @@
+<div style="z-index: 9999; height: 6rem"></div>
 <header (mouseover)="showHeader()" (mouseleave)="hideHeader()" class="d-none d-lg-block">
   <nav id="header-nav" class="container-fluid">
     <div class="header-top">
@@ -16,27 +17,13 @@
           <div class="col-8 align-self-center">
             <ul>
               <li class="float-right">
-                <a href="{{userLoginLink}}" *ngIf="userName.length < 3">
-                  Login
-                </a>
+                <mdb-icon fas icon="sign-in-alt" size="2x" (click)="openDialog()"></mdb-icon>
               </li>
-              <li class="float-right" *ngIf="userName.length >= 3">{{userName}}</li>
+              <li class="float-right" *ngIf="userName === null">{{userName}}</li>
               <li class="float-right"><a routerLink="/admin">Admin Area</a></li>
               <li class="float-right"><a routerLink="/painting-list">Paintings</a></li>
-              <li class="float-right">
-                <div class="btn-group" mdbDropdown>
-                  <a mdbDropdownToggle class="dropdown-toggle waves-light" mdbWavesEffect>
-                    Art Schools
-                  </a>
-                  <div class="dropdown-menu dropdown-primary">
-                    <a class="dropdown-item" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
-                      {{i.name}}
-                    </a>
-                  </div>
-                </div>
-              </li>
+              <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>
               <li class="float-right"><a routerLink="/artist-list">Artists</a></li>
-              <li class="float-right"><a routerLink="">Home</a></li>
             </ul>
           </div>
         </div>

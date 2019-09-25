@@ -1,26 +1,3 @@
-#search-list-section {
-  display: flex;
-  flex-direction: column;
-
-  #artist-list {
-    display: flex;
-    flex-wrap: wrap;
-
-    mdb-card {
-      flex-basis: 20%;
-      margin-top: 2rem;
-      margin-right: 2rem;
-
-
-    }
-  }
-
-  #painting-list {
-    display: flex;
-    flex-wrap: wrap;
-
-    mdb-card {
-      flex-basis: 20%;
-    }
-  }
+ngx-tabs {
+  color: black !important;
 }
