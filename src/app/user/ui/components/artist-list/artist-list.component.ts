@@ -39,7 +39,6 @@ export class ArtistListComponent implements OnInit {
   constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
-    console.log(this.artistListFormatted);
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
       // Fetch Painting View Interaction
@@ -58,7 +57,6 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
-            console.log(this.artistList);
           },
           error => {
             console.log(error);
@@ -66,13 +64,8 @@ export class ArtistListComponent implements OnInit {
       );
 
     }
-    // create array of Artist Follow after removing the repeated value
-    // this.artistIDFollow = [...new Set(this.artistIDFollow)];
-    this.types = [...new Set(this.types)];    // create array of types after removing the repeated value
-
-    // for (let j = 0; j < this.artistIDFollow.length; j++) {
-    //   console.log(this.artistIDFollow, this.artistIDFollow[0].followNumber);
-    // }
+    // create array of types after removing the repeated value
+    this.types = [...new Set(this.types)];
 
     // Create Pagination Config
     this.config = {
@@ -90,6 +83,7 @@ export class ArtistListComponent implements OnInit {
     //   );
     // }
   }
+
   // Fetch The Page Number On Page Change
   pageChanged(event) {
     this.config.currentPage = event;

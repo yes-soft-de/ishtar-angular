@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
-import {InteractionResponse} from '../../../entity/interaction/interaction-response';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -22,12 +21,14 @@ export class PaintingListComponent implements OnInit {
     interaction: 3, // 3: for view interaction
     client: 1,      // this for client id
   };
-  paintingsView: {interactions: number}[] = [];
+  paintingsView: {
+    id: number,
+    viewNumber: number
+  }[] = [];
 
   constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
-
     this.paintingList = this.formattedPaintingList;
     // region Artists Collecting
     this.artists = [];
@@ -37,11 +38,15 @@ export class PaintingListComponent implements OnInit {
       this.viewData.row = image.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
-            this.paintingsView.push(data.Data[0]);
+            this.paintingsView.push({
+              id: image.id,
+              viewNumber: data.Data[0].interactions
+            });
           },
           error => {
             console.log(error);
           }
+
       );
     }
     // make loop inside paintingsView and remove the repeated value
@@ -58,10 +63,11 @@ export class PaintingListComponent implements OnInit {
 
     // Create Pagination Config
     this.config = {
-      itemsPerPage: 10,
+      itemsPerPage: 8,
       currentPage: 1,
       totalItems: this.paintingList.length
     };
+    console.log(this.paintingList);
   }
 
   // Fetch The Page Number On Page Change
@@ -91,7 +97,7 @@ export class PaintingListComponent implements OnInit {
     this.viewData.row = id;
     this.interactionService.addViewInteraction(this.viewData).subscribe(
         res => {
-          console.log('This Painting Was Reviewed', res);
+          console.log('Painting Reviewed : ', res);
         },
         error => {
           console.log(error);

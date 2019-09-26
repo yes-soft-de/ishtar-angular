@@ -21,8 +21,11 @@
              <p class="painting-name">{{painting.name}}</p>
              <p class="artist">{{painting.artist}}</p>
              <ul class="statistics">
-               <li><i class="fas fa-thumbs-up"></i> 225 </li>
-               <li><i class="far fa-eye"></i> {{paintingsView[i]?.interactions}}</li>
+               <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>
+               <li>
+                   <i class="far fa-eye"></i>
+                   <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>
+               </li>
              </ul>
            </span>
         </div>

@@ -14,4 +14,5 @@ export class UserConfig {
   public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
   public static addInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/createInteraction';
   public static getFollowInteractionAPI = 'http://ishtar.96.lt/Ishtar/public/getEntityInteraction'; // fetch client that make follow
+  public static paintingViewsAPI = 'http://K-symfony.96.lt/OAuth2/public/createInteraction';
 }
