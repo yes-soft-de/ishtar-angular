@@ -15,10 +15,10 @@
           <li class="nav-item">
             <a class="nav-link">
               <div class="btn-group" mdbDropdown>
-                Sort By <span class="d-none d-md-block pl-1">Seen Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
+                Sort By <span class="d-none d-md-block pl-1">Follow  Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                  <a class="dropdown-item">Greatest Number</a>
-                  <a class="dropdown-item">Lowest Number</a>
+                  <a class="dropdown-item" (click)="sortItemsByLargeFollowNumber()">Greatest Number</a>
+                  <a class="dropdown-item" (click)="sortItemsByLowerFollowNumber()">Lowest Number</a>
                 </div>
               </div>
             </a>
@@ -43,11 +43,11 @@
               <i class="fas fa-search text-white" aria-hidden="true"></i>
             </span>
         </div>
-        <input class="form-control my-0 py-1" [(ngModel)]="searchText" autocomplete="off" name="name" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control my-0 py-1" [(ngModel)]="searchText" autocomplete="off" name="name" type="text" placeholder="Search In This Page" aria-label="Search">
       </div>
     </div>
     <section id="photos" class="row">
-      <div *ngFor="let artist of artistList | paginate: config | filter: searchText"
+      <div *ngFor="let artist of artistList | paginate: config | filter: searchText; index as i"
            class="col-xs-6 col-sm-6 col-md-4 col-xl-3">
         <a routerLink="/artist/{{artist.id}}" (click)="viewArtist(artist.id)">
           <div class="artist-card text-center my-2 my-lg-3 my-xl-4">
@@ -56,24 +56,25 @@
               <div class="inner-details-container">
                 <h3 class="col-12 text-center">{{artist.name}}</h3>
                 <span class="col-12 text-center artist-detail-number">{{artist.paintingNumber}} painting</span>
-                <span class="col-12 text-center artist-detail-follower">{{artist.artistFollowers}} Followers</span>
+                <span class="col-12 text-center artist-detail-follower">{{artist.artistFollowers}} Follow</span>
+<!--                <span>{{artistIDFollow[i].id}}</span>-->
               </div>
             </div>
           </div>
         </a>
       </div>
     </section>
-    <div class="text-center mt-3">
-      <pagination-controls class="my-pagination"
-                           (pageChange)="pageChanged($event)"
-                           autoHide="true"
-                           responsive="true"
-                           previousLabel="Prev"
-                           nextLabel="Next"
-                           screenReaderPaginationLabel="Pagination"
-                           screenReaderPageLabel="page"
-                           screenReaderCurrentLabel="You're on page"></pagination-controls>
-    </div>
+      <div class="text-center mt-3">
+          <pagination-controls class="my-pagination"
+                               (pageChange)="pageChanged($event)"
+                               autoHide="true"
+                               responsive="true"
+                               previousLabel="Prev"
+                               nextLabel="Next"
+                               screenReaderPaginationLabel="Pagination"
+                               screenReaderPageLabel="page"
+                               screenReaderCurrentLabel="You're on page"></pagination-controls>
+      </div>
   </div>
 
 </div>
