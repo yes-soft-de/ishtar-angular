@@ -1,0 +1,44 @@
+html {
+  font-family: Arial, sans-serif !important;
+  h1 {
+    @media screen and (min-width: 0){
+      font-size: 30pt !important;
+    }
+    @media screen and (min-width: 960px){
+      font-size: 50pt !important;
+    }
+  }
+  h2 {
+    @media screen and (min-width: 0){
+      font-size: 24pt !important;
+    }
+    @media screen and (min-width: 960px){
+      font-size: 30pt !important;
+    }
+  }
+  h3 {
+    @media screen and (min-width: 0){
+      font-size: 24pt !important;
+    }
+    @media screen and (min-width: 960px){
+      font-size: 18pt !important;
+    }
+  }
+  h4 {
+    @media screen and (min-width: 0){
+      font-size: 16pt !important;
+    }
+    @media screen and (min-width: 960px){
+      font-size: 18pt !important;
+    }
+  }
+
+  h5 {
+    @media screen and (min-width: 0){
+      font-size: 12pt !important;
+    }
+    @media screen and (min-width: 960px){
+      font-size: 18pt !important;
+    }
+  }
+}

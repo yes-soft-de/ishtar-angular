@@ -20,6 +20,8 @@ export class HomePageComponent implements OnInit {
   artTypeList: ArtTypeListItem[];
   loadFinished = false;
 
+  mostSeenArtType: ArtTypeListItem;
+
   public headerSlides = [{
     url: '../../../../../assets/hero-slide.jpg',
     title: 'Slide 01',
@@ -35,7 +37,7 @@ export class HomePageComponent implements OnInit {
       title: 'Slide 03',
       text: 'Other than Other Text Should Go In Here!'
     }];
-  public paintingList: PaintingListItem[];
+  paintingList: PaintingListItem[];
   showNavbar = false;
   artistList: ArtistListItem[];
 
@@ -54,6 +56,7 @@ export class HomePageComponent implements OnInit {
     this.artTpeService.getAllArtType().subscribe(
       data => {
         this.artTypeList = data.Data;
+        this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
         this.checkLoadingFinished();
       }
     );
@@ -62,11 +65,11 @@ export class HomePageComponent implements OnInit {
   requestPaintingList() {
     this.paintingService.requestPaintingList().subscribe(
       data => {
-        this.paintingList = [];
-        for (const i of data.Data) {
-          this.paintingList.push(i);
-        }
+        this.paintingList = data.Data;
         this.checkLoadingFinished();
+      }, error1 => {
+        console.log(error1);
+        // this.fetchData();
       }
     );
   }

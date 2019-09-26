@@ -4,6 +4,7 @@
   height: 40rem;
   overflow: hidden;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  position: relative;
   // endregion
 
   background-color: #F2E2AC;
@@ -88,8 +89,8 @@
 
       li {
         display: inline-block;
-        height: 2rem;
-        width: 2rem;
+        height: 1.5rem;
+        width: 1.5rem;
         margin: .5rem;
         background-color: #888888;
         border-radius: 50%;
@@ -135,105 +136,30 @@
       }
     }
   }
-}
 
-//.carousel {
-//  height: 100%;
-//  display: flex;
-//  // sectioning the Row to 2
-//  div {
-//    flex-basis: 50%;
-//  }
-//
-//  // This is where we find the dots and the info
-//  #indicators-container {
-//    display: flex;
-//    flex-direction: column;
-//    justify-content: space-around;
-//    height: 100%;
-//    align-items: center;
-//    padding: 3rem;
-//
-//    .carousel-indicators {
-//      top: 4rem;
-//      right: 10rem;
-//
-//      li {
-//        background-color: #333333;
-//      }
-//    }
-//
-//    ol {
-//      display: flex;
-//      position: inherit;
-//      width: min-content;
-//      margin: 0;
-//
-//      li {
-//        height: 2rem;
-//        width: 2rem;
-//        border-radius: 50%;
-//      }
-//    }
-//
-//    #diagonal-misplaced-card {
-//      border-style: solid;
-//      border-color: goldenrod;
-//      padding: 1rem;
-//
-//      #info-card {
-//        position: relative;
-//        top: -4rem;
-//        right: -2rem;
-//        box-sizing: border-box;
-//        width: 100%;
-//        height: 100%;
-//        &:hover {
-//          transition: all 1s ease-in-out;
-//          transform: translate(-1rem, 4rem);
-//        }
-//      }
-//    }
-//  }
-//
-//  // To change the active indicator Colors to Gold
-//  #indicators-container .active {
-//    background-color: goldenrod !important;
-//  }
-//
-//  // This is Where we style the images and the carousel of it.
-//  .carousel-inner {
-//
-//    .grow { transition: all 1s ease-in-out; }
-//    .grow:hover { transform: scale(1.2); }
-//
-//    display: flex;
-//    justify-content: center;
-//    padding: 5rem;
-//
-//    .carousel-item {
-//      margin: 0;
-//
-//      .img-border {
-//        height: 25rem;
-//        width: 25rem;
-//        padding: 1rem;
-//        display: flex;
-//        align-items: center;
-//        justify-content: center;
-//
-//        border-style: solid;
-//        border-color: goldenrod;
-//        img {
-//          position: center;
-//          max-width: 100%;
-//          min-width: 100%;
-//          object-fit: cover;
-//        }
-//      }
-//
-//    }
-//  }
-//}
-//
-//// endregion
+  #coming-soon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, .7);
+
+    div {
+      padding: 1rem;
+      background-color: white;
+      border-style: solid;
+      border-color: goldenrod;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+}

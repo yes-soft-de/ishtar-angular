@@ -1,13 +1,13 @@
 .artist-list-section {
-  margin-top: 6rem;
-  border-top: 1px solid #333333;
+  //margin-top: 6rem;
+  //border-top: 1px solid #333333;
   #artist-sidebar {
-    background: #F4F4F4;
-    border-right: 1px solid;
+    border-right: 1px solid #aaa;
     button {
       background-color: white !important;
       color: black;
-      border: 1px solid goldenrod;
+      padding: .375rem .75rem !important;
+      border: 1px solid #aaa;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       -o-box-shadow: none;
@@ -29,41 +29,45 @@
   }
   #photos {
       .artist-card {
-        height: 300px;
-        padding-top: 3.5rem;
-        margin-top: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        &:hover {
+          .details-container {
+            bottom: 5rem;
+          }
+          img {
+            padding: 0;
+          }
+        }
         img {
-          height: 12rem;
-          width: 12rem;
+          height: 14rem;
+          width: 14rem;
+          border: 1px solid #bfb049;
+          padding: 3px;
           border-radius: 50%;
           object-fit: cover;
           z-index: 1;
         }
-        a {
-          color: black;
-        }
-
-        #details-container {
-          color: #333;
-          border-width: 1px;
-          border-style: solid;
-          border-color: #abaeb2;
-          position: relative;
-          top: -7rem;
-          padding-top: 8rem;
+        .details-container {
+          color: #ffffff;
+          position: absolute;
+          bottom: -6rem;
           h3 {
             font-size: 1.3rem;
             font-weight: bold;
           }
-          .artist-detail-number {
-            margin-bottom: 5px;
-            font-size: 19px;
-          }
+          .artist-detail-number,
           .artist-detail-follower {
-            color: #aaaaaa;
             margin-bottom: 5px;
-            font-size: 16px;
+            padding: 0 5px;
           }
+        }
+        img, .details-container {
+          -webkit-transition: all .5s ease-in-out;
+          -moz-transition: all  .5s ease-in-out;
+          -ms-transition: all  .5s ease-in-out;
+          -o-transition: all  .5s ease-in-out;
+          transition: all  .5s ease-in-out;
         }
       }
   }
@@ -79,20 +83,17 @@
     }
     #photos {
       .artist-card {
-        height: 300px;
-        margin-top: 2rem;
-        #details-container {
-          top: -7rem;
-          padding-top: 8rem;
-          h3 {
-            font-size: 25px;
+        &:hover {
+          .details-container {
+            bottom: 4rem;
           }
-          .artist-detail-number {
-            margin-bottom: 5px;
-          }
-          .artist-detail-follower {
-            margin-bottom: 5px;
-          }
+        }
+        img {
+          height: 12rem;
+          width: 12rem;
+        }
+        .details-container {
+          bottom: -4rem;
         }
       }
     }
@@ -110,24 +111,17 @@
     }
     #photos {
       .artist-card {
-        height: 305px;
-        margin-top: 2rem;
-        img {
-          height: 11rem;
-          width: 11rem;
+        &:hover {
+          .details-container {
+            bottom: 4rem;
+          }
         }
-        #details-container {
-          top: -7rem;
-          padding-top: 8rem;
-          h3 {
-            font-size: 22px;
-          }
-          .artist-detail-number {
-            margin-bottom: 5px;
-          }
-          .artist-detail-follower {
-            margin-bottom: 5px;
-          }
+        img {
+          height: 12rem;
+          width: 12rem;
+        }
+        .details-container {
+          bottom: -4rem;
         }
       }
     }
@@ -138,52 +132,19 @@
   .artist-list-section {
     margin-top: 5.5rem;
     #artist-sidebar {
-      button {
-        padding: 1rem !important;
-      }
-    }
-    #photos {
-      .artist-card {
-        height: 305px;
-        margin-top: 2rem;
-        img {
-          height: 11rem;
-          width: 11rem;
-        }
-        #details-container {
-          top: -7rem;
-          padding-top: 8rem;
-          h3 {
-            font-size: 1.28rem;
-          }
-          .artist-detail-number {
-            margin-bottom: 5px;
-          }
-          .artist-detail-follower {
-            margin-bottom: 5px;
-          }
-        }
+      h5 {
+        font-size: 1rem;
       }
     }
   }
 }
 @media (min-width: 1200px) and (max-width: 1374px) {
   .artist-list-section {
-    //margin-top: 5.5rem;
     #photos {
       .artist-card {
-        height: 300px;
-        margin-top: 1rem;
         img {
-          height: 10rem;
-          width: 10rem;
-        }
-        #details-container {
-          top: -6rem;
-          padding-top: 7rem;
-          h3 {
-            font-size: 1.14rem;
-          }
+          height: 13rem;
+          width: 13rem;
         }
       }
     }

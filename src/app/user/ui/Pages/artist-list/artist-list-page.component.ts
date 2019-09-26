@@ -30,7 +30,7 @@ export class ArtistListPageComponent implements OnInit, OnDestroy {
         this.artistList = data.Data;
         // console.log(JSON.stringify(data.Data));
       }, error1 => {
-        this.requestArtistList();
+        console.log(error1);
       });
   }
 

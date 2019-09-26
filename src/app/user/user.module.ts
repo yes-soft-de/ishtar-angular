@@ -38,6 +38,8 @@ import { ArtTypeListPageComponent } from './ui/Pages/art-type-list-page/art-type
 import {TabsModule} from 'ngx-bootstrap';
 import { LoginPageComponent } from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,9 @@ import {MatDialogModule} from '@angular/material';
     UserRoutingModule,
     ToastrModule.forRoot(), CarouselModule,
     ReactiveFormsModule, ParallaxModule, TabsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ]
 })
 export class UserModule {

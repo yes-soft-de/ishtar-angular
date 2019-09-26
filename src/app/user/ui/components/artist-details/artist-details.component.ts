@@ -5,6 +5,8 @@ import {ArtistDetails} from '../../../entity/artist/artist-details';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
 import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
 import {ToastrService} from 'ngx-toastr';
+import {ViewInterface} from '../../../entity/interaction/view.interface';
+import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 
 @Component({
   selector: 'app-artist-page',
@@ -15,10 +17,18 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() featuredPaintings: PaintingListItem[];
   @Input() artist: ArtistDetails;
   artistMainPainting: PaintingListItem;
+  viewData: ViewInterface = {
+      entity: 2,      // 2: For Artist Entity
+      row: 0,         // this for Artist id
+      interaction: 2, // 2: for Follow interaction
+      client: 1,      // this for client id
+  };
+  isFollowed = 'Follow';
 
   constructor(private activatedRoute: ActivatedRoute,
               private artistPaintings: PaintingListService,
               private artistDetails: UserArtistService,
+              private interactionService: IshtarInteractionService,
               private toaster: ToastrService) {
   }
 
@@ -37,7 +47,17 @@ export class ArtistDetailsComponent implements OnInit {
     // Get Artist Paintings
   }
 
-  followArtist() {
-    this.toaster.success('Following!');
+    // Increase view for Artist
+    followArtist(id: number) {
+      this.viewData.row = id;
+      this.interactionService.addViewInteraction(this.viewData).subscribe(
+          res => {
+            this.isFollowed = 'Followed';
+            console.log('This Artist Was Reviewed', res);
+          },
+          error => {
+              console.log(error);
+          }
+      );
   }
 }

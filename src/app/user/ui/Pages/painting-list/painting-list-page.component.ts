@@ -11,7 +11,8 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingListPageComponent implements OnInit {
   formattedList: PaintingListItem[];
 
-  constructor(private paintingService: PaintingListService, private toaster: ToastrService) {
+  constructor(private paintingService: PaintingListService,
+              private toaster: ToastrService) {
   }
 
   ngOnInit() {
@@ -24,8 +25,8 @@ export class PaintingListPageComponent implements OnInit {
         this.formattedList = data.Data;
       }, error1 => {
         this.toaster.error(error1.message);
-        console.log(JSON.stringify(error1));
-        this.fetchData();
+        console.log(error1);
+        // this.fetchData();
       }
     );
   }

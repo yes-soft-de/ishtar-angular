@@ -1,11 +1,11 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
+import {MatDialog} from '@angular/material';
+import {LoginPageComponent} from '../../Pages/login-page/login-page.component';
 import {interval, Subscription} from 'rxjs';
 import {UserConfig} from '../../../UserConfig';
 import {HttpClient} from '@angular/common/http';
-import {LoginPageComponent} from '../../Pages/login-page/login-page.component';
-import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -15,41 +15,38 @@ import {MatDialog} from '@angular/material';
 export class HeaderComponent implements OnInit {
   artTypeList: ArtTypeListItem[];
   showTheHeader = false;
+
   userName = '';
   loadingUser = false;
 
   // for Requesting User Profile
   subscription: Subscription;
-
-  @ViewChild('LoginPopup', {static: false})
-  loginPopup: LoginPageComponent;
-  constructor(private artTpeService: ArtTypeService, private httpClient: HttpClient, public dialog: MatDialog) {
-  }
+  constructor(private artTpeService: ArtTypeService, public dialog: MatDialog, private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.artTpeService.getAllArtType().subscribe(
       data => {
         this.artTypeList = data.Data;
       }
-    );
-    this.updateUserStatus();
-  }
+      );
 
-  openDialog(): void {
-    this.dialog.open(LoginPageComponent, {
-      hasBackdrop: true,
-      width: '100vw'
-    });
+    this.updateUserStatus();
   }
 
   // show header on hover
   showHeader() {
-    this.showTheHeader = true;
+    this.showTheHeader = false;
   }
-
   // display header on hover
   hideHeader() {
     this.showTheHeader = false;
+  }
+
+  showDialog() {
+    this.dialog.open(LoginPageComponent, {
+      width: '100vw',
+      hasBackdrop: true
+    });
   }
 
   updateUserStatus() {

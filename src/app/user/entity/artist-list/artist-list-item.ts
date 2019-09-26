@@ -13,4 +13,5 @@ export interface ArtistListItem {
   Twitter: string;
   Linkedin: string;
   artType: string;
+  painting?: number;
 }

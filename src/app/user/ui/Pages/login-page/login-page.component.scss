@@ -5,7 +5,9 @@
 
   transition: all 1s ease-in-out;
 
-
+  a {
+    padding-left: 1rem;
+  }
   // region Google Button Stuff
   .google-button {
     height: 40px;
@@ -13,12 +15,12 @@
     background: white;
     color: #737373;
     border-radius: 5px;
-    white-space: nowrap;
-    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.05);
     transition-property: background-color, box-shadow;
     transition-duration: 150ms;
     transition-timing-function: ease-in-out;
-    padding: 0;
+    display: flex;
+    align-items: center;
 
     &:focus,
     &:hover {
@@ -33,16 +35,9 @@
   }
 
   .google-button__icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 8px 0 8px 8px;
+    display: grid;
     width: 18px;
     height: 18px;
-    box-sizing: border-box;
-  }
-
-  .google-button__icon--plus {
-    width: 27px;
   }
 
   .google-button__text {
