@@ -24,8 +24,7 @@ export class HomeHeaderComponent implements OnInit {
     // console.log(this.paintings.length);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   setActiveSlide(activeSlideNumber) {
     this.carousel.activeSlide = activeSlideNumber;

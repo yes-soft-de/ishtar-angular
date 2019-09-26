@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
+import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -12,9 +14,8 @@ export class PaintingListComponent implements OnInit {
   public artTypes: string[];
   @Input() formattedPaintingList: PaintingListItem[];
   paintingList: PaintingListItem[];
-
-  constructor() {
-  }
+  paintingViews: PaintingViewsItem[];
+  constructor(private PaintingViewsService: PaintingViewsService) { }
 
   ngOnInit() {
     this.paintingList = this.formattedPaintingList;

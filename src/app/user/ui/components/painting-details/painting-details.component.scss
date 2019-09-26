@@ -101,7 +101,7 @@
 #painting-list-images {
   img {
     width: 100%;
-    height: 150px;
+    height: 125px;
     object-fit: cover;
     overflow: hidden;
     cursor: pointer;
@@ -111,6 +111,18 @@
 #main-image {
   position: relative;
   overflow: hidden;
+  .video-box {
+    width: 100%;
+    iframe {
+      width: 100%;
+      height: 350px;
+    }
+    i {
+      position: absolute;
+      font-size: 2.3rem;
+      color: #000;
+    }
+  }
   img {
     height: auto;
     width: 100%;
@@ -142,9 +154,13 @@
   img {
     border-radius: 50%;
   }
+  h5 {
+    font-size: 30pt;
+  }
   h3 {
     padding: 10px 20px;
     margin-top: 25px;
+    font-size: 50pt;
     i {
       font-size: 1.7rem;
       margin: 0 10px;
@@ -184,26 +200,7 @@
   h5 {
     color: goldenrod;
   }
-  .video-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    video {
-      width: 100%;
-      height: 100%;
-      opacity: 0.8;
-    }
-    i {
-      position: absolute;
-      font-size: 2.3rem;
-      color: #000;
-    }
-  }
+  
 }
 
 
@@ -232,6 +229,7 @@
       min-height: auto;
       .video-box {
         position: relative;
+        iframe {height: 250px;}
       }
     }
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
+/*import {MatDialog} from '@angular/material';
+import {LoginPageComponent} from '../../Pages/login-page/login-page.component';*/
 import {interval, Subscription} from 'rxjs';
 import {UserConfig} from '../../../UserConfig';
 import {HttpClient} from '@angular/common/http';
@@ -13,40 +15,53 @@ import {HttpClient} from '@angular/common/http';
 export class HeaderComponent implements OnInit {
   artTypeList: ArtTypeListItem[];
   showTheHeader = false;
-  userLoginLink = UserConfig.userLoginLink;
+
   userName = '';
+  loadingUser = false;
 
   // for Requesting User Profile
   subscription: Subscription;
-  constructor(private artTpeService: ArtTypeService, private httpClient: HttpClient) { }
+  constructor(private artTpeService: ArtTypeService,/* public dialog: MatDialog*/ private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.artTpeService.getAllArtType().subscribe(
       data => {
         this.artTypeList = data.Data;
       }
-    );
-    this.updateUserStatus();
+      );
+
+    //this.updateUserStatus();
   }
 
   // show header on hover
   showHeader() {
-    this.showTheHeader = true;
+    this.showTheHeader = false;
   }
   // display header on hover
   hideHeader() {
     this.showTheHeader = false;
   }
 
+  /*showDialog() {
+    this.dialog.open(LoginPageComponent, {
+      width: '100vw',
+      hasBackdrop: true
+    });
+  }
+/*
   updateUserStatus() {
     const source = interval(1000);
-    const text = 'Your Text Here';
-    this.subscription = source.subscribe(val => this.getUserProfile());
-  }
+    this.subscription = source.subscribe(val => {
+      if (!this.loadingUser) {
+        this.getUserProfile();
+      }
+    });
+  }*/
 
   getUserProfile() {
     // This should be moved to UserService
     // and the Response Model to Entity :)
+    this.loadingUser = true;
     this.httpClient.get<{
       Data: {
         fullname: string
@@ -57,4 +72,21 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+
+  showInputFeild(){
+    document.getElementById('open-search').style.opacity = '0';
+    document.getElementById('open-search').style.zIndex = '-1';
+    document.getElementById('input-search').style.width = '100%';
+    document.getElementById('close-search').style.opacity = '1';
+    document.getElementById('close-search').style.zIndex = '2';
+  }
+
+  hideInputFeild(){
+    document.getElementById('close-search').style.opacity = '0';
+    document.getElementById('close-search').style.zIndex = '-1';
+    document.getElementById('input-search').style.width = '0';
+    document.getElementById('open-search').style.opacity = '1';
+    document.getElementById('open-search').style.zIndex = '2';
+  }
+
 }

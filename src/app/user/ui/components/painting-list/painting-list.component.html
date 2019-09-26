@@ -1,6 +1,5 @@
-<div class="container-fluid justify-content-center">
-  <div class="row">
-    <div id="painting-list-sidebar" class="col-sm-4 col-xs-12" *ngIf="filter">
+
+     <div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating" *ngIf="filter">
       <div>
         <h5>Filter By Art Type</h5>
         <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
@@ -12,26 +11,26 @@
         <hr>
   
       </div>
-    </div>
-    <div id="painting-list" class="col-sm-8 col-xs-12">
-      <div class="row">
-        <ng-container *ngFor="let painting of paintingList; index as i">
-          <ng-container *ngIf="i < 6">
-            <div class="painting-list-item col-lg-4 col-sm-6 col-xs-12 p-3" routerLink="/painting/{{painting.id}}">
-              <div class="img-container">
-                <img class="img-fluid" src="{{painting.image}}"
-                  (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
-              </div>
-              <p class="text-center painting-name">{{painting.name}}</p>
-              <h5 class="text-center">{{painting.artist}}</h5>
-              <p class="text-center">
-                <mdb-icon fas icon="eye"></mdb-icon>
-                Seen By 25
-              </p>
+    </div> 
+    <div class="col-sm-9 col-xs-12 floating">
+      <div id="painting-list">
+        <div class="row">
+          <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let painting of paintingList" routerLink="/painting/{{painting.id}}">
+            
+            <div class="img-container">
+              <img class="img-fluid" src="{{painting.image}}"
+                (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
+                <span class="painting-info">
+                  <p class="painting-name">{{painting.name}}</p>
+                  <p class="artist">{{painting.artist}}</p>
+                  <ul class="statistics">
+                    <li><i class="fas fa-thumbs-up"></i> 225 </li>
+                    <li><i class="far fa-eye"></i> 4,280</li>
+                  </ul>
+                </span>
             </div>
-          </ng-container>
-        </ng-container>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>

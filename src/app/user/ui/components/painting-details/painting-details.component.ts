@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 
@@ -13,23 +15,28 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   featuredList: PaintingListItem[];
+  paintingViews: PaintingViewsItem
   // activePaintingImage: string;
 
   paintingLiked = false;
   paintingClapped = false;
 
   constructor(private paintingService: PaintingListService,
+              private paintingViewsService: PaintingViewsService,
               private interactionService: IshtarInteractionService,
               private toaster: ToastrService) {
     // this.activePaintingImage = this.painting.image;
   }
 
-  ngOnInit() {
-    this.paintingService.requestPaintingList().subscribe(
+  ngOnInit() { 
+   /* this.paintingViewsService.requestPaintingViews(this.paintingViews).subscribe(
       data => {
-        this.featuredList = data.Data;
+        console.log("data" ,data);
+      },
+      error => {
+        console.log("error",error);
       }
-    );
+    );*/
   }
 
   clapThePainting() {
@@ -49,8 +56,17 @@ export class PaintingDetailsComponent implements OnInit {
     this.toaster.success('Painting Added To Your Wish List');
   }
 
-  setMainPainting(img: string) {
-    // this.activePaintingImage = img;
+  
+
+  setMainPainting(event) {
+  
+    var target = event.target || event.srcElement || event.currentTarget;
+    var paintingSrc = target.attributes.src;
+    var value = paintingSrc.nodeValue;
+    var mainImage = document.getElementById('main-img');
+    mainImage.setAttribute('src',value);
+    document.getElementById('full-size-img').setAttribute('src',value);
+    
   }
 
   showImageInFullSize() {
