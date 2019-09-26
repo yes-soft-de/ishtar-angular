@@ -2,7 +2,7 @@ export class UserConfig {
   public static PaintingListAPI = 'http://ishtar.96.lt/Ishtar/public/getAllPainting';
   public static PaintingImageAPI = 'http://localhost:8000/getPaintingImages';
   public static PaintingDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getPaintingById';
-  public static ArtistListAPI = 'http://ishtar.96.lt/Ishtar/public/getArtistsData';
+  public static allArtistListAPI = 'http://ishtar.96.lt/Ishtar/public/getAllArtist';
   public static ArtistDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getArtistById';
   public static getByAPI = 'http://ishtar.96.lt/Ishtar/public/getBy';
   public static ArtTypeAPI = 'http://ishtar.96.lt/Ishtar/public/getArtTypeById';

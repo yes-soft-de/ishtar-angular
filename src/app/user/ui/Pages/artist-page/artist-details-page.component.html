@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-artist-page [artist]="artist" [featuredPaintings]="paintingList"
                  *ngIf="artist !== null && paintingList !== null"></app-artist-page>
-<div  class="d-flex justify-content-center" style="margin-top: 6rem" *ngIf="artist === null || paintingList === null ">
+<div  class="d-flex justify-content-center" *ngIf="artist === null || paintingList === null ">
   <div class="d-flex flex-column my-5" >
     <h5 class="text-center">Loading...</h5>
     <img src="../../../../../assets/loading.gif" alt="Loading" class="img-fluid" style="object-fit: contain">

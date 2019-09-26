@@ -12,15 +12,9 @@ export class ArtistListService {
   constructor(private httpClient: HttpClient) {
   }
 
-  requestPaintingList() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
-    );
-  }
-
   requestArtistList() {
     return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
+      `${UserConfig.allArtistListAPI}`, {responseType: 'json'}
     );
   }
 

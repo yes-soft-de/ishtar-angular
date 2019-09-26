@@ -39,6 +39,7 @@ export class ArtistListComponent implements OnInit {
   constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
+    console.log(this.artistListFormatted);
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
       // Fetch Painting View Interaction
@@ -57,7 +58,7 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
-            console.log(this.artistIDFollow);
+            console.log(this.artistList);
           },
           error => {
             console.log(error);
@@ -72,10 +73,7 @@ export class ArtistListComponent implements OnInit {
     // for (let j = 0; j < this.artistIDFollow.length; j++) {
     //   console.log(this.artistIDFollow, this.artistIDFollow[0].followNumber);
     // }
-    for (const i of this.artistIDFollow) {
-      console.log(i.followNumber);
 
-    }
     // Create Pagination Config
     this.config = {
       itemsPerPage: 8,

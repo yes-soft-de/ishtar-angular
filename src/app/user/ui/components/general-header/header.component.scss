@@ -1,3 +1,145 @@
+//#header {
+//  #spacer {
+//    @media screen and (min-width: 0){
+//      height: 0;
+//    }
+//    @media screen and (min-width: 960px) {
+//      height: 6rem;
+//    }
+//  }
+//  a {
+//    color: black;
+//  }
+//  header {
+//    position: fixed;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    background: #fff;
+//    z-index: 999999;
+//    #header-nav {
+//      .header-top {
+//        margin-left: -15px;
+//        margin-right: -15px;
+//        -webkit-box-shadow: 2px 2px 4px #ddd;
+//        -moz-box-shadow: 2px 2px 4px #ddd;
+//        -o-box-shadow: 2px 2px 4px #ddd;
+//        box-shadow: 2px 2px 4px #ddd;
+//
+//        li {
+//          display: inline-block;
+//          margin: 1rem;
+//
+//          a {
+//            color: black;
+//          }
+//        }
+//      }
+//      .header-bottom {
+//        margin-top: 10px;
+//      }
+//
+//
+//      #btn-wish-list {
+//        background: #bfb049;
+//        font-weight: 600;
+//      }
+//
+//      #btn-favorite {
+//        font-weight: 600;
+//        border-left: 1px solid #aaa;
+//        border-right: 1px solid #aaa;
+//      }
+//
+//      #btn-wish-list,
+//      #btn-favorite {
+//        -webkit-box-shadow: none;
+//        -moz-box-shadow: none;
+//        -o-box-shadow: none;
+//        box-shadow: none;
+//      }
+//    }
+//  }
+//
+//  mdb-navbar {
+//    direction: rtl;
+//    background: #ffffff;
+//    z-index: 99999;
+//    .btn-wish-list {
+//      background: #bfb049;
+//      font-weight: 600;
+//      box-shadow: none;
+//    }
+//    .btn-favorite {
+//      margin: 0 0 0 14rem;
+//      font-weight: 600;
+//      border-left: 1px solid #aaa;
+//      border-right: 1px solid #aaa;
+//    }
+//    .btn-wish-list,
+//    .btn-favorite {
+//      padding: .5rem 1rem;
+//      -webkit-box-shadow: none;
+//      -moz-box-shadow: none;
+//      -o-box-shadow: none;
+//      box-shadow: none;
+//    }
+//    .header-mobile-section {
+//      width: 20%;
+//      align-items: center;
+//      line-height: 0.5;
+//      //margin-right: 30rem;
+//      span {
+//        display: inline-block;
+//      }
+//    }
+//  }
+//
+//
+//  // Start xs Size Screen
+//  @media (max-width: 575px) {
+//    mdb-navbar {
+//      .btn-wish-list,
+//      .btn-favorite {
+//        margin: 0;
+//        padding: .2rem .5rem;
+//      }
+//      .header-mobile-section {
+//        span {
+//          font-size: 0.6rem;
+//        }
+//      }
+//    }
+//  }
+//  // Start sm Size Screen
+//  @media (min-width: 576px) and (max-width: 767px) {
+//    mdb-navbar {
+//      .btn-favorite {
+//        margin: 0 0 0 6rem;
+//      }
+//      .header-mobile-section {
+//        span {
+//          font-size: .9rem;
+//        }
+//      }
+//    }
+//  }
+//  // Start md Size Screen
+//  @media (min-width: 768px) and (max-width: 991px) {
+//    mdb-navbar {
+//      .btn-favorite {
+//        margin: 0 0 0 14rem;
+//      }
+//      .header-mobile-section {
+//        span {
+//          font-size: 1rem;
+//        }
+//      }
+//    }
+//  }
+//
+//}
+
 #header {
   #spacer {
     @media screen and (min-width: 0){
@@ -135,6 +277,62 @@
           font-size: 1rem;
         }
       }
+    }
+  }
+
+}
+
+//Search
+
+#header-nav {
+  ul {
+    float: right;
+    position: relative;
+    .dropdown-menu {
+      min-width: 8rem;
+      top: -10px;
+      left: -10px;
+    }
+  }
+}
+
+.search-box {
+  margin-left: 35px;
+  .search{
+    position: absolute;
+    right: 65px;
+    width: 100%;
+    text-align: right;
+    #input-search {
+      width: 0;
+      height: 40px;
+      position: absolute;
+      top: -10px;
+      right: 0;
+      overflow: hidden;
+      transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out;
+      -ms-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      -webkit-transition: all .3s ease-in-out;
+      input {
+        position: absolute;
+        right: 0;
+      }
+      #input-search.open {
+        width: 100%;
+      }
+    }
+    #open-search,
+    #close-search {
+      position: absolute;
+      right: 0;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+    #close-search {
+      z-index: -1;
+      opacity: 0;
     }
   }
 
