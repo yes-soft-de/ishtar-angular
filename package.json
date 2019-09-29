@@ -36,7 +36,6 @@
     "moment-timezone": "^0.5.26",
     "ng-animate": "^0.3.4",
     "ng-file-upload": "^12.2.13",
-    "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^5.1.2",
     "ngx-bootstrap-slider": "^1.7.0",
     "ngx-carousel-lib": "^0.1.2",

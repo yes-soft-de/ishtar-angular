@@ -1,28 +1,79 @@
-<div class="container">
-  <!-- Input -->
-  <div class="d-flex align-items-center">
-    <form #commentsForm [formGroup]="commentsForm"
-          (ngSubmit)="submitComment(commentsForm)">
-      <label>
-        <input type="text" formControlName="comment" placeholder="Name:">
-      </label>
-    </form>
-  </div>
-  <!-- #Input -->
+<div class="comments-box">
+  <ul>
+    <li style="display: inline-block">
+      <a (click)="clapThePainting()" *ngIf="!paintingClapped">
+        <mdb-icon far icon="hand-peace"></mdb-icon>
+        Clap
+      </a>
+      <a *ngIf="paintingClapped">
+        <mdb-icon fas icon="hand-peace"></mdb-icon>
+        Clap
+      </a>
+    </li>
+    <li style="display: inline-block">
+      <a (click)="loveThePainting()" *ngIf="!paintingLiked">
+        <mdb-icon far icon="heart"></mdb-icon>
+        Love
+      </a>
+      <a *ngIf="paintingLiked">
+        <mdb-icon fas icon="heart"></mdb-icon>
+        Love
+      </a>
+    </li>
+    <li style="display: inline-block">
+      <i class="far fa-comment"></i> 112 comments
+    </li>
+  </ul>
+  <form class="form-group">
+    <textarea #textarea="ngModel" type="text" name="comment" ngModel (keyup.enter)="pressing(textarea)"  placeholder="Your comment..." class="form-control" [disabled]="isSubmitted"></textarea>
+  </form>
 
-  <!-- Prev Comments -->
-  <div class="d-flex flex-column">
-    <div class="row" *ngFor="let i of comments">
-      <div class="d-inline-block mx-3">
-        <img src="{{i.userImage}}" alt="..." class="mx-2">
-        <h5>{{i.userName}}</h5>
-      </div>
-      <div class="d-flex">
-        <p>
-          {{i.comment}}
-        </p>
-      </div>
+  <!-- Comments -->
+  <div class="all-comments">
+
+    <div class="sub-comment">
+      <img src="../../../../../assets/slider-images/4.png">
+<!--      <img src="{{comment.userImage}}"-->
+      <span class="time">
+        comment.date
+      </span>
+      <p>
+        comment.comment
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
     </div>
+
   </div>
-  <!-- #Prev Input -->
+  <!-- #Comments -->
+
 </div>
+
+
+<!--<div class="container">-->
+<!--  &lt;!&ndash; Input &ndash;&gt;-->
+<!--  <div class="d-flex align-items-center">-->
+<!--    <form #commentsForm [formGroup]="commentsForm"-->
+<!--          (ngSubmit)="submitComment(commentsForm)">-->
+<!--      <label>-->
+<!--        <input type="text" formControlName="comment" placeholder="Name:">-->
+<!--      </label>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; #Input &ndash;&gt;-->
+
+<!--  &lt;!&ndash; Prev Comments &ndash;&gt;-->
+<!--  <div class="d-flex flex-column">-->
+<!--    <div class="row" *ngFor="let i of comments">-->
+<!--      <div class="d-inline-block mx-3">-->
+<!--        <img src="{{i.userImage}}" alt="..." class="mx-2">-->
+<!--        <h5>{{i.userName}}</h5>-->
+<!--      </div>-->
+<!--      <div class="d-flex">-->
+<!--        <p>-->
+<!--          {{i.comment}}-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; #Prev Input &ndash;&gt;-->
+<!--</div>-->

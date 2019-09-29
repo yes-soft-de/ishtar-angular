@@ -24,7 +24,6 @@ export class ArtistListComponent implements OnInit {
   public types: string[] = ['all'];
   public activeArtType: string;
   config: any;  // Config For Paginate
-  searchText;   // Property Binding For Search
   viewData: ViewInterface = {
     entity: 2,      // 2: For Artist Entity
     row: 0,         // this for Artist id

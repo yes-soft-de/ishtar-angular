@@ -34,14 +34,6 @@ export class PaintingDetailsComponent implements OnInit {
           this.featuredList = data.Data;
         }
     );
-     // this.paintingViewsService.requestPaintingViews(this.paintingViews).subscribe(
-     //   data => {
-     //     console.log('data', data);
-     //   },
-     //   error => {
-     //     console.log('error', error);
-     //   }
-     // );
   }
 
   clapThePainting() {

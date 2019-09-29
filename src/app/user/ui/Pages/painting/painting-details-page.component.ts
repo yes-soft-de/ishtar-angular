@@ -26,7 +26,6 @@ export class PaintingDetailsPageComponent implements OnInit {
     ).subscribe(
       data => {
         this.paintingDetails = data.Data[0];
-        console.log(JSON.stringify(data.Data[0]));
       }, error1 => {
         console.log(error1);
       }

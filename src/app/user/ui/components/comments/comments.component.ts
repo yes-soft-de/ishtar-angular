@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, NgForm, NgModel} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {CommentsService} from '../../../service/comments/comments.service';
@@ -14,9 +14,10 @@ import {ToastrService} from 'ngx-toastr';
 export class CommentsComponent implements OnInit {
   @Input() pageType: string;
   comments: CommentsEntity[];
-  commentsForm = new FormGroup({
-    comment: new FormControl('')
-  });
+  clientID: number;
+  isSubmitted = false;
+  paintingClapped;
+  paintingLiked;
 
   constructor(private activatedRoute: ActivatedRoute,
               private commentsService: CommentsService,
@@ -24,20 +25,52 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commentsService.requestComments(this.activatedRoute.snapshot.paramMap.get('id'),
+    this.commentsService.getAllComments(this.activatedRoute.snapshot.paramMap.get('id'),
       this.pageType).subscribe(
       data => {
         this.comments = data.Data;
+        console.log(data);
       }, error1 => {
+        console.log(error1);
         this.toaster.error(error1.msg);
       }
     );
   }
 
-  submitComment(commentsForm: FormGroup) {
-    this.commentsService.postComment(
-      this.activatedRoute.snapshot.paramMap.get('id'),
-      this.pageType,
-      commentsForm.get('msg').value);
+  submitComment(commentsForm) {
+    console.log(commentsForm, this.activatedRoute.snapshot.paramMap.get('id'));
+    // this.commentsService.postComment(
+    //     this.pageType,
+    //     this.activatedRoute.snapshot.paramMap.get('id'),
+    //     commentsForm.get('msg').value,
+    //     this.clientID = 1);
   }
+
+  pressing(textareaValue: NgModel) {
+    this.isSubmitted = false;
+    this.commentsService.postComment(
+        this.pageType,
+        this.activatedRoute.snapshot.paramMap.get('id'),
+        textareaValue.value,
+        this.clientID = 1).subscribe(
+            data => {
+              textareaValue.reset();
+              this.isSubmitted = false;
+              console.log(data);
+            },
+        error => {
+            this.isSubmitted = false;
+            console.log(error);
+        }
+    );
+  }
+
+  clapThePainting() {
+
+  }
+
+  loveThePainting() {
+
+  }
+
 }

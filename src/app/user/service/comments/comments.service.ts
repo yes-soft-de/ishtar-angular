@@ -13,29 +13,34 @@ export class CommentsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  postComment(itemId: string, itemType: string, msg: string) {
+  // Add Mew Comments
+  postComment(itemType: string, itemId: string, msg: string, clientId: number) {
     const request: {
-      id: string,
       entity: number,
-      data: string
+      row: string,
+      body: string,
+      client: number,
+      spacial: number,
     } = {
-      id: itemId,
       entity: this.toEntityId(itemType),
-      data: msg
+      row: itemId,
+      body: msg,
+      client: clientId,
+      spacial: 0
     };
-
-    return this.httpClient.post(UserConfig.getInteractionAPI, JSON.stringify(request));
+    return this.httpClient.post(UserConfig.postNewCommentAPI, JSON.stringify(request));
   }
 
-  requestComments(itemId: string, itemType: string) {
-    const request: {
+  // Get All Comments
+  getAllComments(itemId: string, itemType: string) {
+    const requestData: {
       id: string,
       entity: number
     } = {
       id: itemId,
       entity: this.toEntityId(itemType)
     };
-    return this.httpClient.post<CommentsResponse>(UserConfig.getInteractionAPI, JSON.stringify(request));
+    return this.httpClient.post<CommentsResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
   }
 
   private toEntityId(itemType): number {

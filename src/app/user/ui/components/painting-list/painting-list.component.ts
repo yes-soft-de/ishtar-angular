@@ -55,7 +55,7 @@ export class PaintingListComponent implements OnInit {
     this.artists = [...new Set(this.artists)];
     // endregion
     // region Art Type Collecting
-    this.artTypes = [];
+    this.artTypes = ['all'];
     for (const image of this.formattedPaintingList) {
       this.artTypes.push(image.artType);
     }
@@ -67,7 +67,6 @@ export class PaintingListComponent implements OnInit {
       currentPage: 1,
       totalItems: this.paintingList.length
     };
-    console.log(this.paintingList);
   }
 
   // Fetch The Page Number On Page Change
@@ -77,13 +76,22 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     const paintingList: PaintingListItem[] = [];
-    for (const painting of this.formattedPaintingList) {
-      painting.artType === name ? paintingList.push(painting) : console.log(painting.artType === name);
+    const paintingListAll: any[] = [];
+    if (name === 'all') {
+      for (const painting of this.formattedPaintingList) {
+        paintingListAll.push(painting);
+      }
+      this.paintingList = paintingListAll;
+    } else {
+      for (const painting of this.formattedPaintingList) {
+        if (painting.artType === name) {
+          paintingList.push(painting);
+        }
+      }
+      this.paintingList = paintingList;
     }
-    this.paintingList = paintingList;
-
-
   }
+
 
   public filterByArtist(name: string) {
     const paintingList: PaintingListItem[] = [];
