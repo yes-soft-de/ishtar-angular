@@ -16,8 +16,9 @@
   }
 
   .all-comments {
-    height: 300px;
+    //height: 300px;
     overflow-y: scroll;
+    overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 7px;
     }
@@ -32,28 +33,48 @@
     }
 
     .sub-comment {
+      position: relative;
       padding: 10px 15px;
       border-bottom: 1px solid #eee;
+
+      .hidden-button {
+        position: absolute;
+        right: -122px;
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out
+      }
+
+      &:hover .hidden-button {
+        right: 10px
+      }
+
       img {
         width: 35px;
         height: 35px;
         border-radius: 50%;
       }
+
       .time {
         margin-left: 15px;
         padding-left: 15px;
         position: relative;
-        &::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: calc(50% - 2px);
-          height: 4px;
-          width: 4px;
-          background: #000;
+
+        .comment-date {
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: calc(50% - 2px);
+            height: 4px;
+            width: 4px;
+            background: #000;
+          }
         }
       }
-      p{
+
+      p {
         margin-top: 20px;
       }
     }

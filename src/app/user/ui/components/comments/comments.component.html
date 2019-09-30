@@ -1,4 +1,4 @@
-<div class="comments-box">
+<div class="col-12 comments-box">
   <ul>
     <li style="display: inline-block">
       <a (click)="clapThePainting()" *ngIf="!paintingClapped">
@@ -21,26 +21,31 @@
       </a>
     </li>
     <li style="display: inline-block">
-      <i class="far fa-comment"></i> 112 comments
+      <i class="far fa-comment"></i> {{comments?.length}} comments
     </li>
   </ul>
   <form class="form-group">
-    <textarea #textarea="ngModel" type="text" name="comment" ngModel (keyup.enter)="pressing(textarea)"  placeholder="Your comment..." class="form-control" [disabled]="isSubmitted"></textarea>
+    <textarea #textarea="ngModel" type="text" ngModel name="comment" (keyup.enter)="pressing(textarea)" (keydown.enter)="onKeydown($event)"  placeholder="Your comment..." class="form-control rounded-0" [disabled]="isSubmitted"></textarea>
   </form>
 
   <!-- Comments -->
-  <div class="all-comments">
-
-    <div class="sub-comment">
-      <img src="../../../../../assets/slider-images/4.png">
-<!--      <img src="{{comment.userImage}}"-->
+  <div class="all-comments" [ngStyle]="{'height': comments.length != 0 ? '300px' : 0}">
+    <div class="sub-comment" *ngFor="let comment of comments; index as i">
+      <div class="hidden-button">
+        <a class="text-primary mr-1 px-1 py-0" (click)="editComment(i)" *ngIf="edit !== i">Edit</a>
+        <a class="text-danger confirm px-1 py-0" (click)="deleteComment(comment.id)">Delete</a>
+        </div>
+      <img src="../../../../../assets/default-avatar.jpg">
       <span class="time">
-        comment.date
+        {{comment.userName}} {{comment.date != null ? '( ' + comment.date + ' )': ''}}
       </span>
       <p>
-        comment.comment
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        {{comment.body}}
       </p>
+      <div *ngIf="edit === i">
+        <textarea type="text" [(ngModel)]="comment.body" name="comment" placeholder="comment..." class="form-control rounded-0 mb-2"></textarea>
+        <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(i)">Save</button>
+      </div>
     </div>
 
   </div>
@@ -77,3 +82,11 @@
 <!--  </div>-->
 <!--  &lt;!&ndash; #Prev Input &ndash;&gt;-->
 <!--</div>-->
+<!--body: "Great↵"-->
+<!--client: {id: 1, firsttName: "Hammam", userName: "HammaZarefa", password: "myPass", email: "HammamZarefa@Gmail.com", …}-->
+<!--date: null-->
+<!--entity: {id: 1, name: "Painting"}-->
+<!--id: 10-->
+<!--lastEdit: null-->
+<!--row: 2-->
+<!--spacial: false-->

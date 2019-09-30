@@ -18,4 +18,6 @@ export class UserConfig {
   public static paintingViewsAPI = 'http://K-symfony.96.lt/OAuth2/public/createInteraction';
   public static getAllCommentsAPI = UserConfig.sourceAPI + 'getEntityComment';
   public static postNewCommentAPI = UserConfig.sourceAPI + 'createComment';
+  public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
+  public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
 }

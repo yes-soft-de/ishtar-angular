@@ -12,6 +12,20 @@
       position: relative;
       border-radius: 5px;
       overflow: hidden;
+      .painting-buy {
+        position: absolute;
+        top: 6px;
+        left: 5px;
+        background: #CCB832;
+        padding: 7px 11px 6px 8px;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 50%;
+        &:hover {
+          background-color: #F4DB75;
+        }
+      }
       img {
         width: 100%;
         height: 100%;

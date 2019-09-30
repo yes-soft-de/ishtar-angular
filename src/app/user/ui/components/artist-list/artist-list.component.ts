@@ -145,9 +145,9 @@ export class ArtistListComponent implements OnInit {
   // Sort Method From larger FollowNumber To Smallest
   sortItemsByLargeFollowNumber() {
     this.artistList.sort(
-        (a, b) => (a.artistFollowers < b.artistFollowers)
-            ? 1 : (a.artistFollowers === b.artistFollowers)
-                ? ((a.artistFollowers < b.artistFollowers)
+        (a, b) => (Number(a.artistFollowers) < Number(b.artistFollowers))
+            ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
+                ? ((Number(a.artistFollowers) < Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
       console.log(x.artistFollowers);
@@ -157,9 +157,9 @@ export class ArtistListComponent implements OnInit {
   // Sort Method From Small FollowNumber To Bigest
   sortItemsByLowerFollowNumber() {
     this.artistList.sort(
-        (a, b) => (a.artistFollowers > b.artistFollowers)
-            ? 1 : (a.artistFollowers === b.artistFollowers)
-                ? ((a.artistFollowers > b.artistFollowers)
+        (a, b) => (Number(a.artistFollowers) > Number(b.artistFollowers))
+            ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
+                ? ((Number(a.artistFollowers) > Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
       console.log(x.artistFollowers);

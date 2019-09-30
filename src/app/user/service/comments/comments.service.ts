@@ -56,4 +56,34 @@ export class CommentsService {
     }
     return entityId;
   }
+
+
+  // Edit Mew Comments
+  updateComment(commentId: number, itemType: string, itemId: string, msg: string, clientId: number) {
+    const request: {
+      id: number,
+      entity: number,
+      row: string,
+      body: string,
+      client: number,
+      spacial: number,
+    } = {
+      id: commentId,
+      entity: this.toEntityId(itemType),
+      row: itemId,
+      body: msg,
+      client: clientId,
+      spacial: 0
+    };
+    return this.httpClient.post(`${UserConfig.updateCommentAPI}`, JSON.stringify(request));
+  }
+
+
+  deleteComment(commentId: number) {
+    return this.httpClient.post(
+        `${UserConfig.deleteCommentAPI}`,
+        JSON.stringify({id: commentId}),
+        {responseType: 'json'}
+    );
+  }
 }
