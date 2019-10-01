@@ -27,7 +27,7 @@
         <h1 id="painting-name">{{painting.name}}</h1>
         <p id="painting-size">{{painting.height}} CM x {{painting.width}} CM</p>
         <p id="painting-type">{{painting.colorsType}}</p>
-        <h5 id="painting-artist">{{painting.artist}}</h5>
+        <h5 id="painting-artist"><a routerLink="/artist/{{artistID}}">{{painting.artist}}</a></h5>
         <p>{{painting.price}}</p>
       </div>
       <ul style="list-style-type: none; margin: 15px 0; padding: 0">

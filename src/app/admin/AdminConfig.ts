@@ -35,7 +35,8 @@ export class AdminConfig {
   public static addAuctionAPI = AdminConfig.sourceAPI + 'createAuction';
   public static allAuctionAPI = AdminConfig.sourceAPI + 'getAllAuction';
 
-  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  public static userProfileAPI = AdminConfig.sourceAPI + 'user';
 
   // // Create Uploading Media
   // public static addMediaAPI = 'http://ishtar.96.lt/Ishtar/public/createMedia';
