@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SearchService} from '../../../service/search.service';
+import {SearchService} from '../../../service/search/search.service';
 import {PaintingSearchListItem} from '../../../entity/search-result/painting-search-list-item';
 import {ArtistSearchListItem} from '../../../entity/search-result/artist-search-list-item';
 

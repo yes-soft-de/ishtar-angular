@@ -4,14 +4,13 @@ footer {
     padding-bottom: 0.5rem;
     ul {
       list-style-type: none;
-      a {
-        color: #000;
+
+      li {
+        a {
+          color: black;
+        }
       }
     }
-  }
-
-  #footer-bottom-right {
-    text-align: right;
   }
   
   .custom-bottom-footer {
@@ -24,50 +23,9 @@ footer {
 
       li {
         display: inline-block;
-        
       }
     }
   }
 }
 
 
-@media (max-width: 575px) {
-  footer {
-    .logo {
-      position: relative;
-      top: 160px;
-      text-align: center;
-      img {
-        width: 200px;
-        margin: 0 auto;
-        display: block;
-      }
-    }
-    .site-map {
-      position: relative;
-      top: -225px;
-      ul {
-        padding: 0;
-        border-bottom: 1px solid #000;
-        li {
-          text-align: left;
-          padding: 5px;
-        }
-      }
-    }
-  }
-  #footer-bottom-left {
-    ul {
-      text-align: center;
-      margin-top: 10px
-    }
-  }
-  #footer-bottom-right {
-    text-align: center !important;
-    margin-bottom: 15px !important;
-    i {
-      margin-left: 5px !important;
-      margin-right: 5px !important;
-    }
-  }
-}

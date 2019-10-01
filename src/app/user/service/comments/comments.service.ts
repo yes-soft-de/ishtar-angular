@@ -81,9 +81,9 @@ export class CommentsService {
 
   deleteComment(commentId: number) {
     return this.httpClient.post(
-        `${UserConfig.deleteCommentAPI}`,
-        JSON.stringify({id: commentId}),
-        {responseType: 'json'}
+      `${UserConfig.deleteCommentAPI}`,
+      JSON.stringify({id: commentId}),
+      {responseType: 'json'}
     );
   }
 }

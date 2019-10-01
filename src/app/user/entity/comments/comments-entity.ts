@@ -1,7 +1,8 @@
 export interface CommentsEntity {
-  id: number;
-  body: string;
+  comment: string;
   date: string;
   userName: string;
   userImage: string;
+  id: number;
+  body: string;
 }

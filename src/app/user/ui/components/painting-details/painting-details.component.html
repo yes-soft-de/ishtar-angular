@@ -10,13 +10,26 @@
     <div class="col-sm-2 col-xs-12" id="painting-list-images">
       <!-- Painting Images List -->
       <div class="pl-4" *ngFor="let i of [1,1,1]">
-        <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting($event)" >
+        <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting($event)">
       </div>
       <!-- #Painting Images List -->
     </div>
     <div class="col-sm-6 col-xs-12" id="main-image">
       <img class="img-fluid" src="{{painting.image}}" alt="..." id="main-img">
-      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size</button>
+      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size
+      </button>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/LN820hIQ17Q" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-12 justify-content-between painting-info">
+      <div>
+        <h1 id="painting-name">{{painting.name}}</h1>
+        <p id="painting-size">{{painting.height}} CM x {{painting.width}} CM</p>
+        <p id="painting-type">{{painting.colorsType}}</p>
+        <h5 id="painting-artist">{{painting.artist}}</h5>
+        <p>{{painting.price}}</p>
+      </div>
       <ul style="list-style-type: none; margin: 15px 0; padding: 0">
         <li style="display: inline-block" class="m-1">
           <a (click)="clapThePainting()" *ngIf="!paintingClapped">
@@ -29,45 +42,31 @@
           </a>
         </li>
         <li style="display: inline-block" class="m-1">
-          <a (click)="loveThePainting()" *ngIf="!paintingLiked">
-            <mdb-icon far icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
-          <a *ngIf="paintingLiked">
-            <mdb-icon fas icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
+          <app-love-interaction [ParentType]="1" [ParentId]="painting.id"></app-love-interaction>
         </li>
       </ul>
-      <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/LN820hIQ17Q" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="col-sm-4 col-xs-12 justify-content-between painting-info">
-      <div>
-        <h3>{{painting.name}}</h3>
-        <p>{{painting.height}} CM x {{painting.width}} CM</p>
-        <p>{{painting.colorsType}}</p>
-        <h5>{{painting.artist}}</h5>
-      </div>
+      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()"
+              id="add-to-wish-btn">Add to Wish List
+      </button>
 
-      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
     </div>
   </div>
 </div>
 
 <div class="container text-dark">
   <div class="row">
-    <ngx-tabs class="col-12">
-      <ngx-tab label="About the Painting" class="text-dark painting-tab">
+    <div class="col-12">
+      <div id="painting-story" class="text-dark painting-tab">
+        <p style="font-weight: bold"> About the Painting:</p>
         {{painting.story}}
-      </ngx-tab>
-      <ngx-tab label="community" class="painting-tab">
+      </div>
+      <div class="painting-tab" style="margin-bottom: 20px;">
+        <p style="font-weight: bold; margin: 20px 0"> community:</p>
         <app-comments [pageType]="'painting'"></app-comments>
-      </ngx-tab>
-    </ngx-tabs>
+      </div>
+    </div>
 
-    <div class="col-xs-12" id="famous-quote">
+    <div class="col-12" id="famous-quote">
       <div style="background-color: #D9D9D9" class="p-3">
         <div class="align-items-center">
           <img src="../../../../../assets/1x/img-01.jpg" style="height: 5rem" alt="...">
@@ -87,5 +86,6 @@
 
 <div class="p-5" class="related-paintings">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false" *ngIf="featuredList != null"></app-c-painting-list>
+  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
+                       *ngIf="featuredList != null"></app-c-painting-list>
 </div>

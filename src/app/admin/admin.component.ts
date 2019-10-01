@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../user/UserConfig';
 import {AdminConfig} from './AdminConfig';
 import {ToastrService} from 'ngx-toastr';
+import {UserProfileService} from '../user/service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,21 +13,17 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private httpClient: HttpClient, private toaster: ToastrService) {
+  constructor(private router: Router, private userConnector: UserProfileService, private toaster: ToastrService) {
   }
 
   ngOnInit() {
-    this.httpClient.get<{
-      Data: {
-        fullname: string
-      }
-    }>(AdminConfig.userProfileAPI).subscribe(
+    this.userConnector.requestUserDetails().subscribe(
       data => {
-        if (data.Data.fullname === undefined) {
+        if (data.Data.userName === undefined) {
           alert('Unauthorized Access, Please Login!');
           this.router.navigate(['/']);
         } else {
-          this.toaster.success('Welcome ' + data.Data.fullname);
+          this.toaster.success('Welcome ' + data.Data.userName);
         }
       }
     );

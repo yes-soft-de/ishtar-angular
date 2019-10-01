@@ -25,11 +25,21 @@
     </li>
   </ul>
   <form class="form-group">
-    <textarea #textarea="ngModel" type="text" ngModel name="comment" (keyup.enter)="pressing(textarea)" (keydown.enter)="onKeydown($event)"  placeholder="Your comment..." class="form-control rounded-0" [disabled]="isSubmitted"></textarea>
+    <textarea #textarea="ngModel"
+              type="text" ngModel
+              name="comment"
+              (keyup.enter)="pressing(textarea)"
+              (keydown.enter)="onKeydown($event)"
+              placeholder="Your comment..."
+              class="form-control rounded-0"
+              required
+              [disabled]="isSubmitted"></textarea>
+    <span class="invalid-feedback" *ngIf="textarea.errors?.required && textarea.touched">Comment Field Is Required</span>
+    <span class="invalid-feedback" *ngIf="errorMessage == null">{{errorMessage}}</span>
   </form>
 
   <!-- Comments -->
-  <div class="all-comments" [ngStyle]="{'height': comments.length != 0 ? '300px' : 0}">
+  <div class="all-comments" [ngStyle]="{'height': comments?.length == 0 ? 0 :  comments?.length == 1 ? '115px' : comments?.length == 2 ? '230px' : '300px'}">
     <div class="sub-comment" *ngFor="let comment of comments; index as i">
       <div class="hidden-button">
         <a class="text-primary mr-1 px-1 py-0" (click)="editComment(i)" *ngIf="edit !== i">Edit</a>
@@ -44,7 +54,7 @@
       </p>
       <div *ngIf="edit === i">
         <textarea type="text" [(ngModel)]="comment.body" name="comment" placeholder="comment..." class="form-control rounded-0 mb-2"></textarea>
-        <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(i)">Save</button>
+          <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(i)">{{buttonValue}}</button>
       </div>
     </div>
 

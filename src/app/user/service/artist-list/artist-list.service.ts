@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {PaintingListResponse} from '../../entity/painting-list/painting-list-response';
 import {UserConfig} from '../../UserConfig';
 import {ArtistListResponse} from '../../entity/artist-list/artist-list-response';
 
@@ -14,7 +13,13 @@ export class ArtistListService {
 
   requestArtistList() {
     return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.allArtistListAPI}`, {responseType: 'json'}
+      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
+    );
+  }
+
+  requestPaintingList() {
+    return this.httpClient.get<ArtistListResponse>(
+      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
     );
   }
 

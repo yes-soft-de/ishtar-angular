@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
 import {MatDialog} from '@angular/material';
@@ -6,6 +6,10 @@ import {LoginPageComponent} from '../../Pages/login-page/login-page.component';
 import {interval, Subscription} from 'rxjs';
 import {UserConfig} from '../../../UserConfig';
 import {HttpClient} from '@angular/common/http';
+import {UserResponse} from '../../../entity/user/user-response';
+import {UserInfo} from '../../../entity/user/user-info';
+import {UserProfileService} from '../../../service/client-profile/user-profile.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,33 +17,16 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  artTypeList: ArtTypeListItem[];
-  showTheHeader = false;
-
-  userName = '';
-  loadingUser = false;
-
-  // for Requesting User Profile
-  subscription: Subscription;
-  constructor(private artTpeService: ArtTypeService, public dialog: MatDialog, private httpClient: HttpClient) { }
+  userInfo: UserInfo;
+  userLoggedIn = false;
+  userLogoutLink = UserConfig.userLogoutLink;
+  constructor(private artTpeService: ArtTypeService,
+              public dialog: MatDialog,
+              private userService: UserProfileService) {
+  }
 
   ngOnInit() {
-    this.artTpeService.getAllArtType().subscribe(
-      data => {
-        this.artTypeList = data.Data;
-      }
-      );
-
     this.updateUserStatus();
-  }
-
-  // show header on hover
-  showHeader() {
-    this.showTheHeader = false;
-  }
-  // display header on hover
-  hideHeader() {
-    this.showTheHeader = false;
   }
 
   showDialog() {
@@ -50,43 +37,18 @@ export class HeaderComponent implements OnInit {
   }
 
   updateUserStatus() {
-    const source = interval(1000);
-    this.subscription = source.subscribe(val => {
-      if (!this.loadingUser) {
-        this.getUserProfile();
-      }
-    });
-  }
-
-  getUserProfile() {
-    // This should be moved to UserService
-    // and the Response Model to Entity :)
-    this.loadingUser = true;
-    this.httpClient.get<{
-      Data: {
-        fullname: string
-      }
-    }>(UserConfig.userProfileAPI).subscribe(
-      data => {
-        this.userName = data.Data.fullname;
+    this.userService.requestUserDetails().subscribe(
+      usr => {
+        if (usr.Data.userName !== undefined) {
+          // This Means that the user is Logged In
+          this.userLoggedIn = true;
+          this.userInfo = usr.Data;
+        }
       }
     );
   }
 
-
-  showInputFeild(){
-    document.getElementById('open-search').style.opacity = '0';
-    document.getElementById('open-search').style.zIndex = '-1';
-    document.getElementById('input-search').style.width = '100%';
-    document.getElementById('close-search').style.opacity = '1';
-    document.getElementById('close-search').style.zIndex = '2';
-  }
-
-  hideInputFeild(){
-    document.getElementById('close-search').style.opacity = '0';
-    document.getElementById('close-search').style.zIndex = '-1';
-    document.getElementById('input-search').style.width = '0';
-    document.getElementById('open-search').style.opacity = '1';
-    document.getElementById('open-search').style.zIndex = '2';
+  logout() {
+    window.open(UserConfig.userLogoutLink);
   }
 }

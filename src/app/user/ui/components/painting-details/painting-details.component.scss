@@ -1,6 +1,6 @@
 #painting-details {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  margin: .5rem 0 20px 0;
+  margin: 6rem 0 20px 0;
   .row {
     margin-left: -5px;
     margin-right: -5px;
@@ -62,18 +62,15 @@
   }
 
 }
-
 #add-to-wish-btn{
   box-shadow: none;
 }
-
 #artist-area {
   flex-basis: 25%;
   max-width: 25%;
   img{
   }
 }
-
 #main-painting{
   flex-basis: 75%;
   img {
@@ -81,13 +78,11 @@
     object-fit: fill;
   }
 }
-
 #painting-carousel {
   img {
     min-width: 100%;
   }
 }
-
 .image-link {
   min-width: 100%;
   height: 20rem;
@@ -97,7 +92,6 @@
     object-position: center;
   }
 }
-
 #painting-list-images {
   img {
     width: 100%;
@@ -107,7 +101,6 @@
     cursor: pointer;
   }
 }
-
 #main-image {
   position: relative;
   overflow: hidden;
@@ -149,7 +142,6 @@
     }
   }
 }
-
 #famous-quote {
   img {
     border-radius: 50%;
@@ -157,7 +149,7 @@
   h5 {
     font-size: 30pt;
   }
-  h3 {
+  h1 {
     padding: 10px 20px;
     margin-top: 25px;
     font-size: 50pt;
@@ -172,7 +164,6 @@
     }
   }
 }
-
 .related-paintings {
   h2 {
     text-align: center;
@@ -181,13 +172,9 @@
     margin-bottom: 10px !important;
   }
 }
-
-.ngx-tabs {
-  button {
-    color: black;
-  }
+.painting-tab {
+  width: 100%;
 }
-
 .painting-info {
   position: relative;
   min-height: 510px;
@@ -202,8 +189,6 @@
   }
 
 }
-
-
 @media (max-width:991px) and (min-width:768px) {
   .painting-info {
     h3 {
@@ -214,7 +199,6 @@
     }
   }
 }
-
 @media (max-width:767px) {
   #painting-details {
     display: block !important;
@@ -234,7 +218,6 @@
     }
   }
 }
-
 @media (max-width:400px) {
   #painting-details {
     .painting-info {
@@ -243,7 +226,6 @@
       }
     }
   }
-
   #famous-quote{
     h3 {
       font-size: 18px;
