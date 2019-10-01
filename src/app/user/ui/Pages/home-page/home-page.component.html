@@ -2,11 +2,11 @@
   <main class="row m-0 p-0">
     <app-header id="floating-header" *ngIf="showNavbar"></app-header>
     <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"></app-home-header>
-    <section>
+    <section style="margin: 0 auto;">
       <div class="col-12 d-flex justify-content-center p-5">
         <h2>Latest Paintings</h2>
       </div>
-      <app-c-painting-list [formattedPaintingList]="paintingList.slice(0, 6)" [filter]="false"></app-c-painting-list>
+      <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.slice(0, 6)" [filter]="false"></app-c-painting-list>
     </section>
 
     <app-home-auction-section class="w-100"></app-home-auction-section>

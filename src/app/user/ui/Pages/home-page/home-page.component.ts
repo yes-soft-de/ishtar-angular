@@ -37,7 +37,6 @@ export class HomePageComponent implements OnInit {
   public paintingList: PaintingListItem[];
   showNavbar = false;
   artistList: ArtistListItem[];
-
   constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService,
               private artistService: ArtistListService, private httpClient: HttpClient) {
   }

@@ -15,6 +15,7 @@ export class PaintingListComponent implements OnInit {
   @Input() formattedPaintingList: PaintingListItem[];
   paintingList: PaintingListItem[];
   paintingViews: PaintingViewsItem[];
+ 
   constructor(private PaintingViewsService: PaintingViewsService) { }
 
   ngOnInit() {
@@ -49,4 +50,5 @@ export class PaintingListComponent implements OnInit {
     }
     this.paintingList = paintingList;
   }
+  
 }
