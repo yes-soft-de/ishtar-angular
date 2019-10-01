@@ -86,6 +86,6 @@
 
 <div class="p-5" class="related-paintings">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
+  <app-c-painting-list  style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
                        *ngIf="featuredList != null"></app-c-painting-list>
 </div>
