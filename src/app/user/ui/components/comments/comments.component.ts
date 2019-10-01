@@ -20,7 +20,7 @@ export class CommentsComponent implements OnInit {
   isSubmitted = false;
   buttonValue = 'Save';
   edit = -1;
-  errorMessage: string;
+  errorMessage = '';
   paintingClapped;
   paintingLiked;
 
@@ -52,27 +52,25 @@ export class CommentsComponent implements OnInit {
   // adding comment
   pressing(textareaValue: NgModel) {
     if (textareaValue.valid) {
+      this.errorMessage = '';
       this.isSubmitted = false;
-
-      console.log('true');
-      // this.commentsService.postComment(
-      //     this.pageType,
-      //     this.activatedRoute.snapshot.paramMap.get('id'),
-      //     textareaValue.value,
-      //     this.clientID = 1).subscribe(
-      //     () => {
-      //           textareaValue.reset();
-      //           this.isSubmitted = false;
-      //           this.fetchAllComments();
-      //         },
-      //     error => {
-      //         this.isSubmitted = false;
-      //         console.log(error);
-      //     }
-      // );
+      this.commentsService.postComment(
+          this.pageType,
+          this.activatedRoute.snapshot.paramMap.get('id'),
+          textareaValue.value,
+          this.clientID = 1).subscribe(
+          () => {
+                textareaValue.reset();
+                this.isSubmitted = false;
+                this.fetchAllComments();
+              },
+          error => {
+              this.isSubmitted = false;
+              console.log(error);
+          }
+      );
     } else {
       this.errorMessage = 'Comment Can Not By Empty';
-      console.log('false');
     }
   }
 

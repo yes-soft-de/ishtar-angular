@@ -33,9 +33,9 @@
               placeholder="Your comment..."
               class="form-control rounded-0"
               required
+              [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
               [disabled]="isSubmitted"></textarea>
-    <span class="invalid-feedback" *ngIf="textarea.errors?.required && textarea.touched">Comment Field Is Required</span>
-    <span class="invalid-feedback" *ngIf="errorMessage == null">{{errorMessage}}</span>
+    <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null" [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
   </form>
 
   <!-- Comments -->
