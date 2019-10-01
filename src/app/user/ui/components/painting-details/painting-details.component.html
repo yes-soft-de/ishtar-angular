@@ -45,10 +45,11 @@
     </div>
     <div class="col-sm-4 col-xs-12 justify-content-between painting-info">
       <div>
-        <h3>{{painting.name}}</h3>
-        <p>{{painting.height}} CM x {{painting.width}} CM</p>
-        <p>{{painting.colorsType}}</p>
-        <h5>{{painting.artist}}</h5>
+        <h1 id="painting-name">{{painting.name}}</h1>
+        <p id="painting-size">{{painting.height}} CM x {{painting.width}} CM</p>
+        <p id="painting-type">{{painting.colorsType}}</p>
+        <h5 id="painting-artist">{{painting.artist}}</h5>
+        <p>{{painting.price}}</p>
       </div>
 
       <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
@@ -58,14 +59,16 @@
 
 <div class="container text-dark">
   <div class="row">
-    <ngx-tabs class="col-12">
-      <ngx-tab label="About the Painting" class="text-dark painting-tab">
+    <div class="col-xs-12">
+      <div id="painting-story" class="text-dark painting-tab">
+        <p style="font-weight: bold"> About the Painting:</p>
         {{painting.story}}
-      </ngx-tab>
-      <ngx-tab label="community" class="painting-tab">
+      </div>
+      <div class="painting-tab" style="margin-bottom: 20px;">
+        <p style="font-weight: bold; margin: 20px 0"> community:</p>
         <app-comments [pageType]="'painting'"></app-comments>
-      </ngx-tab>
-    </ngx-tabs>
+      </div>
+    </div>
 
     <div class="col-xs-12" id="famous-quote">
       <div style="background-color: #D9D9D9" class="p-3">

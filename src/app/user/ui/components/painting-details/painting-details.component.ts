@@ -30,10 +30,39 @@ export class PaintingDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.paintingService.requestPaintingList().subscribe(
-        data => {
-          this.featuredList = data.Data;
-        }
+      data => {
+        this.featuredList = data.Data;
+      }
     );
+
+    if (document.readyState === 'complete') {
+      if (this.painting.name == null) {
+        document.getElementById('painting-name').style.display = 'none';
+      }
+
+      if ((this.painting.height == null) || (this.painting.width == null)) {
+        document.getElementById('painting-size').style.display = 'none';
+      }
+
+      if (this.painting.colorsType == null) {
+        document.getElementById('painting-type').style.display = 'none';
+      }
+
+      if (this.painting.story == null) {
+        document.getElementById('painting-story').style.display = 'none';
+      }
+
+      if (this.painting.artist == null) {
+        document.getElementById('painting-artist').style.display = 'none';
+      }
+
+      /* var painting_list_images = document.getElementById('painting-list-images').childElementCount;
+       alert(painting_list_images);
+       if (painting_list_images < 2) {
+         document.getElementById('painting-list-images').style.opacity = '0';
+       }*/
+
+    }
   }
 
   clapThePainting() {
@@ -52,7 +81,6 @@ export class PaintingDetailsComponent implements OnInit {
     this.interactionService.addToWishList(`${this.painting.id}`, 'painting');
     this.toaster.success('Painting Added To Your Wish List');
   }
-
 
 
   setMainPainting(event) {
