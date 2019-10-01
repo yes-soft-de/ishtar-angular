@@ -1,9 +1,9 @@
 export class UserConfig {
-  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-
+  // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+  public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
 
   public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
-  public static PaintingImageAPI = 'http://localhost:8000/getPaintingImages';
+  public static PaintingImageAPI = 'ishtar-art.de/ishtar-backend/public/getPaintingImages';
   public static PaintingDetailsAPI =  UserConfig.sourceAPI + 'getPaintingById';
   public static ArtistListAPI = 'http://ishtar-art.de/ishtar-backend/public/getAllArtist';
   public static ArtistDetailsAPI = 'http://ishtar-art.de/ishtar-backend/public/getArtistById';
@@ -13,6 +13,9 @@ export class UserConfig {
   public static getInteractionAPI =  UserConfig.sourceAPI + 'getInteraction';
   public static postInteractionAPI =  UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = 'http://ishtar-art.de/ishtar-backend/public/search';
+  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  // public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
+  // public static userLogoutLink = 'http://k-symfony.96.lt/logout';
   public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
   public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
   public static userLogoutLink = 'http://k-symfony.96.lt/logout';
