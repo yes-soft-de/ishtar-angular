@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {UserConfig} from '../UserConfig';
-import {SearchResponse} from '../entity/search-result/search-response';
+import {UserConfig} from '../../UserConfig';
+import {SearchResponse} from '../../entity/search-result/search-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  constructor(private httpclient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   requestSearchResult(query: string) {
@@ -16,7 +16,7 @@ export class SearchService {
       keyword: query
     };
 
-    return this.httpclient.post<{
+    return this.httpClient.post<{
       Data: {
         id: string,
         name: string,

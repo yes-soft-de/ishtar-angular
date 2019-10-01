@@ -11,6 +11,7 @@ import {TabsModule} from 'ngx-bootstrap';
 import {UserModule} from './user/user.module';
 import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UserModule,
     AdminModule
   ],
-  providers: [],
-  exports: [
-  ],
+  providers: [CookieService],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

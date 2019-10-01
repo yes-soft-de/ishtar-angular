@@ -27,7 +27,7 @@
       </div>
       <ul style="list-style-type: none; margin: 0; padding: 0">
         <li style="display: inline-block" class="m-1">
-          <a (click)="clapThePainting()" *ngIf="!paintingClapped">
+          <a *ngIf="!paintingClapped">
             <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
             Clap
           </a>
@@ -37,17 +37,11 @@
           </a>
         </li>
         <li style="display: inline-block" class="m-1">
-          <a (click)="loveThePainting()" *ngIf="!paintingLiked">
-            <mdb-icon far icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
-          <a *ngIf="paintingLiked">
-            <mdb-icon fas icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
+          <!-- ParentType: 1-painting 2-artist 3- artType 4-auction -->
+          <app-love-interaction *ngIf="painting !== null" [ParentId]="painting.id" [ParentType]="1"></app-love-interaction>
         </li>
       </ul>
-      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
+      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" id="add-to-wish-btn">Add to Wish List</button>
       <div class="video-box">
         <video src="../../../../../assets/1x/painting_video.mp4"></video>
         <i class="fas fa-play-circle"></i>

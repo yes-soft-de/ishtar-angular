@@ -1,0 +1,13 @@
+<!-- Filled Icon -->
+<div *ngIf="loved">
+  <mdb-icon fas icon="heart" size="2x"></mdb-icon>
+  Love
+</div>
+<!-- #Filled Icon -->
+
+<!-- Outlined Icon -->
+<div *ngIf="!loved">
+  <mdb-icon far icon="heart" size="2x" (click)="sendLove()"></mdb-icon>
+  Love
+</div>
+<!-- #Outlined Icon -->

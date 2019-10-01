@@ -40,6 +40,9 @@ import { LoginPageComponent } from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { ClapWidgetComponent } from './ui/widgets/clap-widget/clap-widget.component';
+import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
+import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,10 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
     SearchPageComponent,
     SearchListComponent,
     ArtTypeListPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ClapWidgetComponent,
+    LoveWidgetComponent,
+    FollowWidgetComponent
   ],
   exports: [
     // User

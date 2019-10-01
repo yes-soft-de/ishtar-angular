@@ -55,7 +55,7 @@ export class PaintingListComponent implements OnInit {
       this.artTypes.push(image.artType);
     }
     this.artTypes = [...new Set(this.artTypes)];
-
+    // endregion
     // Create Pagination Config
     this.config = {
       itemsPerPage: 10,

@@ -39,7 +39,8 @@
                       </div>
                     </div>
                     <div class="col-5 col-sm-6 follow-section">
-                      <button mdbBtn id="followBtn" mdbWavesEffect [class.disabled]="isFollowed=='Followed'" (click)="followArtist(artist.id)">{{isFollowed}}</button>
+                      <!-- ParentType: 1-painting 2-artist 3- artType 4-auction -->
+                      <app-follow-widget [ParentType]="2" [ParentId]="artist.id"></app-follow-widget>
                     </div>
                     <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
                       <h2>{{artist?.name}}</h2>
