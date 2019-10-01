@@ -15,4 +15,5 @@ export class UserConfig {
   public static userLogoutLink = 'http://k-symfony.96.lt/logout';
   public static addInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/createInteraction';
   public static getFollowInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/getEntityInteraction';
+  public static paintingViewsAPI = 'http://K-symfony.96.lt/OAuth2/public/createInteraction';
 }

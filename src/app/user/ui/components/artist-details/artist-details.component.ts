@@ -36,6 +36,7 @@ export class ArtistDetailsComponent implements OnInit {
     this.artistPaintings.requestPaintingListByArtist(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(
       data => {
         this.featuredPaintings = data.Data;
+        console.log(this.featuredPaintings);
         const random = `${Math.random() * 100}`;
         const randPainting = parseInt(random, 10) % this.featuredPaintings.length;
         this.artistMainPainting = this.featuredPaintings[randPainting];
@@ -53,10 +54,11 @@ export class ArtistDetailsComponent implements OnInit {
       this.interactionService.addViewInteraction(this.viewData).subscribe(
           res => {
             this.isFollowed = 'Followed';
-            console.log('This Artist Was Reviewed', res);
+            // console.log('This Artist Was Reviewed', res);
+            this.toaster.success('You Are Following Successfully');
           },
           error => {
-              console.log(error);
+            console.log(error);
           }
       );
   }

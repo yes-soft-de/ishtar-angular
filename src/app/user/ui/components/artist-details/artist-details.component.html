@@ -1,7 +1,7 @@
 <!-- ######################################## Artist Page ######################################## -->
 
 <section class= "artist-page">
-
+  <i class="fal fa-spinner-third"></i>
   <div class="artist-header">
       <div class="position-absolute d-flex justify-content-end" *ngIf="artistMainPainting != null">
         <div class="artist-banner-text text-center p-3 p-md-5">
@@ -39,8 +39,7 @@
                       </div>
                     </div>
                     <div class="col-5 col-sm-6 follow-section">
-                      <!-- ParentType: 1-painting 2-artist 3- artType 4-auction -->
-                      <app-follow-widget [ParentType]="2" [ParentId]="artist.id"></app-follow-widget>
+                      <button mdbBtn id="followBtn" mdbWavesEffect [class.disabled]="isFollowed=='Followed'" (click)="followArtist(artist.id)">{{isFollowed}}</button>
                     </div>
                     <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
                       <h2>{{artist?.name}}</h2>
@@ -83,10 +82,35 @@
         </div>
         <hr class="border">
       </div>
-      <div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4">
+      <div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4" *ngIf="featuredPaintings != null">
         <h4 class="text-center">Artist Painting</h4>
-        <app-c-painting-list [formattedPaintingList]="featuredPaintings" [filter]="false"
-                             *ngIf="featuredPaintings != null"></app-c-painting-list>
+<!--        <app-c-painting-list [formattedPaintingList]="featuredPaintings" [filter]="false"-->
+<!--                             *ngIf="featuredPaintings != null"></app-c-painting-list>-->
+        <div id="painting-list">
+          <div class="row">
+            <ng-container *ngFor="let painting of featuredPaintings; index as i" >
+              <ng-container *ngIf="i < 3">
+                <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto" routerLink="/painting/{{painting.id}}">
+                  <div class="img-container">
+                    <img class="img-fluid" src="{{painting.image}}"
+                         (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
+                    <span class="painting-info">
+                     <p class="painting-name">{{painting.name}}</p>
+                     <p class="artist">{{painting.artist}}</p>
+<!--                     <ul class="statistics">-->
+<!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
+<!--                       <li>-->
+<!--                           <i class="far fa-eye"></i>-->
+<!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
+<!--                       </li>-->
+<!--                     </ul>-->
+                </span>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
       </div>
     </div>
   </div>

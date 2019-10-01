@@ -7,7 +7,7 @@
                    style="z-index: -1;"></app-home-header>
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-5">
     <h1 class="m-5">Latest Paintings</h1>
-    <app-c-painting-list [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
+    <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
   </section>
   <app-home-auction-section class="w-100"></app-home-auction-section>
   <section class="w-100">

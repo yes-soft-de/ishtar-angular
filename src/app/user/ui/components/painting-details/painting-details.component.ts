@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
-import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
-import {LoveService} from '../../../service/love/love.service';
 
 @Component({
   selector: 'app-painting-details',
@@ -15,31 +15,55 @@ import {LoveService} from '../../../service/love/love.service';
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   featuredList: PaintingListItem[];
+  paintingViews: PaintingViewsItem;
   // activePaintingImage: string;
 
-  paintingLiked = this.loveService.loved;
+  paintingLiked = false;
   paintingClapped = false;
 
   constructor(private paintingService: PaintingListService,
-              private loveService: LoveService,
+              private paintingViewsService: PaintingViewsService,
+              private interactionService: IshtarInteractionService,
               private toaster: ToastrService) {
     // this.activePaintingImage = this.painting.image;
   }
 
   ngOnInit() {
     this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.featuredList = data.Data;
-      }
+        data => {
+          this.featuredList = data.Data;
+        }
     );
   }
 
-  loveThePainting() {
-    this.loveService.initLove(this.painting.id, InteractionConsts.ENTITY_TYPE_PAINTING);
+  clapThePainting() {
+    this.interactionService.love(`${this.painting.id}`, 'painting');
+    this.paintingClapped = true;
+    this.toaster.success('Painting Clapped');
   }
 
-  setMainPainting(img: string) {
-    // this.activePaintingImage = img;
+  loveThePainting() {
+    this.interactionService.love(`${this.painting.id}`, 'painting');
+    this.paintingLiked = true;
+    this.toaster.success('Painting Loved');
+  }
+
+  addToWishList() {
+    this.interactionService.addToWishList(`${this.painting.id}`, 'painting');
+    this.toaster.success('Painting Added To Your Wish List');
+  }
+
+
+
+  setMainPainting(event) {
+
+    const target = event.target || event.srcElement || event.currentTarget;
+    const paintingSrc = target.attributes.src;
+    const value = paintingSrc.nodeValue;
+    const mainImage = document.getElementById('main-img');
+    mainImage.setAttribute('src', value);
+    document.getElementById('full-size-img').setAttribute('src', value);
+
   }
 
   showImageInFullSize() {

@@ -24,7 +24,6 @@ export class ArtistListComponent implements OnInit {
   public types: string[] = ['all'];
   public activeArtType: string;
   config: any;  // Config For Paginate
-  searchText;   // Property Binding For Search
   viewData: ViewInterface = {
     entity: 2,      // 2: For Artist Entity
     row: 0,         // this for Artist id
@@ -57,7 +56,6 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
-            console.log(this.artistIDFollow);
           },
           error => {
             console.log(error);
@@ -65,17 +63,9 @@ export class ArtistListComponent implements OnInit {
       );
 
     }
-    // create array of Artist Follow after removing the repeated value
-    // this.artistIDFollow = [...new Set(this.artistIDFollow)];
-    this.types = [...new Set(this.types)];    // create array of types after removing the repeated value
+    // create array of types after removing the repeated value
+    this.types = [...new Set(this.types)];
 
-    // for (let j = 0; j < this.artistIDFollow.length; j++) {
-    //   console.log(this.artistIDFollow, this.artistIDFollow[0].followNumber);
-    // }
-    for (const i of this.artistIDFollow) {
-      console.log(i.followNumber);
-
-    }
     // Create Pagination Config
     this.config = {
       itemsPerPage: 8,
@@ -92,6 +82,7 @@ export class ArtistListComponent implements OnInit {
     //   );
     // }
   }
+
   // Fetch The Page Number On Page Change
   pageChanged(event) {
     this.config.currentPage = event;
@@ -154,9 +145,9 @@ export class ArtistListComponent implements OnInit {
   // Sort Method From larger FollowNumber To Smallest
   sortItemsByLargeFollowNumber() {
     this.artistList.sort(
-        (a, b) => (a.artistFollowers < b.artistFollowers)
-            ? 1 : (a.artistFollowers === b.artistFollowers)
-                ? ((a.artistFollowers < b.artistFollowers)
+        (a, b) => (Number(a.artistFollowers) < Number(b.artistFollowers))
+            ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
+                ? ((Number(a.artistFollowers) < Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
       console.log(x.artistFollowers);
@@ -166,9 +157,9 @@ export class ArtistListComponent implements OnInit {
   // Sort Method From Small FollowNumber To Bigest
   sortItemsByLowerFollowNumber() {
     this.artistList.sort(
-        (a, b) => (a.artistFollowers > b.artistFollowers)
-            ? 1 : (a.artistFollowers === b.artistFollowers)
-                ? ((a.artistFollowers > b.artistFollowers)
+        (a, b) => (Number(a.artistFollowers) > Number(b.artistFollowers))
+            ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
+                ? ((Number(a.artistFollowers) > Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
       console.log(x.artistFollowers);

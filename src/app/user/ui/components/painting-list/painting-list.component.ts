@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
-import {InteractionResponse} from '../../../entity/interaction/interaction-response';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -22,12 +21,14 @@ export class PaintingListComponent implements OnInit {
     interaction: 3, // 3: for view interaction
     client: 1,      // this for client id
   };
-  paintingsView: {interactions: number}[] = [];
+  paintingsView: {
+    id: number,
+    viewNumber: number
+  }[] = [];
 
   constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
-
     this.paintingList = this.formattedPaintingList;
     // region Artists Collecting
     this.artists = [];
@@ -37,11 +38,15 @@ export class PaintingListComponent implements OnInit {
       this.viewData.row = image.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
-            this.paintingsView.push(data.Data[0]);
+            this.paintingsView.push({
+              id: image.id,
+              viewNumber: data.Data[0].interactions
+            });
           },
           error => {
             console.log(error);
           }
+
       );
     }
     // make loop inside paintingsView and remove the repeated value
@@ -50,15 +55,15 @@ export class PaintingListComponent implements OnInit {
     this.artists = [...new Set(this.artists)];
     // endregion
     // region Art Type Collecting
-    this.artTypes = [];
+    this.artTypes = ['all'];
     for (const image of this.formattedPaintingList) {
       this.artTypes.push(image.artType);
     }
     this.artTypes = [...new Set(this.artTypes)];
-    // endregion
+
     // Create Pagination Config
     this.config = {
-      itemsPerPage: 10,
+      itemsPerPage: 8,
       currentPage: 1,
       totalItems: this.paintingList.length
     };
@@ -71,13 +76,22 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     const paintingList: PaintingListItem[] = [];
-    for (const painting of this.formattedPaintingList) {
-      painting.artType === name ? paintingList.push(painting) : console.log(painting.artType === name);
+    const paintingListAll: any[] = [];
+    if (name === 'all') {
+      for (const painting of this.formattedPaintingList) {
+        paintingListAll.push(painting);
+      }
+      this.paintingList = paintingListAll;
+    } else {
+      for (const painting of this.formattedPaintingList) {
+        if (painting.artType === name) {
+          paintingList.push(painting);
+        }
+      }
+      this.paintingList = paintingList;
     }
-    this.paintingList = paintingList;
-
-
   }
+
 
   public filterByArtist(name: string) {
     const paintingList: PaintingListItem[] = [];
@@ -91,7 +105,7 @@ export class PaintingListComponent implements OnInit {
     this.viewData.row = id;
     this.interactionService.addViewInteraction(this.viewData).subscribe(
         res => {
-          console.log('This Painting Was Reviewed', res);
+          console.log('Painting Reviewed : ', res);
         },
         error => {
           console.log(error);
