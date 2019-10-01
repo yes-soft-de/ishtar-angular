@@ -13,9 +13,16 @@
 <div class="col-sm-9 col-xs-12 floating">
   <div id="painting-list">
     <div class="row">
-      <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)" routerLink="/painting/{{painting.id}}">
+      <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12"
+           *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)"
+           routerLink="/painting/{{painting.id}}">
         <div class="img-container">
-            <span class="painting-buy" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-shopping-cart"></i></span>
+          <span class="painting-buy" data-toggle="modal" data-target="#exampleModal">
+            <a href="mailto:someone@yoursite.com?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting.id}}"
+               style="color: white">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </span>
           <img class="img-fluid" src="{{painting.image}}"
                (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
           <span class="painting-info">
@@ -25,7 +32,8 @@
                <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>
                <li>
                    <i class="far fa-eye"></i>
-                   <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>
+                   <span
+                     *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>
                </li>
              </ul>
            </span>
@@ -35,15 +43,15 @@
   </div>
 </div>
 <div class="text-center mt-3">
-    <pagination-controls class="my-pagination"
-                         (pageChange)="pageChanged($event)"
-                         autoHide="true"
-                         responsive="true"
-                         previousLabel="Prev"
-                         nextLabel="Next"
-                         screenReaderPaginationLabel="Pagination"
-                         screenReaderPageLabel="page"
-                         screenReaderCurrentLabel="You're on page"></pagination-controls>
+  <pagination-controls class="my-pagination"
+                       (pageChange)="pageChanged($event)"
+                       autoHide="true"
+                       responsive="true"
+                       previousLabel="Prev"
+                       nextLabel="Next"
+                       screenReaderPaginationLabel="Pagination"
+                       screenReaderPageLabel="page"
+                       screenReaderCurrentLabel="You're on page"></pagination-controls>
 </div>
 
 <!--<div class="container-fluid justify-content-center">-->

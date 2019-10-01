@@ -10,35 +10,14 @@
     <div class="col-sm-2 col-xs-12" id="painting-list-images">
       <!-- Painting Images List -->
       <div class="pl-4" *ngFor="let i of [1,1,1]">
-        <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting($event)" >
+        <img class="img-fluid p-1" src="{{painting.image}}" alt="..." (click)="setMainPainting($event)">
       </div>
       <!-- #Painting Images List -->
     </div>
     <div class="col-sm-6 col-xs-12" id="main-image">
       <img class="img-fluid" src="{{painting.image}}" alt="..." id="main-img">
-      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size</button>
-      <ul style="list-style-type: none; margin: 15px 0; padding: 0">
-        <li style="display: inline-block" class="m-1">
-          <a (click)="clapThePainting()" *ngIf="!paintingClapped">
-            <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
-            Clap
-          </a>
-          <a *ngIf="paintingClapped">
-            <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
-            Clap
-          </a>
-        </li>
-        <li style="display: inline-block" class="m-1">
-          <a (click)="loveThePainting()" *ngIf="!paintingLiked">
-            <mdb-icon far icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
-          <a *ngIf="paintingLiked">
-            <mdb-icon fas icon="heart" size="2x"></mdb-icon>
-            Love
-          </a>
-        </li>
-      </ul>
+      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size
+      </button>
       <div class="video-box">
         <iframe src="https://www.youtube.com/embed/LN820hIQ17Q" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -51,8 +30,25 @@
         <h5 id="painting-artist">{{painting.artist}}</h5>
         <p>{{painting.price}}</p>
       </div>
+      <ul style="list-style-type: none; margin: 15px 0; padding: 0">
+        <li style="display: inline-block" class="m-1">
+          <a (click)="clapThePainting()" *ngIf="!paintingClapped">
+            <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
+            Clap
+          </a>
+          <a *ngIf="paintingClapped">
+            <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
+            Clap
+          </a>
+        </li>
+        <li style="display: inline-block" class="m-1">
+          <app-love-interaction [ParentType]="1" [ParentId]="painting.id"></app-love-interaction>
+        </li>
+      </ul>
+      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()"
+              id="add-to-wish-btn">Add to Wish List
+      </button>
 
-      <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()" id="add-to-wish-btn">Add to Wish List</button>
     </div>
   </div>
 </div>
@@ -90,5 +86,6 @@
 
 <div class="p-5" class="related-paintings">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false" *ngIf="featuredList != null"></app-c-painting-list>
+  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
+                       *ngIf="featuredList != null"></app-c-painting-list>
 </div>
