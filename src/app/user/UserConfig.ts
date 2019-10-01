@@ -1,4 +1,7 @@
 export class UserConfig {
+  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+
+
   public static PaintingListAPI = 'http://ishtar.96.lt/Ishtar/public/getAllPainting';
   public static PaintingImageAPI = 'http://localhost:8000/getPaintingImages';
   public static PaintingDetailsAPI = 'http://ishtar.96.lt/Ishtar/public/getPaintingById';
@@ -16,4 +19,9 @@ export class UserConfig {
   public static addInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/createInteraction';
   public static getFollowInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/getEntityInteraction';
   public static paintingViewsAPI = 'http://K-symfony.96.lt/OAuth2/public/createInteraction';
+
+  public static getAllCommentsAPI = UserConfig.sourceAPI + 'getEntityComment';
+  public static postNewCommentAPI = UserConfig.sourceAPI + 'createComment';
+  public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
+  public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
 }

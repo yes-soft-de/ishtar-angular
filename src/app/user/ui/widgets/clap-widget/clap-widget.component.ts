@@ -28,7 +28,7 @@ export class ClapWidgetComponent implements OnInit {
   sendClap() {
     this.userProfiler.requestUserDetails().subscribe(
       data => {
-        if (data.Data.username === undefined) {
+        if (data.Data.userName === undefined) {
           // This should Open Dialog for Login
           this.toaster.info('Please Login First');
         } else {

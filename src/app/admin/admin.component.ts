@@ -19,11 +19,11 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.userConnector.requestUserDetails().subscribe(
       data => {
-        if (data.Data.username === undefined) {
+        if (data.Data.userName === undefined) {
           alert('Unauthorized Access, Please Login!');
           this.router.navigate(['/']);
         } else {
-          this.toaster.success('Welcome ' + data.Data.username);
+          this.toaster.success('Welcome ' + data.Data.userName);
         }
       }
     );
