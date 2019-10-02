@@ -21,10 +21,10 @@ const routes: Routes = [
       {path: '', component: HomePageComponent, data: {index: 0}},
       {path: 'search/:query', component: SearchPageComponent},
       {path: 'artist-list', component: ArtistListPageComponent, data: {index: 1}},
+      {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},
-      {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent},
       {path: 'art-schools-list', component: ArtTypeListPageComponent},
       {path: 'login', component: LoginPageComponent}

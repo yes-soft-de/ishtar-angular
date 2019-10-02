@@ -19,6 +19,10 @@
     @media screen and (min-width: 960px) {
       height: 6rem;
     }
+    // Start sm Size Screen
+    @media (max-width: 959px) {
+      height: 6rem;
+    }
   }
   a {
     color: black;
@@ -78,6 +82,10 @@
   }
 
   mdb-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     direction: rtl;
     background: #ffffff;
     z-index: 99999;

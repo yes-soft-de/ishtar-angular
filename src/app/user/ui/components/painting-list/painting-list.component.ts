@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {id} from '@swimlane/ngx-ui';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -26,7 +28,9 @@ export class PaintingListComponent implements OnInit {
     viewNumber: number
   }[] = [];
 
-  constructor(private interactionService: IshtarInteractionService) { }
+  constructor(private interactionService: IshtarInteractionService,
+              private router: Router,
+              private  route: ActivatedRoute) { }
 
   ngOnInit() {
     this.paintingList = this.formattedPaintingList;
@@ -111,5 +115,16 @@ export class PaintingListComponent implements OnInit {
           console.log(error);
         }
     );
+  }
+
+  navigate(paintingId: number) {
+      this.route.paramMap.subscribe(
+          (params: ParamMap) => {
+            if (paintingId === Number(params.get('id'))) {
+              this.router.navigate(['/painting/' + params.get('id')]);
+            }
+          }
+      );
+      // console.log(paintingId, id);
   }
 }

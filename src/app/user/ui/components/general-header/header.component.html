@@ -9,7 +9,7 @@
               <div class="row">
                 <div class="col-8 pr-0">
                   <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid"
-                       alt="logo image">
+                       alt="logo image" style="cursor: pointer;">
                 </div>
                 <div class="col-4 pl-0 align-self-center">
                   <h4 class="mb-0">ISHTAR</h4>
@@ -62,4 +62,40 @@
     <!-- #header-nav -->
   </header>
 
+
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light d-lg-none" [containerInside]="true">
+    <!-- Collapsible content -->
+    <links>
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/painting-list" class="nav-link waves-light" mdbWavesEffect>Paintings</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>
+      </ul>
+      <!--    <mdb-navbar-brand><a class="navbar-brand" href="#">Ishtar Admin</a></mdb-navbar-brand>-->
+    </links>
+    <!-- Collapsible content -->
+    <button mdbBtn class="btn-wish-list" mdbWavesEffect>Wish List</button>
+    <button mdbBtn class="btn-favorite" mdbWavesEffect>Favorite</button>
+    <div class="header-mobile-section d-inline-flex">
+      <div class="pr-0 text-center">
+        <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image" routerLink="/">
+        <span>Home Of Art</span>
+      </div>
+      <!--    <div class="pl-0 align-self-center">-->
+      <!--      <h6 class="mb-0">ISHTAR</h6>-->
+      <!--      <span>Home Of Art</span>-->
+      <!--    </div>-->
+    </div>
+    <!-- Navbar brand -->
+  </mdb-navbar>
+  <!--/.Navbar-->
+
 </div>
+
