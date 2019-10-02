@@ -24,21 +24,21 @@ export class HomePageComponent implements OnInit {
 
   public headerSlides = [{
     url: '../../../../../assets/hero-slide.jpg',
-    title: 'Slide 01',
-    text: 'Some Text Should Go In Here!'
+    title: 'The beauty in his best form',
+    text: ' '
   },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'Slide 02',
-      text: 'Other Text Should Go In Here!'
+      title: 'From the best Syrian Artists ',
+      text: ''
     },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'Slide 03',
-      text: 'Other than Other Text Should Go In Here!'
+      title: 'We present to you some pieces of art',
+      text: ' '
     }];
   paintingList: PaintingListItem[];
-  showNavbar = false;
+  showNavbar = true;
   artistList: ArtistListItem[];
 
   constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService,
@@ -98,7 +98,7 @@ export class HomePageComponent implements OnInit {
   @HostListener('window:scroll', [])
   ShowHeader() {
     if (window.pageYOffset < 360) {
-      this.showNavbar = false;
+      this.showNavbar = true;
       return;
     }
     // Get the Past Location and direction

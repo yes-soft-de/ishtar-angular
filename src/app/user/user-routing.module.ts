@@ -28,7 +28,8 @@ const routes: Routes = [
       {path: 'artist/:id', component: ArtistDetailsPageComponent},
       {path: 'art-schools-list', component: ArtTypeListPageComponent},
       {path: 'login', component: LoginPageComponent}
-    ]
+    ],
+    runGuardsAndResolvers: 'paramsChange'
   }
 ];
 

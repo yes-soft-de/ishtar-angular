@@ -102,4 +102,7 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
+  scrollUp() {
+    window.scroll(0, 0);
+  }
 }
