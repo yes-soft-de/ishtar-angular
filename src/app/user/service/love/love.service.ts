@@ -16,7 +16,7 @@ import {log} from 'util';
   providedIn: 'root'
 })
 export class LoveService {
-  userInfo: UserInfo;
+  userInfo: UserInfo = null;
   userRequestSent = false;
   private statusSubject = new Subject<any>();
 
@@ -26,23 +26,33 @@ export class LoveService {
               public dialog: MatDialog) {
   }
 
+  // region Love Getter Methods
   public initLove(entityId, entityType) {
-    // See Who is Calling!
+    // See If Loading User
     if (!this.userRequestSent) {
+      // If Not Request Him
       this.userRequestSent = true;
+      console.log('Loading User');
       this.userService.requestUserDetails().subscribe(
         user => {
-          this.userInfo = user.Data;
-          this.requestLoveStatus(entityId, entityType);
+          // Assign the Data to the User
+          console.log('Got Response');
+          if (this.isUserNode(user.Data)) {
+            console.log('Assigning User');
+            this.userInfo = user.Data;
+            this.requestLoveStatus(entityId, entityType);
+          }
         }
       );
-    } else {
+    } else if (this.checkUserDetailsExists()) {
+      console.log('User Exists, Requesting Love Status');
       this.requestLoveStatus(entityId, entityType);
     }
   }
 
   // Then Ask For Love Interaction Details
   private requestLoveStatus(entityId, entityType) {
+    console.log('Requesting Love Status ');
     const request: LoveRequest = {
       client: this.userInfo.id,
       row: entityId,
@@ -59,23 +69,18 @@ export class LoveService {
     );
   }
 
+  // endregion
+  // region Post Love Methods
   public postLove(entityId, entityType) {
-    // See Who is Calling!
-    if (!this.userRequestSent) {
-      if (this.userInfo.id === undefined) {
-        this.dialog.open(LoginPageComponent, {
-          minWidth: '100vw',
-          hasBackdrop: true
-        });
-        return;
-      }
-      this.userService.requestUserDetails().subscribe(
-        user => {
-          this.userInfo = user.Data;
-          this.postLoveToAPI(entityId, entityType);
-        }
-      );
+    console.log('Post Love Requested!');
+    if (!this.checkUserDetailsExists()) {
+      console.log('Hello My Dear Unknown User, Please Login!');
+      this.dialog.open(LoginPageComponent, {
+        minWidth: '100vw',
+        hasBackdrop: true
+      });
     } else {
+      console.log('So My Dear User, Wanna Send Some Love? Here we go');
       this.postLoveToAPI(entityId, entityType);
     }
   }
@@ -98,5 +103,21 @@ export class LoveService {
   getStatusObservable(): Observable<any> {
     return this.statusSubject.asObservable();
   }
+
+  // endregion
+
+  // region Class Specific Validators
+  private checkUserDetailsExists(): boolean {
+    if (this.userInfo == null) {
+      return false;
+    }
+    console.log('Apparently user data is ' + this.userInfo.id !== null);
+    return this.userInfo.id !== undefined;
+  }
+
+  private isUserNode(user: UserInfo) {
+    return user.id !== undefined;
+  }
+  // endregion
 }
 

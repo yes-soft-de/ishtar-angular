@@ -19,9 +19,12 @@ export class UserConfig {
   public static addInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/createInteraction';
   public static getFollowInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/getEntityInteraction';
   public static paintingViewsAPI = 'http://K-symfony.96.lt/OAuth2/public/createInteraction';
+  public static createClapAPI = 'http://ishtar-art.de/ishtar-backend/public/createClap';
+  public static getClapAPI = 'http://ishtar-art.de/ishtar-backend/public/getEntityClap';
 
   public static getAllCommentsAPI = UserConfig.sourceAPI + 'getEntityComment';
   public static postNewCommentAPI = UserConfig.sourceAPI + 'createComment';
   public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
   public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
+
 }

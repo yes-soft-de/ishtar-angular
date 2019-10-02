@@ -32,14 +32,7 @@
       </div>
       <ul style="list-style-type: none; margin: 15px 0; padding: 0">
         <li style="display: inline-block" class="m-1">
-          <a (click)="clapThePainting()" *ngIf="!paintingClapped">
-            <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
-            Clap
-          </a>
-          <a *ngIf="paintingClapped">
-            <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
-            Clap
-          </a>
+          <app-clap-widget [ParentId]="painting.id" [ParentType]="1"></app-clap-widget>
         </li>
         <li style="display: inline-block" class="m-1">
           <app-love-interaction [ParentType]="1" [ParentId]="painting.id"></app-love-interaction>
