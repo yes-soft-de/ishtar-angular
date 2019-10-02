@@ -6,6 +6,7 @@ import {PaintingViewsService} from '../../../service/painting-views/painting-vie
 import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
+import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 
 @Component({
   selector: 'app-painting-details',
@@ -17,6 +18,7 @@ export class PaintingDetailsComponent implements OnInit {
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
   // activePaintingImage: string;
+  artistID: number;
 
   paintingLiked = false;
   paintingClapped = false;
@@ -24,11 +26,23 @@ export class PaintingDetailsComponent implements OnInit {
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
               private interactionService: IshtarInteractionService,
+              private artistListService: ArtistListService,
               private toaster: ToastrService) {
     // this.activePaintingImage = this.painting.image;
   }
 
   ngOnInit() {
+    // Fetch Artist ID
+    this.artistListService.requestArtistList().subscribe(
+      data => {
+        data.Data.map(res => {
+          if (res.name === this.painting.artist) {
+            this.artistID = res.id;
+          }
+        });
+      }
+    );
+    console.log(this.artistID);
     this.paintingService.requestPaintingList().subscribe(
       data => {
         this.featuredList = data.Data;

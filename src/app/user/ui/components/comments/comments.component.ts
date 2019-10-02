@@ -18,7 +18,9 @@ export class CommentsComponent implements OnInit {
   allComments: Subscription;
   clientID: number;
   isSubmitted = false;
+  buttonValue = 'Save';
   edit = -1;
+  errorMessage = '';
   paintingClapped;
   paintingLiked;
 
@@ -36,36 +38,40 @@ export class CommentsComponent implements OnInit {
         this.pageType).subscribe(
         data => {
           this.comments = data.Data.reverse();
-          console.log(this.comments);
         }, error1 => {
           console.log(error1);
-          this.toaster.error(error1.msg);
         }
     );
   }
 
+  // prevent enter default
   onKeydown(event) {
     event.preventDefault();
   }
 
+  // adding comment
   pressing(textareaValue: NgModel) {
-    this.isSubmitted = false;
-    this.commentsService.postComment(
-        this.pageType,
-        this.activatedRoute.snapshot.paramMap.get('id'),
-        textareaValue.value,
-        this.clientID = 1).subscribe(
-            data => {
-              textareaValue.reset();
+    if (textareaValue.valid) {
+      this.errorMessage = '';
+      this.isSubmitted = false;
+      this.commentsService.postComment(
+          this.pageType,
+          this.activatedRoute.snapshot.paramMap.get('id'),
+          textareaValue.value,
+          this.clientID = 1).subscribe(
+          () => {
+                textareaValue.reset();
+                this.isSubmitted = false;
+                this.fetchAllComments();
+              },
+          error => {
               this.isSubmitted = false;
-              this.fetchAllComments();
-              console.log(data);
-            },
-        error => {
-            this.isSubmitted = false;
-            console.log(error);
-        }
-    );
+              console.log(error);
+          }
+      );
+    } else {
+      this.errorMessage = 'Comment Can Not By Empty';
+    }
   }
 
   clapThePainting() {
@@ -82,6 +88,7 @@ export class CommentsComponent implements OnInit {
   }
 
   saveComment(index: number) {
+    this.buttonValue = 'Saving...';
     this.commentsService.updateComment(
         this.comments[index].id,
         this.pageType,
@@ -91,6 +98,7 @@ export class CommentsComponent implements OnInit {
     ).subscribe(
         () => {
           this.edit = -1;
+          this.buttonValue = 'Save';
           this.toaster.success('Comment Updated Successfully');
         },
         error => {
@@ -100,14 +108,18 @@ export class CommentsComponent implements OnInit {
   }
 
   deleteComment(commentId: number) {
-    this.commentsService.deleteComment(commentId).subscribe(
-        () => {
-          this.fetchAllComments();
-          this.toaster.success('Comment Deleted Successfully');
-        },
-        error => {
-          console.log(error);
-        }
-    );
+    if (confirm('Are You Sure You Want To Delete This Comment')) {
+      this.commentsService.deleteComment(commentId).subscribe(
+          () => {
+            this.fetchAllComments();
+            this.toaster.success('Comment Deleted Successfully');
+          },
+          error => {
+            console.log(error);
+          }
+      );
+    } else {
+      return false;
+    }
   }
 }

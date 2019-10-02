@@ -18,9 +18,9 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      {path: '', component: HomePageComponent},
+      {path: '', component: HomePageComponent, data: {index: 0}},
       {path: 'search/:query', component: SearchPageComponent},
-      {path: 'artist-list', component: ArtistListPageComponent},
+      {path: 'artist-list', component: ArtistListPageComponent, data: {index: 1}},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},

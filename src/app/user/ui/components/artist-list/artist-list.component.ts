@@ -51,7 +51,7 @@ export class ArtistListComponent implements OnInit {
             });
             this.artistList.push({
               id: i.id,
-              image: i.path,
+              image: i.image,
               name: i.name,
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
@@ -101,7 +101,7 @@ export class ArtistListComponent implements OnInit {
           }
         });
         this.artistList.push({
-          image: i.path,
+          image: i.image,
           name: i.name,
           paintingNumber: 4,
           id: i.id,
@@ -118,7 +118,7 @@ export class ArtistListComponent implements OnInit {
         });
         if (i.artType === name) {
           this.artistList.push({
-            image: i.path,
+            image: i.image,
             name: i.name,
             paintingNumber: 4,
             id: i.id,

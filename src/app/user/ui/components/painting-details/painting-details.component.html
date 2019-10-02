@@ -48,7 +48,7 @@
 
 <div class="container text-dark">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <div id="painting-story" class="text-dark painting-tab">
         <p style="font-weight: bold"> About the Painting:</p>
         {{painting.story}}
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12" id="famous-quote">
+    <div class="col-12" id="famous-quote">
       <div style="background-color: #D9D9D9" class="p-3">
         <div class="align-items-center">
           <img src="../../../../../assets/1x/img-01.jpg" style="height: 5rem" alt="...">
@@ -79,6 +79,6 @@
 
 <div class="p-5 related-paintings">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
+  <app-c-painting-list  style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
                        *ngIf="featuredList != null"></app-c-painting-list>
 </div>

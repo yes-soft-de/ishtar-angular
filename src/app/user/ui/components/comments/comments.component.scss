@@ -36,7 +36,9 @@
       position: relative;
       padding: 10px 15px;
       border-bottom: 1px solid #eee;
-
+      &:last-child {
+        border-bottom: 0;
+      }
       .hidden-button {
         position: absolute;
         right: -122px;
@@ -61,16 +63,14 @@
         padding-left: 15px;
         position: relative;
 
-        .comment-date {
-          &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: calc(50% - 2px);
-            height: 4px;
-            width: 4px;
-            background: #000;
-          }
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: calc(50% - 2px);
+          height: 4px;
+          width: 4px;
+          background: #000;
         }
       }
 
