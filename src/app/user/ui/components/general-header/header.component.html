@@ -43,11 +43,11 @@
                     Paintings
                   </a>
                 </li>
-                <li class="float-right">
-                  <a routerLink="/art-schools-list">
-                    Art Schools
-                  </a>
-                </li>
+<!--                <li class="float-right">-->
+<!--                  <a routerLink="/art-schools-list">-->
+<!--                    Art Schools-->
+<!--                  </a>-->
+<!--                </li>-->
                 <li class="float-right">
                   <a routerLink="/artist-list">
                     Artists
@@ -76,13 +76,33 @@
           <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
         </li>
         <!-- Dropdown -->
-        <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>
+<!--        <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>-->
       </ul>
       <!--    <mdb-navbar-brand><a class="navbar-brand" href="#">Ishtar Admin</a></mdb-navbar-brand>-->
     </links>
     <!-- Collapsible content -->
-    <button mdbBtn class="btn-wish-list" mdbWavesEffect>Wish List</button>
-    <button mdbBtn class="btn-favorite" mdbWavesEffect>Favorite</button>
+
+<!--    <li class="float-right">-->
+      <a>
+        <div class="dropdown" mdbDropdown>
+          <mdb-icon mdbDropdownToggle fas icon="user-circle" size="2x"
+                    *ngIf="!userLoggedIn"></mdb-icon>
+          <div mdbDropdownToggle class="letter-circle"
+               *ngIf="userLoggedIn">{{userInfo.userName.substring(0, 1)}}</div>
+
+          <div class="dropdown-menu dropdown-primary" *ngIf="!userLoggedIn">
+            <a class="dropdown-item" (click)="showDialog()">Login</a>
+          </div>
+          <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn">
+            <a class="dropdown-item">Show Wish List</a>
+            <a class="dropdown-item">Show Favorite List</a>
+            <a class="dropdown-item" (click)="logout()">Logout !</a>
+          </div>
+        </div>
+      </a>
+<!--    </li>-->
+<!--    <button mdbBtn class="btn-wish-list" mdbWavesEffect>Wish List</button>-->
+<!--    <button mdbBtn class="btn-favorite" mdbWavesEffect>Favorite</button>-->
     <div class="header-mobile-section d-inline-flex">
       <div class="pr-0 text-center">
         <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image" routerLink="/">

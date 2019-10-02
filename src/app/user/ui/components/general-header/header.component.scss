@@ -21,7 +21,10 @@
     }
     // Start sm Size Screen
     @media (max-width: 959px) {
-      height: 6rem;
+      height: 3.6rem;
+    }
+    @media (min-width: 960px) and (max-width: 992px) {
+      height: 3.6rem;
     }
   }
   a {
@@ -89,6 +92,18 @@
     direction: rtl;
     background: #ffffff;
     z-index: 99999;
+    .letter-circle {
+      font-size:1em;
+      width:2.5em;
+      height:2.5em;
+      line-height:2.5em;
+      text-align:center;
+      border-radius:50%;
+      background:plum;
+      vertical-align:middle;
+      margin-right:1em;
+      color:white;
+    }
     .btn-wish-list {
       background: #bfb049;
       font-weight: 600;
@@ -121,12 +136,21 @@
 
 
   // Start xs Size Screen
-  @media (max-width: 575px) {
+  @media (max-width: 400px) {
     mdb-navbar {
+      width: 100vw;
+      mdb-icon {
+        padding: 0 .7rem;
+        font-size: .7rem!important;
+      }
+      .dropdown-menu {
+        right: 0;
+      }
       .btn-wish-list,
       .btn-favorite {
         margin: 0;
-        padding: .2rem .5rem;
+        padding: .1rem .3rem;
+        font-size: .7rem;
       }
       .header-mobile-section {
         span {
@@ -136,8 +160,12 @@
     }
   }
   // Start sm Size Screen
-  @media (min-width: 576px) and (max-width: 767px) {
+  @media (min-width: 401px) and (max-width: 767px) {
     mdb-navbar {
+      width: 100vw;
+      mdb-icon {
+        padding: 0 .7rem;
+      }
       .btn-favorite {
         margin: 0 0 0 6rem;
       }
