@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {UserConfig} from '../../../UserConfig';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
-import {ToastrService} from 'ngx-toastr';
 import {ClapService} from '../../../service/clap/clap.service';
+import {UserInfo} from '../../../entity/user/user-info';
+import {interval, Subscription} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
+import {isBoolean} from 'util';
 
 @Component({
   selector: 'app-clap-widget',
@@ -14,31 +14,70 @@ export class ClapWidgetComponent implements OnInit {
   clapFiled = '../../../../../assets/clap-icon.svg';
   clapOutlined = '../../../../../assets/clap-outline.svg';
 
-  activated = false;
-  @Input() itemType;
-  @Input() itemId;
+  clapIconSize = 32;
 
-  constructor(private userProfiler: UserProfileService, private clapService: ClapService,
+  @Input() ParentType;
+  @Input() ParentId;
+
+  clapped = false;
+  clappedNumber = null;
+
+  timeStart: Date;
+  source = interval(100);
+  holding = false;
+
+  subscription;
+
+  constructor(private clapService: ClapService,
               private toaster: ToastrService) {
   }
 
   ngOnInit() {
+    this.ObserveClaps();
   }
 
-  sendClap() {
-    this.userProfiler.requestUserDetails().subscribe(
+  ObserveClaps() {
+    this.clapService.initClap(this.ParentId, this.ParentType);
+    this.clapService.getStatusObservable().subscribe(
       data => {
-        if (data.Data.userName === undefined) {
-          // This should Open Dialog for Login
-          this.toaster.info('Please Login First');
-        } else {
-          this.clapService.sendClap(this.itemId, data.Data.id);
+        this.clapped = data > 0;
+        if (this.clapped) {
+          this.clappedNumber = data;
         }
       }
     );
   }
 
-  getClap() {
+  sendClap(value) {
+    console.log(`Sending Some Claps Buddy ;)`);
+    this.clapService.postClap(this.ParentId, this.ParentType, value);
+  }
 
+  startCalc() {
+    this.holding = true;
+    this.timeStart = new Date();
+    this.subscription = this.source.subscribe(() => {
+      if (this.holding) {
+        if (this.clapIconSize < 64) {
+          this.clapIconSize = this.clapIconSize + 1;
+        }
+      }
+    });
+  }
+
+  endClac() {
+    const timeEnd = new Date();
+    const timeDiff = (timeEnd.getMilliseconds() - this.timeStart.getMilliseconds()) / 1000;
+    console.log(Math.abs(timeDiff));
+    this.holding = false;
+    const clapsNumber = this.calculateClaps();
+    this.toaster.success(`Sending ${clapsNumber} to Painting`);
+    this.clapIconSize = 32;
+
+    this.sendClap(clapsNumber);
+  }
+
+  public calculateClaps(): number {
+    return parseInt(`${((this.clapIconSize - 32) / 50) * 100}`, 10);
   }
 }

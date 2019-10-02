@@ -1,6 +1,6 @@
 export class AdminConfig {
-  // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-  public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+  // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
   // Create General Uploading API
   public static generalUploadAPI = AdminConfig.sourceAPI + 'uploadArtistImage';
   // Create Uploading Media
@@ -35,8 +35,8 @@ export class AdminConfig {
   public static addAuctionAPI = AdminConfig.sourceAPI + 'createAuction';
   public static allAuctionAPI = AdminConfig.sourceAPI + 'getAllAuction';
 
-  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
-  public static userProfileAPI = AdminConfig.sourceAPI + 'user';
+  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  // public static userProfileAPI = AdminConfig.sourceAPI + 'user';
 
   // // Create Uploading Media
   // public static addMediaAPI = 'http://ishtar.96.lt/Ishtar/public/createMedia';

@@ -49,6 +49,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    window.open(UserConfig.userLogoutLink);
+    this.userService.requestUserLogout().subscribe(
+      () => {
+        this.userLoggedIn = false;
+        this.userInfo = null;
+      }
+    );
   }
 }

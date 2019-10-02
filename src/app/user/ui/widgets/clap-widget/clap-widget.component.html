@@ -1,1 +1,15 @@
-<a (click)="sendClap()"><img src="{{activated ? clapFiled : clapOutlined}}" height="16" width="16" alt="clap icon"></a>
+<div *ngIf="clapped">
+  <div style="display: inline-block;" class="clap-container">
+    <img src="{{clapFiled}}" alt="clap icon" width="{{clapIconSize}}" height="{{clapIconSize}}">
+  </div>
+  <h5 style="display: inline-block;">Clapped {{clappedNumber}} Times By You!</h5>
+</div>
+<div *ngIf="!clapped">
+  <div style="display: inline-block;" class="clap-container">
+    <img (mousedown)="startCalc()" (mouseup)="endClac()" src="{{clapOutlined}}"
+         alt="clap icon" width="{{clapIconSize}}" height="{{clapIconSize}}">
+  </div>
+  <h5 *ngIf="!holding" style="display: inline-block;">Clap </h5>
+  <h5 *ngIf="holding" style="display: inline-block;">Clapping {{calculateClaps()}} Times</h5>
+</div>
+

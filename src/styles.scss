@@ -53,3 +53,17 @@ body {
   }
 }
 
+// style for animations
+.container-router {
+  position: relative;
+}
+
+.container-router > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+
+
