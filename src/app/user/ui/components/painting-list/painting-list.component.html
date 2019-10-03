@@ -17,7 +17,7 @@
            *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)"
            routerLink="/painting/{{painting.id}}">
         <div class="img-container">
-          <span class="painting-buy" data-toggle="modal" data-target="#exampleModal">
+          <span class="painting-buy" data-toggle="modal" data-target="#exampleModal" style="display: none;">
             <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting.id}}"
                style="color: white">
               <i class="fas fa-shopping-cart"></i>
