@@ -21,7 +21,8 @@ export class SearchService {
         id: string,
         name: string,
         path: string,
-        artist: string
+        artist: string,
+        image: string
       }[]
     }>(UserConfig.searchAPI, JSON.stringify(searchRequest));
   }

@@ -42,7 +42,7 @@ export class SearchPageComponent implements OnInit {
           } else {
             const paintingItem: PaintingSearchListItem = {
               name: i.name,
-              path: i.path,
+              path: i.image,
               id: parseInt(i.id, 10),
               artist: i.artist
             };
