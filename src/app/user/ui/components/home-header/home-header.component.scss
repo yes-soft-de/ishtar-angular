@@ -1,4 +1,63 @@
 #hero {
+  @media (max-width:1200px){
+    #hero-body {
+      img {
+        max-width: 700px !important;
+      }
+      .painting-img {
+        bottom: -40% !important;
+        right: -30% !important;
+      }
+      .letter2 {
+        right: 30% !important;
+      }
+    }
+  }
+  @media (max-width:720px) {
+    #hero-body {
+      .letter2 {
+        right: auto !important;
+        left: -8% !important;
+        top: 10% !important;
+      }
+    }
+  }
+  @media (max-width:600px){
+    #hero-body {
+      .painting-img {
+        width: 500px !important;
+        bottom: -40% !important;
+        right: -30% !important;
+      }
+      .letter1,
+      .letter2,
+      .letter3 {
+        width: 250px !important;
+        z-index: 1;
+      }
+      .letter3 {
+        bottom: -5% !important;
+      }
+      .box {
+        width: 220px !important;
+        bottom: 5% !important;
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    #hero-body {
+      .letter1{
+        top: 95px !important;
+        right: -30px !important;
+        width: 150px !important;
+      }
+      .letter3 {
+        right: 35% !important;
+      }
+    }
+  }
+
+
   height: 50rem;
   display: flex;
   flex-direction: row;
@@ -268,6 +327,7 @@
         flex-direction: column;
         justify-content: center;
         padding-left: 2rem;
+
         @media screen and (min-width: 0) {
           h5 {
             font-size: 26pt !important;
@@ -289,9 +349,11 @@
         @media screen and (min-width: 960px) {
           h5 {
             font-size: 60pt !important;
+            max-width: 50%;
           }
           p {
             font-size: 30pt !important;
+            max-width: 50%;
           }
         }
       }

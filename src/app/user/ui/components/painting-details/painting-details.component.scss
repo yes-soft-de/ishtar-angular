@@ -238,3 +238,27 @@
     }
   }
 }
+
+.painting-list-item {
+  outline: none;
+  display: inline-block;
+  .img-container {
+    width: 100%;
+    height: 275px;
+    background: #ddd;
+    margin-bottom: 15px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    .painting-buy {
+      background: #CCB832;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      &:hover {
+        background-color: #F4DB75;
+      }
+    }
+  }
+}

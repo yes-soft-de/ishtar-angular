@@ -10,8 +10,7 @@ import {UserConfig} from '../../UserConfig';
 })
 export class CommentsService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   // Add Mew Comments
   postComment(itemType: string, itemId: string, msg: string, clientId: number) {

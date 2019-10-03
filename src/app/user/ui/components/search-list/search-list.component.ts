@@ -34,7 +34,7 @@ export class SearchListComponent implements OnInit {
         details: '', nationality: '', residence: '', story: '', video: '',
         id: i.id,
         name: i.name,
-        path: i.path
+        image: i.path
       };
       this.artistListFormatted.push(artistItem);
     }

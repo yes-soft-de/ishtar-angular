@@ -4,6 +4,7 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
@@ -34,15 +35,22 @@ import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/
 import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {SearchListComponent} from './ui/components/search-list/search-list.component';
-import { ArtTypeListPageComponent } from './ui/Pages/art-type-list-page/art-type-list-page.component';
+import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {TabsModule} from 'ngx-bootstrap';
-import { LoginPageComponent } from './ui/Pages/login-page/login-page.component';
+import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import { ClapWidgetComponent } from './ui/widgets/clap-widget/clap-widget.component';
+import {ClapWidgetComponent} from './ui/widgets/clap-widget/clap-widget.component';
 import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
 import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.component';
+import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
+import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
+import {FAQComponent} from './ui/Pages/faq/faq.component';
+import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
+import {ContactSupportComponent} from './ui/Pages/contact-support/contact-support.component';
+import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
+import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +86,14 @@ import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.com
     LoginPageComponent,
     ClapWidgetComponent,
     LoveWidgetComponent,
-    FollowWidgetComponent
+    FollowWidgetComponent,
+    TOSPageComponent,
+    PrivacyPolicyComponent,
+    ContactSupportComponent,
+    AboutUsComponent,
+    FAQComponent,
+    ImprintPageComponent,
+    DataProcessingPageComponent
   ],
   exports: [
     // User
@@ -104,7 +119,20 @@ import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.com
     ItemBriefComponent,
     CommentsComponent,
     SearchPageComponent,
-    SearchListComponent
+    SearchListComponent,
+
+    ArtTypeListPageComponent,
+    LoginPageComponent,
+    ClapWidgetComponent,
+    LoveWidgetComponent,
+    FollowWidgetComponent,
+    TOSPageComponent,
+    PrivacyPolicyComponent,
+    ContactSupportComponent,
+    AboutUsComponent,
+    FAQComponent,
+    ImprintPageComponent,
+    DataProcessingPageComponent
 
   ],
   imports: [
@@ -118,6 +146,7 @@ import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.com
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
+    // BrowserAnimationsModule,
     Ng2SearchPipeModule
   ]
 })

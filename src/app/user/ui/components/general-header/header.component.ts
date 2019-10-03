@@ -4,6 +4,7 @@ import {ArtTypeService} from '../../../../admin/service/art-type/art-type.servic
 import {MatDialog} from '@angular/material';
 import {LoginPageComponent} from '../../Pages/login-page/login-page.component';
 import {interval, Subscription} from 'rxjs';
+import {FormControl, FormGroup} from '@angular/forms';
 import {UserConfig} from '../../../UserConfig';
 import {HttpClient} from '@angular/common/http';
 import {UserResponse} from '../../../entity/user/user-response';
@@ -20,9 +21,13 @@ export class HeaderComponent implements OnInit {
   userInfo: UserInfo;
   userLoggedIn = false;
   userLogoutLink = UserConfig.userLogoutLink;
+  searchFrom = new FormGroup({
+    search: new FormControl('')
+  });
   constructor(private artTpeService: ArtTypeService,
               public dialog: MatDialog,
-              private userService: UserProfileService) {
+              private userService: UserProfileService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -55,5 +60,25 @@ export class HeaderComponent implements OnInit {
         this.userInfo = null;
       }
     );
+  }
+
+  showInputFeild() {
+    document.getElementById('open-search').style.opacity = '0';
+    document.getElementById('open-search').style.zIndex = '-1';
+    document.getElementById('input-search').style.width = '100%';
+    document.getElementById('close-search').style.opacity = '1';
+    document.getElementById('close-search').style.zIndex = '2';
+  }
+
+  hideInputFeild() {
+    document.getElementById('close-search').style.opacity = '0';
+    document.getElementById('close-search').style.zIndex = '-1';
+    document.getElementById('input-search').style.width = '0';
+    document.getElementById('open-search').style.opacity = '1';
+    document.getElementById('open-search').style.zIndex = '2';
+  }
+
+  goToSearch() {
+    this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }
 }

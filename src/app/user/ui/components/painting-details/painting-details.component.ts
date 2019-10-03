@@ -34,13 +34,13 @@ export class PaintingDetailsComponent implements OnInit {
   ngOnInit() {
     // Fetch Artist ID
     this.artistListService.requestArtistList().subscribe(
-        data => {
-          data.Data.map(res => {
-            if (res.name === this.painting.artist) {
-              this.artistID = res.id;
-            }
-          });
-        }
+      data => {
+        data.Data.map(res => {
+          if (res.name === this.painting.artist) {
+            this.artistID = res.id;
+          }
+        });
+      }
     );
     console.log(this.artistID);
     this.paintingService.requestPaintingList().subscribe(
@@ -116,4 +116,7 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
+  scrollUp() {
+    window.scroll(0, 0);
+  }
 }

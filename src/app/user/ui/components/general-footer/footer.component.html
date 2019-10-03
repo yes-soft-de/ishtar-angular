@@ -2,29 +2,30 @@
   <div class="w-100 divider-new m-0 p-0"></div>
   <div class="container d-flex justify-content-center">
     <div class="row">
-      <div class="col-4 d-flex justify-content-end">
+      <div class="col-sm-4 col-xs-12 d-flex justify-content-end logo">
         <div class="row">
-          <div class="col-8 pr-0"><img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image"></div>
-          <div class="col-4 pl-0 align-self-center" routerLink="/">
+          <div class="col-sm-8 col-xs-12 pr-0"><img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image"></div>
+          <div class="col-sm-4 col-xs-12 pl-0 align-self-center">
             <h4 class="mb-0">ISHTAR</h4>
             <span>Home Of Art</span>
           </div>
-          <p class="col-12">Some Info About Ishtar Website Should Come Here</p>
         </div>
       </div>
-      <div class="col-4 text-center">
+      <div class="col-sm-4 col-xs-12 text-center site-map">
         <ul>
+          <li><a routerLink="/">Home</a></li>
           <li><a routerLink="/artist-list">Artist</a></li>
-          <li><a routerLink="/">Art Schools</a></li>
           <li><a routerLink="/painting-list">Paintings</a></li>
         </ul>
       </div>
-      <div class="col-4 text-left">
+      <div class="col-sm-4 col-xs-12 text-left site-map">
         <ul>
-          <li><a>About Foundation</a></li>
-          <li><a>Brand Guidelines</a></li>
-          <li><a>Press Kit</a></li>
-          <li><a>Support</a></li>
+          <li><a routerLink="/about-us">About Us</a></li>
+          <li><a routerLink="/privacy">Privacy Policy</a></li>
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li><a routerLink="/tos">Terms of Service</a> </li>
+          <li><a routerLink="/imprint">Imprint</a></li>
+          <li><a routerLink="/data-processing">Data Processing</a></li>
         </ul>
       </div>
     </div>
@@ -33,17 +34,25 @@
   <div class="w-100 divider-new m-0 p-0 mb-2"></div>
 
   <div class="row container custom-bottom-footer mx-auto p-0">
-    <div id="footer-bottom-left" class="col-6 m-0 p-0">
+    <div id="footer-bottom-left" class="col-sm-6 col-xs-12 m-0 p-0">
       <ul class="p-0">
-        <li class="mx-2">Terms</li>
-        <li class="mx-2">Privacy</li>
-        <li class="mx-2">Licence</li>
+        <li class="mx-2">Terms of Services</li>
+        <li class="mx-2">Privacy Policy</li>
       </ul>
     </div>
-    <div id="footer-bottom-right" class="col-6 d-flex justify-content-end m-0 p-0">
-      <mdb-icon fab icon="facebook-square" size="2x" class="mx-1"></mdb-icon>
-      <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
-      <mdb-icon fab icon="linkedin" size="2x" class="mx-1"></mdb-icon>
+    <div id="footer-bottom-right" class="col-sm-6 col-xs-12 m-0 p-0">
+      <a href="https://www.facebook.com/Art.Paintings.Ishtar.Ecommercelwebsite">
+        <mdb-icon fab icon="facebook-square" size="2x" class="mx-1"></mdb-icon>
+      </a>
+      <a href="">
+        <mdb-icon fab icon="twitter" size="2x"></mdb-icon>
+      </a>
+      <a href="">
+        <mdb-icon fab icon="linkedin" size="2x" class="mx-1"></mdb-icon>
+      </a>
+    </div>
+    <div class="col-12 copy-rights">
+      <p>Implemented by <a href="https://yes-soft.de/">Yes Soft</a></p>
     </div>
   </div>
 </footer>

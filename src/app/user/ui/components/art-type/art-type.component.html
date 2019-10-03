@@ -26,24 +26,10 @@
               <h3>{{artType.name}}</h3>
               <ul style="list-style-type: none; margin: 0; padding: 0">
                 <li style="display: inline-block" class="m-1">
-                  <a (click)="clapThePainting()" *ngIf="!artTypeClapped">
-                    <mdb-icon far icon="hand-peace" size="2x"></mdb-icon>
-                    Clap
-                  </a>
-                  <a *ngIf="artTypeClapped">
-                    <mdb-icon fas icon="hand-peace" size="2x"></mdb-icon>
-                    Clap
-                  </a>
+                  <app-clap-widget [ParentType]="3" [ParentId]="artType.id"></app-clap-widget>
                 </li>
                 <li style="display: inline-block" class="m-1">
-                  <a (click)="loveThePainting()" *ngIf="!artTypeLiked">
-                    <mdb-icon far icon="heart" size="2x"></mdb-icon>
-                    Love
-                  </a>
-                  <a *ngIf="artTypeLiked">
-                    <mdb-icon fas icon="heart" size="2x"></mdb-icon>
-                    Love
-                  </a>
+                  <app-love-interaction [ParentType]="3" [ParentId]="artType.id"></app-love-interaction>
                 </li>
               </ul>
             </div>

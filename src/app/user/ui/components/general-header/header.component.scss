@@ -124,7 +124,7 @@
       box-shadow: none;
     }
     .header-mobile-section {
-      width: 20%;
+      width: 25%;
       align-items: center;
       line-height: 0.5;
       //margin-right: 30rem;
@@ -141,7 +141,7 @@
       width: 100vw;
       mdb-icon {
         padding: 0 .7rem;
-        font-size: .7rem!important;
+        font-size: .8rem!important;
       }
       .dropdown-menu {
         right: 0;
@@ -190,4 +190,61 @@
     }
   }
 
+}
+
+//Search 
+
+#header-nav {
+  ul {
+    float: right;
+    position: relative;
+    .dropdown-menu {
+      min-width: 8rem;
+      top: -10px;
+      left: -10px;
+    }
+  }
+}
+
+.search-box {
+  margin-left: 35px;
+  .search{
+    position: absolute;
+    right: 65px;
+    top: 25px;
+    width: 100%;
+    text-align: right;
+    #input-search {
+      width: 0;
+      height: 40px;
+      position: absolute;
+      top: -10px;
+      right: 0;
+      overflow: hidden;
+      transition: all .3s ease-in-out;
+      -o-transition: all .3s ease-in-out;
+      -ms-transition: all .3s ease-in-out;
+      -moz-transition: all .3s ease-in-out;
+      -webkit-transition: all .3s ease-in-out;
+      input {
+        position: absolute;
+        right: 0;
+      }
+      #input-search.open {
+        width: 100%;
+      }
+    }
+    #open-search,
+    #close-search {
+      position: absolute;
+      right: 0;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+    #close-search {
+      z-index: -1;
+      opacity: 0;
+    }
+  }
+  
 }
