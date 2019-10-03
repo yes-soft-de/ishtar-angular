@@ -86,6 +86,17 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
         </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <div class="search-mobile">
+            <div id="input-search">
+              <form [formGroup]="searchFrom">
+                <input mdbInput type="text" class="form-control py-0" 
+                       placeholder="Search" formControlName="search">           
+                <mdb-icon fas icon="search" class="search-btn" (click)="goToSearch()"></mdb-icon>
+              </form>
+            </div>
+          </div>
+        </li>
         <!-- Dropdown -->
         <!--        <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>-->
       </ul>
@@ -117,7 +128,7 @@
     <div class="header-mobile-section d-inline-flex">
       <div class="pr-0 text-center">
         <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image" routerLink="/">
-        <span>Home Of Art</span>
+        <span> </span>
       </div>
       <!--    <div class="pl-0 align-self-center">-->
       <!--      <h6 class="mb-0">ISHTAR</h6>-->

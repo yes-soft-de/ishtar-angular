@@ -124,7 +124,7 @@
       box-shadow: none;
     }
     .header-mobile-section {
-      width: 25%;
+      width: 20%;
       align-items: center;
       line-height: 0.5;
       //margin-right: 30rem;
@@ -141,7 +141,7 @@
       width: 100vw;
       mdb-icon {
         padding: 0 .7rem;
-        font-size: .8rem!important;
+        font-size: .7rem!important;
       }
       .dropdown-menu {
         right: 0;
@@ -247,4 +247,23 @@
     }
   }
   
+}
+
+// Search in Mobile 
+
+.search-mobile{
+  position: relative;
+  input{
+    direction: ltr;
+  }
+  .search-btn {
+    position: absolute;
+    top: 13px;
+    right: 5px;
+    transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+  }
 }
