@@ -34,9 +34,9 @@ footer {
 @media (max-width: 575px) {
   footer {
     .logo {
+      position: relative;
+      top: 160px;
       text-align: center;
-      justify-content: center !important;
-      -webkit-box-pack: center !important;
       img {
         width: 200px;
         margin: 0 auto;
@@ -44,8 +44,11 @@ footer {
       }
     }
     .site-map {
+      position: relative;
+      top: -225px;
       ul {
         padding: 0;
+        border-bottom: 1px solid #000;
         li {
           text-align: left;
           padding: 5px;

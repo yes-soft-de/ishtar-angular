@@ -13,9 +13,9 @@ export class UserConfig {
   public static getInteractionAPI =  UserConfig.sourceAPI + 'getInteraction';
   public static postInteractionAPI =  UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = UserConfig.sourceAPI + 'search';
-  public static userProfileAPI = UserConfig.sourceAPI + 'OAuth2/public/user';
-  public static userLoginLink = UserConfig.sourceAPI + 'OAuth2/public/connect/google';
-  public static userLogoutLink = UserConfig.sourceAPI + 'logout';
+  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
+  public static userLogoutLink = 'http://k-symfony.96.lt/logout';
   // public static userProfileAPI = UserConfig.sourceAPI + 'user';
   // public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   // public static userLogoutLink = UserConfig.sourceAPI + 'logout';
