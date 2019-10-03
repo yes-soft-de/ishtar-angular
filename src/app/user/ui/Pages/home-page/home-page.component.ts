@@ -24,17 +24,17 @@ export class HomePageComponent implements OnInit {
 
   public headerSlides = [{
     url: '../../../../../assets/hero-slide.jpg',
-    title: 'The beauty in his best form',
+    title: 'The beauty in its best form',
     text: ' '
   },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'From the best Syrian Artists ',
-      text: ''
+      title: 'From the best Syrian Artists',
+      text: ' '
     },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'We present to you some pieces of art',
+      title: 'We present to you some masterpieces of art',
       text: ' '
     }];
   paintingList: PaintingListItem[];

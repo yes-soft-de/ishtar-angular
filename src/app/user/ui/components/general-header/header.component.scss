@@ -248,3 +248,22 @@
   }
   
 }
+
+// Search in Mobile 
+
+.search-mobile{
+  position: relative;
+  input{
+    direction: ltr;
+  }
+  .search-btn {
+    position: absolute;
+    top: 13px;
+    right: 5px;
+    transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+  }
+}

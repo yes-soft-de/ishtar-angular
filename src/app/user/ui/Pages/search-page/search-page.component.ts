@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {SearchService} from '../../../service/search/search.service';
 import {PaintingSearchListItem} from '../../../entity/search-result/painting-search-list-item';
 import {ArtistSearchListItem} from '../../../entity/search-result/artist-search-list-item';
@@ -21,11 +21,24 @@ export class SearchPageComponent implements OnInit {
 
   loaded = false;
 
+  navigationSubscription;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute,
               private searchService: SearchService) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.fetchData();
+        window.scroll(0, 0);
+      }
+    });
   }
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
     const searchParams = this.activatedRoute.snapshot.paramMap.get('query');
     this.queryFormatted = searchParams.replace('%20', ' ');
     this.searchService.requestSearchResult(this.queryFormatted).subscribe(
