@@ -37,6 +37,12 @@
         <li style="display: inline-block" class="m-1">
           <app-love-interaction [ParentType]="1" [ParentId]="painting.id"></app-love-interaction>
         </li>
+        <li style="display: inline-block" class="m-1">
+          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting.id}}"
+             style="color: white">
+            <mdb-icon size="2x" fas icon="shopping-cart"></mdb-icon>
+          </a>
+        </li>
       </ul>
       <button mdbBtn class="m-0 my-2" style="background-color: goldenrod" (click)="addToWishList()"
               id="add-to-wish-btn">Add to Wish List
@@ -79,6 +85,7 @@
 
 <div class="p-5 related-paintings">
   <h2 class="mb-5">Paintings You May Like</h2>
-  <app-c-painting-list  style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.slice(0, 3)" [filter]="false"
+  <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.slice(0, 3)"
+                       [filter]="false"
                        *ngIf="featuredList != null"></app-c-painting-list>
 </div>

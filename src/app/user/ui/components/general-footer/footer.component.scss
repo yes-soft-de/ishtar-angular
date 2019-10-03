@@ -15,6 +15,9 @@ footer {
   }
   
   .custom-bottom-footer {
+    a{
+      color: #8f9091;
+    }
     color: #8f9091;
   }
   
@@ -30,13 +33,24 @@ footer {
   }
 }
 
+.copy-rights {
+  
+  text-align: center;
+  p {
+    margin: 5px 0;
+    font-size: 15px;
+    a:hover {
+      color: #000;
+    }
+  }
+}
 
 @media (max-width: 575px) {
   footer {
     .logo {
-      position: relative;
-      top: 160px;
       text-align: center;
+      justify-content: center !important;
+      -webkit-box-pack: center !important;
       img {
         width: 200px;
         margin: 0 auto;
@@ -44,11 +58,10 @@ footer {
       }
     }
     .site-map {
-      position: relative;
-      top: -225px;
+      padding-bottom: 0px !important;
       ul {
-        padding: 0;
-        border-bottom: 1px solid #000;
+        padding: 0 !important;
+        margin: 0 !important;
         li {
           text-align: left;
           padding: 5px;

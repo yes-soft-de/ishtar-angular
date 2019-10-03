@@ -22,7 +22,7 @@ export class UserProfileService {
 
   requestUserLogout() {
     return this.httpClient.get(
-      UserConfig.userProfileAPI
+      UserConfig.userLogoutLink
     );
   }
 }

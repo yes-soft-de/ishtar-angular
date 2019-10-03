@@ -1,24 +1,22 @@
 export class UserConfig {
   // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-  public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
   public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
-  public static PaintingImageAPI = 'ishtar-art.de/ishtar-backend/public/getPaintingImages';
-  public static PaintingDetailsAPI =  UserConfig.sourceAPI + 'getPaintingById';
+  public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
+  public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
   public static ArtistListAPI = UserConfig.sourceAPI + 'getAllArtist';
   public static ArtistDetailsAPI = UserConfig.sourceAPI + 'getArtistById';
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
   public static allArtTypeAPI = UserConfig.sourceAPI + 'getAllArtType';
-  public static getInteractionAPI =  UserConfig.sourceAPI + 'getInteraction';
-  public static postInteractionAPI =  UserConfig.sourceAPI + 'createInteraction';
+  public static getInteractionAPI = UserConfig.sourceAPI + 'getInteraction';
+  public static postInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = UserConfig.sourceAPI + 'search';
-  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
-  public static userLoginLink = 'http://K-symfony.96.lt/OAuth2/public/connect/google';
-  public static userLogoutLink = 'http://k-symfony.96.lt/logout';
-  // public static userProfileAPI = UserConfig.sourceAPI + 'user';
-  // public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
-  // public static userLogoutLink = UserConfig.sourceAPI + 'logout';
+  public static userProfileAPI = UserConfig.sourceAPI + 'user';
+  public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
+  public static userLogoutLink = UserConfig.sourceAPI + 'logout';
+
   public static addInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static getFollowInteractionAPI = UserConfig.sourceAPI + 'getEntityInteraction';
   public static paintingViewsAPI = UserConfig.sourceAPI + 'createInteraction';

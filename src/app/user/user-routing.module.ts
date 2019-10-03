@@ -11,6 +11,12 @@ import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.compo
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
+import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
+import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
+import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
+import {FAQComponent} from './ui/Pages/faq/faq.component';
+import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
+import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
 
 
 const routes: Routes = [
@@ -27,7 +33,13 @@ const routes: Routes = [
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent},
       {path: 'art-schools-list', component: ArtTypeListPageComponent},
-      {path: 'login', component: LoginPageComponent}
+      {path: 'login', component: LoginPageComponent},
+      {path: 'tos', component: TOSPageComponent},
+      {path: 'privacy', component: PrivacyPolicyComponent},
+      {path: 'about-us', component: AboutUsComponent},
+      {path: 'faq', component: FAQComponent},
+      {path: 'imprint', component: ImprintPageComponent},
+      {path: 'data-processing', component: DataProcessingPageComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'
   }
