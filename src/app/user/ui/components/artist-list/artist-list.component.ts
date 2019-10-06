@@ -4,6 +4,8 @@ import {ArtistListService} from '../../../service/artist-list/artist-list.servic
 import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
+import {UserInfo} from '../../../entity/user/user-info';
+import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -14,6 +16,7 @@ export class ArtistListComponent implements OnInit {
   @Input() filter = true;
   @Input() artistListFormatted: ArtistListItem[];
   @Input() search = true;
+  client: UserInfo;
   public artistList: {
     id: number,
     image: string,
@@ -28,21 +31,32 @@ export class ArtistListComponent implements OnInit {
     entity: 2,      // 2: For Artist Entity
     row: 0,         // this for Artist id
     interaction: 3, // 3: for view interaction
-    client: 1,      // this for client id
+    client: 0,      // this for client id
   };
   artistIDFollow: {
     id: number,
     followNumber: number
   }[] = [];
 
-  constructor(private interactionService: IshtarInteractionService) { }
+  constructor(private interactionService: IshtarInteractionService,
+              private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    this.userProfileService.requestUserDetails().subscribe(
+        data => {
+          this.client = data.Data;
+          console.log('user:', data);
+        },
+        error => {
+          console.log(error);
+        }
+    );
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
       // Fetch Painting View Interaction
       this.viewData.row = i.id;
       this.viewData.interaction = 2;
+      this.viewData.client = this.client.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: { Data: Array<any> }) => {
             this.artistIDFollow.push({
@@ -132,6 +146,7 @@ export class ArtistListComponent implements OnInit {
   // Increase view for Artist
   viewArtist(id: number) {
     this.viewData.row = id;
+    this.viewData.client = this.client.id;
     this.interactionService.addViewInteraction(this.viewData).subscribe(
         res => {
           console.log('This Artist Was Reviewed', res);

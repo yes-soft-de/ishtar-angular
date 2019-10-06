@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
+import {UserInfo} from '../../../entity/user/user-info';
+import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -14,21 +16,33 @@ export class PaintingListComponent implements OnInit {
   public artTypes: string[];
   @Input() formattedPaintingList: PaintingListItem[];
   paintingList: PaintingListItem[];
+  client: UserInfo;
   config: any;
   viewData: ViewInterface = {
     entity: 1,      // 1: For Painting Entity
     row: 0,         // this for painting id
     interaction: 3, // 3: for view interaction
-    client: 1,      // this for client id
+    client: 0,      // this for client id
   };
   paintingsView: {
     id: number,
     viewNumber: number
   }[] = [];
 
-  constructor(private interactionService: IshtarInteractionService) { }
+  constructor(private interactionService: IshtarInteractionService,
+              private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    // Fetch User info
+    this.userProfileService.requestUserDetails().subscribe(
+        data => {
+          this.client = data.Data;
+        },
+        error => {
+          console.log(error);
+        }
+    );
+    // Fetch Paintings
     this.paintingList = this.formattedPaintingList;
     // region Artists Collecting
     this.artists = [];
@@ -36,6 +50,7 @@ export class PaintingListComponent implements OnInit {
       this.artists.push(image.artist);
       // Fetch Painting View Interaction
       this.viewData.row = image.id;
+      this.viewData.client = this.client.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
             this.paintingsView.push({

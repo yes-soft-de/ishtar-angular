@@ -17,11 +17,8 @@ export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
-  // activePaintingImage: string;
   artistID: number;
 
-  paintingLiked = false;
-  paintingClapped = false;
 
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
@@ -79,18 +76,6 @@ export class PaintingDetailsComponent implements OnInit {
     }
   }
 
-  clapThePainting() {
-    this.interactionService.love(`${this.painting.id}`, 'painting');
-    this.paintingClapped = true;
-    this.toaster.success('Painting Clapped');
-  }
-
-  loveThePainting() {
-    this.interactionService.love(`${this.painting.id}`, 'painting');
-    this.paintingLiked = true;
-    this.toaster.success('Painting Loved');
-  }
-
   addToWishList() {
     this.interactionService.addToWishList(`${this.painting.id}`, 'painting');
     this.toaster.success('Painting Added To Your Wish List');
@@ -98,7 +83,6 @@ export class PaintingDetailsComponent implements OnInit {
 
 
   setMainPainting(event) {
-
     const target = event.target || event.srcElement || event.currentTarget;
     const paintingSrc = target.attributes.src;
     const value = paintingSrc.nodeValue;
