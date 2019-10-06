@@ -1,6 +1,6 @@
 export class UserConfig {
-  // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+  // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
   public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
