@@ -1,5 +1,5 @@
 export class AdminConfig {
-  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+  public static sourceAPI = 'http://http://ishtar-art.de/';
   // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
   // Create General Uploading API
   public static generalUploadAPI = AdminConfig.sourceAPI + 'uploadArtistImage';
