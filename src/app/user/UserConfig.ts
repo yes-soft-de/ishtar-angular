@@ -1,5 +1,4 @@
 export class UserConfig {
-  // public static sourceAPI = 'http://localhost:8000/';
   // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
   public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
