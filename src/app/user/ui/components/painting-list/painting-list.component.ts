@@ -52,6 +52,7 @@ export class PaintingListComponent implements OnInit {
       // Fetch Painting View Interaction
       this.viewData.row = image.id;
       this.viewData.client = this.client.id;
+      // this.viewData.client = 0;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
             this.paintingsView.push({

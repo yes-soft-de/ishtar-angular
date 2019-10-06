@@ -56,7 +56,8 @@ export class ArtistListComponent implements OnInit {
       this.types.push(i.artType);
       // Fetch Painting View Interaction
       this.viewData.row = i.id;
-      this.viewData.interaction = 2;
+      this.viewData.interaction = InteractionConsts.INTERACTION_TYPE_FOLLOW;
+      // this.viewData.client = 1;
       this.viewData.client = this.client.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: { Data: Array<any> }) => {
