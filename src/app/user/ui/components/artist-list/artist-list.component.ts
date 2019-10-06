@@ -6,6 +6,7 @@ import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
+import { InteractionConsts } from 'src/app/user/consts/interaction/interaction-consts';
 
 @Component({
   selector: 'app-artist-list',
@@ -28,9 +29,9 @@ export class ArtistListComponent implements OnInit {
   public activeArtType: string;
   config: any;  // Config For Paginate
   viewData: ViewInterface = {
-    entity: 2,      // 2: For Artist Entity
+    entity: InteractionConsts.ENTITY_TYPE_ARTIST,      // 2: For Artist Entity
     row: 0,         // this for Artist id
-    interaction: 3, // 3: for view interaction
+    interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
     client: 0,      // this for client id
   };
   artistIDFollow: {

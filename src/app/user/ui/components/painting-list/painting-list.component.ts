@@ -4,6 +4,7 @@ import {IshtarInteractionService} from '../../../service/ishtar-interaction/isht
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
+import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -19,9 +20,9 @@ export class PaintingListComponent implements OnInit {
   client: UserInfo;
   config: any;
   viewData: ViewInterface = {
-    entity: 1,      // 1: For Painting Entity
+    entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
     row: 0,         // this for painting id
-    interaction: 3, // 3: for view interaction
+    interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
     client: 0,      // this for client id
   };
   paintingsView: {

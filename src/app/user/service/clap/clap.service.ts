@@ -59,12 +59,15 @@ export class ClapService {
       id: entityId,
       client: this.userInfo.id
     };
-    this.httpClient.post<GetClapResponse>(UserConfig.getClapAPI, JSON.stringify(request)).subscribe(
+    this.httpClient.post<GetClapResponse>(`${UserConfig.getClapAPI}`, JSON.stringify(request)).subscribe(
       res => {
         if (res.Data.length > 0 && res.Data[0].value) {
           this.statusSubject.next(res.Data[0].value);
         }
-      }
+      },
+      error => {
+        console.log('TD-Clap Not Request : ', error);
+        }
     );
   }
 
@@ -89,7 +92,7 @@ export class ClapService {
       entity: entityType,
       row: entityId
     };
-    this.httpClient.post<CreateClapResponse>(UserConfig.createClapAPI, JSON.stringify(request)).subscribe(
+    this.httpClient.post<CreateClapResponse>(`${UserConfig.createClapAPI}`, JSON.stringify(request)).subscribe(
       res => {
         console.log(res);
         if (res.Data.value > 0) {

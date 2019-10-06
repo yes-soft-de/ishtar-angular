@@ -5,11 +5,11 @@ import {HttpClient} from '@angular/common/http';
 import {UserProfileService} from '../client-profile/user-profile.service';
 import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material';
-import {LoveRequest} from '../../entity/love-interaction/love-request';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
-import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {UserConfig} from '../../UserConfig';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
+import {FollowInteractionResponse} from '../../entity/follow-interaction/follow-interaction-response';
+import {FollowRequest} from '../../entity/follow-interaction/follow-request';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,6 @@ export class FollowService {
 
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
-              private toaster: ToastrService,
               public dialog: MatDialog) {
   }
 
@@ -49,15 +48,15 @@ export class FollowService {
     }
   }
 
-  // Then Ask For Love Interaction Details
+  // Then Ask For Follow Interaction Details
   private requestFollowStatus(entityId, entityType) {
-    const request: LoveRequest = {
+    const request: FollowRequest = {
       client: this.userInfo.id,
       row: entityId,
       entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_LOVE
+      interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
     };
-    this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
+    this.httpClient.post<FollowInteractionResponse>(`${UserConfig.getInteractionAPI}`, JSON.stringify(request)).subscribe(
       res => {
         console.log(`interactions ${res.Data[0].interactions}`);
         if (res.Data[0].interactions > 0) {
@@ -82,13 +81,13 @@ export class FollowService {
   }
 
   private postFollowToAPI(entityId, entityType) {
-    const request: LoveRequest = {
+    const request: FollowRequest = {
       client: this.userInfo.id,
       row: entityId,
       entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_LOVE
+      interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
     };
-    this.httpClient.post<LoveInteractionResponse>(UserConfig.postInteractionAPI, JSON.stringify(request)).subscribe(
+    this.httpClient.post<FollowInteractionResponse>(`${UserConfig.postInteractionAPI}`, JSON.stringify(request)).subscribe(
       res => {
         console.log(res);
         this.statusSubject.next(true);
