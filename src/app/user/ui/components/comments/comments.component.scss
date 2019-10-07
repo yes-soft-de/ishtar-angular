@@ -1,0 +1,84 @@
+.comments-box {
+  border: 1px solid #e1e1e1;
+  padding-top: 10px;
+  ul {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0 15px;
+    li {
+      margin-right: 15px;
+    }
+  }
+  textarea {
+    background: #eee;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+  }
+
+  .all-comments {
+    //height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .sub-comment {
+      position: relative;
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      &:last-child {
+        border-bottom: 0;
+      }
+      .hidden-button {
+        position: absolute;
+        right: -122px;
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out
+      }
+
+      &:hover .hidden-button {
+        right: 10px
+      }
+
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+
+      .time {
+        margin-left: 15px;
+        padding-left: 15px;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: calc(50% - 2px);
+          height: 4px;
+          width: 4px;
+          background: #000;
+        }
+      }
+
+      p {
+        margin-top: 20px;
+      }
+    }
+  }
+
+
+}

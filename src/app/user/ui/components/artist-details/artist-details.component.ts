@@ -3,8 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ArtistDetails} from '../../../entity/artist/artist-details';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
-import {ToastrService} from 'ngx-toastr';
+import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-artist-page',
@@ -16,10 +15,9 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() artist: ArtistDetails;
   artistMainPainting: PaintingListItem;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private artistPaintings: PaintingListService,
-              private artistDetails: UserArtistService,
-              private toaster: ToastrService) {
+  constructor(private userProfileService: UserProfileService,
+              private activatedRoute: ActivatedRoute,
+              private artistPaintings: PaintingListService) {
   }
 
   ngOnInit() {
@@ -34,10 +32,5 @@ export class ArtistDetailsComponent implements OnInit {
         console.log(error1);
       }
     );
-    // Get Artist Paintings
-  }
-
-  followArtist() {
-    this.toaster.success('Following!');
   }
 }

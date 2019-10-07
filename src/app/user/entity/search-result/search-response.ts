@@ -1,4 +1,4 @@
-import {PaintingSearchList} from './painting-search-list';
+import {PaintingSearchListItem} from './painting-search-list-item';
 
 export interface SearchResponse {
   status_code: number;

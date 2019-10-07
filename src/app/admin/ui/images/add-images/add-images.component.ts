@@ -67,7 +67,7 @@ export class AddImagesComponent implements OnInit {
     //   for (let i = 0; i < (event.target.files.length); i++) {
     //     this.file = event.target.files[i];
     //     this.myFiles.push(event.target.files[i]);
-    //     this.uploadForm.get('path').setValue(this.myFiles);
+    //     this.uploadForm.get('image').setValue(this.myFiles);
     //   }
     // }
   *****/

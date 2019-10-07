@@ -1,38 +1,37 @@
-<div *ngIf="paintingList != null && headerSlides != null && artistList != null">
-  <main class="row m-0 p-0">
-    <app-header id="floating-header" *ngIf="showNavbar"></app-header>
-    <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"></app-home-header>
-    <section>
-      <div class="col-12 d-flex justify-content-center p-5">
-        <h2>Latest Paintings</h2>
-      </div>
-      <app-c-painting-list [formattedPaintingList]="paintingList.slice(0, 6)" [filter]="false"></app-c-painting-list>
-    </section>
+<header>
+  <app-header class="floating-header"></app-header>
+</header>
 
-    <app-home-auction-section class="w-100"></app-home-auction-section>
+<main class="row m-0 p-0" *ngIf="loadFinished">
+  <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"
+                   style="z-index: -1;"></app-home-header>
+  <section class="w-100 d-flex justify-content-center flex-column align-items-center p-5">
+    <h1 class="m-5">Latest Paintings</h1>
+    <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
+  </section>
+  <app-home-auction-section class="w-100"></app-home-auction-section>
+  <section class="w-100">
+    <div class="col-12" style="padding-top: 3rem">
+      <h1 class="text-center">Latest Active Artist</h1>
+    </div>
 
-    <section class="w-100">
-      <div class="p-5 col-12">
-        <h3 class="text-center">Latest Active Artist</h3>
-      </div>
+    <app-artist-list [artistListFormatted]="artistList.reverse().slice(0,4)" [filter]="false" [search]="false"></app-artist-list>
+  </section>
 
-      <app-artist-list [artistListFormatted]="artistList.slice(0,3)" [filter]="false"></app-artist-list>
-    </section>
+  <section class="row w-100 m-0">
+    <div class="p-5 col-12">
+      <h1 class="text-center">Learn About Art Schools</h1>
+    </div>
+    <app-school-list [artTypeList]="artTypeList.slice(0,3)" class="w-100"></app-school-list>
+    <app-item-brief [artType]="mostSeenArtType" class="container-fluid p-0"></app-item-brief>
+  </section>
+</main>
 
-    <section class="row w-100 m-0">
-      <div class="p-5 col-12">
-        <h3 class="text-center">Learn About Art Schools</h3>
-      </div>
-      <app-school-list class="w-100"></app-school-list>
-      <app-item-brief class="container-fluid p-0"></app-item-brief>
-    </section>
-  </main>
-  <app-footer></app-footer>
-</div>
-
-<div class="w-100 p-5" *ngIf="paintingList == null || headerSlides == null || artistList == null">
-  <h3 class="text-primary text-center">Loading...</h3>
+<div class="w-100 p-5 mt-5" *ngIf="!loadFinished">
+<!--  <h3 class="text-primary text-center">Loading...</h3>-->
   <div class="w-100 d-flex justify-content-center p-5">
     <img src="../../../../../assets/loading.gif" alt="Loading">
   </div>
 </div>
+
+<app-footer></app-footer>

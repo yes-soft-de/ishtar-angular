@@ -1,28 +1,96 @@
-<div class="container">
-  <!-- Input -->
-  <div class="d-flex align-items-center">
-    <form #commentsForm [formGroup]="commentsForm"
-          (ngSubmit)="submitComment(commentsForm)">
-      <label>
-        <input type="text" formControlName="comment" placeholder="Name:">
-      </label>
-    </form>
-  </div>
-  <!-- #Input -->
+<div class="col-12 comments-box">
+  <ul>
+<!--    <li style="display: inline-block">-->
+<!--      <app-clap-widget [ParentId]="" [ParentType]="1"></app-clap-widget>-->
+<!--    </li>-->
+<!--    <li style="display: inline-block">-->
+<!--      <app-love-interaction [ParentType]="1" [ParentId]=""></app-love-interaction>-->
+<!--    </li>-->
+    <li style="display: inline-block">
+      <i class="far fa-comment"></i> {{comments?.length}} comments
+    </li>
+  </ul>
+  <form class="form-group">
+    <textarea #textarea="ngModel"
+              type="text" ngModel
+              name="comment"
+              (keyup.enter)="pressing(textarea)"
+              (keydown.enter)="onKeydown($event)"
+              placeholder="Your comment..."
+              class="form-control rounded-0"
+              required
+              [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
+              [disabled]="isSubmitted"></textarea>
+    <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null" [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
+  </form>
 
-  <!-- Prev Comments -->
-  <div class="d-flex flex-column">
-    <div class="row" *ngFor="let i of comments">
-      <div class="d-inline-block mx-3">
-        <img src="{{i.userImage}}" alt="..." class="mx-2">
-        <h5>{{i.userName}}</h5>
-      </div>
-      <div class="d-flex">
-        <p>
-          {{i.comment}}
-        </p>
+  <!-- Comments -->
+  <div class="all-comments" [ngStyle]="{'height': comments?.length == 0 ? 0 :  comments?.length == 1 ? '115px' : comments?.length == 2 ? '230px' : '300px'}">
+    <div class="sub-comment" *ngFor="let comment of comments; index as i">
+      <div class="hidden-button">
+        <a class="text-primary mr-1 px-1 py-0" (click)="editComment(i)" *ngIf="edit !== i && (comment?.userName == client?.userName)">Edit</a>
+        <a class="text-danger confirm px-1 py-0" (click)="deleteComment(comment.id)" *ngIf="comment?.userName == client?.userName">Delete</a>
+        </div>
+      <img src="../../../../../assets/default-avatar.jpg">
+      <span class="time">
+        {{comment.userName}} {{comment.date != null ? '( ' + comment.date + ' )': ''}}
+      </span>
+      <p>
+        {{comment.body}}
+      </p>
+      <div *ngIf="edit === i">
+        <textarea #editTextarea="ngModel"
+                  type="text"
+                  [(ngModel)]="comment.body"
+                  name="comment"
+                  placeholder="comment..."
+                  class="form-control rounded-0 mb-2"
+                  required
+                  [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"></textarea>
+        <span class="invalid-feedback pl-3 mt-2" *ngIf="errorEditMessage != null" [ngStyle]="{'display': errorEditMessage  != null ? 'block' : 'none'}">{{errorEditMessage}}</span>
+          <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(editTextarea, i)" *ngIf="comment?.userName == client?.userName">{{buttonValue}}</button>
       </div>
     </div>
+
   </div>
-  <!-- #Prev Input -->
+  <!-- #Comments -->
+
 </div>
+
+
+<!--<div class="container">-->
+<!--  &lt;!&ndash; Input &ndash;&gt;-->
+<!--  <div class="d-flex align-items-center">-->
+<!--    <form #commentsForm [formGroup]="commentsForm"-->
+<!--          (ngSubmit)="submitComment(commentsForm)">-->
+<!--      <label>-->
+<!--        <input type="text" formControlName="comment" placeholder="Name:">-->
+<!--      </label>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; #Input &ndash;&gt;-->
+
+<!--  &lt;!&ndash; Prev Comments &ndash;&gt;-->
+<!--  <div class="d-flex flex-column">-->
+<!--    <div class="row" *ngFor="let i of comments">-->
+<!--      <div class="d-inline-block mx-3">-->
+<!--        <img src="{{i.userImage}}" alt="..." class="mx-2">-->
+<!--        <h5>{{i.userName}}</h5>-->
+<!--      </div>-->
+<!--      <div class="d-flex">-->
+<!--        <p>-->
+<!--          {{i.comment}}-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; #Prev Input &ndash;&gt;-->
+<!--</div>-->
+<!--body: "Great↵"-->
+<!--client: {id: 1, firsttName: "Hammam", userName: "HammaZarefa", password: "myPass", email: "HammamZarefa@Gmail.com", …}-->
+<!--date: null-->
+<!--entity: {id: 1, name: "Painting"}-->
+<!--id: 10-->
+<!--lastEdit: null-->
+<!--row: 2-->
+<!--spacial: false-->

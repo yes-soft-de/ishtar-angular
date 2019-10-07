@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
+import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 
 @Component({
   selector: 'app-item-brief',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemBriefComponent implements OnInit {
 
-  constructor() { }
+  @Input() artType;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -10,4 +10,6 @@ export interface PaintingDetails {
   active: boolean;
   artist: string;
   story: string;
+  price: string;
+  artType: object;
 }

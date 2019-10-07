@@ -28,7 +28,7 @@ export class ArtistDetailsPageComponent implements OnInit {
         this.artist = data.Data[0];
       }, error1 => {
         console.log('Retrying');
-        this.fetchData();
+        // this.fetchData();
       }
     );
 
@@ -38,8 +38,10 @@ export class ArtistDetailsPageComponent implements OnInit {
           this.paintingList = data.Data;
         }, error1 => {
           console.log('Retrying');
-          this.fetchData();
+          // this.fetchData();
         }
       );
   }
+
+
 }

@@ -3,4 +3,6 @@ export interface CommentsEntity {
   date: string;
   userName: string;
   userImage: string;
+  id: number;
+  body: string;
 }

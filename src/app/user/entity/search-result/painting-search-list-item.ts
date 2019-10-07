@@ -1,4 +1,4 @@
-export interface ArtistSearchList {
+export interface PaintingSearchListItem {
   path: string;
   artist: string;
   name: string;

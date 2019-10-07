@@ -4,6 +4,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AdminRoutingModule} from '../controller/admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -52,7 +53,7 @@ import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.co
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    // AngularFileUploaderModule
+    // BrowserAnimationsModule
   ]
 })
 export class AdminModule { }

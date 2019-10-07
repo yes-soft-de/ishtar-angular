@@ -18,24 +18,27 @@ export class HomePageComponent implements OnInit {
   position = 0;
   direction = 'down';
   artTypeList: ArtTypeListItem[];
+  loadFinished = false;
+
+  mostSeenArtType: ArtTypeListItem;
 
   public headerSlides = [{
     url: '../../../../../assets/hero-slide.jpg',
-    title: 'Slide 01',
-    text: 'Some Text Should Go In Here!'
+    title: 'The beauty in its best form',
+    text: ' '
   },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'Slide 02',
-      text: 'Other Text Should Go In Here!'
+      title: 'From the best Syrian Artists',
+      text: ' '
     },
     {
       url: '../../../../../assets/hero-slide.jpg',
-      title: 'Slide 03',
-      text: 'Other than Other Text Should Go In Here!'
+      title: 'We present to you some masterpieces of art',
+      text: ' '
     }];
-  public paintingList: PaintingListItem[];
-  showNavbar = false;
+  paintingList: PaintingListItem[];
+  showNavbar = true;
   artistList: ArtistListItem[];
 
   constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService,
@@ -43,32 +46,36 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initPaintingList();
+    this.requestArtTypeList();
+    this.getCurrentUserInfo();
+    this.requestArtistList();
+    this.requestPaintingList();
+  }
+
+  requestArtTypeList() {
     this.artTpeService.getAllArtType().subscribe(
       data => {
         this.artTypeList = data.Data;
-      }
-    );
-
-    this.getCurrentUserInfo();
-
-    this.requestArtistList();
-
-    this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.paintingList = [];
-        for (const i of data.Data) {
-          this.paintingList.push(i);
-        }
+        this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
+        this.checkLoadingFinished();
       }
     );
   }
 
-  initPaintingList() {
+  requestPaintingList() {
+    this.paintingService.requestPaintingList().subscribe(
+      data => {
+        this.paintingList = data.Data;
+        this.checkLoadingFinished();
+      }, error1 => {
+        console.log(error1);
+        // this.fetchData();
+      }
+    );
   }
 
   getCurrentUserInfo() {
-    this.httpClient.get('http://k-symfony.96.lt/user').subscribe(
+    this.httpClient.get(UserConfig.userProfileAPI).subscribe(
       data => {
         console.log(JSON.stringify(data));
       }, error => {
@@ -77,11 +84,21 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  requestArtistList() {
+    this.artistService.requestArtistList().subscribe(
+      data => {
+        this.artistList = data.Data;
+        this.checkLoadingFinished();
+      }, error1 => {
+        this.requestArtistList();
+      });
+  }
+
   // region Direction Calculator
   @HostListener('window:scroll', [])
-  doSomething() {
+  ShowHeader() {
     if (window.pageYOffset < 360) {
-      this.showNavbar = false;
+      this.showNavbar = true;
       return;
     }
     // Get the Past Location and direction
@@ -110,13 +127,21 @@ export class HomePageComponent implements OnInit {
     this.position = window.pageYOffset;
   }
 
-  requestArtistList() {
-    this.artistService.requestArtistList().subscribe(
-      data => {
-        this.artistList = data.Data;
-        // console.log(JSON.stringify(data.Data));
-      }, error1 => {
-        this.requestArtistList();
-      });
+  // endregion
+
+  checkLoadingFinished() {
+    if (this.paintingList == null) {
+      return;
+    }
+    if (this.headerSlides == null) {
+      return;
+    }
+    if (this.artistList == null) {
+      return;
+    }
+    if (this.artTypeList == null) {
+      return;
+    }
+    this.loadFinished = true;
   }
 }
