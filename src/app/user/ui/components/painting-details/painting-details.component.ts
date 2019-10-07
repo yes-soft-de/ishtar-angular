@@ -33,13 +33,12 @@ export class PaintingDetailsComponent implements OnInit {
     this.artistListService.requestArtistList().subscribe(
       data => {
         data.Data.map(res => {
-          if (res.name === this.painting.artist) {
+          if (res.name === this.painting[0].artist) {
             this.artistID = res.id;
           }
         });
       }
     );
-    console.log(this.artistID);
     this.paintingService.requestPaintingList().subscribe(
       data => {
         this.featuredList = data.Data;
@@ -47,23 +46,23 @@ export class PaintingDetailsComponent implements OnInit {
     );
 
     if (document.readyState === 'complete') {
-      if (this.painting.name == null) {
+      if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
       }
 
-      if ((this.painting.height == null) || (this.painting.width == null)) {
+      if ((this.painting[0].height == null) || (this.painting[0].width == null)) {
         document.getElementById('painting-size').style.display = 'none';
       }
 
-      if (this.painting.colorsType == null) {
+      if (this.painting[0].colorsType == null) {
         document.getElementById('painting-type').style.display = 'none';
       }
 
-      if (this.painting.story == null) {
+      if (this.painting[0].story == null) {
         document.getElementById('painting-story').style.display = 'none';
       }
 
-      if (this.painting.artist == null) {
+      if (this.painting[0].artist == null) {
         document.getElementById('painting-artist').style.display = 'none';
       }
 
@@ -77,7 +76,7 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   addToWishList() {
-    this.interactionService.addToWishList(`${this.painting.id}`, 'painting');
+    this.interactionService.addToWishList(`${this.painting[0].id}`, 'painting');
     this.toaster.success('Painting Added To Your Wish List');
   }
 
@@ -100,7 +99,4 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
-  scrollUp() {
-    window.scroll(0, 0);
-  }
 }

@@ -32,7 +32,7 @@ export class ArtistListComponent implements OnInit {
     entity: InteractionConsts.ENTITY_TYPE_ARTIST,      // 2: For Artist Entity
     row: 0,         // this for Artist id
     interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: 0,      // this for client id
+    client: null,      // this for client id
   };
   artistIDFollow: {
     id: number,
@@ -57,8 +57,6 @@ export class ArtistListComponent implements OnInit {
       // Fetch Painting View Interaction
       this.viewData.row = i.id;
       this.viewData.interaction = InteractionConsts.INTERACTION_TYPE_FOLLOW;
-      this.viewData.client = 1;
-      // this.viewData.client = this.client.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: { Data: Array<any> }) => {
             this.artistIDFollow.push({
@@ -148,8 +146,6 @@ export class ArtistListComponent implements OnInit {
   // Increase view for Artist
   viewArtist(id: number) {
     this.viewData.row = id;
-    // this.viewData.client = this.client.id;
-    this.viewData.client = 1;
     this.interactionService.addViewInteraction(this.viewData).subscribe(
         res => {
           console.log('This Artist Was Reviewed', res);

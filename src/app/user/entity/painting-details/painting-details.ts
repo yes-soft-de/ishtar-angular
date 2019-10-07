@@ -11,4 +11,5 @@ export interface PaintingDetails {
   artist: string;
   story: string;
   price: string;
+  artType: object;
 }

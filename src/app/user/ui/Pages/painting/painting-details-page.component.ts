@@ -37,8 +37,8 @@ export class PaintingDetailsPageComponent implements OnInit {
     this.paintingDetailsService.requestPaintingDetails(
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe(
-      data => {
-        this.paintingDetails = data.Data[0];
+        (data: {Data: PaintingDetails}) => {
+        this.paintingDetails = data.Data;
       }
     );
   }

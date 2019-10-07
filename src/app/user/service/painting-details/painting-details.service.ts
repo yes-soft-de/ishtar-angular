@@ -17,9 +17,10 @@ export class PaintingDetailsService {
     const req: { painting: string} = {
       painting: paintingId
     };
-    return this.httpClient.post<PaintingDetailsResponse>(
-      UserConfig.PaintingDetailsAPI,
-      JSON.stringify(req));
+    return this.httpClient.post(
+      `${UserConfig.PaintingDetailsAPI}`,
+      JSON.stringify(req),
+        {responseType: 'json'});
   }
 
   requestPaintingImages(paintingId: string) {

@@ -1,78 +1,134 @@
 #painting-details {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   margin: 1rem 0 20px 0;
-
   .row {
     margin-left: -5px;
     margin-right: -5px;
-
-    .col-xs-12,
-    .col-sm-2,
-    .col-sm-6,
-    .col-sm-4 {
-      padding-right: 5px;
-      padding-left: 5px;
-    }
-  }
-
-  #full-size-img {
-    z-index: 999999;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-
-    img {
+    #full-size-img {
+      z-index: 999999;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
       display: none;
-      max-width: 100%;
-      max-height: 100%;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+
+      img {
+        display: none;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
-  }
-
-  #full-size-img.active {
-    display: flex;
-
-    img {
-      display: block;
-    }
-
-    button {
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(0, 0, 0, 0.3);
-      color: #fff;
-      font-size: 25px;
-      width: 55px;
-      height: 55px;
+    #full-size-img.active {
       display: flex;
-      justify-content: left;
-      padding: 15px;
-      outline: none;
 
-      span {
+      img {
+        display: block;
+      }
+
+      button {
         position: absolute;
-        bottom: 2px;
-        left: 13px;
+        top: -20px;
+        right: -20px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-size: 25px;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: left;
+        padding: 15px;
+        outline: none;
+
+        span {
+          position: absolute;
+          bottom: 2px;
+          left: 13px;
+        }
+      }
+    }
+    .painting-info {
+      //position: relative;
+      //min-height: 510px;
+      .painting-name {
+        font-size: 40pt !important;
+        letter-spacing: -2px;
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 21px;
+      }
+      .painting-artist {
+        a {
+          color: #CCB832;
+          font-size: 16pt;
+          &:hover {
+            color: #F4DB75;
+          }
+        }
+
+      }
+      .painting-art-type {
+        width: 55%;
+        border: 1px solid #dddddd;
+        padding: .84rem 1.14rem;
+        p {
+          font-size: 1.2rem;
+          span {
+            margin-left: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1.3rem;
+          }
+        }
+      }
+      ul {
+        list-style-type: none;
+        margin: 20px 0;
+        padding: 0;
+        .buy-painting {
+          background: #CCB832;
+          color: #fff;
+          border-radius: 50%;
+          height: 32px;
+          width: 32px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          &:hover {
+            background-color: #F4DB75;
+          }
+          mdb-icon {
+            margin-right: 2px;
+          }
+        }
+      }
+      #add-to-wish-btn {
+        background-color: #CCB832;
+        box-shadow: none;
+        font-size: 1rem;
+        span {
+          font-size: 1.3rem;
+        }
       }
     }
   }
 
+
+
+
+
 }
 
-#add-to-wish-btn {
-  box-shadow: none;
-}
+
 
 #artist-area {
   flex-basis: 25%;
@@ -121,36 +177,21 @@
 #main-image {
   position: relative;
   overflow: hidden;
-
-  .video-box {
-    width: 100%;
-    margin-top: 1rem;
-
-    iframe {
+  .image-box {
+    height: 85vh;
+    img {
+      height: 100%;
       width: 100%;
-      height: 350px;
-    }
-
-    i {
-      position: absolute;
-      font-size: 2.3rem;
-      color: #000;
+      object-fit: cover;
     }
   }
-
-  img {
-    height: auto;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  button {
+  .full-size {
     position: absolute;
-    top: -35px;
-    right: 20px;
+    top: -60px;
+    right: 40px;
     border: none;
-    padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.7);
+    padding: 0.8rem 2.14rem;
+    background: rgba(248, 247, 247, 0.5);
     color: #333;
     outline: none;
     transition: all .2s ease-in-out;
@@ -159,70 +200,60 @@
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
   }
-
   &:hover {
     button {
       top: 20px;
     }
   }
-}
-
-#famous-quote {
-  img {
-    border-radius: 50%;
-  }
-
-  h5 {
-    font-size: 30pt;
-  }
-
-  h1 {
-    padding: 10px 20px;
-    margin-top: 25px;
-    font-size: 50pt;
-
+  .video-box {
+    width: 100%;
+    margin-top: 1rem;
+    iframe {
+      width: 100%;
+      height: 350px;
+    }
     i {
-      font-size: 1.7rem;
-      margin: 0 10px;
-      position: relative;
-      top: -26px;
-    }
-
-    i.fa-quote-right {
-      top: 6px;
+      position: absolute;
+      font-size: 2.3rem;
+      color: #000;
     }
   }
+
+
 }
+
+//#famous-quote {
+//  img {
+//    border-radius: 50%;
+//  }
+//  h5 {
+//    font-size: 30pt;
+//  }
+//  h1 {
+//    padding: 10px 20px;
+//    margin-top: 25px;
+//    font-size: 50pt;
+//    i {
+//      font-size: 1.7rem;
+//      margin: 0 10px;
+//      position: relative;
+//      top: -26px;
+//    }
+//    i.fa-quote-right {
+//      top: 6px;
+//    }
+//  }
+//}
 
 .related-paintings {
-  h2 {
+  h3 {
     text-align: center;
     font-size: 1.5rem;
-    margin-top: 30px !important;
-    margin-bottom: 10px !important;
   }
 }
 
 .painting-tab {
   width: 100%;
-}
-
-.painting-info {
-  position: relative;
-  min-height: 510px;
-
-  h3 {
-    font-size: 3rem
-  }
-
-  p {
-    margin-bottom: 0.1rem;
-  }
-
-  h5 {
-    color: goldenrod;
-  }
-
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
@@ -279,23 +310,5 @@
         font-size: 20px;
       }
     }
-  }
-}
-
-.buy-painting {
-  background: #CCB832;
-  color: #fff;
-  border-radius: 50%;
-
-  height: 32px;
-  width: 32px;
-
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    background-color: #F4DB75;
-
   }
 }

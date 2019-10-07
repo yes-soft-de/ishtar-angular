@@ -1,18 +1,25 @@
-.clap-container {
-  max-height: 64px;
-  height: 32px;
-  line-height: 0;
-  position: relative;
-
-  img {
-    vertical-align: baseline;
+.clap-icon {
+  div, h5 {
+    display: inline-block;
   }
-
-  p {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+  .clap-container {
+    cursor: pointer;
+    max-height: 64px;
+    height: 32px;
     line-height: 0;
-    font-size: 12pt;
+    position: relative;
+
+    img {
+      margin-bottom: 5px;
+    }
+
+    p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      line-height: 0;
+      font-size: 12pt;
+    }
   }
 }
+

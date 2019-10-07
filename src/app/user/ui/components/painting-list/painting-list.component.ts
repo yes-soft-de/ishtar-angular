@@ -23,7 +23,7 @@ export class PaintingListComponent implements OnInit {
     entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
     row: 0,         // this for painting id
     interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: 1,      // this for client id
+    client: 0,      // this for client id
   };
   paintingsView: {
     id: number,
@@ -51,8 +51,6 @@ export class PaintingListComponent implements OnInit {
       this.artists.push(image.artist);
       // Fetch Painting View Interaction
       this.viewData.row = image.id;
-      // this.viewData.client = this.client.id;
-      // this.viewData.client = 1;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
             this.paintingsView.push({
