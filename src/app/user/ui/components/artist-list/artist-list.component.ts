@@ -32,7 +32,7 @@ export class ArtistListComponent implements OnInit {
     entity: InteractionConsts.ENTITY_TYPE_ARTIST,      // 2: For Artist Entity
     row: 0,         // this for Artist id
     interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: null,      // this for client id
+    client: 0,      // this for client id
   };
   artistIDFollow: {
     id: number,

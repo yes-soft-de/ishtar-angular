@@ -321,3 +321,51 @@
     }
   }
 }
+
+
+@media (max-width:991px) {
+  .artist-page{
+    .artist-header {
+      .banner-background {
+        .parallax {
+          background-size: cover !important;
+          border-bottom: 2px solid goldenrod;
+        }
+      }
+      .artist-header-details {
+        .artist-image,
+        .artist-video-icon {
+          border: 2px solid goldenrod;
+        }
+      }
+    }
+  } 
+}
+
+@media (max-width:575px) {
+  .artist-body {
+    h3 {
+      padding-left: 0 !important;
+    }
+  }
+  .artist-page{
+    .artist-header{
+      div.position-absolute{
+        right: 15px !important;
+        top: 15px !important;
+      }
+      .artist-header-details {
+        .artist-name-social {
+          ul {
+            padding-right: 0;
+            li {
+              mdb-icon{
+                margin-left: 10px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }  
+}

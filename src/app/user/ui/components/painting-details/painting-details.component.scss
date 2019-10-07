@@ -55,11 +55,68 @@
         }
       }
     }
+    #painting-list-images {
+      img {
+        width: 100%;
+        height: 125px;
+        object-fit: cover;
+        overflow: hidden;
+        cursor: pointer;
+        &:first-of-type {
+          padding-top: 0 !important;
+        }
+      }
+    }
+
+    #main-image {
+      position: relative;
+      overflow: hidden;
+      .image-box {
+        height: 85vh;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .full-size {
+        position: absolute;
+        top: -60px;
+        right: 40px;
+        border: none;
+        padding: 0.8rem 2.14rem;
+        background: rgba(248, 247, 247, 0.5);
+        color: #333;
+        outline: none;
+        transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -webkit-transition: all .2s ease-in-out;
+      }
+      &:hover {
+        button {
+          top: 20px;
+        }
+      }
+      .video-box {
+        width: 100%;
+        margin-top: 1rem;
+        iframe {
+          width: 100%;
+          height: 350px;
+        }
+        i {
+          position: absolute;
+          font-size: 2.3rem;
+          color: #000;
+        }
+      }
+    }
     .painting-info {
       //position: relative;
       //min-height: 510px;
       .painting-name {
-        font-size: 40pt !important;
+        font-size: 40pt;
         letter-spacing: -2px;
         margin-bottom: 0;
       }
@@ -77,13 +134,13 @@
 
       }
       .painting-art-type {
-        width: 55%;
+        //width: 55%;
         border: 1px solid #dddddd;
         padding: .84rem 1.14rem;
         p {
           font-size: 1.2rem;
           span {
-            margin-left: 1rem;
+            margin-left: 0.47rem;
             font-weight: 600;
             letter-spacing: 1px;
             font-size: 1.3rem;
@@ -115,113 +172,50 @@
         background-color: #CCB832;
         box-shadow: none;
         font-size: 1rem;
+        padding: .84rem 1.14rem;
         span {
           font-size: 1.3rem;
         }
       }
     }
   }
-
-
-
-
-
 }
-
-
-
-#artist-area {
-  flex-basis: 25%;
-  max-width: 25%;
-
-  img {
+.painting-tab {
+  width: 100%;
+}
+.related-paintings {
+  h3 {
+    text-align: center;
+    font-size: 1.5rem;
   }
 }
-
-#main-painting {
-  flex-basis: 75%;
-
-  img {
-    min-width: 100%;
-    object-fit: fill;
-  }
-}
-
-#painting-carousel {
-  img {
-    min-width: 100%;
-  }
-}
-
-.image-link {
-  min-width: 100%;
-  height: 20rem;
-
-  img {
-    min-width: 100%;
-    object-fit: fill;
-    object-position: center;
-  }
-}
-
-#painting-list-images {
-  img {
-    width: 100%;
-    height: 125px;
-    object-fit: cover;
-    overflow: hidden;
-    cursor: pointer;
-  }
-}
-
-#main-image {
-  position: relative;
-  overflow: hidden;
-  .image-box {
-    height: 85vh;
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-  }
-  .full-size {
-    position: absolute;
-    top: -60px;
-    right: 40px;
-    border: none;
-    padding: 0.8rem 2.14rem;
-    background: rgba(248, 247, 247, 0.5);
-    color: #333;
-    outline: none;
-    transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-  }
-  &:hover {
-    button {
-      top: 20px;
-    }
-  }
-  .video-box {
-    width: 100%;
-    margin-top: 1rem;
-    iframe {
-      width: 100%;
-      height: 350px;
-    }
-    i {
-      position: absolute;
-      font-size: 2.3rem;
-      color: #000;
-    }
-  }
-
-
-}
-
+//#artist-area {
+//  flex-basis: 25%;
+//  max-width: 25%;
+//  img {
+//  }
+//}
+//#main-painting {
+//  flex-basis: 75%;
+//  img {
+//    min-width: 100%;
+//    object-fit: fill;
+//  }
+//}
+//#painting-carousel {
+//  img {
+//    min-width: 100%;
+//  }
+//}
+//.image-link {
+//  min-width: 100%;
+//  height: 20rem;
+//  img {
+//    min-width: 100%;
+//    object-fit: fill;
+//    object-position: center;
+//  }
+//}
 //#famous-quote {
 //  img {
 //    border-radius: 50%;
@@ -245,37 +239,24 @@
 //  }
 //}
 
-.related-paintings {
-  h3 {
-    text-align: center;
-    font-size: 1.5rem;
-  }
-}
 
-.painting-tab {
-  width: 100%;
-}
-
-@media (max-width: 991px) and (min-width: 768px) {
-  .painting-info {
-    h3 {
-      font-size: 1.7rem
-    }
-
-    button {
-      padding: 10px 5px;
+@media (max-width: 400px) {
+  #painting-details {
+    .painting-info {
+      h3 {
+        font-size: 2rem;
+      }
     }
   }
+  //#famous-quote { h3 {font-size: 18px; i { font-size: 20px; }}}
 }
 
 @media (max-width: 767px) {
   #painting-details {
     display: block !important;
-
     #painting-list-images {
       display: none !important;
     }
-
     #main-image,
     .painting-info {
       display: block;
@@ -293,22 +274,60 @@
     }
   }
 }
-
-@media (max-width: 400px) {
-  #painting-details {
-    .painting-info {
-      h3 {
-        font-size: 2rem;
-      }
-    }
-  }
-  #famous-quote {
+// style for md screen size
+@media (min-width: 768px) and (max-width: 991px) {
+  .painting-info {
     h3 {
-      font-size: 18px;
+      font-size: 1.7rem
+    }
 
-      i {
-        font-size: 20px;
+    button {
+      padding: 10px 5px;
+    }
+  }
+}
+// style for lg screen size
+@media (min-width: 992px) and (max-width: 1199px) {
+  #painting-details {
+    .row {
+    #painting-list-images {
+      padding-left: 0 !important;
+    }
+    .painting-info {
+      .painting-name {
+        font-size: 35pt !important;
+      }
+      p {
+        font-size: 17px;
+      }
+      .painting-artist {
+        a {
+          font-size: 14pt;
+        }
+      }
+
+      .painting-art-type {
+        p {
+          font-size: 1rem;
+          span {
+            font-size: 1.1rem;
+          }
+        }
+      }
+      ul {
+        .buy-painting {
+          margin: 0 0 0 5px !important;
+        }
+      }
+      #add-to-wish-btn {
+        font-size: 0.8rem;
+        span {
+          font-size: 1rem;
+        }
       }
     }
   }
+  }
+
+
 }

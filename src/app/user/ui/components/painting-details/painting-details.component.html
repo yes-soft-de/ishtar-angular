@@ -7,31 +7,31 @@
     </div>
     <!-- #For View Image in full screen -->
 
-    <div class="col-xs-12 col-sm-2" id="painting-list-images">
+    <div class="col-xs-12 col-sm-2 pr-0" id="painting-list-images">
       <!-- Painting Images List -->
-      <div class="d-none pl-4" *ngFor="let i of [1,1,1]">
+      <div class="pl-4 pl-lg-0 pl-xl-4" *ngFor="let i of [1,1,1]">
         <img class="img-fluid p-1" src="{{painting[0].image}}" alt="..." (click)="setMainPainting($event)">
       </div>
       <!-- #Painting Images List -->
     </div>
-    <div class="col-xs-12 col-sm-6" id="main-image">
+    <div class="col-xs-12 col-sm-6 col-lg-7 col-xl-6 pl-1" id="main-image">
       <div class="image-box">
         <img class="img-fluid" src="{{painting[0].image}}" alt="..." id="main-img">
       </div>
-      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full size
+      <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full Image
       </button>
       <div class="video-box">
         <iframe src="https://www.youtube.com/embed/LN820hIQ17Q" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4 painting-info">
-      <div class="painting">
+    <div class="col-xs-12 col-sm-4 col-lg-3 col-xl-4 painting-info">
+      <div>
         <h1 class="painting-name">{{painting[0].name}}</h1>
         <p class="painting-size m-0">{{painting[0].height}}CM x {{painting[0].width}}CM</p>
         <p class="painting-type m-0">{{painting[0].colorsType}}</p>
         <h5 class="painting-artist mt-2"><a routerLink="/artist/{{artistID}}">{{painting[0].artist}}</a></h5>
       </div>
-      <div class="painting-art-type my-3">
+      <div class="col-6 col-lg-11 col-xl-6 painting-art-type my-3">
         <p class="m-0">Art Type : <span>{{painting[1].artType}}</span></p>
       </div>
       <ul>
@@ -61,7 +61,7 @@
 
 <div class="container text-dark">
   <div class="row">
-    <div class="col-12">
+    <div class="col-lg-10 col-xl-12 mx-auto">
       <div id="painting-story" class="text-dark painting-tab">
         <p style="font-weight: bold"> About the Painting:</p>
         {{painting[0].story}}
