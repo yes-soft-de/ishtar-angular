@@ -18,7 +18,9 @@ export class UserConfig {
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
   public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
-  public static getClientIClapAPI = UserConfig.sourceAPI + 'getClientClap';
+  public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
+  public static getClientClapAPI = UserConfig.sourceAPI + 'getClientClap';
+  public static deleteClientClapAPI = UserConfig.sourceAPI + 'deleteClap';
   public static addInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static getFollowInteractionAPI = UserConfig.sourceAPI + 'getEntityInteraction';
   public static paintingViewsAPI = UserConfig.sourceAPI + 'createInteraction';
