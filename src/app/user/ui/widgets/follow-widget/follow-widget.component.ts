@@ -11,6 +11,8 @@ export class FollowWidgetComponent implements OnInit {
   @Input() ParentId;
 
   followed = false;
+  interactionID: number;
+
   constructor(private followService: FollowService) { }
 
   ngOnInit() {
@@ -21,8 +23,15 @@ export class FollowWidgetComponent implements OnInit {
       }
     );
   }
+  // Start Following
   startFollow() {
     console.log(`Sending Some Love Buddy ;)`);
     this.followService.postFollow(this.ParentId, this.ParentType);
+  }
+
+  // Stop Following
+  stopFollow() {
+    console.log('Send delete Follow Request');
+    this.followService.deleteFollowInteraction(this.interactionID);
   }
 }

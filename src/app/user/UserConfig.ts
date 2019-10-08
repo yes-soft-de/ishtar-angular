@@ -1,6 +1,6 @@
 export class UserConfig {
-  // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
+  // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
   public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
@@ -17,6 +17,10 @@ export class UserConfig {
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
+  public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
+  public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
+  public static getClientClapAPI = UserConfig.sourceAPI + 'getClientClap';
+  public static deleteClientClapAPI = UserConfig.sourceAPI + 'deleteClap';
   public static addInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static getFollowInteractionAPI = UserConfig.sourceAPI + 'getEntityInteraction';
   public static paintingViewsAPI = UserConfig.sourceAPI + 'createInteraction';
