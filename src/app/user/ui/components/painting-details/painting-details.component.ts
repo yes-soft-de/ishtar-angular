@@ -7,6 +7,7 @@ import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-i
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {LoveService} from '../../../service/love/love.service';
 
 @Component({
   selector: 'app-painting-details',

@@ -23,7 +23,28 @@ export class LoveService {
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
               private toaster: ToastrService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog) {}
+
+
+  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
+  private getClientInteraction(clientId: number) {
+      // check if user is login or not
+    // if (this.checkUserDetailsExists()) {
+      const request: {client: number} = {
+        client: clientId
+      };
+      return this.httpClient.post(
+          `${UserConfig.getClientInteractionsAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      ).subscribe(
+          res => {
+            console.log('Response for getClientInteraction  From Love service : ', res);
+          }, error => {
+            console.log('Error From getClientInteraction  From Love service : ', error);
+          }
+      );
+    // }
   }
 
   // region Love Getter Methods
@@ -32,27 +53,26 @@ export class LoveService {
     if (!this.userRequestSent) {
       // If Not Request Him
       this.userRequestSent = true;
-      console.log('Loading User');
       this.userService.requestUserDetails().subscribe(
         user => {
           // Assign the Data to the User
-          console.log('Got Response');
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
+            this.getClientInteraction(this.userInfo.id);
             this.requestLoveStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
+      this.getClientInteraction(this.userInfo.id);
       this.requestLoveStatus(entityId, entityType);
     }
   }
 
   // Then Ask For Love Interaction Details
   private requestLoveStatus(entityId, entityType) {
-    console.log('Requesting Love Status ');
     const request: LoveRequest = {
       client: this.userInfo.id,
       row: entityId,
@@ -70,7 +90,7 @@ export class LoveService {
   }
 
   // endregion
-  // region Post Love Methods
+  // Check if The User is login to make his love interaction
   public postLove(entityId, entityType) {
     console.log('Post Love Requested!');
     if (!this.checkUserDetailsExists()) {
@@ -85,6 +105,7 @@ export class LoveService {
     }
   }
 
+  // region Post Love Methods
   private postLoveToAPI(entityId, entityType) {
     const request: LoveRequest = {
       client: this.userInfo.id,
@@ -98,6 +119,27 @@ export class LoveService {
         this.statusSubject.next(true);
       }
     );
+  }
+
+  // Delete Love Interaction
+  public deleteLoveInteraction(interactionID: number) {
+    if (this.checkUserDetailsExists()) {
+      const request: {id: number} = {
+        id: interactionID
+      };
+      return this.httpClient.post(
+          `${UserConfig.deleteClientInteractionsAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      ).subscribe(
+          res => {
+            console.log('response deleted from love.service', res);
+            this.statusSubject.next(true);
+          }
+      );
+    } else {
+      return false;
+    }
   }
 
   getStatusObservable(): Observable<any> {

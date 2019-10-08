@@ -25,6 +25,28 @@ export class FollowService {
               public dialog: MatDialog) {
   }
 
+
+  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
+  private getClientInteraction(clientId: number) {
+    // check if user is login or not
+    // if (this.checkUserDetailsExists()) {
+      const request: {client: number} = {
+        client: clientId
+      };
+      return this.httpClient.post(
+          `${UserConfig.getClientInteractionsAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      ).subscribe(
+          res => {
+            console.log('Response for getClientInteraction From Follow service : ', res);
+          }, error => {
+            console.log('Error From getClientInteraction  From Follow service : ', error);
+          }
+      );
+    // }
+  }
+
   public initFollow(entityId, entityType) {
     // See If Loading User
     if (!this.userRequestSent) {
@@ -38,12 +60,14 @@ export class FollowService {
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
+            this.getClientInteraction(this.userInfo.id);
             this.requestFollowStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
+      this.getClientInteraction(this.userInfo.id);
       this.requestFollowStatus(entityId, entityType);
     }
   }
@@ -94,6 +118,28 @@ export class FollowService {
       }
     );
   }
+
+  // Delete Follow Interaction
+  public deleteFollowInteraction(interactionID: number) {
+    if (this.checkUserDetailsExists()) {
+      const request: {id: number} = {
+        id: interactionID
+      };
+      return this.httpClient.post(
+          `${UserConfig.deleteClientInteractionsAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      ).subscribe(
+          res => {
+            console.log('Response deleted from Follow.service', res);
+            this.statusSubject.next(true);
+          }
+      );
+    } else {
+      return false;
+    }
+  }
+
 
   getStatusObservable(): Observable<any> {
     return this.statusSubject.asObservable();

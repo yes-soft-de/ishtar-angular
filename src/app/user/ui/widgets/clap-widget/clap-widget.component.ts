@@ -25,7 +25,7 @@ export class ClapWidgetComponent implements OnInit {
   timeStart: Date;
   source = interval(100);
   holding = false;
-
+  clapId: number;
   subscription;
 
   constructor(private clapService: ClapService,
@@ -79,5 +79,9 @@ export class ClapWidgetComponent implements OnInit {
 
   public calculateClaps(): number {
     return parseInt(`${((this.clapIconSize - 32) / 50) * 100}`, 10);
+  }
+
+  deleteClap() {
+    this.clapService.deleteClapInteraction(this.clapId);
   }
 }
