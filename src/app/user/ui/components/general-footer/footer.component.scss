@@ -2,45 +2,66 @@ footer {
   div {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    ul {
-      list-style-type: none;
-      a {
-        color: #000;
+    .site-map {
+      ul {
+        list-style-type: none;
+        li {
+          &:hover {
+            a {
+              color: #CCB832;
+              letter-spacing: 4px;
+            }
+          }
+          a {
+            color: #000;
+          }
+        }
       }
     }
   }
-
-  #footer-bottom-right {
-    text-align: right;
-  }
-  
   .custom-bottom-footer {
+    color: #8f9091;
     a{
       color: #8f9091;
     }
-    color: #8f9091;
-  }
-  
-  #footer-bottom-left{
-    ul {
-      list-style-type: none;
-
-      li {
-        display: inline-block;
-        
+    #footer-bottom-left {
+      ul {
+        list-style-type: none;
+        li {
+          display: inline-block;
+          &:hover {
+            a {
+              color: #CCB832;
+              letter-spacing: 1px;
+            }
+          }
+        }
       }
     }
-  }
-}
-
-.copy-rights {
-  
-  text-align: center;
-  p {
-    margin: 5px 0;
-    font-size: 15px;
-    a:hover {
-      color: #000;
+    #footer-bottom-right {
+      a {
+        &:hover {
+          .facebook {
+            color: #3b5998;
+          }
+          .linkedin {
+            color: #0e76a8;
+          }
+          .twitter {
+            color: #00acee;
+          }
+        }
+      }
+    }
+    .copy-rights {
+      text-align: center;
+      p {
+        margin: 5px 0;
+        font-size: 15px;
+        a:hover {
+          color: #CCB832;
+        }
+      }
     }
   }
 }
@@ -58,7 +79,7 @@ footer {
       }
     }
     .site-map {
-      padding-bottom: 0px !important;
+      padding-bottom: 0 !important;
       ul {
         padding: 0 !important;
         margin: 0 !important;
@@ -81,6 +102,24 @@ footer {
     i {
       margin-left: 5px !important;
       margin-right: 5px !important;
+    }
+  }
+}
+
+// style for lg screen size
+@media (min-width: 992px) and (max-width: 1199px) {
+  footer {
+    .site-map {
+      letter-spacing: 3px;
+    }
+  }
+}
+
+// style for xl screen size
+@media (min-width: 1200px) {
+  footer {
+    .site-map {
+      letter-spacing: 3px;
     }
   }
 }
