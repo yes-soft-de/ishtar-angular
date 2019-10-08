@@ -40,7 +40,6 @@ import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {ClapWidgetComponent} from './ui/widgets/clap-widget/clap-widget.component';
 import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
 import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.component';
@@ -146,8 +145,7 @@ import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
-    // BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    // BrowserAnimationsModule
   ]
 })
 export class UserModule {
