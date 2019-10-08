@@ -9,8 +9,9 @@ export class Artist {
   public linkedin: string;
   public twitter: string;
   // tslint:disable-next-line:variable-name
-  public image: string;
+  public path: string;
   public video: string;
   public details: string;
   public story: string;
+  public artType: string;
 }
