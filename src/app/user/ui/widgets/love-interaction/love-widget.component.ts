@@ -16,6 +16,13 @@ export class LoveWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loveService.getClientInteraction(4).subscribe(
+        data => {
+          console.log('Interactions : ', data);
+        }, error => {
+          console.log(error);
+        }
+    );
     this.loveService.initLove(this.ParentId, this.ParentType);
     this.loveService.getStatusObservable().subscribe(
       data => {

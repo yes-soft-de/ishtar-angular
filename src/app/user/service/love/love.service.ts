@@ -23,7 +23,36 @@ export class LoveService {
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
               private toaster: ToastrService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog) {}
+
+
+  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
+  public getClientInteraction(clientId: number) {
+      // check if user is login or not
+    if (this.checkUserDetailsExists()) {
+      const request: {client: number} = {
+        client: clientId
+      };
+      return this.httpClient.post(
+          `${UserConfig.getClientInteractionsAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      );
+    }
+  }
+
+  // Get The Client Clap Dependence On Client ID
+  public getClientClap(clientId: number) {
+    if (this.checkUserDetailsExists()) {
+      const request: {client: number} = {
+        client: clientId
+      };
+      return this.httpClient.post(
+          `${UserConfig.getClientIClapAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      );
+    }
   }
 
   // region Love Getter Methods
@@ -70,7 +99,7 @@ export class LoveService {
   }
 
   // endregion
-  // region Post Love Methods
+  // Check if The User is login to make his love interaction
   public postLove(entityId, entityType) {
     console.log('Post Love Requested!');
     if (!this.checkUserDetailsExists()) {
@@ -85,6 +114,7 @@ export class LoveService {
     }
   }
 
+  // region Post Love Methods
   private postLoveToAPI(entityId, entityType) {
     const request: LoveRequest = {
       client: this.userInfo.id,
