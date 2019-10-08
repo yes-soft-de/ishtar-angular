@@ -41,20 +41,6 @@ export class LoveService {
     }
   }
 
-  // Get The Client Clap Dependence On Client ID
-  public getClientClap(clientId: number) {
-    if (this.checkUserDetailsExists()) {
-      const request: {client: number} = {
-        client: clientId
-      };
-      return this.httpClient.post(
-          `${UserConfig.getClientIClapAPI}`,
-          JSON.stringify(request),
-          {responseType: 'json'}
-      );
-    }
-  }
-
   // region Love Getter Methods
   public initLove(entityId, entityType) {
     // See If Loading User

@@ -29,6 +29,20 @@ export class ClapService {
               public dialog: MatDialog) {
   }
 
+  // Get The Client Clap Dependence On Client ID
+  public getClientClap(clientId: number) {
+    if (this.checkUserDetailsExists()) {
+      const request: {client: number} = {
+        client: clientId
+      };
+      return this.httpClient.post(
+          `${UserConfig.getClientIClapAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      );
+    }
+  }
+
   public initClap(entityId, entityType) {
     // See If Loading User
     if (!this.userRequestSent) {
