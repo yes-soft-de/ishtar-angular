@@ -17,6 +17,7 @@ export class FollowWidgetComponent implements OnInit {
   constructor(private followService: FollowService) { }
 
   ngOnInit() {
+    // this.followService.getClientInteraction(1, this.EntityName, this.ParentId);
     this.followService.initFollow(this.EntityName, this.ParentId);
     this.followService.getStatusObservable().subscribe(
         (data: { success: boolean, value: any }) => {
@@ -26,6 +27,7 @@ export class FollowWidgetComponent implements OnInit {
             console.log('Interaction Response : ', data);
           } else {
             this.followed = false;
+            console.log('false', data);
           }
         }
     );

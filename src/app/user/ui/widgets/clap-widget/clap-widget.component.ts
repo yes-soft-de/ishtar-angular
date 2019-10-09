@@ -18,33 +18,39 @@ export class ClapWidgetComponent implements OnInit {
 
   @Input() ParentType;
   @Input() ParentId;
+  @Input() EntityName;    // this is for entity table name
 
-  clapped = false;
-  clappedNumber = null;
+  clapped = false;        // clap active
+  clappedNumber = null;   // clap number
+  clapping = false;
 
   timeStart: Date;
   source = interval(100);
   holding = false;
-  clapId: number;
+  clapId: number;         // clap id
   subscription;
 
   constructor(private clapService: ClapService,
-              private toaster: ToastrService) {
-  }
+              private toaster: ToastrService) {}
 
   ngOnInit() {
     this.ObserveClaps();
   }
 
   ObserveClaps() {
-    this.clapService.initClap(this.ParentId, this.ParentType);
+    this.clapService.initClap(this.EntityName, this.ParentId);
     this.clapService.getStatusObservable().subscribe(
-      data => {
-        this.clapped = data > 0;
-        if (this.clapped) {
-          this.clappedNumber = data;
+        (data: { success: boolean, value: any }) => {
+          if (data) {
+            this.clapped = data.success;  // this data = true if success
+            this.clapId = data.value.ClapID;
+            this.clappedNumber = data.value.value;
+            console.log('Interaction Response : ', data);
+          } else {
+            this.clapping = false;
+            this.clapped = false;
+          }
         }
-      }
     );
   }
 
@@ -82,6 +88,7 @@ export class ClapWidgetComponent implements OnInit {
   }
 
   deleteClap() {
+    this.clapping = true;
     this.clapService.deleteClapInteraction(this.clapId);
   }
 }

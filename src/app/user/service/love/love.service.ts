@@ -78,22 +78,22 @@ export class LoveService {
   }
 
   // Then Ask For Love Interaction Details
-  private requestLoveStatus(entityId, entityType) {
-    const request: LoveRequest = {
-      client: this.userInfo.id,
-      row: entityId,
-      entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_LOVE
-    };
-    this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
-      res => {
-        console.log(`interactions ${res.Data[0].interactions}`);
-        if (res.Data[0].interactions > 0) {
-          this.statusSubject.next(true);
-        }
-      }
-    );
-  }
+  // private requestLoveStatus(entityId, entityType) {
+  //   const request: LoveRequest = {
+  //     client: this.userInfo.id,
+  //     row: entityId,
+  //     entity: entityType,
+  //     interaction: InteractionConsts.INTERACTION_TYPE_LOVE
+  //   };
+  //   this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
+  //     res => {
+  //       console.log(`interactions ${res.Data[0].interactions}`);
+  //       if (res.Data[0].interactions > 0) {
+  //         this.statusSubject.next(true);
+  //       }
+  //     }
+  //   );
+  // }
 
   // endregion
   // Check if The User is login to make his love interaction

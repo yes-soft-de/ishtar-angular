@@ -22,8 +22,7 @@ export class FollowService {
 
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
-              public dialog: MatDialog) {
-  }
+              public dialog: MatDialog) { }
 
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
@@ -78,22 +77,22 @@ export class FollowService {
   }
 
   // Then Ask For Follow Interaction Details
-  private requestFollowStatus(entityId, entityType) {
-    const request: FollowRequest = {
-      client: this.userInfo.id,
-      row: entityId,
-      entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
-    };
-    this.httpClient.post<FollowInteractionResponse>(`${UserConfig.getInteractionAPI}`, JSON.stringify(request)).subscribe(
-      res => {
-        console.log(`interactions ${res.Data[0].interactions}`);
-        if (res.Data[0].interactions > 0) {
-          this.statusSubject.next(true);
-        }
-      }
-    );
-  }
+  // private requestFollowStatus(entityId, entityType) {
+  //   const request: FollowRequest = {
+  //     client: this.userInfo.id,
+  //     row: entityId,
+  //     entity: entityType,
+  //     interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
+  //   };
+  //   this.httpClient.post<FollowInteractionResponse>(`${UserConfig.getInteractionAPI}`, JSON.stringify(request)).subscribe(
+  //     res => {
+  //       console.log(`interactions ${res.Data[0].interactions}`);
+  //       if (res.Data[0].interactions > 0) {
+  //         this.statusSubject.next(true);
+  //       }
+  //     }
+  //   );
+  // }
 
   public postFollow(entityId, entityType) {
     console.log('Post Love Requested!');
