@@ -43,6 +43,7 @@ export class ArtistListComponent implements OnInit {
               private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    console.log(this.artistListFormatted);
     this.userProfileService.requestUserDetails().subscribe(
         data => {
           this.client = data.Data;

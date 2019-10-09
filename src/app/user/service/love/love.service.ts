@@ -27,9 +27,8 @@ export class LoveService {
 
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  private getClientInteraction(clientId: number) {
+  public getClientInteraction(clientId: number, entityName: string, paintingId) {
       // check if user is login or not
-    // if (this.checkUserDetailsExists()) {
       const request: {client: number} = {
         client: clientId
       };
@@ -38,13 +37,25 @@ export class LoveService {
           JSON.stringify(request),
           {responseType: 'json'}
       ).subscribe(
-          res => {
-            console.log('Response for getClientInteraction  From Love service : ', res);
+          (res: {Data: any}) => {
+            console.log('Response For Love Interactions : ', res);
+            res.Data.map(response => {  // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
+              // Check If Entity Is Painting and Interaction IS Like
+              if (response.entity === entityName && response.interaction === 'like') {
+                // Check For Specify Painting
+                if (response.id === paintingId) {
+                  this.statusSubject.next({success: true, value: response});
+                } else {
+                  this.statusSubject.next(false);
+                }
+              } else {
+                this.statusSubject.next(false);
+              }
+            });
           }, error => {
             console.log('Error From getClientInteraction  From Love service : ', error);
           }
       );
-    // }
   }
 
   // region Love Getter Methods
@@ -59,14 +70,14 @@ export class LoveService {
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
-            this.getClientInteraction(this.userInfo.id);
+            // this.getClientInteraction(this.userInfo.id, entityName, paintingId);
             this.requestLoveStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
-      this.getClientInteraction(this.userInfo.id);
+      // this.getClientInteraction(this.userInfo.id);
       this.requestLoveStatus(entityId, entityType);
     }
   }
@@ -123,7 +134,7 @@ export class LoveService {
 
   // Delete Love Interaction
   public deleteLoveInteraction(interactionID: number) {
-    if (this.checkUserDetailsExists()) {
+    // if (this.checkUserDetailsExists()) {
       const request: {id: number} = {
         id: interactionID
       };
@@ -134,12 +145,12 @@ export class LoveService {
       ).subscribe(
           res => {
             console.log('response deleted from love.service', res);
-            this.statusSubject.next(true);
+            this.statusSubject.next(false);
           }
       );
-    } else {
-      return false;
-    }
+    // } else {
+    //   return false;
+    // }
   }
 
   getStatusObservable(): Observable<any> {
