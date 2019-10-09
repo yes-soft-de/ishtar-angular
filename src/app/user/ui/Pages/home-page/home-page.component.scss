@@ -7,4 +7,18 @@
   z-index: 999;
 }
 
+@media (max-width:991px) and (min-width:768px) {
+  #painting-list{
+    .painting-list-item:last-child {
+      visibility: hidden !important;
+    }
+  } 
+}
+
+@media (max-width:500px){
+  h1 {
+    font-size: 25pt !important;
+    margin: 1rem !important;
+  }
+}
 

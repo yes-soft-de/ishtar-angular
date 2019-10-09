@@ -5,13 +5,13 @@
 <main class="row m-0 p-0" *ngIf="loadFinished">
   <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"
                    style="z-index: -1;"></app-home-header>
-  <section class="w-100 d-flex justify-content-center flex-column align-items-center p-5">
+  <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
     <h1 class="m-5">Latest Paintings</h1>
     <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
   </section>
   <app-home-auction-section class="w-100"></app-home-auction-section>
   <section class="w-100">
-    <div class="col-12" style="padding-top: 3rem">
+    <div class="col-12" style="padding-top: 2rem">
       <h1 class="text-center">Latest Active Artist</h1>
     </div>
 
