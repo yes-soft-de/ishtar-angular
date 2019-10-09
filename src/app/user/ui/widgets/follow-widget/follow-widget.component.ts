@@ -7,20 +7,27 @@ import {FollowService} from '../../../service/follow/follow.service';
   styleUrls: ['./follow-widget.component.scss']
 })
 export class FollowWidgetComponent implements OnInit {
-  @Input() ParentType;
-  @Input() ParentId;
+  @Input() ParentType;  // this for entity (painting, artist, ...) number ex:(1: painting)
+  @Input() ParentId;    // This is for (painting, artist, ...) id
+  @Input() EntityName;  // this is for entity table name
 
   followed = false;
-  interactionID: number;
+  interactionId: number;
 
   constructor(private followService: FollowService) { }
 
   ngOnInit() {
-    this.followService.initFollow(this.ParentId, this.ParentType);
+    this.followService.initFollow(this.EntityName, this.ParentId);
     this.followService.getStatusObservable().subscribe(
-      data => {
-        this.followed = data;
-      }
+        (data: { success: boolean, value: any }) => {
+          if (data) {
+            this.followed = data.success;  // this data = true if success
+            this.interactionId = data.value.interactionID;
+            console.log('Interaction Response : ', data);
+          } else {
+            this.followed = false;
+          }
+        }
     );
   }
   // Start Following
@@ -32,6 +39,6 @@ export class FollowWidgetComponent implements OnInit {
   // Stop Following
   stopFollow() {
     console.log('Send delete Follow Request');
-    this.followService.deleteFollowInteraction(this.interactionID);
+    this.followService.deleteFollowInteraction(this.interactionId);
   }
 }

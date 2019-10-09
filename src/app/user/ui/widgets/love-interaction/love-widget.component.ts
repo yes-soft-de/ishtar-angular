@@ -18,16 +18,18 @@ export class LoveWidgetComponent implements OnInit {
   constructor(private loveService: LoveService) {}
 
   ngOnInit() {
-    this.loveService.getClientInteraction(4, this.EntityName, this.ParentId);
-    this.loveService.initLove(this.ParentId, this.ParentType);
+    // this.loveService.getClientInteraction(4, this.EntityName, this.ParentId);
+    this.loveService.initLove(this.EntityName, this.ParentId);
     this.loveService.getStatusObservable().subscribe(
-        (data: {success: boolean, value: any}) => {
+        (data: { success: boolean, value: any }) => {
           if (data) {
             this.loved = data.success;  // this data = true if success
             this.interactionId = data.value.interactionID;
             console.log('Interaction Response : ', data);
+          } else {
+            this.loved = false;
           }
-      }
+        }
     );
   }
 
