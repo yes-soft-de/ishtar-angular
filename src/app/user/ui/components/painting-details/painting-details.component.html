@@ -36,10 +36,10 @@
       </div>
       <ul>
         <li class="m-1 d-inline-block">
-          <app-clap-widget [ParentId]="painting[0].id" [ParentType]="1"></app-clap-widget>
+          <app-clap-widget [EntityName]="'painting'" [ParentId]="painting[0].id" [ParentType]="1"></app-clap-widget>
         </li>
         <li class="m-1 d-inline-block">
-          <app-love-interaction [ParentType]="1" [ParentId]="painting[0].id"></app-love-interaction>
+          <app-love-interaction [EntityName]="'painting'" [ParentType]="1" [ParentId]="painting[0].id"></app-love-interaction>
         </li>
         <li class="my-1 mx-3 buy-painting">
           <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0].id}}"

@@ -27,7 +27,7 @@ export class ArtistDetailsPageComponent implements OnInit {
       data => {
         this.artist = data.Data[0];
       }, error1 => {
-        console.log('Retrying');
+        console.log('Retrying', error1);
         // this.fetchData();
       }
     );
