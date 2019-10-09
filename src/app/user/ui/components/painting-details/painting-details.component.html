@@ -31,7 +31,7 @@
         <p class="painting-type m-0">{{painting[0].colorsType}}</p>
         <h5 class="painting-artist mt-2"><a routerLink="/artist/{{artistID}}">{{painting[0].artist}}</a></h5>
       </div>
-      <div class="col-6 col-lg-11 col-xl-6 painting-art-type my-3">
+      <div class="col-6 col-lg-9 col-xl-6 painting-art-type my-3">
         <p class="m-0">Art Type : <span>{{painting[1].artType}}</span></p>
       </div>
       <ul>
@@ -52,7 +52,7 @@
               (click)="addToWishList()"
               id="add-to-wish-btn">
         Add to Wish List
-        <span class="font-weight-bold ml-1">{{painting[0].price}}$</span>
+        <!-- <span class="font-weight-bold ml-1">{{painting[0].price}}$</span> -->
       </button>
 
     </div> <!-- End Painting Info Div-->
