@@ -31,7 +31,7 @@
         <p class="painting-type m-0">{{painting[0].colorsType}}</p>
         <h5 class="painting-artist mt-2"><a routerLink="/artist/{{artistID}}">{{painting[0].artist}}</a></h5>
       </div>
-      <div class="col-6 col-lg-9 col-xl-6 painting-art-type my-3">
+      <div class="painting-art-type my-3">
         <p class="m-0">Art Type : <span>{{painting[1].artType}}</span></p>
       </div>
       <ul>
@@ -90,7 +90,7 @@
   </div>
 </div>
 
-<div class="px-5 pb-5 pt-0 related-paintings">
+<div class="related-paintings">
   <h3 class="my-4">Paintings You May Like</h3>
   <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.reverse().slice(0, 8)"
                        [filter]="false"

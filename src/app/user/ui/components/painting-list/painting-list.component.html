@@ -1,19 +1,27 @@
-<div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating" *ngIf="filter">
+<div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
   <div>
-    <h5>Filter By Art Type</h5>
-    <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
-            (click)="filterByArtType(artType)">{{artType}}</button>
+    <div class="filter">
+      <h5 (click)="fiterArtTypeOptionsView()">Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
+      <div id="filter-art-type-options"  class="btn-container hide">
+        <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
+              (click)="filterByArtType(artType)">{{artType}}</button>
+      </div>
+    </div>
     <hr>
-    <h5>Filter By Artist</h5>
-    <button mdbBtn class="btn-light" *ngFor="let artist of artists; index as i"
-            (click)="filterByArtist(artist)">{{artist}}</button>
+    <div class="filter">
+      <h5 (click)="fiterArtistOptionsView()">Filter By Artist <i class="fas fa-chevron-down"></i></h5>
+      <div id="filter-artist-options" class="btn-container hide">
+        <button mdbBtn class="btn-light" *ngFor="let artist of artists; index as i"
+                (click)="filterByArtist(artist)">{{artist}}</button>
+      </div>
+    </div>
     <hr>
   </div>
 </div>
 <div class="col-sm-9 col-xs-12 floating">
   <div id="painting-list">
     <div class="row">
-      <div class="painting-list-item col-xl-3 col-lg-4 col-md-6 col-xs-12"
+      <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12"
            *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)"
            routerLink="/painting/{{painting.id}}">
         <div class="img-container">

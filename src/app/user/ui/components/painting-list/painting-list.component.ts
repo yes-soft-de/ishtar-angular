@@ -127,4 +127,40 @@ export class PaintingListComponent implements OnInit {
         }
     );
   }
+
+  //view & hide filter button options
+  fiterArtTypeOptionsView(){
+    var option_visivbility = document.getElementById("filter-art-type-options").classList.contains('hide'),
+        another_option_visibility = document.getElementById("filter-artist-options").classList.contains('hide');
+    if (!another_option_visibility){
+      document.getElementById("filter-artist-options").classList.remove('active');
+      document.getElementById("filter-artist-options").classList.add('hide');
+    }  
+    if(!option_visivbility){
+      document.getElementById("filter-art-type-options").classList.remove('active');
+      document.getElementById("filter-art-type-options").classList.add('hide');
+    } else {
+      document.getElementById("filter-art-type-options").classList.add('active');
+      document.getElementById("filter-art-type-options").classList.remove('hide');
+    }
+  }
+
+  fiterArtistOptionsView(){
+    var option_visivbility = document.getElementById("filter-artist-options").classList.contains('hide'),
+        another_option_visibility = document.getElementById("filter-art-type-options").classList.contains('hide');
+    if (!another_option_visibility){
+      document.getElementById("filter-art-type-options").classList.remove('active');
+      document.getElementById("filter-art-type-options").classList.add('hide');
+    }
+    if(!option_visivbility){
+      document.getElementById("filter-artist-options").classList.remove('active');
+      document.getElementById("filter-artist-options").classList.add('hide');
+    } else {
+      document.getElementById("filter-artist-options").classList.add('active');
+      document.getElementById("filter-artist-options").classList.remove('hide');
+    }
+  }
+  
+
+
 }
