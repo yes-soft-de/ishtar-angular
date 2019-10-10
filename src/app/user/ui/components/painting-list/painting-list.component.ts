@@ -19,6 +19,8 @@ export class PaintingListComponent implements OnInit {
   paintingList: PaintingListItem[];
   client: UserInfo;
   config: any;
+  filterArtType = false;
+  filterArtist = false;
   viewData: ViewInterface = {
     entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
     row: 0,         // this for painting id
@@ -130,35 +132,21 @@ export class PaintingListComponent implements OnInit {
 
   //view & hide filter button options
   fiterArtTypeOptionsView(){
-    var option_visivbility = document.getElementById("filter-art-type-options").classList.contains('hide'),
-        another_option_visibility = document.getElementById("filter-artist-options").classList.contains('hide');
-    if (!another_option_visibility){
-      document.getElementById("filter-artist-options").classList.remove('active');
-      document.getElementById("filter-artist-options").classList.add('hide');
-    }  
-    if(!option_visivbility){
-      document.getElementById("filter-art-type-options").classList.remove('active');
-      document.getElementById("filter-art-type-options").classList.add('hide');
-    } else {
-      document.getElementById("filter-art-type-options").classList.add('active');
-      document.getElementById("filter-art-type-options").classList.remove('hide');
-    }
+    this.filterArtist = false;
+   if (this.filterArtType){
+     this.filterArtType = false;
+   } else {
+     this.filterArtType = true;
+   }
   }
 
   fiterArtistOptionsView(){
-    var option_visivbility = document.getElementById("filter-artist-options").classList.contains('hide'),
-        another_option_visibility = document.getElementById("filter-art-type-options").classList.contains('hide');
-    if (!another_option_visibility){
-      document.getElementById("filter-art-type-options").classList.remove('active');
-      document.getElementById("filter-art-type-options").classList.add('hide');
-    }
-    if(!option_visivbility){
-      document.getElementById("filter-artist-options").classList.remove('active');
-      document.getElementById("filter-artist-options").classList.add('hide');
-    } else {
-      document.getElementById("filter-artist-options").classList.add('active');
-      document.getElementById("filter-artist-options").classList.remove('hide');
-    }
+    this.filterArtType = false;
+   if (this.filterArtist){
+     this.filterArtist = false;
+   } else {
+     this.filterArtist = true;
+   }
   }
   
 

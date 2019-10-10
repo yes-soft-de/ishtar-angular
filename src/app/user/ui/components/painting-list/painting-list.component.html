@@ -2,7 +2,8 @@
   <div>
     <div class="filter">
       <h5 (click)="fiterArtTypeOptionsView()">Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
-      <div id="filter-art-type-options"  class="btn-container hide">
+      <div class="btn-container hide"
+           [ngClass]="{'active': filterArtType == true, 'hide': filterArtType == false}">
         <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
               (click)="filterByArtType(artType)">{{artType}}</button>
       </div>
@@ -10,7 +11,8 @@
     <hr>
     <div class="filter">
       <h5 (click)="fiterArtistOptionsView()">Filter By Artist <i class="fas fa-chevron-down"></i></h5>
-      <div id="filter-artist-options" class="btn-container hide">
+      <div class="btn-container hide"
+           [ngClass]="{'active': filterArtist == true, 'hide': filterArtist == false}">
         <button mdbBtn class="btn-light" *ngFor="let artist of artists; index as i"
                 (click)="filterByArtist(artist)">{{artist}}</button>
       </div>
