@@ -11,23 +11,18 @@ import {isBoolean} from 'util';
   styleUrls: ['./clap-widget.component.scss']
 })
 export class ClapWidgetComponent implements OnInit {
-  clapFiled = '../../../../../assets/clap-icon.svg';
-  clapOutlined = '../../../../../assets/clap-outline.svg';
-
-  clapIconSize = 32;
-
   @Input() ParentType;
   @Input() ParentId;
-  @Input() EntityName;    // this is for entity table name
-
+  clapFiled = '../../../../../assets/clap-icon.svg';
+  clapOutlined = '../../../../../assets/clap-outline.svg';
+  clapIconSize = 32;
   clapped = false;        // clap active
-  clappedNumber = null;   // clap number
-  clapping = false;
-
+  clappedNumber = null;   // Storing clap number
+  clapping = false;       // For Reduce The clap image Opacity Until finish Delete Clap Request
   timeStart: Date;
   source = interval(100);
   holding = false;
-  clapId: number;         // clap id
+  clapId: number;         // Storing clap id
   subscription;
 
   constructor(private clapService: ClapService,
@@ -38,13 +33,20 @@ export class ClapWidgetComponent implements OnInit {
   }
 
   ObserveClaps() {
-    this.clapService.initClap(this.EntityName, this.ParentId);
+    // Fetch THe Clap Request
+    this.clapService.initClap(this.ParentType, this.ParentId);
+    // Response From Clap Services
     this.clapService.getStatusObservable().subscribe(
         (data: { success: boolean, value: any }) => {
           if (data) {
             this.clapped = data.success;  // this data = true if success
-            this.clapId = data.value.ClapID;
-            this.clappedNumber = data.value.value;
+            if (data.value.ClapID) {      // Response Data After Reload The Page
+              this.clapId = data.value.ClapID;
+              this.clappedNumber = data.value.value;
+            } else if (data.value.Data.id) {  // Response Data After Create New Clap
+              this.clapId = data.value.Data.id;
+              this.clappedNumber = data.value.Data.value;
+            }
             console.log('Interaction Response : ', data);
           } else {
             this.clapping = false;

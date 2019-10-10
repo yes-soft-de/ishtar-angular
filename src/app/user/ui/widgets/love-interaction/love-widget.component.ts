@@ -10,21 +10,24 @@ import {UserConfig} from '../../../UserConfig';
 export class LoveWidgetComponent implements OnInit {
   @Input() ParentType;  // this for entity number (1: painting)
   @Input() ParentId;    // This is for painting id
-  @Input() EntityName;  // this is for entity table name
-
   loved = false;
   interactionId: number;
 
   constructor(private loveService: LoveService) {}
 
   ngOnInit() {
-    // this.loveService.getClientInteraction(4, this.EntityName, this.ParentId);
-    this.loveService.initLove(this.EntityName, this.ParentId);
+    // Fetch THe Follow Request
+    this.loveService.initLove(this.ParentType, this.ParentId);
+    // Response From Love Services
     this.loveService.getStatusObservable().subscribe(
         (data: { success: boolean, value: any }) => {
           if (data) {
             this.loved = data.success;  // this data = true if success
-            this.interactionId = data.value.interactionID;
+            if (data.value.interactionID) {     // Response Data After Reload The Page
+              this.interactionId = data.value.interactionID;
+            } else if (data.value.Data.id) {    // Response Data After Create New Love
+              this.interactionId = data.value.Data.id;
+            }
             console.log('Interaction Response : ', data);
           } else {
             this.loved = false;
