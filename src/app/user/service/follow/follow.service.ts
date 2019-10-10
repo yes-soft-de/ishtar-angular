@@ -3,7 +3,6 @@ import {UserInfo} from '../../entity/user/user-info';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {UserProfileService} from '../client-profile/user-profile.service';
-import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 import {UserConfig} from '../../UserConfig';
@@ -26,7 +25,18 @@ export class FollowService {
 
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  private getClientInteraction(clientId: number, entityName: string, rowId) {
+  private getClientInteraction(clientId: number, parentType: number, rowId) {
+    let entityName = '';
+    // fetch entity name
+    if (parentType === 1) {
+      entityName = 'painting';
+    } else if (parentType === 2) {
+      entityName = 'artist';
+    } else if (parentType === 3) {
+      entityName = 'artType';
+    } else if (parentType === 4) {
+      entityName = 'auction';
+    }
     // check if user is login or not
     const request: {client: number} = {
       client: clientId
@@ -53,7 +63,7 @@ export class FollowService {
     );
   }
 
-  public initFollow(entityName, rowId) {
+  public initFollow(parentType, rowId) {
     // See If Loading User
     if (!this.userRequestSent) {
       // If Not Request Him
@@ -64,14 +74,14 @@ export class FollowService {
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
-            this.getClientInteraction(this.userInfo.id, entityName, rowId);
+            this.getClientInteraction(this.userInfo.id, parentType, rowId);
             // this.requestFollowStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
-      this.getClientInteraction(this.userInfo.id, entityName, rowId);
+      this.getClientInteraction(this.userInfo.id, parentType, rowId);
       // this.requestFollowStatus(entityId, entityType);
     }
   }
@@ -95,7 +105,6 @@ export class FollowService {
   // }
 
   public postFollow(entityId, entityType) {
-    console.log('Post Love Requested!');
     if (!this.checkUserDetailsExists()) {
       console.log('Hello My Dear Unknown User, Please Login!');
       this.dialog.open(LoginPageComponent, {
@@ -103,7 +112,7 @@ export class FollowService {
         hasBackdrop: true
       });
     } else {
-      console.log('So My Dear User, Wanna Send Some Love? Here we go');
+      console.log('Sending Follow interaction');
       this.postFollowToAPI(entityId, entityType);
     }
   }
@@ -117,8 +126,7 @@ export class FollowService {
     };
     this.httpClient.post<FollowInteractionResponse>(`${UserConfig.postInteractionAPI}`, JSON.stringify(request)).subscribe(
       res => {
-        console.log(res);
-        this.statusSubject.next(true);
+        this.statusSubject.next({success: true, value: res});
       }
     );
   }

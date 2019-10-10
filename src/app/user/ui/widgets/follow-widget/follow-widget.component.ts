@@ -9,25 +9,27 @@ import {FollowService} from '../../../service/follow/follow.service';
 export class FollowWidgetComponent implements OnInit {
   @Input() ParentType;  // this for entity (painting, artist, ...) number ex:(1: painting)
   @Input() ParentId;    // This is for (painting, artist, ...) id
-  @Input() EntityName;  // this is for entity table name
-
   followed = false;
   interactionId: number;
 
   constructor(private followService: FollowService) { }
 
   ngOnInit() {
-    // this.followService.getClientInteraction(1, this.EntityName, this.ParentId);
-    this.followService.initFollow(this.EntityName, this.ParentId);
+    // Fetch THe Follow Request
+    this.followService.initFollow(this.ParentType, this.ParentId);
+    // Response From Follow Services
     this.followService.getStatusObservable().subscribe(
         (data: { success: boolean, value: any }) => {
           if (data) {
-            this.followed = data.success;  // this data = true if success
-            this.interactionId = data.value.interactionID;
+            this.followed = data.success;       // this data = true if success
+            if (data.value.interactionID) {     // Response Data After Reload The Page
+              this.interactionId = data.value.interactionID;
+            } else if (data.value.Data.id) {    // Response Data After Create New Follow
+              this.interactionId = data.value.Data.id;
+            }
             console.log('Interaction Response : ', data);
           } else {
             this.followed = false;
-            console.log('false', data);
           }
         }
     );
