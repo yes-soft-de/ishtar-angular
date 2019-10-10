@@ -17,14 +17,14 @@
       height: 0;
     }
     @media screen and (min-width: 960px) {
-      height: 6rem;
+      height: 4.8rem;
     }
     // Start sm Size Screen
     @media (max-width: 959px) {
       height: 3.6rem;
     }
     @media (min-width: 960px) and (max-width: 992px) {
-      height: 3.6rem;
+      height: 4rem;
     }
   }
   a {

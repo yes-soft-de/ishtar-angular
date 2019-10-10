@@ -6,21 +6,21 @@
   <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"
                    style="z-index: -1;"></app-home-header>
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
-    <h1 class="m-5">Latest Paintings</h1>
+    <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
     <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
   </section>
   <app-home-auction-section class="w-100"></app-home-auction-section>
   <section class="w-100">
     <div class="col-12" style="padding-top: 2rem">
-      <h1 class="text-center">Latest Active Artist</h1>
+      <h1 class="text-center font-weight-bolder">Latest Active Artist</h1>
     </div>
 
     <app-artist-list [artistListFormatted]="artistList.reverse().slice(0,4)" [filter]="false" [search]="false"></app-artist-list>
   </section>
 
   <section class="row w-100 m-0">
-    <div class="p-5 col-12">
-      <h1 class="text-center">Learn About Art Schools</h1>
+    <div class="pt-5 col-12">
+      <h1 class="text-center font-weight-bolder">Learn About Art Schools</h1>
     </div>
     <app-school-list [artTypeList]="artTypeList.slice(0,3)" class="w-100"></app-school-list>
     <app-item-brief [artType]="mostSeenArtType" class="container-fluid p-0"></app-item-brief>

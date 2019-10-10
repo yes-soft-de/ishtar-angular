@@ -1,5 +1,5 @@
-<div id="hero">
-  <div id="hero-side">
+<div class="hero">
+  <div class="hero-side">
     <img src="../../../../../assets/logo.png" alt="...">
     <div class="text-container">
       <h5>ISHTAR</h5>
@@ -10,10 +10,10 @@
           [ngClass]="activeSlide == j? 'active': null"></li>
     </ol>
   </div>
-  <div id="hero-main">
+  <div class="hero-main">
     <div id="hero-body">
       <div class="carousel-fg">
-        <h5>{{paintings[activeSlide].title}}</h5>
+        <h5 class="carousel-text">{{paintings[activeSlide].title}}</h5>
         <p>{{paintings[activeSlide].text}}</p>
       </div>
       <mdb-carousel (activeSlideChange)="slideChanged($event)" [isControls]="false" #heroSlider>
