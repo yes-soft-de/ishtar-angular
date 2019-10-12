@@ -71,6 +71,12 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
+            // sort the array Elements
+            this.artistList.sort(
+                (a, b) => (Number(a.id) > Number(b.id))
+                    ? 1 : (Number(a.id) === Number(b.id))
+                        ? ((Number(a.id) > Number(b.id))
+                            ? 1 : -1) : -1 );
           },
           error => {
             console.log(error);
@@ -80,7 +86,6 @@ export class ArtistListComponent implements OnInit {
     }
     // create array of types after removing the repeated value
     this.types = [...new Set(this.types)];
-
     // Create Pagination Config
     this.config = {
       itemsPerPage: 8,
