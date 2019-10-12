@@ -19,10 +19,20 @@ footer {
       }
     }
   }
+  .footer-space {
+
+  }
   .custom-bottom-footer {
-    color: #8f9091;
+    //color: #8f9091;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #343a40;
+    border-top: 1px solid;
+    color: #fff;
     a{
-      color: #8f9091;
+      color: #fff;
     }
     #footer-bottom-left {
       ul {
@@ -56,10 +66,12 @@ footer {
     .copy-rights {
       text-align: center;
       p {
-        margin: 5px 0;
         font-size: 15px;
-        a:hover {
-          color: #CCB832;
+        a {
+          color: #f4db75;
+          &:hover {
+            color: #CCB832;  
+          }
         }
       }
     }

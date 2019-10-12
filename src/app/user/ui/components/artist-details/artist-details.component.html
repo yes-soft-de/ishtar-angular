@@ -10,7 +10,8 @@
         </div>
       </div>
       <div class="banner-background">
-        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting?.image + ')'}" class="parallax" *ngIf="artistMainPainting?.image != null"></div>
+<!--        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting?.image + ')'}" class="parallax" *ngIf="artistMainPainting?.image != null"></div>-->
+        <img class="parallax d-block" [src]="artistMainPainting.image" style="background-size: cover">
       </div>
       <div class="artist-header-details">
         <div class="container">
