@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
@@ -12,6 +12,7 @@ import {InteractionConsts} from '../../../consts/interaction/interaction-consts'
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
+  @Output() PaintingViewNumber = new EventEmitter<{ id: number, viewNumber: number }[]>();
   @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
@@ -68,9 +69,10 @@ export class PaintingListComponent implements OnInit {
     }
     // make loop inside paintingsView and remove the repeated value
     this.paintingsView = [...new Set(this.paintingsView)];
+    // Passing Data From Child Component To Parent Component
+    this.PaintingViewNumber.emit(this.paintingsView);
     // make loop inside artists and remove the repeated value
     this.artists = [...new Set(this.artists)];
-    // endregion
     // region Art Type Collecting
     this.artTypes = ['all'];
     for (const image of this.formattedPaintingList) {
@@ -80,7 +82,7 @@ export class PaintingListComponent implements OnInit {
 
     // Create Pagination Config
     this.config = {
-      itemsPerPage: 8,
+      itemsPerPage: 12,
       currentPage: 1,
       totalItems: this.paintingList.length
     };

@@ -7,7 +7,7 @@
                    style="z-index: -1;"></app-home-header>
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
     <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
-    <app-c-painting-list style="display: flex; justify-content: center;" [formattedPaintingList]="paintingList.reverse().slice(0, 4)" [filter]="false"></app-c-painting-list>
+    <app-c-painting-list style="display: flex; justify-content: center;" (PaintingViewNumber)="getMostSeenPainting($event)" [formattedPaintingList]="paintingList.reverse().slice(0, 12)" [filter]="false"></app-c-painting-list>
   </section>
   <app-home-auction-section class="w-100"></app-home-auction-section>
   <section class="w-100">
@@ -23,7 +23,40 @@
       <h1 class="text-center font-weight-bolder">Learn About Art Schools</h1>
     </div>
     <app-school-list [artTypeList]="artTypeList.slice(0,3)" class="w-100"></app-school-list>
-    <app-item-brief [artType]="mostSeenArtType" class="container-fluid p-0"></app-item-brief>
+<!--    <app-item-brief [artType]="mostSeenArtType" class="container-fluid p-0"></app-item-brief>-->
+    <div class="most-painting-seen">
+      <ng-container *ngFor="let image of paintingList">
+        <ng-container *ngIf="image.id == viewNumbers[0]?.id">
+          <div class="col-sm-8 col-md-10 col-xl-8 mx-auto">
+            <h2 class="text-center mb-4">Most Painting Seen </h2>
+            <div class="row">
+              <div class="col-md-5 col-lg-4 image">
+                <img src="{{image.image}}" class="img-fluid img-thumbnail" alt="{{image.name}} Image">
+              </div>
+              <div class="col-md-7 col-lg-8 content">
+                <h2 class="painting-name mt-3 mt-lg-0"><a routerLink="/painting/{{image.id}}">{{image.name}}</a></h2>
+                <p class="painting-artist-name">
+                  Artist Name :
+                  <ng-container *ngFor="let artist of artistList">
+                    <ng-container *ngIf="artist.name == image.artist">
+                      <a routerLink="/artist/{{artist.id}}">
+                        {{image.artist}}
+                      </a>
+                    </ng-container>
+                  </ng-container>
+                </p>
+                <p class="painting-dimension">Height: <span>{{image.height}}CM</span> | Width: <span>{{image.width}}CM</span></p>
+                <p class="painting-story">
+                  <strong class="h4">{{image.name}} Story :</strong>
+                  {{image.story}}
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis deserunt dolore doloribus error est maiores natus, nobis non nostrum perferendis quidem reiciendis repellat repellendus soluta vel voluptate voluptatem voluptates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
   </section>
 </main>
 

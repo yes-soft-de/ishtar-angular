@@ -66,16 +66,20 @@ export class HeaderComponent implements OnInit {
     document.getElementById('open-search').style.opacity = '0';
     document.getElementById('open-search').style.zIndex = '-1';
     document.getElementById('input-search').style.width = '100%';
+    document.getElementById('input-mobile-search').style.width = '100%';
     document.getElementById('close-search').style.opacity = '1';
     document.getElementById('close-search').style.zIndex = '2';
+    document.getElementById('inlineFormInputGroup').focus();
   }
 
   hideInputFeild() {
     document.getElementById('close-search').style.opacity = '0';
     document.getElementById('close-search').style.zIndex = '-1';
     document.getElementById('input-search').style.width = '0';
+    document.getElementById('input-mobile-search').style.width = '100%';
     document.getElementById('open-search').style.opacity = '1';
     document.getElementById('open-search').style.zIndex = '2';
+    document.getElementById('inlineFormInputGroup').blur();
   }
 
   goToSearch() {
