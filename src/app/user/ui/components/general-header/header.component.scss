@@ -8,7 +8,6 @@
     border-radius:50%;
     background:plum;
     vertical-align:middle;
-    margin-right:1em;
     color:white;
   }
 
@@ -45,13 +44,20 @@
         -moz-box-shadow: 2px 2px 4px #ddd;
         -o-box-shadow: 2px 2px 4px #ddd;
         box-shadow: 2px 2px 4px #ddd;
-
         line-height:2.5em;
         vertical-align:middle;
 
         li {
           display: inline-block;
           margin: 1rem;
+          .dropdown {
+            .login, .logout {
+              margin-right: 10px;
+            }
+            mdb-icon {
+              vertical-align: middle;
+            }
+          }
 
           a {
             color: black;
@@ -210,8 +216,8 @@
   margin-left: 35px;
   .search{
     position: absolute;
-    right: 65px;
-    top: 25px;
+    //right: 115px;
+    top: 29px;
     width: 100%;
     text-align: right;
     #input-search,

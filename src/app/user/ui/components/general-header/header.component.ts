@@ -1,13 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
 import {MatDialog} from '@angular/material';
 import {LoginPageComponent} from '../../Pages/login-page/login-page.component';
-import {interval, Subscription} from 'rxjs';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserConfig} from '../../../UserConfig';
-import {HttpClient} from '@angular/common/http';
-import {UserResponse} from '../../../entity/user/user-response';
 import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {Router} from '@angular/router';
