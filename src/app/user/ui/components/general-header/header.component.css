@@ -1,0 +1,293 @@
+#header #letter-circle {
+  font-size: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  background: plum;
+  vertical-align: middle;
+  color: white;
+}
+@media screen and (min-width: 0) {
+  #header #spacer {
+    height: 0;
+  }
+}
+@media screen and (min-width: 960px) {
+  #header #spacer {
+    height: 5rem;
+  }
+}
+@media (max-width: 959px) {
+  #header #spacer {
+    height: 3.6rem;
+  }
+}
+@media (min-width: 960px) and (max-width: 992px) {
+  #header #spacer {
+    height: 4rem;
+  }
+}
+#header a {
+  color: black;
+}
+#header header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 999999;
+}
+#header header #header-nav .header-top {
+  margin-left: -15px;
+  margin-right: -15px;
+  -webkit-box-shadow: 2px 2px 4px #ddd;
+  -moz-box-shadow: 2px 2px 4px #ddd;
+  -o-box-shadow: 2px 2px 4px #ddd;
+  box-shadow: 2px 2px 4px #ddd;
+  line-height: 2.5em;
+  vertical-align: middle;
+}
+#header header #header-nav .header-top li {
+  display: inline-block;
+  margin: 1rem;
+}
+#header header #header-nav .header-top li .dropdown .login,
+#header header #header-nav .header-top li .dropdown .logout {
+  margin-right: 10px;
+}
+#header header #header-nav .header-top li .dropdown mdb-icon {
+  vertical-align: middle;
+}
+#header header #header-nav .header-top li a {
+  color: black;
+}
+#header header #header-nav .header-bottom {
+  margin-top: 10px;
+}
+#header header #header-nav #btn-wish-list {
+  background: #bfb049;
+  font-weight: 600;
+}
+#header header #header-nav #btn-favorite {
+  font-weight: 600;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}
+#header header #header-nav #btn-wish-list,
+#header header #header-nav #btn-favorite {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+#header mdb-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  direction: rtl;
+  background: #ffffff;
+  z-index: 99999;
+}
+#header mdb-navbar .letter-circle {
+  font-size: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  text-align: center;
+  border-radius: 50%;
+  background: plum;
+  vertical-align: middle;
+  margin-right: 1em;
+  color: white;
+}
+#header mdb-navbar .btn-wish-list {
+  background: #bfb049;
+  font-weight: 600;
+  box-shadow: none;
+}
+#header mdb-navbar .btn-favorite {
+  margin: 0 0 0 14rem;
+  font-weight: 600;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}
+#header mdb-navbar .btn-wish-list,
+#header mdb-navbar .btn-favorite {
+  padding: 0.5rem 1rem;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+#header mdb-navbar .header-mobile-section {
+  width: 25%;
+  align-items: center;
+  line-height: 0.5;
+}
+#header mdb-navbar .header-mobile-section span {
+  display: inline-block;
+}
+@media (max-width: 400px) {
+  #header mdb-navbar {
+    width: 100vw;
+  }
+  #header mdb-navbar mdb-icon {
+    padding: 0 0.7rem;
+    font-size: 0.8rem !important;
+  }
+  #header mdb-navbar .dropdown-menu {
+    right: 0;
+  }
+  #header mdb-navbar .btn-wish-list,
+  #header mdb-navbar .btn-favorite {
+    margin: 0;
+    padding: 0.1rem 0.3rem;
+    font-size: 0.7rem;
+  }
+  #header mdb-navbar .header-mobile-section span {
+    font-size: 0.6rem;
+  }
+}
+@media (min-width: 401px) and (max-width: 767px) {
+  #header mdb-navbar {
+    width: 100vw;
+  }
+  #header mdb-navbar mdb-icon {
+    padding: 0 0.7rem;
+  }
+  #header mdb-navbar .btn-favorite {
+    margin: 0 0 0 6rem;
+  }
+  #header mdb-navbar .header-mobile-section span {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #header mdb-navbar .btn-favorite {
+    margin: 0 0 0 14rem;
+  }
+  #header mdb-navbar .header-mobile-section span {
+    font-size: 1rem;
+  }
+}
+#header-nav ul {
+  float: right;
+  position: relative;
+}
+#header-nav ul .dropdown-menu {
+  min-width: 8rem;
+  top: -10px;
+  left: -10px;
+}
+.search-box {
+  margin-left: 35px;
+}
+.search-box .search {
+  position: absolute;
+  top: 29px;
+  width: 100%;
+  text-align: right;
+}
+.search-box .search #input-search,
+.search-box .search #input-mobile-search {
+  width: 0;
+  height: 40px;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+.search-box .search #input-search input,
+.search-box .search #input-mobile-search input {
+  position: absolute;
+  right: 0;
+}
+.search-box .search #input-search #input-search.open,
+.search-box .search #input-search #input-mobile-search.open,
+.search-box .search #input-mobile-search #input-search.open,
+.search-box .search #input-mobile-search #input-mobile-search.open {
+  width: 100%;
+}
+.search-box .search #open-search,
+.search-box .search #close-search {
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.search-box .search #close-search {
+  z-index: -1;
+  opacity: 0;
+}
+.search-mobile {
+  position: relative;
+  padding: 10px 0;
+}
+.search-mobile input {
+  direction: ltr;
+}
+.search-mobile mdb-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 14px;
+  right: 2px;
+  height: 30px;
+  padding: 7px 10px !important;
+  transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+}
+@media (max-width: 991px) {
+  .dropdown.show .dropdown-menu {
+    padding: 0;
+    top: 15px !important;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .navbar-nav {
+    border-top: 1px solid #e1e1e1;
+  }
+}
+@media (max-width: 991px) {
+  .navbar-nav li {
+    position: relative;
+    right: 0%;
+    animation: pull-right 0.5s ease-in-out;
+    -webkit-animation: pull-right 0.5s ease-in-out;
+  }
+  .navbar-nav li:nth-child(2) {
+    animation: pull-right 1s ease-in-out;
+    -webkit-animation: pull-right 1s ease-in-out;
+  }
+  .navbar-nav li:nth-child(3) {
+    animation: pull-right 1.5s ease-in-out;
+    -webkit-animation: pull-right 1.5s ease-in-out;
+  }
+}
+@keyframes pull-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+@-webkit-keyframes pull-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
