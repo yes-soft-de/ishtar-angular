@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
 import {UserProfileService} from '../client-profile/user-profile.service';
-import {ToastrService} from 'ngx-toastr';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {MatDialog} from '@angular/material';
@@ -10,7 +9,6 @@ import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component
 import {UserInfo} from '../../entity/user/user-info';
 import {LoveRequest} from '../../entity/love-interaction/love-request';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -22,33 +20,50 @@ export class LoveService {
 
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
-              private toaster: ToastrService,
               public dialog: MatDialog) {}
 
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  private getClientInteraction(clientId: number) {
-      // check if user is login or not
-    // if (this.checkUserDetailsExists()) {
-      const request: {client: number} = {
-        client: clientId
-      };
-      return this.httpClient.post(
-          `${UserConfig.getClientInteractionsAPI}`,
-          JSON.stringify(request),
-          {responseType: 'json'}
-      ).subscribe(
-          res => {
-            console.log('Response for getClientInteraction  From Love service : ', res);
-          }, error => {
-            console.log('Error From getClientInteraction  From Love service : ', error);
-          }
-      );
-    // }
+  private getClientInteraction(clientId: number, parentType: number, rowId) {
+    let entityName = '';
+    // fetch entity name
+    if (parentType === 1) {
+      entityName = 'painting';
+    } else if (parentType === 2) {
+      entityName = 'artist';
+    } else if (parentType === 3) {
+      entityName = 'artType';
+    } else if (parentType === 4) {
+      entityName = 'auction';
+    }
+    // check if user is login or not
+    const request: {client: number} = {
+      client: clientId
+    };
+    return this.httpClient.post(
+        `${UserConfig.getClientInteractionsAPI}`,
+        JSON.stringify(request),
+        {responseType: 'json'}
+    ).subscribe(
+        (res: {Data: any}) => {
+          console.log('Response For Love Interactions : ', res);
+          res.Data.map(response => {  // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
+            // Check For Entity Name and Interaction IS Like
+            if (response.entity === entityName && response.interaction === 'like') {
+              // Check For Specify Painting
+              if (response.id === rowId) {
+                this.statusSubject.next({success: true, value: response});
+              }
+            }
+          });
+        }, error => {
+          console.log('Error From getClientInteraction  From Love service : ', error);
+        }
+    );
   }
 
   // region Love Getter Methods
-  public initLove(entityId, entityType) {
+  public initLove(parentType, rowId) {
     // See If Loading User
     if (!this.userRequestSent) {
       // If Not Request Him
@@ -59,40 +74,39 @@ export class LoveService {
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
-            this.getClientInteraction(this.userInfo.id);
-            this.requestLoveStatus(entityId, entityType);
+            this.getClientInteraction(this.userInfo.id, parentType, rowId);
+            // this.requestLoveStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
-      this.getClientInteraction(this.userInfo.id);
-      this.requestLoveStatus(entityId, entityType);
+      this.getClientInteraction(this.userInfo.id, parentType, rowId);
+      // this.requestLoveStatus(entityId, entityType);
     }
   }
 
   // Then Ask For Love Interaction Details
-  private requestLoveStatus(entityId, entityType) {
-    const request: LoveRequest = {
-      client: this.userInfo.id,
-      row: entityId,
-      entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_LOVE
-    };
-    this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
-      res => {
-        console.log(`interactions ${res.Data[0].interactions}`);
-        if (res.Data[0].interactions > 0) {
-          this.statusSubject.next(true);
-        }
-      }
-    );
-  }
+  // private requestLoveStatus(entityId, entityType) {
+  //   const request: LoveRequest = {
+  //     client: this.userInfo.id,
+  //     row: entityId,
+  //     entity: entityType,
+  //     interaction: InteractionConsts.INTERACTION_TYPE_LOVE
+  //   };
+  //   this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
+  //     res => {
+  //       console.log(`interactions ${res.Data[0].interactions}`);
+  //       if (res.Data[0].interactions > 0) {
+  //         this.statusSubject.next(true);
+  //       }
+  //     }
+  //   );
+  // }
 
   // endregion
   // Check if The User is login to make his love interaction
   public postLove(entityId, entityType) {
-    console.log('Post Love Requested!');
     if (!this.checkUserDetailsExists()) {
       console.log('Hello My Dear Unknown User, Please Login!');
       this.dialog.open(LoginPageComponent, {
@@ -100,7 +114,7 @@ export class LoveService {
         hasBackdrop: true
       });
     } else {
-      console.log('So My Dear User, Wanna Send Some Love? Here we go');
+      console.log('Sending Love interaction');
       this.postLoveToAPI(entityId, entityType);
     }
   }
@@ -115,8 +129,7 @@ export class LoveService {
     };
     this.httpClient.post<LoveInteractionResponse>(UserConfig.postInteractionAPI, JSON.stringify(request)).subscribe(
       res => {
-        console.log(res);
-        this.statusSubject.next(true);
+        this.statusSubject.next({success: true, value: res});
       }
     );
   }
@@ -134,7 +147,7 @@ export class LoveService {
       ).subscribe(
           res => {
             console.log('response deleted from love.service', res);
-            this.statusSubject.next(true);
+            this.statusSubject.next(false);
           }
       );
     } else {

@@ -40,16 +40,15 @@
     </div>
     <section id="photos" class="row">
       <div *ngFor="let artist of artistList | paginate: config; index as i"
-           class="col-xs-6 col-sm-6 col-md-4 col-xl-3">
+           class="col-xs-6 col-sm-6 col-md-6 col-xl-3">
         <a routerLink="/artist/{{artist.id}}" (click)="viewArtist(artist.id)">
           <div class="artist-card text-center my-2 my-lg-3 my-xl-4">
             <img class="img-fluid" src="{{artist.image}}" alt="...">
             <div class="w-100 details-container">
               <div class="inner-details-container">
                 <h3 class="col-12 text-center">{{artist.name}}</h3>
-                <span class="col-12 text-center artist-detail-number"><i class="fas fa-paint-brush"></i> {{artist.paintingNumber}} painting</span>
-                <span class="col-12 text-center artist-detail-follower"><i class="fas fa-users"></i> {{artist.artistFollowers}} Follow</span>
-<!--                <span>{{artistIDFollow[i].id}}</span>-->
+                <span class="col-12 text-center artist-detail-number"><i class="fas fa-paint-brush"></i> {{artist.paintingNumber }} painting</span>
+                <span class="col-12 text-center artist-detail-follower"><i class="fas fa-users"></i>{{artist.artistFollowers}} Follow</span>
               </div>
             </div>
           </div>

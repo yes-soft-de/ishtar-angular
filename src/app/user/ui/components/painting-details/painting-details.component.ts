@@ -7,7 +7,9 @@ import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-i
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-import {LoveService} from '../../../service/love/love.service';
+import {Artist} from '../../../../admin/entity/artist/artist';
+import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
+
 
 @Component({
   selector: 'app-painting-details',
@@ -18,7 +20,7 @@ export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
-  artistID: number;
+  artist: any;
 
 
   constructor(private paintingService: PaintingListService,
@@ -35,7 +37,8 @@ export class PaintingDetailsComponent implements OnInit {
       data => {
         data.Data.map(res => {
           if (res.name === this.painting[0].artist) {
-            this.artistID = res.id;
+            this.artist = res;
+            console.log('Artist For This Painting: ', this.artist);
           }
         });
       }
@@ -89,7 +92,6 @@ export class PaintingDetailsComponent implements OnInit {
     const mainImage = document.getElementById('main-img');
     mainImage.setAttribute('src', value);
     document.getElementById('full-size-img').setAttribute('src', value);
-
   }
 
   showImageInFullSize() {

@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
@@ -6,7 +6,6 @@ import {PaintingListItem} from '../../../entity/painting-list/painting-list-item
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {HttpClient} from '@angular/common/http';
-import {interval, Subscription} from 'rxjs';
 import {UserConfig} from '../../../UserConfig';
 
 @Component({
@@ -19,7 +18,7 @@ export class HomePageComponent implements OnInit {
   direction = 'down';
   artTypeList: ArtTypeListItem[];
   loadFinished = false;
-
+  viewNumbers: { id: number, viewNumber: number }[];  // All Painting Seen Number
   mostSeenArtType: ArtTypeListItem;
 
   public headerSlides = [{
@@ -50,48 +49,69 @@ export class HomePageComponent implements OnInit {
     this.getCurrentUserInfo();
     this.requestArtistList();
     this.requestPaintingList();
+    setTimeout(() => {
+      if (this.viewNumbers !== undefined) {
+        if (this.viewNumbers.length !== 0) {
+          console.log('All Painting Seen Number: ', this.viewNumbers);
+          // Get Max View Number
+          this.viewNumbers.sort(
+              (a, b) => (Number(a.viewNumber) < Number(b.viewNumber))
+                  ? 1 : (Number(a.viewNumber) === Number(b.viewNumber))
+                      ? ((Number(a.viewNumber) < Number(b.viewNumber))
+                          ? 1 : -1) : -1 );
+          console.log('Max Painting Seen Painting : ', this.viewNumbers[0]);
+        }
+      }
+    }, 1000);
   }
 
+  // Fetch Most Seen Painting From Child Component
+  getMostSeenPainting(event: { id: number, viewNumber: number }[]) {
+    this.viewNumbers = event;
+  }
+
+  // Fetch Art Type
   requestArtTypeList() {
     this.artTpeService.getAllArtType().subscribe(
-      data => {
-        this.artTypeList = data.Data;
-        this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
-        this.checkLoadingFinished();
-      }
+        data => {
+          this.artTypeList = data.Data;
+          this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
+          this.checkLoadingFinished();
+        }
     );
   }
 
   requestPaintingList() {
     this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.paintingList = data.Data;
-        this.checkLoadingFinished();
-      }, error1 => {
-        console.log(error1);
-        // this.fetchData();
-      }
+        data => {
+          this.paintingList = data.Data;
+          console.log('Painting List : ', this.paintingList);
+          this.checkLoadingFinished();
+        }, error1 => {
+          console.log(error1);
+          // this.fetchData();
+        }
     );
   }
 
   getCurrentUserInfo() {
     this.httpClient.get(UserConfig.userProfileAPI).subscribe(
-      data => {
-        console.log(JSON.stringify(data));
-      }, error => {
-        console.log(error);
-      }
+        data => {
+          console.log('User INFO : ', data);
+        }, error => {
+          console.log(error);
+        }
     );
   }
 
   requestArtistList() {
     this.artistService.requestArtistList().subscribe(
-      data => {
-        this.artistList = data.Data;
-        this.checkLoadingFinished();
-      }, error1 => {
-        this.requestArtistList();
-      });
+        data => {
+          this.artistList = data.Data;
+          this.checkLoadingFinished();
+        }, error1 => {
+          console.log(error1);
+        });
   }
 
   // region Direction Calculator
@@ -116,11 +136,11 @@ export class HomePageComponent implements OnInit {
     // So there is a movement
     if (delta > 0 && oldDir !== 'Down') {
       this.direction = 'Down';
-      console.log(this.direction);
+      // console.log(this.direction);
       this.showNavbar = true;
     } else if (delta < 0 && oldDir !== 'Up') {
       this.direction = 'Up';
-      console.log(this.direction + ' delta ' + delta);
+      // console.log(this.direction + ' delta ' + delta);
       this.showNavbar = true;
     }
     // Save Data For Future Calculations
