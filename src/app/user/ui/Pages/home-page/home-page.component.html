@@ -24,7 +24,7 @@
     </div>
     <app-school-list [artTypeList]="artTypeList.slice(0,3)" class="w-100"></app-school-list>
 <!--    <app-item-brief [artType]="mostSeenArtType" class="container-fluid p-0"></app-item-brief>-->
-    <div class="most-painting-seen">
+    <div class="col-12 most-painting-seen">
       <ng-container *ngFor="let image of paintingList">
         <ng-container *ngIf="image.id == viewNumbers[0]?.id">
           <div class="col-sm-8 col-md-10 col-xl-8 mx-auto">

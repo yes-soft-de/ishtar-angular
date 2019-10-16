@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
@@ -11,7 +11,8 @@ import { InteractionConsts } from 'src/app/user/consts/interaction/interaction-c
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss']
+  styleUrls: ['./artist-list.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  encapsulation: ViewEncapsulation.None 
 })
 export class ArtistListComponent implements OnInit {
   @Input() filter = true;

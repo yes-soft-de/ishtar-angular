@@ -68,6 +68,14 @@
       }
       .artist-header-details-bottom {
         margin-top: 4.5rem;
+        .contact-artist {
+          a {
+            background-color: #385161!important;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: none;
+          }
+        }
         #followBtn {
           background: #bfb049;
           color: black;
@@ -93,13 +101,25 @@
 
   .artist-body {
     margin-top : -5rem;
+    border-top: 1px outset #efefef;
     #painting-list {
       margin-bottom: 15px;
+      mdb-carousel.carousel-multi-item {
+        div.carousel {
+          background: #8e44ad !important;
+          div.controls-top {
+            background: red;
+            position: absolute !important;
+            top: 50% !important;
+          }
+        }
+      }
       .painting-list-item {
+        height: 250px;
         outline: none;
         .img-container {
-          width: 100%;
-          height: 275px;
+          //width: 100%;
+          height: 100%;
           background: #ddd;
           margin-bottom: 15px;
           position: relative;
@@ -125,21 +145,23 @@
             opacity: 0;
             transition: all .5s ease-in-out;
             -o-transition: all .5s ease-in-out;
-            -ms-transition: all .5s ease-in-out;
             -moz-transition: all .5s ease-in-out;
             -webkit-transition: all .5s ease-in-out;
             .painting-name {
-              font-size: 26px;
-              width: 50%;
+              font-size: 20px;
               font-weight: bold;
+              border-bottom: 1px solid;
               line-height: 25px;
               margin-bottom: 5px;
             }
             .artist {
-              font-size: 18px;
-              width: 50%;
+              font-size: 17px;
+              color: #CCB832;
               line-height: 25px;
               margin-bottom: 10px;
+              span {
+                padding-top: 2px;
+              }
             }
             .statistics {
               position: absolute;

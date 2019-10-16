@@ -12,6 +12,9 @@
   display: flex;
   padding: 5rem;
 
+  @media (max-width:991px) {
+    height: 100px;
+  }
 
   mdb-carousel {
     flex-basis: 50%;

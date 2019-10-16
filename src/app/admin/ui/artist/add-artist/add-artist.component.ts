@@ -95,7 +95,7 @@ export class AddArtistComponent implements OnInit {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
-      this.photoListService.uploadImage(this.selectedFile.file).subscribe(
+      this.artistService.uploadImage(this.selectedFile.file).subscribe(
         (res) => {
           console.log(res);
           this.imageUrl = res.url;

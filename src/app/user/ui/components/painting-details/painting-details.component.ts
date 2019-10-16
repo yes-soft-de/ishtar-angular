@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
@@ -14,7 +14,8 @@ import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
-  styleUrls: ['./painting-details.component.scss']
+  styleUrls: ['./painting-details.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;

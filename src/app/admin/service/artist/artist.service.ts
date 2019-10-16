@@ -6,9 +6,7 @@ import {AdminConfig} from '../../AdminConfig';
 import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {Artist} from '../../entity/artist/artist';
 import { catchError } from 'rxjs/operators';
-import {pipe, throwError} from 'rxjs';
-import {PaintingListResponse} from '../../../user/entity/painting-list/painting-list-response';
-import {UserConfig} from '../../../user/UserConfig';
+import {Observable, pipe, throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 
 
@@ -86,6 +84,15 @@ export class ArtistService {
         JSON.stringify({id: artistId}),
         httpOptions
     ).pipe(catchError(ArtistService.errorHandler));
+  }
+
+  // Admin Section - Uplaod Image For Artist
+  public uploadImage(image: File): Observable<{ url: string }> {
+    const formData = new FormData();
+    formData.append('image', image);
+    return this.httpClient.post<{
+      url: string
+    }>(`${AdminConfig.generalUploadAPI}`, formData);
   }
 
 }
