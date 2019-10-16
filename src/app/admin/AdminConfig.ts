@@ -5,6 +5,7 @@ export class AdminConfig {
 
   // Create General Uploading API
   public static generalUploadAPI = AdminConfig.sourceAPI + 'uploadArtistImage';
+  public static paintingUploadAPI = AdminConfig.sourceAPI + 'uploadPaintingImage';
   // Create Uploading Media
   public static addMediaAPI = AdminConfig.sourceAPI + 'createMedia';
   public static allRowSelectedEntityAPI = AdminConfig.sourceAPI + 'getEntityNames';

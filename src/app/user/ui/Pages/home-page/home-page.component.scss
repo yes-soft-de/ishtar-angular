@@ -13,7 +13,14 @@
   color: #fff;
   .image {
     img {
-
+      @media (min-height:768px) and (max-width:991px) {
+        min-height: 250px;
+      }
+      @media (max-height: 767px) {
+        max-height: 300px;
+        display: block;
+        margin: 15px auto;
+      }
     }
   }
   .content {

@@ -107,6 +107,6 @@ export class PhotosListService {
     formData.append('image', image);
     return this.httpClient.post<{
       url: string
-    }>(`${AdminConfig.generalUploadAPI}`, formData);
+    }>(`${AdminConfig.paintingUploadAPI}`, formData);
   }
 }

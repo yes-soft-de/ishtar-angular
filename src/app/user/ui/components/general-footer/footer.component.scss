@@ -99,6 +99,9 @@ footer {
         li {
           text-align: left;
           padding: 5px;
+          @media (max-width:991px) {
+            text-align: center;
+          }
         }
       }
     }
@@ -133,6 +136,30 @@ footer {
   footer {
     .site-map {
       letter-spacing: 3px;
+    }
+  }
+}
+
+@media (max-width:991px) {
+  footer {
+    #footer-bottom-right {
+      margin-bottom: 0 !important;
+    }
+    .custom-bottom-footer {
+      ul {
+        margin: 0 0 5px !important;
+        padding: 0;
+        font-size: 14px !important;
+      }
+      mdb-icon {
+        font-size: 13px !important;
+        
+      }
+      .copy-right {
+        p {
+          font-size: 12px !important;
+        }
+      }
     }
   }
 }
