@@ -9,17 +9,17 @@
           </div>
           <!-- #For View Image in full screen -->
           <div class="row">
-            <div class="col-md-12 col-lg-4 image mt-3 pb-3">
+            <div class="col-md-12 col-lg-8 mx-auto image mt-3 pb-3">
               <div class="d-lg-none painting-artist">
-                  <img src="{{artist.image}}" class="" alt="">
+                  <img src="{{artist?.image}}" class="" alt="">
                   <app-follow-widget class="follow-artist"></app-follow-widget>
                   <p class="painting-artist-name">
-                    <a routerLink="/artist/{{artist.id}}">
+                    <a routerLink="/artist/{{artist?.id}}">
                       {{painting[0].artist}}
                     </a>
                   </p>
-                </div>
-              <img src="{{painting[0].image}}" class="img-fluid" alt="{{painting[0].name}} Image" id="main-img">
+              </div>
+              <img src="{{painting[0].image}}" (click)="showImageInFullSize()" class="img-fluid" alt="{{painting[0].name}} Image" id="main-img">
               <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full Image</button>
               <div class="row mt-2 border border-dark p-1 d-none">
                 <div class="col p-0" *ngFor="let i of [1,1,1,1]">
@@ -27,17 +27,17 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-lg-8 content mt-2">
+            <div class="col-md-12 col-lg-10 mx-auto content mt-2">
               <div class="row">
                 <div class="col-12">
                   <h2 class="painting-name mt-3 mt-lg-0"><a routerLink="/painting/{{painting[0].id}}">{{painting[0].name}}</a></h2>
                 </div>
                 <div class="col-12 painting-artist mb-3 d-lg-block d-none">
                   <div class="painting-artist-img d-inline-block">
-                    <img src="{{artist.image}}" class="" alt="">
+                    <img src="{{artist?.image}}" class="" alt="">
                   </div>
                   <p class="painting-artist-name d-inline-block m-0">
-                    <a routerLink="/artist/{{artist.id}}">
+                    <a routerLink="/artist/{{artist?.id}}">
                       {{painting[0].artist}}
                     </a>
                   </p>
@@ -78,7 +78,7 @@
     <!--            </div>-->
               </div>
             </div>
-          </div>
+          </div> <!--End Row-->
         </div>
       </div>
     </div>
@@ -219,4 +219,3 @@
     <!--                       [filter]="false"-->
     <!--                       *ngIf="featuredList != null"></app-c-painting-list>-->
     <!--</div>-->
-    
