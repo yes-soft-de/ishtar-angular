@@ -7,14 +7,23 @@
   text-align: center;
   border: 1px solid #aaa;
   border-radius: 50%;
-  img {
-    width: 25px;
-    height: 28px;
-    margin: 2px 0 0 2px;
+  &:hover {
+    a {
+      color: #CCB832 !important;
+    }
   }
-  mdb-icon {
-    margin: 13px 9px;
+  a {
+    color: #385161 !important;
+    vertical-align: sub;
   }
+  //img {
+  //  width: 25px;
+  //  height: 28px;
+  //  margin: 2px 0 0 2px;
+  //}
+  //mdb-icon {
+  //  margin: 13px 9px;
+  //}
 }
 /*End Global Class For This Page*/
 .artist-page {
@@ -26,6 +35,9 @@
       top: 10%;
       .artist-banner-text {
         max-width: 20rem;
+        @media (max-width:500px) {
+          max-width: 17rem;
+        }
         overflow: auto;
         background: rgba(255, 255, 255, .5);
         span {
@@ -69,12 +81,7 @@
       .artist-header-details-bottom {
         margin-top: 4.5rem;
         .contact-artist {
-          a {
-            background-color: #385161!important;
-            color: #fff;
-            border-radius: 10px;
-            box-shadow: none;
-          }
+
         }
         #followBtn {
           background: #bfb049;
@@ -102,18 +109,8 @@
   .artist-body {
     margin-top : -5rem;
     border-top: 1px outset #efefef;
-    #painting-list {
+    .painting-list {
       margin-bottom: 15px;
-      mdb-carousel.carousel-multi-item {
-        div.carousel {
-          background: #8e44ad !important;
-          div.controls-top {
-            background: red;
-            position: absolute !important;
-            top: 50% !important;
-          }
-        }
-      }
       .painting-list-item {
         height: 250px;
         outline: none;
@@ -317,7 +314,6 @@
 // Start lg Size Screen
 @media (min-width: 992px) and (max-width: 1199px) {
   .artist-page {
-    margin-top: 5.5rem;
     .artist-header {
       div.position-absolute {
         right: 7.5%;
@@ -362,9 +358,38 @@
       }
     }
   } 
+  .artist-video-icon {
+    position: absolute;
+    top: 32%;
+  }
+  .follow-artist {
+    position: absolute;
+    top: -125px;
+    right: 0;
+    button {
+      border-radius: 10px;
+      display: inline-block;
+      padding: 10px;
+      background: #fff !important;
+      border: 2px solid goldenrod;
+      color: goldenrod;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .follow-artist {
+    top: -95px;
+  }
 }
 
 @media (max-width:575px) {
+  .follow-artist {
+    top: -85px;
+  }
+  .artist-video-icon {
+    top: 30%;
+  }
   .artist-body {
     h3 {
       padding-left: 0 !important;

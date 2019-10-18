@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ArtistDetails} from '../../../entity/artist/artist-details';
@@ -8,7 +8,8 @@ import {UserProfileService} from '../../../service/client-profile/user-profile.s
 @Component({
   selector: 'app-artist-page',
   templateUrl: './artist-details.component.html',
-  styleUrls: ['./artist-details.component.scss']
+  styleUrls: ['./artist-details.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ArtistDetailsComponent implements OnInit {
     @Input() featuredPaintings: PaintingListItem[]; // Fetch All Painting
@@ -35,6 +36,7 @@ export class ArtistDetailsComponent implements OnInit {
         console.log(error1);
       }
     );
+
     }
 
     chunk(paintingsArr, chunkSize) {
@@ -45,6 +47,5 @@ export class ArtistDetailsComponent implements OnInit {
         }
         return arr;
     }
-
 
 }

@@ -24,17 +24,17 @@
           <div class="w-75 m-0 row">
             <div class="col-6 d-flex flex-column" id="art-type-info">
               <h3>{{artType.name}}</h3>
-              <ul style="list-style-type: none; margin: 0; padding: 0">
-                <li style="display: inline-block" class="m-1">
-                  <app-clap-widget [ParentType]="3" [ParentId]="artType.id"></app-clap-widget>
-                </li>
-                <li style="display: inline-block" class="m-1">
-                  <app-love-interaction [ParentType]="3" [ParentId]="artType.id"></app-love-interaction>
-                </li>
-              </ul>
+<!--              <ul style="list-style-type: none; margin: 0; padding: 0">-->
+<!--                <li style="display: inline-block" class="m-1">-->
+<!--                  <app-clap-widget [ParentType]="3" [ParentId]="artType.id"></app-clap-widget>-->
+<!--                </li>-->
+<!--                <li style="display: inline-block" class="m-1">-->
+<!--                  <app-love-interaction [ParentType]="3" [ParentId]="artType.id"></app-love-interaction>-->
+<!--                </li>-->
+<!--              </ul>-->
             </div>
             <div class="col-6" style="position: relative; top: -2rem;">
-              <button mdbBtn class="btn-secondary" mdbWavesEffect (click)="followArtType()">Follow</button>
+              <app-follow-widget [ParentId]="artType?.id" [ParentType]="3"></app-follow-widget>
             </div>
           </div>
         </div>

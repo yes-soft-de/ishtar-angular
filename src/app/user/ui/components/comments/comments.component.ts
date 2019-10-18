@@ -102,7 +102,6 @@ export class CommentsComponent implements OnInit {
 
   editComment(index: number) {
     if (this.client) {
-      // TODO Must Be Check For UserID ex : if(user) {this.edit = +index;)else {//make router navigate}
       this.edit = +index;
     } else {
       console.log('user is not login, FALSE');

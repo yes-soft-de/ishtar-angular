@@ -31,17 +31,6 @@
       .artist-card {
         position: relative;
         overflow: hidden;
-        border-radius: 50%;
-        .follow-artist {
-          position: absolute;
-          bottom: -10px;
-          width: 70%;
-          left: 13%;
-          z-index: 1;
-          button {
-            width: 100%;
-          }
-        }
         &:hover {
           .details-container {
             bottom: 5rem;
@@ -174,16 +163,6 @@
 @media (max-width:991px) {
   .artist-card {
     overflow: visible !important;
-    .follow-artist {
-      bottom: 75px !important;
-      button {
-        border: 2px solid goldenrod;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-      }
-    }
     img {
       border: 2px solid goldenrod !important;
       background: #fff;
@@ -200,8 +179,6 @@
         border-top-right-radius: 12px;
         padding: 15px;
         padding-top: calc((13rem / 2) + 15px);
-        padding-bottom: 35px;
-        margin-bottom: 15px !important;
         h3,
         span {
           color: #000 !important;
@@ -263,9 +240,6 @@
 
 @media (max-width:400px) {
   .artist-card {
-    .follow-artist {
-      bottom: 55px !important;
-    }
     img {
       height: 10rem !important;
       width: 10rem !important;

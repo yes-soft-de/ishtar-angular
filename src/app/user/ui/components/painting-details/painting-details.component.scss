@@ -53,7 +53,7 @@
     .full-size {
       position: absolute;
       top: -60px;
-      right: 40px;
+      right: 40%;
       border: none;
       padding: 0.5rem 1.14rem;
       background: rgba(248, 247, 247, 0.5);
@@ -528,15 +528,27 @@
     .image {
       text-align: center;
       .painting-artist {
+        padding: 10px;
+        text-align: left;
         img {
-          width: 200px;
-          height: 225px;
-          border-radius: 15px;
-          display: block;
-          margin: 10px auto;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin: 0;
           border: 2px solid goldenrod;
         }
+        .painting-artist-name {
+          position: absolute;
+          top: 15px;
+          left: 125px;
+          a {
+            font-size: 18px !important;
+          }
+        }
         .follow-artist {
+          top: 45px;
+          left: 125px;
+          position: absolute;
           button {
             display: block !important;
             box-shadow: none !important;
@@ -545,9 +557,8 @@
             text-align: center;
             padding: 0;
             margin: 0 auto;
-            margin-top: -35px;
             margin-bottom: 5px;
-            padding: 10px 15px;
+            padding: 5px;
             border-radius: 10px;
             border: 2px solid goldenrod;
             z-index: 1;
@@ -585,6 +596,14 @@
     }
     .painting-story {
       margin: 15px 0;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .bg-light {
+    > .container {
+      max-width: 100%;
     }
   }
 }

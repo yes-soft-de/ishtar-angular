@@ -17,7 +17,6 @@
     justify-content: space-around;
     padding: 1rem;
     // background
-    background-color: #333333;
     color: white;
     img {
       max-width: 100%;
@@ -401,8 +400,24 @@
 }
 
 @media (max-width:991px) {
+  @keyframes action1 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 500px;
+    }
+  }
+  @-webkit-keyframes action1 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 500px;
+    }
+  }
   .hero {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 112px);
     .hero-main{
       #hero-body {
         .carousel-fg {
@@ -412,7 +427,7 @@
         }
         .painting-img {
           bottom: -60% !important;
-          width: 600px;
+          width: 500px;
         }
         .letter1,
         .letter2,
@@ -434,6 +449,12 @@
         }
       }
     }
+  }
+}
+
+@media (max-width:730px) {
+  .hero{
+    height: calc(100vh - 132px);
   }
 }
 
