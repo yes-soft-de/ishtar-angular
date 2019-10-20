@@ -9,20 +9,22 @@ import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {Artist} from '../../../../admin/entity/artist/artist';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {PaintingDetailsService} from '../../../service/painting-details/painting-details.service';
+import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
 
 
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
-  styleUrls: ['./painting-details.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  styleUrls: ['./painting-details.component.scss', '../../widgets/follow-widget/follow-widget.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
+  @Input() artist: any;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
-  artist: any;
-
 
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
@@ -33,23 +35,11 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Fetch Artist ID
-    this.artistListService.requestArtistList().subscribe(
-      data => {
-        data.Data.map(res => {
-          if (res.name === this.painting[0].artist) {
-            this.artist = res;
-            console.log('Artist For This Painting: ', this.artist);
-          }
-        });
-      }
-    );
     this.paintingService.requestPaintingList().subscribe(
       data => {
         this.featuredList = data.Data;
       }
     );
-
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
