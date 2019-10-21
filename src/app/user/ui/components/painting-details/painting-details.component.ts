@@ -7,11 +7,7 @@ import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-i
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-import {Artist} from '../../../../admin/entity/artist/artist';
-import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {PaintingDetailsService} from '../../../service/painting-details/painting-details.service';
-import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
+
 
 
 @Component({

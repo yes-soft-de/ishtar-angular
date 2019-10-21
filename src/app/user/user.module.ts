@@ -52,6 +52,8 @@ import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.c
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
 import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
+import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
+import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
     ImprintPageComponent,
     DataProcessingPageComponent,
     LoadingWidgetComponent,
-    MostSeenPaintingsComponent
+    MostSeenPaintingsComponent,
+    StatuesDetailComponent,
+    StatueDetailPageComponent
   ],
   exports: [
     // User

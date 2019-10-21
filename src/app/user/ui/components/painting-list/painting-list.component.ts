@@ -58,6 +58,7 @@ export class PaintingListComponent implements OnInit {
     }
     // make loop inside paintingsView and remove the repeated value
     this.paintingsView = [...new Set(this.paintingsView)];
+    console.log(this.paintingsView);
     // Passing Data From Child Component To Parent Component
     this.PaintingViewNumber.emit(this.paintingsView);
     // make loop inside artists and remove the repeated value

@@ -12,7 +12,8 @@ export class UserConfig {
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
   public static allArtTypeAPI = UserConfig.sourceAPI + 'getAllArtType';
-  public static getInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/getInteraction';
+  // public static getInteractionAPI = 'http://ishtar-art.de/ishtar-backend/public/getInteraction';
+  public static getInteractionAPI = UserConfig.sourceAPI + 'getInteraction';
   public static postInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = UserConfig.sourceAPI + 'search';
   public static userProfileAPI = UserConfig.sourceAPI + 'user';

@@ -1,0 +1,80 @@
+<div class="statues-detail py-4">
+  <div class="container-fluid">
+    <div class="details bg-light">
+      <div class="row">
+        <div class="col-7">
+          <div class="row">
+            <div class="col-2">
+              <div class="statue-seconds-img">
+                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
+                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
+                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="statue-image border-secondary">
+                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="statue-content">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="statue-name mt-3 mt-lg-0"><a routerLink="">Statue Name</a></h2>
+              </div>
+              <div class="col-12 statue-artist mb-3 d-lg-block d-none">
+                <div class="statue-artist-img d-inline-block">
+                  <img src="" class="" alt="">
+                </div>
+                <p class="statue-artist-name d-inline-block m-0">
+                  <a routerLink="">
+                    Artist Name
+                  </a>
+                </p>
+              </div>
+              <div class="col-12">
+                <p class="statue-dimension border-bottom border-dark pb-1">Height: <span>240CM</span> | Width: <span>100CM</span></p>
+                <p class=" border-bottom border-dark m-0 pb-1">Art Type : <span>Hand Made</span></p>
+              </div>
+              <div class="col-12 mt-3 statue-interaction">
+                <ul>
+                  <li class="ml-0 my-1 mr-1 d-inline-block">
+                    <app-clap-widget [ParentType]="1" [ParentId]=""></app-clap-widget>
+                  </li>
+                  <li class="m-1 d-inline-block">
+                    <app-love-interaction [ParentType]="1" [ParentId]=""></app-love-interaction>
+                  </li>
+                  <li class="my-1 mx-3 buy-painting">
+<!--                    <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0].id}}"-->
+<!--                       style="color: white">-->
+                      <mdb-icon fas icon="shopping-cart"></mdb-icon>
+<!--                    </a>-->
+                  </li>
+                </ul>
+              </div>
+              <div class="col-12">
+                <p class="painting-story">
+                  <strong class="h4">Story :</strong>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi enim eum, hic illo illum placeat quas tempora voluptatem! A, at deserunt eum incidunt laboriosam molestiae provident qui rerum saepe ut!
+                </p>
+              </div>
+              <!--            <div class="col-12">-->
+              <!--              <button mdbBtn class="m-0 my-2"-->
+              <!--                      (click)="addToWishList()"-->
+              <!--                      id="add-to-wish-btn">-->
+              <!--                Add to Wish List-->
+              <!--                <span class="font-weight-bold ml-1">{{painting[0].price}}$</span>-->
+              <!--              </button>-->
+              <!--            </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="information bg-light">information</div>
+    <div class="comments bg-dark">comments</div>
+    <div class="statues-you-may-like bg-light">painting you may like</div>
+  </div>
+</div>
