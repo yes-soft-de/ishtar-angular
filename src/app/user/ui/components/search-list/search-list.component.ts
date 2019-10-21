@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import {PaintingSearchListItem} from '../../../entity/search-result/painting-search-list-item';
 import {ArtistSearchListItem} from '../../../entity/search-result/artist-search-list-item';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';

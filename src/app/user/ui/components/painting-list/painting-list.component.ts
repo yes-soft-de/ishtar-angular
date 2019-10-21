@@ -2,8 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
-import {UserInfo} from '../../../entity/user/user-info';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 
 @Component({
@@ -131,15 +129,15 @@ export class PaintingListComponent implements OnInit {
     }
   }
 
-  fiterArtistOptionsView(){
+  fiterArtistOptionsView() {
     this.filterArtType = false;
-   if (this.filterArtist){
-     this.filterArtist = false;
-   } else {
-     this.filterArtist = true;
-   }
+    if (this.filterArtist) {
+      this.filterArtist = false;
+    } else {
+      this.filterArtist = true;
+    }
   }
-  
+
 
 
 }
