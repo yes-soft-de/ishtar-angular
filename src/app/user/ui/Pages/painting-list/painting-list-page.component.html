@@ -2,10 +2,5 @@
 <div class="w-100" *ngIf="formattedList != null">
   <app-c-painting-list [formattedPaintingList]="formattedList" ></app-c-painting-list>
 </div>
-<div class="w-100" *ngIf="formattedList == null">
-  <div class="d-flex flex-column my-5 pt-3">
-<!--    <h5 class="text-center">Loading...</h5>-->
-    <img src="../../../../../assets/loading.gif" alt="Loading" class="img-fluid" style="object-fit: contain">
-  </div>
-</div>
+<app-loading-widget *ngIf="formattedList == null"></app-loading-widget>
 <app-footer></app-footer>

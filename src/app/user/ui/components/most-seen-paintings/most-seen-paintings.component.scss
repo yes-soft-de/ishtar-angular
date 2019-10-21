@@ -1,0 +1,37 @@
+.most-painting-seen {
+  padding: 2rem 0;
+  background: #343a40;
+  color: #fff;
+  .image {
+    img {
+      @media (min-height:768px) and (max-width:991px) {
+        min-height: 250px;
+      }
+      @media (max-height: 767px) {
+        max-height: 300px;
+        display: block;
+        margin: 15px auto;
+      }
+    }
+  }
+  .content {
+    .painting-name {
+      a {
+        color: #CCB832;
+      }
+    }
+    .painting-artist-name,
+    .painting-dimension {
+      border-bottom: 1px solid;
+    }
+    .painting-artist-name a:hover,
+    .painting-name a:hover {
+      color: #f4db75;
+    }
+    .painting-artist-name a,
+    .painting-story .h4,
+    p span {
+      color: #b2b67a;
+    }
+  }
+}

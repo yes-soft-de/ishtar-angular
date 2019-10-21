@@ -32,19 +32,6 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    * {"Data":{"id":11,
-    * "firsttName":"Talal",
-    * "userName":"Talal Danoon",
-    * "password":"set your pass here",
-    * "email":"talal.danoun@gmail.com",
-    * "lastName":"Danoon",
-    * "phone":null,
-    * "roll":null,
-    * "createdBy":null,"createDate":"2019-10-03T18:22:42+00:00","updatedBy":null,"updateDate":null,"birthDate":null,
-    * "roles":["ROLE_USER"],
-    * "salt":null}}
-    * */
     this.fetchAllComments();
     this.userProfileService.requestUserDetails().subscribe(
         data => {

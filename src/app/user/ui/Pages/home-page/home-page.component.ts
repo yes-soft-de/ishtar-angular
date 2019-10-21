@@ -49,20 +49,7 @@ export class HomePageComponent implements OnInit {
     this.getCurrentUserInfo();
     this.requestArtistList();
     this.requestPaintingList();
-    setTimeout(() => {
-      if (this.viewNumbers !== undefined) {
-        if (this.viewNumbers.length !== 0) {
-          console.log('All Painting Seen Number: ', this.viewNumbers);
-          // Get Max View Number
-          this.viewNumbers.sort(
-              (a, b) => (Number(a.viewNumber) < Number(b.viewNumber))
-                  ? 1 : (Number(a.viewNumber) === Number(b.viewNumber))
-                      ? ((Number(a.viewNumber) < Number(b.viewNumber))
-                          ? 1 : -1) : -1 );
-          console.log('Max Painting Seen Painting : ', this.viewNumbers[0]);
-        }
-      }
-    }, 1000);
+
   }
 
   // Fetch Most Seen Painting From Child Component
@@ -89,7 +76,6 @@ export class HomePageComponent implements OnInit {
           this.checkLoadingFinished();
         }, error1 => {
           console.log(error1);
-          // this.fetchData();
         }
     );
   }
@@ -136,11 +122,9 @@ export class HomePageComponent implements OnInit {
     // So there is a movement
     if (delta > 0 && oldDir !== 'Down') {
       this.direction = 'Down';
-      // console.log(this.direction);
       this.showNavbar = true;
     } else if (delta < 0 && oldDir !== 'Up') {
       this.direction = 'Up';
-      // console.log(this.direction + ' delta ' + delta);
       this.showNavbar = true;
     }
     // Save Data For Future Calculations

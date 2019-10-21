@@ -11,7 +11,7 @@ import { InteractionConsts } from 'src/app/user/consts/interaction/interaction-c
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  styleUrls: ['./artist-list.component.scss', '../../widgets/follow-widget/follow-widget.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ArtistListComponent implements OnInit {

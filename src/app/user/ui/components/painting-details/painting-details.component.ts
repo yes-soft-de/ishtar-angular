@@ -7,49 +7,33 @@ import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-i
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-import {Artist} from '../../../../admin/entity/artist/artist';
-import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 
 
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
-  styleUrls: ['./painting-details.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  styleUrls: ['./painting-details.component.scss', '../../widgets/follow-widget/follow-widget.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
+  @Input() artist: any;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
-  artist: any;
-
 
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
               private interactionService: IshtarInteractionService,
               private artistListService: ArtistListService,
               private toaster: ToastrService) {
-    // this.activePaintingImage = this.painting.image;
   }
 
   ngOnInit() {
-    // Fetch Artist ID
-    this.artistListService.requestArtistList().subscribe(
-      data => {
-        data.Data.map(res => {
-          if (res.name === this.painting[0].artist) {
-            this.artist = res;
-            console.log('Artist For This Painting: ', this.artist);
-          }
-        });
-      }
-    );
     this.paintingService.requestPaintingList().subscribe(
       data => {
         this.featuredList = data.Data;
       }
     );
-
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
@@ -70,13 +54,6 @@ export class PaintingDetailsComponent implements OnInit {
       if (this.painting[0].artist == null) {
         document.getElementById('painting-artist').style.display = 'none';
       }
-
-      /* var painting_list_images = document.getElementById('painting-list-images').childElementCount;
-       alert(painting_list_images);
-       if (painting_list_images < 2) {
-         document.getElementById('painting-list-images').style.opacity = '0';
-       }*/
-
     }
   }
 

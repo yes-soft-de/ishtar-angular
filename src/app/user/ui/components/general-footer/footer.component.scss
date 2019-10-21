@@ -176,11 +176,7 @@ footer {
   footer {
     .custom-bottom-footer {
       .col-xs-5 {
-        width: 100%;
-        ul {
-          margin: 5px !important;
-          text-align: center;
-        }
+        display: none;
       }
       .col-xs-4{
         width: 55%;

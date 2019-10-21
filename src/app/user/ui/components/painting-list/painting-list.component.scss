@@ -152,9 +152,7 @@
       float: left;
       margin-right: 10px;
       h5 {
-        background: goldenrod;
-        color: #fff;
-        border-radius: 10px;
+        border: 1px solid #000;
         display: inline-block;
         padding: 10px;
         font-size: 16px !important;
@@ -168,7 +166,6 @@
       .btn-container {
         position: absolute;
         border: 1px solid #e1e1e1;
-        border-radius: 10px;
         z-index: 99;
         background: #fff;
         width: 100%;

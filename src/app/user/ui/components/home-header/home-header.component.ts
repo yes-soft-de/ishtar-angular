@@ -25,7 +25,6 @@ export class HomeHeaderComponent implements OnInit {
   }
 
   slideChanged(event) {
-    console.log(event.relatedTarget);
     this.activeSlide = event.relatedTarget;
   }
 }
