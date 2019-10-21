@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
@@ -11,7 +11,8 @@ import { InteractionConsts } from 'src/app/user/consts/interaction/interaction-c
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.scss']
+  styleUrls: ['./artist-list.component.scss', '../../widgets/follow-widget/follow-widget.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ArtistListComponent implements OnInit {
   @Input() filter = true;
@@ -43,6 +44,7 @@ export class ArtistListComponent implements OnInit {
               private userProfileService: UserProfileService) { }
 
   ngOnInit() {
+    console.log(this.artistListFormatted);
     this.userProfileService.requestUserDetails().subscribe(
         data => {
           this.client = data.Data;
@@ -70,6 +72,12 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
+            // sort the array Elements
+            this.artistList.sort(
+                (a, b) => (Number(a.id) > Number(b.id))
+                    ? 1 : (Number(a.id) === Number(b.id))
+                        ? ((Number(a.id) > Number(b.id))
+                            ? 1 : -1) : -1 );
           },
           error => {
             console.log(error);
@@ -79,7 +87,6 @@ export class ArtistListComponent implements OnInit {
     }
     // create array of types after removing the repeated value
     this.types = [...new Set(this.types)];
-
     // Create Pagination Config
     this.config = {
       itemsPerPage: 8,

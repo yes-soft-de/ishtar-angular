@@ -1,8 +1,11 @@
 export class AdminConfig {
   // public static sourceAPI = 'http://ishtar.96.lt/Ishtar/public/';
-  public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = '/ishtar-backend/public/';
+  // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
+
   // Create General Uploading API
   public static generalUploadAPI = AdminConfig.sourceAPI + 'uploadArtistImage';
+  public static paintingUploadAPI = AdminConfig.sourceAPI + 'uploadPaintingImage';
   // Create Uploading Media
   public static addMediaAPI = AdminConfig.sourceAPI + 'createMedia';
   public static allRowSelectedEntityAPI = AdminConfig.sourceAPI + 'getEntityNames';

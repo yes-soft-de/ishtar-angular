@@ -197,10 +197,6 @@
     border-top: 0 !important;
     .sort-artist {
       ul {
-        border-radius: 15px;
-        background: goldenrod;
-        border: 0;
-        color: #fff;
         padding-left: 10px;
         padding-right: 10px;
         .sort-artist-dropdown {
@@ -208,7 +204,6 @@
           left: 0;
           top: 30px !important;
           min-width: 145px;
-          border: 1px solid goldenrod;
           padding: 0;
           box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
           -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);

@@ -58,3 +58,23 @@
     }
   }
 }
+
+@media (max-width:500px) {
+  #school-list-section{
+    #cards-list {
+      .school-list-card {
+        padding: 0;
+        #school-bg{
+          img {
+            width: calc(100% - 30px);
+            margin: 0 15px;
+            height: auto;
+          }
+        }
+        #school-fg{
+          padding: 0;
+        }
+      }
+    }
+  }
+}

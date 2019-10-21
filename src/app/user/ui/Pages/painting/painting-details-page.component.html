@@ -1,13 +1,8 @@
 <app-header></app-header>
 
 <div class="w-100" *ngIf="paintingDetails != null">
-  <app-painting-details [painting]="paintingDetails" ></app-painting-details>
+  <app-painting-details [painting]="paintingDetails" [artist]="artistDetail"></app-painting-details>
 </div>
 
-<div class="d-flex justify-content-center m-5" *ngIf="paintingDetails == null">
-  <div class="d-flex flex-column my-5 pt-3">
-<!--    <h5 class="text-center">Loading...</h5>-->
-    <img src="../../../../../assets/loading.gif" alt="Loading" class="img-fluid" style="object-fit: contain">
-  </div>
-</div>
+<app-loading-widget *ngIf="paintingDetails == null"></app-loading-widget>
 <app-footer></app-footer>

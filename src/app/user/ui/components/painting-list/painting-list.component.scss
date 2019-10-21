@@ -73,6 +73,9 @@
             margin-left: 10px;
           }
         }
+        @media (max-width:991px) {
+          opacity: 1;
+        }
       }
       &:hover .painting-info{
         opacity: 1;
@@ -85,11 +88,14 @@
 }
 #painting-list-sidebar {
   margin-bottom: 15px;
-  div {
+  > div {
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     height: 100%;
+    i {
+      visibility: hidden;
+    }
     button {
       background-color: white !important;
       padding: 5px;
@@ -109,7 +115,21 @@
       .img-container {
         height: 350px;
         img {
-          height: 350px;
+          height: 100%;
+        }
+        @media (max-width:767px) and (min-width:575px) {
+          height: 275px;
+          .painting-info {
+            .painting-name,
+            .artist {
+              width: 70%;
+            }
+            .statistics {
+              li {
+                display: block;
+              }
+            }
+          }
         }
       }
     }
@@ -123,7 +143,105 @@
   }
 }
 @media (max-width:575px) {
-  #painting-list-sidebar {
-    padding-left: 15px;
+  .filter-paintings {
+    @media (max-width:380px) {
+      padding: 0;
+    }
+    .filter {
+      position: relative;
+      float: left;
+      margin-right: 10px;
+      h5 {
+        border: 1px solid #000;
+        display: inline-block;
+        padding: 10px;
+        font-size: 16px !important;
+        @media (max-width:350px) {
+          font-size: 14px !important;
+        }
+        i {
+          visibility: visible !important;
+        }
+      }
+      .btn-container {
+        position: absolute;
+        border: 1px solid #e1e1e1;
+        z-index: 99;
+        background: #fff;
+        width: 100%;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+        visibility: hidden;
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        button {
+          border: none !important;
+          text-align: left;
+          padding: 5px !important;
+          margin: 0 5px !important;
+          border-bottom: 1px solid #e1e1e1 !important;
+          display: block;
+          background: none !important;
+          width: calc(100% - 10px);
+          &:last-child {
+            border-bottom: none !important;
+          }
+        }
+        &.active {
+          visibility: visible;
+          animation: btn-opacity 0.3s ease-in-out;
+          -webkit-animation: btn-opacity 0.3s ease-in-out;
+        }
+        &.hide {
+          animation: btn-hide 0.3s ease-in-out;
+          -webkit-animation: btn-hide 0.3s ease-in-out;
+          button {
+            visibility: hidden;
+          }
+        }
+      }   
+    }
+    hr {
+      display: none;
+    }
+  }
+}
+
+@keyframes btn-opacity {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}
+
+@-webkit-keyframes btn-opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes btn-hide {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes btn-hide {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

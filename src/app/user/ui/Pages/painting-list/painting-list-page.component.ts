@@ -24,9 +24,7 @@ export class PaintingListPageComponent implements OnInit {
       data => {
         this.formattedList = data.Data;
       }, error1 => {
-        this.toaster.error(error1.message);
         console.log(error1);
-        // this.fetchData();
       }
     );
   }

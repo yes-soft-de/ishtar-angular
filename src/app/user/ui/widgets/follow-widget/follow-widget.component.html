@@ -1,2 +1,2 @@
 <button *ngIf="!followed" mdbBtn class="follow-btn" mdbWavesEffect (click)="startFollow()">Follow</button>
-<button *ngIf="followed" mdbBtn class="follow-btn" mdbWavesEffect (click)="startFollow()">Followed!</button>
+<button *ngIf="followed" mdbBtn class="follow-btn" mdbWavesEffect (click)="stopFollow()" style="background: #F4DB75">Followed!</button>

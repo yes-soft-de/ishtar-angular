@@ -3,16 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {UserInfo} from '../../entity/user/user-info';
 import {Observable, Subject} from 'rxjs';
 import {UserProfileService} from '../client-profile/user-profile.service';
-import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material';
-import {LoveRequest} from '../../entity/love-interaction/love-request';
-import {InteractionConsts} from '../../consts/interaction/interaction-consts';
-import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {UserConfig} from '../../UserConfig';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {CreateClapRequest} from '../../entity/clap/create-clap-request';
-import {GetClapRequest} from '../../entity/clap/get-clap-request';
-import {GetClapResponse} from '../../entity/clap/get-clap-response';
 import {CreateClapResponse} from '../../entity/clap/create-clap-response';
 
 @Injectable({
@@ -25,54 +19,69 @@ export class ClapService {
 
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService,
-              private toaster: ToastrService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog) {}
+
+
+  // Get The Client Clap Dependence On Client ID , entityName: string, rowId
+  private getClientClap(clientId: number, parentType: number, rowId) {
+    let entityName = '';
+    // fetch entity name
+    if (parentType === 1) {
+      entityName = 'painting';
+    } else if (parentType === 2) {
+      entityName = 'artist';
+    } else if (parentType === 3) {
+      entityName = 'artType';
+    } else if (parentType === 4) {
+      entityName = 'auction';
+    }
+    const request: {client: number} = {
+      client: clientId
+    };
+    return this.httpClient.post(
+        `${UserConfig.getClientClapAPI}`,
+        JSON.stringify(request),
+        {responseType: 'json'}
+    ).subscribe(
+        (res: {Data: any}) => {
+          console.log('Response For Follow Interactions : ', res);
+          res.Data.map(response => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
+            // Check For Entity Name and Interaction IS Clap
+            if (response.entity === entityName) {
+              // Check For Specify Painting
+              if (response.id === rowId) {
+                this.statusSubject.next({success: true, value: response});
+              }
+            }
+          });
+        }, error => {
+          console.log('Error From getClapInteraction  From Clap service : ', error);
+        }
+    );
   }
 
-  public initClap(entityId, entityType) {
+  public initClap(parentType, rowId) {
     // See If Loading User
     if (!this.userRequestSent) {
       // If Not Request Him
       this.userRequestSent = true;
-      console.log('Loading User');
       this.userService.requestUserDetails().subscribe(
         user => {
           // Assign the Data to the User
-          console.log('Got Response');
           if (this.isUserNode(user.Data)) {
             console.log('Assigning User');
             this.userInfo = user.Data;
-            this.requestClapStatus(entityId, entityType);
+            this.getClientClap(this.userInfo.id, parentType, rowId);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
-      this.requestClapStatus(entityId, entityType);
+      this.getClientClap(this.userInfo.id, parentType, rowId);
     }
   }
 
-  // Then Ask For Love Interaction Details
-  private requestClapStatus(entityId, entityType) {
-    const request: GetClapRequest = {
-      entity: entityType,
-      id: entityId,
-      client: this.userInfo.id
-    };
-    this.httpClient.post<GetClapResponse>(`${UserConfig.getClapAPI}`, JSON.stringify(request)).subscribe(
-      res => {
-        if (res.Data.length > 0 && res.Data[0].value) {
-          this.statusSubject.next(res.Data[0].value);
-        }
-      },
-      error => {
-        console.log('TD-Clap Not Request : ', error);
-        }
-    );
-  }
-
   public postClap(entityId, entityType, clapValue) {
-    console.log('Post Love Requested!');
     if (!this.checkUserDetailsExists()) {
       console.log('Hello My Dear Unknown User, Please Login!');
       this.dialog.open(LoginPageComponent, {
@@ -80,7 +89,7 @@ export class ClapService {
         hasBackdrop: true
       });
     } else {
-      console.log('So My Dear User, Wanna Send Some Love? Here we go');
+      console.log('So My Dear User, Wanna Send Some Clap? Here we go');
       this.postClapToAPI(entityId, entityType, clapValue);
     }
   }
@@ -94,12 +103,33 @@ export class ClapService {
     };
     this.httpClient.post<CreateClapResponse>(`${UserConfig.createClapAPI}`, JSON.stringify(request)).subscribe(
       res => {
-        console.log(res);
+        console.log('Response from clap.service.ts : ', res);
         if (res.Data.value > 0) {
-          this.statusSubject.next(res.Data.value);
+          this.statusSubject.next({success: true, value: res});
         }
       }
     );
+  }
+
+  // Delete Love Interaction
+  public deleteClapInteraction(interactionID: number) {
+    if (this.checkUserDetailsExists()) {
+      const request: {id: number} = {
+        id: interactionID
+      };
+      return this.httpClient.post(
+          `${UserConfig.deleteClientClapAPI}`,
+          JSON.stringify(request),
+          {responseType: 'json'}
+      ).subscribe(
+          res => {
+            console.log('response deleted from love.service', res);
+            this.statusSubject.next(false);
+          }
+      );
+    } else {
+      return false;
+    }
   }
 
   getStatusObservable(): Observable<any> {

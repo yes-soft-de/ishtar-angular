@@ -56,20 +56,4 @@ export class ArtTypeComponent implements OnInit {
     }
   }
 
-  followArtType() {
-    this.toaster.success('You Are Now Following the Art Type');
-  }
-
-  clapThePainting() {
-    this.interactionService.love(`${this.artType.id}`, 'painting');
-    this.artTypeClapped = true;
-    this.toaster.success('Painting Clapped');
-  }
-
-  loveThePainting() {
-    this.interactionService.love(`${this.artType.id}`, 'painting');
-    this.artTypeLiked = true;
-    this.toaster.success('Painting Loved');
-  }
-
 }

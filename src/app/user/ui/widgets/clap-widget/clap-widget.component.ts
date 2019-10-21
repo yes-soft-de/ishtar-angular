@@ -11,40 +11,48 @@ import {isBoolean} from 'util';
   styleUrls: ['./clap-widget.component.scss']
 })
 export class ClapWidgetComponent implements OnInit {
-  clapFiled = '../../../../../assets/clap-icon.svg';
-  clapOutlined = '../../../../../assets/clap-outline.svg';
-
-  clapIconSize = 32;
-
   @Input() ParentType;
   @Input() ParentId;
-
-  clapped = false;
-  clappedNumber = null;
-
+  clapFiled = '../../../../../assets/clap-icon.svg';
+  clapOutlined = '../../../../../assets/clap-outline.svg';
+  clapIconSize = 32;
+  clapped = false;        // clap active
+  clappedNumber = null;   // Storing clap number
+  clapping = false;       // For Reduce The clap image Opacity Until finish Delete Clap Request
   timeStart: Date;
   source = interval(100);
   holding = false;
-
+  clapId: number;         // Storing clap id
   subscription;
 
   constructor(private clapService: ClapService,
-              private toaster: ToastrService) {
-  }
+              private toaster: ToastrService) {}
 
   ngOnInit() {
     this.ObserveClaps();
   }
 
   ObserveClaps() {
-    this.clapService.initClap(this.ParentId, this.ParentType);
+    // Fetch THe Clap Request
+    this.clapService.initClap(this.ParentType, this.ParentId);
+    // Response From Clap Services
     this.clapService.getStatusObservable().subscribe(
-      data => {
-        this.clapped = data > 0;
-        if (this.clapped) {
-          this.clappedNumber = data;
+        (data: { success: boolean, value: any }) => {
+          if (data) {
+            this.clapped = data.success;  // this data = true if success
+            if (data.value.ClapID) {      // Response Data After Reload The Page
+              this.clapId = data.value.ClapID;
+              this.clappedNumber = data.value.value;
+            } else if (data.value.Data.id) {  // Response Data After Create New Clap
+              this.clapId = data.value.Data.id;
+              this.clappedNumber = data.value.Data.value;
+            }
+            console.log('Interaction Response : ', data);
+          } else {
+            this.clapping = false;
+            this.clapped = false;
+          }
         }
-      }
     );
   }
 
@@ -79,5 +87,10 @@ export class ClapWidgetComponent implements OnInit {
 
   public calculateClaps(): number {
     return parseInt(`${((this.clapIconSize - 32) / 50) * 100}`, 10);
+  }
+
+  deleteClap() {
+    this.clapping = true;
+    this.clapService.deleteClapInteraction(this.clapId);
   }
 }

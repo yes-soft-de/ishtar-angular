@@ -1,10 +1,4 @@
 <app-header></app-header>
 <app-school-list *ngIf="artTypeList != null" [artTypeList]="artTypeList"></app-school-list>
-<div *ngIf="artTypeList == null" class="w-100 m-5">
-  <div style="margin-top: 20rem"></div>
-<!--  <h3 class="text-center">Loading...</h3></div>-->
-  <div class="w-100 d-flex justify-content-center p-5">
-    <img src="../../../../../assets/loading.gif" alt="Loading">
-  </div>
-</div>
+<app-loading-widget *ngIf="artTypeList == null"></app-loading-widget>
 <app-footer></app-footer>

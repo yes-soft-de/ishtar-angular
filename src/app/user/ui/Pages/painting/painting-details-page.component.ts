@@ -3,8 +3,8 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {PaintingDetailsService} from '../../../service/painting-details/painting-details.service';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {ToastrService} from 'ngx-toastr';
-import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
+import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 
 @Component({
   selector: 'app-painting',
@@ -13,17 +13,20 @@ import {UserArtTypeService} from '../../../service/art-type/user-art-type.servic
 })
 export class PaintingDetailsPageComponent implements OnInit {
   paintingDetails: PaintingDetails;
+  artistDetail: any;
   navigationSubscription;
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
               private paintingDetailsService: PaintingDetailsService,
+              private artistListService: ArtistListService,
               private artTypeService: UserArtTypeService,
               private router: Router) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
         this.getPaintingDetails();
+        this.getArtistForThisPainting();
         window.scroll(0, 0);
       }
     });
@@ -40,6 +43,20 @@ export class PaintingDetailsPageComponent implements OnInit {
         (data: {Data: PaintingDetails}) => {
         this.paintingDetails = data.Data;
       }
+    );
+  }
+
+  getArtistForThisPainting() {
+    // Fetch Artist ID
+    this.artistListService.requestArtistList().subscribe(
+        data => {
+          data.Data.map(res => {
+            if (res.name === this.paintingDetails[0].artist) {
+              this.artistDetail = res;
+              console.log('Artist For This Painting: ', this.artistDetail);
+            }
+          });
+        }
     );
   }
 }
