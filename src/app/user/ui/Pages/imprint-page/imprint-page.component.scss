@@ -1,0 +1,24 @@
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+ul {
+    list-style: none;
+    li {
+        margin-bottom: 15px;
+        i {
+            color: goldenrod;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media(min-width:576px) {
+    .fixed-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
