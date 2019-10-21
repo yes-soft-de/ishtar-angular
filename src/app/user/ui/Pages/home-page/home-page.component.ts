@@ -49,20 +49,7 @@ export class HomePageComponent implements OnInit {
     this.getCurrentUserInfo();
     this.requestArtistList();
     this.requestPaintingList();
-    setTimeout(() => {
-      if (this.viewNumbers !== undefined) {
-        if (this.viewNumbers.length !== 0) {
-          console.log('All Painting Seen Number: ', this.viewNumbers);
-          // Get Max View Number
-          this.viewNumbers.sort(
-              (a, b) => (Number(a.viewNumber) < Number(b.viewNumber))
-                  ? 1 : (Number(a.viewNumber) === Number(b.viewNumber))
-                      ? ((Number(a.viewNumber) < Number(b.viewNumber))
-                          ? 1 : -1) : -1 );
-          console.log('Max Painting Seen Painting : ', this.viewNumbers[0]);
-        }
-      }
-    }, 1000);
+
   }
 
   // Fetch Most Seen Painting From Child Component

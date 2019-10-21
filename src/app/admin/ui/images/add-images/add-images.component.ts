@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AdminConfig} from '../../../AdminConfig';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {ArtistService} from '../../../service/artist/artist.service';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -37,6 +38,7 @@ export class AddImagesComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private photosListService: PhotosListService,
+              private artistService: ArtistService,
               private httpClient: HttpClient,
               private formBuilder: FormBuilder,
               private toast: ToastrService) {
@@ -89,6 +91,7 @@ export class AddImagesComponent implements OnInit {
   changeEntity(event) {
     // this.uploadForm.get('row').disable();
     this.entityID = event.target.value[0];
+    console.log(this.entityID);
     const entityName = event.target.value.slice(3);
     this.uploadForm.get('entity').setValue(event.target.value, {
       onlySelf : true
@@ -100,7 +103,7 @@ export class AddImagesComponent implements OnInit {
     ).subscribe(
         (data: {Data: any}) => {
           if (entityName === 'Client') {
-            // Create Boolean Variable to Fix this
+            // TODO Create Boolean Variable to Fix this
           }
           this.rowEntity = data.Data;
           this.uploadForm.get('row').enable();
@@ -123,6 +126,9 @@ export class AddImagesComponent implements OnInit {
 
   // Uploading THe File
   processFile(imageInput: any) {
+    let imageUploadApiMethod: any;
+    // tslint:disable-next-line:triple-equals
+    imageUploadApiMethod = this.entityID == 2 ? this.artistService : this.photosListService;
     this.fileSelected = false;
     this.uploadButtonValue = 'Uploading...';
     console.log('Progressing File');
@@ -130,7 +136,7 @@ export class AddImagesComponent implements OnInit {
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
-      this.photosListService.uploadImage(this.selectedFile.file).subscribe(
+      imageUploadApiMethod.uploadImage(this.selectedFile.file).subscribe(
         (res) => {
           console.log(res);
           this.imageUrl = res.url;
@@ -154,7 +160,7 @@ export class AddImagesComponent implements OnInit {
     } else {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
-    formObj.entity = this.entityID;
+      formObj.entity = this.entityID;
       formObj.path = this.imageUrl;
       console.log(formObj);
       this.httpClient.post(

@@ -50,6 +50,8 @@ import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
 import {ContactSupportComponent} from './ui/Pages/contact-support/contact-support.component';
 import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
+import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
+import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
+    DataProcessingPageComponent,
+    LoadingWidgetComponent,
+    MostSeenPaintingsComponent
   ],
   exports: [
     // User

@@ -18,7 +18,6 @@ export class PaintingListComponent implements OnInit {
   public artTypes: string[];
   @Input() formattedPaintingList: PaintingListItem[];
   paintingList: PaintingListItem[];
-  client: UserInfo;
   config: any;
   filterArtType = false;
   filterArtist = false;
@@ -33,19 +32,9 @@ export class PaintingListComponent implements OnInit {
     viewNumber: number
   }[] = [];
 
-  constructor(private interactionService: IshtarInteractionService,
-              private userProfileService: UserProfileService) { }
+  constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
-    // Fetch User info
-    this.userProfileService.requestUserDetails().subscribe(
-        data => {
-          this.client = data.Data;
-        },
-        error => {
-          console.log(error);
-        }
-    );
     // Fetch Paintings
     this.paintingList = this.formattedPaintingList;
     // region Artists Collecting
@@ -132,14 +121,14 @@ export class PaintingListComponent implements OnInit {
     );
   }
 
-  //view & hide filter button options
-  fiterArtTypeOptionsView(){
+  // view & hide filter button options
+  fiterArtTypeOptionsView() {
     this.filterArtist = false;
-   if (this.filterArtType){
-     this.filterArtType = false;
-   } else {
-     this.filterArtType = true;
-   }
+    if (this.filterArtType) {
+      this.filterArtType = false;
+    } else {
+      this.filterArtType = true;
+    }
   }
 
   fiterArtistOptionsView(){
