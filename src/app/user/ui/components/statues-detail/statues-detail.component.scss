@@ -1,0 +1,97 @@
+.statue-content {
+  .statue-name {
+    a {
+      color: #CCB832;
+    }
+  }
+  .statue-style {
+    p {
+      span {
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .statue-artist {
+    .statue-artist-img {
+      img {
+        width: 3rem;
+        height: 3rem;
+        border: 1px solid #cabc83;
+        border-radius: 50%;
+        padding: 1px;
+        margin-right: 20px;
+      }
+    }
+    .statue-artist-name {
+      a {
+        color: #CCB832;
+        font-size: .9rem;
+        letter-spacing: 2px;
+        &:hover {
+          color: #f4db75;
+        }
+      }
+    }
+  }
+
+  .statue-artist-name a:hover,
+  .statue-name a:hover {
+    color: #f4db75;
+  }
+  .statue-artist-name a,
+  p span {
+    color: #b2b67a;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    .buy-statue {
+      background: #CCB832;
+      color: #fff;
+      border-radius: 50%;
+      height: 32px;
+      width: 32px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        background-color: #F4DB75;
+      }
+      mdb-icon {
+        margin-right: 2px;
+      }
+    }
+  }
+  #add-to-wish-btn {
+    background-color: #CCB832;
+    box-shadow: none;
+    font-size: .8rem;
+    span {
+      font-size: 1rem;
+    }
+  }
+  //#make-an-offer {
+  //  //background-color: #CCB832;
+  //  box-shadow: none;
+  //  font-size: .8rem;
+  //}
+}
+.tab-information {
+  border-radius: 5px;
+}
+/* Style the buttons inside the tab */
+.tab .tab-links {
+  color: #aaaaaa;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+/* Change background color of buttons on hover */
+.tab .tab-links:hover,
+.tab .tab-links.active {
+  background-color: #ddd;
+  color: #333333;
+}

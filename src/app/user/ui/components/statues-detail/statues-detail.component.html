@@ -1,10 +1,10 @@
 <div class="statues-detail py-4">
   <div class="container-fluid">
-    <div class="details bg-light">
+    <div class="details">
       <div class="row">
-        <div class="col-7">
+        <div class="col-8">
           <div class="row">
-            <div class="col-2">
+            <div class="col-2 pr-0">
               <div class="statue-seconds-img">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
@@ -18,15 +18,26 @@
             </div>
           </div>
         </div>
-        <div class="col-5">
+        <div class="col-4">
           <div class="statue-content">
             <div class="row">
               <div class="col-12">
                 <h2 class="statue-name mt-3 mt-lg-0"><a routerLink="">Statue Name</a></h2>
               </div>
-              <div class="col-12 statue-artist mb-3 d-lg-block d-none">
+              <div class="col-6 text-left">
+                <span class="h3 statue-unique-code">#123456</span>
+              </div>
+              <div class="col-6 text-right">
+                <span class="bg-warning py-1 px-3">250 e</span>
+              </div>
+              <div class="col-12">
+                <div class="statue-style">
+                  <p class="h4 my-3">Style: <span>Stone</span></p>
+                </div>
+              </div>
+              <div class="col-6 statue-artist mb-3 d-lg-block d-none">
                 <div class="statue-artist-img d-inline-block">
-                  <img src="" class="" alt="">
+                  <img src="../../../../../assets/1x/img-01.jpg" class="" alt="">
                 </div>
                 <p class="statue-artist-name d-inline-block m-0">
                   <a routerLink="">
@@ -34,11 +45,14 @@
                   </a>
                 </p>
               </div>
-              <div class="col-12">
-                <p class="statue-dimension border-bottom border-dark pb-1">Height: <span>240CM</span> | Width: <span>100CM</span></p>
-                <p class=" border-bottom border-dark m-0 pb-1">Art Type : <span>Hand Made</span></p>
+              <div class="col-6 text-right">
+                <app-follow-widget></app-follow-widget>
               </div>
-              <div class="col-12 mt-3 statue-interaction">
+              <div class="col-12">
+                <p class="statue-dimension mt-2">Size: <span>30CM</span> X <span>40CM</span> X <span>100CM</span></p>
+                <p class="m-0 pb-1">Weight : <span>1.5 Kg</span></p>
+              </div>
+              <div class="col-8 mt-3 statue-interaction">
                 <ul>
                   <li class="ml-0 my-1 mr-1 d-inline-block">
                     <app-clap-widget [ParentType]="1" [ParentId]=""></app-clap-widget>
@@ -46,35 +60,94 @@
                   <li class="m-1 d-inline-block">
                     <app-love-interaction [ParentType]="1" [ParentId]=""></app-love-interaction>
                   </li>
-                  <li class="my-1 mx-3 buy-painting">
-<!--                    <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0].id}}"-->
-<!--                       style="color: white">-->
-                      <mdb-icon fas icon="shopping-cart"></mdb-icon>
-<!--                    </a>-->
-                  </li>
                 </ul>
               </div>
-              <div class="col-12">
-                <p class="painting-story">
-                  <strong class="h4">Story :</strong>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi enim eum, hic illo illum placeat quas tempora voluptatem! A, at deserunt eum incidunt laboriosam molestiae provident qui rerum saepe ut!
-                </p>
+              <div class="col-4 align-self-center">
+                <i class="far fa-eye m-1"></i>
+                <span>2K Seen</span>
               </div>
-              <!--            <div class="col-12">-->
-              <!--              <button mdbBtn class="m-0 my-2"-->
-              <!--                      (click)="addToWishList()"-->
-              <!--                      id="add-to-wish-btn">-->
-              <!--                Add to Wish List-->
-              <!--                <span class="font-weight-bold ml-1">{{painting[0].price}}$</span>-->
-              <!--              </button>-->
-              <!--            </div>-->
+              <div class="col-12">
+                <button mdbBtn class="btn btn-block m-0 my-2"
+                        (click)="addToWishList()"
+                        id="add-to-wish-btn">
+                  Add to Cart
+                  <span class="font-weight-bold ml-1">2400$</span>
+                </button>
+              </div>
+              <div class="col-12">
+                <button mdbBtn class="btn btn-block border border-dark shadow-none m-0 my-2"
+                        (click)="makeAnOffer()"
+                        id="make-an-offer">
+                  Make An Offer
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="information bg-light">information</div>
-    <div class="comments bg-dark">comments</div>
+    <div class="information py-4">
+      <div class="row">
+        <div class="col-8">
+          <div class="tab-information border border-secondary">
+            <div class="row">
+              <div class="col-4 tab border-right border-secondary pr-0">
+                <div class="tab-links" (click)="openTab($event, 'material')" id="defaultOpen">Material</div>
+                <div class="tab-links" (click)="openTab($event, 'description')">Description</div>
+                <div class="tab-links" (click)="openTab($event, 'style')">Style</div>
+                <div class="tab-links" (click)="openTab($event, 'made-time')">How long it take to be done</div>
+                <div class="tab-links" (click)="openTab($event, 'delivering')">About delivering</div>
+                <div class="tab-links" (click)="openTab($event, 'mediums')">Mediums</div>
+                <div class="tab-links" (click)="openTab($event, 'features')">Products features</div>
+              </div>
+              <div class="col-8 tab-contents p-3">
+                <div id="material" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="description" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="style" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="made-time" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="delivering" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="mediums" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+                <div id="features" class="tab-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="statue-video">
+              <h4 class="text-center border-bottom mb-3 pb-2">Video About Statue</h4>
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Starting Painting Comment Section-->
+    <div class="statue-comment py-4">
+      <div class="container text-dark">
+        <div class="col-lg-10 col-xl-12 mx-auto">
+          <p style="font-weight: bold; margin:0 0 20px"> Community :</p>
+          <app-comments [pageType]="'statue'"></app-comments>
+        </div>
+      </div>
+    </div>
+    <!--End Painting Comment Section-->
+
     <div class="statues-you-may-like bg-light">painting you may like</div>
   </div>
 </div>
