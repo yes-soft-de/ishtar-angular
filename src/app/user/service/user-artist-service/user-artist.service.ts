@@ -11,7 +11,7 @@ export class UserArtistService {
   constructor(private httpClient: HttpClient) {
   }
 
-  requestArtistDetails(artistId: string) {
+  requestArtistDetails(artistId: any) {
     const request: {
       artist: string
     } = {
