@@ -37,6 +37,8 @@ export class ClapService {
       entityName = 'artType';
     } else if (parentType === 4) {
       entityName = 'auction';
+    } else if (parentType === 6) {
+      entityName = 'statue';
     }
     const request: {client: number} = {
       client: clientId

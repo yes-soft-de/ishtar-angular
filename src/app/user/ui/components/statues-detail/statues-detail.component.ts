@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StatueDetailInterface} from '../../../entity/statue-detail/statue-detail-interface';
+import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-statues-detail',
@@ -9,14 +11,26 @@ import {StatueDetailInterface} from '../../../entity/statue-detail/statue-detail
 export class StatuesDetailComponent implements OnInit {
   @Input() statueDetail: StatueDetailInterface;
   @Input() statuesList: StatueDetailInterface;
+  @Input() statueView: any;
+  isFavoriteAdded = false;
 
-  constructor() { }
+  constructor(private interactionService: IshtarInteractionService,
+              private toaster: ToastrService) { }
 
   ngOnInit() {
     // Get the element with id="defaultOpen" and click on it
     document.getElementById('defaultOpen').click();
   }
 
+  addToFavorite() {
+    this.isFavoriteAdded = true;
+  }
+
+  removeFromFavorite() {
+    this.isFavoriteAdded = false;
+  }
+
+  // Method For Tab Section
   openTab(evt, cityName) {
     let i;
     let tabContent;
@@ -33,6 +47,29 @@ export class StatuesDetailComponent implements OnInit {
     evt.currentTarget.className += ' active';
   }
 
+
+  addToWishList() {
+    this.interactionService.addToWishList(`${this.statueDetail.id}`, 'statue');
+    this.toaster.success('Statue Added To Your Wish List');
+  }
+
+
+  setMainPainting(event) {
+    const target = event.target || event.srcElement || event.currentTarget;
+    const paintingSrc = target.attributes.src;
+    const value = paintingSrc.nodeValue;
+    const mainImage = document.getElementById('main-img');
+    mainImage.setAttribute('src', value);
+    document.getElementById('full-size-img').setAttribute('src', value);
+  }
+
+  showImageInFullSize() {
+    document.getElementById('full-size-img').classList.add('active');
+  }
+
+  hideFullScreenMode() {
+    document.getElementById('full-size-img').classList.remove('active');
+  }
 
 
 }

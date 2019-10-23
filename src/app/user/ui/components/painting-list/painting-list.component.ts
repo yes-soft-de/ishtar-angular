@@ -53,7 +53,6 @@ export class PaintingListComponent implements OnInit {
           error => {
             console.log(error);
           }
-
       );
     }
     // make loop inside paintingsView and remove the repeated value
@@ -132,15 +131,13 @@ export class PaintingListComponent implements OnInit {
     }
   }
 
-  fiterArtistOptionsView(){
+  fiterArtistOptionsView() {
     this.filterArtType = false;
-   if (this.filterArtist){
-     this.filterArtist = false;
-   } else {
-     this.filterArtist = true;
-   }
+    if (this.filterArtist) {
+      this.filterArtist = false;
+    } else {
+      this.filterArtist = true;
+    }
   }
-  
-
 
 }
