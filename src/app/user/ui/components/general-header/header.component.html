@@ -56,6 +56,11 @@
                   </div>
                 </li>
                 <li class="float-right">
+                  <a routerLink="/statue-list">
+                    Statues
+                  </a>
+                </li>
+                <li class="float-right">
                   <a routerLink="/painting-list">
                     Paintings
                   </a>
@@ -118,14 +123,14 @@
               <a class="dropdown-item" (click)="showDialog()">Login</a>
             </div>
           <!--  <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn"> -->
-            <div class="login-btn" *ngIf="userLoggedIn">
+              <div class="login-btn" *ngIf="userLoggedIn"> 
               <!--            <a class="dropdown-item">Show Wish List</a>-->
               <!--            <a class="dropdown-item">Show Favorite List</a>-->
               <a class="dropdown-item" (click)="logout()">Logout !</a>
             </div>
-            <mdb-icon mdbDropdownToggle fas icon="user-circle" size="2x"
+        <mdb-icon mdbDropdownToggle fas icon="user-circle" size="2x"
                   *ngIf="!userLoggedIn"></mdb-icon>
-            <div mdbDropdownToggle class="letter-circle"
+        <div mdbDropdownToggle class="letter-circle"
              *ngIf="userLoggedIn">{{userInfo.userName.substring(0, 1)}}</div>
 
       </div>

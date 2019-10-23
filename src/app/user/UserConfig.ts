@@ -34,4 +34,8 @@ export class UserConfig {
   public static postNewCommentAPI = UserConfig.sourceAPI + 'createComment';
   public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
   public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
+  // Statues API
+  public static getAllStatuesAPI = UserConfig.sourceAPI + 'getAllStatue';
+  public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
+
 }

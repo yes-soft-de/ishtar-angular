@@ -1,0 +1,194 @@
+.filters-group {
+    width: 350px;
+    padding: 1.5rem;
+    float: left;
+    .filter {
+        border-bottom: 1px solid #e1e1e1;
+        padding: 20px 0;
+        &:last-child {
+            border-bottom: 0;
+        }
+        .title {
+            font-size: 20px;
+        }
+        button {
+            border: 1px solid #aaa;
+            margin: 5px;
+            padding: 5px;
+            background: #fff;
+            outline: none;
+            &:hover {
+                background: goldenrod;
+            }
+        }
+        .size-btn {
+            width: 100%;
+            display: block;
+            text-align: left;
+            span {
+                display: inline-block;
+                width: 70px;
+            }
+        }
+    }
+}
+
+.statues-list {
+    padding: 1.5rem;
+    .wrapper {
+        -webkit-column-count: 3; 
+        -moz-column-count: 3; 
+        column-count: 3;
+        -webkit-column-gap: 0; 
+        -moz-column-gap: 0;
+        column-gap: 0;   
+        .statue {
+            display: inline-block;
+            width: calc(100% - 30px);
+            vertical-align: top;
+            margin: 15px;  
+            border: 1px solid #e1e1e1; 
+            position: relative;
+            cursor: pointer;
+            img {
+                min-height: 250px;
+                max-height: 500px;  
+                width: 100%;
+            } 
+            .magnifying {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border: 1px solid #e1e1e1;
+                padding: 5px 10px;
+                background: #fff;
+            }
+            .favourite {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                background: #fff;
+                color: #000;
+                border: 1px solid #e1e1e1;
+                text-align: center;
+                line-height: 25px;
+                padding: 0;
+            }
+            .info {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                color: #fff;
+                padding: 15px;
+                display: none !important;
+                opacity: 0;
+                visibility: hidden;
+                transition: all .3s ease-in-out;
+                -o-transition: all .3s ease-in-out;
+                -ms-transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -webkit-transition: all .3s ease-in-out;
+                .info-wrapper {
+                    position: absolute;
+                    bottom: 40px;
+                }
+                p {
+                    margin-bottom: 5px;
+                }
+                .price {
+                    position: absolute;
+                    bottom: 20px;
+                    right: 0;
+                    padding: 5px 20px;
+                    background: goldenrod;
+                    color: #000;
+                }
+            }
+            &:hover {
+                .info {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            } 
+        }
+    }
+}
+
+@media (max-width:1199px) and (min-width:768px) {
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 2;
+            -moz-column-count: 2; 
+            column-count: 2;
+        }
+    }
+}
+    
+@media (max-width:991px) and (min-width:768px) {
+    .filters-group {
+        width: 200px;
+        .filter {
+            .size-btn {
+                text-align: center;
+                span {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .filters-group {
+        width: 100%;
+        float: none;
+    }
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 2;
+            -moz-column-count: 2; 
+            column-count: 2;
+        }
+    }
+}
+
+@media (max-width:550px) {
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 1;
+            -moz-column-count: 1; 
+            column-count: 1;
+            .statue {
+                img {
+                    max-height: 350px;
+                }
+            }
+        }
+    }
+}
+
+      
+  .img-magnifier-container {
+    position:relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  
+  ::ng-deep .img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+  }
+  

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
 import {ArtistDetails} from '../../entity/artist/artist-details';
+import {share} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

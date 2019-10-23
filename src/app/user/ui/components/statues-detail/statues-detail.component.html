@@ -2,23 +2,36 @@
   <div class="container-fluid">
     <div class="details">
       <div class="row">
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
           <div class="row">
-            <div class="col-2 pr-0">
+            <div class="col-2 d-none d-md-block pr-0">
               <div class="statue-seconds-img">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
               </div>
             </div>
-            <div class="col-10">
-              <div class="statue-image border-secondary">
+            <div class="col-12 col-sm-11 col-md-10 mx-auto">
+              <div class="statue-image border-secondary position-relative">
                 <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">
+                <button class="position-absolute"><i class="far fa-star fa-2x"></i></button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-11 mx-auto d-md-none mt-2">
+              <div class="statue-seconds-img">
+                <div class="row">
+                  <div class="col"><img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt=""></div>
+                  <div class="col"><img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt=""></div>
+                  <div class="col"><img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt=""></div>
+                </div>
+
+<!--                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">-->
+<!--                <img src="../../../../../assets/1x/img-01.jpg" class="img-fluid" alt="">-->
               </div>
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-4 mx-auto">
           <div class="statue-content">
             <div class="row">
               <div class="col-12">
@@ -27,15 +40,15 @@
               <div class="col-6 text-left">
                 <span class="h3 statue-unique-code">#123456</span>
               </div>
-              <div class="col-6 text-right">
-                <span class="bg-warning py-1 px-3">250 e</span>
-              </div>
+<!--              <div class="col-6 text-right">-->
+<!--                <span class="bg-warning py-1 px-3">250 e</span>-->
+<!--              </div>-->
               <div class="col-12">
                 <div class="statue-style">
                   <p class="h4 my-3">Style: <span>Stone</span></p>
                 </div>
               </div>
-              <div class="col-6 statue-artist mb-3 d-lg-block d-none">
+              <div class="col-6 statue-artist text-lg-center text-xl-left mb-3">
                 <div class="statue-artist-img d-inline-block">
                   <img src="../../../../../assets/1x/img-01.jpg" class="" alt="">
                 </div>
@@ -66,7 +79,7 @@
                 <i class="far fa-eye m-1"></i>
                 <span>2K Seen</span>
               </div>
-              <div class="col-12">
+              <div class="col-6 col-lg-12">
                 <button mdbBtn class="btn btn-block m-0 my-2"
                         (click)="addToWishList()"
                         id="add-to-wish-btn">
@@ -74,7 +87,7 @@
                   <span class="font-weight-bold ml-1">2400$</span>
                 </button>
               </div>
-              <div class="col-12">
+              <div class="col-6 col-lg-12">
                 <button mdbBtn class="btn btn-block border border-dark shadow-none m-0 my-2"
                         (click)="makeAnOffer()"
                         id="make-an-offer">
@@ -88,7 +101,7 @@
     </div>
     <div class="information py-4">
       <div class="row">
-        <div class="col-8">
+        <div class="col-12 col-lg-7 col-xl-8">
           <div class="tab-information border border-secondary">
             <div class="row">
               <div class="col-4 tab border-right border-secondary pr-0">
@@ -126,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-sm-10 col-lg-5 col-xl-4 mx-auto mt-4 mt-lg-0">
           <div class="statue-video">
               <h4 class="text-center border-bottom mb-3 pb-2">Video About Statue</h4>
               <div class="embed-responsive embed-responsive-16by9">
@@ -148,6 +161,67 @@
     </div>
     <!--End Painting Comment Section-->
 
-    <div class="statues-you-may-like bg-light">painting you may like</div>
+    <div class="statues-may-like">
+      <h3 class="text-center text-secondary">Statue You May Like</h3>
+      <hr class="w-25 border-dark">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="statue mb-3">
+              <img src="../../../../../assets/statues/statue05.jpg" class="img-fluid">
+              <div class="info">
+                <div class="info-wrapper">
+                  <h3>Statue Name</h3>
+                  <p class="artist-name">Artist Name</p>
+                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
+                </div>
+                <span class="price">200e</span>
+              </div>
+              <button class="favourite"><i class="far fa-star fa-lg"></i></button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="statue">
+              <img src="../../../../../assets/statues/statue04.jpg" class="img-fluid">
+              <div class="info">
+                <div class="info-wrapper">
+                  <h3>Statue Name</h3>
+                  <p class="artist-name">Artist Name</p>
+                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
+                </div>
+                <span class="price">200e</span>
+              </div>
+              <button class="favourite"><i class="far fa-star fa-lg"></i></button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="statue">
+              <img src="../../../../../assets/statues/statue01.jpg" class="img-fluid">
+              <div class="info">
+                <div class="info-wrapper">
+                  <h3>Statue Name</h3>
+                  <p class="artist-name">Artist Name</p>
+                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
+                </div>
+                <span class="price">200e</span>
+              </div>
+              <button class="favourite"><i class="far fa-star fa-lg"></i></button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+            <div class="statue">
+              <img src="../../../../../assets/statues/statue02.jpg" class="img-fluid">
+              <div class="info">
+                <div class="info-wrapper">
+                  <h3>Statue Name</h3>
+                  <p class="artist-name">Artist Name</p>
+                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
+                </div>
+                <span class="price">200e</span>
+              </div>
+              <button class="favourite"><i class="far fa-star fa-lg"></i></button>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 </div>

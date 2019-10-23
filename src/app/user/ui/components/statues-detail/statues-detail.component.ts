@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {StatueDetailInterface} from '../../../entity/statue-detail/statue-detail-interface';
 
 @Component({
   selector: 'app-statues-detail',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./statues-detail.component.scss']
 })
 export class StatuesDetailComponent implements OnInit {
+  @Input() statueDetail: StatueDetailInterface;
+  @Input() statuesList: StatueDetailInterface;
 
   constructor() { }
 

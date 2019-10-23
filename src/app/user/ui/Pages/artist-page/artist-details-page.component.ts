@@ -63,6 +63,7 @@ export class ArtistDetailsPageComponent implements OnInit {
       );
   }
 
+  // Get The Next Artist Data
   fetchNextAritst() {
     // get artist id using observable
     this.artistService.requestArtistDetails(this.artistId + 1).subscribe(
@@ -75,6 +76,7 @@ export class ArtistDetailsPageComponent implements OnInit {
     );
   }
 
+  // Get The Previous Artist Data
   fetchPrevArtist() {
     // get artist id using observable
     this.artistService.requestArtistDetails(this.artistId - 1).subscribe(

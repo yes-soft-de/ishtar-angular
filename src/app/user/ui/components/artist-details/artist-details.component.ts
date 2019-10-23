@@ -22,17 +22,18 @@ export class ArtistDetailsComponent implements OnInit {
               private router: Router) {
   }
 
-  ngOnInit() {
-    }
+  ngOnInit() {}
 
-    goBack() {
-      const prevId = this.artist.id - 1;
-      this.router.navigate(['/artist', prevId]);
-    }
+  // Navigate To Previous Artist
+  goBack() {
+    const prevId = this.artist.id - 1;
+    this.router.navigate(['/artist', prevId]);
+  }
 
-    goNext() {
-      const nextId = this.artist.id + 1;
-      this.router.navigate(['/artist', nextId]);
-    }
+  // Navigate To Next Artist
+  goNext() {
+    const nextId = this.artist.id + 1;
+    this.router.navigate(['/artist', nextId]);
+  }
 
 }

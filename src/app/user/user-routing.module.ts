@@ -18,6 +18,7 @@ import {FAQComponent} from './ui/Pages/faq/faq.component';
 import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
 import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
 import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
+import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
       {path: 'faq', component: FAQComponent},
       {path: 'imprint', component: ImprintPageComponent},
       {path: 'data-processing', component: DataProcessingPageComponent},
-
+      {path: 'statue-list', component: StatueListPageComponent},
       {path: 'statue/:id', component: StatueDetailPageComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'

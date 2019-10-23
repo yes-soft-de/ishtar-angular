@@ -4,6 +4,7 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
@@ -54,6 +55,9 @@ import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widg
 import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
 import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
 import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
+import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
+import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
+import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +104,10 @@ import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-
     LoadingWidgetComponent,
     MostSeenPaintingsComponent,
     StatuesDetailComponent,
-    StatueDetailPageComponent
+    StatueDetailPageComponent,
+    NgxImageZoomComponent,
+    StatueListComponent,
+    StatueListPageComponent
   ],
   exports: [
     // User
@@ -153,6 +160,7 @@ import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
+    NgxImageZoomModule.forRoot()
     // BrowserAnimationsModule
   ]
 })

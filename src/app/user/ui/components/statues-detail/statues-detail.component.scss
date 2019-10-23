@@ -1,82 +1,98 @@
-.statue-content {
-  .statue-name {
-    a {
-      color: #CCB832;
+.details {
+  .statue-image {
+    button {
+      top: 20px;
+      left: 20px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      background: #fdf7c1;
+      color: #000;
+      border: 1px solid #e1e1e1;
+      text-align: center;
+      line-height: 25px;
     }
   }
-  .statue-style {
-    p {
-      span {
-        font-weight: 600;
-        letter-spacing: 1px;
-        font-size: 1.4rem;
-      }
-    }
-  }
-  .statue-artist {
-    .statue-artist-img {
-      img {
-        width: 3rem;
-        height: 3rem;
-        border: 1px solid #cabc83;
-        border-radius: 50%;
-        padding: 1px;
-        margin-right: 20px;
-      }
-    }
-    .statue-artist-name {
+  .statue-content {
+    .statue-name {
       a {
         color: #CCB832;
-        font-size: .9rem;
-        letter-spacing: 2px;
-        &:hover {
-          color: #f4db75;
+      }
+    }
+    .statue-style {
+      p {
+        span {
+          font-weight: 600;
+          letter-spacing: 1px;
+          font-size: 1.4rem;
         }
       }
     }
-  }
+    .statue-artist {
+      .statue-artist-img {
+        img {
+          width: 3rem;
+          height: 3rem;
+          border: 1px solid #cabc83;
+          border-radius: 50%;
+          padding: 1px;
+          margin-right: 20px;
+        }
+      }
+      .statue-artist-name {
+        a {
+          color: #CCB832;
+          font-size: .9rem;
+          letter-spacing: 2px;
+          &:hover {
+            color: #f4db75;
+          }
+        }
+      }
+    }
 
-  .statue-artist-name a:hover,
-  .statue-name a:hover {
-    color: #f4db75;
-  }
-  .statue-artist-name a,
-  p span {
-    color: #b2b67a;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    .buy-statue {
-      background: #CCB832;
-      color: #fff;
-      border-radius: 50%;
-      height: 32px;
-      width: 32px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      &:hover {
-        background-color: #F4DB75;
-      }
-      mdb-icon {
-        margin-right: 2px;
+    .statue-artist-name a:hover,
+    .statue-name a:hover {
+      color: #f4db75;
+    }
+    .statue-artist-name a,
+    p span {
+      color: #b2b67a;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      .buy-statue {
+        background: #CCB832;
+        color: #fff;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          background-color: #F4DB75;
+        }
+        mdb-icon {
+          margin-right: 2px;
+        }
       }
     }
-  }
-  #add-to-wish-btn {
-    background-color: #CCB832;
-    box-shadow: none;
-    font-size: .8rem;
-    span {
-      font-size: 1rem;
+    #add-to-wish-btn {
+      background-color: #CCB832;
+      box-shadow: none;
+      font-size: .8rem;
+      span {
+        font-size: 1rem;
+      }
     }
+    //#make-an-offer {
+    //  //background-color: #CCB832;
+    //  box-shadow: none;
+    //  font-size: .8rem;
+    //}
   }
-  //#make-an-offer {
-  //  //background-color: #CCB832;
-  //  box-shadow: none;
-  //  font-size: .8rem;
-  //}
 }
 .tab-information {
   border-radius: 5px;
@@ -94,4 +110,73 @@
 .tab .tab-links.active {
   background-color: #ddd;
   color: #333333;
+}
+.statues-may-like {
+  padding: 1.5rem;
+    .statue {
+      border: 1px solid #e1e1e1;
+      position: relative;
+      cursor: pointer;
+      img {
+        min-height: 250px;
+        height: 250px;
+        width: 100%;
+      }
+      .favourite {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        background: #fdf7c1;
+        color: #000;
+        border: 1px solid #e1e1e1;
+        text-align: center;
+        line-height: 25px;
+        padding: 0;
+      }
+      .info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        padding: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        .info-wrapper {
+          position: absolute;
+          bottom: 20px;
+          .artist-name {
+            color: #ffde00;
+          }
+        }
+        p {
+          margin-bottom: 5px;
+          display: inline-block;
+        }
+        .price {
+          position: absolute;
+          bottom: 20px;
+          right: 0;
+          padding: 5px 20px;
+          background: goldenrod;
+          color: #000;
+        }
+      }
+      &:hover {
+        .info {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
 }
