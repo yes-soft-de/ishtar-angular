@@ -23,7 +23,7 @@
 <div class="col-sm-9 col-xs-12 floating">
   <div id="painting-list">
     <div class="row">
-      <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12"
+      <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
            *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)"
            routerLink="/painting/{{painting.id}}">
         <div class="img-container">
@@ -39,7 +39,12 @@
              <p class="painting-name">{{painting.name}}</p>
              <p class="artist">{{painting.artist}}</p>
              <ul class="statistics">
-               <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>
+               <li>
+                 <i class="fas fa-heart"></i>
+                 <span *ngFor="let paintingLove of paintingsLove">
+                   {{paintingLove.id == painting.id ? paintingLove.loveNumber : ''}}
+                 </span>
+               </li>
                <li>
                    <i class="far fa-eye"></i>
                    <span

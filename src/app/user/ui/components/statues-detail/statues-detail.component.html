@@ -1,31 +1,33 @@
-<div class="statues-detail py-4">
+<div class="statues-detail bg-light py-4">
   <div class="container-fluid">
     <div class="details">
       <div id="full-size-img">
-        <img class="img-fluid" src="../../../../../assets/1x/img-01.jpg" alt="...">
+        <img class="img-fluid" src="{{statueDetail?.image}}" alt="...">
         <button (click)="hideFullScreenMode()"><span>&times;</span></button>
       </div>
       <div class="row">
         <div class="col-12 col-lg-8">
-          <div class="row">
-            <div class="col-2 d-none d-md-block pr-0">
-              <div class="statue-seconds-img" *ngFor="let i of [1,1,1]">
-                <img src="../../../../../assets/1x/img-01.jpg" (click)="setMainPainting($event)" class="img-fluid" alt="">
+          <div id="statue-img-section" class="statue-img">
+            <div class="row">
+              <div class="col-2 d-none d-md-block invisible pr-0">
+                <div class="statue-seconds-img border border-secondary" *ngFor="let i of [1,1,1]">
+                  <img src="{{statueDetail?.image}}" (click)="setMainPainting($event)" class="img-fluid" alt="">
+                </div>
               </div>
-            </div>
-            <div class="col-12 col-sm-11 col-md-10 mx-auto">
-              <div class="statue-image border-secondary position-relative">
-                <img src="../../../../../assets/1x/img-01.jpg" (click)="showImageInFullSize()" class="img-fluid" alt="{{painting[0].name}} Image" id="main-img">
-                <button class="statue-img-favorite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-2x"></i></button>
-                <button class="statue-img-favorite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-2x"></i></button>
-                <button class="magnifying full-size" (click)="showImageInFullSize()"><i class="fas fa-search"></i></button>
+              <div class="col-12 col-sm-11 col-md-10 mx-auto">
+                <div class="statue-image border border-secondary position-relative">
+                  <img src="{{statueDetail?.image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto" alt="{{statueDetail?.name}} Image" id="main-img">
+                  <button class="statue-img-favorite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-2x"></i></button>
+                  <button class="statue-img-favorite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-2x"></i></button>
+                  <button class="magnifying full-size" (click)="showImageInFullSize()"><i class="fas fa-search"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="col-12 col-sm-11 mx-auto d-md-none mt-2">
-              <div class="statue-seconds-img">
-                <div class="row">
-                  <div class="col" *ngFor="let i of [1,1,1]">
-                    <img src="../../../../../assets/1x/img-01.jpg" (click)="setMainPainting($event)" class="img-fluid" alt="">
+              <div class="col-12 col-sm-11 mx-auto d-md-none d-none mt-2">
+                <div class="statue-seconds-img">
+                  <div class="row">
+                    <div class="col" *ngFor="let i of [1,1,1]">
+                      <img src="{{statueDetail?.image}}" (click)="setMainPainting($event)" class="img-fluid" alt="">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -33,12 +35,12 @@
           </div>
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-4 mx-auto">
-          <div class="statue-content">
+          <div id="statue-content-section" class="statue-content">
             <div class="row">
               <div class="col-12">
-                <h2 class="statue-name mt-3 mt-lg-0"><a routerLink="">Statue Name</a></h2>
+                <h2 class="statue-name mt-3 mt-lg-0">{{statueDetail?.name}}</h2>
               </div>
-              <div class="col-6 text-left">
+              <div class="col-6 text-left d-none">
                 <span class="h3 statue-unique-code">#123456</span>
               </div>
 <!--              <div class="col-6 text-right">-->
@@ -46,41 +48,42 @@
 <!--              </div>-->
               <div class="col-12">
                 <div class="statue-style">
-                  <p class="h4 my-3">Style: <span>Stone</span></p>
+                  <p class="h4 my-3">Style: <span>{{statueDetail?.style}}</span></p>
                 </div>
               </div>
               <div class="col-6 statue-artist text-lg-center text-xl-left mb-3">
                 <div class="statue-artist-img d-inline-block">
-                  <img src="../../../../../assets/1x/img-01.jpg" class="" alt="">
+                  <img src="{{!artist?.image ? '../../../../../assets/default-avatar.jpg' : artist?.image}}" class="" alt="">
                 </div>
                 <p class="statue-artist-name d-inline-block m-0">
-                  <a routerLink="">
-                    Artist Name
+                  <a>
+                    <h5 routerLink="/artist/{{artist?.id}}" class="mb-0">{{artist?.name}}</h5>
+                    <span>Paintings: {{artist?.painting}}</span>
                   </a>
                 </p>
               </div>
               <div class="col-6 text-right">
-                <app-follow-widget [ParentId]="artist?.id" [ParentType]="6"></app-follow-widget>
+                <app-follow-widget [ParentId]="statueDetail?.id" [ParentType]="6"></app-follow-widget>
               </div>
               <div class="col-12">
-                <p class="statue-dimension mt-2">Size: <span>30CM</span> X <span>40CM</span> X <span>100CM</span></p>
-                <p class="m-0 pb-1">Weight : <span>1.5 Kg</span></p>
+                <p class="statue-dimension mt-2">Size: <span>{{statueDetail?.height}}CM</span> X <span>{{statueDetail?.width}}CM</span> X <span>{{statueDetail?.length}}CM</span></p>
+                <p class="m-0 pb-1">Weight : <span>{{statueDetail?.weight}} Kg</span></p>
               </div>
               <div class="col-8 mt-3 statue-interaction">
                 <ul>
                   <li class="ml-0 my-1 mr-1 d-inline-block">
-                    <app-clap-widget [ParentType]="6" [ParentId]=""></app-clap-widget>
+                    <app-clap-widget [ParentType]="6" [ParentId]="statueDetail?.id"></app-clap-widget>
                   </li>
                   <li class="m-1 d-inline-block">
-                    <app-love-interaction [ParentType]="6" [ParentId]=""></app-love-interaction>
+                    <app-love-interaction [ParentType]="6" [ParentId]="statueDetail?.id"></app-love-interaction>
                   </li>
                 </ul>
               </div>
               <div class="col-4 align-self-center">
                 <i class="far fa-eye m-1"></i>
-                <span>2K Seen</span>
+                <span>{{statueView[0]?.interactions}} Seen</span>
               </div>
-              <div class="col-6 col-lg-12">
+              <div class="col-6 col-lg-12 d-none">
                 <button mdbBtn class="btn btn-block m-0 my-2"
                         (click)="addToWishList()"
                         id="add-to-wish-btn">
@@ -91,7 +94,7 @@
               <div class="col-6 col-lg-12">
                 <button mdbBtn class="btn btn-block border border-dark shadow-none m-0 my-2"
                         id="make-an-offer">
-                  <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{'StatueID'}}" style="color: #000;">
+                  <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{statueDetail?.id}}" style="color: #000;">
                   Connect Us To Make An Offer
                   </a>
                 </button>
@@ -101,7 +104,7 @@
         </div>
       </div>
     </div>
-    <div class="information py-4">
+    <div id="information-section" class="information py-4">
       <div class="row">
         <div class="col-12 col-lg-7 col-xl-8">
           <div class="tab-information border border-secondary">
@@ -111,31 +114,31 @@
                 <div class="tab-links" (click)="openTab($event, 'description')">Description</div>
                 <div class="tab-links" (click)="openTab($event, 'style')">Style</div>
                 <div class="tab-links" (click)="openTab($event, 'made-time')">How long it take to be done</div>
-                <div class="tab-links" (click)="openTab($event, 'delivering')">About delivering</div>
+<!--                <div class="tab-links" (click)="openTab($event, 'delivering')">About delivering</div>-->
                 <div class="tab-links" (click)="openTab($event, 'mediums')">Mediums</div>
                 <div class="tab-links" (click)="openTab($event, 'features')">Products features</div>
               </div>
               <div class="col-8 tab-contents p-3">
                 <div id="material" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.material}}</p>
                 </div>
                 <div id="description" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.description}}</p>
                 </div>
                 <div id="style" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.style}}</p>
                 </div>
                 <div id="made-time" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.period}}</p>
                 </div>
-                <div id="delivering" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
-                </div>
+<!--                <div id="delivering" class="tab-content">-->
+<!--                  <p>{{statueDetail?.description}}</p>-->
+<!--                </div>-->
                 <div id="mediums" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.mediums}}</p>
                 </div>
                 <div id="features" class="tab-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet debitis numquam suscipit voluptatum. Aliquid delectus facilis ipsum iure minima nihil recusandae tempora. Illum nam, non officia optio tempora tenetur voluptas!</p>
+                  <p>{{statueDetail?.features}}</p>
                 </div>
               </div>
             </div>
@@ -167,66 +170,27 @@
       <h3 class="text-center text-secondary">Statue You May Like</h3>
       <hr class="w-25 border-dark">
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="statue mb-3">
-              <img src="../../../../../assets/statues/statue05.jpg" class="img-fluid">
-              <div class="info">
-                <div class="info-wrapper">
-                  <h3>Statue Name</h3>
-                  <p class="artist-name">Artist Name</p>
-                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
+          <ng-container *ngFor="let statue of statuesList; let i = index">
+            <ng-container *ngIf="i < 8">
+              <div class="col-12 col-sm-6 col-md-4 col-xl-3 mx-auto">
+                <div class="statue mb-3" routerLink="/statue/{{statue.id}}">
+                  <img src="{{statue?.image}}" class="img-fluid" alt="">
+                  <div class="info">
+                    <div class="info-wrapper">
+                      <h3 class="border-bottom">{{statue?.name | uppercase}}</h3>
+                      <p class="artist-name"><i class="fa fa-user fa-sm mr-1"></i>{{artist?.name}}</p>
+                      <p class="views ml-3"><i class="far fa-eye fa-fw"></i>
+                        <span *ngFor="let view of statuesView"> {{view.id == statue.id ? view.viewNumber : ''}}</span>
+                      </p>
+                    </div>
+                    <span class="price d-none">200e</span>
+                  </div>
+                  <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
+                  <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>
                 </div>
-                <span class="price">200e</span>
               </div>
-              <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
-              <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="statue">
-              <img src="../../../../../assets/statues/statue04.jpg" class="img-fluid">
-              <div class="info">
-                <div class="info-wrapper">
-                  <h3>Statue Name</h3>
-                  <p class="artist-name">Artist Name</p>
-                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
-                </div>
-                <span class="price">200e</span>
-              </div>
-              <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
-              <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="statue">
-              <img src="../../../../../assets/statues/statue01.jpg" class="img-fluid">
-              <div class="info">
-                <div class="info-wrapper">
-                  <h3>Statue Name</h3>
-                  <p class="artist-name">Artist Name</p>
-                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
-                </div>
-                <span class="price">200e</span>
-              </div>
-              <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
-              <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-            <div class="statue">
-              <img src="../../../../../assets/statues/statue02.jpg" class="img-fluid">
-              <div class="info">
-                <div class="info-wrapper">
-                  <h3>Statue Name</h3>
-                  <p class="artist-name">Artist Name</p>
-                  <p class="views ml-3"><i class="far fa-eye"></i> 1425</p>
-                </div>
-                <span class="price">200e</span>
-              </div>
-              <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
-              <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>
-            </div>
-          </div>
+            </ng-container>
+          </ng-container>
         </div>
     </div>
   </div>

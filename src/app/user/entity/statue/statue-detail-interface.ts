@@ -1,4 +1,4 @@
-import {Artist} from '../../../admin/entity/artist/artist';
+import {ArtistListItem} from '../artist-list/artist-list-item';
 
 export interface StatueDetailInterface {
     id: number;
@@ -7,7 +7,7 @@ export interface StatueDetailInterface {
     height: number;
     width: number;
     material: string;
-    artist: Artist;
+    artist: ArtistListItem;
     description: string;
     style: string;
     period: string;

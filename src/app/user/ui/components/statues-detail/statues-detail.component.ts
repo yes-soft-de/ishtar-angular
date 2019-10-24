@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StatueDetailInterface} from '../../../entity/statue-detail/statue-detail-interface';
+import {StatueDetailInterface} from '../../../entity/statue/statue-detail-interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
+import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 
 @Component({
   selector: 'app-statues-detail',
@@ -10,8 +11,10 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class StatuesDetailComponent implements OnInit {
   @Input() statueDetail: StatueDetailInterface;
-  @Input() statuesList: StatueDetailInterface;
-  @Input() statueView: any;
+  @Input() artist: ArtistListItem;
+  @Input() statuesList: StatueDetailInterface[];
+  @Input() statueView: {interactions: string}[];
+  @Input() statuesView: { id: number, viewNumber: number }[];
   isFavoriteAdded = false;
 
   constructor(private interactionService: IshtarInteractionService,
@@ -23,7 +26,8 @@ export class StatuesDetailComponent implements OnInit {
   }
 
   addToFavorite() {
-    this.isFavoriteAdded = true;
+    // this.isFavoriteAdded = true;
+    return;
   }
 
   removeFromFavorite() {

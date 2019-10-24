@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StatueDetailService } from './statue-detail.service';
+import { StatueService } from './statue.service';
 
-describe('StatueDetailService', () => {
+describe('StatueService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: StatueDetailService = TestBed.get(StatueDetailService);
+    const service: StatueService = TestBed.get(StatueService);
     expect(service).toBeTruthy();
   });
 });

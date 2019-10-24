@@ -49,6 +49,7 @@
   .image {
     img {
       cursor: pointer;
+      display: inherit;
     }
     .full-size {
       position: absolute;

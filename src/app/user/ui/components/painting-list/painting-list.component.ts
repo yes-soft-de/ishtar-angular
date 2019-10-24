@@ -5,6 +5,7 @@ import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
+import {LoveRequest} from '../../../entity/love-interaction/love-request';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -21,7 +22,7 @@ export class PaintingListComponent implements OnInit {
   config: any;
   filterArtType = false;
   filterArtist = false;
-  viewData: ViewInterface = {
+  viewData: ViewInterface = {   //
     entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
     row: 0,         // this for painting id
     interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
@@ -30,6 +31,16 @@ export class PaintingListComponent implements OnInit {
   paintingsView: {
     id: number,
     viewNumber: number
+  }[] = [];
+  loveData: LoveRequest = {
+    entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
+    row: 0,         // this for painting id
+    interaction: InteractionConsts.INTERACTION_TYPE_LOVE, // 3: for view interaction
+    client: 0,      // this for client id
+  };
+  paintingsLove: {
+    id: number,
+    loveNumber: number
   }[] = [];
 
   constructor(private interactionService: IshtarInteractionService) { }
@@ -45,9 +56,23 @@ export class PaintingListComponent implements OnInit {
       this.viewData.row = image.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
+            console.log(data);
             this.paintingsView.push({
               id: image.id,
               viewNumber: data.Data[0].interactions
+            });
+          },
+          error => {
+            console.log(error);
+          }
+      );
+      // Get All Paintings Love Interactions
+      this.loveData.row = image.id;
+      this.interactionService.getInteraction(this.loveData).subscribe(
+          (data: {Data: any}) => {
+            this.paintingsLove.push({
+              id: image.id,
+              loveNumber: data.Data[0].interactions
             });
           },
           error => {

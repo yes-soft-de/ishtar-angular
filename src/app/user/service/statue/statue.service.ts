@@ -5,7 +5,7 @@ import {UserConfig} from '../../UserConfig';
 @Injectable({
   providedIn: 'root'
 })
-export class StatueDetailService {
+export class StatueService {
 
   constructor(private httpClient: HttpClient) { }
 
