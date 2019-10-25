@@ -1,85 +1,92 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-interface';
 
 
 @Component({
   selector: 'app-statue-list',
   templateUrl: './statue-list.component.html',
-  styleUrls: ['./statue-list.component.scss']
+  styleUrls: ['./statue-list.component.scss', '../../widgets/ngx-image-zoom/ngx-image-zoom.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class StatueListComponent implements OnInit {
-
+  @Input() statuesList: StatueDetailInterface[];
+  @Input() statuesListFiltered: StatueDetailInterface[];
+  magnifyingImage: boolean = false;
   constructor() { }
 
-  ngOnInit() {
-    this.magnify("myimage", 2);
-    this.magnify("myimage1", 2);
+  ngOnInit() { }
+ 
+  noFilter(){
+    this.statuesListFiltered = this.statuesList;
   }
 
-  magnify(imgID, zoom) {
-    var img, glass, w, h, bw;
-    img = document.getElementById(imgID);
-    /*create magnifier glass:*/
-    glass = document.createElement("DIV");
-    glass.setAttribute("class", "img-magnifier-glass");
-    /*insert magnifier glass:*/
-    img.parentElement.insertBefore(glass, img);
-    /*set background properties for the magnifier glass:*/
-    glass.style.backgroundImage = "url('" + img.src + "')";
-    glass.style.backgroundRepeat = "no-repeat";
-    glass.style.backgroundSize =
-      img.width * zoom + "px " + img.height * zoom + "px";
-    bw = 3;
-    w = glass.offsetWidth / 2;
-    h = glass.offsetHeight / 2;
-    /*execute a function when someone moves the magnifier glass over the image:*/
-    glass.addEventListener("mousemove", moveMagnifier);
-    img.addEventListener("mousemove", moveMagnifier);
-    /*and also for touch screens:*/
-    glass.addEventListener("touchmove", moveMagnifier);
-    img.addEventListener("touchmove", moveMagnifier);
-    function moveMagnifier(e) {
-      var pos, x, y;
-      /*prevent any other actions that may occur when moving over the image*/
-      e.preventDefault();
-      /*get the cursor's x and y positions:*/
-      pos = getCursorPos(e);
-      x = pos.x;
-      y = pos.y;
-      /*prevent the magnifier glass from being positioned outside the image:*/
-      if (x > img.width - w / zoom) {
-        x = img.width - w / zoom;
+  filterName(event){
+    let btn_name = event.target.name
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if (btn_name === this.statuesList[i].name){
+       this.statuesListFiltered[i] = this.statuesList[i];
       }
-      if (x < w / zoom) {
-        x = w / zoom;
-      }
-      if (y > img.height - h / zoom) {
-        y = img.height - h / zoom;
-      }
-      if (y < h / zoom) {
-        y = h / zoom;
-      }
-      /*set the position of the magnifier glass:*/
-      glass.style.left = x - w + "px";
-      glass.style.top = y - h + "px";
-      /*display what the magnifier glass "sees":*/
-      glass.style.backgroundPosition =
-        "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
-    }
-    function getCursorPos(e) {
-      var a,
-        x = 0,
-        y = 0;
-      e = e || window.event;
-      /*get the x and y positions of the image:*/
-      a = img.getBoundingClientRect();
-      /*calculate the cursor's x and y coordinates, relative to the image:*/
-      x = e.pageX - a.left;
-      y = e.pageY - a.top;
-      /*consider any page scrolling:*/
-      x = x - window.pageXOffset;
-      y = y - window.pageYOffset;
-      return { x: x, y: y };
-    }
+   }
   }
 
+  filterArtistName(event){
+    let btn_name = event.target.name
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if (btn_name === this.statuesList[i].artist.name){
+       this.statuesListFiltered[i] = this.statuesList[i];
+      }
+   }
+  }
+
+  filterMaterial(event){
+    let btn_name = event.target.name
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if (btn_name === this.statuesList[i].material){
+       this.statuesListFiltered[i] = this.statuesList[i];
+      }
+   }
+  }
+
+  filterSmallSize(){
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if ((this.statuesList[i].width <= 2.54) && (this.statuesList[i].height <= 1.27) ){
+       this.statuesListFiltered[i] = this.statuesList[i];
+      }
+   }
+  }
+
+  filterMediumSize(){
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if ((this.statuesList[i].width > 2.54) && (this.statuesList[i].width <= 3.81) &&  (this.statuesList[i].height > 1.27) && (this.statuesList[i].height <= 2.54) ){
+       this.statuesListFiltered[i] = this.statuesList[i];
+      }
+   }
+  }
+  
+  filterBigSize(){
+    this.statuesListFiltered = [];
+    for (let i=0 ;i < this.statuesList.length; i++) {
+      if ((this.statuesList[i].width > 3.81) && (this.statuesList[i].height > 2.54) ){
+       this.statuesListFiltered[i] = this.statuesList[i];
+      }
+   }
+  }
+
+  MagnifyingImage(event){
+    let btn_number = event.target.name
+    let info_id :string ='info_'+ btn_number;
+    console.log(btn_number);
+    if(this.magnifyingImage) {
+      document.getElementById(info_id).style.display = "block";
+      this.magnifyingImage = false;
+    } else {
+      document.getElementById(info_id).style.display = "none";
+      this.magnifyingImage = true;
+    }
+  }
 }

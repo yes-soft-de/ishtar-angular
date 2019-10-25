@@ -6,8 +6,6 @@
 
 .ngxImageZoomFull {
   position: absolute;
-  max-width: none;
-  max-height: none;
   display: none;
 }
 
@@ -17,6 +15,6 @@
 }
 
 .ngxImageZoomFullContainer.ngxImageZoomLensEnabled {
-  border: 2px solid red;
+  border: 2px solid goldenrod !important;
   cursor: crosshair;
 }

@@ -50,18 +50,30 @@
             border: 1px solid #e1e1e1; 
             position: relative;
             cursor: pointer;
-            img {
-                min-height: 250px;
-                max-height: 500px;  
+            ngx-image-zoom {
                 width: 100%;
-            } 
+                display: block;
+                img {
+                    background: #fff;  
+                    width: 100%;
+                }
+                .ngxImageZoomFull {
+                    max-height: auto;
+                    min-height: auto;
+                }
+                .ngxImageZoomFullContainer.ngxImageZoomLensEnabled {
+                    border: 2px solid goldenrod !important;
+                    cursor: crosshair;
+                }                  
+            }
             .magnifying {
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 border: 1px solid #e1e1e1;
-                padding: 5px 10px;
+                padding: 10px;
                 background: #fff;
+                outline: none;
             }
             .favourite {
                 position: absolute;
@@ -76,6 +88,7 @@
                 text-align: center;
                 line-height: 25px;
                 padding: 0;
+                outline: none;
             }
             .info {
                 position: absolute;
@@ -86,14 +99,17 @@
                 background: rgba(0,0,0,0.5);
                 color: #fff;
                 padding: 15px;
-                display: none !important;
                 opacity: 0;
                 visibility: hidden;
-                transition: all .3s ease-in-out;
-                -o-transition: all .3s ease-in-out;
-                -ms-transition: all .3s ease-in-out;
-                -moz-transition: all .3s ease-in-out;
-                -webkit-transition: all .3s ease-in-out;
+                transition: all .1s ease-in-out;
+                -o-transition: all .1s ease-in-out;
+                -ms-transition: all .1s ease-in-out;
+                -moz-transition: all .1s ease-in-out;
+                -webkit-transition: all .1s ease-in-out;
+                @media (max-width:991px) {
+                    visibility: visible !important;
+                    opacity: 1;
+                }
                 .info-wrapper {
                     position: absolute;
                     bottom: 40px;
@@ -133,15 +149,6 @@
 @media (max-width:991px) and (min-width:768px) {
     .filters-group {
         width: 200px;
-        .filter {
-            .size-btn {
-                text-align: center;
-                span {
-                    display: block;
-                    width: 100%;
-                }
-            }
-        }
     }
 }
 
@@ -149,6 +156,11 @@
     .filters-group {
         width: 100%;
         float: none;
+        .filter {  
+            &:last-child {
+              border-bottom: 1px solid #e1e1e1;  
+            }
+        }
     }
     .statues-list {
         .wrapper {
@@ -165,30 +177,9 @@
             -webkit-column-count: 1;
             -moz-column-count: 1; 
             column-count: 1;
-            .statue {
-                img {
-                    max-height: 350px;
-                }
-            }
         }
     }
 }
 
-      
-  .img-magnifier-container {
-    position:relative;
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-  }
-  
-  ::ng-deep .img-magnifier-glass {
-    position: absolute;
-    border: 3px solid #000;
-    border-radius: 50%;
-    cursor: none;
-    /*Set the size of the magnifier glass:*/
-    width: 100px;
-    height: 100px;
-  }
+
   

@@ -1,8 +1,5 @@
 <div #zoomContainer class="ngxImageZoomContainer"
      [style.width.px]="this.thumbWidth" [style.height.px]="this.thumbHeight">
-
-    <img #imageThumbnail class="ngxImageZoomThumbnail" [src]="thumbImage" (load)="onThumbImageLoaded()"/>
-
     <div [ngClass]="{'ngxImageZoomFullContainer': true, 'ngxImageZoomLensEnabled': this.enableLens}"
          [style.display]="this.display"
          [style.top.px]="this.lensTop"
@@ -11,7 +8,7 @@
          [style.height.px]="this.lensHeight"
          [style.border-radius.px]="this.lensBorderRadius"
     >
-        <img #fullSizeImage class="ngxImageZoomFull" [src]="fullImage"
+        <img #fullSizeImage class="ngxImageZoomFull img-fulid" src="fullImage"
              (load)="onFullImageLoaded()"
              [style.display]="this.display"
              [style.top.px]="this.fullImageTop"
@@ -20,4 +17,7 @@
              [style.height.px]="this.magnifiedHeight"
         />
     </div>
+
+    <img #imageThumbnail class="ngxImageZoomThumbnail img-fulid" [src]="thumbImage" (load)="onThumbImageLoaded()"/>
+
 </div>
