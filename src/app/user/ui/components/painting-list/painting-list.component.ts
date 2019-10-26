@@ -2,8 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
-import {UserInfo} from '../../../entity/user/user-info';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 import {LoveRequest} from '../../../entity/love-interaction/love-request';
 
