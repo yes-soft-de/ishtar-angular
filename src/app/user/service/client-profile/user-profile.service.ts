@@ -13,7 +13,6 @@ export class UserProfileService {
   }
 
   requestUserDetails() {
-    // TODO: Change Link to Match Login API Before Uploading
     return this.httpClient.get<UserResponse>(
       // 'http://5d90a279b9f5430014c27280.mockapi.io/mock/login/1'
       UserConfig.userProfileAPI

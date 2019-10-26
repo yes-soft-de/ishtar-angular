@@ -22,6 +22,9 @@ import {EditClientComponent} from './ui/client/edit-client/edit-client.component
 import { AddImagesComponent } from './ui/images/add-images/add-images.component';
 import {AddAuctionComponent} from './ui/auction/add-auction/add-auction.component';
 import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.component';
+import { ListStatueComponent } from './ui/statue/list-statue/list-statue.component';
+import { AddStatueComponent } from './ui/statue/add-statue/add-statue.component';
+import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.co
     EditClientComponent,
     AddImagesComponent,
     AddAuctionComponent,
-    ListAuctionsComponent
+    ListAuctionsComponent,
+    ListStatueComponent,
+    AddStatueComponent,
+    EditStatueComponent
    ],
   exports: [
     AdminComponent,
