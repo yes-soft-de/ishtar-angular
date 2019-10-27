@@ -19,6 +19,7 @@ export class CommentsComponent implements OnInit {
   comments: CommentsEntity[];
   allComments: Subscription;
   client: UserInfo;
+  clientIsLogin = false;
   isSubmitted = false;
   buttonValue = 'Save';
   edit = -1;
@@ -36,7 +37,11 @@ export class CommentsComponent implements OnInit {
     this.userProfileService.requestUserDetails().subscribe(
         data => {
           this.client = data.Data;
-          console.log('user:', data);
+          if (this.client.id === undefined) {
+            this.clientIsLogin = false;
+          } else {
+            this.clientIsLogin = true;
+          }
         },
         error => {
           console.log(error);

@@ -1,5 +1,10 @@
 <app-header></app-header>
-<app-artist-page [artist]="artist" [featuredPaintings]="paintingList"
+<app-artist-page [artist]="artist"
+                 [featuredPaintings]="paintingList"
+                 [artistMainPainting]="artistMainPaintingPage"
+                 [paintingSlides]="paintingSlidesPage"
+                 [nextArtistExists]="nextArtistExistsPage"
+                 [prevArtistExists]="prevArtistExistsPage"
                  *ngIf="artist !== null && paintingList !== null"></app-artist-page>
 <app-loading-widget *ngIf="artist === null || paintingList === null "></app-loading-widget>
 <app-footer></app-footer>

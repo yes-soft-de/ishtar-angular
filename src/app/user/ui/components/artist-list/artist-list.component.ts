@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {UserInfo} from '../../../entity/user/user-info';

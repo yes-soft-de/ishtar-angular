@@ -173,5 +173,17 @@
       </div>
     </div>
   </div>
+  <div class="next-prev-artist">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 text-right">
+          <button class="btn btn-dark btn-sm" (click)="goBack()" [disabled]="!prevArtistExists">Prev Artist</button>
+        </div>
+        <div class="col-6 text-left">
+          <button class="btn btn-dark btn-sm" (click)="goNext()" [disabled]="!nextArtistExists">Next Artist</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- ###################################### End Artist Page ###################################### -->

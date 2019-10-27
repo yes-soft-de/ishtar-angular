@@ -1,0 +1,20 @@
+.ngxImageZoomContainer {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+.ngxImageZoomFull {
+  position: absolute;
+  display: none;
+}
+
+.ngxImageZoomFullContainer {
+  position: absolute;
+  overflow: hidden;
+}
+
+.ngxImageZoomFullContainer.ngxImageZoomLensEnabled {
+  border: 2px solid goldenrod !important;
+  cursor: crosshair;
+}

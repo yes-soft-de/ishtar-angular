@@ -7,4 +7,5 @@ export class InteractionConsts {
   public static ENTITY_TYPE_ARTIST = 2;
   public static ENTITY_TYPE_ART_TYPE = 3;
   public static ENTITY_TYPE_AUCTION = 4;
+  public static ENTITY_TYPE_STATUE = 6;
 }

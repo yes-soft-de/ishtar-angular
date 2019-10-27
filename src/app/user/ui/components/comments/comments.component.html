@@ -1,4 +1,4 @@
-<div class="col-12 comments-box">
+<div class="col-12 comments-box" [class.d-none]="!clientIsLogin">
   <ul>
 <!--    <li style="display: inline-block">-->
 <!--      <app-clap-widget [ParentId]="" [ParentType]="1"></app-clap-widget>-->
@@ -20,7 +20,7 @@
               class="form-control rounded-0"
               required
               [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
-              [disabled]="isSubmitted"></textarea>
+              [disabled]="isSubmitted || !clientIsLogin"></textarea>
     <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null" [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
   </form>
 
@@ -79,41 +79,5 @@
   <!-- #Comments -->
 
 </div>
+<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>
 
-
-<!--<div class="container">-->
-<!--  &lt;!&ndash; Input &ndash;&gt;-->
-<!--  <div class="d-flex align-items-center">-->
-<!--    <form #commentsForm [formGroup]="commentsForm"-->
-<!--          (ngSubmit)="submitComment(commentsForm)">-->
-<!--      <label>-->
-<!--        <input type="text" formControlName="comment" placeholder="Name:">-->
-<!--      </label>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; #Input &ndash;&gt;-->
-
-<!--  &lt;!&ndash; Prev Comments &ndash;&gt;-->
-<!--  <div class="d-flex flex-column">-->
-<!--    <div class="row" *ngFor="let i of comments">-->
-<!--      <div class="d-inline-block mx-3">-->
-<!--        <img src="{{i.userImage}}" alt="..." class="mx-2">-->
-<!--        <h5>{{i.userName}}</h5>-->
-<!--      </div>-->
-<!--      <div class="d-flex">-->
-<!--        <p>-->
-<!--          {{i.comment}}-->
-<!--        </p>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; #Prev Input &ndash;&gt;-->
-<!--</div>-->
-<!--body: "Great↵"-->
-<!--client: {id: 1, firsttName: "Hammam", userName: "HammaZarefa", password: "myPass", email: "HammamZarefa@Gmail.com", …}-->
-<!--date: null-->
-<!--entity: {id: 1, name: "Painting"}-->
-<!--id: 10-->
-<!--lastEdit: null-->
-<!--row: 2-->
-<!--spacial: false-->
