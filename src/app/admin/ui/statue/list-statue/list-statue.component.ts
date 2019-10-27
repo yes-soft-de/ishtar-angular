@@ -25,5 +25,9 @@ export class ListStatueComponent implements OnInit {
     );
   }
 
+  delete(id) {
+    return;
+  }
+
 
 }
