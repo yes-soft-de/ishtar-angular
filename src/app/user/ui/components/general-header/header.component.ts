@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo;
   userLoggedIn = false;
+  login_click = false;
   userLogoutLink = UserConfig.userLogoutLink;
   searchFrom = new FormGroup({
     search: new FormControl('')
@@ -57,7 +58,7 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
-
+/*
   showInputFeild() {
     document.getElementById('open-search').style.opacity = '0';
     document.getElementById('open-search').style.zIndex = '-1';
@@ -77,7 +78,7 @@ export class HeaderComponent implements OnInit {
     document.getElementById('open-search').style.zIndex = '2';
     document.getElementById('inlineFormInputGroup').blur();
   }
-
+*/
   goToSearch() {
     this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }
