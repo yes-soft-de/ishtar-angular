@@ -9,11 +9,8 @@ import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 
-class ImageSnippet {
-  constructor(public src: string, public file: File) {
-  }
-}
 
 @Component({
   selector: 'app-add-painting',

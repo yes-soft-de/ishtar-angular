@@ -49,7 +49,7 @@ export class ArtTypeService {
 
   // Get All Art Type
   getAllArtType() {
-    return this.httpClient.get<ArtTypeResponse>(
+    return this.httpClient.get(
         `${AdminConfig.allArtTypeAPI}`, {responseType: 'json'}
     ).pipe(catchError(ArtTypeService.errorHandler));
   }

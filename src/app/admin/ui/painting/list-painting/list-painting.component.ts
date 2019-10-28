@@ -24,6 +24,7 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
     this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
         (res: PaintingListResponse) => {
           this.paintings = res.Data;
+          console.log(this.paintings);
       }, error1 => {
         console.log(error1);
       });

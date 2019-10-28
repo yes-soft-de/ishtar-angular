@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './list-artist.component.html',
   styleUrls: ['./list-artist.component.scss']
 })
-export class ListArtistComponent implements OnInit, OnDestroy{
+export class ListArtistComponent implements OnInit, OnDestroy {
   public artists: Artist[];
   allArtistObservable: Subscription;
 

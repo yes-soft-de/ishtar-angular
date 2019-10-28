@@ -24,46 +24,80 @@ export class ArtistService {
     return throwError(error || 'Server Error');
   }
 
+  // Fetch All Artist
   getAllArtists() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
+    return this.httpClient.get(
+        AdminConfig.artistsAPI,
+      {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
+  // getAllArtists() {
+  //   return this.httpClient.get<ArtistListResponse>(
+  //       `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
+  //   ).pipe(catchError(ArtistService.errorHandler));
+  // }
 
+  // get artist detail
   getArtistByArtist(artistId: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<ArtistInterface>(
-        AdminConfig.artistAPI,
-        JSON.stringify({artist: artistId}),
-        httpOptions
+    return this.httpClient.get(
+        `${AdminConfig.artistAPI}/${artistId}`,
+        {responseType: 'json'}
     );
   }
+  // getArtistByArtist(artistId: string) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   };
+  //   return this.httpClient.post<ArtistInterface>(
+  //       AdminConfig.artistAPI,
+  //       JSON.stringify({artist: artistId}),
+  //       httpOptions
+  //   );
+  // }
+
 
   // Admin Section - Add Artist Page
   postAddArtist(artist: Artist) {
     return this.httpClient.post<Artist>(
-        `${AdminConfig.addArtistAPI}`,
-        JSON.stringify(artist)
+        `${AdminConfig.artistsAPI}`,
+        JSON.stringify(artist),
+        {responseType: 'json'}
     );
   }
 
   // Admin Section - Update Artist
-  updateArtist(artistId: string, data) {
+  updateArtist(artistId: string, data: ArtistInterface) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<ArtistInterface>(
-        AdminConfig.editArtistAPI,
+    return this.httpClient.put<ArtistInterface>(
+        `${AdminConfig.artistAPI}/${artistId}`,
         JSON.stringify(data),
-        httpOptions
+        {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
+  // updateArtist(artistId: string, data) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   };
+  //   return this.httpClient.post<ArtistInterface>(
+  //       AdminConfig.editArtistAPI,
+  //       JSON.stringify(data),
+  //       httpOptions
+  //   ).pipe(catchError(ArtistService.errorHandler));
+  // }
+
 
   // Admin Section - Delete Artist
   deleteArtist(artistId: any) {

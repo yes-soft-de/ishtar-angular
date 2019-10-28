@@ -108,6 +108,23 @@
             color: #f4db75;
           }
         }
+        .follow-artist {
+          button {
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            background: #fff !important;
+            text-align: center;
+            padding: 0;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid goldenrod;
+            font-size: 13px;
+            z-index: 1;
+            position: relative;
+          }
+        }
       }
     }
     .painting-artist-name a:hover,
@@ -586,15 +603,6 @@
   }
   .content  {
     position: relative;
-    padding-top: 30px;
-    .painting-interaction {
-      position: absolute;
-      top: 0;
-      margin-top: 0 !important;
-      ul {
-        margin: 0;
-      }
-    }
     .painting-story {
       margin: 15px 0;
     }

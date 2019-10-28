@@ -9,7 +9,7 @@ import {StatueInterface} from '../../../entity/statue/statue.interface';
   styleUrls: ['./list-statue.component.scss']
 })
 export class ListStatueComponent implements OnInit {
-  statues: StatueInterface[];
+  statues: {0: StatueInterface, price: string}[];
 
   constructor(private statueService: StatueService) { }
 
@@ -18,7 +18,7 @@ export class ListStatueComponent implements OnInit {
     this.statueService.getAllStatues().subscribe(
         (data: StatuesResponse) => {
           this.statues = data.Data;
-          console.log(data);
+          console.log(this.statues);
         }, error => {
           console.log(error);
         }

@@ -1,5 +1,5 @@
 import {StatueInterface} from './statue.interface';
 
 export interface StatuesResponse {
-  Data: StatueInterface[];
+    Data: {0: StatueInterface, price: string}[];
 }
