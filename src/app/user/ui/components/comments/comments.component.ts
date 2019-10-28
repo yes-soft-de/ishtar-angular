@@ -19,6 +19,7 @@ export class CommentsComponent implements OnInit {
   comments: CommentsEntity[];
   allComments: Subscription;
   client: UserInfo;
+  clientIsLogin = false;
   isSubmitted = false;
   buttonValue = 'Save';
   edit = -1;
@@ -32,11 +33,28 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*
+    * {"Data":{"id":11,
+    * "firsttName":"Talal",
+    * "userName":"Talal Danoon",
+    * "password":"set your pass here",
+    * "email":"talal.danoun@gmail.com",
+    * "lastName":"Danoon",
+    * "phone":null,
+    * "roll":null,
+    * "createdBy":null,"createDate":"2019-10-03T18:22:42+00:00","updatedBy":null,"updateDate":null,"birthDate":null,
+    * "roles":["ROLE_USER"],
+    * "salt":null}}
+    * */
     this.fetchAllComments();
     this.userProfileService.requestUserDetails().subscribe(
         data => {
           this.client = data.Data;
-          console.log('user:', data);
+          if (this.client.id === undefined) {
+            this.clientIsLogin = false;
+          } else {
+            this.clientIsLogin = true;
+          }
         },
         error => {
           console.log(error);

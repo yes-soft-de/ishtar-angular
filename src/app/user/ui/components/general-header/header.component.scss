@@ -35,7 +35,7 @@
     left: 0;
     width: 100%;
     background: #fff;
-    z-index: 999999;
+    z-index: 999;
     #header-nav {
       .header-top {
         margin-left: -15px;
@@ -57,6 +57,10 @@
           .dropdown {
             .login, .logout {
               margin-right: 10px;
+              a {
+                color: goldenrod;
+                font-weight: bold;
+              }
             }
             mdb-icon {
               vertical-align: middle;
@@ -101,7 +105,7 @@
     right: 0;
     direction: rtl;
     background: #ffffff;
-    z-index: 99999;
+    z-index: 999;
     .letter-circle {
       font-size:1em;
       width:2.5em;
@@ -242,43 +246,27 @@
 .search-box {
   margin-left: 35px;
   .search{
-    position: absolute;
-    //right: 115px;
-    top: 29px;
-    width: 100%;
     text-align: right;
     #input-search,
     #input-mobile-search{
       width: 0;
       height: 40px;
-      position: absolute;
-      top: -10px;
-      right: 0;
-      overflow: hidden;
       transition: all .3s ease-in-out;
       -o-transition: all .3s ease-in-out;
       -ms-transition: all .3s ease-in-out;
       -moz-transition: all .3s ease-in-out;
       -webkit-transition: all .3s ease-in-out;
-      input {
-        position: absolute;
-        right: 0;
-      }
-      #input-search.open,
-      #input-mobile-search.open{
-        width: 100%;
-      }
     }
-    #open-search,
-    #close-search {
+    #input-search {
       position: absolute;
-      right: 0;
-      padding: 0 10px;
-      cursor: pointer;
-    }
-    #close-search {
-      z-index: -1;
-      opacity: 0;
+      left: -300px;
+      input {
+        width: 300px;
+        background: #ddd;
+        &:focus {
+          background: #fff;
+        }
+      }
     }
   }
   
@@ -319,6 +307,11 @@
   .navbar-nav {
     border-top: 1px solid #e1e1e1;
   }
+  .navbar .navbar-toggler {
+    position: absolute;
+    right: 150px;
+    top: 8px;
+  }
 }
 
 
@@ -337,6 +330,10 @@
       &:nth-child(3){
         animation: pull-right 1.5s ease-in-out;
         -webkit-animation: pull-right 1.5s ease-in-out;
+      }
+      &:nth-child(4){
+        animation: pull-right 2s ease-in-out;
+        -webkit-animation: pull-right 2s ease-in-out;
       }
     }
     li.active {
@@ -370,9 +367,16 @@
 
 @media (max-width:991px) {
   .login-btn {
-    position: absolute;
-    right: 40px;
-    top: 2px;
+    .dropdown-item {
+      color: goldenrod !important;
+      font-weight: bold;
+      background: none !important;
+    }
+  }
+  .navbar-light .navbar-toggler {
+    position: absolute !important;
+    right: 150px;
+    top: 7px;
   }
 }
 

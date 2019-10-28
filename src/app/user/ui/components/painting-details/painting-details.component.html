@@ -19,7 +19,7 @@
                     </a>
                   </p>
               </div>
-              <img src="{{painting[0].image}}" (click)="showImageInFullSize()" class="img-fluid" alt="{{painting[0].name}} Image" id="main-img">
+              <img src="{{painting[0].image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto" alt="{{painting[0].name}} Image" id="main-img">
               <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full Image</button>
               <div class="row mt-2 border border-dark p-1 d-none">
                 <div class="col p-0" *ngFor="let i of [1,1,1,1]">

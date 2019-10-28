@@ -20,7 +20,7 @@
               <div class="artist-header-details-top">
                 <div class="row">
                   <div class="col-6 col-lg-12">
-                    <img src="{{artist?.path}}" alt="..." class="artist-image">
+                    <img src="{{artist?.path}}" alt="..." class="artist-image img-fluid">
                   </div>
                   <div class="col-6 d-lg-none">
                     <div class="artist-video-icon mx-auto">
@@ -169,6 +169,18 @@
               </mdb-carousel-item>
             </mdb-carousel>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="next-prev-artist">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 text-right">
+          <button class="btn btn-dark btn-sm" (click)="goBack()" [disabled]="!prevArtistExists">Prev Artist</button>
+        </div>
+        <div class="col-6 text-left">
+          <button class="btn btn-dark btn-sm" (click)="goNext()" [disabled]="!nextArtistExists">Next Artist</button>
         </div>
       </div>
     </div>

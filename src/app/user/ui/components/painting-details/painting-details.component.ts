@@ -9,6 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 
 
+
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
@@ -26,6 +27,7 @@ export class PaintingDetailsComponent implements OnInit {
               private interactionService: IshtarInteractionService,
               private artistListService: ArtistListService,
               private toaster: ToastrService) {
+    // this.activePaintingImage = this.painting.image;
   }
 
   ngOnInit() {
@@ -54,6 +56,13 @@ export class PaintingDetailsComponent implements OnInit {
       if (this.painting[0].artist == null) {
         document.getElementById('painting-artist').style.display = 'none';
       }
+
+      /* var painting_list_images = document.getElementById('painting-list-images').childElementCount;
+       alert(painting_list_images);
+       if (painting_list_images < 2) {
+         document.getElementById('painting-list-images').style.opacity = '0';
+       }*/
+
     }
   }
 

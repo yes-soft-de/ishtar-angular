@@ -76,6 +76,7 @@ export class HomePageComponent implements OnInit {
           this.checkLoadingFinished();
         }, error1 => {
           console.log(error1);
+          // this.fetchData();
         }
     );
   }
@@ -122,9 +123,11 @@ export class HomePageComponent implements OnInit {
     // So there is a movement
     if (delta > 0 && oldDir !== 'Down') {
       this.direction = 'Down';
+      // console.log(this.direction);
       this.showNavbar = true;
     } else if (delta < 0 && oldDir !== 'Up') {
       this.direction = 'Up';
+      // console.log(this.direction + ' delta ' + delta);
       this.showNavbar = true;
     }
     // Save Data For Future Calculations

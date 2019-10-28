@@ -1,0 +1,59 @@
+<div class="filters-group">
+    <div class="filter">
+        <p class="title">Filter by style name </p>
+        <button (click)="noFilter()">All</button>
+        <button *ngFor="let statue of statuesList" 
+                name="{{statue.name}}"
+                (click)="filterName($event)">{{statue.name}}</button>
+    </div>
+    <div class="filter">
+        <p class="title">Filter by artist name </p>
+        <button (click)="noFilter()">All</button>
+        <button *ngFor="let statue of statuesList"
+                name="{{statue.artist.name}}"
+                (click)="filterArtistName($event)">{{statue.artist.name}}</button>
+    </div>
+    <!--
+    <div class="filter">
+        <p class="title">Filter by price range</p>
+    </div>
+    -->
+    <div class="filter">
+       <p class="title">Filter by materials </p>
+       <button (click)="noFilter()">All</button>
+       <button *ngFor="let statue of statuesList" 
+               name="{{statue.materials}}"
+               (click)="filterMaterial($event)">{{statue.material}}</button>
+    </div>
+    <div class="filter">
+        <p class="title">Filter by size</p>
+        <button class="size-btn text-center" (click)="noFilter()">All</button>
+        <button class="size-btn" (click)="filterSmallSize()"><span>Small</span> <small>less than 1 x 1/2"</small></button>
+        <button class="size-btn" (click)="filterMediumSize()"><span>Medium</span> <small>between 1 x 1/2" and 1.5 x 1"</small></button>
+        <button class="size-btn" (click)="filterBigSize()"><span>Big</span> <small>more than 1.5 x 1"</small></button>
+    </div>
+</div>
+
+<div class="statues-list">
+    <div class="wrapper">
+        <div class="statue"
+            *ngFor="let statue of statuesListFiltered">
+            <ngx-image-zoom
+                thumbImage="{{statue.image}}"
+                [enableLens]=false
+            ></ngx-image-zoom>
+            <div class="info" id="info_{{statue.id}}" routerLink="/statue/{{statue.id}}" (click)="viewStatue(statue.id)">
+                <div class="info-wrapper">
+                    <h3>{{statue.name}}</h3>
+                    <p class="artist-name">{{statue.artist.name}}</p>
+                    <p class="views"><i class="far fa-eye"></i> 1425</p>
+                </div>
+               <!-- <span class="price">200e</span> -->
+            </div>
+            <button class="fas fa-search magnifying"  name="{{statue.id}}" (click)="MagnifyingImage($event)">
+            </button>
+           <!-- <button class="favourite"><i class="far fa-star"></i></button> -->
+        </div>
+
+    </div>
+</div>
