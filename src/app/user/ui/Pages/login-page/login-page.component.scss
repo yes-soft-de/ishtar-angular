@@ -2,8 +2,16 @@
   width: 100%;
   max-width: 100%;
   min-height: 100%;
-
+  text-align: center;
   transition: all 1s ease-in-out;
+
+  .logo-img {
+    margin: 15px 0;
+  }
+
+  .logo {
+    width: 250px;
+  }
 
   a {
     padding-left: 1rem;
@@ -49,4 +57,8 @@
     font-family: 'Roboto', arial, sans-serif;
   }
   // endregion
+}
+
+.cdk-overlay-container {
+  z-index: 9999;
 }

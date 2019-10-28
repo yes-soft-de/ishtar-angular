@@ -5,7 +5,6 @@ import {UserConfig} from '../user/UserConfig';
 import {AdminConfig} from './AdminConfig';
 import {ToastrService} from 'ngx-toastr';
 import {UserProfileService} from '../user/service/client-profile/user-profile.service';
-import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-admin',

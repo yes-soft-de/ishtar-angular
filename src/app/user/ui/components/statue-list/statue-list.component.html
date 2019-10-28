@@ -37,12 +37,12 @@
 <div class="statues-list">
     <div class="wrapper">
         <div class="statue"
-            *ngFor="let statue of statuesListFiltered" routerLink="/statue/{{statue.id}}">
+            *ngFor="let statue of statuesListFiltered">
             <ngx-image-zoom
-                thumbImage={{statue.image}}
-                [enableLens]=true
+                thumbImage="{{statue.image}}"
+                [enableLens]=false
             ></ngx-image-zoom>
-            <div class="info" id="info_{{statue.id}}">
+            <div class="info" id="info_{{statue.id}}" routerLink="/statue/{{statue.id}}" (click)="viewStatue(statue.id)">
                 <div class="info-wrapper">
                     <h3>{{statue.name}}</h3>
                     <p class="artist-name">{{statue.artist.name}}</p>

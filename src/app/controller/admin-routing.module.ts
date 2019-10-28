@@ -13,6 +13,8 @@ import {EditClientComponent} from '../admin/ui/client/edit-client/edit-client.co
 import {AddImagesComponent} from '../admin/ui/images/add-images/add-images.component';
 import {AddAuctionComponent} from '../admin/ui/auction/add-auction/add-auction.component';
 import {ListAuctionsComponent} from '../admin/ui/auction/list-auctions/list-auctions.component';
+import {ListStatueComponent} from '../admin/ui/statue/list-statue/list-statue.component';
+import {AddStatueComponent} from '../admin/ui/statue/add-statue/add-statue.component';
 
 
 
@@ -27,6 +29,8 @@ const routes: Routes = [
       {path: 'edit-artist/:id', component: EditArtistComponent},
       {path: 'add-painting', component: AddPaintingComponent},
       {path: 'list-paintings', component: ListPaintingComponent},
+      {path: 'list-statues', component: ListStatueComponent},
+      {path: 'add-statue', component: AddStatueComponent},
       {path: 'list-clients', component: ListClientComponent},
       {path: 'add-client', component: AddClientComponent},
       {path: 'edit-client', component: EditClientComponent},

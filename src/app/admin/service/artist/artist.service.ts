@@ -43,13 +43,6 @@ export class ArtistService {
     );
   }
 
-
-  getArtistPainting(artistId: string) {
-    // This Should Take the List From the API
-    return this.httpClient.get<PaintingFullList>(
-      `${AdminConfig.artistPaintingsAPI}/${artistId}`,
-      {responseType: 'json'});
-  }
   // Admin Section - Add Artist Page
   postAddArtist(artist: Artist) {
     return this.httpClient.post<Artist>(
