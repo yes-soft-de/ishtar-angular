@@ -73,13 +73,13 @@ export class ArtistService {
   }
 
   // Admin Section - Update Artist
-  updateArtist(artistId: string, data: ArtistInterface) {
+  updateArtist(artistId: number, data: ArtistInterface) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.put<ArtistInterface>(
+    return this.httpClient.put(
         `${AdminConfig.artistAPI}/${artistId}`,
         JSON.stringify(data),
         {responseType: 'json'}

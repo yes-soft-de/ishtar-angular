@@ -24,13 +24,14 @@ export class EditPaintingComponent implements OnInit {
   uploadForm: FormGroup;
   artists: Artist[];
   artTypes: ArtType[];
+  artistId: number;
+  artTypeId: number;
   uploadButtonValue = 'Upload';
-  imageName = 'Leave it if you don\'t want to change it';
+  imageName = 'Leave it if you don\'t want to change image';
   fileSelected = false;
-  fileUploaded = false;
   imageUrl: string;
-  imagePathReady = false;
-  submitButtonValue = 'Waiting Uploading Image';
+  imagePathReady = true;
+  submitButtonValue = 'Update Painting';
   selectedFile: ImageSnippet;
 
 
@@ -52,24 +53,39 @@ export class EditPaintingComponent implements OnInit {
     const artTypeObs = this.artTypeService.getAllArtType();     // Fetch All Art Type
     const combinedObs = forkJoin(paintingsObs, artistsObs, artTypeObs);
     combinedObs.subscribe((data: any) => {
+      // painting response
       if (data[0]) {
-        data[0].Data.map(res => {
-          if (res.id === this.paintingID) {
-            this.paintingData = res;
+        data[0].Data.map(paintingResponse => {
+          if (paintingResponse.id === this.paintingID) {
+            this.paintingData = paintingResponse;
           }
         });
       }
+      // artist response
       if (data[1]) {
         this.artists = data[1].Data;
+        // Fetch User ID Automatically
+        data[1].Data.map(artistResponse => {
+          if (artistResponse.name === this.paintingData.artist) {
+            this.artistId = artistResponse.id;
+          }
+        });
       }
+      // artType response
       if (data[2]) {
         this.artTypes = data[2].Data;
+        data[2].Data.map(artTypeResponse => {
+          if (artTypeResponse.name === this.paintingData.artType) {
+            this.artTypeId = artTypeResponse.id;
+          }
+        });
       }
       console.log(this.paintingData, data);
-      // insert input value into the form input
-      this.uploadForm.setValue({
+      // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
+      this.uploadForm.patchValue({  // insert input value into the form input
+        id: this.paintingID,
         name: this.paintingData.name,
-        artist: this.paintingData.artist,
+        artist: this.artistId,
         height: this.paintingData.height,
         width: this.paintingData.width,
         colorsType: this.paintingData.colorsType,
@@ -78,14 +94,16 @@ export class EditPaintingComponent implements OnInit {
         image: this.paintingData.image,
         active: this.paintingData.active,
         keyWords: this.paintingData.keyWords,
-        artType: this.paintingData.artType,
+        artType: this.artTypeId,
         gallery: '',
         story: this.paintingData.story
       });
+      // console.log(this.uploadForm.get('artist').value);
     });
 
     // Storing Form Data
     this.uploadForm = this.formBuilder.group({
+      id: [''],
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       artist: ['', [Validators.required]],
       height: ['', Validators.required],
@@ -150,6 +168,7 @@ export class EditPaintingComponent implements OnInit {
 
   processFile(imageInput: any) {
     this.fileSelected = false;
+    this.imagePathReady = false;
     this.uploadButtonValue = 'Uploading...';
     console.log('Processing File');
     const file: File = imageInput.files[0];
@@ -163,37 +182,39 @@ export class EditPaintingComponent implements OnInit {
             this.imageUrl = res.url;
             this.uploadButtonValue = 'Uploaded';
             this.imagePathReady = true;
-            this.submitButtonValue = 'Add New Painting';
+            this.submitButtonValue = 'Update Painting';
           });
     });
     reader.readAsDataURL(file);
   }
 
   mySubmit() {
-    console.log(this.imageUrl);
+    console.log('New Image URL:', this.imageUrl);
     this.isSubmitted = true;
     if (!this.uploadForm.valid) {
       this.toaster.error(`Error: All Fields Are Required`);
-      // return false;
+      return false;
     } else {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
-      // formObj.image = this.imageUrl;
+      if (this.imageUrl) {
+        formObj.image = this.imageUrl;
+      }
       console.log(formObj);
-      // this.photosListService.postAddPainting(formObj).subscribe(
-      //     data => {
-      //       this.toaster.success('Painting Was Successfully Added');
-      //       console.log('the post request was successfully done', data);
-      //     },
-      //     error => {
-      //       console.log('There error from fetching the data', error);
-      //       this.toaster.error('Error : Painting Not Uploaded Successfully');
-      //     },
-      //     () => {
-      //       // If Success Navigate to Admin List Paintings Page
-      //       this.router.navigate(['admin/list-paintings']);
-      //     }
-      // );
+      this.photosListService.updatePainting(this.paintingID, formObj).subscribe(
+          data => {
+            this.toaster.success('Painting Updated Successfully');
+            console.log('the post request was successfully done', data);
+          },
+          error => {
+            console.log('Error fetching data', error);
+            this.toaster.error('Error : Please Try Again');
+          },
+          () => {
+            // If Success Navigate to Admin List Paintings Page
+            this.router.navigate(['admin/list-paintings']);
+          }
+      );
     }
   }
 }

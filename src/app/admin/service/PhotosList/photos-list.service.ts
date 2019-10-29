@@ -61,7 +61,7 @@ export class PhotosListService {
         'Content-Type': 'application/json'
       })
     };
-    return this.httpClient.put<Painting>(
+    return this.httpClient.put(
       `${AdminConfig.paintingAPI}/${paintingId}`,
       JSON.stringify(data),
       httpOptions
