@@ -7,28 +7,9 @@ import {ViewInterface} from '../../entity/interaction/view.interface';
   providedIn: 'root'
 })
 export class IshtarInteractionService {
-  constructor(private httpClient: HttpClient) {
-  }
-  public love(id: string, entityType: string) {
-    const request: {
-      type: string,
-      id: string
-    } = {
-      type: entityType,
-      id: `${id}`
-    };
-    return this.httpClient.post(UserConfig.postInteractionAPI, JSON.stringify(request));
-  }
-  public clap(id: string, entityType: string) {
-    const request: {
-      type: string,
-      id: string
-    } = {
-      type: entityType,
-      id: `${id}`
-    };
-    return this.httpClient.post(UserConfig.postInteractionAPI, JSON.stringify(request));
-  }
+
+  constructor(private httpClient: HttpClient) {}
+
   public addToWishList(id: string, entityType: string) {
     const request: {
       type: string,

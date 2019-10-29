@@ -65,7 +65,7 @@ export class AddPaintingComponent implements OnInit {
           console.log(error);
         }
     );
-    // Storing From Data
+    // Storing Form Data
     this.uploadForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       artist: ['', [Validators.required]],
@@ -168,7 +168,7 @@ export class AddPaintingComponent implements OnInit {
     // console.log(this.uploadForm.get('gallery').errors, this.uploadForm.get('gallery').valid);
     // console.log(this.uploadForm.get('story').errors, this.uploadForm.get('story').valid);
     if (!this.uploadForm.valid) {
-      this.toaster.error(`Error: Form Not Valid`);
+      this.toaster.error(`Error: All Fields Are Required`);
       return false;
     } else {
       // Fetch All Form Data On Json Type

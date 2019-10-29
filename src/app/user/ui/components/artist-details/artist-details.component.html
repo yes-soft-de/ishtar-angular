@@ -143,10 +143,10 @@
         <!-- Use THis Div If Painting Length is large Than 4 painting-->
         <div class="painting-list" *ngIf="featuredPaintings.length > 4">
           <div class="row">
-            <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+            <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation slide"  [type]="'carousel-multi-item'"
                           [animation]="'slide'">
               <mdb-carousel-item *ngFor="let paintings of paintingSlides">
-                <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto"
+                <div class="painting-list-item col-lg-4 col-md-4 col-sm-6 col-xs-12 mx-auto"
                      [ngClass]="{'d-none d-md-block': paintingsIndex !== 0}"
                      *ngFor="let painting of paintings; let paintingsIndex = index"
                       routerLink="/painting/{{painting.id}}">
@@ -173,17 +173,10 @@
       </div>
     </div>
   </div>
-  <div class="next-prev-artist">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 text-right">
-          <button class="btn btn-dark btn-sm" (click)="goBack()" [disabled]="!prevArtistExists">Prev Artist</button>
-        </div>
-        <div class="col-6 text-left">
-          <button class="btn btn-dark btn-sm" (click)="goNext()" [disabled]="!nextArtistExists">Next Artist</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+      <button class="btn-prev" (click)="goBack()" [disabled]="!prevArtistExists">Previous Artist</button>
+
+      <button class="btn-next" (click)="goNext()" [disabled]="!nextArtistExists">Next Artist</button>
+
 </section>
 <!-- ###################################### End Artist Page ###################################### -->

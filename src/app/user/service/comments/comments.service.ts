@@ -54,6 +54,9 @@ export class CommentsService {
     if (itemType === 'artType') {
       entityId = 3;
     }
+    if (itemType === 'statue') {
+      entityId = 6;
+    }
     return entityId;
   }
 

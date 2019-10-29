@@ -28,15 +28,27 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="stat st_item">
-          <i class="fas fa-balance-scale-right fa-fw fa-5x"></i>
+<!--          <i class="fas fa-monument fa-fw fa-5x"></i>-->
+          <i class="fas fa-archway fa-fw fa-5x"></i>
           <div>
-            <h6>Total Auctions</h6>
+            <h6>Total Statues</h6>
 
-            <span><a routerLink="/admin/list-auctions">{{auctions?.length}}</a></span>
+            <span><a routerLink="/admin/list-statues">{{statues?.length}}</a></span>
 
           </div>
         </div>
       </div>
+<!--      <div class="col-md-6 col-lg-3">-->
+<!--        <div class="stat st_item">-->
+<!--          <i class="fas fa-balance-scale-right fa-fw fa-5x"></i>-->
+<!--          <div>-->
+<!--            <h6>Total Auctions</h6>-->
+
+<!--            <span><a routerLink="/admin/list-auctions">{{auctions?.length}}</a></span>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="col-md-6 col-lg-3">
         <div class="stat st_comment">
           <i class="fa fa-comments fa-fw fa-5x"></i>
@@ -92,19 +104,19 @@
           </div>
         </div>
       </div>
-      <!--Start Latest Auctions-->
+      <!--Start Latest Statues-->
       <div class="col-12 col-md-6">
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest {{latestAuctionNumber}} Auctions
+              Latest {{latestStatueNumber}} Statues
             </div>
             <div class="card-body">
-              <ng-container *ngFor="let auction of auctions; let i = index">
-                <ng-container *ngIf="i < latestAuctionNumber">
+              <ng-container *ngFor="let statue of statues; let i = index">
+                <ng-container *ngIf="i < latestStatueNumber">
                   <div class="late_info">
-                      {{auction.name}}
-                      <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{statue.name}}
+                    <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
@@ -112,6 +124,26 @@
           </div>
         </div>
       </div>
+      <!--Start Latest Auctions-->
+<!--      <div class="col-12 col-md-6">-->
+<!--        <div class="late mb-3">-->
+<!--          <div class="card">-->
+<!--            <div class="card-header">-->
+<!--              Latest {{latestAuctionNumber}} Auctions-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--              <ng-container *ngFor="let auction of auctions; let i = index">-->
+<!--                <ng-container *ngIf="i < latestAuctionNumber">-->
+<!--                  <div class="late_info">-->
+<!--                      {{auction.name}}-->
+<!--                      <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>-->
+<!--                  </div>-->
+<!--                </ng-container>-->
+<!--              </ng-container>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
       <!--Start Latest Comment-->
       <div class="col-12 col-md-6">
         <div class="late mb-3">

@@ -43,7 +43,6 @@ export class ArtistDetailsPageComponent implements OnInit {
         console.log('current artist :', this.artist);
       }, error1 => {
         console.log('Retrying', error1);
-        // this.fetchData();
       }
     );
 
@@ -58,7 +57,6 @@ export class ArtistDetailsPageComponent implements OnInit {
           this.artistMainPaintingPage = this.paintingList[randPainting];
         }, error1 => {
           console.log('Retrying', error1);
-          // this.fetchData();
         }
       );
   }

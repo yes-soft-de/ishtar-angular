@@ -36,6 +36,8 @@ export class FollowService {
       entityName = 'artType';
     } else if (parentType === 4) {
       entityName = 'auction';
+    } else if (parentType === 6) {
+      entityName = 'statue';
     }
     // check if user is login or not
     const request: {client: number} = {
