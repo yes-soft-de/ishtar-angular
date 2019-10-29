@@ -38,7 +38,6 @@ export class EditArtistComponent implements OnInit {
     // Fetch The Artist Data Depends On His ID
     this.artist.getArtistByArtist(this.artistID).subscribe(
         data => {
-          console.log(data.id);
           if (data) {
             // this.artistData.id = `${data.id}`;
             // this.artistData.name = data.name;

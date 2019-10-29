@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {PaintingInterface} from '../../../entity/painting/painting-interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Artist} from '../../../entity/artist/artist';
 import {ArtType} from '../../../entity/art-type/art-type';
@@ -9,7 +8,6 @@ import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
-import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 import {forkJoin} from 'rxjs';
 import {Painting} from '../../../entity/painting/painting';
 
@@ -27,7 +25,7 @@ export class EditPaintingComponent implements OnInit {
   artists: Artist[];
   artTypes: ArtType[];
   uploadButtonValue = 'Upload';
-  imageName = 'Select Image';
+  imageName = 'Leave it if you don\'t want to change it';
   fileSelected = false;
   fileUploaded = false;
   imageUrl: string;
@@ -68,6 +66,22 @@ export class EditPaintingComponent implements OnInit {
         this.artTypes = data[2].Data;
       }
       console.log(this.paintingData, data);
+      // insert input value into the form input
+      this.uploadForm.setValue({
+        name: this.paintingData.name,
+        artist: this.paintingData.artist,
+        height: this.paintingData.height,
+        width: this.paintingData.width,
+        colorsType: this.paintingData.colorsType,
+        price: '',
+        state: this.paintingData.state,
+        image: this.paintingData.image,
+        active: this.paintingData.active,
+        keyWords: this.paintingData.keyWords,
+        artType: this.paintingData.artType,
+        gallery: '',
+        story: this.paintingData.story
+      });
     });
 
     // Storing Form Data
@@ -88,19 +102,6 @@ export class EditPaintingComponent implements OnInit {
       story: ['', [Validators.required, Validators.minLength(4)]],
     });
 
-    this.uploadForm.patchValue({
-      name: this.paintingData.name,
-      artist: this.paintingData.artist,
-      height: this.paintingData.height,
-      width: this.paintingData.width,
-      colorsType: this.paintingData.colorsType,
-      state: this.paintingData.state,
-      image: this.paintingData.image,
-      active: this.paintingData.active,
-      keyWords: this.paintingData.keyWords,
-      artType: this.paintingData.artType,
-      story: this.paintingData.story
-    });
   }
 
   // Getter method to fast access formControls
@@ -169,14 +170,15 @@ export class EditPaintingComponent implements OnInit {
   }
 
   mySubmit() {
+    console.log(this.imageUrl);
     this.isSubmitted = true;
-    // if (!this.uploadForm.valid) {
-      // this.toaster.error(`Error: All Fields Are Required`);
+    if (!this.uploadForm.valid) {
+      this.toaster.error(`Error: All Fields Are Required`);
       // return false;
-    // } else {
+    } else {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
-      formObj.image = this.imageUrl;
+      // formObj.image = this.imageUrl;
       console.log(formObj);
       // this.photosListService.postAddPainting(formObj).subscribe(
       //     data => {
@@ -192,6 +194,6 @@ export class EditPaintingComponent implements OnInit {
       //       this.router.navigate(['admin/list-paintings']);
       //     }
       // );
-    // }
+    }
   }
 }

@@ -10,6 +10,7 @@ import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class AddPaintingComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-        (data) => {
+        (data: ArtistListResponse) => {
           if (data) {
             this.artists = data.Data;
           }

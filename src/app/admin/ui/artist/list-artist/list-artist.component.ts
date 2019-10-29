@@ -20,7 +20,7 @@ export class ListArtistComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Fetch All Artists
     this.allArtistObservable = this.artist.getAllArtists().subscribe(
-        (data) => {
+        (data: any) => {
             if (data) {
               this.artists = data.Data;
               console.log(data);

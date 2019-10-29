@@ -7,6 +7,7 @@ import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../../UserConfig';
+import {ArtTypeListResponse} from '../../../entity/art-type-list/art-type-list-response';
 
 @Component({
   selector: 'app-home-page',
@@ -60,7 +61,7 @@ export class HomePageComponent implements OnInit {
   // Fetch Art Type
   requestArtTypeList() {
     this.artTpeService.getAllArtType().subscribe(
-        data => {
+        (data: ArtTypeListResponse) => {
           this.artTypeList = data.Data;
           this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
           this.checkLoadingFinished();
