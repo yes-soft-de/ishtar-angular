@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="w-100" *ngIf="paintingDetails != null">
-  <app-painting-details [painting]="paintingDetails" [artist]="artistDetail"></app-painting-details>
+  <app-painting-details [painting]="paintingDetails"  [paintingList]="formattedList" [artist]="artistDetail"></app-painting-details>
 </div>
 
 <app-loading-widget *ngIf="paintingDetails == null"></app-loading-widget>

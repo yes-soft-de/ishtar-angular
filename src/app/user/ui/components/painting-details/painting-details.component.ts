@@ -19,8 +19,11 @@ import { Router } from '@angular/router';
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   @Input() artist: any;
+  @Input() paintingList: PaintingListItem[];
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
+  paintingNumber: number;
+  CurrentPaintingId:number;
 
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
@@ -56,6 +59,7 @@ export class PaintingDetailsComponent implements OnInit {
       if (this.painting[0].artist == null) {
         document.getElementById('painting-artist').style.display = 'none';
       }
+      this.CurrentPaintingId = this.painting.id;
     }
   }
 
@@ -80,6 +84,36 @@ export class PaintingDetailsComponent implements OnInit {
 
   hideFullScreenMode() {
     document.getElementById('full-size-img').classList.remove('active');
+  }
+
+  goBack(){
+    for (let i=0; i < this.paintingList.length; i++ ) {
+      if (this.paintingList[i].id == this.CurrentPaintingId) {
+        this.paintingNumber = i - 1;
+      }
+    }
+    if (this.paintingNumber > 0){
+      this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+      this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+    } else {
+      this.router.navigate(['/painting', this.paintingList[this.paintingList.length -1].id]);
+      this.CurrentPaintingId = this.paintingList[this.paintingList.length -1].id;
+    }
+  }
+
+  goNext(){
+    for (let i=0; i < this.paintingList.length; i++ ) {
+      if (this.paintingList[i].id == this.CurrentPaintingId) {
+        this.paintingNumber = i + 1;
+      }
+    }
+    if (this.paintingNumber < this.paintingList.length - 1){
+      this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+      this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+    } else {
+      this.router.navigate(['/painting', this.paintingList[0].id]);
+      this.CurrentPaintingId = this.paintingList[0].id;
+    }
   }
 
 }
