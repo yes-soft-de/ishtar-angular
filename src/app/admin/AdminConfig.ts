@@ -58,7 +58,8 @@ export class AdminConfig {
 
   // Comments API
   public static commentsAPI             = AdminConfig.sourceAPI + 'comments';
-  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+
+  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
   // public static userProfileAPI = AdminConfig.sourceAPI + 'user';
 
 
