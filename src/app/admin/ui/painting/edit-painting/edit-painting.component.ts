@@ -22,7 +22,7 @@ export class EditPaintingComponent implements OnInit {
   paintingData: Painting;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: Artist, path: string, artType: string}[];
   artTypes: ArtType[];
   artistId: number;
   artTypeId: number;
@@ -66,8 +66,8 @@ export class EditPaintingComponent implements OnInit {
         this.artists = data[1].Data;
         // Fetch User ID Automatically
         data[1].Data.map(artistResponse => {
-          if (artistResponse.name === this.paintingData.artist) {
-            this.artistId = artistResponse.id;
+          if (artistResponse['0'].name === this.paintingData.artist) {
+            this.artistId = artistResponse['0'].id;
           }
         });
       }
@@ -83,7 +83,6 @@ export class EditPaintingComponent implements OnInit {
       console.log(this.paintingData, data);
       // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
       this.uploadForm.patchValue({  // insert input value into the form input
-        id: this.paintingID,
         name: this.paintingData.name,
         artist: this.artistId,
         height: this.paintingData.height,
@@ -103,7 +102,6 @@ export class EditPaintingComponent implements OnInit {
 
     // Storing Form Data
     this.uploadForm = this.formBuilder.group({
-      id: [''],
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       artist: ['', [Validators.required]],
       height: ['', Validators.required],
@@ -200,7 +198,7 @@ export class EditPaintingComponent implements OnInit {
       if (this.imageUrl) {
         formObj.image = this.imageUrl;
       }
-      console.log(formObj);
+      console.log('before update', this.paintingID, formObj);
       this.photosListService.updatePainting(this.paintingID, formObj).subscribe(
           data => {
             this.toaster.success('Painting Updated Successfully');

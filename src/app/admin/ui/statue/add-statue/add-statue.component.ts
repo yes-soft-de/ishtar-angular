@@ -6,10 +6,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {StatueService} from '../../../service/statue/statue.service';
 import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
 
 @Component({
   selector: 'app-add-statue',
@@ -19,11 +17,10 @@ class ImageSnippet {
 export class AddStatueComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: Artist, path: string, artType: string}[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
-  fileUploaded = false;
   imageUrl: string;
   imagePathReady = false;
   submitButtonValue = 'Waiting Uploading Image';

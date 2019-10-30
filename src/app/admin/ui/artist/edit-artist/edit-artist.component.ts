@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ArtistService} from '../../../service/artist/artist.service';
-import {ArtistInterface} from '../../../entity/artist/artist-interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
@@ -9,20 +8,22 @@ import {HttpClient} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {ToastrService} from 'ngx-toastr';
-import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 import {map, mergeMap} from 'rxjs/operators';
-import {ArtistListItem} from '../../../../user/entity/artist-list/artist-list-item';
+import {Artist} from '../../../entity/artist/artist';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-edit-artist',
   templateUrl: './edit-artist.component.html',
-  styleUrls: ['./edit-artist.component.scss']
+  styleUrls: ['./edit-artist.component.scss'],
+  providers: [ DatePipe ]     // Add DatePipe from @angular/common
 })
 export class EditArtistComponent implements OnInit {
   artistId: number;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artistData: ArtistListItem;
+  artistData: {0: Artist, path: string, artType: string};
   artTypes: ArtType[];
   artTypeId: number;
   uploadButtonValue = 'Upload';
@@ -39,6 +40,7 @@ export class EditArtistComponent implements OnInit {
               private artTypeService: ArtTypeService,
               private photoListService: PhotosListService,
               private router: Router,
+              private datePipe: DatePipe,
               private toaster: ToastrService,
               private activatedRoute: ActivatedRoute) {}
 
@@ -64,12 +66,12 @@ export class EditArtistComponent implements OnInit {
     );
     // Subscribe Data After Merge it
     mergeObs.subscribe(
-      (data: {artists: any, artTypes: any}) => {
+      (data: {artists: ArtistListResponse, artTypes: any}) => {
         // fetch all art type
         this.artTypes = data.artTypes.Data;
         // select the artist for this route
         data.artists.Data.map(artistRes => {
-          if (artistRes.id === this.artistId) {
+          if (artistRes['0'].id === this.artistId) {
             this.artistData = artistRes;
           }
         });
@@ -82,19 +84,19 @@ export class EditArtistComponent implements OnInit {
         console.log(this.artistData, data);
         // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
         this.uploadForm.setValue({    // Insert Our artist Data Into Form Fields
-          id:           this.artTypeId,
-          name:         this.artistData.name,
-          nationality:  this.artistData.nationality,
-          residence:    this.artistData.residence,
-          birthDate:    this.artistData.birthDate,
-          Facebook:     this.artistData.Facebook,
-          Instagram:    this.artistData.Instagram,
-          Linkedin:     this.artistData.Linkedin,
-          Twitter:      this.artistData.Twitter,
+          name:         this.artistData['0'].name,
+          nationality:  this.artistData['0'].nationality,
+          residence:    this.artistData['0'].residence,
+          // convert date to yyyy-MM-dd format
+          birthDate:    this.datePipe.transform(new Date(this.artistData['0'].birthDate.timestamp), 'yyyy-MM-dd'),
+          Facebook:     this.artistData['0'].Facebook,
+          Instagram:    this.artistData['0'].Instagram,
+          Linkedin:     this.artistData['0'].Linkedin,
+          Twitter:      this.artistData['0'].Twitter,
           artType:      this.artTypeId,
-          image:        this.artistData.image,
-          details:      this.artistData.details,
-          story:        this.artistData.story
+          image:        this.artistData.path,
+          details:      this.artistData['0'].details,
+          story:        this.artistData['0'].story
         });
       }
     );

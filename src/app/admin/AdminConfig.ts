@@ -1,6 +1,6 @@
 export class AdminConfig {
-  // public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
-  public static sourceAPI               = '/ishtar-backend/public/';
+  public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  // public static sourceAPI               = '/ishtar-backend/public/';
   // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
 
   // Create General Uploading API
@@ -18,7 +18,8 @@ export class AdminConfig {
   // public static allArtistsAPI           = AdminConfig.sourceAPI + 'getArtistsData';
   // public static artistAPI               = AdminConfig.sourceAPI + 'getArtistById';
   public static deleteArtistAPI         = AdminConfig.sourceAPI + 'deleteArtist';
-  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for GET all & POST
+  public static allArtistsAPI           = AdminConfig.sourceAPI + 'artistsdetails';   // This Route FOr GET all artists
+  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for POST
   public static artistAPI               = AdminConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
 
   // Painting API

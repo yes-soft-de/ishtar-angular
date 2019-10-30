@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
@@ -21,7 +20,7 @@ import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-respons
 export class AddPaintingComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: Artist, path: string, artType: string}[];;
   artTypes: ArtType[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';

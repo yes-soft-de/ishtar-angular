@@ -3,15 +3,16 @@ export class Artist {
   public name: string;
   public nationality: string;
   public residence: string;
-  public birthDate: string;
-  public facebook: string;
-  public instagram: string;
-  public linkedin: string;
-  public twitter: string;
+  public birthDate: {
+    'timezone': object,
+    'timestamp': number
+  };
+  public Facebook: string;
+  public Instagram: string;
+  public Linkedin: string;
+  public Twitter: string;
   // tslint:disable-next-line:variable-name
-  public path: string;
   public video: string;
   public details: string;
   public story: string;
-  public artType: string;
 }

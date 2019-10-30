@@ -27,7 +27,7 @@ export class ArtistService {
   // Fetch All Artist
   getAllArtists() {
     return this.httpClient.get(
-        AdminConfig.artistsAPI,
+        AdminConfig.allArtistsAPI,
       {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }

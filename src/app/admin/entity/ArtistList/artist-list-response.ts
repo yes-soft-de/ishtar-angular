@@ -1,5 +1,5 @@
 import {Artist} from '../artist/artist';
 
 export interface ArtistListResponse {
-  Data: Artist[];
+  Data: {0: Artist, path: string, artType: string}[];
 }

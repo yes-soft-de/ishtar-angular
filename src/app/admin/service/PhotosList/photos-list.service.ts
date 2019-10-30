@@ -55,7 +55,7 @@ export class PhotosListService {
   }
 
   // Admin Section - Update Painting
-  updatePainting(paintingId: number, data: Painting) {
+  updatePainting(paintingId: number, data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -63,8 +63,7 @@ export class PhotosListService {
     };
     return this.httpClient.put(
       `${AdminConfig.paintingAPI}/${paintingId}`,
-      JSON.stringify(data),
-      httpOptions
+      JSON.stringify(data)
     ).pipe(catchError(PhotosListService.errorHandler));
   }
 

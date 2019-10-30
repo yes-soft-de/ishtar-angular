@@ -78,7 +78,7 @@
                         (change)="changeArtist($event)"
                         [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
                     <option value="">Select The Artist For This Painting</option>
-                    <option value="{{artist.id}}" *ngFor="let artist of artists" [selected]="paintingData?.artist == artist.name">{{artist.name}}</option>
+                    <option value="{{artist['0'].id}}" *ngFor="let artist of artists" [selected]="paintingData?.artist == artist['0'].name">{{artist['0'].name}}</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
             </div>
