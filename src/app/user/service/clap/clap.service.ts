@@ -3,13 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {UserInfo} from '../../entity/user/user-info';
 import {Observable, Subject} from 'rxjs';
 import {UserProfileService} from '../client-profile/user-profile.service';
-import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material';
 import {UserConfig} from '../../UserConfig';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {CreateClapRequest} from '../../entity/clap/create-clap-request';
-import {GetClapRequest} from '../../entity/clap/get-clap-request';
-import {GetClapResponse} from '../../entity/clap/get-clap-response';
 import {CreateClapResponse} from '../../entity/clap/create-clap-response';
 
 @Injectable({
@@ -77,35 +74,14 @@ export class ClapService {
             console.log('Assigning User');
             this.userInfo = user.Data;
             this.getClientClap(this.userInfo.id, parentType, rowId);
-            // this.requestClapStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
       this.getClientClap(this.userInfo.id, parentType, rowId);
-      // this.requestClapStatus(entityId, entityType);
     }
   }
-
-  // Then Ask For Love Interaction Details
-  // private requestClapStatus(entityId, entityType) {
-  //   const request: GetClapRequest = {
-  //     entity: entityType,
-  //     id: entityId,
-  //     client: this.userInfo.id
-  //   };
-  //   this.httpClient.post<GetClapResponse>(`${UserConfig.getClapAPI}`, JSON.stringify(request)).subscribe(
-  //     res => {
-  //       if (res.Data.length > 0 && res.Data[0].value) {
-  //         this.statusSubject.next(res.Data[0].value);
-  //       }
-  //     },
-  //     error => {
-  //       console.log('TD-Clap Not Request : ', error);
-  //       }
-  //   );
-  // }
 
   public postClap(entityId, entityType, clapValue) {
     if (!this.checkUserDetailsExists()) {
