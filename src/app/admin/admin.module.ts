@@ -25,6 +25,7 @@ import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.co
 import { ListStatueComponent } from './ui/statue/list-statue/list-statue.component';
 import { AddStatueComponent } from './ui/statue/add-statue/add-statue.component';
 import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.component';
+import { ListCommentComponent } from './ui/comments/list-comment/list-comment.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.compone
     ListAuctionsComponent,
     ListStatueComponent,
     AddStatueComponent,
-    EditStatueComponent
+    EditStatueComponent,
+    ListCommentComponent
    ],
   exports: [
     AdminComponent,

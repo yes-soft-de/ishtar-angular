@@ -9,9 +9,9 @@ import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {ToastrService} from 'ngx-toastr';
 import {map, mergeMap} from 'rxjs/operators';
-import {Artist} from '../../../entity/artist/artist';
-import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
 import {DatePipe} from '@angular/common';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
 
 @Component({
   selector: 'app-edit-artist',
@@ -23,7 +23,7 @@ export class EditArtistComponent implements OnInit {
   artistId: number;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artistData: {0: Artist, path: string, artType: string};
+  artistData: {0: ArtistInterface, path: string, artType: string};
   artTypes: ArtType[];
   artTypeId: number;
   uploadButtonValue = 'Upload';

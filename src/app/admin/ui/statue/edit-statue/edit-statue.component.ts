@@ -81,7 +81,6 @@ export class EditStatueComponent implements OnInit {
         It is recommended to use patchValue therefore
        */
       this.uploadForm.patchValue({  // Insert Our Statues Data Into Form Fields
-        id:           this.statueId,
         name:         this.statuesData['0'].name,
         artist:       this.artistId,
         height:       this.statuesData['0'].height,

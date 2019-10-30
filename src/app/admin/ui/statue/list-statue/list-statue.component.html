@@ -2,10 +2,10 @@
   <div *ngIf="statues.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Statues Page</h1>
-<!--      <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">-->
-<!--        <i class="fa fa-plus"></i>-->
-<!--        Add New Statue-->
-<!--      </a>-->
+      <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
+        <i class="fa fa-plus"></i>
+        Add New Statue
+      </a>
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">
@@ -58,7 +58,7 @@
             <td>{{statue["0"].updatedDate}}</td>
             <td>{{statue["0"].updatedBy}}</td>
             <td>
-              <a routerLink="/admin/edit-statue/{{statue['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+<!--              <a routerLink="/admin/edit-statue/{{statue['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>-->
               <a (click)="delete(statue['0'].id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
               <a href="#" *ngIf="!statue['0'].active" class="btn btn-primary btn-sm mr-1">Active</a>
             </td>

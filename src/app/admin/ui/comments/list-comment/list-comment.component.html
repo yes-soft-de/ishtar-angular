@@ -1,0 +1,43 @@
+<div *ngIf="comments != null">
+  <div *ngIf="comments.length !== 0">
+    <div class="container-fluid">
+      <h1 class="text-center my-4">Manage Comments Page</h1>
+      <div class="table-responsive text-center">
+        <table class="table table-bordered main-table">
+          <tr class="bg-dark text-white">
+            <td>#ID</td>
+            <td>Comment By</td>
+            <td>Comment Section</td>
+            <td>Comment For</td>
+            <td>Body</td>
+            <td>Comment Date</td>
+            <td>last Edit</td>
+            <td>Spacial</td>
+            <td>Control</td>
+          </tr>
+          <tr *ngFor="let comment of comments">
+            <td>{{comment.id}}</td>
+            <td>{{comment.userName}}</td>
+            <td>{{comment.entity}}</td>
+            <td>{{comment.row}}</td>
+            <td>{{comment.body}}</td>
+            <td>{{comment.date.timestamp | date: 'yyyy-MM-dd'}}</td>
+            <td>{{comment.lastEdit}}</td>
+            <td>{{comment.spacial}}</td>
+            <td>
+              <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="comments.length === 0">
+    <div class="container">
+      <div class="alert alert-primary text-center mt-5">There Isn't Comments To Show</div>\
+    </div>
+  </div>
+</div>
+<div *ngIf="comments == null">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>

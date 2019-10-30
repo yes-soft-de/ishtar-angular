@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {Subscription} from 'rxjs';
 import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 @Component({
   selector: 'app-list-artist',
@@ -11,7 +11,7 @@ import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-respons
   styleUrls: ['./list-artist.component.scss']
 })
 export class ListArtistComponent implements OnInit, OnDestroy {
-  public artists: {0: Artist, path: string, artType: string}[];
+  public artists: {0: ArtistInterface, path: string, artType: string}[];
   allArtistObservable: Subscription;
 
   constructor(private router: Router,

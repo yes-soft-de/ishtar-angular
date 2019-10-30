@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 
 @Component({
@@ -20,12 +21,11 @@ import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-respons
 export class AddPaintingComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: {0: Artist, path: string, artType: string}[];;
+  artists: {0: ArtistInterface, path: string, artType: string}[];
   artTypes: ArtType[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
-  fileUploaded = false;
   imageUrl: string;
   imagePathReady = false;
   submitButtonValue = 'Waiting Uploading Image';

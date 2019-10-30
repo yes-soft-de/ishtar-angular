@@ -6,7 +6,7 @@
             <div class="col-10">
                 <input class="form-control"
                        [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
-               (uploadForm.get('name').touched || uploadForm.get('name').dirty)}"
+                       (uploadForm.get('name').touched || uploadForm.get('name').dirty)}"
                        type="text"
                        name="name"
                        formControlName="name"
@@ -34,7 +34,7 @@
             <div class="col-10">
                 <input class="form-control"
                        [ngClass]="{'is-invalid': uploadForm.get('width').errors &&
-               (uploadForm.get('width').touched || uploadForm.get('width').dirty)}"
+                       (uploadForm.get('width').touched || uploadForm.get('width').dirty)}"
                        type="number"
                        name="width"
                        formControlName="width"
@@ -47,7 +47,7 @@
             <div class="col-10">
                 <input class="form-control"
                        [ngClass]="{'is-invalid': uploadForm.get('colorsType').errors &&
-               (uploadForm.get('colorsType').touched || uploadForm.get('colorsType').dirty)}"
+                       (uploadForm.get('colorsType').touched || uploadForm.get('colorsType').dirty)}"
                        type="text"
                        name="colorsType"
                        formControlName="colorsType"
@@ -78,7 +78,7 @@
                         (change)="changeArtist($event)"
                         [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
                     <option value="">Select The Artist For This Painting</option>
-                    <option value="{{artist['0'].id}}" *ngFor="let artist of artists" [selected]="paintingData?.artist == artist['0'].name">{{artist['0'].name}}</option>
+                    <option value="{{artist['0'].id}}" *ngFor="let artist of artists" [selected]="paintingData['0']?.artist == artist['0'].name">{{artist['0'].name}}</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
             </div>
@@ -106,8 +106,8 @@
                         (change)="changeState($event)"
                         [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('state').errors}">
                     <option value="">Select Painting State</option>
-                    <option value="0" [selected]="paintingData?.state == false">New</option>
-                    <option value="1" [selected]="paintingData?.state == true">Like New</option>
+                    <option value="0" [selected]="paintingData['0']?.state == false">New</option>
+                    <option value="1" [selected]="paintingData['0']?.state == true">Like New</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('state').errors?.required">State Field Is Required</span>
             </div>
@@ -121,7 +121,7 @@
                         (change)="changeArtType($event)"
                         [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
                     <option value="">Select Art Type For This Painting</option>
-                    <option value="{{artType.id}}" *ngFor="let artType of artTypes" [selected]="paintingData?.artType == artType.name">{{artType.name}}</option>
+                    <option value="{{artType.id}}" *ngFor="let artType of artTypes" [selected]="paintingData['1'].artType == artType.name">{{artType.name}}</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
             </div>
@@ -151,8 +151,8 @@
                         (change)="changeActive($event)"
                         [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('active').errors}">
                     <option value="">Select Active State</option>
-                    <option value="0" [selected]="paintingData?.active == false">Not Active</option>
-                    <option value="1" [selected]="paintingData?.active == true">Active</option>
+                    <option value="0" [selected]="paintingData['0']?.active == false">Not Active</option>
+                    <option value="1" [selected]="paintingData['0']?.active == true">Active</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('active').errors?.required">Active Field Is Required</span>
             </div>

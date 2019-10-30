@@ -1,5 +1,5 @@
-import {Artist} from '../artist/artist';
+import {ArtistInterface} from '../artist/artist-interface';
 
 export interface ArtistListResponse {
-  Data: {0: Artist, path: string, artType: string}[];
+  Data: {0: ArtistInterface, path: string, artType: string}[];
 }

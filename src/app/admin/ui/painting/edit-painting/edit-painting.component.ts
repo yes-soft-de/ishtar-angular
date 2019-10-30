@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {forkJoin} from 'rxjs';
 import {Painting} from '../../../entity/painting/painting';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class EditPaintingComponent implements OnInit {
   paintingData: Painting;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: {0: Artist, path: string, artType: string}[];
+  artists: {0: ArtistInterface, path: string, artType: string}[];
   artTypes: ArtType[];
   artistId: number;
   artTypeId: number;
@@ -48,25 +49,27 @@ export class EditPaintingComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
       this.paintingID = Number(param.get('id'));
     });
+    const paintingsInfoObs = this.photosListService.getPaintingInfo(this.paintingID); // Fetch Painting Data
     const paintingsObs = this.photosListService.getAllPainting(); // Fetch Painting Data
     const artistsObs = this.artistService.getAllArtists();      // Fetch All Artists
     const artTypeObs = this.artTypeService.getAllArtType();     // Fetch All Art Type
-    const combinedObs = forkJoin(paintingsObs, artistsObs, artTypeObs);
+    const combinedObs = forkJoin(paintingsInfoObs, artistsObs, artTypeObs);
     combinedObs.subscribe((data: any) => {
       // painting response
       if (data[0]) {
-        data[0].Data.map(paintingResponse => {
-          if (paintingResponse.id === this.paintingID) {
-            this.paintingData = paintingResponse;
-          }
-        });
+        this.paintingData = data[0].Data;
+        // data[0].Data.map(paintingResponse => {
+        //   if (paintingResponse.id === this.paintingID) {
+        //     this.paintingData = paintingResponse;
+        //   }
+        // });
       }
       // artist response
       if (data[1]) {
         this.artists = data[1].Data;
         // Fetch User ID Automatically
         data[1].Data.map(artistResponse => {
-          if (artistResponse['0'].name === this.paintingData.artist) {
+          if (artistResponse['0'].name === this.paintingData['0'].artist) {
             this.artistId = artistResponse['0'].id;
           }
         });
@@ -75,7 +78,7 @@ export class EditPaintingComponent implements OnInit {
       if (data[2]) {
         this.artTypes = data[2].Data;
         data[2].Data.map(artTypeResponse => {
-          if (artTypeResponse.name === this.paintingData.artType) {
+          if (artTypeResponse.name === this.paintingData['1'].artType) {
             this.artTypeId = artTypeResponse.id;
           }
         });
@@ -83,21 +86,20 @@ export class EditPaintingComponent implements OnInit {
       console.log(this.paintingData, data);
       // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
       this.uploadForm.patchValue({  // insert input value into the form input
-        name: this.paintingData.name,
+        name: this.paintingData['0'].name,
         artist: this.artistId,
-        height: this.paintingData.height,
-        width: this.paintingData.width,
-        colorsType: this.paintingData.colorsType,
-        price: '',
-        state: this.paintingData.state,
-        image: this.paintingData.image,
-        active: this.paintingData.active,
-        keyWords: this.paintingData.keyWords,
+        height: this.paintingData['0'].height,
+        width: this.paintingData['0'].width,
+        colorsType: this.paintingData['0'].colorsType,
+        price: this.paintingData['0'].price,
+        state: this.paintingData['0'].state,
+        image: this.paintingData['0'].image,
+        active: this.paintingData['0'].active,
+        keyWords: this.paintingData['0'].keyWords,
         artType: this.artTypeId,
         gallery: '',
-        story: this.paintingData.story
+        story: this.paintingData['0'].story
       });
-      // console.log(this.uploadForm.get('artist').value);
     });
 
     // Storing Form Data
