@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
 import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
+import {ArtTypeResponse} from '../../../../admin/entity/art-type/art-type-response';
 
 @Component({
   selector: 'app-art-type-list-page',
@@ -13,7 +14,7 @@ export class ArtTypeListPageComponent implements OnInit {
 
   ngOnInit() {
     this.artTpeService.getAllArtType().subscribe(
-      data => {
+        (data: ArtTypeResponse) => {
         this.artTypeList = data.Data;
       }
     );

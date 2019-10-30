@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {PaintingFullList} from '../../entity/painting-full-list/painting-full-list';
 import {AdminConfig} from '../../AdminConfig';
 import {Observable} from 'rxjs';
@@ -32,32 +32,24 @@ export class PhotosListService {
       })
     };
     // This Should Take the List From the API
-    return this.httpClient.post<PaintingInterface>(
-      AdminConfig.paintingAPI,
-      JSON.stringify({painting: paintingId}),
-      httpOptions
+    return this.httpClient.get(
+      `${AdminConfig.paintingAPI}/${paintingId}`
     ).pipe(catchError(PhotosListService.errorHandler));
   }
 
-
-  getPhotosList() {
-    // This Should Take the List From the API
-    return this.httpClient.get<PaintingFullList>(
-      `${AdminConfig.fullImagesListAPI}`, {responseType: 'json'}
-    );
-  }
 
   // Get All Painting List
   getAllPainting() {
     return this.httpClient.get<PaintingListResponse>(
-      `${AdminConfig.allPaintingsAPI}`, {responseType: 'json'}
+      `${AdminConfig.paintingsAPI}`, {responseType: 'json'}
     ).pipe(catchError(PhotosListService.errorHandler));
   }
+
 
   // Admin Section - POST Add New Painting
   postAddPainting(paintingData) {
     return this.httpClient.post<Painting>(
-      AdminConfig.addPaintingAPI,
+        `${AdminConfig.paintingsAPI}`,
       JSON.stringify(paintingData)
     );
   }
@@ -69,8 +61,8 @@ export class PhotosListService {
         'Content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<Painting>(
-      `${AdminConfig.editPaintingAPI}/${paintingId}`,
+    return this.httpClient.put(
+      `${AdminConfig.paintingAPI}/${paintingId}`,
       JSON.stringify(data),
       httpOptions
     ).pipe(catchError(PhotosListService.errorHandler));
@@ -78,9 +70,8 @@ export class PhotosListService {
 
   // Admin Section - Delete Painting
   deletePainting(paintingId: number) {
-    return this.httpClient.post(
-      AdminConfig.deletePaintingAPI,
-      JSON.stringify({id: paintingId}),
+    return this.httpClient.delete(
+      `${AdminConfig.deletePaintingAPI}/${paintingId}`,
         {responseType: 'json'}
     ).pipe(catchError(PhotosListService.errorHandler));
   }

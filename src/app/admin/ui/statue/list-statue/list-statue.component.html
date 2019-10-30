@@ -17,7 +17,7 @@
             <td>Width</td>
             <td>Weight</td>
             <td>Length</td>
-<!--            <td>Price</td>-->
+            <td>Price</td>
             <td>State</td>
             <td>Active</td>
             <td>KeyWords</td>
@@ -35,32 +35,32 @@
             <td>Control</td>
           </tr>
           <tr *ngFor="let statue of statues">
-            <td>{{statue.id}}</td>
-            <td>{{statue.name}}</td>
-            <td><img src="{{statue.image}}" alt="{{statue.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
-            <td>{{statue.artist.name}}</td>
-            <td>{{statue.height}}</td>
-            <td>{{statue.width}}</td>
-            <td>{{statue.weight}}</td>
-            <td>{{statue.length}}</td>
-<!--            <td>{{statue.price}} $</td>-->
-            <td>{{statue.state ? 'Sold' : 'available'}}</td>
-            <td>{{statue.active}}</td>
-            <td>{{statue.keyWord}}</td>
-            <td>{{statue.material}}</td>
-            <td>{{statue.style}}</td>
-            <td>{{statue.period}}</td>
-            <td>{{statue.mediums}}</td>
-            <td>{{statue.features}}</td>
-            <td colspan="2">{{statue.description}}</td>
-            <td>{{statue.createDate}}</td>
-            <td>{{statue.createdBy}}</td>
-            <td>{{statue.updatedDate}}</td>
-            <td>{{statue.updatedBy}}</td>
+            <td>{{statue["0"].id}}</td>
+            <td>{{statue["0"].name}}</td>
+            <td><img src="{{statue['0'].image}}" alt="{{statue['0'].name}} Image" class="img-fluid img-thumbnail img-custom"></td>
+            <td>{{statue["0"].artist.name}}</td>
+            <td>{{statue["0"].height}}</td>
+            <td>{{statue["0"].width}}</td>
+            <td>{{statue["0"].weight}}</td>
+            <td>{{statue["0"].length}}</td>
+            <td>{{statue.price}} $</td>
+            <td>{{statue["0"].state ? 'Sold' : 'available'}}</td>
+            <td>{{statue["0"].active}}</td>
+            <td>{{statue["0"].keyWord}}</td>
+            <td>{{statue["0"].material}}</td>
+            <td>{{statue["0"].style}}</td>
+            <td>{{statue["0"].period}}</td>
+            <td>{{statue["0"].mediums}}</td>
+            <td>{{statue["0"].features}}</td>
+            <td colspan="2">{{statue["0"].description}}</td>
+            <td>{{statue["0"].createDate}}</td>
+            <td>{{statue["0"].createdBy}}</td>
+            <td>{{statue["0"].updatedDate}}</td>
+            <td>{{statue["0"].updatedBy}}</td>
             <td>
-              <a routerLink="/admin/edit-statue" class="btn btn-success btn-sm mr-1">Edit</a>
-              <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
-              <a href="#" *ngIf="!statue.active" class="btn btn-primary btn-sm mr-1">Active</a>
+              <a routerLink="/admin/edit-statue/{{statue['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+              <a (click)="delete(statue['0'].id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+              <a href="#" *ngIf="!statue['0'].active" class="btn btn-primary btn-sm mr-1">Active</a>
             </td>
           </tr>
         </table>

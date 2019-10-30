@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './list-artist.component.html',
   styleUrls: ['./list-artist.component.scss']
 })
-export class ListArtistComponent implements OnInit, OnDestroy{
+export class ListArtistComponent implements OnInit, OnDestroy {
   public artists: Artist[];
   allArtistObservable: Subscription;
 
@@ -20,7 +20,7 @@ export class ListArtistComponent implements OnInit, OnDestroy{
   ngOnInit() {
     // Fetch All Artists
     this.allArtistObservable = this.artist.getAllArtists().subscribe(
-        (data) => {
+        (data: any) => {
             if (data) {
               this.artists = data.Data;
               console.log(data);

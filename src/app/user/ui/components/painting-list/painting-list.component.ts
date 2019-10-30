@@ -4,6 +4,7 @@ import {IshtarInteractionService} from '../../../service/ishtar-interaction/isht
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 import {LoveRequest} from '../../../entity/love-interaction/love-request';
+import { all } from 'q';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -121,6 +122,11 @@ export class PaintingListComponent implements OnInit {
       }
       this.paintingList = paintingList;
     }
+    if (this.paintingList.length > 12) {
+      document.getElementById('my-pagination').style.display = "block";
+     } else {
+       document.getElementById('my-pagination').style.display = "none";
+     }
   }
 
 
@@ -130,6 +136,11 @@ export class PaintingListComponent implements OnInit {
       painting.artist === name ? paintingList.push(painting) : console.log(painting.artist === name);
     }
     this.paintingList = paintingList;
+    if (this.paintingList.length > 12) {
+      document.getElementById('my-pagination').style.display = "block";
+     } else {
+       document.getElementById('my-pagination').style.display = "none";
+     }
   }
 
   viewImage(id: number) {

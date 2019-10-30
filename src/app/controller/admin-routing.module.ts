@@ -15,6 +15,8 @@ import {AddAuctionComponent} from '../admin/ui/auction/add-auction/add-auction.c
 import {ListAuctionsComponent} from '../admin/ui/auction/list-auctions/list-auctions.component';
 import {ListStatueComponent} from '../admin/ui/statue/list-statue/list-statue.component';
 import {AddStatueComponent} from '../admin/ui/statue/add-statue/add-statue.component';
+import {EditPaintingComponent} from '../admin/ui/painting/edit-painting/edit-painting.component';
+import {EditStatueComponent} from '../admin/ui/statue/edit-statue/edit-statue.component';
 
 
 
@@ -29,8 +31,10 @@ const routes: Routes = [
       {path: 'edit-artist/:id', component: EditArtistComponent},
       {path: 'add-painting', component: AddPaintingComponent},
       {path: 'list-paintings', component: ListPaintingComponent},
+      {path: 'edit-painting/:id', component: EditPaintingComponent},
       {path: 'list-statues', component: ListStatueComponent},
       {path: 'add-statue', component: AddStatueComponent},
+      {path: 'edit-statue/:id', component: EditStatueComponent},
       {path: 'list-clients', component: ListClientComponent},
       {path: 'add-client', component: AddClientComponent},
       {path: 'edit-client', component: EditClientComponent},

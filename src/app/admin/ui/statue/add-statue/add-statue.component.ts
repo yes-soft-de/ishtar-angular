@@ -5,6 +5,7 @@ import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {StatueService} from '../../../service/statue/statue.service';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -38,7 +39,7 @@ export class AddStatueComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-      (data) => {
+      (data: ArtistListResponse) => {
         if (data) {
           console.log('artist in admin:', data);
           this.artists = data.Data;

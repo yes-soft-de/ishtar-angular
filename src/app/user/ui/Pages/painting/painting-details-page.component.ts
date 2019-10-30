@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {PaintingDetailsService} from '../../../service/painting-details/painting-details.service';
+import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {ToastrService} from 'ngx-toastr';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
@@ -15,10 +17,12 @@ export class PaintingDetailsPageComponent implements OnInit {
   paintingDetails: PaintingDetails;
   artistDetail: any;
   navigationSubscription;
+  formattedList: PaintingListItem[];
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
               private paintingDetailsService: PaintingDetailsService,
+              private paintingService: PaintingListService,
               private artistListService: ArtistListService,
               private artTypeService: UserArtTypeService,
               private router: Router) {
@@ -34,6 +38,17 @@ export class PaintingDetailsPageComponent implements OnInit {
 
   ngOnInit() {
     this.getPaintingDetails();
+    this.getAllPaintings();
+  }
+
+  private getAllPaintings() {
+    this.paintingService.requestPaintingList().subscribe(
+      data => {
+        this.formattedList = data.Data;
+      }, error1 => {
+        console.log(error1);
+      }
+    );
   }
 
   getPaintingDetails() {

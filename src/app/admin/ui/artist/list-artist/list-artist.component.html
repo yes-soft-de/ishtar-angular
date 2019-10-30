@@ -39,7 +39,7 @@
                     <td>{{artist.twitter}}</td>
                     <td>{{artist.linkedin}}</td>
                     <td>
-                        <a [routerLink]="['/admin/edit-name', artist.id]" class="btn btn-success btn-sm mr-1">Edit</a>
+                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
                         <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
                     </td>
                 </tr>

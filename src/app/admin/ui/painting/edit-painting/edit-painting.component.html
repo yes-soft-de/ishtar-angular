@@ -1,97 +1,197 @@
-<div class="container">
-    <form enctype="multipart/form-data" class="col-md-6 my-5 mx-auto" #editPaintingForm="ngForm" (ngSubmit)="myEditSubmit(editPaintingForm)">
-        <h2 class="h1 ml-5 text-center">Add New Painting</h2>
+<div class="container" *ngIf="paintingData != null">
+    <form [formGroup]="uploadForm" class="col-md-7 my-5 mx-auto" (ngSubmit)="mySubmit()">
+        <h2 class="h1 ml-5 text-center">Edit New Painting</h2>
         <div class="form-group row">
             <label class="col-2 col-form-label">Name</label>
             <div class="col-10">
-                <input class="form-control" type="text" name="name" [(ngModel)]="paintingData.name" placeholder="Type Painting Name">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
+               (uploadForm.get('name').touched || uploadForm.get('name').dirty)}"
+                       type="text"
+                       name="name"
+                       formControlName="name"
+                       placeholder="Type Painting Name">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.required">Name Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.minlength">Name Must Be Greater Than 2</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than 45</span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label">Dimension</label>
+            <label class="col-2 col-form-label">Height</label>
             <div class="col-10">
-                <input class="form-control" type="text" name="deminsions" [(ngModel)]="paintingData.deminsions" placeholder="Type The Dimension">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('height').errors &&
+                       (uploadForm.get('height').touched || uploadForm.get('height').dirty)}"
+                       type="number"
+                       name="height"
+                       formControlName="height"
+                       placeholder="Type The Painting Height">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('height').errors?.required">Height Field Is Required</span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label">Date</label>
+            <label class="col-2 col-form-label">Width</label>
             <div class="col-10">
-                <input class="form-control" type="date" name="addingDate" [(ngModel)]="paintingData.addingDate" placeholder="Type The Date">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('width').errors &&
+               (uploadForm.get('width').touched || uploadForm.get('width').dirty)}"
+                       type="number"
+                       name="width"
+                       formControlName="width"
+                       placeholder="Type The Painting Width">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('width').errors?.required">Width Field Is Required</span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">C-Type</label>
             <div class="col-10">
-                <input class="form-control" type="text" name="colorsType" [(ngModel)]="paintingData.colorsType" placeholder="Type The Colors Type">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('colorsType').errors &&
+               (uploadForm.get('colorsType').touched || uploadForm.get('colorsType').dirty)}"
+                       type="text"
+                       name="colorsType"
+                       formControlName="colorsType"
+                       placeholder="Type The Colors Type">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('colorsType').errors?.required">Colors Type Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('colorsType').errors?.minlength">Colors Type Must Be Greater Than 2</span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Price</label>
             <div class="col-10">
-                <input class="form-control" type="number" name="price" [(ngModel)]="paintingData.price" placeholder="Type The Price">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('price').errors &&
+                       (uploadForm.get('price').touched || uploadForm.get('price').dirty)}"
+                       type="number"
+                       name="price"
+                       formControlName="price"
+                       placeholder="Type The Price">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('price').errors?.required">Price Field Is Required</span>
             </div>
         </div>
-        <!--      <div class="form-group row">-->
-        <!--       <label class="col-2 col-form-label">Image</label>-->
-        <!--       <div class="col-10 input-group mb-3">-->
-        <!--         <div class="custom-file">-->
-        <!--           <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">-->
-        <!--           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>-->
-        <!--         </div>-->
-        <!--       </div>-->
-        <!--     </div>-->
-        <!-- <div class="form-group row">
-         <label class="col-2 col-form-label">image</label>
-         <div class="col-10">
-           <input class="form-control" type="text" name="image" ngModel placeholder="Type image Link">
-         </div>
-       </div> -->
         <div class="form-group row">
             <label class="col-2 col-form-label">Artist</label>
             <div class="col-10">
-                <select class="form-control" name="artist" [(ngModel)]="paintingData.artist">
+                <select class="form-control"
+                        name="artist"
+                        formControlName="artist"
+                        (change)="changeArtist($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
                     <option value="">Select The Artist For This Painting</option>
-                    <option value="1">Ahmad</option>
-                    <option value="2">Ali</option>
-                    <option value="3">Rami</option>
-                    <option value="4">sami</option>
+                    <option value="{{artist.id}}" *ngFor="let artist of artists" [selected]="paintingData?.artist == artist.name">{{artist.name}}</option>
                 </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Key Words</label>
+            <div class="col-10">
+                <input class="form-control"
+                       [ngClass]="{'is-invalid': uploadForm.get('keyWords').errors &&
+                       (uploadForm.get('keyWords').touched || uploadForm.get('keyWords').dirty)}"
+                       type="text"
+                       name="keyWords"
+                       formControlName="keyWords"
+                       placeholder="Type The Key Word">
+                <span class="invalid-feedback" *ngIf="uploadForm.get('keyWords').errors?.required">Key Words Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('keyWords').errors?.minlength">Key Words Must Be Greater Than 2</span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">State</label>
             <div class="col-10">
-                <select class="form-control" name="state" [(ngModel)]="paintingData.state">
+                <select class="form-control"
+                        name="state"
+                        formControlName="state"
+                        (change)="changeState($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('state').errors}">
                     <option value="">Select Painting State</option>
-                    <option value="1">New</option>
-                    <option value="2">Like New</option>
-                    <option value="3">Used</option>
-                    <option value="4">Old</option>
+                    <option value="0" [selected]="paintingData?.state == false">New</option>
+                    <option value="1" [selected]="paintingData?.state == true">Like New</option>
                 </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('state').errors?.required">State Field Is Required</span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Art Type</label>
             <div class="col-10">
-                <select class="form-control" name="artType" [(ngModel)]="paintingData.artType">
+                <select class="form-control"
+                        name="artType"
+                        formControlName="artType"
+                        (change)="changeArtType($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
                     <option value="">Select Art Type For This Painting</option>
-                    <option value="1">New</option>
-                    <option value="2">Like New</option>
-                    <option value="3">Used</option>
-                    <option value="4">Old</option>
+                    <option value="{{artType.id}}" *ngFor="let artType of artTypes" [selected]="paintingData?.artType == artType.name">{{artType.name}}</option>
                 </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-2 col-form-label">Story</label>
+            <label class="col-2 col-form-label">Gallery</label>
             <div class="col-10">
-                <textarea class="form-control" name="story" [(ngModel)]="paintingData.story" placeholder="Type The Story"></textarea>
+                <select class="form-control"
+                        name="gallery"
+                        formControlName="gallery"
+                        (change)="changeGallery($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('gallery').errors}">
+                    <option value="">Select Painting Gallery</option>
+                    <option value="1">New</option>
+                    <option value="2">Like New</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('gallery').errors?.required">Gallery Field Is Required</span>
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Active</label>
+            <div class="col-10">
+                <select class="form-control"
+                        name="active"
+                        formControlName="active"
+                        (change)="changeActive($event)"
+                        [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('active').errors}">
+                    <option value="">Select Active State</option>
+                    <option value="0" [selected]="paintingData?.active == false">Not Active</option>
+                    <option value="1" [selected]="paintingData?.active == true">Active</option>
+                </select>
+                <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('active').errors?.required">Active Field Is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Upload</label>
+            <div class="input-group col-10">
+                <div class="custom-file">
+                    <input #imageInput type="file" accept="image/*" class="custom-file-input" id="file-input"
+                           (change)="updateName(imageInput)">
+                    <input type="hidden" class="form-control" name="image" formControlName="image">
+                    <label class="custom-file-label" for="file-input">{{imageName}}</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" (click)="processFile(imageInput)" [disabled]=!fileSelected>
+                        {{uploadButtonValue}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row w">
+            <label class="col-2 col-form-label">Story</label>
+            <div class="col-10">
+            <textarea class="form-control"
+                  [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
+                  (uploadForm.get('story').touched || uploadForm.get('story').dirty)}"
+                  name="story"
+                  formControlName="story"
+                  placeholder="Type The Story"></textarea>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
+                <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than 4</span>
+            </div>
+        </div>
 
         <div class="form-group offset-md-2 mt-3">
-            <input class="btn btn-primary btn-block" type="submit" value="Add New painting">
+            <input class="btn btn-primary btn-block" type="submit" value="{{submitButtonValue}}" [disabled]="uploadForm.invalid || !imagePathReady">
         </div>
     </form>
+</div>
+<div *ngIf="paintingData == null">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>

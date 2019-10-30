@@ -7,7 +7,7 @@ import {PaintingListResponse} from '../../entity/PaintingList/painting-list-resp
 import {AuctionListResponse} from '../../entity/auction/auction-list-response';
 import {AuctionService} from '../../service/auction/auction.service';
 import {AuctionList} from '../../entity/auction/auction-list';
-import {Subscription} from 'rxjs';
+import {forkJoin, Subscription} from 'rxjs';
 import {StatuesResponse} from '../../entity/statue/statues.response';
 import {StatueService} from '../../service/statue/statue.service';
 import {StatueInterface} from '../../entity/statue/statue.interface';
@@ -22,15 +22,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   artists: Artist[];
   paintings: Painting[];
   auctions: AuctionList[];
-  statues: StatueInterface[];
+  statues: {0: StatueInterface, price: string}[];
   latestArtistNumber = 5;
   latestPaintingNumber = 5;
   latestStatueNumber = 5;
   latestAuctionNumber = 5;
-  allArtistsObservable: Subscription;
-  allPaintingsObservable: Subscription;
-  allAuctionObservable: Subscription;
-  allStatuesObservable: Subscription;
+  combinedObservable: Subscription;
 
   constructor(private artist: ArtistService,
               private photosListService: PhotosListService,
@@ -38,42 +35,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
               private statueService: StatueService) { }
 
   ngOnInit() {
-    // Fetch All Artists Number
-    this.allArtistsObservable = this.artist.getAllArtists().subscribe(
-      (data) => {
-        this.artists = data.Data;
-      }, error => {
-        console.log(error);
-      });
-    // Fetch All Paintings
-    this.allPaintingsObservable = this.photosListService.getAllPainting().subscribe(
-      (res: PaintingListResponse) => {
-      this.paintings = res.Data;
-    }, error => {
-      console.log(error);
+    const allArtistObs    = this.artist.getAllArtists();              // fetch all artists
+    const allPaintingObs  = this.photosListService.getAllPainting();  // fetch all paintings
+    const allStatueObs    = this.statueService.getAllStatues();       // fetch all statues
+    const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs);  // combined all
+    this.combinedObservable = combinedObs.subscribe((data: any) => {
+      this.artists = data[0].Data;
+      this.paintings = data[1].Data;
+      this.statues = data[2].Data;
     });
-    // Fetch All Auction
-    this.allAuctionObservable = this.auctionService.getAllAuctions().subscribe(
-        (data: AuctionListResponse) => {
-          this.auctions = data.Data;
-        }, error => {
-          console.log(error);
-        });
-    // Fetch All Statues
-    this.allStatuesObservable = this.statueService.getAllStatues().subscribe(
-        (data: StatuesResponse) => {
-          this.statues = data.Data;
-        }, error => {
-          console.log(error);
-        }
-    );
   }
 
   ngOnDestroy() {
-    this.allArtistsObservable.unsubscribe();
-    this.allPaintingsObservable.unsubscribe();
-    this.allAuctionObservable.unsubscribe();
-    this.allStatuesObservable.unsubscribe();
+    this.combinedObservable.unsubscribe();
   }
 
 }

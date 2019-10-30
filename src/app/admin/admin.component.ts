@@ -13,8 +13,7 @@ import {UserProfileService} from '../user/service/client-profile/user-profile.se
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private userConnector: UserProfileService, private toaster: ToastrService) {
-  }
+  constructor(private router: Router, private userConnector: UserProfileService, private toaster: ToastrService) { }
 
   ngOnInit() {
     this.userConnector.requestUserDetails().subscribe(
