@@ -12,6 +12,7 @@ export class ImageListService {
   constructor(private httpClient: HttpClient) {
   }
 
+
   getImagesList(id: number) {
     const postBody: ImageRequest = {
       painting: id
@@ -22,4 +23,17 @@ export class ImageListService {
       {responseType: 'json'}
     );
   }
+
+  /*
+  getImagesList(id: number) {
+    const postBody: ImageRequest = {
+      painting: id
+    };
+    return this.httpClient.post<ImageListResponse>(
+      `${UserConfig.paintingAPI}/${id}`,
+      postBody,
+      {responseType: 'json'}
+    );
+  }
+  */
 }

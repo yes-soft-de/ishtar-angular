@@ -44,7 +44,7 @@ export class ArtistListComponent implements OnInit {
   ngOnInit() {
     console.log(this.artistListFormatted);
     this.userProfileService.requestUserDetails().subscribe(
-        data => {
+        (data: any) => {
           this.client = data.Data;
           console.log('user:', data);
         },
@@ -65,7 +65,7 @@ export class ArtistListComponent implements OnInit {
             });
             this.artistList.push({
               id: i.id,
-              image: i.image,
+              image: i.path,
               name: i.name,
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
@@ -120,7 +120,7 @@ export class ArtistListComponent implements OnInit {
           }
         });
         this.artistList.push({
-          image: i.image,
+          image: i.path,
           name: i.name,
           paintingNumber: 4,
           id: i.id,
@@ -137,7 +137,7 @@ export class ArtistListComponent implements OnInit {
         });
         if (i.artType === name) {
           this.artistList.push({
-            image: i.image,
+            image: i.path,
             name: i.name,
             paintingNumber: 4,
             id: i.id,

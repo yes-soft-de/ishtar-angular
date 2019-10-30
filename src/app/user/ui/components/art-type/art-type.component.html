@@ -14,11 +14,11 @@
         <img src="{{artType.path}}" alt="...">
       </div>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="container d-flex justify-content-center">
       <div class="col-10 align-items-baseline" style="position: relative; top: -5rem;">
         <div class="d-flex align-items-baseline">
           <div class="w-25" >
-            <img src="{{artType.path}}" style="width: 15rem; border-radius: 50%;" alt="..."
+            <img src="{{artType.path}}" class="img-fluid" style="width: 15rem; border-radius: 50%;" alt="..."
                  id="art-type-avatar">
           </div>
           <div class="w-75 m-0 row">
@@ -34,7 +34,7 @@
 <!--              </ul>-->
             </div>
             <div class="col-6" style="position: relative; top: -2rem;">
-              <app-follow-widget [ParentId]="artType?.id" [ParentType]="3"></app-follow-widget>
+              <app-follow-widget class="art-type-follow" [ParentId]="artType?.id" [ParentType]="3"></app-follow-widget>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
     </p>
   </div>
 
-  <div id="art-type-images" style="margin-bottom: 5rem;">
+  <div id="art-type-images" class="container-fluid" style="margin-bottom: 5rem;">
     <app-artist-list [artistListFormatted]="featuredArtists" [filter]="false"
                      *ngIf="artistLoaded"></app-artist-list>
     <div *ngIf="!artistLoaded" class="d-flex p-5 justify-content-center">

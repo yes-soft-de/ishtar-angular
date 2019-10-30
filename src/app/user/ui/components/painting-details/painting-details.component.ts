@@ -9,6 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
@@ -30,7 +31,6 @@ export class PaintingDetailsComponent implements OnInit {
               private artistListService: ArtistListService,
               private toaster: ToastrService,
               private router: Router) {
-
   }
 
   ngOnInit() {
@@ -59,9 +59,8 @@ export class PaintingDetailsComponent implements OnInit {
       if (this.painting[0].artist == null) {
         document.getElementById('painting-artist').style.display = 'none';
       }
-
-      this.CurrentPaintingId = this.painting.id;
     }
+    this.CurrentPaintingId = this.painting[0].id;
   }
 
   addToWishList() {
