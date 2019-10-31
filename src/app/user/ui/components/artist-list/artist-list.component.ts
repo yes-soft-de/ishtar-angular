@@ -59,6 +59,7 @@ export class ArtistListComponent implements OnInit {
       this.viewData.interaction = InteractionConsts.INTERACTION_TYPE_FOLLOW;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: { Data: Array<any> }) => {
+            // console.log('iinnter', data);
             this.artistIDFollow.push({
               id: i.id,
               followNumber: data.Data[0].interactions

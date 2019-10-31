@@ -15,7 +15,7 @@ export class UserConfig {
   public static ArtistDetailsAPI = UserConfig.sourceAPI + 'getArtistById';
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
 
-  // public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
+  public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
   // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
 
   public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
@@ -27,6 +27,7 @@ export class UserConfig {
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
+  // public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
   public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
   public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
   public static getClientClapAPI = UserConfig.sourceAPI + 'getClientClap';

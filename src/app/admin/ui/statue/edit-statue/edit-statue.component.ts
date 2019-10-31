@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Artist} from '../../../entity/artist/artist';
-import {ArtType} from '../../../entity/art-type/art-type';
 import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
-import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
-import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
-import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
 import {StatueService} from '../../../service/statue/statue.service';
 import {map, mergeMap} from 'rxjs/operators';
 import {StatueInterface} from '../../../entity/statue/statue.interface';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 @Component({
   selector: 'app-edit-statue',
@@ -24,14 +19,14 @@ export class EditStatueComponent implements OnInit {
   statueId: number;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: ArtistInterface, path: string, artType: string}[];
   artistId: number;
   uploadButtonValue = 'Upload';
   imageName = 'Leave it if you don\'t want to change image';
   fileSelected = false;
   imageUrl: string;
   imagePathReady = true;
-  submitButtonValue = 'Waiting Uploading Image';
+  submitButtonValue = 'Update Statue';
   selectedFile: ImageSnippet;
 
   constructor(private formBuilder: FormBuilder,
@@ -72,11 +67,12 @@ export class EditStatueComponent implements OnInit {
       });
       // fetch the artists Id For This Statue
       data.artists.Data.map(artistRes => {
-        if (artistRes.name === this.statuesData['0'].artist) {
-          this.artistId = artistRes.id;
+        if (artistRes['0'].name === this.statuesData['0'].artist.name) {
+          this.artistId = artistRes['0'].id;
         }
       });
-      console.log(this.statuesData, data);
+      console.log(this.artistId, this.statuesData, data);
+      console.log(this.uploadForm.errors, this.uploadForm.valid);
         /* setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent.
         It is recommended to use patchValue therefore
        */
@@ -106,7 +102,7 @@ export class EditStatueComponent implements OnInit {
       artist: ['', [Validators.required]],
       height: ['', Validators.required],
       width: ['', Validators.required],
-      weight: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      weight: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],
