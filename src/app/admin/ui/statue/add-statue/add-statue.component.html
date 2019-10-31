@@ -42,7 +42,6 @@
         <span class="invalid-feedback" *ngIf="uploadForm.get('width').errors?.required">Width Field Is Required</span>
       </div>
     </div>
-
     <div class="form-group row">
       <label class="col-2 col-form-label">Weight</label>
       <div class="col-10">
@@ -54,6 +53,19 @@
                formControlName="weight"
                placeholder="Type The Statue Weight">
         <span class="invalid-feedback" *ngIf="uploadForm.get('weight').errors?.required">Weight Field Is Required</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Length</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('length').errors &&
+               (uploadForm.get('length').touched || uploadForm.get('length').dirty)}"
+               type="number"
+               name="length"
+               formControlName="length"
+               placeholder="Type The Painting Length">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('length').errors?.required">Length Field Is Required</span>
       </div>
     </div>
     <div class="form-group row">
@@ -78,7 +90,7 @@
                 (change)="changeArtist($event)"
                 [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
           <option value="">Select The Artist For This Statue</option>
-          <option value="{{artist.id}}" *ngFor="let artist of artists">{{artist.name}}</option>
+          <option value="{{artist['0'].id}}" *ngFor="let artist of artists">{{artist['0'].name}}</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
       </div>

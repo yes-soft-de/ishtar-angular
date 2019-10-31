@@ -1,4 +1,5 @@
 #art-type-header-img {
+  border-bottom: 2px solid goldenrod;
 }
 
 #banner-background {
@@ -15,6 +16,7 @@
 
 #art-type-avatar {
   height: 15rem;
+  border: 2px solid goldenrod;
 }
 
 #art-type-header-avatar {
@@ -34,14 +36,9 @@
   padding-left: 10rem;
 }
 
-#art-type-images {
-  padding-left: 5rem;
-}
-
 #art-type-banner-text {
   max-width: 20rem;
   max-height: 10rem;
-  overflow: auto;
   background: rgba(255, 255, 255, .5);
   margin-right: 5rem;
 }
@@ -49,4 +46,38 @@
 #art-type-info {
   position: relative;
   top: 1.5rem;
+}
+
+.art-type-follow {
+  position: relative;
+  top: -13px;
+  button {
+    background: #fff !important;
+    padding: 10px 15px;
+    border: 2px solid goldenrod;
+  }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  #art-type-avatar {
+    max-width: 10rem !important;
+    height: 10rem;
+    margin-left: -45px;
+  }
+  .art-type-follow {
+    top: 30px;
+  }
+}
+
+@media (max-width:767px) {
+  #art-type-info{
+    h3 {
+      margin-left: 100px;
+    }
+  }
+  #art-type-avatar {
+    max-width: 10rem !important;
+    height: 12rem;
+    margin-left: -45px;
+  }
 }

@@ -27,7 +27,7 @@ export class ArtistService {
   // Fetch All Artist
   getAllArtists() {
     return this.httpClient.get(
-        AdminConfig.artistsAPI,
+        AdminConfig.allArtistsAPI,
       {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
@@ -38,7 +38,7 @@ export class ArtistService {
   // }
 
   // get artist detail
-  getArtistByArtist(artistId: string) {
+  getArtistByArtist(artistId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'

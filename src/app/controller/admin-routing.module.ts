@@ -17,6 +17,7 @@ import {ListStatueComponent} from '../admin/ui/statue/list-statue/list-statue.co
 import {AddStatueComponent} from '../admin/ui/statue/add-statue/add-statue.component';
 import {EditPaintingComponent} from '../admin/ui/painting/edit-painting/edit-painting.component';
 import {EditStatueComponent} from '../admin/ui/statue/edit-statue/edit-statue.component';
+import {ListCommentComponent} from '../admin/ui/comments/list-comment/list-comment.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
       {path: 'list-statues', component: ListStatueComponent},
       {path: 'add-statue', component: AddStatueComponent},
       {path: 'edit-statue/:id', component: EditStatueComponent},
+      {path: 'list-comments', component: ListCommentComponent},
       {path: 'list-clients', component: ListClientComponent},
       {path: 'add-client', component: AddClientComponent},
       {path: 'edit-client', component: EditClientComponent},

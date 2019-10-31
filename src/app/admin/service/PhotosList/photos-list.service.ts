@@ -1,14 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
-import {PaintingFullList} from '../../entity/painting-full-list/painting-full-list';
 import {AdminConfig} from '../../AdminConfig';
 import {Observable} from 'rxjs';
-import {PaintingInterface} from '../../entity/painting/painting-interface';
-import {Painting} from '../../entity/painting/painting';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
-import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +21,7 @@ export class PhotosListService {
     return throwError(error || 'Server Error');
   }
 
-  getPaintingInfo(paintingId: any) {
+  getPaintingInfo(paintingId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -40,7 +36,7 @@ export class PhotosListService {
 
   // Get All Painting List
   getAllPainting() {
-    return this.httpClient.get<PaintingListResponse>(
+    return this.httpClient.get(
       `${AdminConfig.paintingsAPI}`, {responseType: 'json'}
     ).pipe(catchError(PhotosListService.errorHandler));
   }
@@ -48,14 +44,14 @@ export class PhotosListService {
 
   // Admin Section - POST Add New Painting
   postAddPainting(paintingData) {
-    return this.httpClient.post<Painting>(
+    return this.httpClient.post(
         `${AdminConfig.paintingsAPI}`,
       JSON.stringify(paintingData)
     );
   }
 
   // Admin Section - Update Painting
-  updatePainting(paintingId: number, data: Painting) {
+  updatePainting(paintingId: number, data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -63,8 +59,7 @@ export class PhotosListService {
     };
     return this.httpClient.put(
       `${AdminConfig.paintingAPI}/${paintingId}`,
-      JSON.stringify(data),
-      httpOptions
+      JSON.stringify(data)
     ).pipe(catchError(PhotosListService.errorHandler));
   }
 

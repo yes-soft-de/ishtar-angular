@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {Subscription} from 'rxjs';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
 @Component({
   selector: 'app-list-artist',
@@ -10,7 +11,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./list-artist.component.scss']
 })
 export class ListArtistComponent implements OnInit, OnDestroy {
-  public artists: Artist[];
+  public artists: {0: ArtistInterface, path: string, artType: string}[];
   allArtistObservable: Subscription;
 
   constructor(private router: Router,
@@ -20,7 +21,7 @@ export class ListArtistComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Fetch All Artists
     this.allArtistObservable = this.artist.getAllArtists().subscribe(
-        (data: any) => {
+        (data: ArtistListResponse) => {
             if (data) {
               this.artists = data.Data;
               console.log(data);

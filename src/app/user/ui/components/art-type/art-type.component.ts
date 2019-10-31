@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
@@ -11,7 +11,8 @@ import {IshtarInteractionService} from '../../../service/ishtar-interaction/isht
 @Component({
   selector: 'app-art-type',
   templateUrl: './art-type.component.html',
-  styleUrls: ['./art-type.component.scss']
+  styleUrls: ['./art-type.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  encapsulation : ViewEncapsulation.None
 })
 export class ArtTypeComponent implements OnInit {
   @Input() artType: ArtTypeListItem;

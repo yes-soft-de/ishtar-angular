@@ -19,7 +19,8 @@ export class AdminConfig {
   // public static allArtistsAPI           = AdminConfig.sourceAPI + 'getArtistsData';
   // public static artistAPI               = AdminConfig.sourceAPI + 'getArtistById';
   public static deleteArtistAPI         = AdminConfig.sourceAPI + 'deleteArtist';
-  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for GET all & POST
+  public static allArtistsAPI           = AdminConfig.sourceAPI + 'artistsdetails';   // This Route FOr GET all artists
+  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for POST
   public static artistAPI               = AdminConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
 
   // Painting API
@@ -56,7 +57,10 @@ export class AdminConfig {
   public static statuesAPI              = AdminConfig.sourceAPI + 'statues';
   public static statueAPI               = AdminConfig.sourceAPI + 'statue';
 
-  public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
+  // Comments API
+  public static commentsAPI             = AdminConfig.sourceAPI + 'comments';
+
+  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
   // public static userProfileAPI = AdminConfig.sourceAPI + 'user';
 
 
