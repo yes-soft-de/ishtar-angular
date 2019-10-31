@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {AdminConfig} from '../../AdminConfig';
 import {Observable} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 
@@ -11,9 +10,7 @@ import {throwError} from 'rxjs';
 })
 export class PhotosListService {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
 
   // Handling the error
@@ -65,10 +62,7 @@ export class PhotosListService {
 
   // Admin Section - Delete Painting
   deletePainting(paintingId: number) {
-    return this.httpClient.delete(
-      `${AdminConfig.deletePaintingAPI}/${paintingId}`,
-        {responseType: 'json'}
-    ).pipe(catchError(PhotosListService.errorHandler));
+    return this.httpClient.delete(`${AdminConfig.paintingAPI}/${paintingId}`);
   }
 
   // Admin Section - Upload Image For Painting

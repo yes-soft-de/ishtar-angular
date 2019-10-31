@@ -13,4 +13,9 @@ export class CommentService {
   getAllComments() {
     return this.httpClient.get(AdminConfig.commentsAPI);
   }
+
+  // Delete The Comment
+  deleteComment(commentId: number) {
+    return this.httpClient.delete(`${AdminConfig.commentAPI}/${commentId}`);
+  }
 }

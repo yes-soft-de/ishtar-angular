@@ -82,10 +82,11 @@ export class EditStatueComponent implements OnInit {
         height:       this.statuesData['0'].height,
         width:        this.statuesData['0'].width,
         weight:       this.statuesData['0'].weight,
+        length:       this.statuesData['0'].length,
         price:        this.statuesData.price,
-        state:        this.statuesData['0'].state,
+        state:        +this.statuesData['0'].state,   // + : Here use to convert true to 1 and false to 0
         image:        this.statuesData['0'].image,
-        active:       this.statuesData['0'].active,
+        active:       +this.statuesData['0'].active,  // + : Here use to convert true to 1 and false to 0
         keyWords:     this.statuesData['0'].keyWord,
         material:     this.statuesData['0'].material,
         style:        this.statuesData['0'].style,
@@ -103,6 +104,7 @@ export class EditStatueComponent implements OnInit {
       height: ['', Validators.required],
       width: ['', Validators.required],
       weight: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
+      length: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],

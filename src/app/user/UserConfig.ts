@@ -8,15 +8,10 @@ export class UserConfig {
  public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
  public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
 
-//public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
- //public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
 
   public static ArtistListAPI = UserConfig.sourceAPI + 'getAllArtist';
   public static ArtistDetailsAPI = UserConfig.sourceAPI + 'getArtistById';
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
-
-  public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
-  // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
 
   public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
   public static allArtTypeAPI = UserConfig.sourceAPI + 'getAllArtType';
@@ -27,7 +22,6 @@ export class UserConfig {
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
-  // public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
   public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
   public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
   public static getClientClapAPI = UserConfig.sourceAPI + 'getClientClap';
@@ -43,9 +37,22 @@ export class UserConfig {
   public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
   public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
   // Statues API
-  //public static statuesAPI = UserConfig.sourceAPI + 'statues';
-  //public static statueAPI = UserConfig.sourceAPI + 'statue';
+
   public static getAllStatuesAPI = UserConfig.sourceAPI + 'getAllStatue';
   public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
+
+ // Artists API
+ public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
+ // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
+ // Painting API
+ // public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
+ // public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+
+ // Statues API
+ // public static statuesAPI = UserConfig.sourceAPI + 'statues';
+ // public static statueAPI = UserConfig.sourceAPI + 'statue';
+
+ // Interactions API
+ public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
 
 }

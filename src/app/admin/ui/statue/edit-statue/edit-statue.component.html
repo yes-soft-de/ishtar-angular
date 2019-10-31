@@ -57,6 +57,19 @@
       </div>
     </div>
     <div class="form-group row">
+      <label class="col-2 col-form-label">Length</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('length').errors &&
+               (uploadForm.get('length').touched || uploadForm.get('length').dirty)}"
+               type="number"
+               name="length"
+               formControlName="length"
+               placeholder="Type The Painting Length">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('length').errors?.required">Length Field Is Required</span>
+      </div>
+    </div>
+    <div class="form-group row">
       <label class="col-2 col-form-label">Price</label>
       <div class="col-10">
         <input class="form-control"
