@@ -119,7 +119,13 @@
                            *ngIf="featuredList != null"></app-c-painting-list>
     </div>
     <!--End Related Paintings Section-->    
-    
+
+    <!-- ./Next & prev paintings -->
+    <button class="btn-prev" (click)="goBack()">Previous Painting</button>
+
+    <button class="btn-next" (click)="goNext()">Next Painting</button>
+    <!-- ./Next & prev paintings -->
+
     <!--<div class="container-fluid mt-5 pt-5" id="painting-details1">-->
     <!--  <div class="row">-->
     <!--&lt;!&ndash;     For View Image in full screen &ndash;&gt;-->

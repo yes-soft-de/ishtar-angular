@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
@@ -9,11 +8,10 @@ import {Artist} from '../../../entity/artist/artist';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
-class ImageSnippet {
-  constructor(public src: string, public file: File) {
-  }
-}
 
 @Component({
   selector: 'app-add-painting',
@@ -23,12 +21,11 @@ class ImageSnippet {
 export class AddPaintingComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: ArtistInterface, path: string, artType: string}[];
   artTypes: ArtType[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
-  fileUploaded = false;
   imageUrl: string;
   imagePathReady = false;
   submitButtonValue = 'Waiting Uploading Image';
@@ -45,7 +42,7 @@ export class AddPaintingComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-        (data) => {
+        (data: ArtistListResponse) => {
           if (data) {
             this.artists = data.Data;
           }

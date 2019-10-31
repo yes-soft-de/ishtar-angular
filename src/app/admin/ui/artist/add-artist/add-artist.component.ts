@@ -8,10 +8,7 @@ import {HttpClient} from '@angular/common/http';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 
 @Component({
   selector: 'app-add-artist',

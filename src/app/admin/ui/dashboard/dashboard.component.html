@@ -115,7 +115,7 @@
               <ng-container *ngFor="let statue of statues; let i = index">
                 <ng-container *ngIf="i < latestStatueNumber">
                   <div class="late_info">
-                    {{statue.name}}
+                    {{statue["0"].name}}
                     <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>

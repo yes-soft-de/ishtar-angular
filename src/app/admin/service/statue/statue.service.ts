@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AdminConfig} from '../../AdminConfig';
 import {catchError} from 'rxjs/operators';
+import {StatueInterface} from '../../entity/statue/statue.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,33 +19,32 @@ export class StatueService {
   // Fetch All Statue List
   getAllStatues() {
     return this.httpClient.get(
-        `${AdminConfig.allStatuesAPI}`,
+        `${AdminConfig.statuesAPI}`,
         {responseType: 'json'}
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   // Get Statue Info Using Statue id
   getStatueUsingId(statueId: number) {
-    return this.httpClient.post(
-        AdminConfig.statueAPI,
-        JSON.stringify({id: statueId}),
+    return this.httpClient.get<StatueInterface>(
+        `${AdminConfig.statueAPI}/${statueId}`,
         {responseType: 'json'}
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   // Admin Section - POST Add New Statue
   postAddStatue(statueData) {
-    return this.httpClient.post(
-        AdminConfig.addStatueAPI,
+    return this.httpClient.post<StatueInterface>(
+        AdminConfig.statuesAPI,
         JSON.stringify(statueData),
         {responseType: 'json'}
     ).pipe(catchError(StatueService.errorHandler));
   }
 
-  updateStatue(statueId: number) {
-    return this.httpClient.post(
-        AdminConfig.editStatueAPI,
-        JSON.stringify({id: statueId}),
+  updateStatue(statueId: number, data: StatueInterface) {
+    return this.httpClient.put(
+        `${AdminConfig.statueAPI}/${statueId}`,
+        JSON.stringify(data),
         {responseType: 'json'}
     ).pipe(catchError(StatueService.errorHandler));
   }

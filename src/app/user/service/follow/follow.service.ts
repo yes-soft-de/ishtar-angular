@@ -77,14 +77,34 @@ export class FollowService {
             console.log('Assigning User');
             this.userInfo = user.Data;
             this.getClientInteraction(this.userInfo.id, parentType, rowId);
+            // this.requestFollowStatus(entityId, entityType);
           }
         }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
       this.getClientInteraction(this.userInfo.id, parentType, rowId);
+      // this.requestFollowStatus(entityId, entityType);
     }
   }
+
+  // Then Ask For Follow Interaction Details
+  // private requestFollowStatus(entityId, entityType) {
+  //   const request: FollowRequest = {
+  //     client: this.userInfo.id,
+  //     row: entityId,
+  //     entity: entityType,
+  //     interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
+  //   };
+  //   this.httpClient.post<FollowInteractionResponse>(`${UserConfig.getInteractionAPI}`, JSON.stringify(request)).subscribe(
+  //     res => {
+  //       console.log(`interactions ${res.Data[0].interactions}`);
+  //       if (res.Data[0].interactions > 0) {
+  //         this.statusSubject.next(true);
+  //       }
+  //     }
+  //   );
+  // }
 
   public postFollow(entityId, entityType) {
     if (!this.checkUserDetailsExists()) {

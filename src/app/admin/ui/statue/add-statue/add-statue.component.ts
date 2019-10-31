@@ -5,10 +5,10 @@ import {ArtistService} from '../../../service/artist/artist.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {StatueService} from '../../../service/statue/statue.service';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
+import {ArtistInterface} from '../../../entity/artist/artist-interface';
 
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
 
 @Component({
   selector: 'app-add-statue',
@@ -18,11 +18,10 @@ class ImageSnippet {
 export class AddStatueComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: Artist[];
+  artists: {0: ArtistInterface, path: string, artType: string}[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
-  fileUploaded = false;
   imageUrl: string;
   imagePathReady = false;
   submitButtonValue = 'Waiting Uploading Image';
@@ -38,14 +37,11 @@ export class AddStatueComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-      (data) => {
+      (data: ArtistListResponse) => {
         if (data) {
           console.log('artist in admin:', data);
           this.artists = data.Data;
         }
-      }, error => {
-        // TODO think if there is some to do here ex : display message if there is error
-        console.log('Error :', error);
       });
 
     // Storing Form Data
@@ -54,7 +50,8 @@ export class AddStatueComponent implements OnInit {
       artist: ['', [Validators.required]],
       height: ['', Validators.required],
       width: ['', Validators.required],
-      weight: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      weight: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
+      length: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],

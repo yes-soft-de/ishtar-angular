@@ -25,22 +25,22 @@
                     <td>Control</td>
                 </tr>
                 <tr *ngFor="let artist of artists">
-                    <td>{{artist.id}}</td>
-                    <td>{{artist.name}}</td>
-                    <td><img src="{{artist.path}}" alt="{{artist.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
-                    <td>{{artist.nationality}}</td>
-                    <td>{{artist.residence}}</td>
+                    <td>{{artist["0"].id}}</td>
+                    <td>{{artist["0"].name}}</td>
+                    <td><img src="{{artist.path}}" alt="{{artist['0'].name}} Image" class="img-fluid img-thumbnail img-custom"></td>
+                    <td>{{artist["0"].nationality}}</td>
+                    <td>{{artist["0"].residence}}</td>
                     <td>{{artist.artType}}</td>
-                    <td>{{artist.birthDate}}</td>
-                    <td>{{artist.story}}</td>
-                    <td>{{artist.details}}</td>
-                    <td>{{artist.facebook}}</td>
-                    <td>{{artist.instagram}}</td>
-                    <td>{{artist.twitter}}</td>
-                    <td>{{artist.linkedin}}</td>
+                    <td>{{artist["0"].birthDate.timestamp | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{artist["0"].story}}</td>
+                    <td>{{artist["0"].details}}</td>
+                    <td>{{artist["0"].Facebook}}</td>
+                    <td>{{artist["0"].Instagram}}</td>
+                    <td>{{artist["0"].Twitter}}</td>
+                    <td>{{artist["0"].Linkedin}}</td>
                     <td>
-                        <a [routerLink]="['/admin/edit-name', artist.id]" class="btn btn-success btn-sm mr-1">Edit</a>
-                        <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                        <a routerLink="/admin/edit-artist/{{artist['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+                        <a (click)="delete(artist['0'].id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
                     </td>
                 </tr>
             </table>
