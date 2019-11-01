@@ -44,7 +44,7 @@ export class ArtistListComponent implements OnInit {
   ngOnInit() {
     console.log(this.artistListFormatted);
     this.userProfileService.requestUserDetails().subscribe(
-        data => {
+        (data: any) => {
           this.client = data.Data;
           console.log('user:', data);
         },
@@ -59,17 +59,35 @@ export class ArtistListComponent implements OnInit {
       this.viewData.interaction = InteractionConsts.INTERACTION_TYPE_FOLLOW;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: { Data: Array<any> }) => {
+            console.log('interactions:', data);
             this.artistIDFollow.push({
               id: i.id,
               followNumber: data.Data[0].interactions
             });
             this.artistList.push({
               id: i.id,
-              image: i.image,
+              image: i.path,
               name: i.name,
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
+            // data.Data.map(interactionRes => {
+            //   // tslint:disable-next-line:triple-equals
+            //   if (interactionRes.entity == 'painting' && interactionRes.interaction == 'follow' && interactionRes.row == i.id) {
+            //     console.log(interactionRes.length);
+            //     this.artistIDFollow.push({
+            //       id: i.id,
+            //       followNumber: data.Data[0].interactions
+            //     });
+            //     this.artistList.push({
+            //       id: i.id,
+            //       image: i.path,
+            //       name: i.name,
+            //       paintingNumber: i.painting,
+            //       artistFollowers: data.Data[0].interactions
+            //     });
+            //   }
+            // });
             // sort the array Elements
             this.artistList.sort(
                 (a, b) => (Number(a.id) > Number(b.id))
@@ -83,6 +101,7 @@ export class ArtistListComponent implements OnInit {
       );
 
     }
+    console.log('Out :', this.artistList, this.artistIDFollow);
     // create array of types after removing the repeated value
     this.types = [...new Set(this.types)];
     // Create Pagination Config
@@ -137,7 +156,7 @@ export class ArtistListComponent implements OnInit {
         });
         if (i.artType === name) {
           this.artistList.push({
-            image: i.image,
+            image: i.path,
             name: i.name,
             paintingNumber: 4,
             id: i.id,

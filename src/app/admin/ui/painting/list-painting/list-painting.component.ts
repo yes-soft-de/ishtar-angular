@@ -1,10 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Painting} from '../../../entity/painting/painting';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {PaintingInterface} from '../../../entity/painting/painting-interface';
-import {PaintingListResponse} from '../../../entity/PaintingList/painting-list-response';
 import {Subscription} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-painting',
@@ -12,40 +10,48 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./list-painting.component.scss']
 })
 export class ListPaintingComponent implements OnInit, OnDestroy {
-  public paintings: Painting[];
+  public paintings: PaintingInterface[];
   allPaintingObservable: Subscription;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
+  constructor(private toaster: ToastrService,
               private photosListService: PhotosListService ) { }
 
   ngOnInit() {
-    // Fetch All Paintings
-    this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
-        (res: PaintingListResponse) => {
-          this.paintings = res.Data;
-          console.log(this.paintings);
-      }, error1 => {
-        console.log(error1);
-      });
+    this.getPaintings();
   }
 
   ngOnDestroy() {
     this.allPaintingObservable.unsubscribe();
   }
 
+  getPaintings() {
+    // Fetch All Paintings
+    this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
+      (res: any) => {
+        this.paintings = res.Data;
+        console.log(this.paintings);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
     // Delete painting Method
   delete(paintingId: number) {
-    this.photosListService.deletePainting(paintingId).subscribe(
-        data => {
-          console.log('the delete request was successfully done', data);
-        },
-        error => {
-          console.log('Sorry There Is Error : ', error);
-        },
-        () => {
-          this.router.navigate(['/admin/list-paintings']);
-        }
-    );
+    if (confirm('Are You Sure You Want To Delete This Painting')) {
+      this.photosListService.deletePainting(paintingId).subscribe(
+          data => {
+            this.toaster.success('Painting Successfully Deleted');
+            console.log('deleted Successfully: ', data);
+          },
+          error => {
+            console.log('error : ', error);
+            this.toaster.error('There Is An Error Please Try Again');
+          }, () => {
+            this.getPaintings();
+          }
+      );
+    } else {
+      return false;
+    }
   }
 }

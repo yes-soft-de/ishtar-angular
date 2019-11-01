@@ -86,19 +86,19 @@ export class EditPaintingComponent implements OnInit {
       console.log(this.paintingData, data);
       // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
       this.uploadForm.patchValue({  // insert input value into the form input
-        name: this.paintingData['0'].name,
-        artist: this.artistId,
-        height: this.paintingData['0'].height,
-        width: this.paintingData['0'].width,
-        colorsType: this.paintingData['0'].colorsType,
-        price: this.paintingData['0'].price,
-        state: this.paintingData['0'].state,
-        image: this.paintingData['0'].image,
-        active: this.paintingData['0'].active,
-        keyWords: this.paintingData['0'].keyWords,
-        artType: this.artTypeId,
-        gallery: '',
-        story: this.paintingData['0'].story
+        name:         this.paintingData['0'].name,
+        artist:       this.artistId,
+        height:       this.paintingData['0'].height,
+        width:        this.paintingData['0'].width,
+        colorsType:   this.paintingData['0'].colorsType,
+        price:        this.paintingData['0'].price,
+        state:        +this.paintingData['0'].state,
+        image:        this.paintingData['0'].image,
+        active:       +this.paintingData['0'].active,
+        keyWords:     this.paintingData['0'].keyWords,
+        artType:      this.artTypeId,
+        gallery:      '',
+        story:        this.paintingData['0'].story
       });
     });
 

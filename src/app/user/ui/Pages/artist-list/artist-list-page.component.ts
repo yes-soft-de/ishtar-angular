@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-import {ToastrService} from 'ngx-toastr';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {Subscription} from 'rxjs';
 
@@ -26,12 +25,14 @@ export class ArtistListPageComponent implements OnInit, OnDestroy {
 
   requestArtistList() {
     this.artistListObservable = this.artistService.requestArtistList().subscribe(
-      data => {
-        this.artistList = data.Data;
-        // console.log(JSON.stringify(data.Data));
-      }, error1 => {
+        (data: any) => {
+          this.artistList = data.Data;
+          console.log('artists lists', data);
+        }, error1 => {
         console.log(error1);
       });
   }
+
+
 
 }

@@ -36,5 +36,8 @@ export class IshtarInteractionService {
         {responseType: 'json'}
     );
   }
+  // getInteraction() {
+  //   return this.httpClient.get(UserConfig.interactionsAPI);
+  // }
 
 }

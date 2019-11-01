@@ -41,27 +41,27 @@ export class ArtistListService {
     );
   }
   
- /*
- requestArtistList() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.artistsAPI}`, {responseType: 'json'}
-    ).pipe(catchError(PaintingListService.errorHandler));
-  }
 
-  requestPaintingList() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.artistsAPI}`, {responseType: 'json'}
-    ).pipe(catchError(PaintingListService.errorHandler));
-  }
+ // requestArtistList() {
+ //    return this.httpClient.get(
+ //      `${UserConfig.artistsAPI}`, {responseType: 'json'}
+ //    ).pipe(catchError(ArtistListService.errorHandler));
+ //  }
+  /*
+    requestPaintingList() {
+      return this.httpClient.get<ArtistListResponse>(
+        `${UserConfig.artistsAPI}`, {responseType: 'json'}
+      ).pipe(catchError(PaintingListService.errorHandler));
+    }
 
-  requestPaintingListByArtType(id: string) {
-    return this.httpClient.post<ArtistListResponse>(
-      `${UserConfig.artistAPI}/${id}`,
-      {
-        parm: 'artist',
-        value: id
-      }
-    );
-  }
-*/
+    requestPaintingListByArtType(id: string) {
+      return this.httpClient.post<ArtistListResponse>(
+        `${UserConfig.artistAPI}/${id}`,
+        {
+          parm: 'artist',
+          value: id
+        }
+      );
+    }
+  */
 }
