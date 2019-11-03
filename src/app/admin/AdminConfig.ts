@@ -36,11 +36,11 @@ export class AdminConfig {
   public static paintingAPI             = AdminConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
 
   // client API
-  // public static addClientAPI            = AdminConfig.sourceAPI + 'createClient';
-  // public static editClientAPI           = AdminConfig.sourceAPI + 'updateClient';
-  // public static deleteClientAPI         = AdminConfig.sourceAPI + 'deleteClient';
-  // public static allClientsAPI           = AdminConfig.sourceAPI + 'getAllClient';
-  // public static clientAPI               = AdminConfig.sourceAPI + 'getClientById';
+   public static addClientAPI            = AdminConfig.sourceAPI + 'createClient';
+   public static editClientAPI           = AdminConfig.sourceAPI + 'updateClient';
+   public static deleteClientAPI         = AdminConfig.sourceAPI + 'deleteClient';
+   public static allClientsAPI           = AdminConfig.sourceAPI + 'getAllClient';
+   public static clientAPI               = AdminConfig.sourceAPI + 'getClientById';
 
   // Auction API
   // public static addAuctionAPI           = AdminConfig.sourceAPI + 'createAuction';
