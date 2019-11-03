@@ -1,5 +1,5 @@
 export class UserConfig {
-  // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+   public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
   // public static sourceAPI = '/ishtar-backend/public/';
    public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
@@ -19,8 +19,8 @@ export class UserConfig {
   public static postInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = UserConfig.sourceAPI + 'search';
   public static userProfileAPI = UserConfig.sourceAPI + 'user';
-  public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
-  public static userLogoutLink = UserConfig.sourceAPI + 'logout';
+  public static userLoginLink = UserConfig.sourceAPI2 + 'connect/google';
+  public static userLogoutLink = UserConfig.sourceAPI2 + 'logout';
 
   public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
   public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
@@ -42,7 +42,7 @@ export class UserConfig {
   public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
 
  // Artists API
- public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
+ //public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
  // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
  // Painting API
  // public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
