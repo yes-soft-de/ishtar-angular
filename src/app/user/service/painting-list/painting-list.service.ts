@@ -16,10 +16,12 @@ export class PaintingListService {
   constructor(private httpClient: HttpClient) {
   }
 
-  
   requestPaintingList() {
-    return this.httpClient.get<PaintingListResponse>(UserConfig.PaintingListAPI);
+    return this.httpClient.get<PaintingListResponse>(UserConfig.paintingsAPI);
   }
+  // requestPaintingList() {
+  //   return this.httpClient.get<PaintingListResponse>(UserConfig.PaintingListAPI);
+  // }
 
   requestPaintingListByArtist(artistId: string) {
     const artistRequest: {

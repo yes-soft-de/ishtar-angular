@@ -42,7 +42,7 @@ export class ArtistListComponent implements OnInit {
               private userProfileService: UserProfileService) { }
 
   ngOnInit() {
-    console.log(this.artistListFormatted);
+    console.log('artist list: ', this.artistListFormatted);
     this.userProfileService.requestUserDetails().subscribe(
         (data: any) => {
           this.client = data.Data;
@@ -54,10 +54,39 @@ export class ArtistListComponent implements OnInit {
     );
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
+      // Fetch Artist Follow Interaction
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_ARTIST,
+          i.id,
+          InteractionConsts.INTERACTION_TYPE_FOLLOW)
+          .subscribe(
+        (data: any) => {
+          console.log('Artist Follow: Id:', i.id, ' => Follow: ' , data.Data[0].interactions);
+          this.artistIDFollow.push({
+            id: i.id,
+            followNumber: data.Data[0].interactions
+          });
+          this.artistList.push({
+            id: i.id,
+            image: i.path,
+            name: i.name,
+            paintingNumber: i.painting,
+            artistFollowers: data.Data[0].interactions
+          });
+          this.artistList.sort(
+              (a, b) => (Number(a.id) > Number(b.id))
+                  ? 1 : (Number(a.id) === Number(b.id))
+                      ? ((Number(a.id) > Number(b.id))
+                          ? 1 : -1) : -1 );
+        }, error => {
+          console.log(error);
+        }
+      );
+      /*
       // Fetch Painting View Interaction
       this.viewData.row = i.id;
       this.viewData.interaction = InteractionConsts.INTERACTION_TYPE_FOLLOW;
-      this.interactionService.getInteraction(this.viewData).subscribe(
+      this.interactionService.getInteraction().subscribe(
           (data: { Data: Array<any> }) => {
             console.log('interactions:', data);
             this.artistIDFollow.push({
@@ -71,37 +100,16 @@ export class ArtistListComponent implements OnInit {
               paintingNumber: i.painting,
               artistFollowers: data.Data[0].interactions
             });
-            // data.Data.map(interactionRes => {
-            //   // tslint:disable-next-line:triple-equals
-            //   if (interactionRes.entity == 'painting' && interactionRes.interaction == 'follow' && interactionRes.row == i.id) {
-            //     console.log(interactionRes.length);
-            //     this.artistIDFollow.push({
-            //       id: i.id,
-            //       followNumber: data.Data[0].interactions
-            //     });
-            //     this.artistList.push({
-            //       id: i.id,
-            //       image: i.path,
-            //       name: i.name,
-            //       paintingNumber: i.painting,
-            //       artistFollowers: data.Data[0].interactions
-            //     });
-            //   }
-            // });
             // sort the array Elements
             this.artistList.sort(
                 (a, b) => (Number(a.id) > Number(b.id))
                     ? 1 : (Number(a.id) === Number(b.id))
                         ? ((Number(a.id) > Number(b.id))
                             ? 1 : -1) : -1 );
-          },
-          error => {
-            console.log(error);
           }
-      );
-
+      );*/
     }
-    console.log('Out :', this.artistList, this.artistIDFollow);
+    console.log('Artist List :', this.artistList, 'Artist id/Follow :', this.artistIDFollow);
     // create array of types after removing the repeated value
     this.types = [...new Set(this.types)];
     // Create Pagination Config
@@ -110,15 +118,6 @@ export class ArtistListComponent implements OnInit {
       currentPage: 1,
       totalItems: this.artistList.length
     };
-    // Create for Pagination data
-    // for (let k = 0; k < this.artistList.length; k++) {
-    //   this.artistList.push(
-    //       {
-    //         id: k + 1,
-    //         value: 'items number ' + (k + 1)
-    //       }
-    //   );
-    // }
   }
 
   // Fetch The Page Number On Page Change
@@ -139,9 +138,9 @@ export class ArtistListComponent implements OnInit {
           }
         });
         this.artistList.push({
-          image: i.image,
+          image: i.path,
           name: i.name,
-          paintingNumber: 4,
+          paintingNumber: i.painting,
           id: i.id,
           artistFollowers: followNumber
         });
@@ -158,7 +157,7 @@ export class ArtistListComponent implements OnInit {
           this.artistList.push({
             image: i.path,
             name: i.name,
-            paintingNumber: 4,
+            paintingNumber: i.painting,
             id: i.id,
             artistFollowers: followNumber
           });

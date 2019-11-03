@@ -1,8 +1,8 @@
 export class UserConfig {
    public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
   // public static sourceAPI = '/ishtar-backend/public/';
-   public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
-
+  //  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+ public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
 
  public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
  public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
@@ -42,17 +42,18 @@ export class UserConfig {
   public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
 
  // Artists API
- //public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
- // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
+ public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
+ public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
  // Painting API
- // public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
- // public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+ public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
+ public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
 
  // Statues API
- // public static statuesAPI = UserConfig.sourceAPI + 'statues';
- // public static statueAPI = UserConfig.sourceAPI + 'statue';
+ public static statuesAPI = UserConfig.sourceAPI + 'statues';
+ public static statueAPI = UserConfig.sourceAPI + 'statue';
 
  // Interactions API
  public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
+ public static interactionsNumberAPI = UserConfig.sourceAPI + 'interactionsentity';
 
 }

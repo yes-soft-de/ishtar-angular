@@ -11,8 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingListPageComponent implements OnInit {
   formattedList: PaintingListItem[];
 
-  constructor(private paintingService: PaintingListService,
-              private toaster: ToastrService) {
+  constructor(private paintingService: PaintingListService) {
   }
 
   ngOnInit() {

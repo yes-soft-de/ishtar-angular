@@ -64,7 +64,7 @@ export class PaintingDetailsPageComponent implements OnInit {
   getArtistForThisPainting() {
     // Fetch Artist ID
     this.artistListService.requestArtistList().subscribe(
-        data => {
+        (data: any) => {
           data.Data.map(res => {
             if (res.name === this.paintingDetails[0].artist) {
               this.artistDetail = res;

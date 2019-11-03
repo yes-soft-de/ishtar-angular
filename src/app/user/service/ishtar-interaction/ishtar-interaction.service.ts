@@ -29,15 +29,21 @@ export class IshtarInteractionService {
     );
   }
 
-  getInteraction(data: ViewInterface) {
-    return this.httpClient.post(
-        `${UserConfig.getInteractionAPI}`,
-        JSON.stringify(data),
-        {responseType: 'json'}
-    );
-  }
-  // getInteraction() {
-  //   return this.httpClient.get(UserConfig.interactionsAPI);
+  // getInteraction(data: ViewInterface) {
+  //   return this.httpClient.post(
+  //       `${UserConfig.getInteractionAPI}`,
+  //       JSON.stringify(data),
+  //       {responseType: 'json'}
+  //   );
   // }
+  // Get All Interactions
+  getInteraction() {
+    return this.httpClient.get(UserConfig.interactionsAPI);
+  }
+
+  // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
+  getInteractionsNumber(entity: number, row: number, interactionsNumber: number) {
+    return this.httpClient.get(`${UserConfig.interactionsNumberAPI}/${entity}/${row}/${interactionsNumber}`);
+  }
 
 }
