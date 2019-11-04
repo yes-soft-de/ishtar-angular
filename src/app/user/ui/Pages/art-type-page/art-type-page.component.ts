@@ -22,9 +22,9 @@ export class ArtTypePageComponent implements OnInit {
     this.artTypeService.requestArtTypeDetails(
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe(
-      data => {
+        (data: any) => {
         this.artTypeService.getAllArtTypeWithDetails().subscribe(
-          response => {
+            (response: any) => {
             for (const i of response.Data) {
               if (i.name === data.Data.name) {
                 this.artType = i;
