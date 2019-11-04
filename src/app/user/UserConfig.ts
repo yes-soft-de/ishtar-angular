@@ -59,7 +59,12 @@ export class UserConfig {
 
   // ArtType API
   public static artTypesAPI             = UserConfig.sourceAPI + 'arttypes';
-  public static artTypeAPI             = UserConfig.sourceAPI + 'arttype';
+  public static artTypeAPI              = UserConfig.sourceAPI + 'arttype';
+
+  // Comments API
+  public static specialSectionComments  = UserConfig.sourceAPI + 'commentsentity';
+  public static commentsAPI             = UserConfig.sourceAPI + 'comments';
+  public static commentAPI             = UserConfig.sourceAPI + 'comment';
 
   // Interactions API
   public static interactionsAPI         = UserConfig.sourceAPI + 'interactions';

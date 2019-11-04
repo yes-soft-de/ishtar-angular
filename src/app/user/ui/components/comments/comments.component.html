@@ -34,12 +34,12 @@
       </div>
       <div class="row">
         <div class="col-sm-2 col-lg-1 text-center">
-          <img class="res-image" src="../../../../../assets/default-avatar.jpg" alt=""/>
+          <img class="res-image" src="{{!client?.image ? '../../../../../assets/default-avatar.jpg' : client?.image}}" alt=""/>
         </div>
         <div class="col-sm-10 col-lg-11 mt-2 mt-sm-0">
           <div class="comment-body bg-secondary text-white py-2 px-3">
             <div class="time">
-              <span class="border-bottom pb-1">{{comment.userName}} {{comment.date != null ? '( ' + comment.date + ' )': ''}}</span>
+              <span class="border-bottom pb-1">{{comment.userName}} {{comment.date != null ? '( ' + (comment.date.timestamp * 1000 | date) + ' )': ''}}</span>
             </div>
             <p class="comment m-0 mt-2">
               {{comment.body}}
@@ -80,4 +80,3 @@
 
 </div>
 <div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>
-

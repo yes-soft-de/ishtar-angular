@@ -17,7 +17,10 @@ export class ArtistListService {
     return throwError(error || 'Server Error');
   }
 
-
+  requestArtistList() {
+    return this.httpClient.get(`${UserConfig.artistsAPI}`)
+        .pipe(catchError(ArtistListService.errorHandler));
+  }
   // requestArtistList() {
   //   return this.httpClient.get<ArtistListResponse>(
   //     `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
@@ -41,11 +44,7 @@ export class ArtistListService {
   }
 
 
- requestArtistList() {
-    return this.httpClient.get(
-      `${UserConfig.artistsAPI}`, {responseType: 'json'}
-    ).pipe(catchError(ArtistListService.errorHandler));
-  }
+
   /*
     requestPaintingList() {
       return this.httpClient.get<ArtistListResponse>(

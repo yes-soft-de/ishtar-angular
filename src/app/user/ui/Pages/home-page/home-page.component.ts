@@ -62,7 +62,6 @@ export class HomePageComponent implements OnInit {
   requestArtTypeList() {
     this.userArtTypeService.getAllArtType().subscribe(
         (data: ArtTypeListResponse) => {
-          console.log('arttype form home: ', data.Data);
           this.artTypeList = data.Data;
           this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
           this.checkLoadingFinished();

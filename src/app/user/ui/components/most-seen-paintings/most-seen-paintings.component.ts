@@ -39,7 +39,7 @@ export class MostSeenPaintingsComponent implements OnInit {
           InteractionConsts.INTERACTION_TYPE_VIEW)
           .subscribe(
               (data: any) => {
-                console.log('Artist Follow: Id:', image.id, ' => Follow: ' , data.Data[0].interactions);
+                console.log('Most Seen Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
                 this.paintingsView.push({
                   id: image.id,
                   viewNumber: data.Data[0].interactions
