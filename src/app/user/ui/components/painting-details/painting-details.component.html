@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-md-12 col-lg-8 mx-auto image mt-3 pb-3">
               <div class="d-lg-none painting-artist">
-                  <img src="{{artist?.image}}" class="" alt="">
+                  <img src="{{artist?.path}}" class="" alt="">
                   <app-follow-widget class="follow-artist"></app-follow-widget>
                   <p class="painting-artist-name">
                     <a routerLink="/artist/{{artist?.id}}">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-12 painting-artist mb-3 d-lg-block d-none">
                   <div class="painting-artist-img d-inline-block">
-                    <img src="{{artist?.image}}" class="" alt="">
+                    <img src="{{artist?.path}}" class="" alt="">
                   </div>
                   <p class="painting-artist-name d-inline-block m-0">
                     <a routerLink="/artist/{{artist?.id}}">
@@ -114,9 +114,9 @@
     <div class="related-painting py-4">
       <h3 class="text-center my-4">Paintings You May Like</h3>
       <hr class="w-25 border-bottom border-dark">
-      <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="featuredList.reverse().slice(0, 8)"
+      <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="paintingList.reverse().slice(0, 8)"
                            [filter]="false"
-                           *ngIf="featuredList != null"></app-c-painting-list>
+                           *ngIf="paintingList != null"></app-c-painting-list>
     </div>
     <!--End Related Paintings Section-->    
 

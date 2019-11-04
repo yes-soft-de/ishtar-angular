@@ -23,20 +23,23 @@ export class PaintingListService {
   //   return this.httpClient.get<PaintingListResponse>(UserConfig.PaintingListAPI);
   // }
 
-  requestPaintingListByArtist(artistId: string) {
-    const artistRequest: {
-      parm: string,
-      value: string
-    } = {
-      parm: 'artist',
-      value: artistId
-    };
-    return this.httpClient.post<PaintingListResponse>(
-      UserConfig.getByAPI,
-      JSON.stringify(artistRequest)
-    );
-
+  // Fetch Every Thing From Painting Table
+  requestPaintingListBy(param: string, value: number) {
+    return this.httpClient.get(`${UserConfig.paintingByAPI}/${param}/${value}`);
   }
+  // requestPaintingListByArtist(artistId: string) {
+  //   const artistRequest: {
+  //     parm: string,
+  //     value: string
+  //   } = {
+  //     parm: 'artist',
+  //     value: artistId
+  //   };
+  //   return this.httpClient.post<PaintingListResponse>(
+  //     UserConfig.getByAPI,
+  //     JSON.stringify(artistRequest)
+  //   );
+  // }
 
   requestPaintingListByArtType(artId: string) {
     return this.httpClient.post<PaintingListResponse>(

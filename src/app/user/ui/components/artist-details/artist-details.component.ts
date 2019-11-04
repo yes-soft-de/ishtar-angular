@@ -19,10 +19,11 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() prevArtistExists: boolean;
 
   constructor(private userProfileService: UserProfileService,
-              private router: Router) {
-  }
+              private router: Router) {     console.log('ARtist list: ', this.artist);}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   // Navigate To Previous Artist
   goBack() {

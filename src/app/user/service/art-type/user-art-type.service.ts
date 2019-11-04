@@ -20,18 +20,11 @@ export class UserArtTypeService {
 
   // Get All Art Type
   getAllArtType() {
-    return this.httpClient.get<ArtTypeListResponse>(
-      `${UserConfig.allArtTypeAPI}`, {responseType: 'json'}
-    );
+    return this.httpClient.get<ArtTypeListResponse>(`${UserConfig.artTypesAPI}`);
   }
 
   requestArtTypeDetails(artTypeId: string) {
-    const request: {
-      artType: string
-    } = {
-      artType: artTypeId
-    };
-    return this.httpClient.post<ArtTypeDetailsResponse>(UserConfig.ArtTypeAPI, JSON.stringify(request));
+    return this.httpClient.get(`${UserConfig.artTypeAPI}/${artTypeId}`);
   }
 
   getAllArtTypeWithDetails() {

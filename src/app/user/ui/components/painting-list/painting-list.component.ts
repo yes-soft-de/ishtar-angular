@@ -163,9 +163,9 @@ export class PaintingListComponent implements OnInit {
     }
     this.paintingList = paintingList;
     if (this.paintingList.length > 12) {
-      document.getElementById('my-pagination').style.display = "block";
+      document.getElementById('my-pagination').style.display = 'block';
      } else {
-       document.getElementById('my-pagination').style.display = "none";
+       document.getElementById('my-pagination').style.display = 'none';
      }
   }
 

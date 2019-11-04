@@ -37,13 +37,15 @@ export class PaintingDetailsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPaintingDetails();
     this.getAllPaintings();
+    this.getPaintingDetails();
   }
 
+
+  // Fetch All Paintings
   private getAllPaintings() {
     this.paintingService.requestPaintingList().subscribe(
-      data => {
+        (data: any) => {
         this.formattedList = data.Data;
       }, error1 => {
         console.log(error1);
@@ -51,7 +53,8 @@ export class PaintingDetailsPageComponent implements OnInit {
     );
   }
 
-  getPaintingDetails() {
+  // Fetch Painting detail
+  private getPaintingDetails() {
     this.paintingDetailsService.requestPaintingDetails(
       this.activatedRoute.snapshot.paramMap.get('id')
     ).subscribe(
@@ -61,14 +64,14 @@ export class PaintingDetailsPageComponent implements OnInit {
     );
   }
 
-  getArtistForThisPainting() {
+  private getArtistForThisPainting() {
     // Fetch Artist ID
     this.artistListService.requestArtistList().subscribe(
         (data: any) => {
           data.Data.map(res => {
             if (res.name === this.paintingDetails[0].artist) {
               this.artistDetail = res;
-              console.log('Artist For This Painting: ', this.artistDetail);
+              console.log('Artist For This Painting: ', this.artistDetail, this.artistDetail.path);
             }
           });
         }

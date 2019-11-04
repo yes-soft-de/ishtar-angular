@@ -18,21 +18,27 @@ export class StatueService {
 
   // Get All Statues Method
   getAllStatues() {
-    return this.httpClient.get(
-        UserConfig.getAllStatuesAPI,
-        {responseType: 'json'}
-    );
+    return this.httpClient.get(`${UserConfig.statuesAPI}`);
   }
+  // getAllStatues() {
+  //   return this.httpClient.get(
+  //       UserConfig.getAllStatuesAPI,
+  //       {responseType: 'json'}
+  //   );
+  // }
 
   // Get Statue Using StatueID
-  getStatueUsingId(statueId: number) {
-    return this.httpClient.post(
-        UserConfig.getStatueByIdAPI,
-        JSON.stringify({id: statueId}),
-        {responseType: 'json'}
-    );
+  // getStatueUsingId(statueId: number) {
+  //   return this.httpClient.post(
+  //       UserConfig.getStatueByIdAPI,
+  //       JSON.stringify({id: statueId}),
+  //       {responseType: 'json'}
+  //   );
+  // }
+  getStatueDetail(statueId: number) {
+    return this.httpClient.get(`${UserConfig.statueAPI}/${statueId}`);
   }
-/*
+  /*
    // Get All Statues Method
    getAllStatues() {
     return this.httpClient.get(

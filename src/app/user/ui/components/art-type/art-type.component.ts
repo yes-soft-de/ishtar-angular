@@ -31,7 +31,7 @@ export class ArtTypeComponent implements OnInit {
 
   ngOnInit() {
     this.artTypeService.getAllArtType().subscribe(
-      artTypeList => {
+        (artTypeList: any) => {
         for (const i of artTypeList.Data) {
           if (i.name === this.activatedRoute.snapshot.paramMap.get('id')) {
             this.artType = i;
@@ -42,7 +42,7 @@ export class ArtTypeComponent implements OnInit {
     this.featuredArtists = [];
     if (this.artType !== null) {
       this.artistList.requestArtistList().subscribe(
-        data => {
+          (data: any) => {
           for (const i of data.Data) {
             if (i.artType === this.artType.name) {
               this.featuredArtists.push(i);

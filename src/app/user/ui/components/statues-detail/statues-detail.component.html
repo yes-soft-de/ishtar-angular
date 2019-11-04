@@ -53,7 +53,7 @@
               </div>
               <div class="col-6 statue-artist text-lg-center text-xl-left mb-3">
                 <div class="statue-artist-img d-inline-block">
-                  <img src="{{!artist?.image ? '../../../../../assets/default-avatar.jpg' : artist?.image}}" class="" alt="">
+                  <img src="{{!artist?.path ? '../../../../../assets/default-avatar.jpg' : artist?.path}}" class="" alt="">
                 </div>
                 <p class="statue-artist-name d-inline-block m-0">
                   <a>
@@ -173,14 +173,14 @@
           <ng-container *ngFor="let statue of statuesList; let i = index">
             <ng-container *ngIf="i < 8">
               <div class="col-12 col-sm-6 col-md-4 col-xl-3 mx-auto">
-                <div class="statue mb-3" routerLink="/statue/{{statue.id}}">
-                  <img src="{{statue?.image}}" class="img-fluid" alt="">
+                <div class="statue mb-3" routerLink="/statue/{{statue['0'].id}}">
+                  <img src="{{statue['0']?.image}}" class="img-fluid" alt="">
                   <div class="info">
                     <div class="info-wrapper">
-                      <h3 class="border-bottom">{{statue?.name | uppercase}}</h3>
+                      <h3 class="border-bottom">{{statue['0']?.name | uppercase}}</h3>
                       <p class="artist-name"><i class="fa fa-user fa-sm mr-1"></i>{{artist?.name}}</p>
                       <p class="views ml-3"><i class="far fa-eye fa-fw"></i>
-                        <span *ngFor="let view of statuesView"> {{view.id == statue.id ? view.viewNumber : ''}}</span>
+                        <span *ngFor="let view of statuesView"> {{view.id == statue['0'].id ? view.viewNumber : ''}}</span>
                       </p>
                     </div>
                     <span class="price d-none">200e</span>

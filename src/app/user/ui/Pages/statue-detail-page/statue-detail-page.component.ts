@@ -2,15 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {StatueService} from '../../../service/statue/statue.service';
 import {StatueDetailInterface} from '../../../entity/statue/statue-detail-interface';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {StatueDetailResponse} from '../../../entity/statue/statue-detail-response';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
-import {StatueListResponse} from '../../../entity/statue/statue-list-response';
 import {ArtistListService} from '../../../service/artist-list/artist-list.service';
 import {forkJoin, Observable} from 'rxjs';
-import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ArtistListResponse} from '../../../entity/artist-list/artist-list-response';
 
 @Component({
   selector: 'app-statue-detail-page',
@@ -55,18 +51,24 @@ export class StatueDetailPageComponent implements OnInit {
   }
 
   private fetchData(statueID: number) {
-    this.viewData.row = statueID;   // Insert statue id to get it own view interaction
-    const statueUsingIDObservable: Observable<any> = this.statueService.getStatueUsingId(statueID);
+    // Fetch Statue Detail
+    const statueDetailObservable: Observable<any> = this.statueService.getStatueDetail(statueID);
+    // Fetch All Statues
     const allStatuesObservable: Observable<any> = this.statueService.getAllStatues();
-    const viewStatueObservable: Observable<any>  = this.interactionService.getInteraction(this.viewData);
-    const allArtistObservable: Observable<ArtistListResponse> = this.artistListService.requestArtistList();
+    // Fetch Number Of View Interactions For This Statues
+    const viewStatueObservable: Observable<any>  = this.interactionService.getInteractionsNumber(
+                                                            InteractionConsts.ENTITY_TYPE_STATUE,
+                                                            this.statueId,
+                                                            InteractionConsts.INTERACTION_TYPE_VIEW);
+    // Fetch All Artist
+    const allArtistObservable: Observable<any> = this.artistListService.requestArtistList();
     // join all observable with each other to fetch all data and display them in the same time
-    const combinedObservable = forkJoin(statueUsingIDObservable, allStatuesObservable, viewStatueObservable, allArtistObservable);
+    const combinedObservable = forkJoin(statueDetailObservable, allStatuesObservable, viewStatueObservable, allArtistObservable);
     combinedObservable.subscribe(data => {
       this.statueDetailPage = data[0].Data;     // Fetch Specific Statue Data
       this.statuesListPage = data[1].Data;      // Fetch All Statues
       this.statueViewPage = data[2].Data;       // Fetch view interaction for specific statue
-      data[3].Data.map(res => {       // Fetch Artist For This Statue
+      data[3].Data.map(res => {                 // Fetch Artist For This Statue
         if (res.name === this.statueDetailPage.artist.name) {
             this.artistDetail = res;
           }
@@ -76,22 +78,37 @@ export class StatueDetailPageComponent implements OnInit {
       console.log('Statue View: ', this.statueViewPage);
       console.log('Artist For This Statue: ', this.artistDetail);
     }, error => {
-      console.log('this is error', error);
+      console.log('Error: ', error);
     }, () => {
       for (const statue of this.statuesListPage) {
-        // Fetch Painting View Interaction
-        this.statuesViewsData.row = statue.id;    // fetch id for every statue
-        this.interactionService.getInteraction(this.statuesViewsData).subscribe(
-            (data: {Data: any}) => {
-              this.statuesViewPage.push({
-                id: statue.id,
-                viewNumber: data.Data[0].interactions
-              });
-            },
-            error => {
-              console.log(error);
-            }
-        );
+        // Fetch All Painting Views Interaction
+        this.interactionService.getInteractionsNumber(
+            InteractionConsts.ENTITY_TYPE_STATUE,
+            statue['0'].id,
+            InteractionConsts.INTERACTION_TYPE_VIEW)
+            .subscribe(
+                (data: any) => {
+                  console.log('Statue View: Id:', statue['0'].id, ' => View Number: ' , data.Data[0].interactions);
+                  this.statuesViewPage.push({
+                    id: statue['0'].id,
+                    viewNumber: data.Data[0].interactions
+                  });
+                }, error => {
+                  console.log(error);
+                }
+            );
+        // this.statuesViewsData.row = statue.id;    // fetch id for every statue
+        // this.interactionService.getInteraction(this.statuesViewsData).subscribe(
+        //     (data: {Data: any}) => {
+        //       this.statuesViewPage.push({
+        //         id: statue.id,
+        //         viewNumber: data.Data[0].interactions
+        //       });
+        //     },
+        //     error => {
+        //       console.log(error);
+        //     }
+        // );
       }
       console.log('All statues Interactions: ', this.statuesViewPage);
     });

@@ -1,12 +1,12 @@
 export class UserConfig {
-   public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
   // public static sourceAPI = '/ishtar-backend/public/';
   //  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
- public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
 
- public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
- public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
- public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
+  public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
+  public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
+  public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
 
 
   public static ArtistListAPI = UserConfig.sourceAPI + 'getAllArtist';
@@ -41,19 +41,28 @@ export class UserConfig {
   public static getAllStatuesAPI = UserConfig.sourceAPI + 'getAllStatue';
   public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
 
- // Artists API
- public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
- public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
- // Painting API
- public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
- public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  // Artists API
+  public static artistsAPI              = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST
+  public static artistAPI               = UserConfig.sourceAPI + 'artist';      // this route for GET ById & PUT
+  // Painting API
+  public static paintingsAPI            = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
+  public static paintingAPI             = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  /* PaintingByApi About:
+  * get every thing from painting table dependent on painting column
+  * ex : paintingby/artist/2 => fetch all painting for this artist, ex : paintingby/id/2 => fetch painting with id 2
+  * */
+  public static paintingByAPI           = UserConfig.sourceAPI + 'paintingby';
 
- // Statues API
- public static statuesAPI = UserConfig.sourceAPI + 'statues';
- public static statueAPI = UserConfig.sourceAPI + 'statue';
+  // Statues API
+  public static statuesAPI              = UserConfig.sourceAPI + 'statues';
+  public static statueAPI               = UserConfig.sourceAPI + 'statue';
 
- // Interactions API
- public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
- public static interactionsNumberAPI = UserConfig.sourceAPI + 'interactionsentity';
+  // ArtType API
+  public static artTypesAPI             = UserConfig.sourceAPI + 'arttypes';
+  public static artTypeAPI             = UserConfig.sourceAPI + 'arttype';
+
+  // Interactions API
+  public static interactionsAPI         = UserConfig.sourceAPI + 'interactions';
+  public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
 
 }

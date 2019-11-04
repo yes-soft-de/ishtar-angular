@@ -17,17 +17,20 @@ export class PaintingDetailsService {
   public static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
   }
-  
+
 
   requestPaintingDetails(paintingId: string) {
-    const req: { painting: string} = {
-      painting: paintingId
-    };
-    return this.httpClient.post(
-      `${UserConfig.PaintingDetailsAPI}`,
-      JSON.stringify(req),
-        {responseType: 'json'});
+    return this.httpClient.get(`${UserConfig.paintingAPI}/${paintingId}`);
   }
+  // requestPaintingDetails(paintingId: string) {
+  //   const req: { painting: string} = {
+  //     painting: paintingId
+  //   };
+  //   return this.httpClient.post(
+  //     `${UserConfig.PaintingDetailsAPI}`,
+  //     JSON.stringify(req),
+  //       {responseType: 'json'});
+  // }
 
   requestPaintingImages(paintingId: string) {
     let headers = new HttpHeaders({});
