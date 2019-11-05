@@ -30,7 +30,7 @@ const routes: Routes = [
       {path: 'search/:query', component: SearchPageComponent},
       {path: 'artist-list', component: ArtistListPageComponent, data: {index: 1}},
       {path: 'painting-list', component: PaintingListPageComponent},
-      {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
+      {path: 'painting-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent},

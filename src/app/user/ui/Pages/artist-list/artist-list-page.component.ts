@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
 import {Subscription} from 'rxjs';
 
@@ -12,7 +12,7 @@ export class ArtistListPageComponent implements OnInit, OnDestroy {
   artistList: ArtistListItem[];
   artistListObservable: Subscription;
 
-  constructor(private artistService: ArtistListService) { }
+  constructor(private artistService: ArtistService) { }
 
   ngOnInit() {
     this.requestArtistList();

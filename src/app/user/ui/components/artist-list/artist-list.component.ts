@@ -16,7 +16,6 @@ export class ArtistListComponent implements OnInit {
   @Input() filter = true;
   @Input() artistListFormatted: ArtistListItem[];
   @Input() search = true;
-  client: UserInfo;
   public artistList: {
     id: number,
     image: string,
@@ -27,38 +26,28 @@ export class ArtistListComponent implements OnInit {
   public types: string[] = ['all'];
   public activeArtType: string;
   config: any;  // Config For Paginate
-  viewData: ViewInterface = {
-    entity: InteractionConsts.ENTITY_TYPE_ARTIST,      // 2: For Artist Entity
-    row: 0,         // this for Artist id
-    interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: 0,      // this for client id
-  };
+  // viewData: ViewInterface = {
+  //   entity: InteractionConsts.ENTITY_TYPE_ARTIST,      // 2: For Artist Entity
+  //   row: 0,         // this for Artist id
+  //   interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
+  //   client: 0,      // this for client id
+  // };
   artistIDFollow: {
     id: number,
     followNumber: number
   }[] = [];
 
-  constructor(private interactionService: IshtarInteractionService,
-              private userProfileService: UserProfileService) { }
+  constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
     console.log('artist list: ', this.artistListFormatted);
-    this.userProfileService.requestUserDetails().subscribe(
-        (data: any) => {
-          this.client = data.Data;
-          console.log('user:', data);
-        },
-        error => {
-          console.log(error);
-        }
-    );
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
       // Fetch Artist Follow Interaction
       this.interactionService.getInteractionsNumber(
-          InteractionConsts.ENTITY_TYPE_ARTIST,
-          i.id,
-          InteractionConsts.INTERACTION_TYPE_FOLLOW)
+          InteractionConsts.ENTITY_TYPE_ARTIST,       // 2: For Artist Entity
+          i.id,                                       // this for Artist id
+          InteractionConsts.INTERACTION_TYPE_FOLLOW)  // 3: for view interaction
           .subscribe(
         (data: any) => {
           console.log('Artist Follow: Id:', i.id, ' => Follow: ' , data.Data[0].interactions);
@@ -109,7 +98,6 @@ export class ArtistListComponent implements OnInit {
           }
       );*/
     }
-    console.log('Artist List :', this.artistList, 'Artist id/Follow :', this.artistIDFollow);
     // create array of types after removing the repeated value
     this.types = [...new Set(this.types)];
     // Create Pagination Config
@@ -167,16 +155,8 @@ export class ArtistListComponent implements OnInit {
   }
 
   // Increase view for Artist
-  viewArtist(id: number) {
-    this.viewData.row = id;
-    this.interactionService.addViewInteraction(this.viewData).subscribe(
-        res => {
-          console.log('This Artist Was Reviewed', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+  viewArtist(artistId: number) {
+    this.interactionService.addViewInteraction(artistId, 'artist');
   }
 
   // Sort Method From larger FollowNumber To Smallest

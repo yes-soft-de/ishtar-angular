@@ -23,47 +23,6 @@ export class LoveService {
               public dialog: MatDialog) {}
 
 
-  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  private getClientInteraction(clientId: number, parentType: number, rowId) {
-    let entityName = '';
-    // fetch entity name
-    if (parentType === 1) {
-      entityName = 'painting';
-    } else if (parentType === 2) {
-      entityName = 'artist';
-    } else if (parentType === 3) {
-      entityName = 'artType';
-    } else if (parentType === 4) {
-      entityName = 'auction';
-    } else if (parentType === 6) {
-      entityName = 'statue';
-    }
-    // check if user is login or not
-    const request: {client: number} = {
-      client: clientId
-    };
-    return this.httpClient.post(
-        `${UserConfig.getClientInteractionsAPI}`,
-        JSON.stringify(request),
-        {responseType: 'json'}
-    ).subscribe(
-        (res: {Data: any}) => {
-          console.log('Response For Love Interactions : ', res);
-          res.Data.map(response => {  // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
-            // Check For Entity Name and Interaction IS Like
-            if (response.entity === entityName && response.interaction === 'like') {
-              // Check For Specify Painting
-              if (response.id === rowId) {
-                this.statusSubject.next({success: true, value: response});
-              }
-            }
-          });
-        }, error => {
-          console.log('Error From getClientInteraction  From Love service : ', error);
-        }
-    );
-  }
-
   // region Love Getter Methods
   public initLove(parentType, rowId) {
     // See If Loading User
@@ -71,40 +30,41 @@ export class LoveService {
       // If Not Request Him
       this.userRequestSent = true;
       this.userService.requestUserDetails().subscribe(
-        user => {
-          // Assign the Data to the User
-          if (this.isUserNode(user.Data)) {
-            console.log('Assigning User');
-            this.userInfo = user.Data;
-            this.getClientInteraction(this.userInfo.id, parentType, rowId);
-            // this.requestLoveStatus(entityId, entityType);
+          (user: any) => {
+            // Assign the Data to the User
+            if (this.isUserNode(user.Data)) {
+              console.log('Assigning User');
+              this.userInfo = user.Data;
+              this.getClientInteraction(this.userInfo.id, parentType, rowId);
+            }
           }
-        }
       );
     } else if (this.checkUserDetailsExists()) {
       console.log('User Exists, Requesting Love Status');
       this.getClientInteraction(this.userInfo.id, parentType, rowId);
-      // this.requestLoveStatus(entityId, entityType);
     }
   }
 
-  // Then Ask For Love Interaction Details
-  // private requestLoveStatus(entityId, entityType) {
-  //   const request: LoveRequest = {
-  //     client: this.userInfo.id,
-  //     row: entityId,
-  //     entity: entityType,
-  //     interaction: InteractionConsts.INTERACTION_TYPE_LOVE
-  //   };
-  //   this.httpClient.post<LoveInteractionResponse>(UserConfig.getInteractionAPI, JSON.stringify(request)).subscribe(
-  //     res => {
-  //       console.log(`interactions ${res.Data[0].interactions}`);
-  //       if (res.Data[0].interactions > 0) {
-  //         this.statusSubject.next(true);
-  //       }
-  //     }
-  //   );
-  // }
+  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
+  private getClientInteraction(clientId: number, parentType: number, rowId) {
+    // check if user is login or not
+    return this.httpClient.get(`${UserConfig.specificClientInteractions}/${clientId}`).subscribe(
+        (res: {Data: any}) => {
+          console.log('Response For Love Interactions : ', res);
+          res.Data.map(response => {  // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
+            // Check For Entity Name and Interaction IS Like
+            if (response.entity === this.toEntityName(parentType) && response.interaction === 'like') {
+              // Check For Specify Painting
+              if (response.id === rowId) {
+                this.statusSubject.next({success: true, value: response});
+              }
+            }
+          });
+        }, error => {
+          console.log('Error From getClientInteraction From Love service : ', error);
+        }
+    );
+  }
 
   // endregion
   // Check if The User is login to make his love interaction
@@ -129,8 +89,8 @@ export class LoveService {
       entity: entityType,
       interaction: InteractionConsts.INTERACTION_TYPE_LOVE
     };
-    this.httpClient.post<LoveInteractionResponse>(UserConfig.postInteractionAPI, JSON.stringify(request)).subscribe(
-      res => {
+    this.httpClient.post<LoveInteractionResponse>(`${UserConfig.interactionsAPI}`, JSON.stringify(request)).subscribe(
+        (res: any) => {
         this.statusSubject.next({success: true, value: res});
       }
     );
@@ -139,15 +99,9 @@ export class LoveService {
   // Delete Love Interaction
   public deleteLoveInteraction(interactionID: number) {
     if (this.checkUserDetailsExists()) {
-      const request: {id: number} = {
-        id: interactionID
-      };
-      return this.httpClient.post(
-          `${UserConfig.deleteClientInteractionsAPI}`,
-          JSON.stringify(request),
-          {responseType: 'json'}
+      return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`
       ).subscribe(
-          res => {
+          (res: any) => {
             console.log('response deleted from love.service', res);
             this.statusSubject.next(false);
           }
@@ -174,6 +128,23 @@ export class LoveService {
 
   private isUserNode(user: UserInfo) {
     return user.id !== undefined;
+  }
+
+  private toEntityName(parentType) {
+    let entityName = '';
+    // fetch entity name
+    if (parentType === 1) {
+      entityName = 'painting';
+    } else if (parentType === 2) {
+      entityName = 'artist';
+    } else if (parentType === 3) {
+      entityName = 'artType';
+    } else if (parentType === 4) {
+      entityName = 'auction';
+    } else if (parentType === 6) {
+      entityName = 'statue';
+    }
+    return entityName;
   }
   // endregion
 }

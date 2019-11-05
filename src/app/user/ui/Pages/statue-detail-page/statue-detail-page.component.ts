@@ -5,7 +5,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import {forkJoin, Observable} from 'rxjs';
 
 @Component({
@@ -39,7 +39,7 @@ export class StatueDetailPageComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private statueService: StatueService,
-              private artistListService: ArtistListService,
+              private artistListService: ArtistService,
               private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {

@@ -31,6 +31,7 @@ export class ClapWidgetComponent implements OnInit {
   }
 
   ObserveClaps() {
+    // this.clapService.getClientClap(6, this.ParentType, this.ParentId);
     // Fetch THe Clap Request
     this.clapService.initClap(this.ParentType, this.ParentId);
     // Response From Clap Services

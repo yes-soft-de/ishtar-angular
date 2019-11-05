@@ -1,9 +1,9 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../../UserConfig';
 import {ArtTypeListResponse} from '../../../entity/art-type-list/art-type-list-response';
@@ -41,8 +41,8 @@ export class HomePageComponent implements OnInit {
   showNavbar = true;
   artistList: ArtistListItem[];
 
-  constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingListService,
-              private artistService: ArtistListService, private httpClient: HttpClient) {
+  constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingService,
+              private artistService: ArtistService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
