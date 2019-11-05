@@ -12,6 +12,9 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListCommentComponent implements OnInit {
   comments: CommentInterface[];
+  commentsList: CommentInterface[] = [];
+  config: any;
+
   constructor(private commentService: CommentService,
               private router: Router,
               private route: ActivatedRoute,
@@ -27,9 +30,31 @@ export class ListCommentComponent implements OnInit {
     this.commentService.getAllComments().subscribe(
         (data: CommentResponse) => {
           this.comments = data.Data;
+          for (const comment of this.comments) {
+            this.commentsList.push({
+              id: comment.id,
+              body: comment.body,
+              userName: comment.userName,
+              entity: comment.entity,
+              row: comment.row,
+              date: comment.date,
+              lastEdit: comment.lastEdit,
+              spacial: comment.spacial
+            });
+          }
           console.log('Admin Comments Section: ', data.Data);
         }
     );
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.commentsList.length
+    };
+  }
+
+  // Fetch The Page Number On Page Change
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   delete(id: number) {

@@ -26,6 +26,8 @@ import { ListStatueComponent } from './ui/statue/list-statue/list-statue.compone
 import { AddStatueComponent } from './ui/statue/add-statue/add-statue.component';
 import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.component';
 import { ListCommentComponent } from './ui/comments/list-comment/list-comment.component';
+import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { ListCommentComponent } from './ui/comments/list-comment/list-comment.co
     ListStatueComponent,
     AddStatueComponent,
     EditStatueComponent,
-    ListCommentComponent
+    ListCommentComponent,
+    ListInteractionComponent
    ],
   exports: [
     AdminComponent,
@@ -61,6 +64,7 @@ import { ListCommentComponent } from './ui/comments/list-comment/list-comment.co
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     // BrowserAnimationsModule
   ]
 })

@@ -12,6 +12,8 @@ import {ToastrService} from 'ngx-toastr';
 export class ListPaintingComponent implements OnInit, OnDestroy {
   public paintings: PaintingInterface[];
   allPaintingObservable: Subscription;
+  paintingsList: PaintingInterface[] = [];
+  config: any;
 
   constructor(private toaster: ToastrService,
               private photosListService: PhotosListService ) { }
@@ -29,10 +31,43 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
     this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
       (res: any) => {
         this.paintings = res.Data;
+        for (const painting of this.paintings) {
+          this.paintingsList.push({
+            id: painting.id,
+            name: painting.name,
+            artist: painting.artist,
+            height: painting.height,
+            width: painting.width,
+            colorsType: painting.colorsType,
+            price: painting.price,
+            state: painting.state,
+            active: painting.active,
+            image: painting.image,
+            createdBy: painting.createdBy,
+            updatedBy: painting.updatedBy,
+            createDate: painting.createDate,
+            updateDate: painting.updateDate,
+            artType: painting.artType,
+            gallery: painting.gallery,
+            keyWords: painting.keyWords,
+            story: painting.story
+          });
+        }
         console.log(this.paintings);
       }, error1 => {
         console.log(error1);
       });
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.paintingsList.length
+    };
+  }
+
+  // Fetch The Page Number On Page Change
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
     // Delete painting Method

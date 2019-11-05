@@ -15,13 +15,13 @@
             <td>Spacial</td>
             <td>Control</td>
           </tr>
-          <tr *ngFor="let comment of comments">
+          <tr *ngFor="let comment of commentsList | paginate: config; index as i">
             <td>{{comment.id}}</td>
             <td>{{comment.userName}}</td>
             <td>{{comment.entity}}</td>
             <td>{{comment.row}}</td>
             <td>{{comment.body}}</td>
-            <td>{{comment.date.timestamp * 1000 | date: 'yyyy-MM-dd'}}</td>
+            <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
             <td>{{comment.lastEdit != null ? comment.lastEdit : '-'}}</td>
             <td>{{comment.spacial}}</td>
             <td>
@@ -29,6 +29,15 @@
             </td>
           </tr>
         </table>
+        <pagination-controls class="my-pagination"
+                             (pageChange)="pageChanged($event)"
+                             autoHide="true"
+                             responsive="true"
+                             previousLabel="Prev"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page"></pagination-controls>
       </div>
     </div>
   </div>

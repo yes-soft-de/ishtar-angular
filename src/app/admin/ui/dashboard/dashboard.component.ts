@@ -10,6 +10,9 @@ import {StatueService} from '../../service/statue/statue.service';
 import {StatueInterface} from '../../entity/statue/statue.interface';
 import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {PaintingInterface} from '../../entity/painting/painting-interface';
+import {CommentService} from '../../service/comment/comment.service';
+import {CommentResponse} from '../../entity/comment/comment.response';
+import {CommentInterface} from '../../entity/comment/comment-interface';
 
 
 @Component({
@@ -22,26 +25,31 @@ export class DashboardComponent implements OnInit, OnDestroy {
   paintings: PaintingInterface[];
   auctions: AuctionList[];
   statues: {0: StatueInterface, price: string}[];
+  comments: CommentInterface[];
   latestArtistNumber = 5;
   latestPaintingNumber = 5;
   latestStatueNumber = 5;
+  latestCommentNumber = 5;
   latestAuctionNumber = 5;
   combinedObservable: Subscription;
 
   constructor(private artist: ArtistService,
               private photosListService: PhotosListService,
               private auctionService: AuctionService,
+              private commentService: CommentService,
               private statueService: StatueService) { }
 
   ngOnInit() {
-    const allArtistObs    = this.artist.getAllArtists();              // fetch all artists
-    const allPaintingObs  = this.photosListService.getAllPainting();  // fetch all paintings
-    const allStatueObs    = this.statueService.getAllStatues();       // fetch all statues
-    const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs);  // combined all
+    const allArtistObs    = this.artist.getAllArtists();              // fetch all Artists
+    const allPaintingObs  = this.photosListService.getAllPainting();  // fetch all Paintings
+    const allStatueObs    = this.statueService.getAllStatues();       // fetch all Statues
+    const allCommentsObs  = this.commentService.getAllComments();     // fetch all Comments
+    const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs, allCommentsObs);  // combined all
     this.combinedObservable = combinedObs.subscribe((data: any) => {
       this.artists = data[0].Data;
       this.paintings = data[1].Data;
       this.statues = data[2].Data;
+      this.comments = data[3].Data.reverse();
       console.log('dashboard', data);
     });
   }

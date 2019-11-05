@@ -1,0 +1,42 @@
+<div *ngIf="interactions != null">
+  <div *ngIf="interactions.length !== 0">
+    <div class="container-fluid">
+      <h1 class="text-center my-4">Manage Interactions Page</h1>
+      <div class="table-responsive text-center">
+        <table class="table table-bordered main-table">
+          <tr class="bg-dark text-white">
+            <td>#ID</td>
+            <td>Interactions Name</td>
+            <td>Created By</td>
+            <td>Section Name</td>
+            <td>Section ID</td>
+          </tr>
+          <tr *ngFor="let interaction of interactionsList | paginate: config; index as i">
+            <td>{{interaction.id}}</td>
+            <td>{{interaction.interaction}}</td>
+            <td>{{!interaction.client ? 'Visitors' : interaction.client}}</td>
+            <td>{{interaction.entities}}</td>
+            <td>{{interaction.row}}</td>
+          </tr>
+        </table>
+        <pagination-controls class="my-pagination"
+                             (pageChange)="pageChanged($event)"
+                             autoHide="true"
+                             responsive="true"
+                             previousLabel="Prev"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="interactions.length === 0">
+    <div class="container">
+      <div class="alert alert-primary text-center mt-5">There Isn't Interactions To Show</div>\
+    </div>
+  </div>
+</div>
+<div *ngIf="interactions == null">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>

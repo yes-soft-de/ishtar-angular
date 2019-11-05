@@ -1,5 +1,5 @@
-export interface ArtistInterface {
-  id: string;
+export class ArtistsList {
+  id: number;
   name: string;
   nationality: string;
   residence: string;
@@ -12,4 +12,5 @@ export interface ArtistInterface {
   video?: string;
   details: string;
   story: string;
+  artType?: string;
 }
