@@ -1,22 +1,17 @@
 export class UserConfig {
-  // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
   // public static sourceAPI = '/ishtar-backend/public/';
-   public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+  //  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
 
+  public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
+  public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
+  public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
 
- public static PaintingListAPI = UserConfig.sourceAPI + 'getAllPainting';
- public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
- public static PaintingDetailsAPI = UserConfig.sourceAPI + 'getPaintingById';
-
-//public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
- //public static paintingAPI  = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
 
   public static ArtistListAPI = UserConfig.sourceAPI + 'getAllArtist';
   public static ArtistDetailsAPI = UserConfig.sourceAPI + 'getArtistById';
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
-
-  // public static artistsAPI = UserConfig.sourceAPI + 'artists';    // This route for GET all & POST
-  // public static artistAPI = UserConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
 
   public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
   public static allArtTypeAPI = UserConfig.sourceAPI + 'getAllArtType';
@@ -24,8 +19,8 @@ export class UserConfig {
   public static postInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
   public static searchAPI = UserConfig.sourceAPI + 'search';
   public static userProfileAPI = UserConfig.sourceAPI + 'user';
-  public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
-  public static userLogoutLink = UserConfig.sourceAPI + 'logout';
+  public static userLoginLink = UserConfig.sourceAPI2 + 'connect/google';
+  public static userLogoutLink = UserConfig.sourceAPI2 + 'logout';
 
   public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
   public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
@@ -42,9 +37,37 @@ export class UserConfig {
   public static updateCommentAPI = UserConfig.sourceAPI + 'updateComment';
   public static deleteCommentAPI = UserConfig.sourceAPI + 'deleteComment';
   // Statues API
-  //public static statuesAPI = UserConfig.sourceAPI + 'statues';
-  //public static statueAPI = UserConfig.sourceAPI + 'statue';
+
   public static getAllStatuesAPI = UserConfig.sourceAPI + 'getAllStatue';
   public static getStatueByIdAPI = UserConfig.sourceAPI + 'getStatueById';
+
+  // Artists API
+  public static artistsAPI              = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST
+  public static artistAPI               = UserConfig.sourceAPI + 'artist';      // this route for GET ById & PUT
+  // Painting API
+  public static paintingsAPI            = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
+  public static paintingAPI             = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  /* PaintingByApi About:
+  * get every thing from painting table dependent on painting column
+  * ex : paintingby/artist/2 => fetch all painting for this artist, ex : paintingby/id/2 => fetch painting with id 2
+  * */
+  public static paintingByAPI           = UserConfig.sourceAPI + 'paintingby';
+
+  // Statues API
+  public static statuesAPI              = UserConfig.sourceAPI + 'statues';
+  public static statueAPI               = UserConfig.sourceAPI + 'statue';
+
+  // ArtType API
+  public static artTypesAPI             = UserConfig.sourceAPI + 'arttypes';
+  public static artTypeAPI              = UserConfig.sourceAPI + 'arttype';
+
+  // Comments API
+  public static specialSectionComments  = UserConfig.sourceAPI + 'commentsentity';
+  public static commentsAPI             = UserConfig.sourceAPI + 'comments';
+  public static commentAPI             = UserConfig.sourceAPI + 'comment';
+
+  // Interactions API
+  public static interactionsAPI         = UserConfig.sourceAPI + 'interactions';
+  public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
 
 }

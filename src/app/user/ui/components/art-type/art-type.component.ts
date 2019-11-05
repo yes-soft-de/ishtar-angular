@@ -11,7 +11,7 @@ import {IshtarInteractionService} from '../../../service/ishtar-interaction/isht
 @Component({
   selector: 'app-art-type',
   templateUrl: './art-type.component.html',
-  styleUrls: ['./art-type.component.scss','../../widgets/follow-widget/follow-widget.component.scss'],
+  styleUrls: ['./art-type.component.scss', '../../widgets/follow-widget/follow-widget.component.scss'],
   encapsulation : ViewEncapsulation.None
 })
 export class ArtTypeComponent implements OnInit {
@@ -31,7 +31,7 @@ export class ArtTypeComponent implements OnInit {
 
   ngOnInit() {
     this.artTypeService.getAllArtType().subscribe(
-      artTypeList => {
+        (artTypeList: any) => {
         for (const i of artTypeList.Data) {
           if (i.name === this.activatedRoute.snapshot.paramMap.get('id')) {
             this.artType = i;
@@ -42,7 +42,7 @@ export class ArtTypeComponent implements OnInit {
     this.featuredArtists = [];
     if (this.artType !== null) {
       this.artistList.requestArtistList().subscribe(
-        data => {
+          (data: any) => {
           for (const i of data.Data) {
             if (i.artType === this.artType.name) {
               this.featuredArtists.push(i);

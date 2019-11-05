@@ -23,7 +23,7 @@ export class PaintingDetailsComponent implements OnInit {
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
   paintingNumber: number;
-  CurrentPaintingId:number;
+  CurrentPaintingId: number;
 
   constructor(private paintingService: PaintingListService,
               private paintingViewsService: PaintingViewsService,
@@ -34,11 +34,11 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.featuredList = data.Data;
-      }
-    );
+    // this.paintingService.requestPaintingList().subscribe(
+    //   data => {
+    //     this.featuredList = data.Data;
+    //   }
+    // );
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
@@ -86,13 +86,13 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
-  goBack(){
-    for (let i=0; i < this.paintingList.length; i++ ) {
+  goBack() {
+    for (let i = 0; i < this.paintingList.length; i++ ) {
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i - 1;
       }
     }
-    if (this.paintingNumber > 0){
+    if (this.paintingNumber > 0) {
       this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
       this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
     } else {
@@ -101,13 +101,13 @@ export class PaintingDetailsComponent implements OnInit {
     }
   }
 
-  goNext(){
-    for (let i=0; i < this.paintingList.length; i++ ) {
+  goNext() {
+    for (let i = 0; i < this.paintingList.length; i++ ) {
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i + 1;
       }
     }
-    if (this.paintingNumber < this.paintingList.length - 1){
+    if (this.paintingNumber < this.paintingList.length - 1) {
       this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
       this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
     } else {

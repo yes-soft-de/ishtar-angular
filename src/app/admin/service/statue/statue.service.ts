@@ -4,13 +4,18 @@ import {Observable, throwError} from 'rxjs';
 import {AdminConfig} from '../../AdminConfig';
 import {catchError} from 'rxjs/operators';
 import {StatueInterface} from '../../entity/statue/statue.interface';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatueService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              private route: Router,
+              private activatedRoute: ActivatedRoute,
+              private toaster: ToastrService) {}
 
   public static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
@@ -51,11 +56,7 @@ export class StatueService {
 
   // Delete Statue
   deleteStatue(statueId: number) {
-    return this.httpClient.post(
-        AdminConfig.deleteStatueAPI,
-        JSON.stringify({id: statueId}),
-        {responseType: 'json'}
-    ).pipe(catchError(StatueService.errorHandler));
+    return this.httpClient.delete(`${AdminConfig.statueAPI}/${statueId}`);
   }
 
   // Admin Section - Upload Image For Statue

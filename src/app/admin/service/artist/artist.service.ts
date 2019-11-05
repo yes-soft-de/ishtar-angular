@@ -8,6 +8,7 @@ import {Artist} from '../../entity/artist/artist';
 import { catchError } from 'rxjs/operators';
 import {Observable, pipe, throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Injectable({
@@ -15,9 +16,7 @@ import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 })
 export class ArtistService {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   // Handling the error
   private static errorHandler(error: HttpErrorResponse) {
@@ -101,16 +100,7 @@ export class ArtistService {
 
   // Admin Section - Delete Artist
   deleteArtist(artistId: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post(
-        AdminConfig.deleteArtistAPI,
-        JSON.stringify({id: artistId}),
-        httpOptions
-    ).pipe(catchError(ArtistService.errorHandler));
+    return this.httpClient.delete(`${AdminConfig.artistAPI}/${artistId}`);
   }
 
   // Admin Section - Uplaod Image For Artist

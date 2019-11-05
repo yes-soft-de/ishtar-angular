@@ -11,8 +11,9 @@ export class AdminConfig {
   public static addMediaAPI             = AdminConfig.sourceAPI + 'createMedia';
   public static allRowSelectedEntityAPI = AdminConfig.sourceAPI + 'getEntityNames';
   // Art Type API
-  public static allArtTypeAPI           = AdminConfig.sourceAPI + 'getArtTypeList';
-  // name API
+  // public static allArtTypeAPI           = AdminConfig.sourceAPI + 'getArtTypeList';
+  public static artTypesAPI             = AdminConfig.sourceAPI + 'arttypes';
+  // Artist API
   // public static addArtistAPI            = AdminConfig.sourceAPI + 'createArtist';
   // public static editArtistAPI           = AdminConfig.sourceAPI + 'updateArtist';
   // public static deleteArtistAPI         = AdminConfig.sourceAPI + 'deleteArtist';
@@ -30,16 +31,16 @@ export class AdminConfig {
   // public static allPaintingsAPI         = AdminConfig.sourceAPI + 'getAllPainting';
   // public static paintingAPI             = AdminConfig.sourceAPI + 'getPaintingById';
   // public static fullImagesListAPI       = AdminConfig.sourceAPI + 'painting-full-list';
-  public static deletePaintingAPI       = AdminConfig.sourceAPI + 'deletePainting';
+  // public static deletePaintingAPI       = AdminConfig.sourceAPI + 'deletePainting';
   public static paintingsAPI            = AdminConfig.sourceAPI + 'paintings';    // This route for GET all & POST
   public static paintingAPI             = AdminConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
 
   // client API
-  public static addClientAPI            = AdminConfig.sourceAPI + 'createClient';
-  public static editClientAPI           = AdminConfig.sourceAPI + 'updateClient';
-  public static deleteClientAPI         = AdminConfig.sourceAPI + 'deleteClient';
-  public static allClientsAPI           = AdminConfig.sourceAPI + 'getAllClient';
-  public static clientAPI               = AdminConfig.sourceAPI + 'getClientById';
+   public static addClientAPI            = AdminConfig.sourceAPI + 'createClient';
+   public static editClientAPI           = AdminConfig.sourceAPI + 'updateClient';
+   public static deleteClientAPI         = AdminConfig.sourceAPI + 'deleteClient';
+   public static allClientsAPI           = AdminConfig.sourceAPI + 'getAllClient';
+   public static clientAPI               = AdminConfig.sourceAPI + 'getClientById';
 
   // Auction API
   // public static addAuctionAPI           = AdminConfig.sourceAPI + 'createAuction';
@@ -53,12 +54,13 @@ export class AdminConfig {
   // public static deleteStatueAPI         = AdminConfig.sourceAPI + 'deleteStatue';
   // public static allStatuesAPI           = AdminConfig.sourceAPI + 'getAllStatue';
   // public static statueAPI               = AdminConfig.sourceAPI + 'getStatueById';
-  public static deleteStatueAPI         = AdminConfig.sourceAPI + 'deleteStatue';
+  // public static deleteStatueAPI         = AdminConfig.sourceAPI + 'deleteStatue';
   public static statuesAPI              = AdminConfig.sourceAPI + 'statues';
   public static statueAPI               = AdminConfig.sourceAPI + 'statue';
 
   // Comments API
   public static commentsAPI             = AdminConfig.sourceAPI + 'comments';
+  public static commentAPI              = AdminConfig.sourceAPI + 'comment';
 
   // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
   // public static userProfileAPI = AdminConfig.sourceAPI + 'user';

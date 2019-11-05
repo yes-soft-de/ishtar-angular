@@ -8,7 +8,7 @@
             <td>#ID</td>
             <td>Comment By</td>
             <td>Comment Section</td>
-            <td>Comment For</td>
+            <td>Section Id</td>
             <td>Body</td>
             <td>Comment Date</td>
             <td>last Edit</td>
@@ -21,8 +21,8 @@
             <td>{{comment.entity}}</td>
             <td>{{comment.row}}</td>
             <td>{{comment.body}}</td>
-            <td>{{comment.date.timestamp | date: 'yyyy-MM-dd'}}</td>
-            <td>{{comment.lastEdit}}</td>
+            <td>{{comment.date.timestamp * 1000 | date: 'yyyy-MM-dd'}}</td>
+            <td>{{comment.lastEdit != null ? comment.lastEdit : '-'}}</td>
             <td>{{comment.spacial}}</td>
             <td>
               <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>

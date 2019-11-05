@@ -7,6 +7,7 @@ export interface ArtistListItem {
   story: string;
   details: string;
   image: string;
+  path?: string;
   video: string;
   Facebook: string;
   Instagram: string;

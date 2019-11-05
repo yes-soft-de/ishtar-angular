@@ -75,8 +75,8 @@
               <ng-container *ngFor="let artist of artists; let i = index">
                 <ng-container *ngIf="i < latestArtistNumber">
                   <div class="late_info">
-                    {{artist.name}}
-                    <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{artist["0"].name}}
+                    <a routerLink="/admin/edit-artist/{{artist['0'].id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
@@ -96,7 +96,7 @@
                 <ng-container *ngIf="i < latestPaintingNumber">
                   <div class="late_info">
                     {{painting.name}}
-                    <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
@@ -116,7 +116,7 @@
                 <ng-container *ngIf="i < latestStatueNumber">
                   <div class="late_info">
                     {{statue["0"].name}}
-                    <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    <a routerLink="/admin/edit-statue/{{statue['0'].id}}" href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>

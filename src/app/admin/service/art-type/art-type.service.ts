@@ -7,6 +7,7 @@ import {throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {catchError} from 'rxjs/operators';
 import {ArtTypeResponse} from '../../entity/art-type/art-type-response';
+import {UserConfig} from '../../../user/UserConfig';
 
 
 
@@ -50,7 +51,7 @@ export class ArtTypeService {
   // Get All Art Type
   getAllArtType() {
     return this.httpClient.get(
-        `${AdminConfig.allArtTypeAPI}`, {responseType: 'json'}
+        `${UserConfig.artTypesAPI}`, {responseType: 'json'}
     ).pipe(catchError(ArtTypeService.errorHandler));
   }
 

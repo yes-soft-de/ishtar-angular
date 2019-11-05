@@ -4,6 +4,8 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ArtistDetails} from '../../../entity/artist/artist-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingDetailsResponse} from '../../../entity/painting-details/painting-details-response';
+import {PaintingListResponse} from '../../../entity/painting-list/painting-list-response';
 
 @Component({
   selector: 'app-artist-details-page',
@@ -29,7 +31,7 @@ export class ArtistDetailsPageComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
       this.artistId = Number(param.get('id'));
       this.fetchData();
-      this.fetchNextAritst(); // Fetch The Next Artist To Check If The Id Is Correct Or NOt
+      this.fetchNextArtist(); // Fetch The Next Artist To Check If The Id Is Correct Or NOt
       this.fetchPrevArtist(); // Fetch The Prev Artist To Check If The Id Is Correct Or NOt
     });
 
@@ -38,7 +40,7 @@ export class ArtistDetailsPageComponent implements OnInit {
   private fetchData() {
     // get artist id using observable
     this.artistService.requestArtistDetails(this.artistId).subscribe(
-      data => {
+        (data: any) => {
         this.artist = data.Data[0];
         console.log('current artist :', this.artist);
       }, error1 => {
@@ -46,9 +48,10 @@ export class ArtistDetailsPageComponent implements OnInit {
       }
     );
 
-    this.photoService.requestPaintingListByArtist(this.artistId)
+    // Fetch All Painting For This Artist
+    this.photoService.requestPaintingListBy('artist', this.artistId)
       .subscribe(
-        data => {
+          (data: PaintingListResponse) => {
           this.paintingList = data.Data;
           console.log(this.paintingList);
           this.paintingSlidesPage = this.chunk(this.paintingList, 4);
@@ -62,10 +65,10 @@ export class ArtistDetailsPageComponent implements OnInit {
   }
 
   // Get The Next Artist Data
-  fetchNextAritst() {
+  fetchNextArtist() {
     // get artist id using observable
     this.artistService.requestArtistDetails(this.artistId + 1).subscribe(
-        data => {
+        (data: any) => {
           this.nextArtistExistsPage = !data.Data[0] ? false : true;
           }, error1 => {
           console.log('Retrying', error1);
@@ -78,7 +81,7 @@ export class ArtistDetailsPageComponent implements OnInit {
   fetchPrevArtist() {
     // get artist id using observable
     this.artistService.requestArtistDetails(this.artistId - 1).subscribe(
-        data => {
+        (data: any) => {
           this.prevArtistExistsPage = !data.Data[0] ? false : true;
         }, error1 => {
           console.log('Retrying', error1);

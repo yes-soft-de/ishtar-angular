@@ -13,11 +13,17 @@ import {InteractionConsts} from '../../../consts/interaction/interaction-consts'
 export class StatueListComponent implements OnInit {
   @Input() statuesList: StatueDetailInterface[];
   @Input() statuesListFiltered: StatueDetailInterface[];
+  @Input() statuesInteraction: { id: number, viewNumber: number }[];
   magnifyingImage = false;
 
   constructor(private interactionService: IshtarInteractionService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.statuesList, this.statuesListFiltered, this.statuesInteraction);
+    // for (const)
+  }
+
+
 
   // Increase view for Statue
   viewStatue(statueId: number) {
@@ -42,30 +48,30 @@ export class StatueListComponent implements OnInit {
   }
 
   filterName(event) {
-    let btn_name = event.target.name;
+    const BTN_NAME = event.target.name;
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
-      if (btn_name === this.statuesList[i].name) {
+      if (BTN_NAME === this.statuesList[i].name) {
        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
 
   filterArtistName(event) {
-    let btn_name = event.target.name;
+    const BTN_NAME = event.target.name;
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
-      if (btn_name === this.statuesList[i].artist.name) {
+      if (BTN_NAME === this.statuesList[i].artist.name) {
        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
 
   filterMaterial(event) {
-    let btn_name = event.target.name;
+    const BTN_NAME = event.target.name;
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
-      if (btn_name === this.statuesList[i].material) {
+      if (BTN_NAME === this.statuesList[i].material) {
        this.statuesListFiltered[i] = this.statuesList[i];
       }
    }
@@ -102,14 +108,14 @@ export class StatueListComponent implements OnInit {
   }
 
   MagnifyingImage(event) {
-    let btn_number = event.target.name;
-    let info_id: string = 'info_' + btn_number;
-    console.log(btn_number);
+    const BTN_NUMBER = event.target.name;
+    const INFO_ID: string = 'info_' + BTN_NUMBER;
+    console.log(BTN_NUMBER);
     if (this.magnifyingImage) {
-      document.getElementById(info_id).style.display = 'block';
+      document.getElementById(INFO_ID).style.display = 'block';
       this.magnifyingImage = false;
     } else {
-      document.getElementById(info_id).style.display = 'none';
+      document.getElementById(INFO_ID).style.display = 'none';
       this.magnifyingImage = true;
     }
   }

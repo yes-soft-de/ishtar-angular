@@ -27,10 +27,11 @@ export class ArtistListPageComponent implements OnInit, OnDestroy {
     this.artistListObservable = this.artistService.requestArtistList().subscribe(
         (data: any) => {
           this.artistList = data.Data;
-        // console.log(JSON.stringify(data.Data));
-      }, error1 => {
+        }, error1 => {
         console.log(error1);
       });
   }
+
+
 
 }

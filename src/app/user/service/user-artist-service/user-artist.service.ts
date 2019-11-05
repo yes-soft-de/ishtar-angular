@@ -19,16 +19,19 @@ export class UserArtistService {
 
   
   requestArtistDetails(artistId: any) {
-    const request: {
-      artist: string
-    } = {
-      artist: artistId
-    };
-    return this.httpClient.post<{ Data: ArtistDetails[] }>(
-      UserConfig.ArtistDetailsAPI,
-      JSON.stringify(request)
-    );
+    return this.httpClient.get(`${UserConfig.artistAPI}/${artistId}`);
   }
+  // requestArtistDetails(artistId: any) {
+  //   const request: {
+  //     artist: string
+  //   } = {
+  //     artist: artistId
+  //   };
+  //   return this.httpClient.post<{ Data: ArtistDetails[] }>(
+  //       UserConfig.ArtistDetailsAPI,
+  //       JSON.stringify(request)
+  //   );
+  // }
 
   getPaintingNumber(artistId: string) {
     const request: { parm: string, value: string } = {parm: 'artist', value: artistId};

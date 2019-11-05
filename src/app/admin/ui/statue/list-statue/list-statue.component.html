@@ -58,7 +58,7 @@
             <td>{{statue["0"].updatedDate}}</td>
             <td>{{statue["0"].updatedBy}}</td>
             <td>
-<!--              <a routerLink="/admin/edit-statue/{{statue['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>-->
+              <a routerLink="/admin/edit-statue/{{statue['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>
               <a (click)="delete(statue['0'].id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
               <a href="#" *ngIf="!statue['0'].active" class="btn btn-primary btn-sm mr-1">Active</a>
             </td>

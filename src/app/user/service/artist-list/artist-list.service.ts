@@ -4,7 +4,6 @@ import {UserConfig} from '../../UserConfig';
 import {ArtistListResponse} from '../../entity/artist-list/artist-list-response';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { PaintingListService } from '../painting-list/painting-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,15 @@ export class ArtistListService {
     return throwError(error || 'Server Error');
   }
 
-  
   requestArtistList() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
-    );
+    return this.httpClient.get(`${UserConfig.artistsAPI}`)
+        .pipe(catchError(ArtistListService.errorHandler));
   }
+  // requestArtistList() {
+  //   return this.httpClient.get<ArtistListResponse>(
+  //     `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
+  //   );
+  // }
 
   requestPaintingList() {
     return this.httpClient.get<ArtistListResponse>(
@@ -35,18 +37,14 @@ export class ArtistListService {
     return this.httpClient.post<ArtistListResponse>(
       UserConfig.getByAPI,
       {
-        parm: 'artist',
+        param: 'artist',
         value: id
       }
     );
   }
-  
 
- // requestArtistList() {
- //    return this.httpClient.get(
- //      `${UserConfig.artistsAPI}`, {responseType: 'json'}
- //    ).pipe(catchError(ArtistListService.errorHandler));
- //  }
+
+
   /*
     requestPaintingList() {
       return this.httpClient.get<ArtistListResponse>(
