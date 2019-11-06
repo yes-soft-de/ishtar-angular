@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import {ArtTypeDetails} from '../../../entity/art-type-details/art-type-details';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
@@ -22,7 +22,7 @@ export class ArtTypeComponent implements OnInit {
   artTypeClapped = false;
   artTypeLiked = false;
 
-  constructor(private artistList: ArtistListService,
+  constructor(private artistList: ArtistService,
               private activatedRoute: ActivatedRoute,
               private artTypeService: UserArtTypeService,
               private interactionService: IshtarInteractionService,

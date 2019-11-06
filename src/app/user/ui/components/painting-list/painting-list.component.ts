@@ -169,16 +169,8 @@ export class PaintingListComponent implements OnInit {
      }
   }
 
-  viewImage(id: number) {
-    this.viewData.row = id;
-    this.interactionService.addViewInteraction(this.viewData).subscribe(
-        res => {
-          console.log('Painting Reviewed : ', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+  viewImage(paintingId: number) {
+    this.interactionService.addViewInteraction(paintingId, 'painting');
   }
 
   // view & hide filter button options

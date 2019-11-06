@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UserArtistService} from '../../../service/user-artist-service/user-artist.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ArtistDetails} from '../../../entity/artist/artist-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {PaintingDetailsResponse} from '../../../entity/painting-details/painting-details-response';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingListResponse} from '../../../entity/painting-list/painting-list-response';
+import {ArtistService} from '../../../service/artist/artist.service';
 
 @Component({
   selector: 'app-artist-details-page',
@@ -22,9 +21,9 @@ export class ArtistDetailsPageComponent implements OnInit {
   prevArtistExistsPage = false;
 
   constructor(private router: Router,
-              private artistService: UserArtistService,
+              private artistService: ArtistService,
               private activatedRoute: ActivatedRoute,
-              private photoService: PaintingListService) {
+              private photoService: PaintingService) {
   }
 
   ngOnInit() {

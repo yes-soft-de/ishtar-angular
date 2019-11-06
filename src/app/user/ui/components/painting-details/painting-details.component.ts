@@ -1,12 +1,11 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import { Router } from '@angular/router';
 
 
@@ -25,10 +24,9 @@ export class PaintingDetailsComponent implements OnInit {
   paintingNumber: number;
   CurrentPaintingId: number;
 
-  constructor(private paintingService: PaintingListService,
-              private paintingViewsService: PaintingViewsService,
+  constructor(private paintingService: PaintingService,
               private interactionService: IshtarInteractionService,
-              private artistListService: ArtistListService,
+              private artistListService: ArtistService,
               private toaster: ToastrService,
               private router: Router) {
   }
@@ -88,6 +86,7 @@ export class PaintingDetailsComponent implements OnInit {
 
   goBack() {
     for (let i = 0; i < this.paintingList.length; i++ ) {
+      // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i - 1;
       }
@@ -96,13 +95,14 @@ export class PaintingDetailsComponent implements OnInit {
       this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
       this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
     } else {
-      this.router.navigate(['/painting', this.paintingList[this.paintingList.length -1].id]);
-      this.CurrentPaintingId = this.paintingList[this.paintingList.length -1].id;
+      this.router.navigate(['/painting', this.paintingList[this.paintingList.length - 1].id]);
+      this.CurrentPaintingId = this.paintingList[this.paintingList.length - 1].id;
     }
   }
 
   goNext() {
     for (let i = 0; i < this.paintingList.length; i++ ) {
+      // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i + 1;
       }

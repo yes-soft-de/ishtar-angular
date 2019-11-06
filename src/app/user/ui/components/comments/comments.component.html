@@ -1,4 +1,4 @@
-<div class="col-12 comments-box" [class.d-none]="!clientIsLogin">
+<div class="col-12 comments-box">
   <ul>
 <!--    <li style="display: inline-block">-->
 <!--      <app-clap-widget [ParentId]="" [ParentType]="1"></app-clap-widget>-->
@@ -16,7 +16,7 @@
               name="comment"
               (keyup.enter)="pressing(textarea)"
               (keydown.enter)="onKeydown($event)"
-              placeholder="Your comment..."
+              placeholder="{{!clientIsLogin ? 'Login if you want to make your comment' : 'Your comment...'}}"
               class="form-control rounded-0"
               required
               [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
@@ -30,7 +30,6 @@
       <div class="hidden-button">
         <a class="btn btn-primary btn-sm mr-1 px-1 py-0" (click)="editComment(i)" *ngIf="edit !== i && (comment?.userName == client?.userName)">Edit</a>
         <a class="btn btn-danger btn-sm confirm px-1 py-0" (click)="deleteComment(comment.id)" *ngIf="comment?.userName == client?.userName">Delete</a>
-<!--          |   | -->
       </div>
       <div class="row">
         <div class="col-sm-2 col-lg-1 text-center">
@@ -79,4 +78,4 @@
   <!-- #Comments -->
 
 </div>
-<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>
+<!--<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>-->

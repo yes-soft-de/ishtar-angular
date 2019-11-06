@@ -27,20 +27,7 @@ export class StatueListComponent implements OnInit {
 
   // Increase view for Statue
   viewStatue(statueId: number) {
-    const viewData: ViewInterface = {
-      entity: InteractionConsts.ENTITY_TYPE_STATUE,         // 2: For Statue Entity
-      row: statueId,                                        // this for Statue id
-      interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-      client: 0,                                            // this for client id
-    };
-    this.interactionService.addViewInteraction(viewData).subscribe(
-        res => {
-          console.log('This Statue Was Reviewed', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+    this.interactionService.addViewInteraction(statueId, 'statue');
   }
 
   noFilter() {

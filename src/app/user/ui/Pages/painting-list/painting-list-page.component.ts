@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ToastrService} from 'ngx-toastr';
 
@@ -11,7 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingListPageComponent implements OnInit {
   formattedList: PaintingListItem[];
 
-  constructor(private paintingService: PaintingListService) {
+  constructor(private paintingService: PaintingService) {
   }
 
   ngOnInit() {
