@@ -2,6 +2,7 @@
   <div *ngIf="interactions.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Interactions Page</h1>
+<!--      <input class="form-control my-0 py-1" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Search In Section Name" aria-label="Search">-->
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">
@@ -11,7 +12,7 @@
             <td>Section Name</td>
             <td>Section ID</td>
           </tr>
-          <tr *ngFor="let interaction of interactionsList | paginate: config; index as i">
+          <tr *ngFor="let interaction of interactionsFilterList | paginate: config; index as i">
             <td>{{interaction.id}}</td>
             <td>{{interaction.interaction}}</td>
             <td>{{!interaction.client ? 'Visitors' : interaction.client}}</td>

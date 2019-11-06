@@ -10,18 +10,24 @@ import {InteractionResponse} from '../../../entity/interactions/interaction-resp
 })
 export class ListInteractionComponent implements OnInit {
   interactions: InteractionInterface[];
-  interactionsList: {
+  interactionsFilterList = [];      // We Create It Second For Filter
+  interactionsList: {               // We Create It First For Pagination
     id: number,
     entities: string,
     row: number,
     interaction: string,
     client: number
   }[] = [];
-  config: any;
+  config: any;    // Config Variable For Pagination Configuration
+  name: string;   // name variable to store the input search value
 
   constructor(private interactionsService: InteractionsService) { }
 
   ngOnInit() {
+    this.getInteractions();
+  }
+
+  getInteractions() {
     // Fetch All Interactions
     this.interactionsService.getAllInteractions().subscribe(
         (data: InteractionResponse) => {
@@ -36,10 +42,11 @@ export class ListInteractionComponent implements OnInit {
             });
           }
           console.log('Admin Interactions: ', data.Data);
+        }, error => { console.log(error); },
+        () => {
+          this.interactionsFilterList = this.interactionsList;
         }
     );
-
-    console.log('interactions list', this.interactionsList);
     this.config = {
       itemsPerPage: 10,
       currentPage: 1,
@@ -51,5 +58,7 @@ export class ListInteractionComponent implements OnInit {
   pageChanged(event) {
     this.config.currentPage = event;
   }
+
+
 
 }

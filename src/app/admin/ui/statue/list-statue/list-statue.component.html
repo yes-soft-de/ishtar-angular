@@ -26,8 +26,8 @@
             <td>Period</td>
             <td>Mediums</td>
             <td>Features</td>
-            <td>Description</td>
-            <td class="px-5"></td>
+            <td style="width: 50%">Description</td>
+<!--            <td class="px-5"></td>-->
             <td>Create Date</td>
             <td>Created By</td>
             <td>Updated Date</td>
@@ -35,7 +35,7 @@
             <td>Control</td>
           </tr>
           <tr *ngFor="let statue of statuesList | paginate: config">
-            <td>{{statue.id}</td>
+            <td>{{statue.id}}</td>
             <td>{{statue.name}}</td>
             <td><img src="{{statue.image}}" alt="{{statue.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
             <td>{{statue.artist}}</td>
@@ -52,7 +52,7 @@
             <td>{{statue.period}}</td>
             <td>{{statue.mediums}}</td>
             <td>{{statue.features}}</td>
-            <td colspan="2">{{statue.description}}</td>
+            <td>{{statue.description}}</td>
             <td>{{statue.createDate}}</td>
             <td>{{statue.createdBy}}</td>
             <td>{{statue.updatedDate}}</td>

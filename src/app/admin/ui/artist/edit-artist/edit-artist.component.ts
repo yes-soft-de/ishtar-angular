@@ -71,13 +71,15 @@ export class EditArtistComponent implements OnInit {
         this.artTypes = data.artTypes.Data;
         // select the artist for this route
         data.artists.Data.map(artistRes => {
-          if (artistRes['0'].id === this.artistId) {
+          // tslint:disable-next-line:triple-equals
+          if (artistRes['0'].id == this.artistId) {
             this.artistData = artistRes;
           }
         });
         // fetch the artType Id For This Artist
         data.artTypes.Data.map(artTypeRes => {
-          if (artTypeRes.name === this.artistData.artType) {
+          // tslint:disable-next-line:triple-equals
+          if (artTypeRes.name == this.artistData.artType) {
             this.artTypeId = artTypeRes.id;
           }
         });
