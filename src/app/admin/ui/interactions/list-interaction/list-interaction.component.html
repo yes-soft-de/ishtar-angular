@@ -2,7 +2,11 @@
   <div *ngIf="interactions.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Interactions Page</h1>
-<!--      <input class="form-control my-0 py-1" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Search In Section Name" aria-label="Search">-->
+      <div class="col-4">
+        <div class="form-group mb-4">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+        </div>
+      </div>
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">

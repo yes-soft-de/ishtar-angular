@@ -2,6 +2,11 @@
     <div *ngIf="artists.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Manage Artist Page</h1>
+          <div class="col-4">
+              <div class="form-group mb-4">
+                  <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name?" class="form-control form-control-underlined border-primary">
+              </div>
+          </div>
         <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
           <i class="fa fa-plus"></i>
           Add New Artist
@@ -24,7 +29,7 @@
                     <td>Linkedin</td>
                     <td>Control</td>
                 </tr>
-                <tr *ngFor="let artist of artistsList | paginate: config">
+                <tr *ngFor="let artist of artistsFilterList | paginate: config">
                     <td>{{artist.id}}</td>
                     <td>{{artist.name}}</td>
                     <td><img src="{{artist.path}}" alt="{{artist.name}} Image" class="img-fluid img-thumbnail img-custom"></td>

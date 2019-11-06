@@ -2,6 +2,11 @@
     <div *ngIf="paintings.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Manage Painting Page</h1>
+        <div class="col-4">
+          <div class="form-group mb-4">
+            <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+          </div>
+        </div>
         <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-painting">
           <i class="fa fa-plus"></i>
           Add New Painting
@@ -23,7 +28,7 @@
                 <td>Story</td>
                 <td>Control</td>
               </tr>
-              <tr *ngFor="let painting of paintingsList | paginate: config">
+              <tr *ngFor="let painting of paintingsFilterList | paginate: config">
                 <td>{{painting.id}}</td>
                 <td>{{painting.name}}</td>
                 <td><img src="{{painting.image}}" alt="{{painting.name}} Image" class="img-fluid img-thumbnail img-custom"></td>

@@ -2,6 +2,11 @@
   <div *ngIf="comments.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Comments Page</h1>
+      <div class="col-4">
+        <div class="form-group mb-4">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+        </div>
+      </div>
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">
@@ -15,7 +20,7 @@
             <td>Spacial</td>
             <td>Control</td>
           </tr>
-          <tr *ngFor="let comment of commentsList | paginate: config; index as i">
+          <tr *ngFor="let comment of commentsFilterList | paginate: config; index as i">
             <td>{{comment.id}}</td>
             <td>{{comment.userName}}</td>
             <td>{{comment.entity}}</td>

@@ -1,7 +1,7 @@
 export interface PaintingInterface {
   id: number;
   name: string;
-  artist: number;
+  artist: any;
   height: number;
   width: number;
   colorsType: string;

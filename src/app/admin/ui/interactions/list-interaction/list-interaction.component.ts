@@ -59,6 +59,29 @@ export class ListInteractionComponent implements OnInit {
     this.config.currentPage = event;
   }
 
-
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.interactionsFilterList = [...this.interactionsList];
+    } else {
+      this.interactionsFilterList = [];
+      this.interactionsFilterList = this.interactionsList.filter(res => {
+        // for (const [key, value] of Object.entries(res)) {
+        //     console.log(`${key}: ${value}`);
+        // }
+        // Search In Entity Column
+        const interactionsResult = res.interaction.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Interactions Column
+        const entitiesResult = res.entities.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (entitiesResult) {
+          // display the Entity Column
+          return entitiesResult;
+        } else if (interactionsResult) {
+          // display the Interactions Column
+          return interactionsResult;
+        }
+      });
+    }
+  }
 
 }

@@ -13,7 +13,9 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
   public paintings: PaintingInterface[];
   allPaintingObservable: Subscription;
   paintingsList: PaintingInterface[] = [];
-  config: any;
+  paintingsFilterList = [];     // We Create It Second For Filter
+  config: any;                  // Config Variable For Pagination Configuration
+  name: string;                 // name variable to store the input search value
 
   constructor(private toaster: ToastrService,
               private photosListService: PhotosListService ) { }
@@ -56,6 +58,8 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
         console.log(this.paintings);
       }, error1 => {
         console.log(error1);
+      }, () => {
+        this.paintingsFilterList = this.paintingsList;
       });
 
     this.config = {
@@ -87,6 +91,28 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
       );
     } else {
       return false;
+    }
+  }
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.paintingsFilterList = [...this.paintingsList];
+    } else {
+      this.paintingsFilterList = [];
+      this.paintingsFilterList = this.paintingsList.filter(res => {
+        // Search In Entity Column
+        const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Interactions Column
+        const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Entity Column
+          return nameResult;
+        } else if (artistResult) {
+          // display the Interactions Column
+          return artistResult;
+        }
+      });
     }
   }
 }

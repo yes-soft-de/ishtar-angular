@@ -2,6 +2,11 @@
   <div *ngIf="statues.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Statues Page</h1>
+      <div class="col-4">
+        <div class="form-group mb-4">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+        </div>
+      </div>
       <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
         <i class="fa fa-plus"></i>
         Add New Statue
@@ -34,7 +39,7 @@
             <td>Updated By</td>
             <td>Control</td>
           </tr>
-          <tr *ngFor="let statue of statuesList | paginate: config">
+          <tr *ngFor="let statue of statuesFilterList | paginate: config">
             <td>{{statue.id}}</td>
             <td>{{statue.name}}</td>
             <td><img src="{{statue.image}}" alt="{{statue.name}} Image" class="img-fluid img-thumbnail img-custom"></td>

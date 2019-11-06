@@ -13,8 +13,10 @@ import {Statue} from '../../../entity/statue/statue';
 })
 export class ListStatueComponent implements OnInit {
   statues: {0: StatueInterface, price: string}[];
-  statuesList: Statue[] = [];
-  config: any;
+  statuesList: Statue[] = [];     // We Create It First For Pagination
+  statuesFilterList = [];         // We Create It Second For Filter
+  config: any;                    // Config Variable For Pagination Configuration
+  name: string;                   // name variable to store the input search value
 
   constructor(private statueService: StatueService,
               private route: Router,
@@ -59,6 +61,8 @@ export class ListStatueComponent implements OnInit {
           console.log('Admin Statues: ', this.statues);
         }, error => {
           console.log(error);
+        }, () => {
+          this.statuesFilterList = this.statuesList;
         }
     );
 
@@ -90,6 +94,28 @@ export class ListStatueComponent implements OnInit {
       );
     } else {
       return false;
+    }
+  }
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.statuesFilterList = [...this.statuesList];
+    } else {
+      this.statuesFilterList = [];
+      this.statuesFilterList = this.statuesList.filter(res => {
+        // Search In Name Column
+        const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Artist Column
+        const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Name Column
+          return nameResult;
+        } else if (artistResult) {
+          // display the Artist Column
+          return artistResult;
+        }
+      });
     }
   }
 

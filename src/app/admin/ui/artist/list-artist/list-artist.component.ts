@@ -16,7 +16,9 @@ export class ListArtistComponent implements OnInit, OnDestroy {
   public artists: {0: ArtistInterface, path: string, artType: string}[];
   allArtistObservable: Subscription;
   artistsList: ArtistsList[] = [];
-  config: any;
+  artistsFilterList = [];         // We Create It Second For Filter
+  config: any;                    // Config Variable For Pagination Configuration
+  name: string;                   // name variable to store the input search value
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -59,6 +61,8 @@ export class ListArtistComponent implements OnInit, OnDestroy {
         }, error1 => {
           // TODO think if there is some to do here ex : display message if there is error
           console.log('Error :', error1);
+        }, () => {
+          this.artistsFilterList = this.artistsList;
         });
 
     this.config = {
@@ -91,6 +95,24 @@ export class ListArtistComponent implements OnInit, OnDestroy {
       );
     } else {
       return false;
+    }
+  }
+
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.artistsFilterList = [...this.artistsList];
+    } else {
+      this.artistsFilterList = [];
+      this.artistsFilterList = this.artistsList.filter(res => {
+        // Search In Name Column
+        const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Name Column
+          return nameResult;
+        }
+      });
     }
   }
 
