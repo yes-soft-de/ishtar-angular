@@ -8,6 +8,7 @@ import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../../UserConfig';
 import {ArtTypeListResponse} from '../../../entity/art-type-list/art-type-list-response';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
+import {LoginService} from '../../../service/login/login.service';
 
 @Component({
   selector: 'app-home-page',
@@ -42,7 +43,7 @@ export class HomePageComponent implements OnInit {
   artistList: ArtistListItem[];
 
   constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingService,
-              private artistService: ArtistService, private httpClient: HttpClient) {
+              private artistService: ArtistService, private httpClient: HttpClient, private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -50,7 +51,11 @@ export class HomePageComponent implements OnInit {
     this.getCurrentUserInfo();
     this.requestArtistList();
     this.requestPaintingList();
-
+    this.loginService.login('Mohammad@gmail.com', 'M0h@mm@d').subscribe(
+      data => {
+        console.log(data.user_id);
+      }
+    );
   }
 
   // Fetch Most Seen Painting From Child Component
