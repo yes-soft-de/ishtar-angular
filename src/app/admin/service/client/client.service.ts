@@ -23,58 +23,31 @@ export class ClientService {
     return throwError(error || 'Server Error');
   }
 
+  // Admin Section - Get All Clients
   getAllClients() {
-    return this.httpClient.get<ClientListResponse>(
-      `${AdminConfig.allClientsAPI}`, {responseType: 'json'}
-    ).pipe(catchError(ClientService.errorHandler));
-  }
-
-  getClientByClient(clientId: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post<ClientInterface>(
-        AdminConfig.clientAPI,
-        JSON.stringify({client: clientId}),
-        httpOptions
-    );
+    return this.httpClient.get(`${AdminConfig.clientsAPI}`).pipe(catchError(ClientService.errorHandler));
   }
 
   // Admin Section - Add Client Page
   postAddClient(client: Client) {
-    return this.httpClient.post<Client>(
-        `${AdminConfig.addClientAPI}`,
+    return this.httpClient.post(
+        `${AdminConfig.clientsAPI}`,
         JSON.stringify(client)
     );
   }
 
   // Admin Section - Update Client
   updateUser(clientId: string, data) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post<ClientInterface>(
-        AdminConfig.editClientAPI,
-        JSON.stringify(data),
-        httpOptions
+    return this.httpClient.put(
+        `${AdminConfig.clientAPI}/${clientId}`,
+        JSON.stringify(data)
     ).pipe(catchError(ClientService.errorHandler));
   }
 
   // Admin Section - Delete Client
   deleteClient(clientId: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post(
-        AdminConfig.deleteClientAPI,
-        JSON.stringify({id: clientId}),
-        httpOptions
+    return this.httpClient.delete(
+        `${AdminConfig.clientAPI}/${clientId}`,
     ).pipe(catchError(ClientService.errorHandler));
   }
 

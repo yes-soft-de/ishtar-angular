@@ -3,10 +3,11 @@ export interface ClientInterface {
   firstName: string;
   lastName: string;
   image: string;
-  roll: number;
-  userName: string;
-  password: string;
+  roll: ['ROLE_USER'];
+  username: string;
+  password?: string;
   email: string;
+  salt?: string;
   birthDate: Date;
   phone: number;
   createDate: Date;

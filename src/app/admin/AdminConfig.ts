@@ -19,7 +19,6 @@ export class AdminConfig {
   // public static deleteArtistAPI         = AdminConfig.sourceAPI + 'deleteArtist';
   // public static allArtistsAPI           = AdminConfig.sourceAPI + 'getArtistsData';
   // public static artistAPI               = AdminConfig.sourceAPI + 'getArtistById';
-  public static deleteArtistAPI         = AdminConfig.sourceAPI + 'deleteArtist';
   public static allArtistsAPI           = AdminConfig.sourceAPI + 'artistsdetails';   // This Route FOr GET all artists
   public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for POST
   public static artistAPI               = AdminConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
@@ -40,7 +39,8 @@ export class AdminConfig {
    public static editClientAPI           = AdminConfig.sourceAPI + 'updateClient';
    public static deleteClientAPI         = AdminConfig.sourceAPI + 'deleteClient';
    public static allClientsAPI           = AdminConfig.sourceAPI + 'getAllClient';
-   public static clientAPI               = AdminConfig.sourceAPI + 'getClientById';
+   public static clientsAPI              = AdminConfig.sourceAPI + 'clients';
+   public static clientAPI               = AdminConfig.sourceAPI + 'client';
 
   // Auction API
   // public static addAuctionAPI           = AdminConfig.sourceAPI + 'createAuction';

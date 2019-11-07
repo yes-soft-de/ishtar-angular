@@ -13,7 +13,7 @@ export interface PaintingInterface {
   updatedBy: string;
   createDate: Date;
   updateDate: Date;
-  artType: number;
+  artType: string;
   gallery: number;
   keyWords: string;
   story: string;

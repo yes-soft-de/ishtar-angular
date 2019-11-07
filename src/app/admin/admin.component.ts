@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {UserConfig} from '../user/UserConfig';
-import {AdminConfig} from './AdminConfig';
 import {ToastrService} from 'ngx-toastr';
 import {UserProfileService} from '../user/service/client-profile/user-profile.service';
 

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-4">
             <div class="form-group mb-4">
-              <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+              <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching For Painting Name And Artist Name" class="form-control form-control-underlined border-primary">
             </div>
           </div>
           <div class="col-8 align-self-center">
@@ -29,6 +29,7 @@
                 <td>Key Words</td>
                 <td>Colors Type</td>
 <!--                <td>Gallery</td>-->
+                <td>Price</td>
                 <td>Story</td>
                 <td>Control</td>
               </tr>
@@ -36,7 +37,6 @@
                 <td>{{painting.id}}</td>
                 <td>{{painting.name}}</td>
                 <td><img src="{{painting.image}}" alt="{{painting.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
-<!--                <td>{{painting.image}}</td>-->
                 <td>{{painting.artist}}</td>
                 <td>{{painting.artType}}</td>
                 <td>{{painting.height}}</td>
@@ -45,11 +45,11 @@
                 <td>{{painting.colorsType}}</td>
                 <td>{{painting.keyWords}}</td>
 <!--                <td>{{painting.gallery}}</td>-->
-<!--                <td>{{painting.price}} $</td>-->
-                <td>{{painting.story}}</td>
+                <td>{{painting.price | currency}}</td>
+                <td class="td-custom">{{painting.story}}</td>
                 <td>
-                  <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
-                  <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                  <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
+                  <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
                   <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Active</a>
                 </td>
               </tr>
@@ -57,6 +57,7 @@
           <pagination-controls class="my-pagination"
                                (pageChange)="pageChanged($event)"
                                autoHide="true"
+                               maxSize="5"
                                responsive="true"
                                previousLabel="Prev"
                                nextLabel="Next"

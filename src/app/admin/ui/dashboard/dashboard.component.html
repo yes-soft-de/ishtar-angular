@@ -67,7 +67,7 @@
             <div class="card-header">
               Latest {{latestArtistNumber}} Artist
             </div>
-            <div class="card-body">
+            <div class="card-body" *ngIf="artists.length != 0">
               <ng-container *ngFor="let artist of artists; let i = index">
                 <ng-container *ngIf="i < latestArtistNumber">
                   <div class="late_info">
@@ -77,6 +77,11 @@
                 </ng-container>
               </ng-container>
             </div>
+            <div class="card-body" *ngIf="artists.length == 0">
+              <div class="late_info">
+                There isn't any Artists To Show Yet
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,9 +90,9 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 5 Painting
+              Latest {{latestPaintingNumber}} Painting
             </div>
-            <div class="card-body">
+            <div class="card-body" *ngIf="paintings.length != 0">
               <ng-container *ngFor="let painting of paintings; let i = index">
                 <ng-container *ngIf="i < latestPaintingNumber">
                   <div class="late_info">
@@ -96,6 +101,11 @@
                   </div>
                 </ng-container>
               </ng-container>
+            </div>
+            <div class="card-body" *ngIf="paintings.length == 0">
+              <div class="late_info">
+                There isn't any Paintings To Show Yet
+              </div>
             </div>
           </div>
         </div>
@@ -107,7 +117,7 @@
             <div class="card-header">
               Latest {{latestStatueNumber}} Statues
             </div>
-            <div class="card-body">
+            <div class="card-body" *ngIf="statues.length != 0">
               <ng-container *ngFor="let statue of statues; let i = index">
                 <ng-container *ngIf="i < latestStatueNumber">
                   <div class="late_info">
@@ -116,6 +126,11 @@
                   </div>
                 </ng-container>
               </ng-container>
+            </div>
+            <div class="card-body" *ngIf="statues.length == 0">
+              <div class="late_info">
+                There isn't any Statues To Show Yet
+              </div>
             </div>
           </div>
         </div>
@@ -147,15 +162,20 @@
             <div class="card-header">
               Latest {{latestCommentNumber}} Comments
             </div>
-            <div class="card-body">
+            <div class="card-body" *ngIf="comments.length != 0">
               <ng-container *ngFor="let comment of comments; let i = index">
                 <ng-container *ngIf="i < latestCommentNumber">
                   <div class="member_comment">
-                    <span>{{comment?.userName}}</span>
+                    <span>{{comment?.username}}</span>
                     <p>{{comment?.body}}</p>
                   </div>
                 </ng-container>
               </ng-container>
+            </div>
+            <div class="card-body" *ngIf="comments.length == 0">
+              <div class="late_info">
+                There isn't any Comments To Show Yet
+              </div>
             </div>
           </div>
         </div>

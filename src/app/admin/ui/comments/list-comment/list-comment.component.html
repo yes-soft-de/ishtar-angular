@@ -4,7 +4,7 @@
       <h1 class="text-center my-4">Manage Comments Page</h1>
       <div class="col-4">
         <div class="form-group mb-4">
-          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Username And Comments Section" class="form-control form-control-underlined border-primary">
         </div>
       </div>
       <div class="table-responsive text-center">
@@ -25,7 +25,7 @@
             <td>{{comment.username}}</td>
             <td>{{comment.entity}}</td>
             <td>{{comment.row}}</td>
-            <td>{{comment.body}}</td>
+            <td class="td-custom">{{comment.body}}</td>
             <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
             <td>{{comment.lastEdit != null ? (comment.lastEdit.timestamp * 1000 | date: 'short') : '-'}}</td>
             <td>{{comment.spacial}}</td>
@@ -37,12 +37,14 @@
         <pagination-controls class="my-pagination"
                              (pageChange)="pageChanged($event)"
                              autoHide="true"
+                             maxSize="5"
                              responsive="true"
                              previousLabel="Prev"
                              nextLabel="Next"
                              screenReaderPaginationLabel="Pagination"
                              screenReaderPageLabel="page"
-                             screenReaderCurrentLabel="You're on page"></pagination-controls>
+                             screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
       </div>
     </div>
   </div>

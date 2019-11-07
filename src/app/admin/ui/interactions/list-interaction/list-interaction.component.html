@@ -4,7 +4,7 @@
       <h1 class="text-center my-4">Manage Interactions Page</h1>
       <div class="col-4">
         <div class="form-group mb-4">
-          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Interactions And Section Name" class="form-control form-control-underlined border-primary">
         </div>
       </div>
       <div class="table-responsive text-center">
@@ -27,6 +27,7 @@
         <pagination-controls class="my-pagination"
                              (pageChange)="pageChanged($event)"
                              autoHide="true"
+                             maxSize="5"
                              responsive="true"
                              previousLabel="Prev"
                              nextLabel="Next"

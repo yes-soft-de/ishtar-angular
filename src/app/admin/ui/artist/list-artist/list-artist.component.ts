@@ -59,14 +59,13 @@ export class ListArtistComponent implements OnInit, OnDestroy {
             console.log(data);
           }
         }, error1 => {
-          // TODO think if there is some to do here ex : display message if there is error
           console.log('Error :', error1);
         }, () => {
           this.artistsFilterList = this.artistsList;
         });
 
     this.config = {
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.artistsList.length
     };
@@ -108,9 +107,19 @@ export class ListArtistComponent implements OnInit, OnDestroy {
       this.artistsFilterList = this.artistsList.filter(res => {
         // Search In Name Column
         const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Residence Column
+        const residenceResult = res.residence.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Art Type Column
+        const artTypeResult = res.artType.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (nameResult) {
           // display the Name Column
           return nameResult;
+        } else if (residenceResult) {
+          // display the Residence Column
+          return residenceResult;
+        } else if (artTypeResult) {
+          // display the ArtType Column
+          return artTypeResult;
         }
       });
     }

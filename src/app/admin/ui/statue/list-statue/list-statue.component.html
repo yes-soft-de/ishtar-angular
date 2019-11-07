@@ -5,7 +5,7 @@
       <div class="row">
       <div class="col-4">
         <div class="form-group mb-4">
-          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Statue Name And Artist Name" class="form-control form-control-underlined border-primary">
         </div>
       </div>
       <div class="col-8 align-self-center">
@@ -30,13 +30,12 @@
             <td>State</td>
             <td>Active</td>
             <td>KeyWords</td>
-            <td>Material</td>
             <td>Style</td>
-            <td>Period</td>
             <td>Mediums</td>
+            <td>Period</td>
             <td>Features</td>
-            <td style="width: 50%">Description</td>
-<!--            <td class="px-5"></td>-->
+            <td>Material</td>
+            <td>Description</td>
             <td>Create Date</td>
             <td>Created By</td>
             <td>Updated Date</td>
@@ -56,19 +55,19 @@
             <td>{{statue.state ? 'Sold' : 'available'}}</td>
             <td>{{statue.active}}</td>
             <td>{{statue.keyWord}}</td>
-            <td>{{statue.material}}</td>
             <td>{{statue.style}}</td>
+            <td class="td-custom">{{statue.mediums}}</td>
             <td>{{statue.period}}</td>
-            <td>{{statue.mediums}}</td>
-            <td>{{statue.features}}</td>
-            <td>{{statue.description}}</td>
+            <td class="td-custom">{{statue.features}}</td>
+            <td>{{statue.material}}</td>
+            <td class="td-custom">{{statue.description}}</td>
             <td>{{statue.createDate}}</td>
             <td>{{statue.createdBy}}</td>
             <td>{{statue.updatedDate}}</td>
             <td>{{statue.updatedBy}}</td>
             <td>
               <a routerLink="/admin/edit-statue/{{statue.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
-              <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+              <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
               <a href="#" *ngIf="!statue.active" class="btn btn-primary btn-sm mr-1">Active</a>
             </td>
           </tr>
@@ -76,6 +75,7 @@
         <pagination-controls class="my-pagination"
                              (pageChange)="pageChanged($event)"
                              autoHide="true"
+                             maxSize="5"
                              responsive="true"
                              previousLabel="Prev"
                              nextLabel="Next"

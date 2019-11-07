@@ -3,10 +3,11 @@ export class Client {
   public firstName: string;
   public lastName: string;
   public image: string;
-  public roll: number;
-  public userName: string;
+  public roll: ['ROLE_USER'];
+  public username: string;
   public password: string;
   public email: string;
+  public salt: string;
   public birthDate: Date;
   public phone: number;
   public createDate: Date;
