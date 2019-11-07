@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {EMPTY, of, Subject, throwError} from 'rxjs';
 import {UserInfo} from '../../entity/user/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
@@ -8,6 +8,8 @@ import {stringify} from 'querystring';
 import {LoginAuthResponse} from '../../entity/auth/login-auth-response';
 import {UserProfileResponse} from '../../entity/auth/user-profile-response';
 import {UserKeys} from '../../entity/auth/user-keys';
+import {catchError} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,10 @@ export class LoginService {
 
   private userKeys: UserKeys;
 
-  constructor(private httpClient: HttpClient) {
+  private userName: string;
+  private pass: string;
+
+  constructor(private httpClient: HttpClient, private toaster: ToastrService) {
   }
 
   /*
@@ -35,33 +40,60 @@ export class LoginService {
    * the Request returns TOKEN for future use
    */
   public login(email: string, pass: string) {
-    this.getToken(email, pass);
+    this.userName = email;
+    this.pass = pass;
+
+    this.requestPreFlight();
+
     return this.userObservable.asObservable();
   }
 
-  private getToken(email: string, pass: string) {
-    const request: LoginAuthRequest = {
-      username: email,
-      password: pass
+  private requestPreFlight() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     };
-    this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request)).subscribe(
+    this.httpClient.post(UserConfig.userLoginAuthAPI, null, httpOptions).pipe(
+      catchError(() => {
+        // If this had an error, CORS is still affective, and We can Precede to Getting the Token
+        this.requestToken();
+        return EMPTY;
+      })
+    ).subscribe(() => this.requestToken(), () => this.requestToken());
+  }
+
+  private requestToken() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    // The Actual Request for the API
+    const request: LoginAuthRequest = {
+      username: this.userName,
+      password: this.pass,
+    };
+    this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
       data => {
-        this.getUserId(data.token);
+        console.log(data.token);
+        this.token = data.token;
+        this.requestUser();
       }
     );
   }
 
-  private getUserId(token: string) {
+  private requestUser() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
+        'Authorization': 'Bearer ' + this.token
       })
     };
-    this.httpClient.get<UserProfileResponse>(UserConfig.userProfileAPI, httpOptions).subscribe(
+    this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
       data => {
         this.userKeys = {
-          token,
+          token: this.token,
           user_id: data.Data.id
         };
 

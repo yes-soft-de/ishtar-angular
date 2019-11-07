@@ -78,10 +78,10 @@ export class HomePageComponent implements OnInit {
     this.paintingService.requestPaintingList().subscribe(
         data => {
           this.paintingList = data.Data;
-          console.log('Painting List : ', this.paintingList);
+          // console.log('Painting List : ', this.paintingList);
           this.checkLoadingFinished();
         }, error1 => {
-          console.log(error1);
+          // console.log(error1);
         }
     );
   }
@@ -89,9 +89,9 @@ export class HomePageComponent implements OnInit {
   getCurrentUserInfo() {
     this.httpClient.get(UserConfig.userProfileAPI).subscribe(
         data => {
-          console.log('User INFO : ', data);
+          // console.log('User INFO : ', data);
         }, error => {
-          console.log(error);
+          // console.log(error);
         }
     );
   }
@@ -102,7 +102,7 @@ export class HomePageComponent implements OnInit {
           this.artistList = data.Data;
           this.checkLoadingFinished();
         }, error1 => {
-          console.log(error1);
+          // console.log(error1);
         });
   }
 

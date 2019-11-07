@@ -9,11 +9,11 @@ export class UserConfig {
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
   public static searchAPI = UserConfig.sourceAPI + 'search';
-  public static userProfileAPI = UserConfig.sourceAPI + 'user';
+  public static userProfileAPI = UserConfig.localAPI + 'user';
   public static userLoginLink = UserConfig.sourceAPI2 + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI2 + 'logout';
 
-  public static userLoginAuthAPI = UserConfig.sourceAPI + 'login_check';
+  public static userLoginAuthAPI = UserConfig.localAPI + 'login_check';
 
   // Artists API
   public static artistsAPI = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST
