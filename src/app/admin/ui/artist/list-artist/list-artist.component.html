@@ -2,15 +2,19 @@
     <div *ngIf="artists.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Manage Artist Page</h1>
-          <div class="col-4">
-              <div class="form-group mb-4">
-                  <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name?" class="form-control form-control-underlined border-primary">
+          <div class="row">
+              <div class="col-4">
+                  <div class="form-group mb-4">
+                      <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name?" class="form-control form-control-underlined border-primary">
+                  </div>
+              </div>
+              <div class="col-8 align-self-center">
+                <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
+                  <i class="fa fa-plus"></i>
+                  Add New Artist
+                </a>
               </div>
           </div>
-        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
-          <i class="fa fa-plus"></i>
-          Add New Artist
-        </a>
         <div class="table-responsive text-center">
             <table class="table table-bordered main-table">
                 <tr class="bg-dark text-white">

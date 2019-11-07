@@ -36,7 +36,7 @@ export class ListCommentComponent implements OnInit {
             this.commentsList.push({
               id: comment.id,
               body: comment.body,
-              userName: comment.userName,
+              username: comment.username,
               entity: comment.entity,
               row: comment.row,
               date: comment.date,
@@ -90,7 +90,7 @@ export class ListCommentComponent implements OnInit {
       this.commentsFilterList = [];
       this.commentsFilterList = this.commentsList.filter(res => {
         // Search In Name Column
-        const nameResult = res.userName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        const nameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         // Search In Entity Column
         const entitiesResult = res.entity.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (nameResult) {

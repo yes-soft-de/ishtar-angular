@@ -2,15 +2,19 @@
   <div *ngIf="statues.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Statues Page</h1>
+      <div class="row">
       <div class="col-4">
         <div class="form-group mb-4">
           <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
         </div>
       </div>
-      <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
-        <i class="fa fa-plus"></i>
-        Add New Statue
-      </a>
+      <div class="col-8 align-self-center">
+        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
+          <i class="fa fa-plus"></i>
+          Add New Statue
+        </a>
+        </div>
+      </div>
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">

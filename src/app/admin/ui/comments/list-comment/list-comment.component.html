@@ -14,7 +14,7 @@
             <td>Comment By</td>
             <td>Comment Section</td>
             <td>Section Id</td>
-            <td>Body</td>
+            <td style="width: 30%">Body</td>
             <td>Comment Date</td>
             <td>last Edit</td>
             <td>Spacial</td>
@@ -22,12 +22,12 @@
           </tr>
           <tr *ngFor="let comment of commentsFilterList | paginate: config; index as i">
             <td>{{comment.id}}</td>
-            <td>{{comment.userName}}</td>
+            <td>{{comment.username}}</td>
             <td>{{comment.entity}}</td>
             <td>{{comment.row}}</td>
             <td>{{comment.body}}</td>
             <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
-            <td>{{comment.lastEdit != null ? comment.lastEdit : '-'}}</td>
+            <td>{{comment.lastEdit != null ? (comment.lastEdit.timestamp * 1000 | date: 'short') : '-'}}</td>
             <td>{{comment.spacial}}</td>
             <td>
               <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
