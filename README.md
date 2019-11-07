@@ -1,37 +1,109 @@
-# Ishtar Front End Project
+# Angular CORS Requests Error
 
-### Project Overview:
+So the Problem in short is that Chrome/Firefox is Converting 'POST' request to 'OPTIONS'
 
-Create a Front End Project.
+Here is the solution:
 
-Just found out, that i'm a good es6 JS developer, or fast... at least
+NOTE: I'm using Nginx as a server and Not Apache. but the same process should be server independent, which shall be in a future Backend Request.
+
+## The Problem
+
+When adding a header containing the header `Content-Type: application/json` to the request it becomes a CORS Request, what this means is that the request should be done in 2 stages and not 1 as a simple header-less request is.
+
+## The Solution
+
+To solve this we need to send first a preflight request, this should return a response containing the headers that allow CORS and then send the data payload request. this is done in my version using the following.
+
+### Setup Nginx
+
+Download from [here](https://nginx.org/download/nginx-1.17.5.zip) and Install it it suitable location. 
+
+Edit the `nginx.conf` located in `conf` directory and add the following:
+
+```conf
+...
+http {
+	#Add From Here
+	server {
+    server_name auth.loc;
+    
+    # Add Your Symfony Project Location Here
+    set 	$BASE E:/servers/ishtar-backend
+    root 	$BASE/public;
+    
+    listen 8000;
+
+    location / {
+        # try to serve file directly, fallback to app.php
+        try_files $uri /index.php$is_args$args;
+		include preflight.conf;
+    }
+    # DEV
+    location ~ ^/(index_dev|config)\.php(/|$) {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+		include preflight.conf;
+		
+		
+		# This Shall Be Edited Later
+		add_header 'Access-Control-Allow-Origin' '*';
+    }
+    # PROD
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+       	fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+       	fastcgi_param DOCUMENT_ROOT $realpath_root;
+		include preflight.conf;
+		internal;
+		
+		
+		# This Shall Be Edited Later
+		add_header 'Access-Control-Allow-Origin' '*';
+   }
+
+   # return 404 for all other php files not matching the front controller
+   # this prevents access to other php files you don't want to be accessible.
+   location ~ \.php$ {
+     return 404;
+   }
+}
+
+
+}
+```
 
 
 
-### Usage:
+### Setup PHP
 
-to start using this product:
-
-1. start backend 
-2. start express router using the command `node server` in the express router directory
-3. start angular project
-4. navigate to `http://localhost:4200` 
-5. Enjoy!
+Just Install the latest version and add it to the environment variables of `PATH`
 
 
 
-### Notes:
+### Running the Project
 
-Redesign for Home Page, Painting Details Page is a MUST.
+Open PowerShell and execute the following command:
+
+```
+php-cgi -b 0.0.0.0:9000
+```
+
+Leave the Script Running and start `nginx` using: 
+
+```
+start nginx
+```
+
+make sure to execute in `nginx` folder
 
 
-### Admin CORS policy Fixed
-1. install corsproxy plugin :
-    ```npm install -g corsproxy```
-2. Open New Terminal in the base folder **the same place where you execute ng serve**
-3. Run The Proxy Using keyword `corsproxy`
-4. The cors proxy will start at http://localhost:1337. To access another domain, use the domain name (including port) as the first folder, e.g :
-    ```
-        http://localhost:1337/localhost:3000/sign_in
-        http://localhost:1337/my.domain.com/path/to/resource
-    ```
+
+### Using Preflight Requests
+
+Whenever you need CORS Request you first make requests to preflight Endpoint -- Shall Be Ready today-- and then perform the request you need.
+
