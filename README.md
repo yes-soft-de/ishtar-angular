@@ -107,3 +107,82 @@ make sure to execute in `nginx` folder
 
 Whenever you need CORS Request you first make requests to preflight Endpoint -- Shall Be Ready today-- and then perform the request you need.
 
+
+
+## Angular Config for Requests
+
+Basically From `/user/service/login.service` the method goes as follows:
+
+1. Request Preflight
+2. Request Token
+3. Request User Profile with Token
+
+### Request Preflight
+
+Here we send request from the Frontend to the server to get the allow we need.
+
+this is done in the `requestPreFlight` function, we don't need any data here, so no decoding is important to the data. this request is just preparing the browser to accept our POST requests later.
+
+### Request Token
+
+Since we had a preflight request, now we can do a proper POST Request, this is done in the function `requestToken` in the following manner:
+
+```typescript
+const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    // The Actual Request for the API
+    const request: LoginAuthRequest = {
+      username: this.userName,
+      password: this.pass,
+    };
+    this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
+      data => {
+        console.log(data.token);
+        this.token = data.token;
+        this.requestUser();
+      }
+    );
+```
+
+
+
+### Request User Profile
+
+Since we had a preflight request, now we can do a proper POST Request, this is done in the function `requestUser` in the following manner:
+
+```typescript
+const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    };
+    this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
+      data => {
+        this.userKeys = {
+          token: this.token,
+          user_id: data.Data.id
+        };
+		// This Just Redirect the result to an observable located in the Page Component
+        this.userObservable.next(this.userKeys);
+      }
+    );
+```
+
+NOTE: This Request Could in Theory be translated to Get, I haven't tested it yet.
+
+
+
+------
+
+```php
+/**
+*	@auther('Mohammad :) ')
+*	@date ('today()')
+*/
+```
+
+#Thanks
