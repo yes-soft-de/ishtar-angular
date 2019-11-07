@@ -1,6 +1,6 @@
 <div *ngIf="artists != null && paintings != null" class="w-100">
 <div class="container">
-  <!--Start Home Statis Page-->
+  <!--Start Home States Page-->
   <div class="home-stat">
     <h1 class="my-4 text-center text-monospace">Dashboard Page </h1>
     <div class="row">
@@ -9,9 +9,7 @@
           <i class="fa fa-users fa-fw fa-5x"></i>
           <div>
             <h6>Total Artists</h6>
-
             <span><a routerLink="/admin/list-artists">{{artists.length}}</a></span>
-
           </div>
         </div>
       </div>
@@ -20,9 +18,7 @@
           <i class="far fa-images fa-fw fa-5x"></i>
           <div>
             <h6>Total Paintings</h6>
-
             <span><a routerLink="/admin/list-paintings">{{paintings.length}}</a></span>
-
           </div>
         </div>
       </div>
@@ -54,7 +50,7 @@
           <i class="fa fa-comments fa-fw fa-5x"></i>
           <div>
             <h6>Total Comments</h6>
-            <span><a>9</a></span>
+            <span><a routerLink="/admin/list-comments">{{comments?.length}}</a></span>
 
           </div>
         </div>
@@ -149,13 +145,17 @@
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
-              Latest 2 Comments
+              Latest {{latestCommentNumber}} Comments
             </div>
             <div class="card-body">
-              <div class="member_comment">
-                <span>Talal</span>
-                <p>My Painting is amazing</p>
-              </div>
+              <ng-container *ngFor="let comment of comments; let i = index">
+                <ng-container *ngIf="i < latestCommentNumber">
+                  <div class="member_comment">
+                    <span>{{comment?.userName}}</span>
+                    <p>{{comment?.body}}</p>
+                  </div>
+                </ng-container>
+              </ng-container>
             </div>
           </div>
         </div>

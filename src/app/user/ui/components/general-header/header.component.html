@@ -39,9 +39,9 @@
                         <a (click)="showDialog()">Login</a>
                       </span>
                       <div class="d-inline-block" mdbDropdownToggle id="letter-circle" *ngIf="userLoggedIn">
-                          <span class="letter">{{userInfo.userName.substring(0, 1)}}</span> 
+                          <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
                           <div class="info">
-                            <span class="email">{{userInfo.userName}}</span>
+                            <span class="email">{{userInfo.username}}</span>
                            <div class="login-btn" *ngIf="userLoggedIn"> 
                              <!--            <a class="dropdown-item">Show Wish List</a>-->
                              <!--            <a class="dropdown-item">Show Favorite List</a>-->
@@ -134,9 +134,9 @@
               
         <div mdbDropdownToggle class="letter-circle"
              *ngIf="userLoggedIn">
-             <span class="letter">{{userInfo.userName.substring(0, 1)}}</span> 
+             <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
              <div class="info">
-               <span class="email">{{userInfo.userName}}</span>
+               <span class="email">{{userInfo.username}}</span>
               <div class="login-btn" *ngIf="userLoggedIn"> 
                 <!--            <a class="dropdown-item">Show Wish List</a>-->
                 <!--            <a class="dropdown-item">Show Favorite List</a>-->

@@ -12,6 +12,10 @@ import {ToastrService} from 'ngx-toastr';
 export class ListPaintingComponent implements OnInit, OnDestroy {
   public paintings: PaintingInterface[];
   allPaintingObservable: Subscription;
+  paintingsList: PaintingInterface[] = [];
+  paintingsFilterList = [];     // We Create It Second For Filter
+  config: any;                  // Config Variable For Pagination Configuration
+  name: string;                 // name variable to store the input search value
 
   constructor(private toaster: ToastrService,
               private photosListService: PhotosListService ) { }
@@ -29,10 +33,45 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
     this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
       (res: any) => {
         this.paintings = res.Data;
+        for (const painting of this.paintings) {
+          this.paintingsList.push({
+            id: painting.id,
+            name: painting.name,
+            artist: painting.artist,
+            height: painting.height,
+            width: painting.width,
+            colorsType: painting.colorsType,
+            price: painting.price,
+            state: painting.state,
+            active: painting.active,
+            image: painting.image,
+            createdBy: painting.createdBy,
+            updatedBy: painting.updatedBy,
+            createDate: painting.createDate,
+            updateDate: painting.updateDate,
+            artType: painting.artType,
+            gallery: painting.gallery,
+            keyWords: painting.keyWords,
+            story: painting.story
+          });
+        }
         console.log(this.paintings);
       }, error1 => {
         console.log(error1);
+      }, () => {
+        this.paintingsFilterList = this.paintingsList;
       });
+
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.paintingsList.length
+    };
+  }
+
+  // Fetch The Page Number On Page Change
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
     // Delete painting Method
@@ -52,6 +91,28 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
       );
     } else {
       return false;
+    }
+  }
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.paintingsFilterList = [...this.paintingsList];
+    } else {
+      this.paintingsFilterList = [];
+      this.paintingsFilterList = this.paintingsList.filter(res => {
+        // Search In Entity Column
+        const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Interactions Column
+        const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Entity Column
+          return nameResult;
+        } else if (artistResult) {
+          // display the Interactions Column
+          return artistResult;
+        }
+      });
     }
   }
 }

@@ -1,7 +1,7 @@
 export interface PaintingInterface {
   id: number;
   name: string;
-  artist: number;
+  artist: any;
   height: number;
   width: number;
   colorsType: string;
@@ -9,10 +9,10 @@ export interface PaintingInterface {
   state: number;
   active: boolean;
   image: string;
-  // createdBy: string;
-  // updatedBy: string;
-  // createDate: Date;
-  // updateDate: Date;
+  createdBy: string;
+  updatedBy: string;
+  createDate: Date;
+  updateDate: Date;
   artType: number;
   gallery: number;
   keyWords: string;

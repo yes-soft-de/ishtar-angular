@@ -5,7 +5,7 @@ export interface CommentsEntity {
     timestamp: number;
   };
   spacial: boolean;
-  userName: string;
+  username: string;
   userImage: string;
   id: number;
   body: string;

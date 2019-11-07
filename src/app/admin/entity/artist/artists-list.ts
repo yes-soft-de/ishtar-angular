@@ -1,4 +1,4 @@
-export interface ArtistInterface {
+export class ArtistsList {
   id: number;
   name: string;
   nationality: string;
@@ -12,4 +12,5 @@ export interface ArtistInterface {
   video?: string;
   details: string;
   story: string;
+  artType?: string;
 }

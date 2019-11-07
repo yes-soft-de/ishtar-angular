@@ -12,6 +12,11 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListCommentComponent implements OnInit {
   comments: CommentInterface[];
+  commentsList: CommentInterface[] = [];
+  commentsFilterList = [];         // We Create It Second For Filter
+  config: any;                     // Config Variable For Pagination Configuration
+  name: string;                    // name variable to store the input search value
+
   constructor(private commentService: CommentService,
               private router: Router,
               private route: ActivatedRoute,
@@ -27,9 +32,35 @@ export class ListCommentComponent implements OnInit {
     this.commentService.getAllComments().subscribe(
         (data: CommentResponse) => {
           this.comments = data.Data;
+          for (const comment of this.comments) {
+            this.commentsList.push({
+              id: comment.id,
+              body: comment.body,
+              username: comment.username,
+              entity: comment.entity,
+              row: comment.row,
+              date: comment.date,
+              lastEdit: comment.lastEdit,
+              spacial: comment.spacial
+            });
+          }
           console.log('Admin Comments Section: ', data.Data);
+        }, error => {
+          console.log(error);
+        }, () => {
+          this.commentsFilterList = this.commentsList;
         }
     );
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.commentsList.length
+    };
+  }
+
+  // Fetch The Page Number On Page Change
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   delete(id: number) {
@@ -50,4 +81,27 @@ export class ListCommentComponent implements OnInit {
       return false;
     }
   }
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.commentsFilterList = [...this.commentsList];
+    } else {
+      this.commentsFilterList = [];
+      this.commentsFilterList = this.commentsList.filter(res => {
+        // Search In Name Column
+        const nameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Entity Column
+        const entitiesResult = res.entity.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Name Column
+          return nameResult;
+        } else if (entitiesResult) {
+          // display the Entity Column
+          return entitiesResult;
+        }
+      });
+    }
+  }
+
 }

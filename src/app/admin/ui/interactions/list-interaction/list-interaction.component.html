@@ -1,7 +1,7 @@
-<div *ngIf="comments != null">
-  <div *ngIf="comments.length !== 0">
+<div *ngIf="interactions != null">
+  <div *ngIf="interactions.length !== 0">
     <div class="container-fluid">
-      <h1 class="text-center my-4">Manage Comments Page</h1>
+      <h1 class="text-center my-4">Manage Interactions Page</h1>
       <div class="col-4">
         <div class="form-group mb-4">
           <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="What're you searching for?" class="form-control form-control-underlined border-primary">
@@ -11,27 +11,17 @@
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">
             <td>#ID</td>
-            <td>Comment By</td>
-            <td>Comment Section</td>
-            <td>Section Id</td>
-            <td style="width: 30%">Body</td>
-            <td>Comment Date</td>
-            <td>last Edit</td>
-            <td>Spacial</td>
-            <td>Control</td>
+            <td>Interactions Name</td>
+            <td>Created By</td>
+            <td>Section Name</td>
+            <td>Section ID</td>
           </tr>
-          <tr *ngFor="let comment of commentsFilterList | paginate: config; index as i">
-            <td>{{comment.id}}</td>
-            <td>{{comment.username}}</td>
-            <td>{{comment.entity}}</td>
-            <td>{{comment.row}}</td>
-            <td>{{comment.body}}</td>
-            <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
-            <td>{{comment.lastEdit != null ? (comment.lastEdit.timestamp * 1000 | date: 'short') : '-'}}</td>
-            <td>{{comment.spacial}}</td>
-            <td>
-              <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
-            </td>
+          <tr *ngFor="let interaction of interactionsFilterList | paginate: config; index as i">
+            <td>{{interaction.id}}</td>
+            <td>{{interaction.interaction}}</td>
+            <td>{{!interaction.client ? 'Visitors' : interaction.client}}</td>
+            <td>{{interaction.entities}}</td>
+            <td>{{interaction.row}}</td>
           </tr>
         </table>
         <pagination-controls class="my-pagination"
@@ -46,12 +36,12 @@
       </div>
     </div>
   </div>
-  <div *ngIf="comments.length === 0">
+  <div *ngIf="interactions.length === 0">
     <div class="container">
-      <div class="alert alert-primary text-center mt-5">There Isn't Comments To Show</div>\
+      <div class="alert alert-primary text-center mt-5">There Isn't Interactions To Show</div>\
     </div>
   </div>
 </div>
-<div *ngIf="comments == null">
+<div *ngIf="interactions == null">
   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
