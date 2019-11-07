@@ -1,7 +1,7 @@
 export class AdminConfig {
 
-  // public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
-  public static sourceAPI               = '/ishtar-backend/public/';
+  public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  // public static sourceAPI               = '/ishtar-backend/public/';
   // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
 
   // Create General Uploading API
@@ -61,6 +61,7 @@ export class AdminConfig {
   // Comments API
   public static commentsAPI             = AdminConfig.sourceAPI + 'comments';
   public static commentAPI              = AdminConfig.sourceAPI + 'comment';
+  public static specialCommentAPI          = AdminConfig.sourceAPI + 'spacialcomment';
 
   public static interactionsAPI         = AdminConfig.sourceAPI + 'interactions';
   // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';

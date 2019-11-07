@@ -38,7 +38,7 @@
           <td>{{client.firstName}}</td>
           <td>{{client.lastName}}</td>
           <td><img src="{{client.image}}" alt="{{client.firstName}} Image" class="img-fluid img-thumbnail img-custom"></td>
-          <td>{{client.roll}}</td>
+          <td>{{client.roll['ROLE_ADMIN'] ? 'Admin' : 'User'}}</td>
           <td>{{client.username}}</td>
           <td>{{client.email}}</td>
           <td>{{client.birthDate}}</td>

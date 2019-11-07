@@ -20,7 +20,8 @@ export class ListCommentComponent implements OnInit {
   constructor(private commentService: CommentService,
               private router: Router,
               private route: ActivatedRoute,
-              private toaster: ToastrService) { }
+              private toaster: ToastrService) {
+  }
 
   ngOnInit() {
     this.getComments();
@@ -63,19 +64,36 @@ export class ListCommentComponent implements OnInit {
     this.config.currentPage = event;
   }
 
-  delete(id: number) {
-    if (confirm('Are You Sure You Want To Delete This Comment')) {
-      this.commentService.deleteComment(id).subscribe(
-        data => {
-          this.toaster.success('Comment Successfully Deleted');
-          console.log('deleted Successfully: ', data);
-        },
-        error => {
-          console.log('error : ', error);
-          this.toaster.error('There Is An Error Please Try Again');
+  special(commentId: number) {
+    if (confirm('Are You Sure You Want To Make This Comment As Special?')) {
+    const anyData = 'Any Thing';
+    this.commentService.specialComment(commentId, anyData).subscribe(
+        (data: any) => {
+          console.log('response data for special comment: ', data);
+        }, error => {
+          console.log(error);
         }, () => {
           this.getComments();
         }
+    );
+    } else {
+      return false;
+    }
+  }
+
+  delete(id: number) {
+    if (confirm('Are You Sure You Want To Delete This Comment?')) {
+      this.commentService.deleteComment(id).subscribe(
+          data => {
+            this.toaster.success('Comment Successfully Deleted');
+            console.log('deleted Successfully: ', data);
+          },
+          error => {
+            console.log('error : ', error);
+            this.toaster.error('There Is An Error Please Try Again');
+          }, () => {
+            this.getComments();
+          }
       );
     } else {
       return false;

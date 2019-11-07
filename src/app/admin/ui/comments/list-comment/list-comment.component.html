@@ -28,9 +28,11 @@
             <td class="td-custom">{{comment.body}}</td>
             <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
             <td>{{comment.lastEdit != null ? (comment.lastEdit.timestamp * 1000 | date: 'short') : '-'}}</td>
-            <td>{{comment.spacial}}</td>
+            <td [class.text-success]="comment.spacial">{{comment.spacial}}</td>
             <td>
-              <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+              <a (click)="delete(comment.id)" class="btn btn-danger btn-sm mr-1 mb-1">Delete</a>
+              <a *ngIf="!comment.spacial" (click)="special(comment.id)" class="btn btn-primary btn-sm mr-1">Special</a>
+<!--              <a (click)="notSpecial(comment.id)" class="btn btn-primary btn-sm mr-1">Normal</a>-->
             </td>
           </tr>
         </table>

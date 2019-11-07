@@ -3,7 +3,7 @@ export interface ClientInterface {
   firstName: string;
   lastName: string;
   image: string;
-  roll: ['ROLE_USER'];
+  roll: ['ROLE_ADMIN', 'ROLE_USER'];
   username: string;
   password?: string;
   email: string;
