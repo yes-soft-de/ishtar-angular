@@ -6,6 +6,35 @@ Here is the solution:
 
 NOTE: I'm using Nginx as a server and Not Apache. but the same process should be server independent, which shall be in a future Backend Request.
 
+
+
+## Login API Usage
+
+you just subscribe to the login service as follows: 
+
+```typescript
+this.loginService.login('Mohammad@gmail.com', 'M0h@mm@d').subscribe(
+      data => {
+        console.log(data.user_id);
+      }
+    );
+```
+
+what you get in return is an object like this:
+
+```typescript
+export interface UserKeys {
+  token: string;
+  user_id: string;
+}
+```
+
+and That's about it ;)  all the CORS complications are solved in-house.
+
+
+
+
+
 ## The Problem
 
 When adding a header containing the header `Content-Type: application/json` to the request it becomes a CORS Request, what this means is that the request should be done in 2 stages and not 1 as a simple header-less request is.
