@@ -51,6 +51,39 @@ export class PaintingListComponent implements OnInit {
     this.artists = [];
     for (const image of this.formattedPaintingList) {
       this.artists.push(image.artist);
+      // Get View Interaction For Every Painting
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          image.id,
+          InteractionConsts.INTERACTION_TYPE_VIEW)
+          .subscribe(
+              (data: any) => {
+                console.log('Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
+                this.paintingsView.push({
+                  id: image.id,
+                  viewNumber: data.Data[0].interactions
+                });
+              }, error => {
+                console.log(error);
+              }
+          );
+      // Get Love Interaction For Every Painting
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          image.id,
+          InteractionConsts.INTERACTION_TYPE_LOVE)
+          .subscribe(
+              (data: any) => {
+                console.log('Painting Love: Id:', image.id, ' => Love: ' , data.Data[0].interactions);
+                this.paintingsLove.push({
+                  id: image.id,
+                  loveNumber: data.Data[0].interactions
+                });
+              }, error => {
+                console.log(error);
+              }
+          );
+      /*
       // Fetch Painting View Interaction
       this.viewData.row = image.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
@@ -60,9 +93,6 @@ export class PaintingListComponent implements OnInit {
               id: image.id,
               viewNumber: data.Data[0].interactions
             });
-          },
-          error => {
-            console.log(error);
           }
       );
       // Get All Paintings Love Interactions
@@ -73,15 +103,11 @@ export class PaintingListComponent implements OnInit {
               id: image.id,
               loveNumber: data.Data[0].interactions
             });
-          },
-          error => {
-            console.log(error);
           }
-      );
+      );*/
     }
     // make loop inside paintingsView and remove the repeated value
     this.paintingsView = [...new Set(this.paintingsView)];
-    console.log(this.paintingsView);
     // Passing Data From Child Component To Parent Component
     this.PaintingViewNumber.emit(this.paintingsView);
     // make loop inside artists and remove the repeated value
@@ -123,9 +149,9 @@ export class PaintingListComponent implements OnInit {
       this.paintingList = paintingList;
     }
     if (this.paintingList.length > 12) {
-      document.getElementById('my-pagination').style.display = "block";
+      document.getElementById('my-pagination').style.display = 'block';
      } else {
-       document.getElementById('my-pagination').style.display = "none";
+       document.getElementById('my-pagination').style.display = 'none';
      }
   }
 
@@ -137,22 +163,14 @@ export class PaintingListComponent implements OnInit {
     }
     this.paintingList = paintingList;
     if (this.paintingList.length > 12) {
-      document.getElementById('my-pagination').style.display = "block";
+      document.getElementById('my-pagination').style.display = 'block';
      } else {
-       document.getElementById('my-pagination').style.display = "none";
+       document.getElementById('my-pagination').style.display = 'none';
      }
   }
 
-  viewImage(id: number) {
-    this.viewData.row = id;
-    this.interactionService.addViewInteraction(this.viewData).subscribe(
-        res => {
-          console.log('Painting Reviewed : ', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+  viewImage(paintingId: number) {
+    this.interactionService.addViewInteraction(paintingId, 'painting');
   }
 
   // view & hide filter button options

@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {UserConfig} from '../user/UserConfig';
-import {AdminConfig} from './AdminConfig';
 import {ToastrService} from 'ngx-toastr';
 import {UserProfileService} from '../user/service/client-profile/user-profile.service';
 
@@ -17,12 +14,12 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.userConnector.requestUserDetails().subscribe(
-      data => {
-        if (data.Data.userName === undefined) {
-          alert('Unauthorized Access, Please Login!');
+         (data: any) => {
+         if (data.Data.username === undefined) {
+           alert('Unauthorized Access, Please Login!');
           this.router.navigate(['/']);
-        } else {
-          this.toaster.success('Welcome ' + data.Data.userName);
+         } else {
+          this.toaster.success('Welcome ' + data.Data.username);
         }
       }
     );

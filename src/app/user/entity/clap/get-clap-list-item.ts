@@ -1,6 +1,6 @@
 export interface GetClapListItem {
   id: number;
   value: number;
-  userName: string;
+  username: string;
   image: string;
 }

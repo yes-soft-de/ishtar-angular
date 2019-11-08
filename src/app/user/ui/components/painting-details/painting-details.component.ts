@@ -1,14 +1,13 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import { Router } from '@angular/router';
-
+import Flickity from 'flickity';
 
 @Component({
   selector: 'app-painting-details',
@@ -23,22 +22,38 @@ export class PaintingDetailsComponent implements OnInit {
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
   paintingNumber: number;
-  CurrentPaintingId:number;
+  CurrentPaintingId: number;
 
-  constructor(private paintingService: PaintingListService,
-              private paintingViewsService: PaintingViewsService,
+  constructor(private paintingService: PaintingService,
               private interactionService: IshtarInteractionService,
-              private artistListService: ArtistListService,
+              private artistListService: ArtistService,
               private toaster: ToastrService,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.featuredList = data.Data;
-      }
-    );
+    // this.paintingService.requestPaintingList().subscribe(
+    //   data => {
+    //     this.featuredList = data.Data;
+    //   }
+    // );
+    if(window.innerWidth < 768){
+      var flkty = new Flickity('.main-carousel',{
+        draggable: true,
+        wrapAround: true,
+        prevNextButtons: false,
+        pageDots: false
+      });  
+      flkty.on( 'dragEnd', ( event, pointer ) => {
+        if(pointer.layerX < -10) {
+          this.goNext()
+        }
+        if(pointer.layerX > 30) {
+          this.goBack()
+        }
+      });
+      
+    }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
@@ -86,28 +101,30 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
-  goBack(){
-    for (let i=0; i < this.paintingList.length; i++ ) {
+  goBack() {
+    for (let i = 0; i < this.paintingList.length; i++ ) {
+      // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i - 1;
       }
     }
-    if (this.paintingNumber > 0){
+    if (this.paintingNumber > 0) {
       this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
       this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
     } else {
-      this.router.navigate(['/painting', this.paintingList[this.paintingList.length -1].id]);
-      this.CurrentPaintingId = this.paintingList[this.paintingList.length -1].id;
+      this.router.navigate(['/painting', this.paintingList[this.paintingList.length - 1].id]);
+      this.CurrentPaintingId = this.paintingList[this.paintingList.length - 1].id;
     }
   }
 
-  goNext(){
-    for (let i=0; i < this.paintingList.length; i++ ) {
+  goNext() {
+    for (let i = 0; i < this.paintingList.length; i++ ) {
+      // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i + 1;
       }
     }
-    if (this.paintingNumber < this.paintingList.length - 1){
+    if (this.paintingNumber < this.paintingList.length - 1) {
       this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
       this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
     } else {

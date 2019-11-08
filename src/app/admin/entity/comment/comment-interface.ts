@@ -1,13 +1,16 @@
 export interface CommentInterface {
   id: number;
   body: string;
-  userName: string;
+  username: string;
   entity: string;
   row: number;
   date: {
     timezone: { name: string; },
     timestamp: number;
   };
-  lastEdit: Date;
+  lastEdit: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
   spacial: boolean;
 }

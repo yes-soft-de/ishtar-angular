@@ -2,10 +2,19 @@
     <div *ngIf="artists.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Manage Artist Page</h1>
-        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
-          <i class="fa fa-plus"></i>
-          Add New Artist
-        </a>
+          <div class="row">
+              <div class="col-4">
+                  <div class="form-group mb-4">
+                      <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name, Residence And ArtType?" class="form-control form-control-underlined border-primary">
+                  </div>
+              </div>
+              <div class="col-8 align-self-center">
+                <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-artist">
+                  <i class="fa fa-plus"></i>
+                  Add New Artist
+                </a>
+              </div>
+          </div>
         <div class="table-responsive text-center">
             <table class="table table-bordered main-table">
                 <tr class="bg-dark text-white">
@@ -15,8 +24,8 @@
                     <td>Nationality</td>
                     <td>Residence</td>
                     <td>Art Type</td>
-                    <td>Birth Date</td>
                     <td>Story</td>
+                    <td>Birth Date</td>
                     <td>Details</td>
                     <td>Facebook</td>
                     <td>Instagram</td>
@@ -24,26 +33,37 @@
                     <td>Linkedin</td>
                     <td>Control</td>
                 </tr>
-                <tr *ngFor="let artist of artists">
-                    <td>{{artist["0"].id}}</td>
-                    <td>{{artist["0"].name}}</td>
-                    <td><img src="{{artist.path}}" alt="{{artist['0'].name}} Image" class="img-fluid img-thumbnail img-custom"></td>
-                    <td>{{artist["0"].nationality}}</td>
-                    <td>{{artist["0"].residence}}</td>
+                <tr *ngFor="let artist of artistsFilterList | paginate: config">
+                    <td>{{artist.id}}</td>
+                    <td>{{artist.name}}</td>
+                    <td><img src="{{artist.path}}" alt="{{artist.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
+                    <td>{{artist.nationality}}</td>
+                    <td>{{artist.residence}}</td>
                     <td>{{artist.artType}}</td>
-                    <td>{{artist["0"].birthDate.timestamp | date: 'yyyy-MM-dd'}}</td>
-                    <td>{{artist["0"].story}}</td>
-                    <td>{{artist["0"].details}}</td>
-                    <td>{{artist["0"].Facebook}}</td>
-                    <td>{{artist["0"].Instagram}}</td>
-                    <td>{{artist["0"].Twitter}}</td>
-                    <td>{{artist["0"].Linkedin}}</td>
+                    <td class="td-custom">{{artist.story}}</td>
+                    <td>{{artist.birthDate.timestamp * 1000 | date: 'yyyy-MM-dd'}}</td>
+                    <td class="td-custom-1">{{artist.details}}</td>
+                    <td>{{artist.Facebook}}</td>
+                    <td>{{artist.Instagram}}</td>
+                    <td>{{artist.Twitter}}</td>
+                    <td>{{artist.Linkedin}}</td>
                     <td>
-                        <a routerLink="/admin/edit-artist/{{artist['0'].id}}" class="btn btn-success btn-sm mr-1">Edit</a>
-                        <a (click)="delete(artist['0'].id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
+                        <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
                     </td>
                 </tr>
             </table>
+            <pagination-controls class="my-pagination"
+                                 (pageChange)="pageChanged($event)"
+                                 autoHide="true"
+                                 maxSize="5"
+                                 responsive="true"
+                                 previousLabel="Prev"
+                                 nextLabel="Next"
+                                 screenReaderPaginationLabel="Pagination"
+                                 screenReaderPageLabel="page"
+                                 screenReaderCurrentLabel="You're on page">
+            </pagination-controls>
         </div>
       </div>
     </div>

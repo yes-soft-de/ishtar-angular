@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="uploadForm" class="col-md-6 my-5 mx-auto" (ngSubmit)="mySubmit()">
+  <form [formGroup]="uploadForm" class="col-md-10 col-lg-8 col-xl-7 my-5 mx-auto" (ngSubmit)="mySubmit()">
     <h2 class="h1 ml-5 text-center">Add New Painting</h2>
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
@@ -78,7 +78,7 @@
                 (change)="changeArtist($event)"
                 [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
           <option value="">Select The Artist For This Painting</option>
-          <option value="{{artist.id}}" *ngFor="let artist of artists">{{artist.name}}</option>
+          <option value="{{artist['0'].id}}" *ngFor="let artist of artists">{{artist['0'].name}}</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
       </div>

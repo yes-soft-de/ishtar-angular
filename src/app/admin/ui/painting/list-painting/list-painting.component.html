@@ -2,49 +2,68 @@
     <div *ngIf="paintings.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Manage Painting Page</h1>
-        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-painting">
-          <i class="fa fa-plus"></i>
-          Add New Painting
-        </a>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group mb-4">
+              <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching For Painting Name And Artist Name" class="form-control form-control-underlined border-primary">
+            </div>
+          </div>
+          <div class="col-8 align-self-center">
+            <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-painting">
+              <i class="fa fa-plus"></i>
+              Add New Painting
+            </a>
+          </div>
+        </div>
         <div class="table-responsive text-center">
-            <table class="table table-bordered main-table">
-                <tr class="bg-dark text-white">
-                  <td>#ID</td>
-                  <td>Name</td>
-                  <td>Image</td>
-                  <td>Artist</td>
-                  <td>ArtType</td>
-                  <td>Height</td>
-                  <td>Width</td>
-                  <td>State</td>
-                  <td>Key Words</td>
-                  <td>Colors Type</td>
-  <!--                <td>Gallery</td>-->
-                  <td>Story</td>
-                  <td>Control</td>
-                </tr>
-                <tr *ngFor="let painting of paintings">
-                  <td>{{painting.id}}</td>
-                  <td>{{painting.name}}</td>
-                  <td><img src="{{painting.image}}" alt="{{painting.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
-  <!--                <td>{{painting.image}}</td>-->
-                  <td>{{painting.artist}}</td>
-                  <td>{{painting.artType}}</td>
-                  <td>{{painting.height}}</td>
-                  <td>{{painting.width}}</td>
-                  <td>{{painting.state ? 'Sold' : 'available'}}</td>
-                  <td>{{painting.colorsType}}</td>
-                  <td>{{painting.keyWords}}</td>
-  <!--                <td>{{painting.gallery}}</td>-->
-  <!--                <td>{{painting.price}} $</td>-->
-                  <td>{{painting.story}}</td>
-                  <td>
-                    <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
-                    <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
-                    <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Active</a>
-                  </td>
-                </tr>
-            </table>
+          <table class="table table-bordered main-table">
+              <tr class="bg-dark text-white">
+                <td>#ID</td>
+                <td>Name</td>
+                <td>Image</td>
+                <td>Artist</td>
+                <td>ArtType</td>
+                <td>Height</td>
+                <td>Width</td>
+                <td>State</td>
+                <td>Key Words</td>
+                <td>Colors Type</td>
+<!--                <td>Gallery</td>-->
+                <td>Price</td>
+                <td>Story</td>
+                <td>Control</td>
+              </tr>
+              <tr *ngFor="let painting of paintingsFilterList | paginate: config">
+                <td>{{painting.id}}</td>
+                <td>{{painting.name}}</td>
+                <td><img src="{{painting.image}}" alt="{{painting.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
+                <td>{{painting.artist}}</td>
+                <td>{{painting.artType}}</td>
+                <td>{{painting.height}}</td>
+                <td>{{painting.width}}</td>
+                <td>{{painting.state ? 'Sold' : 'available'}}</td>
+                <td>{{painting.colorsType}}</td>
+                <td>{{painting.keyWords}}</td>
+<!--                <td>{{painting.gallery}}</td>-->
+                <td>{{painting.price | currency}}</td>
+                <td class="td-custom">{{painting.story}}</td>
+                <td>
+                  <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
+                  <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
+                  <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Active</a>
+                </td>
+              </tr>
+          </table>
+          <pagination-controls class="my-pagination"
+                               (pageChange)="pageChanged($event)"
+                               autoHide="true"
+                               maxSize="5"
+                               responsive="true"
+                               previousLabel="Prev"
+                               nextLabel="Next"
+                               screenReaderPaginationLabel="Pagination"
+                               screenReaderPageLabel="page"
+                               screenReaderCurrentLabel="You're on page"></pagination-controls>
         </div>
       </div>
     </div>

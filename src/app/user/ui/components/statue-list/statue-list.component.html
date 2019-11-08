@@ -3,15 +3,15 @@
         <p class="title">Filter by style name </p>
         <button (click)="noFilter()">All</button>
         <button *ngFor="let statue of statuesList" 
-                name="{{statue.name}}"
-                (click)="filterName($event)">{{statue.name}}</button>
+                name="{{statue['0'].style}}"
+                (click)="filterName($event)">{{statue['0'].style}}</button>
     </div>
     <div class="filter">
         <p class="title">Filter by artist name </p>
         <button (click)="noFilter()">All</button>
         <button *ngFor="let statue of statuesList"
-                name="{{statue.artist.name}}"
-                (click)="filterArtistName($event)">{{statue.artist.name}}</button>
+                name="{{statue['0']?.artist?.name}}"
+                (click)="filterArtistName($event)">{{statue['0']?.artist?.name}}</button>
     </div>
     <!--
     <div class="filter">
@@ -22,8 +22,8 @@
        <p class="title">Filter by materials </p>
        <button (click)="noFilter()">All</button>
        <button *ngFor="let statue of statuesList" 
-               name="{{statue.materials}}"
-               (click)="filterMaterial($event)">{{statue.material}}</button>
+               name="{{statue['0'].material}}"
+               (click)="filterMaterial($event)">{{statue['0'].material}}</button>
     </div>
     <div class="filter">
         <p class="title">Filter by size</p>
@@ -39,18 +39,18 @@
         <div class="statue"
             *ngFor="let statue of statuesListFiltered">
             <ngx-image-zoom
-                thumbImage="{{statue.image}}"
-                [enableLens]=false
-            ></ngx-image-zoom>
-            <div class="info" id="info_{{statue.id}}" routerLink="/statue/{{statue.id}}" (click)="viewStatue(statue.id)">
+                thumbImage="{{statue['0'].image}}"
+                [enableLens]=false>
+            </ngx-image-zoom>
+            <div class="info" id="info_{{statue['0'].id}}" routerLink="/statue/{{statue['0'].id}}" (click)="viewStatue(statue['0'].id)">
                 <div class="info-wrapper">
-                    <h3>{{statue.name}}</h3>
-                    <p class="artist-name">{{statue.artist.name}}</p>
-                    <p class="views"><i class="far fa-eye"></i> 1425</p>
+                    <h3>{{statue['0'].name}}</h3>
+                    <p class="artist-name">{{statue['0']?.artist?.name}}</p>
+                    <p class="views"><i class="far fa-eye mr-2"></i> <span *ngFor="let view of statuesInteraction">{{view.id == statue['0'].id ? view.viewNumber : ''}}</span></p>
                 </div>
                <!-- <span class="price">200e</span> -->
             </div>
-            <button class="fas fa-search magnifying"  name="{{statue.id}}" (click)="MagnifyingImage($event)">
+            <button class="fas fa-search magnifying"  name="{{statue['0'].id}}" (click)="MagnifyingImage($event)">
             </button>
            <!-- <button class="favourite"><i class="far fa-star"></i></button> -->
         </div>

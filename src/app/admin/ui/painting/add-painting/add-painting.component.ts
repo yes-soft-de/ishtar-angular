@@ -54,7 +54,6 @@ export class AddPaintingComponent implements OnInit {
     this.artTypeService.getAllArtType().subscribe(
         (data: ArtTypeResponse) => {
           if (data) {
-            console.log(data);
             this.artTypes = data.Data;
           }
         },

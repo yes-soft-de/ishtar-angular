@@ -4,6 +4,7 @@ import {StatuesResponse} from '../../../entity/statue/statues.response';
 import {StatueInterface} from '../../../entity/statue/statue.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {Statue} from '../../../entity/statue/statue';
 
 @Component({
   selector: 'app-list-statue',
@@ -12,6 +13,10 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListStatueComponent implements OnInit {
   statues: {0: StatueInterface, price: string}[];
+  statuesList: Statue[] = [];     // We Create It First For Pagination
+  statuesFilterList = [];         // We Create It Second For Filter
+  config: any;                    // Config Variable For Pagination Configuration
+  name: string;                   // name variable to store the input search value
 
   constructor(private statueService: StatueService,
               private route: Router,
@@ -27,11 +32,50 @@ export class ListStatueComponent implements OnInit {
     this.statueService.getAllStatues().subscribe(
         (data: StatuesResponse) => {
           this.statues = data.Data;
-          console.log(this.statues);
+          for (const statue of this.statues) {
+            this.statuesList.push({
+              id: statue['0'].id,
+              name: statue['0'].name,
+              image: statue['0'].image,
+              artist: statue['0'].artist.name,
+              height: statue['0'].height,
+              width: statue['0'].width,
+              weight: statue['0'].weight,
+              length: statue['0'].length,
+              state: statue['0'].state,
+              description: statue['0'].description,
+              style: statue['0'].style,
+              period: statue['0'].period,
+              mediums: statue['0'].mediums,
+              material: statue['0'].material,
+              features: statue['0'].features,
+              active: statue['0'].active,
+              keyWord: statue['0'].keyWord,
+              price: statue.price,
+              createDate: statue['0'].createDate,
+              createdBy: statue['0'].createdBy,
+              updatedDate: statue['0'].updatedBy,
+              updatedBy: statue['0'].updatedBy
+            });
+          }
+          console.log('Admin Statues: ', this.statues);
         }, error => {
           console.log(error);
+        }, () => {
+          this.statuesFilterList = this.statuesList;
         }
     );
+
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.statuesList.length
+    };
+  }
+
+  // Fetch The Page Number On Page Change
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   delete(id: number) {
@@ -50,6 +94,28 @@ export class ListStatueComponent implements OnInit {
       );
     } else {
       return false;
+    }
+  }
+
+  applyFilter() {
+    // if the search input value is empty
+    if (!this.name) {
+      this.statuesFilterList = [...this.statuesList];
+    } else {
+      this.statuesFilterList = [];
+      this.statuesFilterList = this.statuesList.filter(res => {
+        // Search In Name Column
+        const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Artist Column
+        const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        if (nameResult) {
+          // display the Name Column
+          return nameResult;
+        } else if (artistResult) {
+          // display the Artist Column
+          return artistResult;
+        }
+      });
     }
   }
 

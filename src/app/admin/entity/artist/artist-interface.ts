@@ -9,7 +9,7 @@ export interface ArtistInterface {
   Linkedin: string;
   Twitter: string;
   path: string;
-  video: string;
+  video?: string;
   details: string;
   story: string;
 }

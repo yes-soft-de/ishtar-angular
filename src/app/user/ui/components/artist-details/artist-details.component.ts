@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ArtistDetails} from '../../../entity/artist/artist-details';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
+import Flickity from 'flickity';
 
 @Component({
   selector: 'app-artist-page',
@@ -19,19 +20,37 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() prevArtistExists: boolean;
 
   constructor(private userProfileService: UserProfileService,
-              private router: Router) {
+              private router: Router) {     console.log('ARtist list: ', this.artist);}
+
+  ngOnInit() {
+
+    if(window.innerWidth < 768){
+      var flkty = new Flickity('.main-carousel',{
+        draggable: true,
+        wrapAround: true,
+        prevNextButtons: false,
+        pageDots: false
+      });  
+      flkty.on( 'dragEnd', ( event, pointer ) => {
+        if(pointer.layerX < 0 && this.nextArtistExists) {
+          this.goNext()
+        }
+        if(pointer.layerX > 0 && this.prevArtistExists) {
+          this.goBack()
+        }
+      });
+      
+    }
   }
 
-  ngOnInit() {}
-
   // Navigate To Previous Artist
-  goBack() {
+  public goBack() {
     const prevId = this.artist.id - 1;
     this.router.navigate(['/artist', prevId]);
   }
 
   // Navigate To Next Artist
-  goNext() {
+  public goNext() {
     const nextId = this.artist.id + 1;
     this.router.navigate(['/artist', nextId]);
   }

@@ -2,33 +2,51 @@
   <div *ngIf="comments.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Comments Page</h1>
+      <div class="col-4">
+        <div class="form-group mb-4">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Username And Comments Section" class="form-control form-control-underlined border-primary">
+        </div>
+      </div>
       <div class="table-responsive text-center">
         <table class="table table-bordered main-table">
           <tr class="bg-dark text-white">
             <td>#ID</td>
             <td>Comment By</td>
             <td>Comment Section</td>
-            <td>Comment For</td>
-            <td>Body</td>
+            <td>Section Id</td>
+            <td style="width: 30%">Body</td>
             <td>Comment Date</td>
             <td>last Edit</td>
             <td>Spacial</td>
             <td>Control</td>
           </tr>
-          <tr *ngFor="let comment of comments">
+          <tr *ngFor="let comment of commentsFilterList | paginate: config; index as i">
             <td>{{comment.id}}</td>
-            <td>{{comment.userName}}</td>
+            <td>{{comment.username}}</td>
             <td>{{comment.entity}}</td>
             <td>{{comment.row}}</td>
-            <td>{{comment.body}}</td>
-            <td>{{comment.date.timestamp | date: 'yyyy-MM-dd'}}</td>
-            <td>{{comment.lastEdit}}</td>
-            <td>{{comment.spacial}}</td>
+            <td class="td-custom">{{comment.body}}</td>
+            <td>{{comment.date.timestamp * 1000 | date: 'short'}}</td>
+            <td>{{comment.lastEdit != null ? (comment.lastEdit.timestamp * 1000 | date: 'short') : '-'}}</td>
+            <td [class.text-success]="comment.spacial">{{comment.spacial}}</td>
             <td>
-              <a (click)="delete(comment.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+              <a (click)="delete(comment.id)" class="btn btn-danger btn-sm mr-1 mb-1">Delete</a>
+              <a *ngIf="!comment.spacial" (click)="special(comment.id)" class="btn btn-primary btn-sm mr-1">Special</a>
+<!--              <a (click)="notSpecial(comment.id)" class="btn btn-primary btn-sm mr-1">Normal</a>-->
             </td>
           </tr>
         </table>
+        <pagination-controls class="my-pagination"
+                             (pageChange)="pageChanged($event)"
+                             autoHide="true"
+                             maxSize="5"
+                             responsive="true"
+                             previousLabel="Prev"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
       </div>
     </div>
   </div>

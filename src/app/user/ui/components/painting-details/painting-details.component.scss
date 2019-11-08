@@ -1,51 +1,52 @@
-.most-painting-seen {
-  #full-size-img {
-    z-index: 999999;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+#full-size-img {
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  img {
     display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    img {
-      display: none;
-      max-width: 100%;
-      max-height: 100%;
-    }
+    max-width: 100%;
+    max-height: 100%;
   }
-  #full-size-img.active {
+}
+#full-size-img.active {
+  display: flex;
+  img {
+    display: block;
+  }
+  button {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 25px;
+    width: 55px;
+    height: 55px;
     display: flex;
-    img {
-      display: block;
-    }
-    button {
+    justify-content: left;
+    padding: 15px;
+    outline: none;
+    span {
       position: absolute;
-      top: -20px;
-      right: -20px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(0, 0, 0, 0.3);
-      color: #fff;
-      font-size: 25px;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      justify-content: left;
-      padding: 15px;
-      outline: none;
-      span {
-        position: absolute;
-        bottom: 2px;
-        left: 13px;
-      }
+      bottom: 2px;
+      left: 13px;
     }
   }
+}
+
+.most-painting-seen {
   .image {
     img {
       cursor: pointer;
@@ -187,6 +188,20 @@
     //}
   }
 }
+
+.main-carousel {  
+  width: 100%;
+  overflow: hidden;
+  .flickity-viewport {
+    height: auto !important;
+  }
+  .carousel-cell {
+    width: 100% ;
+    position: relative !important;
+    outline: none !important;
+  }
+}
+
 .painting-video {
   background: #efefef;
 }
@@ -199,9 +214,10 @@
   background: goldenrod;
   font-size: 14px;
   padding: 5px;
-  outline: none;
   color:#fff;  
   padding: 5px;
+  outline: none !important;
+  opacity: 0.7;
 }
 
 .btn-prev:hover,
@@ -226,6 +242,13 @@
   right: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+@media (max-width:767px) {
+  .btn-prev,
+  .btn-next {
+    display: none;
+  }
 }
 
 //#painting-details {
@@ -285,7 +308,7 @@
 //        }
 //      }
 //    }
-//    #painting-list-images {
+//    #painting-images {
 //      img {
 //        width: 100%;
 //        height: 125px;

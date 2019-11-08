@@ -33,19 +33,23 @@ export class MostSeenPaintingsComponent implements OnInit {
     for (const image of this.formattedPaintingList) {
       this.artists.push(image.artist);
       // Fetch Painting View Interaction
-      this.viewData.row = image.id;
-      this.interactionService.getInteraction(this.viewData).subscribe(
-          (data: {Data: any}) => {
-            this.paintingsView.push({
-              id: image.id,
-              viewNumber: data.Data[0].interactions
-            });
-            this.paintingsView.sort((a, b) =>  Number(b.viewNumber) - Number(a.viewNumber));
-          },
-          error => {
-            console.log(error);
-          }
-      );
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          image.id,
+          InteractionConsts.INTERACTION_TYPE_VIEW)
+          .subscribe(
+              (data: any) => {
+                console.log('Most Seen Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
+                this.paintingsView.push({
+                  id: image.id,
+                  viewNumber: data.Data[0].interactions
+                });
+                this.paintingsView.sort((a, b) =>  Number(b.viewNumber) - Number(a.viewNumber));
+              }, error => {
+                console.log(error);
+              }
+          );
+
     }
     // make loop inside paintingsView and remove the repeated value
     this.paintingsView = [...new Set(this.paintingsView)];
