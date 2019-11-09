@@ -37,22 +37,21 @@ export class PaintingDetailsComponent implements OnInit {
     //     this.featuredList = data.Data;
     //   }
     // );
-    if(window.innerWidth < 768){
-      var flkty = new Flickity('.main-carousel',{
+    if (window.innerWidth < 768) {
+      const flkty = new Flickity('.main-carousel', {
         draggable: true,
         wrapAround: true,
         prevNextButtons: false,
         pageDots: false
-      });  
+      });
       flkty.on( 'dragEnd', ( event, pointer ) => {
-        if(pointer.layerX < -10) {
-          this.goNext()
+        if (pointer.layerX < -10) {
+          this.goNext();
         }
-        if(pointer.layerX > 30) {
-          this.goBack()
+        if (pointer.layerX > 30) {
+          this.goBack();
         }
       });
-      
     }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {

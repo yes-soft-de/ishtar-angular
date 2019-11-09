@@ -1,7 +1,7 @@
 export class AdminConfig {
 
-  //public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
-   public static sourceAPI               = '/ishtar-backend/public/';
+  public static sourceAPI               = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+   // public static sourceAPI               = '/ishtar-backend/public/';
   // public static sourceAPI =  'http://ishtar-art.de/ishtar-backend/public/';
 
   // Create General Uploading API
