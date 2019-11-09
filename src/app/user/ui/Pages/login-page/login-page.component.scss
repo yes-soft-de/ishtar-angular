@@ -1,64 +1,168 @@
 #login-page {
-  width: 100%;
   max-width: 100%;
-  min-height: 100%;
-  text-align: center;
-  transition: all 1s ease-in-out;
-
+  height: 75vh;
+  background: #fffce6;
+  position: relative;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
   .logo-img {
-    margin: 15px 0;
-  }
-
-  .logo {
-    width: 250px;
-  }
-
-  a {
-    padding-left: 1rem;
-  }
-  // region Google Button Stuff
-  .google-button {
-    height: 40px;
-    border-width: 0;
-    background: white;
-    color: #737373;
-    border-radius: 5px;
-    box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.05);
-    transition-property: background-color, box-shadow;
-    transition-duration: 150ms;
-    transition-timing-function: ease-in-out;
-    display: flex;
-    align-items: center;
-
-    &:focus,
-    &:hover {
-      box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding-top: 12px;
+    height: 120px;
+    img {
+      width: 250px;
     }
-
-    &:active {
-      background-color: #e5e5e5;
-      box-shadow: none;
-      transition-duration: 10ms;
+    .title {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 0 !important;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #e1e1e1;
     }
   }
-
-  .google-button__icon {
-    display: grid;
-    width: 18px;
-    height: 18px;
-  }
-
-  .google-button__text {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 24px;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Roboto', arial, sans-serif;
-  }
-  // endregion
 }
 
-.cdk-overlay-container {
-  z-index: 9999;
+@media (min-width:768px){
+  .login-bg {
+    background: url(../../../../../assets/ishtar-statue.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: calc(50% + 3px);
+  }
+}
+
+.half-width {
+  float: left;
+  width: 50%;
+  padding: 15px 30px;
+  position: relative;
+  height: 380px;
+  min-height: 325px;
+  &:nth-child(1){
+    border-right: 1px solid #e1e1e1;
+    .lion {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: auto;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+  }
+  .lion {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 135px;
+  }
+  input {
+    margin-bottom: 10px;
+  }
+  .google-button {
+    border: 0;
+    background: none;
+    i {
+      color: #fff;
+      border-radius: 50%;
+      background: #aaa;
+      padding: 5px;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition: all 0.5s ease-in-out;
+      &:hover {
+        background: #333;
+      }
+    }
+  }
+  .password-btn {
+    position: relative;
+    top: 30px;
+    margin-left: 100px;
+    color: #000;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    &:hover {
+      color: goldenrod;
+    }
+  }
+  .login-btn {
+    position: absolute;
+    bottom: 15px;
+    width: 100px;
+    right: calc(50% - 50px);
+    padding: 8px 0;
+    border: 2px solid goldenrod;
+    background: none;
+    color: goldenrod;
+    font-weight: bold;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    &:hover {
+      color: #fff;
+      background: goldenrod;
+    }
+  }
+}
+
+@media (max-width:900px) and (min-width:767px) {
+  .half-width {
+    min-height: 385px;
+    .password-btn {
+      margin-left: 50px;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .half-width {
+    padding-bottom: 95px;
+    height: auto;
+    min-height: auto;
+    float: none;
+    width: 100%;
+    border: 0 !important;
+    border-bottom: 1px solid #e1e1e1 !important;
+  }
+}
+
+@media (max-width:500px) {
+  #login-page {
+    .logo-img {
+      height: auto;
+      img {
+        width: 210px;
+      }
+    }
+  }
+  .half-width {
+    padding: 15px 5px 70px;
+    .lion {
+      height: 75px;
+      bottom: 8px !important;
+    }
+    .password-btn {
+      top: 5px;
+      margin-left: 15px;
+    }
+    .google-login {
+      span {
+        font-size: 12px;
+      }
+    }
+    .login-btn {
+      width: 70px;
+      padding: 5px 0;
+      right: calc(50% - 35px);
+    }
+  }
 }

@@ -7,7 +7,7 @@ import {IshtarInteractionService} from '../../../service/ishtar-interaction/isht
 import {ToastrService} from 'ngx-toastr';
 import {ArtistService} from '../../../service/artist/artist.service';
 import { Router } from '@angular/router';
-
+import Flickity from 'flickity';
 
 @Component({
   selector: 'app-painting-details',
@@ -37,6 +37,23 @@ export class PaintingDetailsComponent implements OnInit {
     //     this.featuredList = data.Data;
     //   }
     // );
+    if(window.innerWidth < 768){
+      var flkty = new Flickity('.main-carousel',{
+        draggable: true,
+        wrapAround: true,
+        prevNextButtons: false,
+        pageDots: false
+      });  
+      flkty.on( 'dragEnd', ( event, pointer ) => {
+        if(pointer.layerX < -10) {
+          this.goNext()
+        }
+        if(pointer.layerX > 30) {
+          this.goBack()
+        }
+      });
+      
+    }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
