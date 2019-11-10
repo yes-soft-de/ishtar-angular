@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="container">
+    <!-- User Info -->
+    <div class="col-12 user-info">
+        <div class="row">
+            <div class="col-sm-2 col-xs-12">
+                <img src="../../../../../assets/slider-images/7.png" class="img-fluid">
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <p>Ishtar</p>
+                <p class="user-name">Ishtar Ishtar</p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <ul>
+                    <li><i class="fas fa-mobile-alt"></i> +963 | 9333333</li>
+                    <li><i class="fas fa-gift"></i> 31/5/1988</li>
+                    <li><i class="far fa-envelope"></i> ishtar@example.com</li>
+                </ul>
+            </div>
+        </div>
+        <button class="edit" data-toggle="modal" data-target="#edit-block"><i class="fas fa-pencil-alt"></i> Edit</button>
+    </div>
+    <!-- ./User Info -->
+</div>
+
+<!-- Popup for edit user info -->
+<div class="modal fade" id="edit-block" tabindex="-1" role="dialog" aria-labelledby="edit-block" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ./Popup for edit user info -->
+
+
+<div class="container favourite-list">
+    <h2>Your favourite list</h2>
+    <div class="tabs-container">
+        <ul>
+            <li class="active tab-option" id="statues-tab" (click)="choseTab($event)">statues <span></span></li>
+            <li class="tab-option" id="artists-tab" (click)="choseTab($event)">artists <span></span></li>
+            <li class="tab-option" id="paintings-tab" (click)="choseTab($event)">paintings <span></span></li>
+        </ul>
+    </div>
+    <div class="results-block active" id="statues-list">
+
+        <app-statue-list-page></app-statue-list-page>
+    </div>
+    <div class="results-block" id="artists-list"> 
+        <app-artist-list-page></app-artist-list-page>
+    </div>
+    <div class="results-block" id="paintings-list">
+        <app-painting-list></app-painting-list>
+    </div>
+</div>
+
+<app-footer></app-footer>
