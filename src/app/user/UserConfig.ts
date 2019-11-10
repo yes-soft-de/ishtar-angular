@@ -10,6 +10,10 @@ export class UserConfig {
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
+  public static CrosHeaderAPI = UserConfig.sourceAPI + 'headers';
+  public static updateProfileAPI = UserConfig.sourceAPI + 'client';
+  public static userRegisterAuthAPI = UserConfig.sourceAPI + 'register';
+  public static userLoginAuthAPI = UserConfig.sourceAPI + 'login_check';
 
   // Artists API
   public static artistsAPI              = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST

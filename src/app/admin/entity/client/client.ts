@@ -6,6 +6,7 @@ export class Client {
   public username: string;
   public password?: string;
   public email: string;
+  // public birthDate: {timestamp: number};
   public birthDate: Date;
   public phone: number;
   public createDate: Date;

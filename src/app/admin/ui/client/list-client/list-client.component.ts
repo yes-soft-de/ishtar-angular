@@ -13,7 +13,7 @@ import {ClientInterface} from '../../../entity/client/client-interface';
   styleUrls: ['./list-client.component.scss']
 })
 export class ListClientComponent implements OnInit, OnDestroy {
-  clients: Client[];
+  clients: ClientInterface[];
   clientsList: ClientInterface[] = [];
   clientsFilterList: ClientInterface[] = [];
   allClientObservable: Subscription;

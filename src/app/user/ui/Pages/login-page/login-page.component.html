@@ -6,10 +6,10 @@
   <div class="row login-bg">
     <div class="half-width">
       <div class="login">
-        <p>To login please fill the boxes below</p>
-        <form class="form-group">
-          <input class="form-control" type="email" placeholder="Email ...">
-          <input class="form-control" type="password" placeholder="Password ...">
+        <p>To login please fill the boxes below:</p>
+        <form class="form-group" [formGroup]="loginForm">
+          <input formControlName="username" class="form-control" type="email" placeholder="Email ...">
+          <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
           <div class="google-login">
             <span>Login directly with:</span>
             <button type="button" class="google-button">
@@ -18,20 +18,19 @@
               </a>
             </button>
           </div>
-          <a href="" class="password-btn">Forget password?</a>
-          <button class="login-btn">Login</button>
+          <button (click)="submitLogin()" class="login-btn">Login</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">
       </div>
     </div>
     <div class="half-width">
       <div class="register">
-        <p>To singup please fill the boxes below</p>
-        <form class="form-group">
-          <input class="form-control" type="email" placeholder="Email ...">
-          <input class="form-control" type="text" placeholder="User Name ...">
-          <input class="form-control" type="password" placeholder="Password ...">
-          <input class="form-control" type="password" placeholder="Confirm Password ...">
+        <p>To signup please fill the boxes below:</p>
+        <form class="form-group" [formGroup]="registerForm">
+          <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
+          <input formControlName="username" class="form-control" type="text" placeholder="Username ...">
+          <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
+          <input formControlName="confirm_password" class="form-control" type="password" placeholder="Confirm Password ...">
           <div class="google-login">
             <span>Signup directly with:</span>
             <button type="button" class="google-button">
@@ -40,7 +39,7 @@
               </a>
             </button>
           </div>
-          <button class="login-btn">SignUp</button>
+          <button class="login-btn" (click)="submitRegister()">SignUp</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">
       </div>

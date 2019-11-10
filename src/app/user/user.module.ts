@@ -57,6 +57,8 @@ import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
+import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
     StatueDetailPageComponent,
     NgxImageZoomComponent,
     StatueListComponent,
-    StatueListPageComponent
+    StatueListPageComponent,
+    ProfilePageComponent,
+    AboutIshtarPageComponent
   ],
   exports: [
     // User

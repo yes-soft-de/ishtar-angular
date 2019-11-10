@@ -6,7 +6,8 @@ export interface ClientInterface {
   username: string;
   password?: string;
   email: string;
-  birthDate: {timestamp: number};
+  // birthDate: {timestamp: number};
+  birthDate: Date;
   phone: number;
   createDate?: Date;
   createdBy?: string;
