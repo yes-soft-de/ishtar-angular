@@ -180,43 +180,50 @@
       }
     }
   }
-
-.btn-prev,
-.btn-next {
-  position: fixed;
-  top: 50vh;
-  border: 1px solid goldenrod;
-  background: goldenrod;
-  font-size: 14px;
-  padding: 5px;
-  outline: none;
-  color:#fff;  
-  padding: 5px;
-}
-
-.btn-prev:hover,
-.btn-next:hover {
-  background: #fff;
-  color: goldenrod;
-}
-
-.btn-prev:disabled,
-.btn-next:disabled {
-  background: gray !important;
-  color: #fff !important;
-}
-
-.btn-prev {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  left: 0px;
-}
-
-.btn-next {
-  right: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
+  .btn-prev,
+  .btn-next {
+    position: fixed;
+    top: 50vh;
+    border: 1px solid goldenrod;
+    background: goldenrod;
+    font-size: 14px;
+    padding: 5px;
+    color:#fff;  
+    padding: 5px;
+    outline: none !important;
+    opacity: 0.7;
+  }
+  
+  .btn-prev:hover,
+  .btn-next:hover {
+    background: #fff;
+    color: goldenrod;
+  }
+  
+  .btn-prev:disabled,
+  .btn-next:disabled {
+    background: gray !important;
+    color: #fff !important;
+  }
+  
+  .btn-prev {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    left: 0px;
+  }
+  
+  .btn-next {
+    right: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  @media (max-width:767px) {
+    .btn-prev,
+    .btn-next {
+      display: none;
+    }
+  }
   //#artist-header-avatar {
   //  position: relative;
   //  top: -5rem;
@@ -235,6 +242,20 @@
   //}
 
 }
+
+.main-carousel {  
+  width: 100%;
+  overflow: hidden;
+  .flickity-viewport {
+    height: auto !important;
+  }
+  .carousel-cell {
+    width: 100% ;
+    position: relative !important;
+    outline: none !important;
+  }
+}
+
 // Start xs Size Screen
 @media (max-width: 575px) {
   .artist-page {

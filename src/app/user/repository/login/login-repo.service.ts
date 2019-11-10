@@ -1,20 +1,20 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, of, Subject, throwError} from 'rxjs';
-import {UserInfo} from '../../../entity/user/user-info';
+import {UserInfo} from '../../entity/user/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UserConfig} from '../../../UserConfig';
-import {LoginAuthRequest} from '../../../entity/auth/login-auth-request';
+import {UserConfig} from '../../UserConfig';
+import {LoginAuthRequest} from '../../entity/auth/login-auth-request';
 import {stringify} from 'querystring';
-import {LoginAuthResponse} from '../../../entity/auth/login-auth-response';
-import {UserProfileResponse} from '../../../entity/auth/user-profile-response';
-import {UserKeys} from '../../../entity/auth/user-keys';
+import {LoginAuthResponse} from '../../entity/auth/login-auth-response';
+import {UserProfileResponse} from '../../entity/auth/user-profile-response';
+import {UserKeys} from '../../entity/auth/user-keys';
 import {catchError} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginRepoService {
   private userObservable = new Subject<UserKeys>();
   private token: string;
 

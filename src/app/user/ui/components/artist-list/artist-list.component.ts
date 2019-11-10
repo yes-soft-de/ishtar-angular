@@ -1,9 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
-import {UserInfo} from '../../../entity/user/user-info';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import { InteractionConsts } from 'src/app/user/consts/interaction/interaction-consts';
 
 @Component({
@@ -40,7 +37,7 @@ export class ArtistListComponent implements OnInit {
   constructor(private interactionService: IshtarInteractionService) { }
 
   ngOnInit() {
-    // console.log('artist list: ', this.artistListFormatted);
+    console.log('artist list: ', this.artistListFormatted);
     for (const i of this.artistListFormatted) {
       this.types.push(i.artType);
       // Fetch Artist Follow Interaction
@@ -50,7 +47,7 @@ export class ArtistListComponent implements OnInit {
           InteractionConsts.INTERACTION_TYPE_FOLLOW)  // 3: for view interaction
           .subscribe(
         (data: any) => {
-          // console.log('Artist Follow: Id:', i.id, ' => Follow: ' , data.Data[0].interactions);
+          console.log('Artist Follow: Id:', i.id, ' => Follow: ' , data.Data[0].interactions);
           this.artistIDFollow.push({
             id: i.id,
             followNumber: data.Data[0].interactions
@@ -68,7 +65,7 @@ export class ArtistListComponent implements OnInit {
                       ? ((Number(a.id) > Number(b.id))
                           ? 1 : -1) : -1 );
         }, error => {
-          // console.log(error);
+          console.log(error);
         }
       );
       /*
@@ -167,7 +164,7 @@ export class ArtistListComponent implements OnInit {
                 ? ((Number(a.artistFollowers) < Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
-      // console.log(x.artistFollowers);
+      console.log(x.artistFollowers);
     }
   }
 
@@ -179,7 +176,7 @@ export class ArtistListComponent implements OnInit {
                 ? ((Number(a.artistFollowers) > Number(b.artistFollowers))
                     ? 1 : -1) : -1 );
     for (const x of this.artistList) {
-      // console.log(x.artistFollowers);
+      console.log(x.artistFollowers);
     }
   }
 

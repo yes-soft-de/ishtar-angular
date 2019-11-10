@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
-import {UserKeys} from '../../../entity/auth/user-keys';
-import {UserProfileResponse} from '../../../entity/auth/user-profile-response';
-import {UserConfig} from '../../../UserConfig';
-import {RegisterRequest} from '../../../entity/auth/register-request';
+import {UserKeys} from '../../entity/auth/user-keys';
+import {UserProfileResponse} from '../../entity/auth/user-profile-response';
+import {UserConfig} from '../../UserConfig';
+import {RegisterRequest} from '../../entity/auth/register-request';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class RegisterRepoService {
   private registrationComplete = new Subject<boolean>();
 
   private email: string;
