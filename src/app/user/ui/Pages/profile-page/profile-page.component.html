@@ -5,17 +5,17 @@
     <div class="col-12 user-info">
         <div class="row">
             <div class="col-sm-2 col-xs-12">
-                <img src="../../../../../assets/slider-images/7.png" class="img-fluid">
+                <img src="{{userInfo.image}}" class="img-fluid">
             </div>
             <div class="col-sm-4 col-xs-12">
-                <p>Ishtar</p>
-                <p class="user-name">Ishtar Ishtar</p>
+                <p>{{userInfo.firsttName}}</p>
+                <p class="user-name">{{userInfo.username}}</p>
             </div>
             <div class="col-sm-6 col-xs-12">
                 <ul>
-                    <li><i class="fas fa-mobile-alt"></i> +963 | 9333333</li>
-                    <li><i class="fas fa-gift"></i> 31/5/1988</li>
-                    <li><i class="far fa-envelope"></i> ishtar@example.com</li>
+                    <li><i class="fas fa-mobile-alt"></i> {{userInfo.email}}</li>
+                    <!--<li><i class="fas fa-gift"></i>{{userInfo}}</li> -->
+                    <!-- <li><i class="far fa-envelope"></i> ishtar@example.com</li> -->
                 </ul>
             </div>
         </div>

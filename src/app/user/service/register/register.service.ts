@@ -18,13 +18,15 @@ export class RegisterService {
 
   private email: string;
   private pass: string;
+  private username: string;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public register(email: string, pass: string) {
+  public register(username: string, email: string, pass: string) {
     this.email = email;
     this.pass = pass;
+    this.username = username;
 
     this.requestPreFlight();
 
@@ -56,7 +58,8 @@ export class RegisterService {
 
     const req: RegisterRequest = {
       email: this.email,
-      password: this.pass
+      password: this.pass,
+      username: this.username
     };
 
     this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, JSON.stringify(req), httpOptions).subscribe(

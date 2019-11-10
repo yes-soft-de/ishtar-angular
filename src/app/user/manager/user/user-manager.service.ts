@@ -69,6 +69,10 @@ export class UserManagerService {
     );
   }
 
+  public requestUserInfoWithoutLogin() {
+
+  }
+
   // TODO Move This From Here to More Suitable Place
   /**
    * This Function Return Observable of User Profile Type Class
