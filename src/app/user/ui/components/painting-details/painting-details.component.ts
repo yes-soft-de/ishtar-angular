@@ -6,8 +6,8 @@ import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-i
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistService} from '../../../service/artist/artist.service';
-import { Router } from '@angular/router';
-
+import {Router} from '@angular/router';
+import {Flickity} from 'flickity';
 
 @Component({
   selector: 'app-painting-details',
@@ -37,6 +37,23 @@ export class PaintingDetailsComponent implements OnInit {
     //     this.featuredList = data.Data;
     //   }
     // );
+    if (window.innerWidth < 768) {
+      var flkty = new Flickity('.main-carousel', {
+        draggable: true,
+        wrapAround: true,
+        prevNextButtons: false,
+        pageDots: false
+      });
+      flkty.on('dragEnd', (event, pointer) => {
+        if (pointer.layerX < -10) {
+          this.goNext();
+        }
+        if (pointer.layerX > 30) {
+          this.goBack();
+        }
+      });
+
+    }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
@@ -85,7 +102,7 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   goBack() {
-    for (let i = 0; i < this.paintingList.length; i++ ) {
+    for (let i = 0; i < this.paintingList.length; i++) {
       // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i - 1;
@@ -101,7 +118,7 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   goNext() {
-    for (let i = 0; i < this.paintingList.length; i++ ) {
+    for (let i = 0; i < this.paintingList.length; i++) {
       // tslint:disable-next-line:triple-equals
       if (this.paintingList[i].id == this.CurrentPaintingId) {
         this.paintingNumber = i + 1;

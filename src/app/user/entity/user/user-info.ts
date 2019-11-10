@@ -7,5 +7,5 @@ export interface UserInfo {
   roles: string[];
   password: string;
   salt: string;
-  userName: string;
+  username: string;
 }

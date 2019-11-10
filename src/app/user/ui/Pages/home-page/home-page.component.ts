@@ -8,7 +8,6 @@ import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../../UserConfig';
 import {ArtTypeListResponse} from '../../../entity/art-type-list/art-type-list-response';
 import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
-import {LoginService} from '../../../service/login/login.service';
 
 @Component({
   selector: 'app-home-page',
@@ -43,7 +42,7 @@ export class HomePageComponent implements OnInit {
   artistList: ArtistListItem[];
 
   constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingService,
-              private artistService: ArtistService, private httpClient: HttpClient, private loginService: LoginService) {
+              private artistService: ArtistService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -51,11 +50,7 @@ export class HomePageComponent implements OnInit {
     this.getCurrentUserInfo();
     this.requestArtistList();
     this.requestPaintingList();
-    this.loginService.login('Mohammad@gmail.com', 'M0h@mm@d').subscribe(
-      data => {
-        console.log(data.user_id);
-      }
-    );
+
   }
 
   // Fetch Most Seen Painting From Child Component
@@ -78,10 +73,10 @@ export class HomePageComponent implements OnInit {
     this.paintingService.requestPaintingList().subscribe(
         data => {
           this.paintingList = data.Data;
-          // console.log('Painting List : ', this.paintingList);
+          console.log('Painting List : ', this.paintingList);
           this.checkLoadingFinished();
         }, error1 => {
-          // console.log(error1);
+          console.log(error1);
         }
     );
   }
@@ -89,9 +84,9 @@ export class HomePageComponent implements OnInit {
   getCurrentUserInfo() {
     this.httpClient.get(UserConfig.userProfileAPI).subscribe(
         data => {
-          // console.log('User INFO : ', data);
+          console.log('User INFO : ', data);
         }, error => {
-          // console.log(error);
+          console.log(error);
         }
     );
   }
@@ -102,7 +97,7 @@ export class HomePageComponent implements OnInit {
           this.artistList = data.Data;
           this.checkLoadingFinished();
         }, error1 => {
-          // console.log(error1);
+          console.log(error1);
         });
   }
 

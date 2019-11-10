@@ -1,18 +1,17 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
-import {StatueInterface} from 'src/app/admin/entity/statue/statue.interface';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { StatueInterface } from 'src/app/admin/entity/statue/statue.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatueService {
 
-  constructor(private httpClient: HttpClient) {
-  }
-
+  constructor(private httpClient: HttpClient) { }
+  
   public static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
   }
@@ -21,7 +20,6 @@ export class StatueService {
   getAllStatues() {
     return this.httpClient.get(`${UserConfig.statuesAPI}`);
   }
-
   // getAllStatues() {
   //   return this.httpClient.get(
   //       UserConfig.getAllStatuesAPI,
@@ -40,7 +38,6 @@ export class StatueService {
   getStatueDetail(statueId: number) {
     return this.httpClient.get(`${UserConfig.statueAPI}/${statueId}`);
   }
-
   /*
    // Get All Statues Method
    getAllStatues() {

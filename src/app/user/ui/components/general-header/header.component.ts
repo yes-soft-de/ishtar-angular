@@ -40,8 +40,8 @@ export class HeaderComponent implements OnInit {
 
   updateUserStatus() {
     this.userService.requestUserDetails().subscribe(
-      usr => {
-        if (usr.Data.userName !== undefined) {
+        (usr: any) => {
+        if (usr.Data.username !== undefined) {
           // This Means that the user is Logged In
           this.userLoggedIn = true;
           this.userInfo = usr.Data;

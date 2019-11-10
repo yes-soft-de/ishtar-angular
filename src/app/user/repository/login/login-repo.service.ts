@@ -14,7 +14,7 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginRepoService {
   private userObservable = new Subject<UserKeys>();
   private token: string;
 
@@ -76,7 +76,6 @@ export class LoginService {
     };
     this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
       data => {
-        console.log(data.token);
         this.token = data.token;
         this.requestUser();
       }
