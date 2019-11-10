@@ -177,11 +177,11 @@
             <label class="col-2 col-form-label">Story</label>
             <div class="col-10">
             <textarea class="form-control"
-                  [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
+                      [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
                   (uploadForm.get('story').touched || uploadForm.get('story').dirty)}"
-                  name="story"
-                  formControlName="story"
-                  placeholder="Type The Story"></textarea>
+                      name="story"
+                      formControlName="story"
+                      placeholder="Type The Story"></textarea>
                 <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
                 <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than 4</span>
             </div>

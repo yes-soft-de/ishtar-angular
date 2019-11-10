@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
          (data: any) => {
          if (data.Data.username === undefined) {
            alert('Unauthorized Access, Please Login!');
-          this.router.navigate(['/']);
+           this.router.navigate(['/']);
          } else {
           this.toaster.success('Welcome ' + data.Data.username);
         }

@@ -40,8 +40,7 @@ const routes: Routes = [
       {path: 'list-comments', component: ListCommentComponent},
       {path: 'list-interactions', component: ListInteractionComponent},
       {path: 'list-clients', component: ListClientComponent},
-      // {path: 'add-client', component: AddClientComponent},
-      // {path: 'edit-client', component: EditClientComponent},
+      {path: 'edit-client/:id', component: EditClientComponent},
       {path: 'add-images', component: AddImagesComponent},
       {path: 'list-auctions', component: ListAuctionsComponent},
       {path: 'add-auction', component: AddAuctionComponent}
