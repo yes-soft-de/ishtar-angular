@@ -29,6 +29,7 @@ export class LoginPageComponent implements OnInit {
 
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirm_password: ['', [Validators.required]]
     });
@@ -53,7 +54,9 @@ export class LoginPageComponent implements OnInit {
 
   submitRegister() {
     if (this.registerForm.get('password').value === this.registerForm.get('confirm_password').value) {
-      this.userManager.login(this.registerForm.get('username').value, this.registerForm.get('password').value);
+      this.userManager.register(this.registerForm.get('email').value,
+        this.registerForm.get('username').value,
+        this.registerForm.get('password').value);
     } else {
       this.toaster.error('Password Mismatch!');
       console.log(this.registerForm.get('password').value + ' != ' + this.registerForm.get('confirm_password').value);

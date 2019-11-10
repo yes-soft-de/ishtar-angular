@@ -15,13 +15,15 @@ export class RegisterRepoService {
 
   private email: string;
   private pass: string;
+  private username: string;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public register(email: string, pass: string) {
+  public register(email: string, username: string, pass: string) {
     this.email = email;
     this.pass = pass;
+    this.username = username;
 
     this.requestPreFlight();
 
@@ -29,12 +31,7 @@ export class RegisterRepoService {
   }
 
   private requestPreFlight() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).subscribe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI).subscribe(
       () => this.requestUserRegister(),
       () => this.requestUserRegister());
   }
@@ -49,6 +46,7 @@ export class RegisterRepoService {
 
     const req: RegisterRequest = {
       email: this.email,
+      username: this.username,
       password: this.pass
     };
 

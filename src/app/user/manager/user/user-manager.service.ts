@@ -24,6 +24,7 @@ export class UserManagerService {
   private userKeys: UserKeys;
   private username: string;
   private password: string;
+  private email: string;
   private requestTime: Date;
 
   constructor(private loginService: LoginRepoService,
@@ -53,10 +54,11 @@ export class UserManagerService {
   /**
    * @return Observable Of Type Boolean
    */
-  public register(username: string, password: string) {
+  public register(email: string, username: string, password: string) {
     this.username = username;
     this.password = password;
-    this.registerService.register(username, password).subscribe(
+    this.email = email;
+    this.registerService.register(email, username, password).subscribe(
       requestStatus => {
         if (requestStatus === true) {
           this.login(username, password);

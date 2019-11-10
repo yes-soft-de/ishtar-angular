@@ -27,7 +27,8 @@
       <div class="register">
         <p>To signup please fill the boxes below:</p>
         <form class="form-group" [formGroup]="registerForm">
-          <input formControlName="username" class="form-control" type="email" placeholder="Email ...">
+          <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
+          <input formControlName="username" class="form-control" type="text" placeholder="Username ...">
           <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
           <input formControlName="confirm_password" class="form-control" type="password" placeholder="Confirm Password ...">
           <div class="google-login">

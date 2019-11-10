@@ -4,7 +4,7 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
+import {NgxImageZoomModule} from 'ngx-image-zoom';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
@@ -50,14 +50,15 @@ import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
 import {ContactSupportComponent} from './ui/Pages/contact-support/contact-support.component';
 import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
-import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
-import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
-import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
-import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
-import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
-import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
+import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
+import {MostSeenPaintingsComponent} from './ui/components/most-seen-paintings/most-seen-paintings.component';
+import {StatuesDetailComponent} from './ui/components/statues-detail/statues-detail.component';
+import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
+import {NgxImageZoomComponent} from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
+import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
-import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
+import {AlternatingListComponent} from "./ui/components/alternating-list/alternating-list.component";
 
 @NgModule({
   declarations: [
@@ -107,7 +108,10 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
     NgxImageZoomComponent,
     StatueListComponent,
     StatueListPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+
+    // Todo Remove This?!!
+    AlternatingListComponent
   ],
   exports: [
     // User
@@ -145,8 +149,10 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
+    DataProcessingPageComponent,
 
+    // Todo Remove This?!!
+    AlternatingListComponent
   ],
   imports: [
     CommonModule,

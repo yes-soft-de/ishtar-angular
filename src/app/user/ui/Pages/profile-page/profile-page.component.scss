@@ -1,0 +1,167 @@
+
+.user-info {
+    margin: 50px auto;
+    border: 1px solid gold;
+    padding: 15px 10px;
+    font-size: 18px;
+    position: relative;
+    img {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        background: #ddd;
+        padding: 5px;
+    }
+    p {
+        margin: 10px 0;
+    }
+    .user-name {
+        font-weight: bold;
+    }
+    ul {
+        padding: 0;
+        list-style: none;
+        li {
+            margin: 10px 0;
+            i {
+                margin-right: 10px;
+            }
+        }
+    }
+    .edit {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border: 1px solid goldenrod;
+        background: #fff;
+        outline: none;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 16px;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        &:hover {
+            background: goldenrod;
+            color: #fff;
+        }
+    }
+}
+
+.favourite-list {
+    h2 {
+        text-align: center;
+    }
+    ul {
+        padding: 0;
+        text-align: center;
+        margin: 5px 0;
+        .tab-option {
+            display: inline-block;
+            margin: 0 15px;
+            font-weight: bold;
+            color: #999;
+            position: relative;
+            transition: all 0.5s ease-in-out;
+            -webkit-transition: all 0.5s ease-in-out;
+            cursor: pointer;
+            span {
+                position: absolute;
+                height: 3px;
+                width: 0;
+                bottom: -3px;
+                right: 50%;
+                background: #000;
+                transition: all 0.5s ease-in-out;
+                -webkit-transition: all 0.5s ease-in-out;
+            }
+            &:hover {
+                color: #000;
+                span{
+                    width: 14px;
+                    right: calc(50% - 7px);
+                }
+            }
+        }
+        .tab-option.active {
+            color: #000;
+            span {
+                width: 14px;
+                right: calc(50% - 7px);
+            }
+        }
+    }
+    .results-block {
+        display: none;
+        margin: 0;
+        transition: all 1s ease-in-out;
+        -webkit-transition: all 1s ease-in-out;
+    }
+    .results-block.active{
+        display: block;
+    }
+}
+
+app-statue-list-page {
+    .filters-group,
+    app-footer,
+    app-header {
+        display: none;
+    }
+}
+
+app-artist-list-page {
+    #artist-sidebar,
+    app-footer,
+    app-header,
+    .sort-artist {
+        display: none !important;
+    }
+    .artist-list-section {
+        border: 0 !important;
+    }
+}
+
+app-painting-list {
+    padding: 15px auto !important;
+    .filter-paintings,
+    app-footer,
+    app-header {
+        display: none;
+    }
+    .floating {
+        float: none;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width:1199px) and (min-width:768px) {
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 2;
+            -moz-column-count: 2; 
+            column-count: 2;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 2;
+            -moz-column-count: 2; 
+            column-count: 2;
+        }
+    }
+}
+
+@media (max-width:550px) {
+    .statues-list {
+        .wrapper {
+            -webkit-column-count: 1;
+            -moz-column-count: 1; 
+            column-count: 1;
+        }
+    }
+}
+
