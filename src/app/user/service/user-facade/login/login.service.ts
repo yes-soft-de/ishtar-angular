@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {EMPTY, of, Subject, throwError} from 'rxjs';
-import {UserInfo} from '../../entity/user/user-info';
+import {UserInfo} from '../../../entity/user/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UserConfig} from '../../UserConfig';
-import {LoginAuthRequest} from '../../entity/auth/login-auth-request';
+import {UserConfig} from '../../../UserConfig';
+import {LoginAuthRequest} from '../../../entity/auth/login-auth-request';
 import {stringify} from 'querystring';
-import {LoginAuthResponse} from '../../entity/auth/login-auth-response';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
-import {UserKeys} from '../../entity/auth/user-keys';
+import {LoginAuthResponse} from '../../../entity/auth/login-auth-response';
+import {UserProfileResponse} from '../../../entity/auth/user-profile-response';
+import {UserKeys} from '../../../entity/auth/user-keys';
 import {catchError} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 
@@ -23,7 +23,7 @@ export class LoginService {
   private userName: string;
   private pass: string;
 
-  constructor(private httpClient: HttpClient, private toaster: ToastrService) {
+  constructor(private httpClient: HttpClient) {
   }
 
   /*
@@ -54,13 +54,9 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-    this.httpClient.post(UserConfig.userLoginAuthAPI, null, httpOptions).pipe(
-      catchError(() => {
-        // If this had an error, CORS is still affective, and We can Precede to Getting the Token
-        this.requestToken();
-        return EMPTY;
-      })
-    ).subscribe(() => this.requestToken(), () => this.requestToken());
+    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).subscribe(
+      () => this.requestToken(),
+      () => this.requestToken());
   }
 
   private requestToken() {
@@ -76,7 +72,6 @@ export class LoginService {
     };
     this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
       data => {
-        console.log(data.token);
         this.token = data.token;
         this.requestUser();
       }
@@ -87,7 +82,7 @@ export class LoginService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.token
+        Authorization: 'Bearer ' + this.token
       })
     };
     this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
