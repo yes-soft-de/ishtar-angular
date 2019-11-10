@@ -14,6 +14,8 @@ export class UserConfig {
   public static userLogoutLink = UserConfig.sourceAPI2 + 'logout';
 
   public static userLoginAuthAPI = UserConfig.localAPI + 'login_check';
+  public static userRegisterAuthAPI = UserConfig.localAPI + 'register';
+  public static CrosHeaderAPI = UserConfig.localAPI + 'headers';
 
   // Artists API
   public static artistsAPI = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST

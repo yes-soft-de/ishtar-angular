@@ -23,7 +23,7 @@ export class LoginService {
   private userName: string;
   private pass: string;
 
-  constructor(private httpClient: HttpClient, private toaster: ToastrService) {
+  constructor(private httpClient: HttpClient) {
   }
 
   /*
@@ -54,7 +54,7 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-    this.httpClient.post(UserConfig.userLoginAuthAPI, null, httpOptions).pipe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).pipe(
       catchError(() => {
         // If this had an error, CORS is still affective, and We can Precede to Getting the Token
         this.requestToken();
@@ -87,7 +87,7 @@ export class LoginService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.token
+        Authorization: 'Bearer ' + this.token
       })
     };
     this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
