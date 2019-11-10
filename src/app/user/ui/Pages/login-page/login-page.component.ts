@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserConfig} from '../../../UserConfig';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserManagerService} from '../../../manager/user/user-manager.service';
+import {UserKeys} from "../../../entity/auth/user-keys";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login-page',
@@ -10,15 +12,36 @@ import {UserManagerService} from '../../../manager/user/user-manager.service';
 })
 export class LoginPageComponent implements OnInit {
   userLoginLink = UserConfig.userLoginLink;
-  profileForm = new FormGroup({
-    email: new FormControl(''),
-    username: new FormControl(''),
-    password: new FormControl(''),
-    confirm_password: new FormControl('')
-  });
-  constructor(private userManager: UserManagerService) { }
+  loginForm: FormGroup;
+  registerForm: FormGroup;
+
+  userKeys: UserKeys;
+
+  constructor(private userManager: UserManagerService,
+              private fb: FormBuilder, private toaster: ToastrService) {
+  }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      confirm_password: ['', [Validators.required]]
+    });
+
+    this.userManager.subscribeToRepo().subscribe(
+      data => {
+        if (data !== null) {
+          this.userKeys = data;
+          window.location.reload();
+        }
+      }
+    );
   }
 
   goToLogin() {
@@ -26,6 +49,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   submitLogin() {
-    console.log(this.profileForm.get('username'));
+    this.userManager.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
+  }
+
+  submitRegister() {
+    if (this.registerForm.get('password') === this.registerForm.get('confirm_password')) {
+      this.userManager.login(this.registerForm.get('username').value, this.registerForm.get('password').value);
+    } else {
+      this.toaster.error('Password Mismatch!');
+    }
   }
 }
