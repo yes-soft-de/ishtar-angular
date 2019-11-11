@@ -5,7 +5,7 @@
           <div class="row">
               <div class="col-4">
                   <div class="form-group mb-4">
-                      <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name?" class="form-control form-control-underlined border-primary">
+                      <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="searching for Artist Name, Residence And ArtType?" class="form-control form-control-underlined border-primary">
                   </div>
               </div>
               <div class="col-8 align-self-center">
@@ -24,8 +24,8 @@
                     <td>Nationality</td>
                     <td>Residence</td>
                     <td>Art Type</td>
-                    <td>Birth Date</td>
                     <td>Story</td>
+                    <td>Birth Date</td>
                     <td>Details</td>
                     <td>Facebook</td>
                     <td>Instagram</td>
@@ -40,15 +40,15 @@
                     <td>{{artist.nationality}}</td>
                     <td>{{artist.residence}}</td>
                     <td>{{artist.artType}}</td>
+                    <td class="td-custom">{{artist.story}}</td>
                     <td>{{artist.birthDate.timestamp * 1000 | date: 'yyyy-MM-dd'}}</td>
-                    <td>{{artist.story}}</td>
-                    <td>{{artist.details}}</td>
+                    <td class="td-custom-1">{{artist.details}}</td>
                     <td>{{artist.Facebook}}</td>
                     <td>{{artist.Instagram}}</td>
                     <td>{{artist.Twitter}}</td>
                     <td>{{artist.Linkedin}}</td>
                     <td>
-                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
                         <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
                     </td>
                 </tr>
@@ -56,12 +56,14 @@
             <pagination-controls class="my-pagination"
                                  (pageChange)="pageChanged($event)"
                                  autoHide="true"
+                                 maxSize="5"
                                  responsive="true"
                                  previousLabel="Prev"
                                  nextLabel="Next"
                                  screenReaderPaginationLabel="Pagination"
                                  screenReaderPageLabel="page"
-                                 screenReaderCurrentLabel="You're on page"></pagination-controls>
+                                 screenReaderCurrentLabel="You're on page">
+            </pagination-controls>
         </div>
       </div>
     </div>

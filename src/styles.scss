@@ -78,5 +78,35 @@ body {
   left: 0;
 }
 
-
+/*Start Style For All td tag in table that contain large text*/
+.table-bordered td, .table-bordered th {
+  vertical-align: middle;
+}
+.table-bordered tr {
+  &:last-of-type {
+    border-bottom: 1px solid #dee2e6;
+  }
+}
+.td-custom, .td-custom-1 {
+  max-height: 150px;
+  overflow-y: scroll;
+  display: block;
+  border-bottom: none !important;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+.td-custom {margin-bottom: .75rem}
+.td-custom-1 {margin-bottom: .35rem}
+/*End Style For All td tag in table that contain large text*/
 

@@ -1,16 +1,19 @@
 export class UserConfig {
-  public static sourceAPI2 = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
-  // public static sourceAPI = '/ishtar-backend/public/';
+  public static sourceAPI = '/ishtar-backend/public/';
   //  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
-  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
 
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
   public static searchAPI = UserConfig.sourceAPI + 'search';
   public static userProfileAPI = UserConfig.sourceAPI + 'user';
-  public static userLoginLink = UserConfig.sourceAPI2 + 'connect/google';
-  public static userLogoutLink = UserConfig.sourceAPI2 + 'logout';
+  public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
+  public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
+  public static CrosHeaderAPI = UserConfig.sourceAPI + 'headers';
+  public static updateProfileAPI = UserConfig.sourceAPI + 'client';
+  public static userRegisterAuthAPI = UserConfig.sourceAPI + 'register';
+  public static userLoginAuthAPI = UserConfig.sourceAPI + 'login_check';
 
   // Artists API
   public static artistsAPI              = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST

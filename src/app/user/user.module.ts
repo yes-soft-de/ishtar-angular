@@ -21,7 +21,6 @@ import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.c
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
 import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
-import {AlternatingListComponent} from './ui/components/alternating-list/alternating-list.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -58,6 +57,8 @@ import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
+import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,6 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
     HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    AlternatingListComponent,
     SchoolListComponent,
     ItemBriefComponent,
     ArtTypeComponent,
@@ -107,7 +107,9 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
     StatueDetailPageComponent,
     NgxImageZoomComponent,
     StatueListComponent,
-    StatueListPageComponent
+    StatueListPageComponent,
+    ProfilePageComponent,
+    AboutIshtarPageComponent
   ],
   exports: [
     // User
@@ -128,7 +130,6 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
     HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    AlternatingListComponent,
     SchoolListComponent,
     ItemBriefComponent,
     CommentsComponent,

@@ -893,6 +893,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+desandro-matches-selector
+MIT
+
+ev-emitter
+MIT
+
 fast-deep-equal
 MIT
 MIT License
@@ -939,6 +945,15 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+
+fizzy-ui-utils
+MIT
+
+flickity
+GPL-3.0
+
+get-size
+MIT
 
 json-schema-traverse
 MIT
@@ -1668,6 +1683,12 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
+
+unidragger
+MIT
+
+unipointer
+MIT
 
 uri-js
 BSD-2-Clause

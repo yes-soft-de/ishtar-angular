@@ -63,7 +63,7 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
       });
 
     this.config = {
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.paintingsList.length
     };
@@ -105,12 +105,17 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
         const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         // Search In Interactions Column
         const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        // Search In Art Type Column
+        const artTypeResult = res.artType.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (nameResult) {
           // display the Entity Column
           return nameResult;
         } else if (artistResult) {
           // display the Interactions Column
           return artistResult;
+        } else if (artTypeResult) {
+          // display the ArtType Column
+          return artTypeResult;
         }
       });
     }

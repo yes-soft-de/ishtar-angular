@@ -19,6 +19,8 @@ import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.compone
 import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
 import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
+import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 
 
 const routes: Routes = [
@@ -26,9 +28,9 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      {path: '', component: HomePageComponent, data: {index: 0}},
+      {path: '', component: HomePageComponent},
       {path: 'search/:query', component: SearchPageComponent},
-      {path: 'artist-list', component: ArtistListPageComponent, data: {index: 1}},
+      {path: 'artist-list', component: ArtistListPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},
@@ -43,7 +45,9 @@ const routes: Routes = [
       {path: 'imprint', component: ImprintPageComponent},
       {path: 'data-processing', component: DataProcessingPageComponent},
       {path: 'statue-list', component: StatueListPageComponent},
-      {path: 'statue/:id', component: StatueDetailPageComponent}
+      {path: 'statue/:id', component: StatueDetailPageComponent},
+      {path: 'profile', component: ProfilePageComponent},
+      {path: 'about-ishtar', component: AboutIshtarPageComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'
   }

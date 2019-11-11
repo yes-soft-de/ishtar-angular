@@ -1,6 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Artist} from '../../entity/artist/artist';
-import {Painting} from '../../entity/painting/painting';
 import {ArtistService} from '../../service/artist/artist.service';
 import {PhotosListService} from '../../service/PhotosList/photos-list.service';
 import {AuctionService} from '../../service/auction/auction.service';
@@ -11,7 +9,6 @@ import {StatueInterface} from '../../entity/statue/statue.interface';
 import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {PaintingInterface} from '../../entity/painting/painting-interface';
 import {CommentService} from '../../service/comment/comment.service';
-import {CommentResponse} from '../../entity/comment/comment.response';
 import {CommentInterface} from '../../entity/comment/comment-interface';
 
 
@@ -46,9 +43,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const allCommentsObs  = this.commentService.getAllComments();     // fetch all Comments
     const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs, allCommentsObs);  // combined all
     this.combinedObservable = combinedObs.subscribe((data: any) => {
-      this.artists = data[0].Data;
-      this.paintings = data[1].Data;
-      this.statues = data[2].Data;
+      this.artists = data[0].Data.reverse();
+      this.paintings = data[1].Data.reverse();
+      this.statues = data[2].Data.reverse();
       this.comments = data[3].Data.reverse();
       console.log('dashboard', data);
     });
