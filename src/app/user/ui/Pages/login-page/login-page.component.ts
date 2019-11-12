@@ -19,6 +19,16 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private userManager: UserManagerService,
               private fb: FormBuilder, private toaster: ToastrService) {
+                this.userManager.subscribeToRepo.subscribe(
+                  response => {
+                    if (response === null) {
+                      // TODO Implement Error Function Here
+                    } else {
+                      // Login Success!
+                      this.userKeys = response;
+                    }
+                  }
+                );
   }
 
   ngOnInit() {
