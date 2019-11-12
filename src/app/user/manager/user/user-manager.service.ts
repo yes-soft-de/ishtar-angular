@@ -61,7 +61,7 @@ export class UserManagerService {
     this.registerService.register(email, username, password).subscribe(
       requestStatus => {
         if (requestStatus === true) {
-          this.login(username, password);
+          this.login(email, password);
         } else {
           this.userSubject.next(null);
         }
