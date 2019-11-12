@@ -16,7 +16,7 @@ import {UserProfileService} from '../user/service/client-profile/user-profile.se
           '2 => 3, 2 => 4, 2 => 5, 2 => 6, ' +
           '3 => 4, 3 => 5, 3 => 6, 4 => 5, 4 => 6, 5 => 6', [
         group([
-          query(':enter', [       // select the element that appear or enter
+          query(':enter', [
             style({
               transform: 'translateX(100%)'
             }),
@@ -24,7 +24,7 @@ import {UserProfileService} from '../user/service/client-profile/user-profile.se
               transform: 'translateX(0)'
             }))
           ]),
-          query(':leave', [         // select the element that disappear or leave
+          query(':leave', [
             style({
               transform: 'translateX(0)'
             }),

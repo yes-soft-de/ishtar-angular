@@ -20,26 +20,24 @@ export class ArtistDetailsComponent implements OnInit {
   @Input() prevArtistExists: boolean;
 
   constructor(private userProfileService: UserProfileService,
-              private router: Router) {     console.log('ARtist list: ', this.artist);}
+              private router: Router) {     console.log('ARtist list: ', this.artist); }
 
   ngOnInit() {
-
-    if(window.innerWidth < 768){
-      var flkty = new Flickity('.main-carousel',{
+    if (window.innerWidth < 768) {
+      const flkty = new Flickity('.main-carousel', {
         draggable: true,
         wrapAround: true,
         prevNextButtons: false,
         pageDots: false
-      });  
+      });
       flkty.on( 'dragEnd', ( event, pointer ) => {
-        if(pointer.clientX < -10 && this.nextArtistExists) {
-          this.goNext()
+        if (pointer.clientX < -10 && this.nextArtistExists) {
+          this.goNext();
         }
-        if(pointer.clientX > 30 && this.prevArtistExists) {
-          this.goBack()
+        if (pointer.clientX > 30 && this.prevArtistExists) {
+          this.goBack();
         }
       });
-      
     }
   }
 

@@ -10,6 +10,11 @@ import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {PaintingInterface} from '../../entity/painting/painting-interface';
 import {CommentService} from '../../service/comment/comment.service';
 import {CommentInterface} from '../../entity/comment/comment-interface';
+import {InteractionsService} from '../../service/interactions/interactions.service';
+import {ActivatedRoute} from '@angular/router';
+import {ClientService} from '../../service/client/client.service';
+import {InteractionInterface} from '../../entity/interactions/interaction-interface';
+import {ClientInterface} from '../../entity/client/client-interface';
 
 
 @Component({
@@ -23,31 +28,41 @@ export class DashboardComponent implements OnInit, OnDestroy {
   auctions: AuctionList[];
   statues: {0: StatueInterface, price: string}[];
   comments: CommentInterface[];
+  interactions: InteractionInterface[];
+  clients: ClientInterface[];
   latestArtistNumber = 5;
   latestPaintingNumber = 5;
   latestStatueNumber = 5;
   latestCommentNumber = 5;
   latestAuctionNumber = 5;
+  latestClientsNumber = 5;
   combinedObservable: Subscription;
 
   constructor(private artist: ArtistService,
               private photosListService: PhotosListService,
               private auctionService: AuctionService,
               private commentService: CommentService,
-              private statueService: StatueService) { }
+              private statueService: StatueService,
+              private interactionsService: InteractionsService,
+              private clientService: ClientService) { }
 
   ngOnInit() {
     const allArtistObs    = this.artist.getAllArtists();              // fetch all Artists
     const allPaintingObs  = this.photosListService.getAllPainting();  // fetch all Paintings
     const allStatueObs    = this.statueService.getAllStatues();       // fetch all Statues
     const allCommentsObs  = this.commentService.getAllComments();     // fetch all Comments
-    const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs, allCommentsObs);  // combined all
+    const allInteractions = this.interactionsService.getAllInteractions(); // fetch all Interactions Number
+    const allClients      = this.clientService.getAllClients();       // fetch all Client
+    const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs, allCommentsObs, allInteractions, allClients);  // combined all
     this.combinedObservable = combinedObs.subscribe((data: any) => {
-      this.artists = data[0].Data.reverse();
-      this.paintings = data[1].Data.reverse();
-      this.statues = data[2].Data.reverse();
-      this.comments = data[3].Data.reverse();
+      this.artists      = data[0].Data.reverse();
+      this.paintings    = data[1].Data.reverse();
+      this.statues      = data[2].Data.reverse();
+      this.comments     = data[3].Data.reverse();
+      this.interactions = data[4].Data.reverse();
+      this.clients      = data[5].Data.reverse();
       console.log('dashboard', data);
+      console.log(this.clients);
     });
   }
 

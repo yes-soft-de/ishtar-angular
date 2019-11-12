@@ -6,11 +6,19 @@ export interface ClientInterface {
   username: string;
   password?: string;
   email: string;
-  // birthDate: {timestamp: number};
-  birthDate: Date;
+  birthDate: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
   phone: number;
-  createDate?: Date;
+  createDate?: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
   createdBy?: string;
-  updateDate?: Date;
+  updateDate?: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
   updatedBy?: string;
 }
