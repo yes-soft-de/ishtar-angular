@@ -75,6 +75,8 @@ export class LoginRepoService {
       data => {
         this.token = data.token;
         this.requestUser();
+      }, () => {
+        this.userObservable.next(null);
       }
     );
   }
