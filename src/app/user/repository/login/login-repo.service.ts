@@ -94,6 +94,8 @@ export class LoginRepoService {
         };
 
         this.userObservable.next(this.userKeys);
+      }, () => {
+        this.userObservable.next(null);
       }
     );
   }

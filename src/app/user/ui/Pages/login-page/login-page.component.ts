@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
                     if (response === null) {
                       // TODO Implement Error Function Here
                     } else {
-                      // Login Success!
+                      // Login or Rigester Success!
                       this.userKeys = response;
                     }
                   }
