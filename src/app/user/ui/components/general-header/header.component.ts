@@ -55,8 +55,11 @@ export class HeaderComponent implements OnInit {
       () => {
         this.userLoggedIn = false;
         this.userInfo = null;
+      }, error => {
+        console.log(error);
+      }, () => {
+        this.router.navigate(['/']);
       });
-      this.router.navigate(['/']); 
   }
 /*
   showInputFeild() {

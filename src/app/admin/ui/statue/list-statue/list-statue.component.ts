@@ -32,6 +32,7 @@ export class ListStatueComponent implements OnInit {
     this.statueService.getAllStatues().subscribe(
         (data: StatuesResponse) => {
           this.statues = data.Data;
+          this.statuesList = [];
           for (const statue of this.statues) {
             this.statuesList.push({
               id: statue['0'].id,
@@ -54,7 +55,7 @@ export class ListStatueComponent implements OnInit {
               price: statue.price,
               createDate: statue['0'].createDate,
               createdBy: statue['0'].createdBy,
-              updatedDate: statue['0'].updatedBy,
+              updatedDate: statue['0'].updatedDate,
               updatedBy: statue['0'].updatedBy
             });
           }

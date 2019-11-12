@@ -33,6 +33,7 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
     this.allPaintingObservable = this.photosListService.getAllPainting().subscribe(
       (res: any) => {
         this.paintings = res.Data;
+        this.paintingsList = [];
         for (const painting of this.paintings) {
           this.paintingsList.push({
             id: painting.id,

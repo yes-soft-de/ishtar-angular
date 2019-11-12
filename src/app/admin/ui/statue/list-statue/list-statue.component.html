@@ -61,10 +61,10 @@
             <td class="td-custom">{{statue.features}}</td>
             <td>{{statue.material}}</td>
             <td class="td-custom">{{statue.description}}</td>
-            <td>{{statue.createDate}}</td>
-            <td>{{statue.createdBy}}</td>
-            <td>{{statue.updatedDate}}</td>
-            <td>{{statue.updatedBy}}</td>
+            <td>{{statue.createDate ? (statue.createDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+            <td>{{statue.createdBy ? statue.createdBy : '-'}}</td>
+            <td>{{statue.updatedDate ? (statue.updatedDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+            <td>{{statue.updatedBy ? statue.updatedBy : '-'}}</td>
             <td>
               <a routerLink="/admin/edit-statue/{{statue.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
               <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>

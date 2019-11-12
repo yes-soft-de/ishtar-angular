@@ -3,6 +3,7 @@ import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
+import { document } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-statue-list',
@@ -105,6 +106,20 @@ export class StatueListComponent implements OnInit {
       document.getElementById(INFO_ID).style.display = 'none';
       this.magnifyingImage = true;
     }
+  }
+
+  openList(event){
+    if(window.innerWidth < 768) {
+      if(event.target.parentElement.classList.contains('active')){
+        event.target.parentElement.classList.remove('active');
+      } else {
+        var title = document.getElementsByClassName('title');
+        for(var i=0; i < title.length; i++){
+          title[i].parentElement.classList.remove('active');
+        }
+        event.target.parentElement.classList.add('active');
+      }
+    } 
   }
 
 }

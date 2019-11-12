@@ -47,10 +47,10 @@
           <div class="btn-group" mdbDropdown>
             <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
             <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a routerLink="/" class="dropdown-item">Visit Site</a>
-              <a class="dropdown-item" href="#">Edit Profile</a>
+              <a routerLink="/" class="dropdown-item py-0">Visit Site</a>
+<!--              <a class="dropdown-item" href="#">Edit Profile</a>-->
               <div class="divider dropdown-divider"></div>
-<!--              <a class="dropdown-item" href="#">Sign Out</a>-->
+              <a class="dropdown-item py-0" (click)="logout()">Sign Out</a>
             </div>
           </div>
         </a>

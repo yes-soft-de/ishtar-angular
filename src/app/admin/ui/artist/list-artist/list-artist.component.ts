@@ -39,6 +39,7 @@ export class ListArtistComponent implements OnInit, OnDestroy {
         (data: ArtistListResponse) => {
           if (data) {
             this.artists = data.Data;
+            this.artistsList = [];
             for (const artist of this.artists) {
               this.artistsList.push({
                 id: +artist['0'].id,

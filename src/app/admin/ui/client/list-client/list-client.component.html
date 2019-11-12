@@ -39,12 +39,12 @@
           <td>{{client.roles['0'] == 'ROLE_ADMIN' ? 'Admin' : 'User'}}</td>
           <td>{{client.username ? client.username : '-'}}</td>
           <td>{{client.email}}</td>
-          <td>{{client.birthDate ? client.birthDate : '-'}}</td>
+          <td>{{client.birthDate ? (client.birthDate.timestamp * 1000 | date: 'short') : '-'}}</td>
           <td>{{client.phone ? client.phone : '-'}}</td>
           <td>{{client.createdBy ? client.createdBy : '-'}}</td>
-          <td>{{client.createDate ? client.createDate : '-'}}</td>
+          <td>{{client.createDate ? (client.createDate.timestamp * 1000 | date: 'short') : '-'}}</td>
           <td>{{client.updatedBy ? client.updatedBy : '-'}}</td>
-          <td>{{client.updateDate ? client.updateDate : '-'}}</td>
+          <td>{{client.updateDate ? (client.updateDate.timestamp * 1000 | date: 'short') : '-'}}</td>
           <td>
             <a [routerLink]="['/admin/edit-client', client.id]" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
             <a (click)="delete(client.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>

@@ -39,6 +39,7 @@ export class ListClientComponent implements OnInit, OnDestroy {
     (data: ClientListResponse) => {
       if (data) {
         this.clients = data.Data;
+        this.clientsList = [];
         for (const client of this.clients) {
           this.clientsList.push({
             id: client.id,
