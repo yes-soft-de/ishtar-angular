@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
 export class AdminHeaderComponent implements OnInit {
 
   constructor(private userService: UserProfileService,
-              public dialog: MatDialog,
               private router: Router) { }
 
   ngOnInit() {
@@ -21,6 +20,7 @@ export class AdminHeaderComponent implements OnInit {
   logout() {
     this.userService.requestUserLogout().subscribe(
       () => {
+        console.log('Logout Successfully');
         this.router.navigate(['/']);
       });
   }

@@ -35,9 +35,11 @@
         display: block;
       }
     }
-    .letter:hover + .info {
-      opacity: 1;
-      display: block;
+    &:hover {
+      .info {
+        opacity: 1;
+        display: block;
+      }
     }
   }
 

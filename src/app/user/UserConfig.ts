@@ -1,7 +1,7 @@
 export class UserConfig {
   public static sourceAPI = '/ishtar-backend/public/';
-   // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
   // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
 
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
@@ -45,6 +45,7 @@ export class UserConfig {
   public static interactionAPI          = UserConfig.sourceAPI + 'interaction';
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
   public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
+  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviewed';
 
   // Clap Interactions API
   public static clapsAPI                = UserConfig.sourceAPI + 'claps';
