@@ -1,12 +1,9 @@
-import { Injectable } from '@angular/core';
-import { UserKeys } from '../../entity/auth/user-keys';
-import { LoginRepoService } from '../../repository/login/login-repo.service';
-import { RegisterRepoService } from '../../repository/register/register-repo.service';
-import { Subject, Observable } from 'rxjs';
-import { UserProfileRepoService } from '../../repository/profile/user-profile-repo.service';
-import { UserProfileResponse } from '../../entity-protected/profile/user-profile-response';
-import { LoginResponse } from '../../entity-protected/login/login-response';
-import { RegisterResponse } from '../../entity-protected/register/register-response';
+import {Injectable} from '@angular/core';
+import {LoginRepoService} from '../../repository/login/login-repo.service';
+import {RegisterRepoService} from '../../repository/register/register-repo.service';
+import {Subject, Observable} from 'rxjs';
+import {LoginResponse} from '../../entity-protected/login/login-response';
+import {RegisterResponse} from '../../entity-protected/register/register-response';
 
 
 /**
@@ -32,61 +29,40 @@ export class UserManagerService {
   email: string;
 
   constructor(private loginService: LoginRepoService,
-    private registerService: RegisterRepoService) {
+              private registerService: RegisterRepoService) {
+    this.loginEventHandler = new Subject<LoginResponse>();
+    this.registerEventHandler = new Subject<RegisterResponse>();
 
     this.tokenEvent$ = this.loginEventHandler.asObservable();
     this.registerEvent$ = this.registerEventHandler.asObservable();
 
     this.logLoginError();
     this.logRegisterError();
-
   }
 
-  public login(username: string, password: string, eventHandler?: Subject<LoginResponse>) {
+  public login(username: string, password: string) {
 
     this.username = username;
     this.password = password;
-    this.loginEventHandler = eventHandler;
 
     // When This is Done, The Result is Displayed in the Contructor
-    this.loginService.login(username, password);
-
+    this.loginService.login(username, password, this.loginEventHandler);
   }
 
   public register(email: string, username: string, password: string, eventHandler?: Subject<RegisterResponse>) {
     this.username = username;
     this.password = password;
     this.email = email;
-<<<<<<< Updated upstream
-    this.registerService.register(email, username, password).subscribe(
-      requestStatus => {
-        if (requestStatus === true) {
-          this.login(email, password);
-        } else {
-          this.userSubject.next(null);
-        }
-      }
-    );
-=======
     this.registerEventHandler = eventHandler;
 
     this.registerService.register(email, username, password, this.registerEventHandler);
-  }
-
-  public overrideLoginEventHandler(eventHandler: Subject<LoginResponse>) {
-    this.loginEventHandler = eventHandler;
->>>>>>> Stashed changes
-  }
-
-  public overrideRegisterEventHandler(eventHandler: Subject<RegisterResponse>) {
-    this.registerEventHandler = eventHandler;
   }
 
   private logLoginError() {
     // This Method is Used to React to Errors Happening with Login
     this.tokenEvent$.subscribe(
       response => {
-        // TODO: Implement Something to React to a successfull Login!
+        // TODO: Implement Something to React to a successful Login!
         console.log(response.token);
       }, error => {
         // TODO: Display a Toast or Something
@@ -98,11 +74,19 @@ export class UserManagerService {
   private logRegisterError() {
     this.registerEvent$.subscribe(
       registerResponse => {
-        // TODO: Implement Something to React to a successfull Register
+        // TODO: Implement Something to React to a successful Register
       }, error => {
         // TODO: Implement Something to React to the error
         console.log(error);
       }
     );
+  }
+
+  public getLoginObservable(): Observable<LoginResponse> {
+    return this.tokenEvent$;
+  }
+
+  public getRegisterObservable(): Observable<RegisterResponse> {
+    return this.registerEvent$;
   }
 }

@@ -33,7 +33,7 @@ export class LoginRepoService {
   /**
    * the Request returns TOKEN for future use
    */
-  public login(email: string, pass: string, eventListener?: Subject<LoginResponse>) {
+  public login(email: string, pass: string, eventListener: Subject<LoginResponse>) {
     this.userName = email;
     this.pass = pass;
     this.eventListener = eventListener;
@@ -66,37 +66,6 @@ export class LoginRepoService {
       username: this.userName,
       password: this.pass,
     };
-<<<<<<< Updated upstream
-    this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
-      data => {
-        this.token = data.token;
-        this.requestUser();
-      }, () => {
-        this.userObservable.next(null);
-      }
-    );
-  }
-
-  private requestUser() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
-    this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
-      data => {
-        this.userKeys = {
-          token: this.token,
-          user_id: data.Data.id
-        };
-
-        this.userObservable.next(this.userKeys);
-      }, () => {
-        this.userObservable.next(null);
-      }
-    );
-=======
     this.httpClient.post<LoginResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions)
       .subscribe(
         response => {
@@ -111,6 +80,5 @@ export class LoginRepoService {
           }
         }
       );
->>>>>>> Stashed changes
   }
 }

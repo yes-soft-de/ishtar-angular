@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
 import {UserConfig} from '../../UserConfig';
 import {catchError} from 'rxjs/operators';
-import { RegisterResponse } from '../../entity-protected/register/register-response';
-import { RegisterRequest } from '../../entity-protected/register/register-request';
+import {RegisterResponse} from '../../entity-protected/register/register-response';
+import {RegisterRequest} from '../../entity-protected/register/register-request';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,17 @@ export class RegisterRepoService {
   private email: string;
   private pass: string;
   private username: string;
-  private eventHandler: Subject<RegisterResponse>
+  private eventHandler: Subject<RegisterResponse>;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public register(email: string, username: string, pass: string, eventHandler?: Subject<RegisterResponse>) {
+  public register(email: string, username: string, pass: string, eventHandler: Subject<RegisterResponse>) {
     this.email = email;
     this.pass = pass;
     this.username = username;
+
+    this.eventHandler = eventHandler;
 
     this.requestPreFlight();
   }
@@ -55,10 +57,14 @@ export class RegisterRepoService {
         })
       ).subscribe(
       response => {
-          this.eventHandler.next(response);
+        this.eventHandler.next(response);
       }, () => {
-          this.eventHandler.error('Error Getting the Response From Backend!');
+        this.eventHandler.error('Error Getting the Response From Backend!');
       }
     );
+  }
+
+  private getObservable() {
+    return this.eventHandler.asObservable();
   }
 }

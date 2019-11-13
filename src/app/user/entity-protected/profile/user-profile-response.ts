@@ -14,6 +14,7 @@ export interface UserProfileResponse {
     phone: null;
     createdBy: null;
     createDate: null;
+    image: string;
     updatedBy: null;
     updateDate: null;
     birthDate: null

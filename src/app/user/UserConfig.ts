@@ -1,7 +1,7 @@
 export class UserConfig {
-  public static sourceAPI = '/ishtar-backend/public/';
-  //  public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
-  // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
+  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static localAPI = 'http://localhost:8002/';
 
   public static getByAPI = UserConfig.sourceAPI + 'getBy';
   public static PaintingImageAPI = UserConfig.sourceAPI + 'getPaintingImages';
@@ -14,6 +14,11 @@ export class UserConfig {
   public static updateProfileAPI = UserConfig.sourceAPI + 'client';
   public static userRegisterAuthAPI = UserConfig.sourceAPI + 'register';
   public static userLoginAuthAPI = UserConfig.sourceAPI + 'login_check';
+
+
+  // Create General Uploading API
+  public static generalUploadAPI = UserConfig.sourceAPI + 'uploadArtistImage';
+  public static paintingUploadAPI = UserConfig.sourceAPI + 'uploadPaintingImage';
 
   // Artists API
   public static artistsAPI              = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST

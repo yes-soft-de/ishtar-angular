@@ -12,11 +12,11 @@ import { UserCookiesConfig } from '../../UserCookiesConfig';
 export class UserProfileRepoService {
   private token: string;
   private eventHandler: Subject<UserProfileResponse>;
-  
+
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
 
-  public requestUserProfile(eventHandler?: Subject<UserProfileResponse>) {
+  public requestUserProfile(eventHandler: Subject<UserProfileResponse>) {
     if (this.cookieService.get(UserCookiesConfig.TOKEN) === null) {
       if (eventHandler !== null) {
         eventHandler.error('Not Logged In User!');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UploadManagerService} from '../../../manager/upload/upload-manager.service';
 
 @Component({
   selector: 'app-profile-edit-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private uploadService: UploadManagerService) { }
 
   ngOnInit() {
   }
 
+  public onImageSelected() {
+  }
 }
