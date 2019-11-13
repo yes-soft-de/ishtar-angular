@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IshtarInteractionService } from 'src/app/user/service/ishtar-interaction/ishtar-interaction.service';
-import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-interface';
+import { UserProfileResponse } from 'src/app/user/entity-protected/profile/user-profile-response';
+import { UserProfileManagerService } from 'src/app/user/manager/user-profile/user-profile-manager.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,10 +12,23 @@ import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-
 })
 export class ProfilePageComponent implements OnInit {
   magnifyingImage = false;
-  
-  constructor(private interactionService: IshtarInteractionService) { }
+  public userProfileInfo: UserProfileResponse;
+
+  constructor(private interactionService: IshtarInteractionService,
+    private userProfileManager: UserProfileManagerService) { }
 
   ngOnInit() {
+    const eventHandler = new Subject<UserProfileResponse>();
+
+    eventHandler.subscribe(
+      data => {
+        this.userProfileInfo = data;
+      }, error => {
+        console.log(error);
+      }
+    )
+
+    this.userProfileManager.getUserProfile(eventHandler)
   }
 
   choseTab(event){

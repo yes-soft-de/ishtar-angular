@@ -1,10 +1,12 @@
-import {Injectable} from '@angular/core';
-import {UserKeys} from '../../entity/auth/user-keys';
-import {LoginRepoService} from '../../repository/login/login-repo.service';
-import {RegisterRepoService} from '../../repository/register/register-repo.service';
-import {Subject} from 'rxjs';
-import {UserProfileRepoService} from '../../repository/profile/user-profile-repo.service';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
+import { Injectable } from '@angular/core';
+import { UserKeys } from '../../entity/auth/user-keys';
+import { LoginRepoService } from '../../repository/login/login-repo.service';
+import { RegisterRepoService } from '../../repository/register/register-repo.service';
+import { Subject, Observable } from 'rxjs';
+import { UserProfileRepoService } from '../../repository/profile/user-profile-repo.service';
+import { UserProfileResponse } from '../../entity-protected/profile/user-profile-response';
+import { LoginResponse } from '../../entity-protected/login/login-response';
+import { RegisterResponse } from '../../entity-protected/register/register-response';
 
 
 /**
@@ -18,46 +20,44 @@ import {UserProfileResponse} from '../../entity/auth/user-profile-response';
   providedIn: 'root'
 })
 export class UserManagerService {
-  // TODO Either change the Structure or Reduce the Observables, There Should Be 1 & Only 1 Observable/Subject Here
-  private userSubject = new Subject<UserKeys>();
-  private userProfileSubject = new Subject<UserProfileResponse>();
-  private userKeys: UserKeys;
-  private username: string;
-  private password: string;
-  private email: string;
-  private requestTime: Date;
+
+  loginEventHandler: Subject<LoginResponse>;
+  tokenEvent$: Observable<LoginResponse>;
+
+  registerEventHandler: Subject<RegisterResponse>;
+  registerEvent$: Observable<RegisterResponse>;
+
+  username: string;
+  password: string;
+  email: string;
 
   constructor(private loginService: LoginRepoService,
-              private registerService: RegisterRepoService,
-              private userProfileService: UserProfileRepoService) {
-    this.requestTime = new Date();
+    private registerService: RegisterRepoService) {
+
+    this.tokenEvent$ = this.loginEventHandler.asObservable();
+    this.registerEvent$ = this.registerEventHandler.asObservable();
+
+    this.logLoginError();
+    this.logRegisterError();
+
   }
 
-  /**
-   * This Function is Used to Login User
-   * @return Observable Of UserKeys
-   */
-  public login(username: string, password: string) {
-    // Saved for Refresh Token
-    // TODO Remove this When Refresh Token is Used
+  public login(username: string, password: string, eventHandler?: Subject<LoginResponse>) {
+
     this.username = username;
     this.password = password;
+    this.loginEventHandler = eventHandler;
 
-    this.loginService.login(username, password).subscribe(
-      keys => {
-        this.userKeys = keys;
-        this.userSubject.next(keys);
-      }
-    );
+    // When This is Done, The Result is Displayed in the Contructor
+    this.loginService.login(username, password);
+
   }
 
-  /**
-   * @return Observable Of Type Boolean
-   */
-  public register(email: string, username: string, password: string) {
+  public register(email: string, username: string, password: string, eventHandler?: Subject<RegisterResponse>) {
     this.username = username;
     this.password = password;
     this.email = email;
+<<<<<<< Updated upstream
     this.registerService.register(email, username, password).subscribe(
       requestStatus => {
         if (requestStatus === true) {
@@ -67,27 +67,42 @@ export class UserManagerService {
         }
       }
     );
+=======
+    this.registerEventHandler = eventHandler;
+
+    this.registerService.register(email, username, password, this.registerEventHandler);
   }
 
-  // TODO Move This From Here to More Suitable Place
-  /**
-   * This Function Return Observable of User Profile Type Class
-   * @return Observable
-   */
-  public requestUserProfile() {
-    if (this.userKeys == null) {
-      return;
-    }
+  public overrideLoginEventHandler(eventHandler: Subject<LoginResponse>) {
+    this.loginEventHandler = eventHandler;
+>>>>>>> Stashed changes
+  }
 
-    this.userProfileService.requestUserProfile(this.userKeys).subscribe(
-      data => {
-        this.userProfileSubject.next(data);
+  public overrideRegisterEventHandler(eventHandler: Subject<RegisterResponse>) {
+    this.registerEventHandler = eventHandler;
+  }
+
+  private logLoginError() {
+    // This Method is Used to React to Errors Happening with Login
+    this.tokenEvent$.subscribe(
+      response => {
+        // TODO: Implement Something to React to a successfull Login!
+        console.log(response.token);
+      }, error => {
+        // TODO: Display a Toast or Something
+        console.log(error);
       }
     );
-    return this.userProfileSubject.asObservable;
   }
 
-  public subscribeToRepo() {
-    return this.userSubject.asObservable();
+  private logRegisterError() {
+    this.registerEvent$.subscribe(
+      registerResponse => {
+        // TODO: Implement Something to React to a successfull Register
+      }, error => {
+        // TODO: Implement Something to React to the error
+        console.log(error);
+      }
+    );
   }
 }
