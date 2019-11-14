@@ -36,9 +36,11 @@ export class HeaderComponent implements OnInit {
     this.userProfileService.getProfileObservable().subscribe(
       usr => {
         // This Means that the user is Logged In
-        this.userLoggedIn = true;
-        this.userInfo = usr.Data;
-        console.log('User Logged In');
+        if (usr.Data.email !== null && usr.Data.username !== undefined) {
+          this.userLoggedIn = true;
+          this.userInfo = usr.Data;
+          console.log('User Logged In');
+        }
       }, error1 => {
         console.log(error1);
       }
