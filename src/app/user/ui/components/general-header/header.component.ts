@@ -64,6 +64,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.userManager.getLogoutObservable().subscribe(
+      () => {
+        this.router.navigate(['/']);
+      }
+    );
     this.userManager.logout();
   }
 
