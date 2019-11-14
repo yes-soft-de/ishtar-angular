@@ -1,15 +1,16 @@
 export interface UserInfo {
-  username: null;
-  id: 10;
-  salt: null;
+  username: string;
+  id: number;
+  salt: string;
   password: string;
   roles: [string];
   email: string;
-  fullName: null;
-  phone: null;
-  createdBy: null;
-  createDate: null;
-  updatedBy: null;
+  fullName: string;
+  phone: string;
+  createdBy: string;
+  createDate: string;
+  updatedBy: string;
   updateDate: string;
-  birthDate: null;
+  birthDate: string;
+  image: string;
 }
