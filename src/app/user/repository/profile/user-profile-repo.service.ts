@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserConfig } from '../../UserConfig';
-import { Subject } from 'rxjs';
-import { UserProfileResponse } from '../../entity-protected/profile/user-profile-response';
-import { CookieService } from 'ngx-cookie-service';
-import { UserCookiesConfig } from '../../UserCookiesConfig';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserConfig} from '../../UserConfig';
+import {Subject} from 'rxjs';
+import {UserProfileResponse} from '../../entity-protected/profile/user-profile-response';
+import {CookieService} from 'ngx-cookie-service';
+import {UserCookiesConfig} from '../../UserCookiesConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,9 @@ export class UserProfileRepoService {
   }
 
   public requestUserProfile(eventHandler: Subject<UserProfileResponse>) {
+    this.eventHandler = eventHandler;
     if (this.cookieService.get(UserCookiesConfig.TOKEN) === null) {
-      if (eventHandler !== null) {
-        eventHandler.error('Not Logged In User!');
-      }
+      eventHandler.error('Not Logged In User!');
       return;
     }
     this.token = this.cookieService.get(UserCookiesConfig.TOKEN);
@@ -28,12 +27,7 @@ export class UserProfileRepoService {
   }
 
   private requestPreFlight() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).subscribe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI).subscribe(
       () => this.getUserProfile(),
       () => this.getUserProfile());
   }
@@ -41,13 +35,15 @@ export class UserProfileRepoService {
   private getUserProfile() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
+        Authorization: `Bearer ${this.token}`
       })
     };
-    this.httpClient.get<UserProfileResponse>(UserConfig.userProfileAPI, httpOptions).subscribe(
+    console.log('ML ' + JSON.stringify(httpOptions.headers));
+    this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
       data => {
         this.eventHandler.next(data);
+      }, error1 => {
+        this.eventHandler.error(error1);
       }
     );
   }

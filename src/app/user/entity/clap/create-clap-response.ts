@@ -1,4 +1,4 @@
-import {UserInfo} from '../user/user-info';
+import {UserInfo} from '../../entity-protected/profile/user-info';
 
 export interface CreateClapResponse {
   status_code: number;

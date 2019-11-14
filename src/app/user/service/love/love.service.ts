@@ -6,7 +6,7 @@ import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {MatDialog} from '@angular/material';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
-import {UserInfo} from '../../entity/user/user-info';
+import {UserInfo} from '../../entity-protected/profile/user-info';
 import {LoveRequest} from '../../entity/love-interaction/love-request';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 

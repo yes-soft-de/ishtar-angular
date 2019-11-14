@@ -59,6 +59,7 @@ import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -124,6 +126,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,

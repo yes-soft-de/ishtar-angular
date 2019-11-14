@@ -51,7 +51,6 @@ export class EditProfileRepoService {
     const token = this.cookieService.get(UserCookiesConfig.TOKEN);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token
       })
     };

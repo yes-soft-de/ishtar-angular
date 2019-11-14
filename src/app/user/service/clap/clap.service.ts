@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {UserInfo} from '../../entity/user/user-info';
+import {UserInfo} from '../../entity-protected/profile/user-info';
 import {Observable, Subject} from 'rxjs';
 import {UserProfileService} from '../client-profile/user-profile.service';
 import {ToastrService} from 'ngx-toastr';

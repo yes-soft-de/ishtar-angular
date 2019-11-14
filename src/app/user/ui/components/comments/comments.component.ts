@@ -5,7 +5,7 @@ import {CommentsService} from '../../../service/comments/comments.service';
 import {CommentsEntity} from '../../../entity/comments/comments-entity';
 import {ToastrService} from 'ngx-toastr';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
-import {UserInfo} from '../../../entity/user/user-info';
+import {UserInfo} from '../../../entity-protected/profile/user-info';
 import {UserResponse} from '../../../entity/user/user-response';
 import {CommentsResponse} from '../../../entity/comments/comments-response';
 

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ArtistService } from '../../../service/artist/artist.service';
-import { ArtTypeResponse } from '../../../entity/art-type/art-type-response';
-import { ArtType } from '../../../entity/art-type/art-type';
-import { ArtTypeService } from '../../../service/art-type/art-type.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { PhotosListService } from '../../../service/PhotosList/photos-list.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { ImageSnippet } from '../../../entity/image-snippet/image-snippet';
+import {Component, OnInit} from '@angular/core';
+import {ArtistService} from '../../../service/artist/artist.service';
+import {ArtTypeResponse} from '../../../entity/art-type/art-type-response';
+import {ArtType} from '../../../entity/art-type/art-type';
+import {ArtTypeService} from '../../../service/art-type/art-type.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 
 @Component({
   selector: 'app-add-artist',
@@ -29,12 +29,13 @@ export class AddArtistComponent implements OnInit {
   selectedFile: ImageSnippet;
 
   constructor(private httpClient: HttpClient,
-    private formBuilder: FormBuilder,
-    private artistService: ArtistService,
-    private artTypeService: ArtTypeService,
-    private photoListService: PhotosListService,
-    private router: Router,
-    private toaster: ToastrService) { }
+              private formBuilder: FormBuilder,
+              private artistService: ArtistService,
+              private artTypeService: ArtTypeService,
+              private photoListService: PhotosListService,
+              private router: Router,
+              private toaster: ToastrService) {
+  }
 
   ngOnInit() {
     // Fetch All Art Type

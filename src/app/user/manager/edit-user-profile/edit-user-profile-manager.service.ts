@@ -46,7 +46,7 @@ export class EditUserProfileManagerService {
     this.editProfileRepo.editProfile(this.userId, this.editRequestPayload, this.eventHandler);
   }
 
-  private getObservable(): Observable<EditProfileResponse> {
+  public getObservable(): Observable<EditProfileResponse> {
     return this.eventHandler.asObservable();
   }
 }

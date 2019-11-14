@@ -21,6 +21,7 @@ import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-de
 import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
       {path: 'statue-list', component: StatueListPageComponent},
       {path: 'statue/:id', component: StatueDetailPageComponent},
       {path: 'profile', component: ProfilePageComponent},
+      {path: 'edit-profile', component: ProfileEditPageComponent},
       {path: 'about-ishtar', component: AboutIshtarPageComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'

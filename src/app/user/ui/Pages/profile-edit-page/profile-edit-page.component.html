@@ -1,26 +1,32 @@
 <app-header></app-header>
 
 <div class="container">
-    <div class="profile-edit">
-        <form class="form-group">
-            <div class="img-profile">
-                <img src="../../../../../assets/slider-images/7.png">
-                <i class="fas fa-pencil-alt"></i>
-                <input type="file" class="form-control">
-            </div> 
-            <label>User Name:</label>
-            <input type="text" value="AhmadAh" class="form-control" required>
-            <label>Name:</label>
-            <input type="text" value="Ahmad Ahmad" class="form-control" required>
-            <label>Mobile:</label>
-            <input type="tel" value="+9639585858" class="form-control" required>
-            <label>Email:</label>
-            <input type="email" value="example@gmail.com" class="form-control" required>
-            <label>Birthday:</label>
-            <input type="date" value="1992-05-22" class="form-control" required>
-            <button>Save</button>
-        </form>
-    </div>
+  <div class="profile-edit">
+    <form [formGroup]="profileEditForm" class="form-group" (ngSubmit)="saveChanges()">
+      <div class="img-profile" formControlName="image">
+        <img src="../../../../../assets/slider-images/7.png">
+        <i class="fas fa-pencil-alt"></i>
+        <input type="file" class="form-control">
+      </div>
+      <label>User Name:</label>
+      <input formControlName="username" type="text" value="{{oldUserProfile.username}}"
+             class="form-control" required>
+      <label>Name:</label>
+      <input formControlName="fullName" type="text" value="{{oldUserProfile.fullName}}"
+             class="form-control" required>
+      <label>Mobile:</label>
+      <input formControlName="phone" type="tel" value="{{oldUserProfile.phone}}"
+             class="form-control" required>
+      <label>Email:</label>
+      <input formControlName="email" type="email" value="{{oldUserProfile.email}}"
+             class="form-control" required>
+      <label>Birthday:</label>
+      <input formControlName="birthDate" type="date" value="{{oldUserProfile.birthDate}}"
+             class="form-control" required>
+      <button (click)="saveChanges()">Save</button>
+
+    </form>
+  </div>
 </div>
 
 <app-footer></app-footer>

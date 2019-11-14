@@ -3,6 +3,7 @@ import {IshtarInteractionService} from 'src/app/user/service/ishtar-interaction/
 import {UserProfileResponse} from 'src/app/user/entity-protected/profile/user-profile-response';
 import {UserProfileManagerService} from 'src/app/user/manager/user-profile/user-profile-manager.service';
 import {Router} from '@angular/router';
+import {UserInfo} from '../../../entity-protected/profile/user-info';
 
 @Component({
   selector: 'app-profile-page',
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class ProfilePageComponent implements OnInit {
   magnifyingImage = false;
-  public userProfileInfo: UserProfileResponse;
+  public userProfileInfo: UserInfo;
 
   constructor(private interactionService: IshtarInteractionService,
               private userProfileManager: UserProfileManagerService,
@@ -22,12 +23,14 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit() {
     this.userProfileManager.getProfileObservable().subscribe(
       data => {
-        // This Fires When The User Profile is Received!
+        this.userProfileInfo = data.Data;
       }, error1 => {
         // TODO Implement A Way To Handle Unauthorized Profile Access
         this.router.navigate(['/']);
       }
     );
+
+    this.userProfileManager.getUserProfile();
   }
 
   choseTab(event) {

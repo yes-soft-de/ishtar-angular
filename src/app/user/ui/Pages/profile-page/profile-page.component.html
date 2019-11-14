@@ -5,21 +5,21 @@
   <div class="col-12 user-info">
     <div class="row">
       <div class="col-sm-2 col-xs-12">
-        <img src="{{userProfileInfo.Data.image}}" class="img-fluid">
+        <img src="{{userProfileInfo.username}}" class="img-fluid">
       </div>
       <div class="col-sm-4 col-xs-12">
-        <p>Ishtar</p>
-        <p class="user-name">{{userProfileInfo.Data.username}}</p>
+        <p>{{userProfileInfo.fullName}}</p>
+        <p class="user-name">{{userProfileInfo.username}}</p>
       </div>
       <div class="col-sm-6 col-xs-12">
         <ul>
-          <li><i class="fas fa-mobile-alt"></i>{{userProfileInfo.Data.phone}}</li>
-          <li><i class="fas fa-gift"></i>{{userProfileInfo.Data.birthDate}}</li>
-          <li><i class="far fa-envelope"></i>{{userProfileInfo.Data.email}}</li>
+          <li><i class="fas fa-mobile-alt"></i>{{userProfileInfo.phone}}</li>
+          <li><i class="fas fa-gift"></i>{{userProfileInfo.birthDate}}</li>
+          <li><i class="far fa-envelope"></i>{{userProfileInfo.email}}</li>
         </ul>
       </div>
     </div>
-    <button class="edit" data-toggle="modal" data-target="#edit-block"><i class="fas fa-pencil-alt"></i> Edit</button>
+    <button routerLink="/edit-profile" class="edit" data-toggle="modal" data-target="#edit-block"><i class="fas fa-pencil-alt"></i> Edit</button>
   </div>
   <!-- ./User Info -->
 </div>

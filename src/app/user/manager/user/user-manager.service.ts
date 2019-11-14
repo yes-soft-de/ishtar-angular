@@ -4,6 +4,7 @@ import {RegisterRepoService} from '../../repository/register/register-repo.servi
 import {Subject, Observable} from 'rxjs';
 import {LoginResponse} from '../../entity-protected/login/login-response';
 import {RegisterResponse} from '../../entity-protected/register/register-response';
+import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
 
 
 /**
@@ -18,26 +19,33 @@ import {RegisterResponse} from '../../entity-protected/register/register-respons
 })
 export class UserManagerService {
 
-  loginEventHandler: Subject<LoginResponse>;
-  tokenEvent$: Observable<LoginResponse>;
+  private loginEventHandler: Subject<LoginResponse>;
+  private tokenEvent$: Observable<LoginResponse>;
 
-  registerEventHandler: Subject<RegisterResponse>;
-  registerEvent$: Observable<RegisterResponse>;
+  private logoutEventHandler: Subject<any>;
+  private logoutEvents$: Observable<any>;
+
+  private registerEventHandler: Subject<RegisterResponse>;
+  private registerEvent$: Observable<RegisterResponse>;
 
   username: string;
   password: string;
   email: string;
 
   constructor(private loginService: LoginRepoService,
-              private registerService: RegisterRepoService) {
+              private registerService: RegisterRepoService,
+              private logoutService: LogoutRepoService) {
     this.loginEventHandler = new Subject<LoginResponse>();
     this.registerEventHandler = new Subject<RegisterResponse>();
+    this.logoutEventHandler = new Subject<any>();
 
     this.tokenEvent$ = this.loginEventHandler.asObservable();
     this.registerEvent$ = this.registerEventHandler.asObservable();
+    this.logoutEvents$ = this.logoutEventHandler.asObservable();
 
     this.logLoginError();
     this.logRegisterError();
+    this.logLogoutErrors();
   }
 
   public login(username: string, password: string) {
@@ -58,6 +66,10 @@ export class UserManagerService {
     this.registerService.register(email, username, password, this.registerEventHandler);
   }
 
+  public logout() {
+    this.logoutService.logout(this.logoutEventHandler);
+  }
+
   private logLoginError() {
     // This Method is Used to React to Errors Happening with Login
     this.tokenEvent$.subscribe(
@@ -67,6 +79,15 @@ export class UserManagerService {
       }, error => {
         // TODO: Display a Toast or Something
         console.log(error);
+      }
+    );
+  }
+
+  private logLogoutErrors() {
+    this.logoutEvents$.subscribe(
+      () => {
+      }, error1 => {
+        console.log(error1);
       }
     );
   }
@@ -88,5 +109,9 @@ export class UserManagerService {
 
   public getRegisterObservable(): Observable<RegisterResponse> {
     return this.registerEvent$;
+  }
+
+  public getLogoutObservable(): Observable<any> {
+    return this.logoutEvents$;
   }
 }
