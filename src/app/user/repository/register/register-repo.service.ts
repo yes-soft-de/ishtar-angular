@@ -5,6 +5,7 @@ import {UserConfig} from '../../UserConfig';
 import {catchError} from 'rxjs/operators';
 import {RegisterResponse} from '../../entity-protected/register/register-response';
 import {RegisterRequest} from '../../entity-protected/register/register-request';
+import * as faker from 'faker';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,8 @@ export class RegisterRepoService {
     const req: RegisterRequest = {
       email: this.email,
       username: this.username,
-      password: this.pass
+      password: this.pass,
+      image: faker.image.avatar()
     };
 
     this.httpClient.post<RegisterResponse>(UserConfig.userRegisterAuthAPI, JSON.stringify(req), httpOptions)

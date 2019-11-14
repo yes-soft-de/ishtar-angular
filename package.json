@@ -23,6 +23,7 @@
     "@angular/router": "~8.1.2",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@swimlane/ngx-ui": "^26.0.1",
+    "@types/faker": "^4.1.7",
     "angular-bootstrap-md": "^8.3.0",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
