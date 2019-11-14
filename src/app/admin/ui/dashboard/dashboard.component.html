@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-6 col-lg-3">
         <div class="stat st_member">
-          <i class="fa fa-users fa-fw fa-5x"></i>
+          <i class="fas fa-user-friends fa-fw fa-5x"></i>
           <div>
             <h6>Total Artists</h6>
             <span><a routerLink="/admin/list-artists">{{artists.length}}</a></span>
@@ -51,7 +51,24 @@
           <div>
             <h6>Total Comments</h6>
             <span><a routerLink="/admin/list-comments">{{comments?.length}}</a></span>
-
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="stat st_interactions">
+          <i class="fas fa-star-half-alt fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Interactions</h6>
+            <span><a routerLink="/admin/list-interactions">{{interactions.length}}</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="stat st_clients">
+          <i class="fa fa-users fa-fw fa-5x"></i>
+          <div>
+            <h6>Total Clients</h6>
+            <span><a routerLink="/admin/list-clients">{{clients.length}}</a></span>
           </div>
         </div>
       </div>
@@ -60,7 +77,7 @@
   <!--Start Latest Section-->
   <div class="latest mt-5">
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <!--Start Latest ArtistAdmin-->
         <div class="late mb-3">
           <div class="card">
@@ -86,7 +103,7 @@
         </div>
       </div>
       <!--Start Latest Painting-->
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
@@ -111,7 +128,7 @@
         </div>
       </div>
       <!--Start Latest Statues-->
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="late mb-3">
           <div class="card">
             <div class="card-header">
@@ -175,6 +192,31 @@
             <div class="card-body" *ngIf="comments.length == 0">
               <div class="late_info">
                 There isn't any Comments To Show Yet
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <!--Start Latest Clients-->
+        <div class="late mb-3">
+          <div class="card">
+            <div class="card-header">
+              Latest {{latestClientsNumber}} Clients
+            </div>
+            <div class="card-body" *ngIf="clients.length != 0">
+              <ng-container *ngFor="let client of clients; let i = index">
+                <ng-container *ngIf="i < latestClientsNumber">
+                  <div class="late_info">
+                    {{client.username == null ? 'User' : client.username}}
+                    <a routerLink="/admin/edit-client/{{client.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="card-body" *ngIf="clients.length == 0">
+              <div class="late_info">
+                There isn't any Clients To Show Yet
               </div>
             </div>
           </div>

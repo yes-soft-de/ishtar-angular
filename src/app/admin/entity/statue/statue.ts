@@ -17,8 +17,14 @@ export class Statue {
   active: boolean;
   keyWord: string;
   price: string;
-  createDate: Date;
-  createdBy: Date;
-  updatedDate: Date;
-  updatedBy: Date;
+  createDate: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  createdBy: string;
+  updatedDate?: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  updatedBy: string;
 }

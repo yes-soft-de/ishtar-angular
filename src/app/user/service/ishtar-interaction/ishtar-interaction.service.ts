@@ -18,11 +18,11 @@ export class IshtarInteractionService {
   constructor(private httpClient: HttpClient,
               private userService: UserProfileService) {}
 
-
-  // Get All Interactions
-  getInteraction() {
-    return this.httpClient.get(UserConfig.interactionsAPI);
+  // Get Latest Most Viewed Painting 7 day
+  getMostViewsPaintings() {
+    return this.httpClient.get(UserConfig.mostViewedAPI);
   }
+
 
   // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number) {

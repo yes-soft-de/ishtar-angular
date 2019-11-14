@@ -45,7 +45,7 @@ export class PaintingService {
     return this.httpClient.get<PaintingListResponse>(UserConfig.paintingsAPI);
   }
 
-  requestPaintingDetails(paintingId: string) {
+  requestPaintingDetails(paintingId: number) {
     return this.httpClient.get(`${UserConfig.paintingAPI}/${paintingId}`);
   }
   // requestPaintingDetails(paintingId: string) {

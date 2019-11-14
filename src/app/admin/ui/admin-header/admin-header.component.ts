@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UserProfileService} from '../../../user/service/client-profile/user-profile.service';
+import {ArtTypeService} from '../../service/art-type/art-type.service';
+import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-header',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserProfileService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.userService.requestUserLogout().subscribe(
+      () => {
+        console.log('Logout Successfully');
+        this.router.navigate(['/']);
+      });
   }
 
 }

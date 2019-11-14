@@ -21,22 +21,10 @@ export class PaintingListComponent implements OnInit {
   config: any;
   filterArtType = false;
   filterArtist = false;
-  viewData: ViewInterface = {   //
-    entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
-    row: 0,         // this for painting id
-    interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: 0,      // this for client id
-  };
   paintingsView: {
     id: number,
     viewNumber: number
   }[] = [];
-  loveData: LoveRequest = {
-    entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
-    row: 0,         // this for painting id
-    interaction: InteractionConsts.INTERACTION_TYPE_LOVE, // 3: for view interaction
-    client: 0,      // this for client id
-  };
   paintingsLove: {
     id: number,
     loveNumber: number
@@ -58,7 +46,7 @@ export class PaintingListComponent implements OnInit {
           InteractionConsts.INTERACTION_TYPE_VIEW)
           .subscribe(
               (data: any) => {
-                console.log('Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
+                // console.log('Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
                 this.paintingsView.push({
                   id: image.id,
                   viewNumber: data.Data[0].interactions
