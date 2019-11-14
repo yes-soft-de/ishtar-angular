@@ -6,6 +6,7 @@ import {UserProfileResponse} from '../../entity-protected/profile/user-profile-r
 import {Router} from '@angular/router';
 import {EditProfileResponse} from '../../entity-protected/edit-profile/edit-profile-response';
 import {EditProfileRequest} from '../../entity-protected/edit-profile/edit-profile-request';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,14 @@ export class EditUserProfileManagerService {
     );
   }
 
-  public requestProfileEdit(userId, rowForm) {
-    this.editRequestPayload = rowForm as EditProfileRequest;
+  public requestProfileEdit(userId, rowForm: FormGroup) {
+    this.editRequestPayload = {
+      password: rowForm.get('password').value,
+      birthDate: rowForm.get('birthDate').value,
+      phone: rowForm.get('phone').value,
+      fullName: rowForm.get('fullName').value,
+      image: rowForm.get('image').value
+    };
     this.userId = userId;
 
     this.editProfile();
