@@ -13,11 +13,11 @@ export class UserConfig {
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
-  public static CrosHeaderAPI = UserConfig.localAPI + 'headers';
-  public static userProfileAPI = UserConfig.localAPI + 'user';
-  public static updateProfileAPI = UserConfig.localAPI + 'client';
-  public static userRegisterAuthAPI = UserConfig.localAPI + 'register';
-  public static userLoginAuthAPI = UserConfig.localAPI + 'login_check';
+  public static CrosHeaderAPI = UserConfig.sourceAPI + 'headers';
+  public static userProfileAPI = UserConfig.sourceAPI + 'user';
+  public static updateProfileAPI = UserConfig.sourceAPI + 'client';
+  public static userRegisterAuthAPI = UserConfig.sourceAPI + 'register';
+  public static userLoginAuthAPI = UserConfig.sourceAPI + 'login_check';
 
 
   // Create General Uploading API
