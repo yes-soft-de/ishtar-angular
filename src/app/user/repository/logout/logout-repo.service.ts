@@ -14,13 +14,7 @@ export class LogoutRepoService {
   }
 
   logout(eventHandler: Subject<any>) {
-    this.httpClient.get(UserConfig.userLogoutLink).subscribe(
-      () => {
-        this.cookieService.deleteAll();
-        eventHandler.next(null);
-      }, () => {
-        eventHandler.error('Error Connecting To Logout Endpoint');
-      }
-    );
+    this.cookieService.deleteAll();
+    eventHandler.next(null);
   }
 }

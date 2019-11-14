@@ -6,7 +6,7 @@
       <div class="img-profile" formControlName="image">
         <img src="../../../../../assets/slider-images/7.png">
         <i class="fas fa-pencil-alt"></i>
-        <input type="file" class="form-control">
+        <input #imageInput type="file" class="form-control" (change)="uploadNewImage(imageInput)">
       </div>
       <label>User Name:</label>
       <input formControlName="username" type="text" value="{{oldUserProfile.username}}"
@@ -23,7 +23,7 @@
       <label>Birthday:</label>
       <input formControlName="birthDate" type="date" value="{{oldUserProfile.birthDate}}"
              class="form-control" required>
-      <button (click)="saveChanges()">Save</button>
+      <button (click)="saveChanges()" [disabled]="!saveEditEnabled">Save</button>
     </form>
   </div>
 </div>

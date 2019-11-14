@@ -19,7 +19,7 @@ export class UploadRepoService {
     if (this.cookieService.get(UserCookiesConfig.TOKEN) === null || this.cookieService.get(UserCookiesConfig.TOKEN).length < 3) {
       eventHandler.error('Invalid Token or User Not Logged in');
     }
-    this.httpClient.post<UploadResponse>(`${UserConfig.generalUploadAPI}`, imageForm).subscribe(
+    this.httpClient.post<UploadResponse>(`${UserConfig.clientImageUploadAPI}`, imageForm).subscribe(
       response => {
         if (eventHandler !== null) {
           eventHandler.next(response);

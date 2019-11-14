@@ -41,12 +41,7 @@ export class LoginRepoService {
   }
 
   private requestPreFlight() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).pipe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI).pipe(
       catchError(() => {
         // If this had an error, CORS is still affective, and We can Precede to Getting the Token
         this.requestToken();

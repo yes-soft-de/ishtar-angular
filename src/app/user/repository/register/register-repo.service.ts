@@ -23,7 +23,6 @@ export class RegisterRepoService {
     this.email = email;
     this.pass = pass;
     this.username = username;
-
     this.eventHandler = eventHandler;
 
     this.requestPreFlight();
@@ -47,7 +46,7 @@ export class RegisterRepoService {
       email: this.email,
       username: this.username,
       password: this.pass,
-      image: faker.image.avatar()
+      image: 'https://api.adorable.io/avatars/285/abott@adorable.png'
     };
 
     this.httpClient.post<RegisterResponse>(UserConfig.userRegisterAuthAPI, JSON.stringify(req), httpOptions)

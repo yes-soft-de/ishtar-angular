@@ -67,6 +67,11 @@ export class UserManagerService {
   }
 
   public logout() {
+    this.logoutEvents$.subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
     this.logoutService.logout(this.logoutEventHandler);
   }
 

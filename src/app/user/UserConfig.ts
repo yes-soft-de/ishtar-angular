@@ -23,6 +23,7 @@ export class UserConfig {
   // Create General Uploading API
   public static generalUploadAPI = UserConfig.sourceAPI + 'uploadArtistImage';
   public static paintingUploadAPI = UserConfig.sourceAPI + 'uploadPaintingImage';
+  public static clientImageUploadAPI = UserConfig.sourceAPI + 'uploadPaintingImage';
 
   // Artists API
   public static artistsAPI = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST

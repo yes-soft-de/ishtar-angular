@@ -14,10 +14,10 @@ export class UploadManagerService {
     this.logUploadError();
   }
 
-  public uploadImage(image: File, eventHandler: Subject<UploadResponse>) {
+  public uploadImage(image: File) {
     const formData = new FormData();
     formData.append('image', image);
-    this.uploadService.uploadImage(formData, eventHandler);
+    this.uploadService.uploadImage(formData, this.eventHandler);
   }
 
   private logUploadError() {

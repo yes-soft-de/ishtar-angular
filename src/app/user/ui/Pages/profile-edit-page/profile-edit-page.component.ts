@@ -5,6 +5,7 @@ import {UserInfo} from '../../../entity-protected/profile/user-info';
 import {EditUserProfileManagerService} from '../../../manager/edit-user-profile/edit-user-profile-manager.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {ImageSnippet} from '../../../../admin/entity/image-snippet/image-snippet';
 
 @Component({
   selector: 'app-profile-edit-page',
@@ -14,6 +15,8 @@ import {Router} from '@angular/router';
 export class ProfileEditPageComponent implements OnInit {
   profileEditForm: FormGroup;
   oldUserProfile: UserInfo;
+  selectedFile;
+  saveEditEnabled = true;
 
   constructor(private uploadService: UploadManagerService,
               private userProfileService: UserProfileManagerService,
@@ -36,6 +39,7 @@ export class ProfileEditPageComponent implements OnInit {
     this.userProfileService.getProfileObservable().subscribe(
       data => {
         this.oldUserProfile = data.Data;
+        this.updateForm();
       }
     );
     this.userProfileService.getUserProfile();
@@ -47,11 +51,33 @@ export class ProfileEditPageComponent implements OnInit {
     );
   }
 
-  public onImageSelected() {
+  updateForm() {
+    this.profileEditForm.get('email').setValue(this.oldUserProfile.email);
+    this.profileEditForm.get('password').setValue(this.oldUserProfile.password);
+    this.profileEditForm.get('username').setValue(this.oldUserProfile.username);
+    this.profileEditForm.get('birthDate').setValue(this.oldUserProfile.birthDate);
+    this.profileEditForm.get('phone').setValue(this.oldUserProfile.phone);
+    this.profileEditForm.get('image').setValue(this.oldUserProfile.image);
+    this.profileEditForm.get('fullName').setValue(this.oldUserProfile.fullName);
   }
 
   saveChanges() {
     // Do Something
-    this.editProfileService.requestProfileEdit(this.oldUserProfile.id, this.profileEditForm.getRawValue());
+    this.editProfileService.requestProfileEdit(this.oldUserProfile.id, this.profileEditForm);
+  }
+
+  uploadNewImage(newImage: any) {
+    const myImage: File = newImage.files[0];
+    console.log('Image Selected With Name: ' + myImage.name);
+    this.saveEditEnabled = false;
+
+    this.uploadService.getObservable().subscribe(
+      data => {
+        this.profileEditForm.get('image').setValue(data.url);
+        this.saveEditEnabled = true;
+      }
+    );
+
+    this.uploadService.uploadImage(myImage);
   }
 }

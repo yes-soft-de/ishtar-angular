@@ -51,13 +51,14 @@ export class EditProfileRepoService {
     const token = this.cookieService.get(UserCookiesConfig.TOKEN);
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + token,
+        'content-type': 'application/json'
       })
     };
 
-    // TODO Change This to The Correct Edit API
-    this.httpClient.put<EditProfileResponse>(
+    this.httpClient.post<EditProfileResponse>(
       `${UserConfig.updateProfileAPI}/${this.userId}`,
+      // `${UserConfig.diagnoseAPI}`,
       JSON.stringify(this.updatedProfile),
       httpOptions).subscribe(
       data => {
