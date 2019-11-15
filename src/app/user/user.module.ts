@@ -61,6 +61,7 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
+import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { CommentListComponent } from './ui/components/comments-list/comment-list
     StatueListPageComponent,
     ProfilePageComponent,
     AboutIshtarPageComponent,
-    CommentListComponent
+    CommentListComponent,
+    CommentItemComponent
   ],
   exports: [
     // User
