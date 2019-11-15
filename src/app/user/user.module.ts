@@ -60,6 +60,7 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
+import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edi
     StatueListComponent,
     StatueListPageComponent,
     ProfilePageComponent,
-    AboutIshtarPageComponent
+    AboutIshtarPageComponent,
+    CommentListComponent
   ],
   exports: [
     // User

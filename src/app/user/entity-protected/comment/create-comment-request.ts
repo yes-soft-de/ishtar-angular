@@ -1,4 +1,4 @@
-export interface CommentsRequest {
+export interface CreateCommentRequest {
   entity: number;
   row: number;
   body: string;

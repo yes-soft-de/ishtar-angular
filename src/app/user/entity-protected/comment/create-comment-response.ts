@@ -1,6 +1,6 @@
 import {CommentObject} from './comment-object';
 
-export interface CommentsResponse {
+export interface CreateCommentResponse {
   status_code: string;
 
   Data: CommentObject[];

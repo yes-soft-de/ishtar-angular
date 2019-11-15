@@ -1,0 +1,2 @@
+export interface UpdateCommentResponse {
+}

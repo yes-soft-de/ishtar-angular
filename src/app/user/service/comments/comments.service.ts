@@ -41,7 +41,7 @@ export class CommentsService {
   //     id: itemId,
   //     entity: this.toEntityId(itemType)
   //   };
-  //   return this.httpClient.post<CommentsResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
+  //   return this.httpClient.post<CreateCommentResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
   // }
 
 
