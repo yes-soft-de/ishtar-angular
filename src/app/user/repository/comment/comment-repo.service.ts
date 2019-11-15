@@ -7,26 +7,37 @@ import {CreateCommentResponse} from '../../entity-protected/comment/create-comme
 import {CookieService} from 'ngx-cookie-service';
 import {UserCookiesConfig} from '../../UserCookiesConfig';
 import {UpdateCommentRequest} from '../../entity-protected/comment/update-comment-request';
+import {GetCommentResponse} from '../../entity-protected/comment/get-comment-response';
+import {GetCommentRequest} from '../../entity-protected/comment/get-comment-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentRepoService {
-  private repoSubject: Subject<CreateCommentResponse>;
-  private repo$: Observable<CreateCommentResponse>;
+  private repoSubject: Subject<any>;
+  private repo$: Observable<any>;
 
   private currentCommentRequest: CreateCommentRequest;
   private updateCommentRequest: UpdateCommentRequest;
+  private getCommentRequest: GetCommentRequest;
   private commentId: string;
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
 
-  public createComment(commentRequest: CreateCommentRequest, eventHandler: Subject<CreateCommentResponse>) {
+  public getComments(getCommentsRequest: GetCommentRequest, repoEventHandler: Subject<GetCommentResponse>) {
+    this.getCommentRequest = getCommentsRequest;
+    this.repoSubject = repoEventHandler;
+    this.repo$ = repoEventHandler.asObservable();
+
+    this.requestComments();
+  }
+
+  public createComment(commentRequest: CreateCommentRequest, repoEventHandler: Subject<CreateCommentResponse>) {
     // TODO Fix Pre Flight With The Backend Here, Before Posting!
     this.currentCommentRequest = commentRequest;
-    this.repoSubject = eventHandler;
-    this.repo$ = eventHandler.asObservable();
+    this.repoSubject = repoEventHandler;
+    this.repo$ = repoEventHandler.asObservable();
 
     this.requestCreateComment();
   }
@@ -85,6 +96,16 @@ export class CommentRepoService {
         this.repoSubject.next(null);
       }, error1 => {
         this.repoSubject.error('Error Connecting To Endpoint: ' + error1);
+      }
+    );
+  }
+
+  private requestComments() {
+    this.httpClient.post<GetCommentResponse>(`${UserConfig.commentsAPI}`, JSON.stringify(this.currentCommentRequest)).subscribe(
+      data => {
+        this.repoSubject.next(data.Data);
+      }, error1 => {
+        this.repoSubject.error('Error Getting Data: ' + error1);
       }
     );
   }
