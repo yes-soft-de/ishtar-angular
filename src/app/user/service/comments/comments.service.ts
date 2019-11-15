@@ -33,7 +33,7 @@ export class CommentsService {
     const entityNumber = this.toEntityId(entityName);
     return this.httpClient.get(`${UserConfig.specialSectionComments}/${entityNumber}/${itemId}`);
   }
-  // getComments(itemId: string, itemType: string) {
+  // getAllComments(itemId: string, itemType: string) {
   //   const requestData: {
   //     id: string,
   //     entity: number
@@ -41,7 +41,7 @@ export class CommentsService {
   //     id: itemId,
   //     entity: this.toEntityId(itemType)
   //   };
-  //   return this.httpClient.post<CreateCommentResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
+  //   return this.httpClient.post<CommentsResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
   // }
 
 

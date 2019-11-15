@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AdminConfig} from '../../../admin/AdminConfig';
 import {UserConfig} from '../../UserConfig';
 import {UserResponse} from '../../entity/user/user-response';
-import {UserInfo} from '../../entity-protected/profile/user-info';
+import {UserInfo} from '../../entity/user/user-info';
 
 @Injectable({
   providedIn: 'root'

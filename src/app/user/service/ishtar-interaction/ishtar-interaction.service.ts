@@ -6,7 +6,7 @@ import {LoveRequest} from '../../entity/love-interaction/love-request';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {UserProfileService} from '../client-profile/user-profile.service';
-import {UserInfo} from '../../entity-protected/profile/user-info';
+import {UserInfo} from '../../entity/user/user-info';
 
 @Injectable({
   providedIn: 'root'
