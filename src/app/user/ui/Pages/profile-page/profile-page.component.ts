@@ -21,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userProfileManager.getProfileObservable().subscribe(
+    this.userProfileManager.getManagerObservable().subscribe(
       data => {
         this.userProfileInfo = data.Data;
       }, error1 => {

@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     // (2) This Firs When the User is Logged In, Notice that i don't need errors here!
-    this.userProfileService.getProfileObservable().subscribe(
+    this.userProfileService.getManagerObservable().subscribe(
       usr => {
         // This Means that the user is Logged In
         if (usr.Data.email !== null && usr.Data.username !== undefined) {

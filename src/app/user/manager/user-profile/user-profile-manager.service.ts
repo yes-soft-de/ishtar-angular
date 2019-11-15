@@ -2,26 +2,32 @@ import {Injectable} from '@angular/core';
 import {UserProfileRepoService} from '../../repository/profile/user-profile-repo.service';
 import {Subject, Observable} from 'rxjs';
 import {UserProfileResponse} from '../../entity-protected/profile/user-profile-response';
+import {UserInfo} from '../../entity-protected/profile/user-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileManagerService {
-  userProfileEventHandler: Subject<UserProfileResponse>;
-  private userProfile$: Observable<UserProfileResponse>;
+  private repoSubject: Subject<UserProfileResponse>;
+  private repo$: Observable<UserProfileResponse>;
+
+  private managerSubject: Subject<UserInfo>;
+  private manager$: Observable<UserInfo>;
 
   constructor(private userProfileRepo: UserProfileRepoService) {
-    this.userProfileEventHandler = new Subject<UserProfileResponse>();
-    this.userProfile$ = this.userProfileEventHandler.asObservable();
-    this.logError();
+    this.managerSubject = new Subject<UserInfo>();
+    this.manager$ = this.managerSubject.asObservable();
+    this.logRepoError();
   }
 
   getUserProfile() {
-    this.userProfileRepo.requestUserProfile(this.userProfileEventHandler);
+    this.repoSubject = new Subject<UserProfileResponse>();
+    this.repo$ = this.repoSubject.asObservable();
+    this.userProfileRepo.requestUserProfile(this.repoSubject);
   }
 
-  private logError() {
-    this.userProfile$.subscribe(
+  private logRepoError() {
+    this.repo$.subscribe(
       () => {
       }, error1 => {
         console.log(error1);
@@ -29,8 +35,16 @@ export class UserProfileManagerService {
     );
   }
 
-  public getProfileObservable(): Observable<UserProfileResponse> {
-    return this.userProfile$;
+  private logManagerError() {
+    this.manager$.subscribe(
+      () => {
+      }, error1 => {
+        console.log(error1);
+      }
+    );
   }
 
+  public getManagerObservable(): Observable<UserInfo> {
+    return this.manager$;
+  }
 }

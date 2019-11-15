@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { EMPTY, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserConfig } from '../../UserConfig';
-import { catchError } from 'rxjs/operators';
-import { LoginResponse } from '../../entity-protected/login/login-response';
-import { CookieService } from 'ngx-cookie-service';
-import { LoginRequest } from '../../entity-protected/login/login-request';
-import { UserCookiesConfig } from '../../UserCookiesConfig';
+import {Injectable} from '@angular/core';
+import {EMPTY, Subject} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserConfig} from '../../UserConfig';
+import {catchError} from 'rxjs/operators';
+import {LoginResponse} from '../../entity-protected/login/login-response';
+import {CookieService} from 'ngx-cookie-service';
+import {LoginRequest} from '../../entity-protected/login/login-request';
+import {UserCookiesConfig} from '../../UserCookiesConfig';
 
 
 /*
@@ -14,7 +14,7 @@ import { UserCookiesConfig } from '../../UserCookiesConfig';
   * Flow:
   * 1. Get the Email and The Password
   * 2. Request the Token From The Backend
-  * 3. Save the Token in a Cookie, in order to share accross Front-End
+  * 3. Save the Token in a Cookie, in order to share across Front-End
    */
 
 @Injectable({
@@ -27,8 +27,6 @@ export class LoginRepoService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
-
-
 
   /**
    * the Request returns TOKEN for future use

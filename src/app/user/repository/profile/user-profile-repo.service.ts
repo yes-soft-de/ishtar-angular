@@ -18,7 +18,7 @@ export class UserProfileRepoService {
 
   public requestUserProfile(eventHandler: Subject<UserProfileResponse>) {
     this.eventHandler = eventHandler;
-    if (this.cookieService.get(UserCookiesConfig.TOKEN) === null) {
+    if (this.cookieService.get(UserCookiesConfig.TOKEN) === null || this.cookieService.get(UserCookiesConfig.TOKEN) === undefined) {
       eventHandler.error('Not Logged In User!');
       return;
     }

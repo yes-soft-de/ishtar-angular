@@ -6,19 +6,19 @@ import {LoginResponse} from '../../entity-protected/login/login-response';
 import {RegisterResponse} from '../../entity-protected/register/register-response';
 import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
 
-
 /**
- * This Class is Used as a Middle Ground Between Page and Services
+ * This Class is Used as a Middle Ground Between Page and Repo Services
  * The Definition I'm Following Here is that a Repo is a service that contains
  * HttpClient Service inside. While the Manager Aggregate the Result
  * This is Due to change to More Elaborate Structure Soon.
- * Now there Are 2 Observables Inside.
+ * Now there Are 3 Observables Inside, The Manager Serves a Facade to User functionality.
  */
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagerService {
 
+  // region Event Handling and Listening Objects
   private loginEventHandler: Subject<LoginResponse>;
   private tokenEvent$: Observable<LoginResponse>;
 
@@ -27,6 +27,7 @@ export class UserManagerService {
 
   private registerEventHandler: Subject<RegisterResponse>;
   private registerEvent$: Observable<RegisterResponse>;
+  // endregion
 
   username: string;
   password: string;
@@ -48,6 +49,8 @@ export class UserManagerService {
     this.logLogoutErrors();
   }
 
+  // region Functionality
+  // TODO Move To Interface
   public login(username: string, password: string) {
 
     this.username = username;
@@ -75,6 +78,9 @@ export class UserManagerService {
     this.logoutService.logout(this.logoutEventHandler);
   }
 
+  // endregion
+
+  // region Logging
   private logLoginError() {
     // This Method is Used to React to Errors Happening with Login
     this.tokenEvent$.subscribe(
@@ -108,6 +114,9 @@ export class UserManagerService {
     );
   }
 
+  // endregion
+
+  // region Observables
   public getLoginObservable(): Observable<LoginResponse> {
     return this.tokenEvent$;
   }
@@ -119,4 +128,6 @@ export class UserManagerService {
   public getLogoutObservable(): Observable<any> {
     return this.logoutEvents$;
   }
+
+  // endregion
 }

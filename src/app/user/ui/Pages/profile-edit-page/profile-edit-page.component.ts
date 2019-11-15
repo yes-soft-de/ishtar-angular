@@ -36,7 +36,7 @@ export class ProfileEditPageComponent implements OnInit {
       image: ['', [Validators.required]],
     });
 
-    this.userProfileService.getProfileObservable().subscribe(
+    this.userProfileService.getManagerObservable().subscribe(
       data => {
         this.oldUserProfile = data.Data;
         this.updateForm();
