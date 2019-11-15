@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CommentRepoService} from '../../repository/comment/comment-repo.service';
 import {Observable, Subject} from 'rxjs';
-import {CreateCommentResponse} from '../../entity-protected/comment/create-comment-response';
 import {CreateCommentRequest} from '../../entity-protected/comment/create-comment-request';
 import {CommentObject} from '../../entity-protected/comment/comment-object';
 import {UpdateCommentRequest} from '../../entity-protected/comment/update-comment-request';
@@ -9,24 +8,23 @@ import {UserProfileManagerService} from '../user-profile/user-profile-manager.se
 import {GetCommentRequest} from '../../entity-protected/comment/get-comment-request';
 import {GetCommentResponse} from '../../entity-protected/comment/get-comment-response';
 
-/**
- * @return CommentObject[] in the Observable
- */
-
 @Injectable({
   providedIn: 'root'
 })
 export class CommentManagerService {
+  // region Class Variables
   // This Listens To Repo Events
   private repo$: Observable<any>;
-  private repoSubject: Subject<any>;
+  private readonly repoSubject: Subject<any>;
 
-  // This Send the Result Data to The UI
-  private managerSubject: Subject<any>;
+  private managerSubject: Subject<string>;
+  private getManagerSubject: Subject<CommentObject[]>;
 
+  // endregion
   constructor(private commentService: CommentRepoService,
               private userProfileService: UserProfileManagerService) {
     this.managerSubject = new Subject<string>();
+    this.getManagerSubject = new Subject<CommentObject[]>();
 
     // Initiating For Listening Process
     this.repoSubject = new Subject<any>();
@@ -78,9 +76,9 @@ export class CommentManagerService {
     this.repo$.subscribe(
       (data: GetCommentResponse) => {
         // Additional Validation Happens Here
-        this.managerSubject.next(data.Data);
+        this.getManagerSubject.next(data.Data);
       }, error1 => {
-        this.managerSubject.error(error1);
+        this.getManagerSubject.error(error1);
       }
     );
 
@@ -135,18 +133,17 @@ export class CommentManagerService {
    * 2. Update Comment
    * 3. Delete Comment
    */
-  public getObservable() {
+  public getObservable(): Observable<string> {
     // (3) This Shows The Error/Success For the UI
-    const manager$: Observable<string> = this.managerSubject.asObservable();
-    return manager$;
+    // As a result of this arch, this fires when gets requested!, we should fix this
+    return this.managerSubject.asObservable();
   }
 
   /**
    * Fires CommentsObject[] Response.
    */
-  public getCommentsObservable() {
+  public getCommentsObservable(): Observable<CommentObject[]> {
     // This is Where The Mapping Happen!
-    const manager$: Observable<CommentObject[]> = this.managerSubject.asObservable();
-    return manager$;
+    return this.getManagerSubject.asObservable();
   }
 }
