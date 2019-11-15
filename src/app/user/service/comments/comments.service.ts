@@ -33,7 +33,7 @@ export class CommentsService {
     const entityNumber = this.toEntityId(entityName);
     return this.httpClient.get(`${UserConfig.specialSectionComments}/${entityNumber}/${itemId}`);
   }
-  // getAllComments(itemId: string, itemType: string) {
+  // getComments(itemId: string, itemType: string) {
   //   const requestData: {
   //     id: string,
   //     entity: number
