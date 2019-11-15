@@ -21,7 +21,7 @@ export class ArtistService {
     return this.httpClient.get(`${UserConfig.artistsAPI}`)
         .pipe(catchError(ArtistService.errorHandler));
   }
-  // requestArtistList() {
+  // getPaintingList() {
   //   return this.httpClient.get<ArtistListResponse>(
   //     `${UserConfig.ArtistListAPI}`, {responseType: 'json'}
   //   );
@@ -30,7 +30,7 @@ export class ArtistService {
   requestArtistDetails(artistId: any) {
     return this.httpClient.get(`${UserConfig.artistAPI}/${artistId}`);
   }
-  // requestArtistDetails(artistId: any) {
+  // getPainting(artistId: any) {
   //   const request: {
   //     artist: string
   //   } = {
@@ -48,7 +48,7 @@ export class ArtistService {
   }
 
   /*
-   requestArtistDetails(artistId: any) {
+   getPainting(artistId: any) {
       const request: {
         artist: string
       } = {
