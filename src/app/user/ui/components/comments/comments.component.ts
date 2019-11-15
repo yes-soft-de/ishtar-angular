@@ -5,7 +5,7 @@ import {CommentsService} from '../../../service/comments/comments.service';
 import {CommentsEntity} from '../../../entity/comments/comments-entity';
 import {ToastrService} from 'ngx-toastr';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
-import {UserInfo} from '../../../entity-protected/profile/user-info';
+import {UserInfo} from '../../../entity/user/user-info';
 import {UserResponse} from '../../../entity/user/user-response';
 import {CommentsResponse} from '../../../entity/comments/comments-response';
 
@@ -96,6 +96,56 @@ export class CommentsComponent implements OnInit {
       );
     } else {
       this.errorMessage = 'Comment Can Not By Empty';
+    }
+  }
+
+  editComment(index: number) {
+    if (this.client) {
+      this.edit = +index;
+    } else {
+      console.log('User is not login, FALSE');
+      return false;
+    }
+  }
+
+  saveComment(editTextareaValue: NgModel, index: number) {
+    if (editTextareaValue.valid) {
+      this.errorMessage = '';
+      this.buttonValue = 'Saving...';
+      this.commentsService.updateComment(
+          this.comments[index].id,
+          this.pageType,
+          this.sectionId,
+          this.comments[index].body,
+          this.client.id
+      ).subscribe(
+          () => {
+            this.edit = -1;
+            this.buttonValue = 'Save';
+            this.toaster.success('Comment Updated Successfully');
+          },
+          error => {
+            console.log(error);
+          }
+      );
+    } else {
+      this.errorEditMessage  = 'Comment Can Not By Empty';
+    }
+  }
+
+  deleteComment(commentId: number) {
+    if (confirm('Are You Sure You Want To Delete This Comment')) {
+      this.commentsService.deleteComment(commentId).subscribe(
+          () => {
+            this.fetchAllComments(this.sectionId);
+            this.toaster.success('Comment Deleted Successfully');
+          },
+          error => {
+            console.log(error);
+          }
+      );
+    } else {
+      return false;
     }
   }
 }
