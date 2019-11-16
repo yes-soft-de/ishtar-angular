@@ -8,8 +8,8 @@ export class AdminConfig {
   public static generalUploadAPI        = AdminConfig.sourceAPI + 'uploadArtistImage';
   public static paintingUploadAPI       = AdminConfig.sourceAPI + 'uploadPaintingImage';
   // Create Uploading Media
-  public static addMediaAPI             = AdminConfig.sourceAPI + 'createMedia';
-  public static allRowSelectedEntityAPI = AdminConfig.sourceAPI + 'getEntityNames';
+  public static addMediaAPI             = AdminConfig.sourceAPI + 'medias';
+  public static allRowSelectedEntityAPI = AdminConfig.sourceAPI + 'entityitems';
   // Art Type API
   // public static allArtTypeAPI           = AdminConfig.sourceAPI + 'getArtTypeList';
   public static artTypesAPI             = AdminConfig.sourceAPI + 'arttypes';

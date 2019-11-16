@@ -55,7 +55,7 @@ export class UserConfig {
   public static interactionAPI = UserConfig.sourceAPI + 'interaction';
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
   public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
-  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviewed';
+  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviews';
 
   // Clap Interactions API
   public static clapsAPI = UserConfig.sourceAPI + 'claps';
