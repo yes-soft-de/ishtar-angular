@@ -1,24 +1,18 @@
 .most-painting-seen {
   padding: 2rem 0;
   background: #343a40;
-  color: #fff;
-  .image {
-    img {
-      @media (min-height:768px) and (max-width:991px) {
-        min-height: 250px;
-      }
-      @media (max-height: 767px) {
-        max-height: 300px;
-        display: block;
-        margin: 15px auto;
-      }
-    }
+  //color: #fff;
+  .custom-card-header {
+    height: 15rem;
   }
   .content {
     .painting-name {
       a {
         color: #CCB832;
       }
+    }
+    .painting-viewed-number {
+      font-size: .9rem;
     }
     .painting-artist-name,
     .painting-dimension {
@@ -29,9 +23,13 @@
       color: #f4db75;
     }
     .painting-artist-name a,
-    .painting-story .h4,
+    .painting-color-type .h5,
     p span {
       color: #b2b67a;
     }
+  }
+  .null-most-seen-painting,
+  .most-seen-painting-loading h3 {
+    color: #CCB832;
   }
 }

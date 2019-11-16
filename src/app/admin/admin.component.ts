@@ -65,16 +65,16 @@ export class AdminComponent implements OnInit {
   constructor(private router: Router, private userConnector: UserProfileService, private toaster: ToastrService) { }
 
   ngOnInit() {
-    // this.userConnector.requestUserDetails().subscribe(
-    //      (data: any) => {
-    //      if (data.Data.username === undefined) {
-    //        alert('Unauthorized Access, Please Login!');
-    //        this.router.navigate(['/']);
-    //      } else {
-    //       this.toaster.success('Welcome ' + data.Data.username);
-    //     }
-    //   }
-    // );
+    this.userConnector.requestUserDetails().subscribe(
+         (data: any) => {
+         if (data.Data.username === undefined) {
+           alert('Unauthorized Access, Please Login!');
+           this.router.navigate(['/']);
+         } else {
+          this.toaster.success('Welcome ' + data.Data.username);
+        }
+      }
+    );
   }
 
 }
