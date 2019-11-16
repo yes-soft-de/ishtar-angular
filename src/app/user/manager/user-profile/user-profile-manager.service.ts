@@ -17,13 +17,13 @@ export class UserProfileManagerService {
   constructor(private userProfileRepo: UserProfileRepoService) {
     this.managerSubject = new Subject<UserInfo>();
     this.manager$ = this.managerSubject.asObservable();
-    this.logRepoError();
   }
 
   getUserProfile() {
     this.repoSubject = new Subject<UserProfileResponse>();
     this.repo$ = this.repoSubject.asObservable();
     this.userProfileRepo.requestUserProfile(this.repoSubject);
+    this.logRepoError();
   }
 
   private logRepoError() {
