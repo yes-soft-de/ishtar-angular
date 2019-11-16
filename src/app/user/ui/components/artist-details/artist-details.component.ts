@@ -1,8 +1,8 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Router} from '@angular/router';
-import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
-import {ArtistDetails} from '../../../entity/artist/artist-details';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { PaintingListItem } from '../../../entity/painting-list/painting-list-item';
+import { ArtistDetails } from '../../../entity/artist/artist-details';
+import { UserProfileService } from '../../../service/client-profile/user-profile.service';
 import Flickity from 'flickity';
 
 @Component({

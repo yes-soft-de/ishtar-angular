@@ -1,93 +1,133 @@
 import {Injectable} from '@angular/core';
-import {UserKeys} from '../../entity/auth/user-keys';
 import {LoginRepoService} from '../../repository/login/login-repo.service';
 import {RegisterRepoService} from '../../repository/register/register-repo.service';
-import {Subject} from 'rxjs';
-import {UserProfileRepoService} from '../../repository/profile/user-profile-repo.service';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
-
+import {Subject, Observable} from 'rxjs';
+import {LoginResponse} from '../../entity-protected/login/login-response';
+import {RegisterResponse} from '../../entity-protected/register/register-response';
+import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
 
 /**
- * This Class is Used as a Middle Ground Between Page and Services
+ * This Class is Used as a Middle Ground Between Page and Repo Services
  * The Definition I'm Following Here is that a Repo is a service that contains
  * HttpClient Service inside. While the Manager Aggregate the Result
  * This is Due to change to More Elaborate Structure Soon.
- * Now there Are 2 Observables Inside.
+ * Now there Are 3 Observables Inside, The Manager Serves a Facade to User functionality.
  */
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagerService {
-  // TODO Either change the Structure or Reduce the Observables, There Should Be 1 & Only 1 Observable/Subject Here
-  private userSubject = new Subject<UserKeys>();
-  private userProfileSubject = new Subject<UserProfileResponse>();
-  private userKeys: UserKeys;
-  private username: string;
-  private password: string;
-  private email: string;
-  private requestTime: Date;
+
+  // region Event Handling and Listening Objects
+  private loginEventHandler: Subject<LoginResponse>;
+  private tokenEvent$: Observable<LoginResponse>;
+
+  private logoutEventHandler: Subject<any>;
+  private logoutEvents$: Observable<any>;
+
+  private registerEventHandler: Subject<RegisterResponse>;
+  private registerEvent$: Observable<RegisterResponse>;
+  // endregion
+
+  username: string;
+  password: string;
+  email: string;
 
   constructor(private loginService: LoginRepoService,
               private registerService: RegisterRepoService,
-              private userProfileService: UserProfileRepoService) {
-    this.requestTime = new Date();
+              private logoutService: LogoutRepoService) {
+    this.loginEventHandler = new Subject<LoginResponse>();
+    this.registerEventHandler = new Subject<RegisterResponse>();
+    this.logoutEventHandler = new Subject<any>();
+
+    this.tokenEvent$ = this.loginEventHandler.asObservable();
+    this.registerEvent$ = this.registerEventHandler.asObservable();
+    this.logoutEvents$ = this.logoutEventHandler.asObservable();
+
+    this.logLoginError();
+    this.logRegisterError();
+    this.logLogoutErrors();
   }
 
-  /**
-   * This Function is Used to Login User
-   * @return Observable Of UserKeys
-   */
+  // region Functionality
+  // TODO Move To Interface
   public login(username: string, password: string) {
-    // Saved for Refresh Token
-    // TODO Remove this When Refresh Token is Used
+
     this.username = username;
     this.password = password;
 
-    this.loginService.login(username, password).subscribe(
-      keys => {
-        this.userKeys = keys;
-        this.userSubject.next(keys);
-      }
-    );
+    // When This is Done, The Result is Displayed in the Contructor
+    this.loginService.login(username, password, this.loginEventHandler);
   }
 
-  /**
-   * @return Observable Of Type Boolean
-   */
-  public register(email: string, username: string, password: string) {
+  public register(email: string, username: string, password: string, eventHandler?: Subject<RegisterResponse>) {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.registerService.register(email, username, password).subscribe(
-      requestStatus => {
-        if (requestStatus === true) {
-          this.login(username, password);
-        } else {
-          this.userSubject.next(null);
-        }
+    this.registerEventHandler = eventHandler;
+
+    this.registerService.register(email, username, password, this.registerEventHandler);
+  }
+
+  public logout() {
+    this.logoutEvents$.subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
+    this.logoutService.logout(this.logoutEventHandler);
+  }
+
+  // endregion
+
+  // region Logging
+  private logLoginError() {
+    // This Method is Used to React to Errors Happening with Login
+    this.tokenEvent$.subscribe(
+      response => {
+        // TODO: Implement Something to React to a successful Login!
+        console.log(response.token);
+      }, error => {
+        // TODO: Display a Toast or Something
+        console.log(error);
       }
     );
   }
 
-  // TODO Move This From Here to More Suitable Place
-  /**
-   * This Function Return Observable of User Profile Type Class
-   * @return Observable
-   */
-  public requestUserProfile() {
-    if (this.userKeys == null) {
-      return;
-    }
-
-    this.userProfileService.requestUserProfile(this.userKeys).subscribe(
-      data => {
-        this.userProfileSubject.next(data);
+  private logLogoutErrors() {
+    this.logoutEvents$.subscribe(
+      () => {
+      }, error1 => {
+        console.log(error1);
       }
     );
-    return this.userProfileSubject.asObservable;
   }
 
-  public subscribeToRepo() {
-    return this.userSubject.asObservable();
+  private logRegisterError() {
+    this.registerEvent$.subscribe(
+      registerResponse => {
+        // TODO: Implement Something to React to a successful Register
+      }, error => {
+        // TODO: Implement Something to React to the error
+        console.log(error);
+      }
+    );
   }
+
+  // endregion
+
+  // region Observables
+  public getLoginObservable(): Observable<LoginResponse> {
+    return this.tokenEvent$;
+  }
+
+  public getRegisterObservable(): Observable<RegisterResponse> {
+    return this.registerEvent$;
+  }
+
+  public getLogoutObservable(): Observable<any> {
+    return this.logoutEvents$;
+  }
+
+  // endregion
 }

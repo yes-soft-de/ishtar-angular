@@ -2,5 +2,7 @@ import {PaintingInterface} from './painting-interface';
 
 export class Painting {
   0: PaintingInterface;
-  1: {artType: string};
+  1: {
+    artType: string
+  };
 }

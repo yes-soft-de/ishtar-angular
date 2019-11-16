@@ -1,0 +1,52 @@
+<!-- Comment List -->
+<div class="all-comments" [ngStyle]="{'height': comments?.length == 0 ? 0 :  comments?.length == 1 ? '115px' : comments?.length == 2 ? '230px' : '300px'}">
+  <div class="sub-comment" *ngFor="let comment of comments; index as i">
+    <div class="hidden-button">
+      <a class="btn btn-primary btn-sm mr-1 px-1 py-0" (click)="editComment(i)" *ngIf="edit !== i && (comment?.username == client?.username)">Edit</a>
+      <a class="btn btn-danger btn-sm confirm px-1 py-0" (click)="deleteComment(comment.id)" *ngIf="comment?.username == client?.username">Delete</a>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-lg-1 text-center">
+        <img class="res-image" src="{{!client?.image ? '../../../../../assets/default-avatar.jpg' : client?.image}}" alt=""/>
+      </div>
+      <div class="col-sm-10 col-lg-11 mt-2 mt-sm-0">
+        <div class="comment-body bg-secondary text-white py-2 px-3">
+          <div class="time">
+            <span class="border-bottom pb-1">{{comment.username}} {{comment.date != null ? '( ' + (comment.date.timestamp * 1000 | date) + ' )': ''}}</span>
+          </div>
+          <p class="comment m-0 mt-2">
+            {{comment.body}}
+          </p>
+          <!--Start Edit Comment Div-->
+          <div *ngIf="edit === i">
+              <textarea #editTextarea="ngModel"
+                        type="text"
+                        [(ngModel)]="comment.body"
+                        name="comment"
+                        placeholder="comment..."
+                        class="form-control rounded-0 my-2"
+                        required
+                        [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"></textarea>
+            <span class="invalid-feedback pl-3 mt-2" *ngIf="errorEditMessage != null" [ngStyle]="{'display': errorEditMessage  != null ? 'block' : 'none'}">{{errorEditMessage}}</span>
+            <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(editTextarea, i)" *ngIf="comment?.username == client?.username">{{buttonValue}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--      <div *ngIf="edit === i">-->
+    <!--        <textarea #editTextarea="ngModel"-->
+    <!--                  type="text"-->
+    <!--                  [(ngModel)]="comment.body"-->
+    <!--                  name="comment"-->
+    <!--                  placeholder="comment..."-->
+    <!--                  class="form-control rounded-0 my-2"-->
+    <!--                  required-->
+    <!--                  [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"></textarea>-->
+    <!--        <span class="invalid-feedback pl-3 mt-2" *ngIf="errorEditMessage != null" [ngStyle]="{'display': errorEditMessage  != null ? 'block' : 'none'}">{{errorEditMessage}}</span>-->
+    <!--          <button type="button" class="btn btn-sm ml-3" style="background-color: #CCB832;" (click)="saveComment(editTextarea, i)" >{{buttonValue}}</button>-->
+    <!--      </div>-->
+  </div>
+
+</div>
+<!-- #Comment List -->

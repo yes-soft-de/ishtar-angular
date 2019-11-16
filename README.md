@@ -8,30 +8,43 @@ Just found out, that i'm a good es6 JS developer, or fast... at least
 
 
 
-### Usage:
+## Changes
 
-to start using this product:
-
-1. start backend 
-2. start express router using the command `node server` in the express router directory
-3. start angular project
-4. navigate to `http://localhost:4200` 
-5. Enjoy!
+Server Side Fully Consumed in the new Arch.
 
 
 
-### Notes:
+## Current Errors
 
-Redesign for Home Page, Painting Details Page is a MUST.
+1. Preflight Should be Enabled By the Backend, that's why some requests is not gonna happen.
+
+2. Infinite Loop in the edit profile save functionality.
 
 
-### Admin CORS policy Fixed
-1. install corsproxy plugin :
-    ```npm install -g corsproxy```
-2. Open New Terminal in the base folder **the same place where you execute ng serve**
-3. Run The Proxy Using keyword `corsproxy`
-4. The cors proxy will start at http://localhost:1337. To access another domain, use the domain name (including port) as the first folder, e.g :
-    ```
-        http://localhost:1337/localhost:3000/sign_in
-        http://localhost:1337/my.domain.com/path/to/resource
-    ```
+
+## Usage Notes
+
+
+
+1. Every Widget/Component Connect to <u>Single</u> Manager Service
+2. The Connection Goes As:
+
+```typescript
+constructor (private manager: ThatManager){
+    // (2) This Marks the End of the Bellow Sequence
+    manager.getObservable().subscribe(
+        data => {
+            // This Shall Be Provided in a Reference
+        }, error => {
+            // This is Just a String Explaining The Error
+        }
+    );
+    
+    // (1) This Starts The Sequence
+    manager.requestSomeInternalMethod();
+}
+```
+
+
+
+I Choose to subscribe first to ensure that the subject is listening before any event happen, this is very important in case of browser-based errors, since it's super fast to occur.

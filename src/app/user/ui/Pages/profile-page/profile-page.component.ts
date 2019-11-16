@@ -1,39 +1,56 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { IshtarInteractionService } from 'src/app/user/service/ishtar-interaction/ishtar-interaction.service';
-import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-interface';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {IshtarInteractionService} from 'src/app/user/service/ishtar-interaction/ishtar-interaction.service';
+import {UserProfileResponse} from 'src/app/user/entity-protected/profile/user-profile-response';
+import {UserProfileManagerService} from 'src/app/user/manager/user-profile/user-profile-manager.service';
+import {Router} from '@angular/router';
+import {UserInfo} from '../../../entity-protected/profile/user-info';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss','../../components/statue-list/statue-list.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  styleUrls: ['./profile-page.component.scss', '../../components/statue-list/statue-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProfilePageComponent implements OnInit {
   magnifyingImage = false;
-  
-  constructor(private interactionService: IshtarInteractionService) { }
+  public userProfileInfo: UserInfo;
 
-  ngOnInit() {
+  constructor(private interactionService: IshtarInteractionService,
+              private userProfileManager: UserProfileManagerService,
+              private router: Router) {
   }
 
-  choseTab(event){
-    var tab_id = event.target.id;
-    var active = document.getElementById(tab_id).classList.contains('active');
-    var active_block = document.getElementById(tab_id).id;
-    active_block = active_block.slice(0,-3) + 'list';
-    if (!active){
-      var tab_options = document.getElementsByClassName("tab-option");
-      Array.prototype.forEach.call(tab_options, function(el) {
-        if(el.classList.contains('active')){
+  ngOnInit() {
+    this.userProfileManager.getManagerObservable().subscribe(
+      data => {
+        this.userProfileInfo = data;
+      }, error1 => {
+        // TODO Implement A Way To Handle Unauthorized Profile Access
+        this.router.navigate(['/']);
+      }
+    );
+
+    this.userProfileManager.getUserProfile();
+  }
+
+  choseTab(event) {
+    const tabId = event.target.id;
+    const active = document.getElementById(tabId).classList.contains('active');
+    let activeBlock = document.getElementById(tabId).id;
+    activeBlock = activeBlock.slice(0, -3) + 'list';
+    if (!active) {
+      const tabOptions = document.getElementsByClassName('tab-option');
+      Array.prototype.forEach.call(tabOptions, (el) => {
+        if (el.classList.contains('active')) {
           el.classList.remove('active');
-          document.getElementById(tab_id).classList.add('active');
+          document.getElementById(tabId).classList.add('active');
         }
       });
-      var results_block = document.getElementsByClassName("results-block");
-      Array.prototype.forEach.call(results_block, function(el) {
-        if(el.classList.contains('active')){
+      const resultsBlock = document.getElementsByClassName('results-block');
+      Array.prototype.forEach.call(resultsBlock, (el) => {
+        if (el.classList.contains('active')) {
           el.classList.remove('active');
-          document.getElementById(active_block).classList.add('active');
+          document.getElementById(activeBlock).classList.add('active');
         }
       });
 
@@ -56,5 +73,5 @@ export class ProfilePageComponent implements OnInit {
   viewStatue(statueId: number) {
     this.interactionService.addViewInteraction(statueId, 'statue');
   }
-  
+
 }
