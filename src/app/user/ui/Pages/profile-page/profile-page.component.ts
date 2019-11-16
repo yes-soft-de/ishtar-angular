@@ -23,7 +23,7 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit() {
     this.userProfileManager.getManagerObservable().subscribe(
       data => {
-        this.userProfileInfo = data.Data;
+        this.userProfileInfo = data;
       }, error1 => {
         // TODO Implement A Way To Handle Unauthorized Profile Access
         this.router.navigate(['/']);
@@ -34,23 +34,23 @@ export class ProfilePageComponent implements OnInit {
   }
 
   choseTab(event) {
-    var tab_id = event.target.id;
-    var active = document.getElementById(tab_id).classList.contains('active');
-    var active_block = document.getElementById(tab_id).id;
-    active_block = active_block.slice(0, -3) + 'list';
+    const tabId = event.target.id;
+    const active = document.getElementById(tabId).classList.contains('active');
+    let activeBlock = document.getElementById(tabId).id;
+    activeBlock = activeBlock.slice(0, -3) + 'list';
     if (!active) {
-      var tab_options = document.getElementsByClassName('tab-option');
-      Array.prototype.forEach.call(tab_options, function(el) {
+      const tabOptions = document.getElementsByClassName('tab-option');
+      Array.prototype.forEach.call(tabOptions, (el) => {
         if (el.classList.contains('active')) {
           el.classList.remove('active');
-          document.getElementById(tab_id).classList.add('active');
+          document.getElementById(tabId).classList.add('active');
         }
       });
-      var results_block = document.getElementsByClassName('results-block');
-      Array.prototype.forEach.call(results_block, function(el) {
+      const resultsBlock = document.getElementsByClassName('results-block');
+      Array.prototype.forEach.call(resultsBlock, (el) => {
         if (el.classList.contains('active')) {
           el.classList.remove('active');
-          document.getElementById(active_block).classList.add('active');
+          document.getElementById(activeBlock).classList.add('active');
         }
       });
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UploadManagerService} from '../../../manager/upload/upload-manager.service';
 import {UserProfileManagerService} from '../../../manager/user-profile/user-profile-manager.service';
 import {UserInfo} from '../../../entity-protected/profile/user-info';
@@ -6,23 +6,29 @@ import {EditUserProfileManagerService} from '../../../manager/edit-user-profile/
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ImageSnippet} from '../../../../admin/entity/image-snippet/image-snippet';
+import {ToastrService} from 'ngx-toastr';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile-edit-page',
   templateUrl: './profile-edit-page.component.html',
   styleUrls: ['./profile-edit-page.component.scss']
 })
-export class ProfileEditPageComponent implements OnInit {
+export class ProfileEditPageComponent implements OnInit, OnDestroy {
   profileEditForm: FormGroup;
   oldUserProfile: UserInfo;
   selectedFile;
   saveEditEnabled = true;
+  imageUploadFinished = true;
+
+  manager$: Observable<UserInfo>;
 
   constructor(private uploadService: UploadManagerService,
               private userProfileService: UserProfileManagerService,
               private editProfileService: EditUserProfileManagerService,
               private router: Router,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private toaster: ToastrService) {
   }
 
   ngOnInit() {
@@ -36,9 +42,10 @@ export class ProfileEditPageComponent implements OnInit {
       image: ['', [Validators.required]],
     });
 
-    this.userProfileService.getManagerObservable().subscribe(
+    this.manager$ = this.userProfileService.getManagerObservable();
+    this.manager$.subscribe(
       data => {
-        this.oldUserProfile = data.Data;
+        this.oldUserProfile = data;
         this.updateForm();
       }
     );
@@ -49,6 +56,9 @@ export class ProfileEditPageComponent implements OnInit {
         this.router.navigate(['/profile']);
       }
     );
+  }
+
+  ngOnDestroy(): void {
   }
 
   updateForm() {
@@ -67,6 +77,8 @@ export class ProfileEditPageComponent implements OnInit {
   }
 
   uploadNewImage(newImage: any) {
+    this.imageUploadFinished = false;
+    this.toaster.info('Image is Uploading... Please Wait');
     const myImage: File = newImage.files[0];
     console.log('Image Selected With Name: ' + myImage.name);
     this.saveEditEnabled = false;
@@ -75,9 +87,11 @@ export class ProfileEditPageComponent implements OnInit {
       data => {
         this.profileEditForm.get('image').setValue(data.url);
         this.saveEditEnabled = true;
+        this.imageUploadFinished = true;
+        this.toaster.success('Image Upload is Finished!');
       }
     );
 
-    this.uploadService.uploadImage(myImage);
+    this.uploadService.uploadAvatarImage(myImage);
   }
 }

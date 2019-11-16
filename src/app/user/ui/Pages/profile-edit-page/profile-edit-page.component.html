@@ -23,7 +23,8 @@
       <label>Birthday:</label>
       <input formControlName="birthDate" type="date" value="{{oldUserProfile.birthDate}}"
              class="form-control" required>
-      <button (click)="saveChanges()" [disabled]="!saveEditEnabled">Save</button>
+      <button (click)="saveChanges()" *ngIf="imageUploadFinished">Save</button>
+      <button *ngIf="!imageUploadFinished">Uploading Image...</button>
     </form>
   </div>
 </div>

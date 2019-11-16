@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
     // This Should Fire When using Register
     // (b) This Fires After (a)
     this.userManager.getRegisterObservable().subscribe(
-      registerResult => {
+      () => {
         // This Fires When Register Success, So Try to Login When That Happen!
         this.submitLoginAfterRegister(this.email, this.password);
       }, error1 => {
@@ -78,6 +78,7 @@ export class LoginPageComponent implements OnInit {
     // We Save The Credentials to login later
     // (a) This Fires First
     if (this.registerForm.get('password').value === this.registerForm.get('confirm_password').value) {
+      // Save This For Future Login Process
       this.email = this.registerForm.get('email').value;
       this.username = this.registerForm.get('username').value;
       this.password = this.registerForm.get('password').value;
