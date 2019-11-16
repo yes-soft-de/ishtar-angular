@@ -35,12 +35,7 @@ export class HeaderComponent implements OnInit {
     // (2) This Firs When the User is Logged In, Notice that i don't need errors here!
     this.userProfileService.getManagerObservable().subscribe(
       usr => {
-        // This Means that the user is Logged In
-        if (usr.email !== null && usr.username !== undefined) {
-          this.userLoggedIn = true;
-          this.userInfo = usr;
-          console.log('User Logged In');
-        }
+        console.log(usr);
       }, error1 => {
         console.log(error1);
       }
@@ -74,26 +69,6 @@ export class HeaderComponent implements OnInit {
     this.userManager.logout();
   }
 
-  /* showInputFeild() {
-      document.getElementById('open-search').style.opacity = '0';
-      document.getElementById('open-search').style.zIndex = '-1';
-      document.getElementById('input-search').style.width = '100%';
-      document.getElementById('input-mobile-search').style.width = '100%';
-      document.getElementById('close-search').style.opacity = '1';
-      document.getElementById('close-search').style.zIndex = '2';
-      document.getElementById('inlineFormInputGroup').focus();
-    }
-
-    hideInputFeild() {
-      document.getElementById('close-search').style.opacity = '0';
-      document.getElementById('close-search').style.zIndex = '-1';
-      document.getElementById('input-search').style.width = '0';
-      document.getElementById('input-mobile-search').style.width = '100%';
-      document.getElementById('open-search').style.opacity = '1';
-      document.getElementById('open-search').style.zIndex = '2';
-      document.getElementById('inlineFormInputGroup').blur();
-    }
-  */
   goToSearch() {
     this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }

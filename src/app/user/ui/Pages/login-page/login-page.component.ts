@@ -18,28 +18,21 @@ export class LoginPageComponent implements OnInit {
   private password: string;
   private username: string;
 
+  private registering = false;
+
   constructor(private userManager: UserManagerService,
               private fb: FormBuilder, private toaster: ToastrService) {
     // This Observable Should Fire Checking For Login
     // (2) This Fires After (1), If Successful
     this.userManager.getObservable().subscribe(
-      response => {
+      () => {
+        if (this.registering) {
+          this.registering = false;
+          this.submitLoginAfterRegister(this.email, this.password);
+        }
         window.location.reload();
       }, error1 => {
         // TODO: Do Something When Login Error Happen
-        console.log(error1);
-      }
-    );
-
-    // This Should Fire When using Register
-    // (b) This Fires After (a)
-    this.userManager.getObservable().subscribe(
-      () => {
-        // This Fires When Register Success, So Try to Login When That Happen!
-        this.submitLoginAfterRegister(this.email, this.password);
-      }, error1 => {
-        // This Fires When Register Error Happens
-        // TODO: Implement Register Failed Handler
         console.log(error1);
       }
     );
