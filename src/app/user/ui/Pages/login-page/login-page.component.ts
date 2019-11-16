@@ -27,13 +27,17 @@ export class LoginPageComponent implements OnInit {
     this.userManager.getObservable().subscribe(
       () => {
         if (this.registering) {
-          this.registering = false;
           this.submitLoginAfterRegister(this.email, this.password);
+        } else {
+          window.location.reload();
         }
-        window.location.reload();
+        this.toaster.success('Success');
+        this.registering = false;
       }, error1 => {
         // TODO: Do Something When Login Error Happen
         console.log(error1);
+        this.toaster.error('Error: ' + error1);
+        this.registering = false;
       }
     );
   }
@@ -74,6 +78,7 @@ export class LoginPageComponent implements OnInit {
       this.email = this.registerForm.get('email').value;
       this.username = this.registerForm.get('username').value;
       this.password = this.registerForm.get('password').value;
+      this.registering = true;
       this.userManager.register(
         this.registerForm.get('email').value,
         this.registerForm.get('username').value,

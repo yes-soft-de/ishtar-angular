@@ -28,7 +28,8 @@ export class UserProfileManagerService {
 
   private logRepoError() {
     this.repo$.subscribe(
-      () => {
+      data => {
+        this.managerSubject.next(data.Data);
       }, error1 => {
         console.log(error1);
       }

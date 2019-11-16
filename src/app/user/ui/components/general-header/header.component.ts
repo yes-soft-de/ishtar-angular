@@ -36,11 +36,14 @@ export class HeaderComponent implements OnInit {
     this.userProfileService.getManagerObservable().subscribe(
       usr => {
         console.log(usr);
+        this.userInfo = usr;
+        this.userLoggedIn = true;
       }, error1 => {
         console.log(error1);
       }
     );
 
+    // For Logout
     this.userManager.getObservable().subscribe(
       data => {
         this.router.navigate(['/']);
