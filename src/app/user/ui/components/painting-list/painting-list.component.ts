@@ -62,7 +62,7 @@ export class PaintingListComponent implements OnInit {
           InteractionConsts.INTERACTION_TYPE_LOVE)
           .subscribe(
               (data: any) => {
-                console.log('Painting Love: Id:', image.id, ' => Love: ' , data.Data[0].interactions);
+                // console.log('Painting Love: Id:', image.id, ' => Love: ' , data.Data[0].interactions);
                 this.paintingsLove.push({
                   id: image.id,
                   loveNumber: data.Data[0].interactions

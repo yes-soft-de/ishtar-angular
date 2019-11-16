@@ -22,9 +22,8 @@ export class LoginPageComponent implements OnInit {
               private fb: FormBuilder, private toaster: ToastrService) {
     // This Observable Should Fire Checking For Login
     // (2) This Fires After (1), If Successful
-    this.userManager.getLoginObservable().subscribe(
+    this.userManager.getObservable().subscribe(
       response => {
-        // TODO: Do Something When Login Success
         window.location.reload();
       }, error1 => {
         // TODO: Do Something When Login Error Happen
@@ -34,7 +33,7 @@ export class LoginPageComponent implements OnInit {
 
     // This Should Fire When using Register
     // (b) This Fires After (a)
-    this.userManager.getRegisterObservable().subscribe(
+    this.userManager.getObservable().subscribe(
       () => {
         // This Fires When Register Success, So Try to Login When That Happen!
         this.submitLoginAfterRegister(this.email, this.password);
