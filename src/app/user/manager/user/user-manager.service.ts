@@ -18,15 +18,17 @@ import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
 })
 export class UserManagerService {
   private managerSubject: Subject<string>;
+  private manager$: Observable<string>;
+
   // region Event Handling and Listening Objects
-  private loginEventHandler: Subject<LoginResponse>;
-  private tokenEvent$: Observable<LoginResponse>;
+  private loginRepoSubject: Subject<LoginResponse>;
+  private login$: Observable<LoginResponse>;
 
-  private logoutEventHandler: Subject<any>;
-  private logoutEvents$: Observable<any>;
+  private logoutRepoSubject: Subject<any>;
+  private logout$: Observable<any>;
 
-  private registerEventHandler: Subject<RegisterResponse>;
-  private registerEvent$: Observable<RegisterResponse>;
+  private registerRepoSubject: Subject<RegisterResponse>;
+  private register$: Observable<RegisterResponse>;
   // endregion
 
   username: string;
@@ -37,92 +39,62 @@ export class UserManagerService {
               private registerService: RegisterRepoService,
               private logoutService: LogoutRepoService) {
     this.managerSubject = new Subject<string>();
+    this.manager$ = this.managerSubject.asObservable();
 
-    this.registerEventHandler = new Subject<RegisterResponse>();
-    this.registerEvent$ = this.registerEventHandler.asObservable();
-    this.logRegisterError();
+    this.registerRepoSubject = new Subject<RegisterResponse>();
+    this.register$ = this.registerRepoSubject.asObservable();
 
-    this.loginEventHandler = new Subject<LoginResponse>();
-    this.tokenEvent$ = this.loginEventHandler.asObservable();
-    this.logLoginError();
+    this.loginRepoSubject = new Subject<LoginResponse>();
+    this.login$ = this.loginRepoSubject.asObservable();
 
-    this.logoutEventHandler = new Subject<any>();
-    this.logoutEvents$ = this.logoutEventHandler.asObservable();
-    this.logLogoutErrors();
+    this.logoutRepoSubject = new Subject<any>();
+    this.logout$ = this.logoutRepoSubject.asObservable();
   }
 
   // region Functionality
   // TODO Move To Interface
   public login(username: string, password: string) {
+    this.login$.subscribe(() => {
+      this.managerSubject.next('Success!');
+    }, error1 => {
+      this.managerSubject.error(error1);
+    });
     this.username = username;
     this.password = password;
 
     // When This is Done, The Result is Displayed in the Contructor
-    this.loginService.login(username, password, this.loginEventHandler);
+    this.loginService.login(username, password, this.loginRepoSubject);
   }
 
   public register(email: string, username: string, password: string) {
+    this.register$.subscribe(
+      () => {
+        this.managerSubject.next('Success');
+      }, error1 => {
+        this.managerSubject.error(error1);
+      }
+    );
     this.username = username;
     this.password = password;
     this.email = email;
-    this.registerEventHandler = new Subject<RegisterResponse>();
 
-    this.registerService.register(email, username, password, this.registerEventHandler);
+    this.registerService.register(email, username, password, this.registerRepoSubject);
   }
 
   public logout() {
-    this.logoutEvents$.subscribe(
+    this.logout$.subscribe(
       () => {
         window.location.reload();
       }
     );
-    this.logoutService.logout(this.logoutEventHandler);
-  }
-
-  // endregion
-
-  // region Logging
-  private logLoginError() {
-    // This Method is Used to React to Errors Happening with Login
-    this.tokenEvent$.subscribe(
-      response => {
-        // TODO: Implement Something to React to a successful Login!
-        console.log(response.token);
-        this.managerSubject.next('Login Success!');
-      }, error => {
-        // TODO: Display a Toast or Something
-        console.log(error);
-      }
-    );
-  }
-
-  private logLogoutErrors() {
-    this.logoutEvents$.subscribe(
-      () => {
-        this.managerSubject.next('Logout Success!');
-      }, error1 => {
-        console.log(error1);
-      }
-    );
-  }
-
-  private logRegisterError() {
-    this.registerEvent$.subscribe(
-      registerResponse => {
-        // TODO: Implement Something to React to a successful Register
-        this.managerSubject.next('Register Success!');
-      }, error => {
-        // TODO: Implement Something to React to the error
-        console.log(error);
-      }
-    );
+    this.logoutService.logout(this.logoutRepoSubject);
   }
 
   // endregion
 
   // region Observables
   public getObservable(): Observable<string> {
-    return this.managerSubject.asObservable();
+    return this.manager$;
   }
 
   // endregion

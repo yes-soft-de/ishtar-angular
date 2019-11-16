@@ -18,10 +18,6 @@ export class UserProfileRepoService {
 
   public requestUserProfile(eventHandler: Subject<UserProfileResponse>) {
     this.eventHandler = eventHandler;
-    if (this.cookieService.get(UserCookiesConfig.TOKEN) === null || this.cookieService.get(UserCookiesConfig.TOKEN) === undefined) {
-      eventHandler.error('Not Logged In User!');
-      return;
-    }
     this.token = this.cookieService.get(UserCookiesConfig.TOKEN);
     this.requestPreFlight();
   }
@@ -38,7 +34,6 @@ export class UserProfileRepoService {
         Authorization: `Bearer ${this.token}`
       })
     };
-    console.log('ML ' + JSON.stringify(httpOptions.headers));
     this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
       data => {
         this.eventHandler.next(data);
