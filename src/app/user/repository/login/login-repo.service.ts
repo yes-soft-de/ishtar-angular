@@ -21,7 +21,7 @@ import {UserCookiesConfig} from '../../UserCookiesConfig';
   providedIn: 'root'
 })
 export class LoginRepoService {
-  private eventListener: Subject<LoginResponse>;
+  private repoSubject: Subject<LoginResponse>;
   private userName: string;
   private pass: string;
 
@@ -34,7 +34,7 @@ export class LoginRepoService {
   public login(email: string, pass: string, eventListener: Subject<LoginResponse>) {
     this.userName = email;
     this.pass = pass;
-    this.eventListener = eventListener;
+    this.repoSubject = eventListener;
     this.requestPreFlight();
   }
 
@@ -60,16 +60,22 @@ export class LoginRepoService {
       password: this.pass,
     };
     this.httpClient.post<LoginResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions)
-      .subscribe(
+      .pipe(
+        catchError(() => {
+          // If this had an error, CORS is still affective, and We can Precede to Getting the Token
+          this.repoSubject.error('Error Getting the Response From Backend!');
+          return EMPTY;
+        })
+      ).subscribe(
         response => {
           if (response.token !== null) {
             this.cookieService.set(UserCookiesConfig.TOKEN, response.token);
-            this.eventListener.next(response);
+            this.repoSubject.next(response);
           }
         },
         error => {
-          if (this.eventListener !== null) {
-            this.eventListener.error(error);
+          if (this.repoSubject !== null) {
+            this.repoSubject.error(error);
           }
         }
       );

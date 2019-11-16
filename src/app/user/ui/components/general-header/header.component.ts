@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
       }
     );
 
-    this.userManager.getLogoutObservable().subscribe(
+    this.userManager.getObservable().subscribe(
       data => {
         this.router.navigate(['/']);
       }, error1 => {
@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.userManager.getLogoutObservable().subscribe(
+    this.userManager.getObservable().subscribe(
       () => {
         this.router.navigate(['/']);
       }

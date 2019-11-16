@@ -17,7 +17,7 @@ import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
   providedIn: 'root'
 })
 export class UserManagerService {
-
+  private managerSubject: Subject<string>;
   // region Event Handling and Listening Objects
   private loginEventHandler: Subject<LoginResponse>;
   private tokenEvent$: Observable<LoginResponse>;
@@ -36,23 +36,24 @@ export class UserManagerService {
   constructor(private loginService: LoginRepoService,
               private registerService: RegisterRepoService,
               private logoutService: LogoutRepoService) {
-    this.loginEventHandler = new Subject<LoginResponse>();
+    this.managerSubject = new Subject<string>();
+
     this.registerEventHandler = new Subject<RegisterResponse>();
-    this.logoutEventHandler = new Subject<any>();
-
-    this.tokenEvent$ = this.loginEventHandler.asObservable();
     this.registerEvent$ = this.registerEventHandler.asObservable();
-    this.logoutEvents$ = this.logoutEventHandler.asObservable();
-
-    this.logLoginError();
     this.logRegisterError();
+
+    this.loginEventHandler = new Subject<LoginResponse>();
+    this.tokenEvent$ = this.loginEventHandler.asObservable();
+    this.logLoginError();
+
+    this.logoutEventHandler = new Subject<any>();
+    this.logoutEvents$ = this.logoutEventHandler.asObservable();
     this.logLogoutErrors();
   }
 
   // region Functionality
   // TODO Move To Interface
   public login(username: string, password: string) {
-
     this.username = username;
     this.password = password;
 
@@ -60,11 +61,11 @@ export class UserManagerService {
     this.loginService.login(username, password, this.loginEventHandler);
   }
 
-  public register(email: string, username: string, password: string, eventHandler?: Subject<RegisterResponse>) {
+  public register(email: string, username: string, password: string) {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.registerEventHandler = eventHandler;
+    this.registerEventHandler = new Subject<RegisterResponse>();
 
     this.registerService.register(email, username, password, this.registerEventHandler);
   }
@@ -87,6 +88,7 @@ export class UserManagerService {
       response => {
         // TODO: Implement Something to React to a successful Login!
         console.log(response.token);
+        this.managerSubject.next('Login Success!');
       }, error => {
         // TODO: Display a Toast or Something
         console.log(error);
@@ -97,6 +99,7 @@ export class UserManagerService {
   private logLogoutErrors() {
     this.logoutEvents$.subscribe(
       () => {
+        this.managerSubject.next('Logout Success!');
       }, error1 => {
         console.log(error1);
       }
@@ -107,6 +110,7 @@ export class UserManagerService {
     this.registerEvent$.subscribe(
       registerResponse => {
         // TODO: Implement Something to React to a successful Register
+        this.managerSubject.next('Register Success!');
       }, error => {
         // TODO: Implement Something to React to the error
         console.log(error);
@@ -117,16 +121,8 @@ export class UserManagerService {
   // endregion
 
   // region Observables
-  public getLoginObservable(): Observable<LoginResponse> {
-    return this.tokenEvent$;
-  }
-
-  public getRegisterObservable(): Observable<RegisterResponse> {
-    return this.registerEvent$;
-  }
-
-  public getLogoutObservable(): Observable<any> {
-    return this.logoutEvents$;
+  public getObservable(): Observable<string> {
+    return this.managerSubject.asObservable();
   }
 
   // endregion

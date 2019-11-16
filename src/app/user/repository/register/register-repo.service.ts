@@ -5,7 +5,6 @@ import {UserConfig} from '../../UserConfig';
 import {catchError} from 'rxjs/operators';
 import {RegisterResponse} from '../../entity-protected/register/register-response';
 import {RegisterRequest} from '../../entity-protected/register/register-request';
-import * as faker from 'faker';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +13,16 @@ export class RegisterRepoService {
   private email: string;
   private pass: string;
   private username: string;
-  private eventHandler: Subject<RegisterResponse>;
+  private repoSubject: Subject<RegisterResponse>;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public register(email: string, username: string, pass: string, eventHandler: Subject<RegisterResponse>) {
+  public register(email: string, username: string, pass: string, repoSubject: Subject<RegisterResponse>) {
     this.email = email;
     this.pass = pass;
     this.username = username;
-    this.eventHandler = eventHandler;
+    this.repoSubject = repoSubject;
 
     this.requestPreFlight();
   }
@@ -53,19 +52,19 @@ export class RegisterRepoService {
       .pipe(
         catchError(() => {
           // If this had an error, CORS is still affective, and We can Precede to Getting the Token
-          this.eventHandler.error('Error Getting the Response From Backend!');
+          this.repoSubject.error('Error Getting the Response From Backend!');
           return EMPTY;
         })
       ).subscribe(
       response => {
-        this.eventHandler.next(response);
+        this.repoSubject.next(response);
       }, () => {
-        this.eventHandler.error('Error Getting the Response From Backend!');
+        this.repoSubject.error('Error Getting the Response From Backend!');
       }
     );
   }
 
   private getObservable() {
-    return this.eventHandler.asObservable();
+    return this.repoSubject.asObservable();
   }
 }
