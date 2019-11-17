@@ -18,6 +18,8 @@ export class PaintingDetailsPageComponent implements OnInit {
   artistDetail: any;
   navigationSubscription;
   formattedList: PaintingListItem[];
+  nextPaintingExistsPage = false;
+  prevPaintingExistsPage = false;
 
   constructor(private toaster: ToastrService,
               private activatedRoute: ActivatedRoute,
@@ -39,13 +41,24 @@ export class PaintingDetailsPageComponent implements OnInit {
   }
 
   private fetchPaintingData() {
+    const paintingID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     // Fetch All Paintings
     const allPaintingsObservable: Observable<any> = this.paintingService.requestPaintingList();
     // Fetch This Painting Details
-    const paintingDetailsObservable: Observable<any> = this.paintingService.requestPaintingDetails(this.activatedRoute.snapshot.paramMap.get('id'));
+    const paintingDetailsObservable: Observable<any> = this.paintingService.requestPaintingDetails(paintingID);
     // Fetch All Artist To Select The Artist For This Painting
     const artistForThisPaintingObservable: Observable<any> = this.artistListService.requestArtistList();
-    const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable, artistForThisPaintingObservable);
+    // Fetch The Next Painting To Check If The Id Is Correct Or Not
+    const nextPaintingObservable: Observable<any> = this.paintingService.requestPaintingDetails(paintingID + 1);
+    // Fetch The Prev Painting To Check If The Id Is Correct Or Not
+    const prevPaintingObservable: Observable<any> = this.paintingService.requestPaintingDetails(paintingID - 1);
+    const combinedObservable = forkJoin(
+        allPaintingsObservable,
+        paintingDetailsObservable,
+        artistForThisPaintingObservable,
+        nextPaintingObservable,
+        prevPaintingObservable
+    );
     // subscribe all Observable
     combinedObservable.subscribe((data: any) => {
       this.formattedList = data[0].Data;
@@ -56,6 +69,10 @@ export class PaintingDetailsPageComponent implements OnInit {
           console.log('Artist For This Painting: ', this.artistDetail);
         }
       });
+      this.nextPaintingExistsPage = !data[3].Data[0] ? false : true;
+      this.prevPaintingExistsPage = !data[4].Data[0] ? false : true;
+      console.log('Next Painting: ', this.nextPaintingExistsPage);
+      console.log('Prev Painting: ', this.prevPaintingExistsPage);
     });
   }
 

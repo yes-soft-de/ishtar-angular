@@ -58,6 +58,10 @@ import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoo
 import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
+import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
+import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,7 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -107,7 +112,10 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
     NgxImageZoomComponent,
     StatueListComponent,
     StatueListPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AboutIshtarPageComponent,
+    CommentListComponent,
+    CommentItemComponent
   ],
   exports: [
     // User
@@ -122,6 +130,7 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,

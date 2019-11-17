@@ -1,13 +1,13 @@
 <div class="filters-group">
     <div class="filter">
-        <p class="title">Filter by style name </p>
+        <p class="title" (click)="openList($event)">Filter by style name <i class="fas fa-chevron-down"></i> </p>
         <button (click)="noFilter()">All</button>
         <button *ngFor="let statue of statuesList" 
                 name="{{statue['0'].style}}"
                 (click)="filterName($event)">{{statue['0'].style}}</button>
     </div>
     <div class="filter">
-        <p class="title">Filter by artist name </p>
+        <p class="title" (click)="openList($event)">Filter by artist name <i class="fas fa-chevron-down"></i></p>
         <button (click)="noFilter()">All</button>
         <button *ngFor="let statue of statuesList"
                 name="{{statue['0']?.artist?.name}}"
@@ -19,14 +19,14 @@
     </div>
     -->
     <div class="filter">
-       <p class="title">Filter by materials </p>
+       <p class="title" (click)="openList($event)">Filter by materials <i class="fas fa-chevron-down"></i></p>
        <button (click)="noFilter()">All</button>
        <button *ngFor="let statue of statuesList" 
                name="{{statue['0'].material}}"
                (click)="filterMaterial($event)">{{statue['0'].material}}</button>
     </div>
     <div class="filter">
-        <p class="title">Filter by size</p>
+        <p class="title" (click)="openList($event)">Filter by size <i class="fas fa-chevron-down"></i></p>
         <button class="size-btn text-center" (click)="noFilter()">All</button>
         <button class="size-btn" (click)="filterSmallSize()"><span>Small</span> <small>less than 1 x 1/2"</small></button>
         <button class="size-btn" (click)="filterMediumSize()"><span>Medium</span> <small>between 1 x 1/2" and 1.5 x 1"</small></button>

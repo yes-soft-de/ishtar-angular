@@ -128,9 +128,9 @@
 </div>  
 
     <!-- ./Next & prev paintings -->
-    <button class="btn-prev" (click)="goBack()"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn-prev" (click)="goBack()" [disabled]="!prevPaintingExists"><i class="fas fa-chevron-left"></i></button>
 
-    <button class="btn-next" (click)="goNext()"><i class="fas fa-chevron-right"></i></button>
+    <button class="btn-next" (click)="goNext()" [disabled]="!nextPaintingExists"><i class="fas fa-chevron-right"></i></button>
     <!-- ./Next & prev paintings -->
 
     <!--<div class="container-fluid mt-5 pt-5" id="painting-details1">-->
@@ -203,7 +203,7 @@
     <!--      </div>-->
     <!--      <div class="painting-tab" style="margin-bottom: 20px;">-->
     <!--        <p style="font-weight: bold; margin: 20px 0"> community:</p>-->
-    <!--        <app-comments [pageType]="'painting'"></app-comments>-->
+    <!--        <app-comment [pageType]="'painting'"></app-comment>-->
     <!--      </div>-->
     <!--    </div>-->
     

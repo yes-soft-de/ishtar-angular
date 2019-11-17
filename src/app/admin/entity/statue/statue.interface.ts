@@ -18,9 +18,15 @@ export interface StatueInterface {
   features: string;
   active: boolean;
   keyWord: string;
-  createDate: Date;
-  createdBy: Date;
-  updatedDate: Date;
-  updatedBy: Date;
+  createDate: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  createdBy: string;
+  updatedDate: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  updatedBy: string;
 }
 

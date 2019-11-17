@@ -19,6 +19,8 @@ export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   @Input() artist: any;
   @Input() paintingList: PaintingListItem[];
+  @Input() nextPaintingExists: boolean;
+  @Input() prevPaintingExists: boolean;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
   paintingNumber: number;
@@ -37,22 +39,22 @@ export class PaintingDetailsComponent implements OnInit {
     //     this.featuredList = data.Data;
     //   }
     // );
-    if(window.innerWidth < 768){
-      var flkty = new Flickity('.main-carousel',{
+    if (window.innerWidth < 768) {
+      const flkty = new Flickity('.main-carousel', {
         draggable: true,
         wrapAround: true,
         prevNextButtons: false,
         pageDots: false
-      });  
+      });
       flkty.on( 'dragEnd', ( event, pointer ) => {
-        if(pointer.layerX < -10) {
-          this.goNext()
+        console.log('slider', pointer);
+        if (pointer.clientX < -10) {
+          this.goNext();
         }
-        if(pointer.layerX > 30) {
-          this.goBack()
+        if (pointer.clientX > 30) {
+          this.goBack();
         }
       });
-      
     }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
@@ -101,36 +103,54 @@ export class PaintingDetailsComponent implements OnInit {
     document.getElementById('full-size-img').classList.remove('active');
   }
 
-  goBack() {
-    for (let i = 0; i < this.paintingList.length; i++ ) {
-      // tslint:disable-next-line:triple-equals
-      if (this.paintingList[i].id == this.CurrentPaintingId) {
-        this.paintingNumber = i - 1;
-      }
-    }
-    if (this.paintingNumber > 0) {
-      this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
-      this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
-    } else {
-      this.router.navigate(['/painting', this.paintingList[this.paintingList.length - 1].id]);
-      this.CurrentPaintingId = this.paintingList[this.paintingList.length - 1].id;
-    }
+  // Navigate To Next Painting
+  goNext() {
+    const nextId = this.painting['0'].id + 1;
+    this.router.navigate(['/painting', nextId]);
   }
 
-  goNext() {
-    for (let i = 0; i < this.paintingList.length; i++ ) {
-      // tslint:disable-next-line:triple-equals
-      if (this.paintingList[i].id == this.CurrentPaintingId) {
-        this.paintingNumber = i + 1;
-      }
-    }
-    if (this.paintingNumber < this.paintingList.length - 1) {
-      this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
-      this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
-    } else {
-      this.router.navigate(['/painting', this.paintingList[0].id]);
-      this.CurrentPaintingId = this.paintingList[0].id;
-    }
+
+  // Navigate To Previous Painting
+  goBack() {
+    const prevId = this.painting['0'].id - 1;
+    this.router.navigate(['/painting', prevId]);
   }
+
+
+
+
+  // goBack() {
+  //   for (let i = 0; i < this.paintingList.length; i++) {
+  //     // tslint:disable-next-line:triple-equals
+  //     if (this.paintingList[i].id == this.CurrentPaintingId) {
+  //       this.paintingNumber = i - 1;
+  //     }
+  //   }
+  //   if (this.paintingNumber > 0) {
+  //     // this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+  //     // this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+  //     console.log(this.paintingList[this.paintingNumber].id, this.CurrentPaintingId, 'true');
+  //   } else {
+  //     console.log(this.paintingList[this.paintingNumber].id, this.CurrentPaintingId, 'false');
+  //     // this.router.navigate(['/painting', this.paintingList[this.paintingList.length - 1].id]);
+  //     // this.CurrentPaintingId = this.paintingList[this.paintingList.length - 1].id;
+  //   }
+  // }
+  //
+  // goNext() {
+  //   for (let i = 0; i < this.paintingList.length; i++ ) {
+  //     // tslint:disable-next-line:triple-equals
+  //     if (this.paintingList[i].id == this.CurrentPaintingId) {
+  //       this.paintingNumber = i + 1;
+  //     }
+  //   }
+  //   if (this.paintingNumber < this.paintingList.length - 1) {
+  //     this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+  //     this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+  //   } else {
+  //     this.router.navigate(['/painting', this.paintingList[0].id]);
+  //     this.CurrentPaintingId = this.paintingList[0].id;
+  //   }
+  // }
 
 }

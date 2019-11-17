@@ -32,6 +32,7 @@ export class ListInteractionComponent implements OnInit {
     this.interactionsService.getAllInteractions().subscribe(
         (data: InteractionResponse) => {
           this.interactions = data.Data.sort((a, b) => Number(a.id) - Number(b.id));
+          this.interactionsList = [];
           for (const interaction of this.interactions) {
             this.interactionsList.push({
               id: interaction.id,

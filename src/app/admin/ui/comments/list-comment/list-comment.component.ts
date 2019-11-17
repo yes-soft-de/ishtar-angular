@@ -33,6 +33,7 @@ export class ListCommentComponent implements OnInit {
     this.commentService.getAllComments().subscribe(
         (data: CommentResponse) => {
           this.comments = data.Data;
+          this.commentsList = [];
           for (const comment of this.comments) {
             this.commentsList.push({
               id: comment.id,
@@ -73,6 +74,7 @@ export class ListCommentComponent implements OnInit {
         }, error => {
           console.log(error);
         }, () => {
+
           this.getComments();
         }
     );

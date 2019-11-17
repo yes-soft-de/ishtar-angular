@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Client} from '../../../entity/client/client';
 import {ClientService} from '../../../service/client/client.service';
-import {ClientListResponse} from '../../../entity/ClientList/client-list-response';
+import {ClientListResponse} from '../../../entity/client/client-list-response';
 import {Subscription} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {ClientInterface} from '../../../entity/client/client-interface';
@@ -13,9 +13,9 @@ import {ClientInterface} from '../../../entity/client/client-interface';
   styleUrls: ['./list-client.component.scss']
 })
 export class ListClientComponent implements OnInit, OnDestroy {
-  clients: Client[];
+  clients: ClientInterface[];
   clientsList: ClientInterface[] = [];
-  clientsFilterList = [];
+  clientsFilterList: ClientInterface[] = [];
   allClientObservable: Subscription;
   config: any;                    // Config Variable For Pagination Configuration
   name: string;                   // name variable to store the input search value
@@ -39,13 +39,13 @@ export class ListClientComponent implements OnInit, OnDestroy {
     (data: ClientListResponse) => {
       if (data) {
         this.clients = data.Data;
+        this.clientsList = [];
         for (const client of this.clients) {
           this.clientsList.push({
             id: client.id,
-            firstName: client.firstName,
-            lastName: client.lastName,
+            fullName: client.fullName,
             image: client.image,
-            roll: client.roll,
+            roles: client.roles,
             username: client.username,
             email: client.email,
             birthDate: client.birthDate,
@@ -105,18 +105,22 @@ export class ListClientComponent implements OnInit, OnDestroy {
     } else {
       this.clientsFilterList = [];
       this.clientsFilterList = this.clientsList.filter(res => {
-        // Search In First Name Column
-        const firstNameResult = res.firstName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-        // Search In Last Name Column
-        const lastNameResult = res.lastName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-        // Search In userName Column
-        const userNameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-        if (firstNameResult) {
+        let fullNameResult;
+        let userNameResult;
+        // Check if the full name field is null
+        if (res.fullName) {
+          // Search In First Name Column
+          fullNameResult = res.fullName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        }
+        // Check if the Username field is null
+        if (res.username) {
+          // Search In userName Column
+          userNameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+        }
+
+        if (fullNameResult) {
           // display the Name Column
-          return firstNameResult;
-        } else if (lastNameResult) {
-          // display the userName Column
-          return lastNameResult;
+          return fullNameResult;
         } else if (userNameResult) {
           // display the userName Column
           return userNameResult;

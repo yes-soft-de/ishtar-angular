@@ -5,22 +5,21 @@
     <div class="row">
       <div class="col-4">
         <div class="form-group mb-4">
-          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching For Client FirstName, LastName, Username?" class="form-control form-control-underlined border-primary">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching For Client FullName And Username?" class="form-control form-control-underlined border-primary">
         </div>
       </div>
-      <div class="col-8 align-self-center">
-        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-client">
-          <i class="fa fa-plus"></i>
-          Add New Client
-        </a>
-      </div>
+<!--      <div class="col-8 align-self-center">-->
+<!--        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-client">-->
+<!--          <i class="fa fa-plus"></i>-->
+<!--          Add New Client-->
+<!--        </a>-->
+<!--      </div>-->
     </div>
     <div class="table-responsive text-center">
       <table class="table table-bordered main-table">
         <tr class="bg-dark text-white">
           <td>#ID</td>
-          <td>First Name</td>
-          <td>Last Name</td>
+          <td>Full Name</td>
           <td>Image</td>
           <td>Roll</td>
           <td>Username</td>
@@ -35,18 +34,17 @@
         </tr>
         <tr *ngFor="let client of clientsFilterList | paginate: config">
           <td>{{client.id}}</td>
-          <td>{{client.firstName}}</td>
-          <td>{{client.lastName}}</td>
-          <td><img src="{{client.image}}" alt="{{client.firstName}} Image" class="img-fluid img-thumbnail img-custom"></td>
-          <td>{{client.roll['ROLE_ADMIN'] ? 'Admin' : 'User'}}</td>
-          <td>{{client.username}}</td>
+          <td>{{client.fullName ? client.fullName : '-'}}</td>
+          <td><img src="{{client.image ? client.image : '../../../../../assets/default-avatar.jpg'}}" alt="{{client.fullName}} Image" class="img-fluid img-thumbnail img-custom"></td>
+          <td>{{client.roles['0'] == 'ROLE_ADMIN' ? 'Admin' : 'User'}}</td>
+          <td>{{client.username ? client.username : '-'}}</td>
           <td>{{client.email}}</td>
-          <td>{{client.birthDate}}</td>
-          <td>{{client.phone}}</td>
-          <td>{{client.createdBy}}</td>
-          <td>{{client.createDate}}</td>
-          <td>{{client.updatedBy}}</td>
-          <td>{{client.updateDate}}</td>
+          <td>{{client.birthDate ? (client.birthDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+          <td>{{client.phone ? client.phone : '-'}}</td>
+          <td>{{client.createdBy ? client.createdBy : '-'}}</td>
+          <td>{{client.createDate ? (client.createDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+          <td>{{client.updatedBy ? client.updatedBy : '-'}}</td>
+          <td>{{client.updateDate ? (client.updateDate.timestamp * 1000 | date: 'short') : '-'}}</td>
           <td>
             <a [routerLink]="['/admin/edit-client', client.id]" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
             <a (click)="delete(client.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
