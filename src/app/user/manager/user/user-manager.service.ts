@@ -5,6 +5,7 @@ import {Subject, Observable} from 'rxjs';
 import {LoginResponse} from '../../entity-protected/login/login-response';
 import {RegisterResponse} from '../../entity-protected/register/register-response';
 import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
+import {UserConfig} from '../../UserConfig';
 
 /**
  * This Class is Used as a Middle Ground Between Page and Repo Services
@@ -84,7 +85,7 @@ export class UserManagerService {
   public logout() {
     this.logout$.subscribe(
       () => {
-        window.location.reload();
+        window.location.href = UserConfig.userLogoutLink;
       }
     );
     this.logoutService.logout(this.logoutRepoSubject);
