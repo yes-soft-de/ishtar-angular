@@ -59,6 +59,7 @@ export class StatuesDetailComponent implements OnInit {
 
 
   setMainPainting(event) {
+    // TODO Remove this, Replace With TS and The Deprecations
     const target = event.target || event.srcElement || event.currentTarget;
     const paintingSrc = target.attributes.src;
     const value = paintingSrc.nodeValue;
@@ -68,12 +69,12 @@ export class StatuesDetailComponent implements OnInit {
   }
 
   showImageInFullSize() {
+    // TODO Remove this, Replace With TS
     document.getElementById('full-size-img').classList.add('active');
   }
 
   hideFullScreenMode() {
+    // TODO Remove this, Replace With TS
     document.getElementById('full-size-img').classList.remove('active');
   }
-
-
 }
