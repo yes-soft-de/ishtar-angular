@@ -28,7 +28,12 @@ export class UserProfileManagerService {
 
   private logRepoError() {
     this.repo$.subscribe(
-      () => {
+      data => {
+        if (data.Data.email !== null && data.Data.email !== undefined) {
+          this.managerSubject.next(data.Data);
+        } else {
+          this.managerSubject.error('User Not Logged In!');
+        }
       }, error1 => {
         console.log(error1);
       }
