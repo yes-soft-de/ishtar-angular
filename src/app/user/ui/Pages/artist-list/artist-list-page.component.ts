@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ArtistService} from '../../../service/artist/artist.service';
-import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {Subscription} from 'rxjs';
+import {ArtistManagerService} from '../../../manager/artist/artist-manager.service';
+import {ArtistObject} from '../../../entity-protected/artist/artist-object';
 
 @Component({
   selector: 'app-artist-list-page',
@@ -9,29 +8,24 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./artist-list-page.component.scss']
 })
 export class ArtistListPageComponent implements OnInit, OnDestroy {
-  artistList: ArtistListItem[];
-  artistListObservable: Subscription;
+  artistList: ArtistObject[];
 
-  constructor(private artistService: ArtistService) { }
+  constructor(private artistService: ArtistManagerService) {
+  }
 
   ngOnInit() {
     this.requestArtistList();
   }
 
   ngOnDestroy() {
-    // stop observable after navigate to another route to prevent it from consumption the memory
-    this.artistListObservable.unsubscribe();
   }
 
   requestArtistList() {
-    this.artistListObservable = this.artistService.requestArtistList().subscribe(
-        (data: any) => {
-          this.artistList = data.Data;
-        }, error1 => {
-        console.log(error1);
-      });
+    this.artistService.getListObservable().subscribe(
+      data => {
+        this.artistList = data;
+      }
+    );
+    this.artistService.getAllArtists();
   }
-
-
-
 }

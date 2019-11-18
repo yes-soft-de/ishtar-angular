@@ -9,4 +9,5 @@ export interface CommentObject {
   userImage: string;
   id: number;
   body: string;
+  editable: false;
 }

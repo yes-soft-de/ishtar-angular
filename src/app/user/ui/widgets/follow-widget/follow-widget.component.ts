@@ -7,6 +7,7 @@ import {FollowService} from '../../../service/follow/follow.service';
   styleUrls: ['./follow-widget.component.scss']
 })
 export class FollowWidgetComponent implements OnInit {
+  // TODO: Convert This To Get The Routing Parameter From Active Route, This Way We Can Avoid Inputs
   @Input() ParentType;  // this for entity (painting, artist, ...) number ex:(1: painting)
   @Input() ParentId;    // This is for (painting, artist, ...) id
   followed = false;

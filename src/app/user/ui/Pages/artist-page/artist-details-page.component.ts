@@ -72,7 +72,4 @@ export class ArtistDetailsPageComponent implements OnInit {
     }
     return arr;
   }
-
-
-
 }

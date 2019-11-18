@@ -1,4 +1,5 @@
 <app-header></app-header>
+<!-- Consider Moving To Component Level -->
 <app-art-type *ngIf="artType != null" [artType]="artType"></app-art-type>
 <app-loading-widget *ngIf="artType == null"></app-loading-widget>
 <app-footer></app-footer>

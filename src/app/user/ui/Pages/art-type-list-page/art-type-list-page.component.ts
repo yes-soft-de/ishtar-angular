@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
-import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
-import {ArtTypeResponse} from '../../../../admin/entity/art-type/art-type-response';
+import {ArtTypeManagerService} from '../../../manager/art-type/art-type-manager.service';
+import {ArtTypeObject} from '../../../entity-protected/art-type/art-type-object';
 
 @Component({
   selector: 'app-art-type-list-page',
@@ -9,15 +8,16 @@ import {ArtTypeResponse} from '../../../../admin/entity/art-type/art-type-respon
   styleUrls: ['./art-type-list-page.component.scss']
 })
 export class ArtTypeListPageComponent implements OnInit {
-  artTypeList: ArtTypeListItem[];
-  constructor(private artTpeService: ArtTypeService) { }
+  artTypeList: ArtTypeObject[];
+  constructor(private artTypeService: ArtTypeManagerService) { }
 
   ngOnInit() {
-    this.artTpeService.getAllArtType().subscribe(
-        (data: ArtTypeResponse) => {
-        this.artTypeList = data.Data;
+    this.artTypeService.getListObservable().subscribe(
+      data => {
+        this.artTypeList = data;
       }
     );
+    this.artTypeService.getAllArtTypes();
   }
 
 }

@@ -19,6 +19,8 @@ export class ArtTypePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO Explain This
+    // region Code Id Don't Know Why Exists!
     // Get Art Type Detail
     const getArtTypeDetailObs: Observable<any> = this.artTypeService.requestArtTypeDetails(this.activatedRoute.snapshot.paramMap.get('id'));
     // Get All Art Type
@@ -34,6 +36,7 @@ export class ArtTypePageComponent implements OnInit {
         }
       });
     });
+    // endregion
   }
 
 }

@@ -7,33 +7,30 @@ import {CreateCommentResponse} from '../../entity-protected/comment/create-comme
 import {CookieService} from 'ngx-cookie-service';
 import {UserCookiesConfig} from '../../UserCookiesConfig';
 import {UpdateCommentRequest} from '../../entity-protected/comment/update-comment-request';
-import {GetCommentResponse} from '../../entity-protected/comment/get-comment-response';
-import {GetCommentRequest} from '../../entity-protected/comment/get-comment-request';
 
+
+/**
+ * @description Repository For Flushing Requests
+ * Main Responsibilities Are:
+ *    1. Creating HttpRequests and Executing It.
+ *    2. Fixing Pre-flight Requests if required
+ *    3. Redirecting Error Related to the Network to The Manager!
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class CommentRepoService {
-  private repoSubject: Subject<any>;
-  private repo$: Observable<any>;
+  private repoSubject: Subject<string>;
+  private repo$: Observable<string>;
 
   private currentCommentRequest: CreateCommentRequest;
   private updateCommentRequest: UpdateCommentRequest;
-  private getCommentRequest: GetCommentRequest;
   private commentId: string;
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
 
-  public getComments(getCommentsRequest: GetCommentRequest, repoEventHandler: Subject<GetCommentResponse>) {
-    this.getCommentRequest = getCommentsRequest;
-    this.repoSubject = repoEventHandler;
-    this.repo$ = repoEventHandler.asObservable();
-
-    this.requestComments();
-  }
-
-  public createComment(commentRequest: CreateCommentRequest, repoEventHandler: Subject<CreateCommentResponse>) {
+  public createComment(commentRequest: CreateCommentRequest, repoEventHandler: Subject<string>) {
     // TODO Fix Pre Flight With The Backend Here, Before Posting!
     this.currentCommentRequest = commentRequest;
     this.repoSubject = repoEventHandler;
@@ -42,7 +39,7 @@ export class CommentRepoService {
     this.requestCreateComment();
   }
 
-  public updateComment(commentId: string, commentRequest: UpdateCommentRequest, eventHandler: Subject<CreateCommentResponse>) {
+  public updateComment(commentId: string, commentRequest: UpdateCommentRequest, eventHandler: Subject<string>) {
     // TODO Fix Pre Flight With The Backend Here, Before Posting!
     this.currentCommentRequest = commentRequest;
     this.repoSubject = eventHandler;
@@ -53,7 +50,7 @@ export class CommentRepoService {
     this.requestUpdateComment();
   }
 
-  public deleteComment(commentId: string, eventHandler: Subject<CreateCommentResponse>) {
+  public deleteComment(commentId: string, eventHandler: Subject<string>) {
     // TODO Fix Pre Flight With The Backend Here, Before Posting!
     this.repoSubject = eventHandler;
     this.repo$ = eventHandler.asObservable();
@@ -100,17 +97,7 @@ export class CommentRepoService {
     );
   }
 
-  private requestComments() {
-    this.httpClient.post<GetCommentResponse>(`${UserConfig.commentsAPI}`, JSON.stringify(this.currentCommentRequest)).subscribe(
-      data => {
-        this.repoSubject.next(data.Data);
-      }, error1 => {
-        this.repoSubject.error('Error Getting Data: ' + error1);
-      }
-    );
-  }
-
-  validateResponse(CommentResponse: CreateCommentResponse) {
+  validateResponse(CommentResponse) {
     // This Happens in a Network Level Only
     if (CommentResponse.status_code !== '200') {
       this.repoSubject.error(CommentResponse.msg);

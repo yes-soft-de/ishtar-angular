@@ -24,7 +24,8 @@ export class ClapWidgetComponent implements OnInit {
   subscription;
 
   constructor(private clapService: ClapService,
-              private toaster: ToastrService) {}
+              private toaster: ToastrService) {
+  }
 
   ngOnInit() {
     this.ObserveClaps();
@@ -36,22 +37,22 @@ export class ClapWidgetComponent implements OnInit {
     this.clapService.initClap(this.ParentType, this.ParentId);
     // Response From Clap Services
     this.clapService.getStatusObservable().subscribe(
-        (data: { success: boolean, value: any }) => {
-          if (data) {
-            this.clapped = data.success;  // this data = true if success
-            if (data.value.ClapID) {      // Response Data After Reload The Page
-              this.clapId = data.value.ClapID;
-              this.clappedNumber = data.value.value;
-            } else if (data.value.Data.id) {  // Response Data After Create New Clap
-              this.clapId = data.value.Data.id;
-              this.clappedNumber = data.value.Data.value;
-            }
-            console.log('Interaction Response : ', data);
-          } else {
-            this.clapping = false;
-            this.clapped = false;
+      (data: { success: boolean, value: any }) => {
+        if (data) {
+          this.clapped = data.success;  // this data = true if success
+          if (data.value.ClapID) {      // Response Data After Reload The Page
+            this.clapId = data.value.ClapID;
+            this.clappedNumber = data.value.value;
+          } else if (data.value.Data.id) {  // Response Data After Create New Clap
+            this.clapId = data.value.Data.id;
+            this.clappedNumber = data.value.Data.value;
           }
+          console.log('Interaction Response : ', data);
+        } else {
+          this.clapping = false;
+          this.clapped = false;
         }
+      }
     );
   }
 
@@ -60,6 +61,7 @@ export class ClapWidgetComponent implements OnInit {
     this.clapService.postClap(this.ParentId, this.ParentType, value);
   }
 
+  // region Clap Animation Functions
   startCalc() {
     this.holding = true;
     this.timeStart = new Date();
@@ -87,6 +89,8 @@ export class ClapWidgetComponent implements OnInit {
   public calculateClaps(): number {
     return parseInt(`${((this.clapIconSize - 32) / 50) * 100}`, 10);
   }
+
+  // endregion
 
   deleteClap() {
     this.clapping = true;

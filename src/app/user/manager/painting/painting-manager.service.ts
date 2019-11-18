@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ArtTypeObject} from '../../entity-protected/art-type/art-type-object';
 import {PaintingRepoService} from '../../repository/painting/painting-repo.service';
@@ -36,6 +36,18 @@ export class PaintingManagerService {
       }
     );
     this.paintingRepo.getPainting(artistId, repoObjectSubject);
+  }
+
+  public getPaintingByArtistId(artistId: string) {
+    const repoObjectSubject = new Subject<PaintingObject>();
+    const repoObject$ = repoObjectSubject.asObservable().subscribe(
+      data => {
+        this.managerObjectSubject.next(data);
+      }, error1 => {
+        this.managerObjectSubject.error(error1);
+      }
+    );
+    this.paintingRepo.getPaintingByArtist(artistId, repoObjectSubject);
   }
 
   public getDetailsObservable(): Observable<PaintingObject> {

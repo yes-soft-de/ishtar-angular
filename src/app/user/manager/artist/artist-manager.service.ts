@@ -11,6 +11,8 @@ export class ArtistManagerService {
   managerObjectSubject: Subject<ArtistObject>;
   managerListSubject: Subject<ArtistObject[]>;
 
+  artistId: string;
+
   constructor(private artistRepo: ArtistRepoService) {
   }
 
@@ -27,6 +29,7 @@ export class ArtistManagerService {
   }
 
   public getArtist(artistId: string) {
+    this.artistId = artistId;
     const repoObjectSubject = new Subject<ArtistObject>();
     const repoObject$ = repoObjectSubject.asObservable().subscribe(
       data => {

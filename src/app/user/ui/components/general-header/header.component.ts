@@ -18,8 +18,6 @@ import {UserProfileManagerService} from '../../../manager/user-profile/user-prof
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo;
   userLoggedIn = false;
-  loginClick = false;
-  userLogoutLink = UserConfig.userLogoutLink;
   searchFrom = new FormGroup({
     search: new FormControl('')
   });

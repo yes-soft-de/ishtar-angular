@@ -41,7 +41,6 @@ export class LoveWidgetComponent implements OnInit {
     console.log(`Sending Some Love Buddy ;)`);
     this.loveService.postLove(this.ParentId, this.ParentType);
   }
-
   // delete the love interaction
   deleteLove() {
     console.log('Send delete Love Request');
