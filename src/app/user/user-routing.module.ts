@@ -21,7 +21,7 @@ import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-p
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
-import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
+import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 
 
 const routes: Routes = [
