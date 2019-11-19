@@ -18,9 +18,7 @@ import {HomeHeaderComponent} from './ui/components/home-header/home-header.compo
 import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
 import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.component';
-import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
-import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -63,6 +61,8 @@ import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edi
 import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 import { NextComponent } from './shared/component/next/next.component';
 import { PreComponent } from './shared/component/pre/pre.component';
+import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
+import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 
 @NgModule({
   declarations: [
