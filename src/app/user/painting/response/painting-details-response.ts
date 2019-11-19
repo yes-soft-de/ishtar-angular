@@ -1,4 +1,4 @@
-import {PaintingDetails} from './painting-details';
+import {PaintingDetails} from '../entity/painting-details';
 
 export interface PaintingDetailsResponse {
   Data: PaintingDetails;
