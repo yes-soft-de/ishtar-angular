@@ -7,12 +7,11 @@
               placeholder="Your comment..."
               class="form-control rounded-0"
               required
-              [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}">
-    </textarea>
-      <button type="reset" class="btn btn-primary" (click)="disableEditMode()">Cancel</button>
-      <button type="submit" class="btn btn-primary" (click)="saveComment()">Submit</button>
+              [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"></textarea>
       <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null"
             [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
+      <button type="reset" class="btn btn-primary" (click)="disableEditMode()">Cancel</button>
+      <button type="submit" class="btn btn-primary" (click)="saveComment()">Submit</button>
     </form>
   </div>
   <div class="row" *ngIf="!editMode">

@@ -48,7 +48,7 @@ export class CommentPresenterService {
     userImage: null,
     id: null,
     body: 'Be The First One To Comment!',
-    editable: false
+    editable: true
   };
 
   constructor(private commentGetterManager: GetCommentManagerService,
@@ -72,7 +72,7 @@ export class CommentPresenterService {
 
   // In Case We Want To Show Errors on the UI Level
   public getGeneralObservable(): Observable<string> {
-    return this.generalManager$;
+    return this.presenterGeneral$;
   }
 
   // endregion
@@ -92,11 +92,14 @@ export class CommentPresenterService {
     this.commentGetterManager.getObservable().subscribe(
       comments => {
         if (comments === undefined || comments === null || comments.length === 0) {
+          // Meaning There is yet to be any Comments, The List is of size 0
           this.getterSubject.next([this.motivationComment]);
         } else if (this.currentUser.email !== null && this.currentUser.email !== undefined) {
+          // Meaning the list is there and the user is logged in, processing allows for edits
           this.getterSubject.next(this.processGetList(comments));
         } else {
-          this.getterSubject.next(comments);
+          // Meaning the user is not logged in, and the list is read only
+          this.getterSubject.next(comments.reverse());
         }
       }, error1 => {
         console.log(error1);
@@ -116,7 +119,7 @@ export class CommentPresenterService {
   }
 
   public createComment(newComment: string) {
-    if (this.currentUser === null || this.currentUser === undefined) {
+    if (this.currentUser === undefined) {
       this.presenterGeneralSubject.error(ErrorCodes.ERROR_PRESENTER + 'User Not Logged In!');
     } else {
       this.processCreateRequest(newComment);
@@ -184,6 +187,5 @@ export class CommentPresenterService {
     this.generalManagerSubject = new Subject<string>();
     this.generalManager$ = this.generalManagerSubject.asObservable();
   }
-
   // endregion
 }

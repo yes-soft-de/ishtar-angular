@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
-import {Subject} from 'rxjs';
+import {EMPTY, Subject} from 'rxjs';
 import {UserProfileResponse} from '../../entity-protected/profile/user-profile-response';
 import {CookieService} from 'ngx-cookie-service';
 import {UserCookiesConfig} from '../../UserCookiesConfig';
+import {catchError} from 'rxjs/operators';
+import {ErrorCodes} from '../../consts/error/error-codes';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,12 @@ export class UserProfileRepoService {
   }
 
   private requestPreFlight() {
-    this.httpClient.get(UserConfig.CrosHeaderAPI).subscribe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI)
+      .pipe(catchError(() => {
+        this.eventHandler.error(ErrorCodes.ERROR_REPO + 'Error Getting User Info');
+        return EMPTY;
+      }))
+      .subscribe(
       () => this.getUserProfile(),
       () => this.getUserProfile());
   }

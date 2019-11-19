@@ -4,23 +4,26 @@
       <i class="far fa-comment"></i> {{comments?.length}} comments
     </li>
   </ul>
-  <form class="form-group" [formGroup]="commentForm" (ngSubmit)="saveComment()">
+  <form class="form-group" [formGroup]="commentForm" >
     <textarea formControlName="commentText"
-              type="text"
-              name="comment"
-              placeholder="Your comment..."
-              class="form-control rounded-0"
-              required
-              [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
-              [disabled]="isSubmitted"></textarea>
-    <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null" [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
+           type="text"
+           name="comment"
+           placeholder="Your comment..."
+           class="form-control rounded-0"
+           required
+           [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
+           [disabled]="isSubmitted"></textarea>
+    <span class="invalid-feedback pl-3 mt-2" *ngIf="errorMessage != null"
+          [ngStyle]="{'display': errorMessage != null ? 'block' : 'none'}">{{errorMessage}}</span>
+    <button type="submit" class="btn btn-primary btn-sm mr-1 px-1 py-0" (click)="saveComment()">Save</button>
   </form>
 
   <!-- Comments -->
-  <div class="all-comments" [ngStyle]="{'height': comments?.length == 0 ? 0 :  comments?.length == 1 ? '115px' : comments?.length == 2 ? '230px' : '300px'}">
-      <app-view-comment-widget *ngFor="let comment of comments" [comment]="comment"> </app-view-comment-widget>
+  <!-- What is Going on Here!!!! -->
+  <div class="all-comments"
+       [ngStyle]="{'height': comments?.length == 0 ? 0 :  comments?.length == 1 ? '115px' : comments?.length == 2 ? '230px' : '300px'}">
+    <app-view-comment-widget *ngFor="let comment of comments" [comment]="comment"></app-view-comment-widget>
   </div>
   <!-- #Comments -->
 
 </div>
-<!--<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>-->
