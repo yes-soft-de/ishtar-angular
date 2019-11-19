@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppRoutingModule, routingComponents} from './controller/app-routing.module';
 import {AppComponent} from './app/app.component';
@@ -34,6 +34,7 @@ import {CookieService} from 'ngx-cookie-service';
   providers: [CookieService],
   exports: [],
   bootstrap: [AppComponent]
+  // schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 }

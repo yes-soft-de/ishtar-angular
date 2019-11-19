@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CommentRepoService } from './comment-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('CommentRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let commentRepoService: CommentRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [CommentRepoService]
+    });
+    commentRepoService = TestBed.get(CommentRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: CommentRepoService = TestBed.get(CommentRepoService);
-    expect(service).toBeTruthy();
+    expect(commentRepoService).toBeTruthy();
   });
 });

@@ -1,12 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserArtTypeService } from './user-art-type.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('UserArtTypeService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let userArtTypeService: UserArtTypeService;
+  let httpTestController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [UserArtTypeService]
+    });
+    userArtTypeService = TestBed.get(UserArtTypeService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
 
   it('should be created', () => {
-    const service: UserArtTypeService = TestBed.get(UserArtTypeService);
-    expect(service).toBeTruthy();
+    expect(userArtTypeService).toBeTruthy();
   });
 });

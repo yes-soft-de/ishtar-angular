@@ -19,7 +19,7 @@
           <tr *ngFor="let interaction of interactionsFilterList | paginate: config; index as i">
             <td>{{interaction.id}}</td>
             <td>{{interaction.interaction}}</td>
-            <td>{{!interaction.client ? 'Visitors' : interaction.client}}</td>
+            <td>{{!interaction.client ? 'Visitors' : 'Client Id : ' + interaction.client}}</td>
             <td>{{interaction.entities}}</td>
             <td>{{interaction.row}}</td>
           </tr>

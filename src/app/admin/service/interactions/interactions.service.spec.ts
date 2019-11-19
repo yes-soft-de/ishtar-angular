@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { InteractionsService } from './interactions.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('InteractionsService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let interactionsService: InteractionsService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [InteractionsService]
+    });
+    interactionsService = TestBed.get(InteractionsService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: InteractionsService = TestBed.get(InteractionsService);
-    expect(service).toBeTruthy();
+    expect(interactionsService).toBeTruthy();
   });
 });

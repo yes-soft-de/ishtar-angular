@@ -1,12 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 
 import { StatueService } from './statue.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('StatueService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let statueService: StatueService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [StatueService]
+    });
+    statueService = TestBed.get(StatueService);
+    httpTestingController = TestBed.get(HttpTestingController);
+  });
 
   it('should be created', () => {
-    const service: StatueService = TestBed.get(StatueService);
-    expect(service).toBeTruthy();
+    expect(statueService).toBeTruthy();
   });
 });

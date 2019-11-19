@@ -28,7 +28,6 @@
             <td>Length</td>
             <td>Price</td>
             <td>State</td>
-            <td>Active</td>
             <td>KeyWords</td>
             <td>Style</td>
             <td>Mediums</td>
@@ -51,9 +50,8 @@
             <td>{{statue.width}}</td>
             <td>{{statue.weight}}</td>
             <td>{{statue.length}}</td>
-            <td>{{statue.price}} $</td>
-            <td>{{statue.state ? 'Sold' : 'available'}}</td>
-            <td>{{statue.active}}</td>
+            <td>{{statue.price | currency: 'GBP'}}</td>
+            <td>{{statue.state ? 'Sold' : 'Not Sold'}}</td>
             <td>{{statue.keyWord}}</td>
             <td>{{statue.style}}</td>
             <td class="td-custom">{{statue.mediums}}</td>

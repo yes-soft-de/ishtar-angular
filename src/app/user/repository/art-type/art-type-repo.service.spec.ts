@@ -1,12 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ArtTypeRepoService } from './art-type-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('ArtTypeRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let artTypeRepoService: ArtTypeRepoService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ArtTypeRepoService]
+    });
+    artTypeRepoService = TestBed.get(ArtTypeRepoService);
+    httpTestingController = TestBed.get(HttpTestingController);
+  });
 
   it('should be created', () => {
-    const service: ArtTypeRepoService = TestBed.get(ArtTypeRepoService);
-    expect(service).toBeTruthy();
+    expect(artTypeRepoService).toBeTruthy();
   });
 });

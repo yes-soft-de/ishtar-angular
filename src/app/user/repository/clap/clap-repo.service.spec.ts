@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ClapRepoService } from './clap-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('ClapRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let clapRepoService: ClapRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ClapRepoService]
+    });
+    clapRepoService = TestBed.get(ClapRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: ClapRepoService = TestBed.get(ClapRepoService);
-    expect(service).toBeTruthy();
+    expect(clapRepoService).toBeTruthy();
   });
 });

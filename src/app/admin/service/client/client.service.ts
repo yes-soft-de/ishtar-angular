@@ -6,7 +6,6 @@ import {ClientInterface} from '../../entity/client/client-interface';
 import {Client} from '../../entity/client/client';
 import { catchError } from 'rxjs/operators';
 import {Observable, pipe, throwError} from 'rxjs';
-import {ClientListResponse} from '../../entity/client/client-list-response';
 
 
 @Injectable({

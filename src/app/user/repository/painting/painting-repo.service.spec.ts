@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PaintingRepoService } from './painting-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('PaintingRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let paintingRepoService: PaintingRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [PaintingRepoService]
+    });
+    paintingRepoService = TestBed.get(PaintingRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: PaintingRepoService = TestBed.get(PaintingRepoService);
-    expect(service).toBeTruthy();
+    expect(paintingRepoService).toBeTruthy();
   });
 });
