@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {PaintingManagerService} from '../manager/painting-manager.service';
 import {PaintingDetails} from '../entity/painting-details';
 import {Observable, Subject} from 'rxjs';
+import {PaintingDetailsResponse} from '../response/painting-details-response';
 
 @Injectable({
   providedIn: 'root'
