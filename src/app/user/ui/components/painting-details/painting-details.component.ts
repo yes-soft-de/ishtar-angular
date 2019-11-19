@@ -34,6 +34,7 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO new push for new processing
     // this.paintingService.requestPaintingList().subscribe(
     //   data => {
     //     this.featuredList = data.Data;
