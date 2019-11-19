@@ -62,6 +62,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 import { RootComponent } from './painting/components/root/root.component';
+import { PaintingManagerComponent } from './painting/manager/painting-manager/painting-manager.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { RootComponent } from './painting/components/root/root.component';
     ProfilePageComponent,
     AboutIshtarPageComponent,
     CommentItemComponent,
-    RootComponent
+    RootComponent,
+    PaintingManagerComponent
   ],
   exports: [
     // User

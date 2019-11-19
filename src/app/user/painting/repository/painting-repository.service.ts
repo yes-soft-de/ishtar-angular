@@ -13,7 +13,7 @@ export class PaintingRepositoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPainting(paintingId: number): Observable {
+  getPainting(paintingId: number): Observable<PaintingDetailsResponse> {
     return this.httpClient.get<PaintingDetailsResponse>(`http://dev-ishtar.96.lt/ishtar-backend/public/painting/${paintingId}`)
   }
 }
