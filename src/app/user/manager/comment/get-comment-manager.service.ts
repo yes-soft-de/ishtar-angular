@@ -18,6 +18,8 @@ export class GetCommentManagerService {
   private getManager$: Observable<CommentObject[]>;
 
   private getRequest;
+  private pageType: string;
+  private pageId: string;
 
   constructor(private getCommentRepo: GetCommentRepoService) {
 
@@ -29,71 +31,20 @@ export class GetCommentManagerService {
   }
 
   public getComments(pageType: string, pageId: string) {
-    switch (pageType) {
-      case 'painting':
-        this.getRequest = CommentGetRequestFactory.getPaintingCommentRequest(pageId);
-        this.processGetPaintingComments();
-        break;
-      case 'artist':
-        this.getRequest = CommentGetRequestFactory.getArtistCommentRequest(pageId);
-        this.processGetArtistComments();
-        break;
-      case 'statue':
-        this.getRequest = CommentGetRequestFactory.getStatueCommentRequest(pageId);
-        this.processGetStatueComments();
-        break;
-      case 'art-type':
-        this.getRequest = CommentGetRequestFactory.getArtTypeCommentRequest(pageId);
-        this.processGetArtTypeComments();
-        break;
-      default:
-        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + 'Error Mapping the Request!');
-        break;
-    }
+    this.pageType = pageType;
+    this.pageId = pageId;
+    this.processGetComments();
   }
 
-  private processGetPaintingComments() {
+  private processGetComments() {
     this.getRepo$.subscribe(
       (data: GetCommentResponse) => {
-        this.getManagerSubject.next(data.Data.reverse());
+        this.getManagerSubject.next(data.Data);
       }, error1 => {
         this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
       }
     );
-    this.getCommentRepo.getPaintingComment(this.getRequest, this.getRepoSubject);
-  }
-
-  private processGetArtistComments() {
-    this.getRepo$.subscribe(
-      (data: GetCommentResponse) => {
-        this.getManagerSubject.next(data.Data.reverse());
-      }, error1 => {
-        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
-      }
-    );
-    this.getCommentRepo.getArtistComment(this.getRequest, this.getRepoSubject);
-  }
-
-  private processGetArtTypeComments() {
-    this.getRepo$.subscribe(
-      (data: GetCommentResponse) => {
-        this.getManagerSubject.next(data.Data.reverse());
-      }, error1 => {
-        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
-      }
-    );
-    this.getCommentRepo.getArtTypeComment(this.getRequest, this.getRepoSubject);
-  }
-
-  private processGetStatueComments() {
-    this.getRepo$.subscribe(
-      (data: GetCommentResponse) => {
-        this.getManagerSubject.next(data.Data.reverse());
-      }, error1 => {
-        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
-      }
-    );
-    this.getCommentRepo.getStatueComment(this.getRequest, this.getRepoSubject);
+    this.getCommentRepo.getComments(this.pageType, this.pageId, this.getRepoSubject);
   }
 
   public getObservable(): Observable<CommentObject[]> {

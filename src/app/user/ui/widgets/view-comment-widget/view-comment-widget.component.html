@@ -16,12 +16,12 @@
     </form>
   </div>
   <div class="row" *ngIf="!editMode">
-    <div class="hidden-button">
-      <a class="btn btn-primary btn-sm mr-1 px-1 py-0" (click)="enableEditMode()" *ngIf="comment.editable">Edit</a>
-      <a class="btn btn-danger btn-sm confirm px-1 py-0" (click)="deleteComment()" *ngIf="comment.editable">Delete</a>
+    <div *ngIf="comment.editable">
+      <a class="btn btn-primary btn-sm mr-1 px-1 py-0" (click)="enableEditMode()">Edit</a>
+      <a class="btn btn-danger btn-sm confirm px-1 py-0" (click)="deleteComment()">Delete</a>
     </div>
     <div class="col-sm-2 col-lg-1 text-center">
-      <img class="res-image"
+      <img class="res-image img-fluid"
            src="{{!comment.userImage ? '../../../../../assets/default-avatar.jpg' : comment.userImage}}"
            alt=""/>
     </div>

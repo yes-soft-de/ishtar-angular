@@ -6,6 +6,7 @@ import {CommentObject} from '../../entity-protected/comment/comment-object';
 import {UserProfileManagerService} from '../../manager/user-profile/user-profile-manager.service';
 import {UserInfo} from '../../entity-protected/profile/user-info';
 import {ErrorCodes} from '../../consts/error/error-codes';
+import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 
 /**
  * @description Main Interface To Comments and CRUD Operations On It.
@@ -78,14 +79,19 @@ export class CommentPresenterService {
 
   // region Presenter Facade, CRUD Methods
   public setPageTypeAndId(pageType: string, pageId: string) {
-    this.currentPageType = pageType;
+    this.currentPageId = pageId;
+    for (const i of InteractionConsts.routingValues) {
+      if (i.pageRoute === pageType) {
+        this.currentPageType = i.pageType;
+      }
+    }
     this.currentPageId = pageId;
   }
 
   public getComments() {
     this.commentGetterManager.getObservable().subscribe(
       comments => {
-        if (comments.length === 0) {
+        if (comments === undefined || comments === null || comments.length === 0) {
           this.getterSubject.next([this.motivationComment]);
         } else if (this.currentUser.email !== null && this.currentUser.email !== undefined) {
           this.getterSubject.next(this.processGetList(comments));

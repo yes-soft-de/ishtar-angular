@@ -25,38 +25,22 @@ export class GetCommentRepoService {
 
   private getRequest;
 
+  private pageType: string;
+  private pageId: string;
+
   constructor(private httpClient: HttpClient) {
   }
 
-  public getArtistComment(getRequest, repoEventHandler: Subject<GetCommentResponse>) {
-    this.targetRoute = UserConfig.artistCommentAPI;
-    this.getComments(repoEventHandler);
-  }
-
-  public getPaintingComment(getRequest, repoEventHandler: Subject<GetCommentResponse>) {
-    this.targetRoute = UserConfig.paintingCommentAPI;
-    this.getComments(repoEventHandler);
-  }
-
-  public getArtTypeComment(getRequest, repoEventHandler: Subject<GetCommentResponse>) {
-    this.targetRoute = UserConfig.artTypeCommentAPI;
-    this.getComments(repoEventHandler);
-  }
-
-  public getStatueComment(getRequest, repoEventHandler: Subject<GetCommentResponse>) {
-    this.targetRoute = UserConfig.statueCommentAPI;
-    this.getComments(repoEventHandler);
-  }
-
-  private getComments(repoEventHandler: Subject<GetCommentResponse>) {
+  public getComments(pageType: string, pageId: string, repoEventHandler: Subject<GetCommentResponse>) {
+    this.pageType = pageType;
+    this.pageId = pageId;
     this.repoSubject = repoEventHandler;
     this.repo$ = repoEventHandler.asObservable();
     this.requestComments();
   }
 
   private requestComments() {
-    this.httpClient.post<GetCommentResponse>(this.targetRoute,
-      JSON.stringify(this.getRequest), this.httpOptions).subscribe(
+    this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${this.pageType}/${this.pageId}`).subscribe(
       data => {
         this.repoSubject.next(data.Data);
       }, error1 => {
