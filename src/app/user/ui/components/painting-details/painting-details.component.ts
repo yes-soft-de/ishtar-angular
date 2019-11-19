@@ -40,6 +40,7 @@ export class PaintingDetailsComponent implements OnInit {
     //   }
     // );
     if (window.innerWidth < 768) {
+      // TODO Replace This With Ngx Component
       const flkty = new Flickity('.main-carousel', {
         draggable: true,
         wrapAround: true,
