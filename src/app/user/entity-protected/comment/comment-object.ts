@@ -1,5 +1,3 @@
-import {UserInfo} from '../profile/user-info';
-
 export interface CommentObject {
   comment: string;
   date: {

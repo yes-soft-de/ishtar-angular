@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CommentObject} from '../../../entity-protected/comment/comment-object';
 import {CommentPresenterService} from '../../../presenter/comment/comment-presenter.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-view-comment-widget',
@@ -15,7 +16,14 @@ export class ViewCommentWidgetComponent implements OnInit {
   editMode: boolean;
 
   constructor(private commentPresenter: CommentPresenterService,
+              private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder) {
+    activatedRoute.url.subscribe(
+      urlSegments => {
+        this.commentPresenter.setPageTypeAndId(urlSegments[0].path, urlSegments[1].path);
+        console.log('ML' + urlSegments[0].path + urlSegments[1].path);
+      }
+    );
     this.editMode = false;
   }
 

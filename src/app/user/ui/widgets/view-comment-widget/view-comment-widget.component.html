@@ -2,7 +2,7 @@
   <div class="row" *ngIf="editMode">
     <form class="form-group" [formGroup]="commentForm" (ngSubmit)="saveComment()">
     <textarea formControlName="commentText"
-              type="text" ngModel
+              type="text"
               name="comment"
               placeholder="Your comment..."
               class="form-control rounded-0"

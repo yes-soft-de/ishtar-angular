@@ -59,7 +59,7 @@ export class EditStatueComponent implements OnInit {
     mergeObservable.subscribe((data: {statues: any, artists: any}) => {
       // fetch all Artists
       this.artists = data.artists.Data;
-      // select the statue for this route
+      // select the statue for this pageTypeString
       data.statues.Data.map(statuesRes => {
         if (statuesRes['0'].id === this.statueId) {
           this.statuesData = statuesRes;

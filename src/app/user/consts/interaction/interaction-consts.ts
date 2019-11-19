@@ -9,10 +9,10 @@ export class InteractionConsts {
   public static ENTITY_TYPE_AUCTION = 4;
   public static ENTITY_TYPE_STATUE = 6;
 
-  public static routingValues = [
-    {route: 'painting', apiKey: InteractionConsts.ENTITY_TYPE_PAINTING},
-    {route: 'art-type', apiKey: InteractionConsts.ENTITY_TYPE_ART_TYPE},
-    {route: 'artist', apiKey: InteractionConsts.ENTITY_TYPE_ARTIST},
-    {route: 'statue', apiKey: InteractionConsts.ENTITY_TYPE_STATUE}
+  public static routingValues: {pageTypeString: string, pageType: string}[] = [
+    {pageTypeString: 'painting', pageType: 'getPaintingComments'},
+    {pageTypeString: 'art-type', pageType: 'getArtTypeComments'},
+    {pageTypeString: 'artist', pageType: 'GetArtistComments'},
+    {pageTypeString: 'statue', pageType: 'GetStatueComments'}
   ];
 }

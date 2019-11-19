@@ -3,10 +3,9 @@ import {Observable, Subject} from 'rxjs';
 import {GetCommentResponse} from '../../entity-protected/comment/get-comment-response';
 import {GetCommentRepoService} from '../../repository/comment/get-comment-repo.service';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
-import {ActivatedRoute} from '@angular/router';
-import {UserInfo} from '../../entity-protected/profile/user-info';
 import {CommentObject} from '../../entity-protected/comment/comment-object';
-import {UserProfileManagerService} from '../user-profile/user-profile-manager.service';
+import {CommentGetRequestFactory} from '../../mapper/comment/comment-get-request-factory';
+import {ErrorCodes} from '../../consts/error/error-codes';
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +17,9 @@ export class GetCommentManagerService {
   private getManagerSubject: Subject<CommentObject[]>;
   private getManager$: Observable<CommentObject[]>;
 
-  private currentPageType: number;
-  private currentPageId: string;
-  private currentUser: UserInfo;
+  private getRequest;
 
-  constructor(private getCommentRepo: GetCommentRepoService,
-              private userProfileService: UserProfileManagerService,
-              private activatedRoute: ActivatedRoute) {
-    this.userProfileService.getManagerObservable().subscribe(
-      usr => {
-        this.currentUser = usr;
-      }
-    );
-    this.userProfileService.getUserProfile();
+  constructor(private getCommentRepo: GetCommentRepoService) {
 
     this.getRepoSubject = new Subject<GetCommentResponse>();
     this.getRepo$ = this.getRepoSubject.asObservable();
@@ -39,35 +28,72 @@ export class GetCommentManagerService {
     this.getManager$ = this.getManagerSubject.asObservable();
   }
 
-  public getComments() {
-    this.activatedRoute.url.subscribe(
-      urlSegments => {
-        for (const i of InteractionConsts.routingValues) {
-          if (urlSegments[0].path === i.route) {
-            this.currentPageType = i.apiKey;
-            this.currentPageId = urlSegments[1].path;
-            this.processGetComments();
-            return;
-          }
-        }
-        this.getManagerSubject.error('Unknown Page Type: ' + urlSegments[0].path);
-      }
-    );
+  public getComments(pageType: string, pageId: string) {
+    switch (pageType) {
+      case 'painting':
+        this.getRequest = CommentGetRequestFactory.getPaintingCommentRequest(pageId);
+        this.processGetPaintingComments();
+        break;
+      case 'artist':
+        this.getRequest = CommentGetRequestFactory.getArtistCommentRequest(pageId);
+        this.processGetArtistComments();
+        break;
+      case 'statue':
+        this.getRequest = CommentGetRequestFactory.getStatueCommentRequest(pageId);
+        this.processGetStatueComments();
+        break;
+      case 'art-type':
+        this.getRequest = CommentGetRequestFactory.getArtTypeCommentRequest(pageId);
+        this.processGetArtTypeComments();
+        break;
+      default:
+        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + 'Error Mapping the Request!');
+        break;
+    }
   }
 
-  private processGetComments() {
-    // (2) Listen For Any Event Happening On a Post Comment Level
+  private processGetPaintingComments() {
     this.getRepo$.subscribe(
       (data: GetCommentResponse) => {
-        // Additional Validation Happens Here
         this.getManagerSubject.next(data.Data.reverse());
       }, error1 => {
-        this.getManagerSubject.error(error1);
+        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
       }
     );
+    this.getCommentRepo.getPaintingComment(this.getRequest, this.getRepoSubject);
+  }
 
-    // (1) Start Posting the Data
-    this.getCommentRepo.getComments(`${this.currentPageType}`, this.currentPageId, this.getRepoSubject);
+  private processGetArtistComments() {
+    this.getRepo$.subscribe(
+      (data: GetCommentResponse) => {
+        this.getManagerSubject.next(data.Data.reverse());
+      }, error1 => {
+        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
+      }
+    );
+    this.getCommentRepo.getArtistComment(this.getRequest, this.getRepoSubject);
+  }
+
+  private processGetArtTypeComments() {
+    this.getRepo$.subscribe(
+      (data: GetCommentResponse) => {
+        this.getManagerSubject.next(data.Data.reverse());
+      }, error1 => {
+        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
+      }
+    );
+    this.getCommentRepo.getArtTypeComment(this.getRequest, this.getRepoSubject);
+  }
+
+  private processGetStatueComments() {
+    this.getRepo$.subscribe(
+      (data: GetCommentResponse) => {
+        this.getManagerSubject.next(data.Data.reverse());
+      }, error1 => {
+        this.getManagerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
+      }
+    );
+    this.getCommentRepo.getStatueComment(this.getRequest, this.getRepoSubject);
   }
 
   public getObservable(): Observable<CommentObject[]> {

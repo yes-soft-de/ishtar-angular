@@ -26,11 +26,11 @@ export class UserConfig {
   public static clientImageUploadAPI = UserConfig.sourceAPI + 'uploadPaintingImage';
 
   // Artists API
-  public static artistsAPI = UserConfig.sourceAPI + 'artists';     // This route for GET all & POST
-  public static artistAPI = UserConfig.sourceAPI + 'artist';      // this route for GET ById & PUT
+  public static artistsAPI = UserConfig.sourceAPI + 'artists';     // This pageTypeString for GET all & POST
+  public static artistAPI = UserConfig.sourceAPI + 'artist';      // this pageTypeString for GET ById & PUT
   // Painting API
-  public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
-  public static paintingAPI = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This pageTypeString for GET all & POST
+  public static paintingAPI = UserConfig.sourceAPI + 'painting';     // this pageTypeString for GET ById & PUT
   /* PaintingByApi About:
   * get every thing from painting table dependent on painting column
   * ex : paintingby/artist/2 => fetch all painting for this artist, ex : paintingby/id/2 => fetch painting with id 2
@@ -49,13 +49,17 @@ export class UserConfig {
   public static specialSectionComments = UserConfig.sourceAPI + 'commentsentity';
   public static commentsAPI = UserConfig.sourceAPI + 'comments';
   public static commentAPI = UserConfig.sourceAPI + 'comment';
+  public static paintingCommentAPI = UserConfig.sourceAPI + 'getPaintingComments';
+  public static artistCommentAPI = UserConfig.sourceAPI + 'getArtistComments';
+  public static artTypeCommentAPI = UserConfig.sourceAPI + 'getArtTypeComments';
+  public static statueCommentAPI = UserConfig.sourceAPI + 'getStatueComments';
 
   // View Follow Love Interactions API
   public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
   public static interactionAPI = UserConfig.sourceAPI + 'interaction';
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
-  public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
-  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviewed';
+  public static interactionsNumberAPI = UserConfig.sourceAPI + 'interactionsentity';
+  public static mostViewedAPI = UserConfig.sourceAPI + 'mostviewed';
 
   // Clap Interactions API
   public static clapsAPI = UserConfig.sourceAPI + 'claps';

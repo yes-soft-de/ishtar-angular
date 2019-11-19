@@ -69,7 +69,7 @@ export class EditArtistComponent implements OnInit {
       (data: {artists: ArtistListResponse, artTypes: any}) => {
         // fetch all art type
         this.artTypes = data.artTypes.Data;
-        // select the artist for this route
+        // select the artist for this pageTypeString
         data.artists.Data.map(artistRes => {
           // tslint:disable-next-line:triple-equals
           if (artistRes['0'].id == this.artistId) {

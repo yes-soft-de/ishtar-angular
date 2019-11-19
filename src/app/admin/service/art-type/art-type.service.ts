@@ -35,14 +35,14 @@ export class ArtTypeService {
   //     data => {
   //       // TODO insert ngx-toastr Message
   //       console.log('POST Request Was Successfully done', data);
-  //       // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.route});
+  //       // this.router.navigate(['admin/list-ArtTypeInterface'], {relativeTo: this.pageTypeString});
   //     },
   //     error => {
   //       console.log(error);
   //     },
   //     () => {
   //       console.log('done');
-  //       this.router.navigate(['admin/list-arttype'], {relativeTo: this.route});
+  //       this.router.navigate(['admin/list-arttype'], {relativeTo: this.pageTypeString});
   //     }
   //   );
   // }

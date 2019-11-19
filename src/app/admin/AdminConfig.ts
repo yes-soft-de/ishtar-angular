@@ -20,8 +20,8 @@ export class AdminConfig {
   // public static allArtistsAPI           = AdminConfig.sourceAPI + 'getArtistsData';
   // public static artistAPI               = AdminConfig.sourceAPI + 'getArtistById';
   public static allArtistsAPI           = AdminConfig.sourceAPI + 'artistsdetails';   // This Route FOr GET all artists
-  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This route for POST
-  public static artistAPI               = AdminConfig.sourceAPI + 'artist';     // this route for GET ById & PUT
+  public static artistsAPI              = AdminConfig.sourceAPI + 'artists';    // This pageTypeString for POST
+  public static artistAPI               = AdminConfig.sourceAPI + 'artist';     // this pageTypeString for GET ById & PUT
 
   // Painting API
   // public static addPaintingAPI          = AdminConfig.sourceAPI + 'createPainting';
@@ -31,8 +31,8 @@ export class AdminConfig {
   // public static paintingAPI             = AdminConfig.sourceAPI + 'getPaintingById';
   // public static fullImagesListAPI       = AdminConfig.sourceAPI + 'painting-full-list';
   // public static deletePaintingAPI       = AdminConfig.sourceAPI + 'deletePainting';
-  public static paintingsAPI            = AdminConfig.sourceAPI + 'paintings';    // This route for GET all & POST
-  public static paintingAPI             = AdminConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  public static paintingsAPI            = AdminConfig.sourceAPI + 'paintings';    // This pageTypeString for GET all & POST
+  public static paintingAPI             = AdminConfig.sourceAPI + 'painting';     // this pageTypeString for GET ById & PUT
 
   // client API
    public static addClientAPI            = AdminConfig.sourceAPI + 'createClient';

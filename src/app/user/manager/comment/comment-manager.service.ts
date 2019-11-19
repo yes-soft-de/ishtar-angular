@@ -5,6 +5,7 @@ import {CreateCommentRequest} from '../../entity-protected/comment/create-commen
 import {UpdateCommentRequest} from '../../entity-protected/comment/update-comment-request';
 import {UserProfileManagerService} from '../user-profile/user-profile-manager.service';
 import {UserInfo} from '../../entity-protected/profile/user-info';
+import {ErrorCodes} from '../../consts/error/error-codes';
 
 /**
  * @description
@@ -84,7 +85,7 @@ export class CommentManagerService {
         // Additional Validation Happens Here
         this.managerSubject.next('Comment Created Successfully');
       }, error1 => {
-        this.managerSubject.error(error1);
+        this.managerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
       }
     );
 
@@ -98,7 +99,7 @@ export class CommentManagerService {
         // Additional Validation Happens Here
         this.managerSubject.next('Comment Updated Successfully');
       }, error1 => {
-        this.managerSubject.error(error1);
+        this.managerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
       }
     );
     const newComment: UpdateCommentRequest = {
@@ -117,7 +118,7 @@ export class CommentManagerService {
         // Additional Validation Happens Here
         this.managerSubject.next('Comment Deleted Successfully');
       }, error1 => {
-        this.managerSubject.error(error1);
+        this.managerSubject.error(ErrorCodes.ERROR_MANAGER + error1);
       }
     );
     this.commentService.deleteComment(commentId, this.repoSubject);

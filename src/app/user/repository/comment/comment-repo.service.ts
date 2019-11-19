@@ -2,11 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommentRequest} from '../../entity-protected/comment/create-comment-request';
 import {UserConfig} from '../../UserConfig';
-import {Observable, Subject} from 'rxjs';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import {CreateCommentResponse} from '../../entity-protected/comment/create-comment-response';
 import {CookieService} from 'ngx-cookie-service';
 import {UserCookiesConfig} from '../../UserCookiesConfig';
 import {UpdateCommentRequest} from '../../entity-protected/comment/update-comment-request';
+import {catchError} from 'rxjs/operators';
+import {ErrorCodes} from '../../consts/error/error-codes';
 
 
 /**
@@ -61,28 +63,34 @@ export class CommentRepoService {
   }
 
   private requestCreateComment() {
+    // TODO: Replace This With Redux Once Finished
     if (this.cookieService.get(UserCookiesConfig.TOKEN) === null || this.cookieService.get(UserCookiesConfig.TOKEN) === undefined) {
-      this.repoSubject.error('The User is Not Logged in!');
+      this.repoSubject.error(ErrorCodes.ERROR_REPO + 'Error Getting User Data');
     }
 
-    this.httpClient.post<CreateCommentResponse>(`${UserConfig.commentAPI}`, JSON.stringify(this.currentCommentRequest)).subscribe(
+    this.httpClient.post<CreateCommentResponse>(`${UserConfig.commentAPI}`, JSON.stringify(this.currentCommentRequest))
+      .pipe(catchError(err => {
+        this.repoSubject.error(ErrorCodes.ERROR_REPO + 'Error Performing the Request' + JSON.stringify(err));
+        return EMPTY;
+      }))
+      .subscribe(
       data => {
         this.validateResponse(data);
       }, error1 => {
-        this.repoSubject.error('Error Submitting Post Request: ' + error1);
+        this.repoSubject.error(ErrorCodes.ERROR_REPO + 'Error Submitting Post Request: ' + error1);
       }
     );
   }
 
   private requestUpdateComment() {
     if (this.cookieService.get(UserCookiesConfig.TOKEN) === null || this.cookieService.get(UserCookiesConfig.TOKEN) === undefined) {
-      this.repoSubject.error('The User is Not Logged in!');
+      this.repoSubject.error(ErrorCodes.ERROR_REPO + 'The User is Not Logged in!');
     }
 
     this.httpClient.put(`${UserConfig.commentAPI}/${this.commentId}`, JSON.stringify(this.updateCommentRequest)).subscribe(
       () => {
       }, error1 => {
-        this.repoSubject.error(error1);
+        this.repoSubject.error(ErrorCodes.ERROR_REPO + error1);
       }
     );
   }
@@ -92,7 +100,7 @@ export class CommentRepoService {
       () => {
         this.repoSubject.next(null);
       }, error1 => {
-        this.repoSubject.error('Error Connecting To Endpoint: ' + error1);
+        this.repoSubject.error(ErrorCodes.ERROR_REPO + 'Error Connecting To Endpoint: ' + error1);
       }
     );
   }
@@ -100,7 +108,7 @@ export class CommentRepoService {
   validateResponse(CommentResponse) {
     // This Happens in a Network Level Only
     if (CommentResponse.status_code !== '200') {
-      this.repoSubject.error(CommentResponse.msg);
+      this.repoSubject.error(ErrorCodes.ERROR_REPO + CommentResponse.msg);
     }
     this.repoSubject.next(CommentResponse);
   }
