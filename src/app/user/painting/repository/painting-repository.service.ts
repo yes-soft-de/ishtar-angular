@@ -16,7 +16,7 @@ export class PaintingRepositoryService {
   getPainting(paintingId: number) {
     this.httpClient.get<PaintingDetailsResponse>(`http://dev-ishtar.96.lt/ishtar-backend/public/painting/${paintingId}`)
     .pipe(catchError(err => {
-      console.log(`${err}`);
+      console.log(this.repoSubject.error(err));
       return EMPTY;
     })).subscribe(
       data => {
