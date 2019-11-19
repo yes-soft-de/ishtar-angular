@@ -7,13 +7,14 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./next.component.scss']
 })
 export class NextComponent implements OnInit {
-
+  next: string;
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(`Current Url Query ${urlSegments[0].path}`);
+        this.next = urlSegments[1].path;
       }
     );
   }
