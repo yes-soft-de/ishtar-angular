@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PaintingDetailsResponse } from '../response/painting-details-response';
 import { catchError } from 'rxjs/operators';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY, Subject, Observable } from 'rxjs';
 import { PaintingDetails } from '../../entity/painting-details/painting-details';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class PaintingRepositoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPainting(paintingId: number) {
+  getPainting(paintingId: number): Observable {
     return this.httpClient.get<PaintingDetailsResponse>(`http://dev-ishtar.96.lt/ishtar-backend/public/painting/${paintingId}`)
   }
 }
