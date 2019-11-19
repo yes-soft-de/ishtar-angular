@@ -1,3 +1,5 @@
+import {UserInfo} from '../profile/user-info';
+
 export interface CommentObject {
   comment: string;
   date: {
@@ -9,5 +11,5 @@ export interface CommentObject {
   userImage: string;
   id: number;
   body: string;
-  editable: false;
+  editable: boolean;
 }

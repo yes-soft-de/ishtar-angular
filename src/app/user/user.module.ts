@@ -62,6 +62,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
 import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
+import { ViewCommentWidgetComponent } from './ui/widgets/view-comment-widget/view-comment-widget.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     ProfilePageComponent,
     AboutIshtarPageComponent,
     CommentListComponent,
-    CommentItemComponent
+    CommentItemComponent,
+    ViewCommentWidgetComponent,
   ],
   exports: [
     // User
@@ -154,8 +156,8 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
-
+    DataProcessingPageComponent,
+    ViewCommentWidgetComponent
   ],
   imports: [
     CommonModule,

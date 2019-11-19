@@ -1,14 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgModel} from '@angular/forms';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {CommentsService} from '../../../service/comments/comments.service';
-import {CommentsEntity} from '../../../entity/comments/comments-entity';
-import {ToastrService} from 'ngx-toastr';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
-import {UserInfo} from '../../../entity/user/user-info';
-import {UserResponse} from '../../../entity/user/user-response';
-import {CommentsResponse} from '../../../entity/comments/comments-response';
-import {CommentManagerService} from '../../../manager/comment/comment-manager.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {CommentPresenterService} from '../../../presenter/comment/comment-presenter.service';
 import {CommentObject} from '../../../entity-protected/comment/comment-object';
 
@@ -18,14 +9,17 @@ import {CommentObject} from '../../../entity-protected/comment/comment-object';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  comments: CommentsEntity[];
+  commentForm: FormGroup;
+  comments: CommentObject[];
   isSubmitted = false;
-  buttonValue = 'Save';
   edit = -1;
   errorMessage = '';
-  errorEditMessage = '';
 
-  constructor(private commentPresenter: CommentPresenterService) {
+  constructor(private commentPresenter: CommentPresenterService,
+              private formBuilder: FormBuilder) {
+    this.commentForm = formBuilder.group({
+      commentText: ['']
+    });
   }
 
   ngOnInit() {
@@ -33,43 +27,23 @@ export class CommentsComponent implements OnInit {
     this.fetchAllComments();
   }
 
-  // Fetch All Comment For Specified Section(artist, painting, statues, ...)
   private fetchAllComments() {
     this.commentPresenter.getListObservable().subscribe(
-      commentsList => {
-        this.comments = commentsList;
+      commentList => {
+        this.comments = commentList;
+      }, error1 => {
+        alert(error1);
+        window.location.reload();
       }
     );
     this.commentPresenter.getComments();
   }
 
-  saveComment(editTextareaValue: NgModel, index: number) {
-    if (editTextareaValue.valid) {
-      this.commentPresenter.updateComments(`${index}`, this.comments[index] as CommentObject, this.comments[index].body);
+  saveComment() {
+    if (this.commentForm.get('commentText').value !== null || this.commentForm.get('commentText').value !== undefined) {
+      this.commentPresenter.createComment(this.commentForm.get('commentText').value);
     } else {
-      this.errorEditMessage = 'Comment Can Not By Empty';
-    }
-  }
-
-  deleteComment(commentId: number) {
-    for (const i of this.comments) {
-      if (i.id === commentId) {
-        this.commentPresenter.deleteComment(i as CommentObject);
-      }
-    }
-  }
-
-  // prevent enter default
-  onKeydown(event) {
-    event.preventDefault();
-  }
-
-  // adding comment
-  pressing(textareaValue: NgModel) {
-    if (textareaValue.valid) {
-      this.commentPresenter.createComment(textareaValue.value);
-    } else {
-      this.errorMessage = 'Comment Can Not By Empty';
+      this.errorMessage = 'Empty Comment!';
     }
   }
 }

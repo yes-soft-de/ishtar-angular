@@ -1,0 +1,112 @@
+#view-comment-box {
+  .comments-box {
+    border: 1px solid #e1e1e1;
+    padding-top: 10px;
+
+    ul {
+      list-style-type: none;
+      margin: 15px 0;
+      padding: 0 15px;
+
+      li {
+        margin-right: 15px;
+      }
+    }
+
+    textarea {
+      background: #eee;
+      margin: 0 15px;
+      width: calc(100% - 30px);
+    }
+
+    .all-comments {
+      //height: 300px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .sub-comment {
+        position: relative;
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        .hidden-button {
+          position: absolute;
+          right: -122px;
+          -webkit-transition: all .5s ease-in-out;
+          -moz-transition: all .5s ease-in-out;
+          -o-transition: all .5s ease-in-out;
+          transition: all .5s ease-in-out;
+          z-index: 20;
+        }
+
+        &:hover .hidden-button {
+          right: 20px
+        }
+
+        img {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          border: 1px solid;
+          padding: 1px;
+        }
+
+        .comment-body {
+          border-radius: 5px;
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 12px;
+            left: -5px;
+            border-style: solid;
+            border-color: transparent #6c757d transparent transparent;
+            border-width: 10px;
+          }
+
+          .time {
+            span {
+              color: #e0e86f;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 632px) {
+    .comments-box {
+      .all-comments {
+        .sub-comment {
+          .comment-body {
+            &:before {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

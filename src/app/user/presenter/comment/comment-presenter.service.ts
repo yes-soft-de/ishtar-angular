@@ -69,13 +69,13 @@ export class CommentPresenterService {
     this.commentGetterManager.getComments();
   }
 
-  public updateComments(commentId: string, oldComment: CommentObject, newComment: string) {
+  public updateComments(oldComment: CommentObject, newComment: string) {
     if (this.currentUser.username !== oldComment.username) {
       this.presenterGeneralSubject.error('User is Not Logged In!');
     } else if (oldComment.username !== this.currentUser.username) {
       this.presenterGeneralSubject.error('The Current User Can NOT Edit Another User Comment');
     } else {
-      this.processUpdateRequest(commentId, newComment);
+      this.processUpdateRequest(`${oldComment.id}`, newComment);
     }
   }
 
