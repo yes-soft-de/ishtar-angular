@@ -19,8 +19,7 @@ export class PaintingService {
       .pipe(catchError(err => {
         this.serviceSubject.error('Error Getting Data');
         return EMPTY;
-      }))
-      .subscribe(
+      })).subscribe(
       paintingResponse => {
         this.serviceSubject.next(paintingResponse.Data);
       }
