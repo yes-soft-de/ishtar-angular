@@ -66,6 +66,8 @@ import { PaintingManagerComponent } from './painting/manager/painting-manager/pa
 import { PaintingComponent } from './painting/component/painting/painting.component';
 import { PaintingDetailsNextComponent } from './painting/component/painting-details-next/painting-details-next.component';
 import { PaintingDetailsPreviousComponent } from './painting/component/painting-details-previous/painting-details-previous.component';
+import { NextComponent } from './shared/component/next/next.component';
+import { PreComponent } from './shared/component/pre/pre.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +125,9 @@ import { PaintingDetailsPreviousComponent } from './painting/component/painting-
     PaintingManagerComponent,
     PaintingComponent,
     PaintingDetailsNextComponent,
-    PaintingDetailsPreviousComponent
+    PaintingDetailsPreviousComponent,
+    NextComponent,
+    PreComponent
   ],
   exports: [
     // User
