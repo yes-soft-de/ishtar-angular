@@ -64,6 +64,8 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
 import { RootComponent } from './painting/components/root/root.component';
 import { PaintingManagerComponent } from './painting/manager/painting-manager/painting-manager.component';
 import { PaintingComponent } from './painting/component/painting/painting.component';
+import { PaintingDetailsNextComponent } from './painting/component/painting-details-next/painting-details-next.component';
+import { PaintingDetailsPreviousComponent } from './painting/component/painting-details-previous/painting-details-previous.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +121,9 @@ import { PaintingComponent } from './painting/component/painting/painting.compon
     CommentItemComponent,
     RootComponent,
     PaintingManagerComponent,
-    PaintingComponent
+    PaintingComponent,
+    PaintingDetailsNextComponent,
+    PaintingDetailsPreviousComponent
   ],
   exports: [
     // User
