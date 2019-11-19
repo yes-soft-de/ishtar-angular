@@ -7,13 +7,14 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./pre.component.scss']
 })
 export class PreComponent implements OnInit {
-
+  pre: string;
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(`Current Url Query ${urlSegments[0].path}`);
+        this.pre = urlSegments[0].path;
       }
     );
   }

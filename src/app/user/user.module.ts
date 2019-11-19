@@ -61,11 +61,6 @@ import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.compo
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
-import { RootComponent } from './painting/components/root/root.component';
-import { PaintingManagerComponent } from './painting/manager/painting-manager/painting-manager.component';
-import { PaintingComponent } from './painting/component/painting/painting.component';
-import { PaintingDetailsNextComponent } from './painting/component/painting-details-next/painting-details-next.component';
-import { PaintingDetailsPreviousComponent } from './painting/component/painting-details-previous/painting-details-previous.component';
 import { NextComponent } from './shared/component/next/next.component';
 import { PreComponent } from './shared/component/pre/pre.component';
 
@@ -121,11 +116,6 @@ import { PreComponent } from './shared/component/pre/pre.component';
     ProfilePageComponent,
     AboutIshtarPageComponent,
     CommentItemComponent,
-    RootComponent,
-    PaintingManagerComponent,
-    PaintingComponent,
-    PaintingDetailsNextComponent,
-    PaintingDetailsPreviousComponent,
     NextComponent,
     PreComponent
   ],
