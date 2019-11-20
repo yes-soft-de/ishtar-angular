@@ -17,7 +17,7 @@ export class PreComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(`Current Url Query ${urlSegments[0].path}`);
-        this.pre = +urlSegments[0].path - 1;
+        this.pre = +urlSegments[1].path - 1;
       }
     );
   }
