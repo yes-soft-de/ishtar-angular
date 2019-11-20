@@ -21,8 +21,8 @@ export class CommentManagerService {
     return this.commentRepository.createComment(comment);
   }
 
-  getComments(getCommentRequest: GetCommentRequest): Observable<GetCommentResponse> {
-    return this.commentRepository.getComment(getCommentRequest);
+  getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
+    return this.commentRepository.getComment(pageType, pageId);
   }
 
   updateComment(commentId: number, updateCommentRequest: UpdateCommentRequest): Observable<UpdateCommentResponse> {

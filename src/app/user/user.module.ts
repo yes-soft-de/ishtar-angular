@@ -64,6 +64,7 @@ import { PreComponent } from './shared/component/pre/pre.component';
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
+import { CommentComponent } from './shared/comment/component/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import {PaintingDetailsComponent} from './painting/component/painting-details/pa
     AboutIshtarPageComponent,
     CommentItemComponent,
     NextComponent,
-    PreComponent
+    PreComponent,
+    CommentComponent
   ],
   exports: [
     // User

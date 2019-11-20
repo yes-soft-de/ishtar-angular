@@ -21,8 +21,8 @@ export class CommentsRepositoryService {
     return this.httpClient.post<CreateCommentResponse>(`${UserConfig.commentAPI}`, JSON.stringify(comment));
   }
 
-  public getComment(getCommentRequest: GetCommentRequest): Observable<GetCommentResponse> {
-    return this.httpClient.post<GetCommentResponse>(`${UserConfig.commentsAPI}`, JSON.stringify(getCommentRequest));
+  public getComment(pageType: string, pageId: number): Observable<GetCommentResponse> {
+    return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
   }
 
   public deleteComment(commentId: number) {
