@@ -24,11 +24,11 @@
                 </div>
                 <img src="{{painting['0']?.image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto" alt="{{painting[0]?.name}} Image" id="main-img">
                 <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the full Image</button>
-                <div class="row mt-2 border border-dark p-1 d-none">
-                  <div class="col p-0" *ngFor="let i of [1,1,1,1]">
-                    <img class="img-fluid" src="{{painting[0]?.image}}" alt="..." (click)="setMainPainting($event)">
-                  </div>
-                </div>
+<!--                <div class="row mt-2 border border-dark p-1 d-none">-->
+<!--                  <div class="col p-0" *ngFor="let i of [1,1,1,1]">-->
+<!--                    <img class="img-fluid" src="{{painting[0]?.image}}" alt="..." (click)="setMainPainting($event)">-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
               <div class="col-md-12 col-lg-10 mx-auto content mt-2">
                 <div class="row">
@@ -114,13 +114,13 @@
     <!--End Painting Comment Section-->
 
     <!--Starting Related Paintings Section-->
-    <div class="related-painting py-4">
-      <h3 class="text-center my-4">Paintings You May Like</h3>
-      <hr class="w-25 border-bottom border-dark">
-      <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="paintingList.reverse().slice(0, 8)"
-                           [filter]="false"
-                           *ngIf="paintingList != null"></app-c-painting-list>
-    </div>
+<!--    <div class="related-painting py-4">-->
+<!--      <h3 class="text-center my-4">Paintings You May Like</h3>-->
+<!--      <hr class="w-25 border-bottom border-dark">-->
+<!--      <app-c-painting-list style="display: flex; justify-content: center" [formattedPaintingList]="paintingList.reverse().slice(0, 8)"-->
+<!--                           [filter]="false"-->
+<!--                           *ngIf="paintingList != null"></app-c-painting-list>-->
+<!--    </div>-->
     <!--End Related Paintings Section-->
   </div>
 </div>

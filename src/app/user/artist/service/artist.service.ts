@@ -39,8 +39,10 @@ export class ArtistService {
         this.artistDetailsSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
-          // Send Data If Successfully Fetching
-          artistDetailResponse => this.artistDetailsSubject.next(artistDetailResponse.Data)
+        // Send Data If Successfully Fetching
+        artistDetailResponse => {
+          this.artistDetailsSubject.next(artistDetailResponse.Data);
+        }
     );
     // Return The Data To Print It In Component
     return this.artistDetailsSubject.asObservable();

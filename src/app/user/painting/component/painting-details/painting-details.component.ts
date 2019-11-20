@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
-import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {ArtistService} from '../../../artist/service/artist.service';
 import {ArtistDetails} from '../../../artist/entity/artist-details';
+import {PaintingDetails} from '../../entity/painting-details';
 
 @Component({
   selector: 'app-painting-details',
@@ -30,9 +30,15 @@ export class PaintingDetailsComponent implements OnInit {
                 this.artist = res;
               }
             });
-            console.log('paiting', this.painting, 'artist', this.artist);
-          }
-        );
+            // console.log(this.painting['0'].artistId);
+            // this.artistService.getArtist(Number(this.painting['0'].artistId)).subscribe(
+            //     artistResponse => {
+            //       this.artist = artistResponse;
+            //       console.log('artist', this.artist);
+            //     }
+            // );
+            console.log('painting: ', this.painting, 'Artist:', this.artist);
+          });
       }
     );
   }
