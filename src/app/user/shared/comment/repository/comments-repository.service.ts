@@ -21,8 +21,8 @@ export class CommentsRepositoryService {
     return this.httpClient.post<CreateCommentResponse>(`${UserConfig.commentAPI}`, JSON.stringify(comment));
   }
 
-  public getComment(pageType: string, pageId: number): Observable<GetCommentResponse> {
-    return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
+  public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
+    return this.httpClient.get<GetCommentResponse>(`http://dev-ishtar.96.lt/ishtar-backend/public/commentsentity/${pageType}/${pageId}`);
   }
 
   public deleteComment(commentId: number) {

@@ -22,7 +22,7 @@ export class CommentManagerService {
   }
 
   getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
-    return this.commentRepository.getComment(pageType, pageId);
+    return this.commentRepository.getComments(pageType, pageId);
   }
 
   updateComment(commentId: number, updateCommentRequest: UpdateCommentRequest): Observable<UpdateCommentResponse> {
