@@ -12,8 +12,8 @@ import {catchError} from 'rxjs/operators';
  * Artist Service Class For Subscribe Data And Send It To Component
  */
 export class ArtistService {
-  artistListSubject = new Subject<ArtistListItem[]>();
-  artistDetailsSubject = new Subject<ArtistDetails>();
+  private artistListSubject = new Subject<ArtistListItem[]>();
+  private artistDetailsSubject = new Subject<ArtistDetails>();
 
   constructor(private artistManagerService: ArtistManagerService) { }
 
@@ -25,7 +25,9 @@ export class ArtistService {
         return EMPTY;
       })).subscribe(
         // Send Data If Successfully Fetching
-        artistListResponse => this.artistListSubject.next(artistListResponse.Data)
+        artistListResponse => {
+          this.artistListSubject.next(artistListResponse.Data);
+        }
     );
     // Return The Data To Print It In Component
     return this.artistListSubject.asObservable();

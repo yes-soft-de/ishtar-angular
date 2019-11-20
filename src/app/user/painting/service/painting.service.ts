@@ -80,8 +80,6 @@ export class PaintingService {
     const paintingDetailsObservable: Observable<PaintingDetailsResponse> = this.paintingManager.getPainting(paintingId);
     // Fetch All Artist To Select The Artist For This Painting
     const allArtistsObservable: Observable<ArtistListResponse> = this.artistManager.getArtists();
-
-    // Combine Observables
     const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable, allArtistsObservable);
     combinedObservable.subscribe(
       data => {
