@@ -1,30 +1,90 @@
 import {Injectable} from '@angular/core';
 import {PaintingManagerService} from '../manager/painting-manager.service';
 import {PaintingDetails} from '../entity/painting-details';
-import {EMPTY, Observable, Subject} from 'rxjs';
-import {PaintingDetailsResponse} from '../response/painting-details-response';
+import {EMPTY, forkJoin, Observable, Subject} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {PaintingListItem} from '../entity/painting-list-item';
+import {ArtistManagerService} from '../../artist/manager/artist-manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Painting Service Class For Subscribe Data And Send It To Component
+ */
 export class PaintingService {
-  private serviceSubject: Subject<PaintingDetails>;
+  private paintingSubject = new Subject<PaintingDetails>();
+  private paintingsListSubject = new Subject<PaintingListItem[]>();
+  private paintingsListBySubject = new Subject<any>();
+  private serviceSubject = new Subject<any>();
 
-  constructor(private paintingManager: PaintingManagerService) {
+  constructor(private paintingManager: PaintingManagerService,
+              private artistManager: ArtistManagerService) {
   }
 
+  // Fetch All Paintings
+  getPaintings(): Observable<PaintingListItem[]> {
+    this.paintingManager.getPaintings()
+      .pipe(catchError(err => {
+        this.paintingsListSubject.error('Error Getting Data');
+        return EMPTY;
+      })).subscribe(
+        paintingListResponse => {
+          // Send Data If Successfully Fetching
+          this.paintingsListSubject.next(paintingListResponse.Data);
+        }
+    );
+    // Return The Data To Print It In Component
+    return this.paintingsListSubject.asObservable();
+  }
+
+  // Fetch Painting Details
   getPainting(paintingId): Observable<PaintingDetails> {
     this.paintingManager.getPainting(paintingId)
       .pipe(catchError(err => {
-        this.serviceSubject.error('Error Getting Data');
+        this.paintingSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
       paintingResponse => {
-        this.serviceSubject.next(paintingResponse.Data);
+        // Send Data If Successfully Fetching
+        this.paintingSubject.next(paintingResponse.Data);
       }
     );
+    // Return The Data To Print It In Component
+    return this.paintingSubject.asObservable();
+  }
 
+  // Fetch Every Thing From Painting Table
+  getPaintingListBy(param: string, value: number): Observable<any> {
+    this.paintingManager.getPaintingListBy(param, value)
+      .pipe(catchError(err => {
+        this.paintingsListBySubject.error('Error Getting Data');
+        return EMPTY;
+      })).subscribe(
+        paintingListByResponse => {
+          this.paintingsListBySubject.next(paintingListByResponse.Data);
+        }
+    );
+    // Return The Data To Print It In Component
+    return this.paintingsListBySubject.asObservable();
+  }
+
+  // Join Every Data We Want In Same Subscribe
+  getPaintingArtistData(paintingId: number) {
+    // Fetch All Paintings
+    const allPaintingsObservable: Observable<any> = this.paintingManager.getPaintings();
+    // Fetch This Painting Details
+    const paintingDetailsObservable: Observable<any> = this.paintingManager.getPainting(paintingId);
+    // Fetch All Artist To Select The Artist For This Painting
+    // const allArtistsObservable: Observable<any> = this.artistManager.getArtists();
+    const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable);
+    combinedObservable.subscribe(
+        data => {
+          this.serviceSubject.next(data);
+        }
+    );
+    // Return The Data To Print It In Component
     return this.serviceSubject.asObservable();
   }
+
 }

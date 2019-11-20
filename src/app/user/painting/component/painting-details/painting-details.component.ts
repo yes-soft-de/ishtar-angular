@@ -18,13 +18,45 @@ export class PaintingDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        this.paintingService.getPainting(urlSegments[1].path).subscribe(
-          paintingDetails => {
-            // Consume Data
-            this.painting = paintingDetails;
-          }
+        console.log(urlSegments['0'].path, urlSegments['1'].path);
+        this.paintingService.getPaintingArtistData(Number(urlSegments[1].path)).subscribe(
+            data => {
+              console.log(data);
+            }
         );
       }
     );
   }
+
+
+  setMainPainting(event) {
+    const target = event.target || event.srcElement || event.currentTarget;
+    const paintingSrc = target.attributes.src;
+    const value = paintingSrc.nodeValue;
+    const mainImage = document.getElementById('main-img');
+    mainImage.setAttribute('src', value);
+    document.getElementById('full-size-img').setAttribute('src', value);
+  }
+
+  showImageInFullSize() {
+    document.getElementById('full-size-img').classList.add('active');
+  }
+
+  hideFullScreenMode() {
+    document.getElementById('full-size-img').classList.remove('active');
+  }
+
+  // Navigate To Next Painting
+  goNext() {
+    return;
+  }
+
+
+  // Navigate To Previous Painting
+  goBack() {
+    return;
+  }
+
+
+
 }

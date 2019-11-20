@@ -15,7 +15,7 @@ export class NextComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(`Current Url Query ${urlSegments[0].path}`);
-        this.next = +urlSegments[1].path + 1 ;
+        this.next = +urlSegments[1].path + 1;
       }
     );
   }

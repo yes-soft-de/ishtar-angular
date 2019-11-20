@@ -16,7 +16,7 @@ import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-
 import {ArtistListComponent} from './ui/components/artist-list/artist-list.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
-import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
+// import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.component';
 import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
@@ -63,6 +63,7 @@ import { NextComponent } from './shared/component/next/next.component';
 import { PreComponent } from './shared/component/pre/pre.component';
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
+import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
 
 @NgModule({
   declarations: [
