@@ -32,10 +32,10 @@ export class PaintingService {
         this.paintingsListSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
-        paintingListResponse => {
-          // Send Data If Successfully Fetching
-          this.paintingsListSubject.next(paintingListResponse.Data);
-        }
+      paintingListResponse => {
+        // Send Data If Successfully Fetching
+        this.paintingsListSubject.next(paintingListResponse.Data);
+      }
     );
     // Return The Data To Print It In Component
     return this.paintingsListSubject.asObservable();
@@ -64,9 +64,9 @@ export class PaintingService {
         this.paintingsListBySubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
-        paintingListByResponse => {
-          this.paintingsListBySubject.next(paintingListByResponse.Data);
-        }
+      paintingListByResponse => {
+        this.paintingsListBySubject.next(paintingListByResponse.Data);
+      }
     );
     // Return The Data To Print It In Component
     return this.paintingsListBySubject.asObservable();
@@ -91,5 +91,4 @@ export class PaintingService {
     // Return The Data To Print It In Component
     return this.serviceSubject.asObservable();
   }
-
 }
