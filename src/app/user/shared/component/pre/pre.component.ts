@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {toNumber} from 'ngx-bootstrap/timepicker/timepicker.utils';
 
 @Component({
   selector: 'app-pre',
@@ -8,7 +7,7 @@ import {toNumber} from 'ngx-bootstrap/timepicker/timepicker.utils';
   styleUrls: ['./pre.component.scss']
 })
 export class PreComponent implements OnInit {
-  pre: number;
+  prev: number;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
@@ -16,8 +15,8 @@ export class PreComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        console.log(`Current Url Query ${urlSegments[0].path}`);
-        this.pre = +urlSegments[0].path - 1;
+        console.log(`Current Url Query ${urlSegments[1].path}`);
+        this.prev = +urlSegments[1].path - 1;
       }
     );
   }

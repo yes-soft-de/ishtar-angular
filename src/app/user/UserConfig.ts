@@ -32,6 +32,7 @@ export class UserConfig {
   // Painting API
   public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
   public static paintingAPI = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  public static paintingByIdAPI = UserConfig.sourceAPI + 'paintingById';
   /* PaintingByApi About:
   * get every thing from painting table dependent on painting column
   * ex : paintingby/artist/2 => fetch all painting for this artist, ex : paintingby/id/2 => fetch painting with id 2

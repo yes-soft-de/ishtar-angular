@@ -3,6 +3,7 @@ import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {ArtistService} from '../../../artist/service/artist.service';
+import {ArtistDetails} from '../../../artist/entity/artist-details';
 
 @Component({
   selector: 'app-painting-details',
@@ -11,25 +12,26 @@ import {ArtistService} from '../../../artist/service/artist.service';
 })
 export class PaintingDetailsComponent implements OnInit {
   private painting: PaintingDetails;
+  private artist: ArtistDetails;
 
   constructor(private paintingService: PaintingService,
               private artistService: ArtistService,
-              private activatedRoute: ActivatedRoute) {
-  }
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(urlSegments['0'].path, urlSegments['1'].path);
-        // this.artistService.getArtists().subscribe(
-        //     data => {
-        //       console.log('artist', data);
-        //     }
-        // );
         this.paintingService.getPaintingArtistData(Number(urlSegments[1].path)).subscribe(
-            data => {
-              console.log(data);
-            }
+          (data: any) => {
+            this.painting = data[1].Data; // Storing Painting Details Data
+            data[2].Data.map(res => {     // Storing Artist Data For This Painting
+              if (res.name === this.painting['0'].artist) {
+                this.artist = res;
+              }
+            });
+            console.log('paiting', this.painting, 'artist', this.artist);
+          }
         );
       }
     );
