@@ -5,6 +5,9 @@ import {EMPTY, forkJoin, Observable, Subject} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {PaintingListItem} from '../entity/painting-list-item';
 import {ArtistManagerService} from '../../artist/manager/artist-manager.service';
+import {PaintingListResponse} from '../response/painting-list-response';
+import {PaintingDetailsResponse} from '../response/painting-details-response';
+import {ArtistListResponse} from '../../artist/response/artist-list-response';
 
 @Injectable({
   providedIn: 'root'
@@ -72,16 +75,16 @@ export class PaintingService {
   // Join Every Data We Want In Same Subscribe
   getPaintingArtistData(paintingId: number) {
     // Fetch All Paintings
-    const allPaintingsObservable: Observable<any> = this.paintingManager.getPaintings();
+    const allPaintingsObservable: Observable<PaintingListResponse> = this.paintingManager.getPaintings();
     // Fetch This Painting Details
-    const paintingDetailsObservable: Observable<any> = this.paintingManager.getPainting(paintingId);
+    const paintingDetailsObservable: Observable<PaintingDetailsResponse> = this.paintingManager.getPainting(paintingId);
     // Fetch All Artist To Select The Artist For This Painting
-    // const allArtistsObservable: Observable<any> = this.artistManager.getArtists();
-    const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable);
+    const allArtistsObservable: Observable<ArtistListResponse> = this.artistManager.getArtists();
+    const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable, allArtistsObservable);
     combinedObservable.subscribe(
-        data => {
-          this.serviceSubject.next(data);
-        }
+      data => {
+        this.serviceSubject.next(data);
+      }
     );
     // Return The Data To Print It In Component
     return this.serviceSubject.asObservable();

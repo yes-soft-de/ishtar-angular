@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
+import {ArtistService} from '../../../artist/service/artist.service';
 
 @Component({
   selector: 'app-painting-details',
@@ -12,6 +13,7 @@ export class PaintingDetailsComponent implements OnInit {
   private painting: PaintingDetails;
 
   constructor(private paintingService: PaintingService,
+              private artistService: ArtistService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -19,6 +21,11 @@ export class PaintingDetailsComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         console.log(urlSegments['0'].path, urlSegments['1'].path);
+        // this.artistService.getArtists().subscribe(
+        //     data => {
+        //       console.log('artist', data);
+        //     }
+        // );
         this.paintingService.getPaintingArtistData(Number(urlSegments[1].path)).subscribe(
             data => {
               console.log(data);
