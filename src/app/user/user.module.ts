@@ -65,6 +65,9 @@ import {PaintingDetailsPageComponent} from './painting/component/painting-detail
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
 import {CommentItemComponent} from './ui/widgets/comment-item/comment-item.component';
 import {PaintingCommentComponent} from './painting/component/painting-comment/painting-comment.component';
+import { StatueDetailsComponent } from './statue/component/statue-details/statue-details.component';
+import { StatueCommentComponent } from './statue/component/statue-comment/statue-comment.component';
+import { StatueDetailsPageComponent } from './statue/component/statue-details-page/statue-details-page.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +123,10 @@ import {PaintingCommentComponent} from './painting/component/painting-comment/pa
     CommentItemComponent,
     NextComponent,
     PreComponent,
-    PaintingCommentComponent
+    PaintingCommentComponent,
+    StatueDetailsComponent,
+    StatueCommentComponent,
+    StatueDetailsPageComponent
   ],
   exports: [
     // User
