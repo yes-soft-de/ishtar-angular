@@ -72,7 +72,7 @@ export class CommentsComponent implements OnInit {
     event.preventDefault();
   }
 
-  // adding comment
+  // adding painting-comment
   pressing(textareaValue: NgModel) {
     if (textareaValue.valid) {
       this.errorMessage = '';       // Empty The Error Message Variable

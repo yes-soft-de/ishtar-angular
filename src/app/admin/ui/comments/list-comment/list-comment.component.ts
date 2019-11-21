@@ -70,7 +70,7 @@ export class ListCommentComponent implements OnInit {
     const anyData = 'Any Thing';
     this.commentService.specialComment(commentId, anyData).subscribe(
         (data: any) => {
-          console.log('response data for special comment: ', data);
+          console.log('response data for special painting-comment: ', data);
         }, error => {
           console.log(error);
         }, () => {

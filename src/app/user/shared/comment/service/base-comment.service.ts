@@ -10,14 +10,13 @@ import {catchError} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService {
+export class BaseCommentService {
   commentSubject: Subject<CommentObject[]>;
-  constructor(private commentManager: CommentManagerService,
-              private routeToApi: RouteToAPIService) {
+  constructor(protected commentManager: CommentManagerService) {
     this.commentSubject = new Subject<CommentObject[]>();
   }
 
-  public createComment(comment: string, pageType: string, pageId: string, userId: string) {
+  protected createComment(comment: string, pageType: string, pageId: string, userId: string) {
     const newComment: CreateCommentRequest = {
       entity: +pageType,
       row: +pageId,
@@ -28,7 +27,7 @@ export class CommentService {
     this.commentManager.createComment(comment);
   }
 
-  public updateComment(commentId: number, pageType: string, pageId: string, clientId: string, newComment: string) {
+  protected updateComment(commentId: number, pageType: string, pageId: string, clientId: string, newComment: string) {
     const comment: UpdateCommentRequest = {
       entity: +pageType,
       row: +pageId,
@@ -39,14 +38,13 @@ export class CommentService {
     this.commentManager.updateComment(commentId, comment);
   }
 
-  public deleteComment(commentId: number) {
+  protected deleteComment(commentId: number) {
     this.commentManager.deleteComment(commentId);
   }
 
-  public getComments(pageType: string, pageId: number): Observable<CommentObject[]> {
+  protected getComments(pageType: string, pageId: number): Observable<CommentObject[]> {
     // Example: Painting Type is 2 in the API
-    const apiPageType: string = this.routeToApi.convertPageTypeToApiType(pageType);
-    this.commentManager.getComments(apiPageType, pageId)
+    this.commentManager.getComments(pageType, pageId)
       .pipe(catchError(() => {
         this.commentSubject.error('Error Getting Comments!');
         return EMPTY;

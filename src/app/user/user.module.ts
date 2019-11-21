@@ -58,13 +58,13 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
-import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 import { NextComponent } from './shared/component/next/next.component';
 import { PreComponent } from './shared/component/pre/pre.component';
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
-import { CommentComponent } from './shared/comment/component/comment/comment.component';
+import {CommentItemComponent} from './ui/widgets/comment-item/comment-item.component';
+import {PaintingCommentComponent} from './painting/component/painting-comment/painting-comment.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +120,7 @@ import { CommentComponent } from './shared/comment/component/comment/comment.com
     CommentItemComponent,
     NextComponent,
     PreComponent,
-    CommentComponent
+    PaintingCommentComponent
   ],
   exports: [
     // User

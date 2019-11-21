@@ -16,7 +16,7 @@
               name="comment"
               (keyup.enter)="pressing(textarea)"
               (keydown.enter)="onKeydown($event)"
-              placeholder="{{!clientIsLogin ? 'Login if you want to make your comment' : 'Your comment...'}}"
+              placeholder="{{!clientIsLogin ? 'Login if you want to make your painting-comment' : 'Your painting-comment...'}}"
               class="form-control rounded-0"
               required
               [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"
@@ -63,9 +63,9 @@
 <!--      <div *ngIf="edit === i">-->
 <!--        <textarea #editTextarea="ngModel"-->
 <!--                  type="text"-->
-<!--                  [(ngModel)]="comment.body"-->
-<!--                  name="comment"-->
-<!--                  placeholder="comment..."-->
+<!--                  [(ngModel)]="painting-comment.body"-->
+<!--                  name="painting-comment"-->
+<!--                  placeholder="painting-comment..."-->
 <!--                  class="form-control rounded-0 my-2"-->
 <!--                  required-->
 <!--                  [ngStyle]="{'border': errorMessage != '' ? '1px solid #f00' : 'none'}"></textarea>-->
@@ -78,4 +78,4 @@
   <!-- #Comments -->
 
 </div>
-<!--<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your comment</div>-->
+<!--<div class="alert alert-warning text-center" [class.d-none]="clientIsLogin">Login if you want to make your painting-comment</div>-->
