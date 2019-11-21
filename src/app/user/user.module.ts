@@ -68,6 +68,7 @@ import {PaintingCommentComponent} from './painting/component/painting-comment/pa
 import { StatueDetailsComponent } from './statue/component/statue-details/statue-details.component';
 import { StatueCommentComponent } from './statue/component/statue-comment/statue-comment.component';
 import { StatueDetailsPageComponent } from './statue/component/statue-details-page/statue-details-page.component';
+import {PaintingMayLikeComponent} from './painting/component/painting-may-like/painting-may-like.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { StatueDetailsPageComponent } from './statue/component/statue-details-pa
     PaintingCommentComponent,
     StatueDetailsComponent,
     StatueCommentComponent,
-    StatueDetailsPageComponent
+    StatueDetailsPageComponent,
+    PaintingMayLikeComponent
   ],
   exports: [
     // User

@@ -31,9 +31,4 @@ export class PaintingRepositoryService {
     return this.httpClient.get(`${UserConfig.paintingByAPI}/${param}/${value}`);
   }
 
-  // Fetch the Secondary Images For Painting
-  getSecondaryPaintings(paintingId: number): Observable<any> {
-    return this.httpClient.get<any>(`${UserConfig.paintingByIdAPI}/${paintingId}`);
-  }
-
 }

@@ -30,10 +30,4 @@ export class PaintingManagerService {
   getPaintingListBy(param: string, value: number): Observable<any> {
     return this.paintingRepository.getPaintingListBy(param, value);
   }
-
-  // Fetch the Secondary Images For Painting
-  getSecondaryPaintings(paintingId: number): Observable<any> {
-    return this.paintingRepository.getSecondaryPaintings(paintingId);
-  }
-
 }

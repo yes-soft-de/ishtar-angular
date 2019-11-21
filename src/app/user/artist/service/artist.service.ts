@@ -41,6 +41,7 @@ export class ArtistService {
       })).subscribe(
         // Send Data If Successfully Fetching
         artistDetailResponse => {
+          console.log('before', artistDetailResponse);
           this.artistDetailsSubject.next(artistDetailResponse.Data);
         }
     );

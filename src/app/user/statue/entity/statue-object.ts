@@ -18,8 +18,8 @@ export interface StatueObject {
   active: boolean;
   keyWord: string;
   createDate: Date;
-  createdBy: Date;
+  createdBy: string;
   updatedDate: Date;
-  updatedBy: Date;
+  updatedBy: string;
   state: boolean;
 }
