@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ArtistObject} from '../../../entity-protected/artist/artist-object';
 
 @Component({
   selector: 'app-artist-details',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
+  artistMainPainting;
+  artist: ArtistObject;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
