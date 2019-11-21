@@ -22,7 +22,7 @@ export class CommentsRepositoryService {
   }
 
   public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
-    return this.httpClient.get<GetCommentResponse>(`http://dev-ishtar.96.lt/ishtar-backend/public/commentsentity/${pageType}/${pageId}`);
+    return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
   }
 
   public deleteComment(commentId: number) {
