@@ -26,7 +26,7 @@ export class BaseCommentService {
       client: +userId,
       spacial: 0,
     };
-    this.commentManager.createComment(comment);
+    this.commentManager.createComment(newComment);
   }
 
   protected updateComment(commentId: number, pageType: string, pageId: string, clientId: string, newComment: string) {
