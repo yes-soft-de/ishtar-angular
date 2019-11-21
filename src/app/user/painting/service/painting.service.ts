@@ -21,8 +21,7 @@ export class PaintingService {
   private paintingsListBySubject = new Subject<any>();
   private serviceSubject = new Subject<any>();
 
-  constructor(private paintingManager: PaintingManagerService,
-              private artistManager: ArtistManagerService) {
+  constructor(private paintingManager: PaintingManagerService) {
   }
 
   // Fetch All Paintings
@@ -72,20 +71,4 @@ export class PaintingService {
     return this.paintingsListBySubject.asObservable();
   }
 
-  // Join Every Data We Want In Same Subscribe
-  getPaintingArtistData() {
-    // Fetch All Paintings
-    const allPaintingsObservable: Observable<PaintingListResponse> = this.paintingManager.getPaintings();
-    // Fetch This Painting Details
-    // Fetch All Artist To Select The Artist For This Painting
-    const allArtistsObservable: Observable<ArtistListResponse> = this.artistManager.getArtists();
-    const combinedObservable = forkJoin(allPaintingsObservable, allArtistsObservable);
-    combinedObservable.subscribe(
-      data => {
-        this.serviceSubject.next(data);
-      }
-    );
-    // Return The Data To Print It In Component
-    return this.serviceSubject.asObservable();
-  }
 }

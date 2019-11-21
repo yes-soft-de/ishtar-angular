@@ -1,0 +1,17 @@
+<!--THis For View Interactions Number-->
+<span *ngIf="interaction == 'view'">
+  <i class="far fa-eye fa-fw m-1"></i>
+  <span *ngFor="let interactionValue of interactions">
+    {{interactionValue.paintingID == Row && interactionValue.interactionType == interaction ? interactionValue.interactionNumber : ''}}
+  </span>
+</span>
+
+<!--This is for Love Interaction Number-->
+<span *ngIf="interaction == 'love'">
+  <i class="fas fa-heart fa-fw m-1"></i>
+  <span *ngFor="let interactionValue of interactions">
+    {{interactionValue.paintingID == Row && interactionValue.interactionType == interaction ? interactionValue.interactionNumber : ''}}
+  </span>
+</span>
+
+
