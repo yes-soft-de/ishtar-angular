@@ -15,6 +15,6 @@ export class StatueRepositoryService {
   }
 
   getStatueDetails(stateId: number): Observable<GetStatueResponse> {
-    return this.httpClient.get<StatueListResponse>(`${UserConfig.statueAPI}/${stateId}`);
+    return this.httpClient.get<GetStatueResponse>(`${UserConfig.statueAPI}/${stateId}`);
   }
 }
