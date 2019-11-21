@@ -20,10 +20,11 @@ export class PaintingCommentService extends BaseCommentService {
   }
 
   public getPaintingComments(pageId: number): Observable<CommentObject[]> {
+    // TODO: We Should Replace This with a Config File
     const apiType = this.routeToApi.convertPageTypeToApiType('painting');
     this.getComments(apiType, pageId).subscribe(
-      comments => {
-        this.paintingCommentsSubject.next(comments);
+      commentsResponse => {
+        this.paintingCommentsSubject.next(commentsResponse.Data);
       }
     );
     return this.paintingCommentsSubject.asObservable();

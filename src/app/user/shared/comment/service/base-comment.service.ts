@@ -6,6 +6,8 @@ import {RouteToAPIService} from '../helper/route-to-api.service';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {CommentObject} from '../entity/comment-object';
 import {catchError} from 'rxjs/operators';
+import {CommentResponse} from '../../../../admin/entity/comment/comment.response';
+import {GetCommentResponse} from '../response/get-comment-response';
 
 @Injectable({
   providedIn: 'root'
@@ -42,18 +44,8 @@ export class BaseCommentService {
     this.commentManager.deleteComment(commentId);
   }
 
-  protected getComments(pageType: string, pageId: number): Observable<CommentObject[]> {
+  protected getComments(pageType: string, pageId: number): Observable<GetCommentResponse>  {
     // Example: Painting Type is 2 in the API
-    this.commentManager.getComments(pageType, pageId)
-      .pipe(catchError(() => {
-        this.commentSubject.error('Error Getting Comments!');
-        return EMPTY;
-      }))
-      .subscribe(
-      comments => {
-        this.commentSubject.next(comments.Data);
-      }
-    );
-    return this.commentSubject.asObservable();
+    return this.commentManager.getComments(pageType, pageId);
   }
 }
