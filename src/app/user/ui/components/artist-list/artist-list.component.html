@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center artist-list-section"
      [ngStyle]="{'border-top': search ? '1px solid #333333' : 'none'}">
   <div class="col-2 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
-    <div>
+    <div> 
       <h5>Filter By Art Type</h5>
       <button mdbBtn class="btn-light" *ngFor="let i of types"
               [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"

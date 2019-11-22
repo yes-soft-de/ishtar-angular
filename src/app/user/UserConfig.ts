@@ -1,8 +1,8 @@
 export class UserConfig {
   // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
-  //public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+ // public static sourceAPI = '/ishtar-backend/public/';
   public static localAPI = 'http://localhost:8002/';
-  public static sourceAPI = '/ishtar-backend/public/';
 
   public static diagnoseAPI = 'https://webhook.site/ed0764a6-f85a-4f5f-937d-127d0741832d';
 
@@ -56,7 +56,7 @@ export class UserConfig {
   public static interactionAPI = UserConfig.sourceAPI + 'interaction';
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
   public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
-  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviewed';
+  public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviews';
 
   // Clap Interactions API
   public static clapsAPI = UserConfig.sourceAPI + 'claps';

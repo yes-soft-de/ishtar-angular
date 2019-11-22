@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { EditProfileRepoService } from './edit-profile-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('EditProfileRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let editProfileRepoService: EditProfileRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [EditProfileRepoService]
+    });
+    editProfileRepoService = TestBed.get(EditProfileRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: EditProfileRepoService = TestBed.get(EditProfileRepoService);
-    expect(service).toBeTruthy();
+    expect(editProfileRepoService).toBeTruthy();
   });
 });

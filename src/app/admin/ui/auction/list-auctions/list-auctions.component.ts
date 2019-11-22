@@ -13,6 +13,8 @@ import {Subscription} from 'rxjs';
 export class ListAuctionsComponent implements OnInit, OnDestroy {
   auctions: AuctionList[];
   auctionObservable: Subscription;
+  name: string;
+
   constructor(private router: Router,
               private auctionService: AuctionService) { }
 
@@ -31,4 +33,7 @@ export class ListAuctionsComponent implements OnInit, OnDestroy {
       this.auctionObservable.unsubscribe();
   }
 
+  applyFilter() {
+    return;
+  }
 }

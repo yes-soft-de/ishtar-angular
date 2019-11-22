@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { InteractionRepoService } from './interaction-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('InteractionRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let interactionRepoService: InteractionRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [InteractionRepoService]
+    });
+    interactionRepoService = TestBed.get(InteractionRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: InteractionRepoService = TestBed.get(InteractionRepoService);
-    expect(service).toBeTruthy();
+    expect(interactionRepoService).toBeTruthy();
   });
 });

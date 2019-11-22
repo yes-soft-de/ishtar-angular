@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Statues Page</h1>
       <div class="row">
-      <div class="col-4">
+      <div class="col-7 col-md-6 col-xl-4">
         <div class="form-group mb-4">
           <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Statue Name And Artist Name" class="form-control form-control-underlined border-primary">
         </div>
       </div>
-      <div class="col-8 align-self-center">
+      <div class="col-5 col-md-6 col-xl-8 align-self-center">
         <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
           <i class="fa fa-plus"></i>
           Add New Statue
@@ -28,7 +28,6 @@
             <td>Length</td>
             <td>Price</td>
             <td>State</td>
-            <td>Active</td>
             <td>KeyWords</td>
             <td>Style</td>
             <td>Mediums</td>
@@ -51,9 +50,8 @@
             <td>{{statue.width}}</td>
             <td>{{statue.weight}}</td>
             <td>{{statue.length}}</td>
-            <td>{{statue.price}} $</td>
-            <td>{{statue.state ? 'Sold' : 'available'}}</td>
-            <td>{{statue.active}}</td>
+            <td>{{statue.price | currency: 'GBP'}}</td>
+            <td>{{statue.state ? 'Sold' : 'Not Sold'}}</td>
             <td>{{statue.keyWord}}</td>
             <td>{{statue.style}}</td>
             <td class="td-custom">{{statue.mediums}}</td>

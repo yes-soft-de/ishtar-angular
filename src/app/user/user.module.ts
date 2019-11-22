@@ -38,7 +38,7 @@ import {SearchListComponent} from './ui/components/search-list/search-list.compo
 import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ClapWidgetComponent} from './ui/widgets/clap-widget/clap-widget.component';
 import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
@@ -60,7 +60,6 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
-import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
 import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 
 @NgModule({
@@ -114,7 +113,6 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     StatueListPageComponent,
     ProfilePageComponent,
     AboutIshtarPageComponent,
-    CommentListComponent,
     CommentItemComponent
   ],
   exports: [

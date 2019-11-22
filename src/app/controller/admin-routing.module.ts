@@ -37,7 +37,7 @@ const routes: Routes = [
       {path: 'list-statues', component: ListStatueComponent, data: {index: 3}},
       {path: 'add-statue', component: AddStatueComponent},
       {path: 'edit-statue/:id', component: EditStatueComponent},
-      {path: 'list-comment', component: ListCommentComponent, data: {index: 4}},
+      {path: 'list-comments', component: ListCommentComponent, data: {index: 4}},
       {path: 'list-interactions', component: ListInteractionComponent, data: {index: 5}},
       {path: 'list-clients', component: ListClientComponent, data: {index: 6}},
       {path: 'edit-client/:id', component: EditClientComponent},
