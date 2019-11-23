@@ -69,6 +69,7 @@ import { StatueDetailsComponent } from './statue/component/statue-details/statue
 import { StatueCommentComponent } from './statue/component/statue-comment/statue-comment.component';
 import { StatueDetailsPageComponent } from './statue/component/statue-details-page/statue-details-page.component';
 import { ArtistCommentComponent } from './artist/component/artist-comment/artist-comment.component';
+import { LoveComponent } from './shared/interaction-love/component/love/love.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { ArtistCommentComponent } from './artist/component/artist-comment/artist
     StatueDetailsComponent,
     StatueCommentComponent,
     StatueDetailsPageComponent,
-    ArtistCommentComponent
+    ArtistCommentComponent,
+    LoveComponent
   ],
   exports: [
     // User
