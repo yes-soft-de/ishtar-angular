@@ -25,7 +25,6 @@ export class PaintingDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        console.log(urlSegments['0'].path, urlSegments['1'].path);
         this.paintingService.getPainting(Number(urlSegments[1].path)).subscribe(
             data => {
               this.painting = data;
@@ -59,8 +58,6 @@ export class PaintingDetailsComponent implements OnInit {
     const value = paintingSrc.nodeValue;          // Get src attribute for Current Element
     this.mainImg.nativeElement.src = value;       // Set The src attribute value to MainImage
     this.fullSizeImg.nativeElement.src = value;   // Set The src attribute value to FullSizeImage
-    // mainImage.setAttribute('src', value);
-    // document.getElementById('full-size-img').setAttribute('src', value);
   }
 
   showImageInFullSize() {

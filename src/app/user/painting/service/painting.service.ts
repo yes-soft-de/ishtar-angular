@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {PaintingManagerService} from '../manager/painting-manager.service';
 import {PaintingDetails} from '../entity/painting-details';
-import {EMPTY, forkJoin, Observable, Subject} from 'rxjs';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {PaintingListItem} from '../entity/painting-list-item';
-import {ArtistManagerService} from '../../artist/manager/artist-manager.service';
-import {PaintingListResponse} from '../response/painting-list-response';
-import {PaintingDetailsResponse} from '../response/painting-details-response';
-import {ArtistListResponse} from '../../artist/response/artist-list-response';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +16,8 @@ export class PaintingService {
   private paintingSubject = new Subject<PaintingDetails>();
   private paintingsListSubject = new Subject<PaintingListItem[]>();
   private paintingsListBySubject = new Subject<any>();
-  private serviceSubject = new Subject<any>();
 
-  constructor(private paintingManager: PaintingManagerService) {
-  }
+  constructor(private paintingManager: PaintingManagerService) {}
 
   // Fetch All Paintings
   getPaintings(): Observable<PaintingListItem[]> {

@@ -39,9 +39,8 @@ export class ArtistService {
         this.artistDetailsSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
-        // Send Data If Successfully Fetching
         artistDetailResponse => {
-          console.log('before', artistDetailResponse);
+          // Send Data If Successfully Fetching
           this.artistDetailsSubject.next(artistDetailResponse.Data);
         }
     );

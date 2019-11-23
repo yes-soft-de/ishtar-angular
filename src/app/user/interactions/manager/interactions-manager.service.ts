@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {InteractionsRepositoryService} from '../repository/interactions-repository.service';
 import {Observable} from 'rxjs';
-import {Interactions} from '../entitiy/interactions';
 import {InteractionsResponse} from '../response/interactions-response';
 
 @Injectable({

@@ -26,7 +26,7 @@ export class PaintingRepositoryService {
     return this.httpClient.get<PaintingDetailsResponse>(`${UserConfig.paintingAPI}/${paintingId}`);
   }
 
-  // Fetch Every Thing From Painting Table
+  // Fetch Every Thing From Painting Table ex: param -> paintingColumnName as artist, value -> paintingColumnValue as 2
   getPaintingListBy(param: string, value: number): Observable<any> {
     return this.httpClient.get(`${UserConfig.paintingByAPI}/${param}/${value}`);
   }
