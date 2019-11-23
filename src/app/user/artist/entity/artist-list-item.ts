@@ -1,5 +1,7 @@
 export interface ArtistListItem {
   id?: number;
+  paintingNumber: number;
+  artistFollowers: number;
   name?: string;
   nationality?: string;
   residence?: string;
