@@ -10,15 +10,11 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
-import {FooterComponent} from './ui/components/general-footer/footer.component';
-import {HeaderComponent} from './ui/components/general-header/header.component';
 import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
 import {ArtistListComponent} from './ui/components/artist-list/artist-list.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
-import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.component';
-import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -58,9 +54,6 @@ import {StatueListComponent} from './ui/components/statue-list/statue-list.compo
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
-import { NextComponent } from './shared/component/next/next.component';
-import { PreComponent } from './shared/component/pre/pre.component';
-import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
 import {CommentItemComponent} from './ui/widgets/comment-item/comment-item.component';
@@ -70,6 +63,11 @@ import { StatueCommentComponent } from './statue/component/statue-comment/statue
 import { StatueDetailsPageComponent } from './statue/component/statue-details-page/statue-details-page.component';
 import { ArtistCommentComponent } from './artist/component/artist-comment/artist-comment.component';
 import { LoveComponent } from './shared/interaction-love/component/love/love.component';
+import {HeaderComponent} from './shared/header/header.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import {ArtistListPageComponent} from './artist/component/artist-list-page/artist-list-page.component';
+import {ArtistDetailsPageComponent} from './artist/component/artist-details-page/artist-details-page.component';
+import {ArtistDetailsComponent} from './artist/component/artist-details/artist-details.component';
 
 @NgModule({
   declarations: [
@@ -123,14 +121,13 @@ import { LoveComponent } from './shared/interaction-love/component/love/love.com
     ProfilePageComponent,
     AboutIshtarPageComponent,
     CommentItemComponent,
-    NextComponent,
-    PreComponent,
     PaintingCommentComponent,
     StatueDetailsComponent,
     StatueCommentComponent,
     StatueDetailsPageComponent,
     ArtistCommentComponent,
-    LoveComponent
+    LoveComponent,
+    ArtistDetailsComponent
   ],
   exports: [
     // User
