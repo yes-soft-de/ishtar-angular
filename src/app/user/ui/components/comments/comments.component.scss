@@ -6,6 +6,7 @@
     margin: 15px 0;
     padding: 0 15px;
     li {
+      display: inline-block;
       margin-right: 15px;
     }
   }
@@ -16,7 +17,6 @@
   }
 
   .all-comments {
-    //height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
     &::-webkit-scrollbar {
@@ -79,25 +79,6 @@
           }
         }
       }
-      //.time {
-      //  margin-left: 15px;
-      //  padding-left: 15px;
-      //  position: relative;
-      //
-      //  &::after {
-      //    content: '';
-      //    position: absolute;
-      //    left: 0;
-      //    top: calc(50% - 2px);
-      //    height: 4px;
-      //    width: 4px;
-      //    background: #000;
-      //  }
-      //}
-      //
-      //p {
-      //  margin-top: 20px;
-      //}
     }
   }
 }
@@ -112,9 +93,6 @@
           }
         }
       }
-    }
-    textarea {
-      min-height: 85px;
     }
   }
 }

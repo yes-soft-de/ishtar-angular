@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgModel} from '@angular/forms';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {FormControl, FormGroup, NgForm, NgModel} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 import {CommentsService} from '../../../service/comments/comments.service';
 import {CommentsEntity} from '../../../entity/comments/comments-entity';
 import {ToastrService} from 'ngx-toastr';
+import {Subscription} from 'rxjs';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {UserInfo} from '../../../entity/user/user-info';
-import {UserResponse} from '../../../entity/user/user-response';
-import {CommentsResponse} from '../../../entity/comments/comments-response';
 
 @Component({
   selector: 'app-comments',
@@ -16,11 +16,9 @@ import {CommentsResponse} from '../../../entity/comments/comments-response';
 })
 export class CommentsComponent implements OnInit {
   @Input() pageType: string;
-  sectionId: number;
   comments: CommentsEntity[];
-  // allComments: Subscription;
+  allComments: Subscription;
   client: UserInfo;
-  clientIsLogin = false;
   isSubmitted = false;
   buttonValue = 'Save';
   edit = -1;
@@ -30,40 +28,31 @@ export class CommentsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private commentsService: CommentsService,
               private userProfileService: UserProfileService,
-              private toaster: ToastrService) {  }
-
-  ngOnInit() {
-    // Fetch Section Id Using Observable
-    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      this.sectionId = +params.get('id');
-      this.fetchAllComments(this.sectionId);
-      this.userProfileService.requestUserDetails().subscribe(
-          (data: UserResponse) => {
-            console.log('client: ', data.Data);
-            this.client = data.Data;
-            if (this.client.id === undefined) {
-              this.clientIsLogin = false;
-            } else {
-              this.clientIsLogin = true;
-            }
-          },
-          error => {
-            console.log(error);
-          }
-      );
-    });
+              private toaster: ToastrService) {
   }
 
-  // Fetch All Comment For Specified Section(artist, painting, statues, ...)
-  private fetchAllComments(sectionId: number) {
-    // this.allComments = this.commentsService.getAllSectionComments(this.pageType, sectionId).subscribe(
-    this.commentsService.getAllSectionComments(this.pageType, sectionId).subscribe(
-      (data: CommentsResponse) => {
-        this.comments = data.Data.reverse();
-        console.log('Response Comments: ', this.comments);
-      }, error1 => {
-        console.log(error1);
-      }
+  ngOnInit() {
+    this.fetchAllComments();
+    this.userProfileService.requestUserDetails().subscribe(
+        data => {
+          this.client = data.Data;
+          console.log('user:', data);
+        },
+        error => {
+          console.log(error);
+        }
+    );
+  }
+
+  private fetchAllComments() {
+    this.allComments = this.commentsService.getAllComments(this.activatedRoute.snapshot.paramMap.get('id'),
+        this.pageType).subscribe(
+        data => {
+          this.comments = data.Data.reverse();
+          console.log('response: ', this.comments);
+        }, error1 => {
+          console.log(error1);
+        }
     );
   }
 
@@ -75,19 +64,18 @@ export class CommentsComponent implements OnInit {
   // adding comment
   pressing(textareaValue: NgModel) {
     if (textareaValue.valid) {
-      this.errorMessage = '';       // Empty The Error Message Variable
-      this.isSubmitted = true;
-      // Create New Comment
+      this.errorMessage = '';
+      this.isSubmitted = false;
       this.commentsService.postComment(
           this.pageType,
-          this.sectionId,
+          this.activatedRoute.snapshot.paramMap.get('id'),
           textareaValue.value,
           this.client.id).subscribe(
-          (data: any) => {
-                console.log('Response Adding : ', data);
+          (data) => {
+                console.log('response Adding : ', data);
                 textareaValue.reset();
                 this.isSubmitted = false;
-                this.fetchAllComments(this.sectionId);
+                this.fetchAllComments();
               },
           error => {
               this.isSubmitted = false;
@@ -103,7 +91,7 @@ export class CommentsComponent implements OnInit {
     if (this.client) {
       this.edit = +index;
     } else {
-      console.log('User is not login, FALSE');
+      console.log('user is not login, FALSE');
       return false;
     }
   }
@@ -115,7 +103,7 @@ export class CommentsComponent implements OnInit {
       this.commentsService.updateComment(
           this.comments[index].id,
           this.pageType,
-          this.sectionId,
+          this.activatedRoute.snapshot.paramMap.get('id'),
           this.comments[index].body,
           this.client.id
       ).subscribe(
@@ -137,7 +125,7 @@ export class CommentsComponent implements OnInit {
     if (confirm('Are You Sure You Want To Delete This Comment')) {
       this.commentsService.deleteComment(commentId).subscribe(
           () => {
-            this.fetchAllComments(this.sectionId);
+            this.fetchAllComments();
             this.toaster.success('Comment Deleted Successfully');
           },
           error => {

@@ -11,7 +11,7 @@ footer {
               color: #CCB832;
               letter-spacing: 4px;
             }
-          }
+          } 
           a {
             color: #000;
           }
@@ -19,11 +19,7 @@ footer {
       }
     }
   }
-  .footer-space {
-
-  }
   .custom-bottom-footer {
-    //color: #8f9091;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -35,7 +31,7 @@ footer {
     a{
       color: #fff;
     }
-    #footer-bottom-left {
+    .footer-bottom-left {
       ul {
         list-style-type: none;
         li {
@@ -49,7 +45,7 @@ footer {
         }
       }
     }
-    #footer-bottom-right {
+    .footer-bottom-right {
       a {
         &:hover {
           .facebook {
@@ -106,13 +102,13 @@ footer {
       }
     }
   }
-  #footer-bottom-left {
+  .footer-bottom-left {
     ul {
       text-align: center;
       margin-top: 10px
     }
   }
-  #footer-bottom-right {
+  .footer-bottom-right {
     text-align: center !important;
     margin-bottom: 15px !important;
     i {
