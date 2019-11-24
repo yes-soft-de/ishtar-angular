@@ -11,8 +11,8 @@ export class ArtistListComponent implements OnInit {
   public artistList: ArtistListItem[] = [];
   public activeTypes: string[];
   public activeArtType: string;
-  search = true;
-  filter = true;
+  @Input() search = true;
+  @Input() filter = true;
   config: {
     itemsPerPage: number,
     currentPage: number,

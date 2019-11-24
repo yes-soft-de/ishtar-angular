@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
@@ -11,7 +11,6 @@ import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
 import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
-import {ArtistListComponent} from './ui/components/artist-list/artist-list.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
@@ -68,6 +67,7 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {ArtistListPageComponent} from './artist/component/artist-list-page/artist-list-page.component';
 import {ArtistDetailsPageComponent} from './artist/component/artist-details-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './artist/component/artist-details/artist-details.component';
+import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +154,6 @@ import {ArtistDetailsComponent} from './artist/component/artist-details/artist-d
     CommentsComponent,
     SearchPageComponent,
     SearchListComponent,
-
     ArtTypeListPageComponent,
     LoginPageComponent,
     ClapWidgetComponent,
@@ -182,6 +181,8 @@ import {ArtistDetailsComponent} from './artist/component/artist-details/artist-d
     NgxPaginationModule,
     NgxImageZoomModule.forRoot()
     // BrowserAnimationsModule
+  ], schemas: [
+    NO_ERRORS_SCHEMA
   ]
 })
 export class UserModule {
