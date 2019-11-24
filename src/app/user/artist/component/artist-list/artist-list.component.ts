@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArtistListItem} from '../../entity/artist-list-item';
-import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
 import {ArtistService} from '../../service/artist.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-artist-list',
