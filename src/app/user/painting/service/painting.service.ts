@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {PaintingManagerService} from '../manager/painting-manager.service';
 import {PaintingDetails} from '../entity/painting-details';
-import {EMPTY, forkJoin, Observable, Subject} from 'rxjs';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {PaintingListItem} from '../entity/painting-list-item';
-import {ArtistManagerService} from '../../artist/manager/artist-manager.service';
-import {PaintingListResponse} from '../response/painting-list-response';
-import {PaintingDetailsResponse} from '../response/painting-details-response';
-import {ArtistListResponse} from '../../artist/response/artist-list-response';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +16,8 @@ export class PaintingService {
   private paintingSubject = new Subject<PaintingDetails>();
   private paintingsListSubject = new Subject<PaintingListItem[]>();
   private paintingsListBySubject = new Subject<any>();
-  private serviceSubject = new Subject<any>();
 
-  constructor(private paintingManager: PaintingManagerService,
-              private artistManager: ArtistManagerService) {
-  }
+  constructor(private paintingManager: PaintingManagerService) {}
 
   // Fetch All Paintings
   getPaintings(): Observable<PaintingListItem[]> {
@@ -72,23 +66,4 @@ export class PaintingService {
     return this.paintingsListBySubject.asObservable();
   }
 
-  // Join Every Data We Want In Same Subscribe
-  getPaintingArtistData(paintingId: number) {
-    // Fetch All Paintings
-    const allPaintingsObservable: Observable<PaintingListResponse> = this.paintingManager.getPaintings();
-    // Fetch This Painting Details
-    const paintingDetailsObservable: Observable<PaintingDetailsResponse> = this.paintingManager.getPainting(paintingId);
-    // Fetch the Secondary Images For Painting
-    // const secondaryPaintingsObservable: Observable<any> = this.paintingManager.getSecondaryPaintings(paintingId);
-    // Fetch All Artist To Select The Artist For This Painting
-    const allArtistsObservable: Observable<ArtistListResponse> = this.artistManager.getArtists();
-    const combinedObservable = forkJoin(allPaintingsObservable, paintingDetailsObservable, allArtistsObservable);
-    combinedObservable.subscribe(
-      data => {
-        this.serviceSubject.next(data);
-      }
-    );
-    // Return The Data To Print It In Component
-    return this.serviceSubject.asObservable();
-  }
 }

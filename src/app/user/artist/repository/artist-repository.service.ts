@@ -22,6 +22,6 @@ export class ArtistRepositoryService {
 
   // Fetch Artist Details
   getArtist(artistId: number): Observable<ArtistDetailsResponse> {
-    return this.httpClient.get<ArtistDetailsResponse>(`${UserConfig}/${artistId}`);
+    return this.httpClient.get<ArtistDetailsResponse>(`${UserConfig.artistAPI}/${artistId}`);
   }
 }

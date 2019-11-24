@@ -14,7 +14,6 @@ import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
 import {FAQComponent} from './ui/Pages/faq/faq.component';
 import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
 import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
-import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
@@ -45,7 +44,7 @@ const routes: Routes = [
       {path: 'imprint', component: ImprintPageComponent},
       {path: 'data-processing', component: DataProcessingPageComponent},
       {path: 'statue-list', component: StatueListPageComponent},
-      {path: 'statue/:id', component: StatueDetailPageComponent},
+      {path: 'statue/:id', component: StatueDetailsPageComponent},
       {path: 'profile', component: ProfilePageComponent},
       {path: 'edit-profile', component: ProfileEditPageComponent},
       {path: 'about-ishtar', component: AboutIshtarPageComponent},

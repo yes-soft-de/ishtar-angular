@@ -1,0 +1,38 @@
+<!--Starting Related Paintings Section-->
+<div *ngIf="paintingList != null">
+  <div class="py-4">
+    <h3 class="text-center my-4">Paintings You May Like</h3>
+    <hr class="w-25 border-bottom border-dark">
+      <div id="painting-list">
+        <div class="row">
+          <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
+             *ngFor="let painting of paintingList" (click)="viewImage(painting.id)"
+             routerLink="/painting/{{painting?.id}}">
+            <div class="img-container">
+              <span class="painting-buy" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+                <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting?.id}}"
+                   style="color: white">
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+              </span>
+              <img class="img-fluid" src="{{painting?.image}}"
+                   (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
+              <span class="painting-info">
+                <p class="painting-name">{{painting?.name}}</p>
+                <p class="artist">{{painting?.artist}}</p>
+               <ul class="statistics">
+                 <li>
+                   <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'love'"></app-interaction>
+                 </li>
+                 <li>
+                  <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'view'"></app-interaction>
+                 </li>
+               </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<!--End Related Paintings Section-->

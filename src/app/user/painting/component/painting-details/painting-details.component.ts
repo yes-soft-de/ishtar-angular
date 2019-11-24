@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
 import {ArtistService} from '../../../artist/service/artist.service';
@@ -11,8 +11,12 @@ import {PaintingDetails} from '../../entity/painting-details';
   styleUrls: ['./painting-details.component.scss']
 })
 export class PaintingDetailsComponent implements OnInit {
-  private painting: PaintingDetails;
-  private artist: ArtistDetails;
+  @ViewChild('mainImg', {read: ElementRef, static: true}) mainImg: ElementRef;
+  @ViewChild('fullSizeImg', {read: ElementRef, static: true}) fullSizeImg: ElementRef;
+  painting: PaintingDetails;
+  artist: ArtistDetails;
+  secondaryPaintings: {secondImage: string}[] = [];
+  fullImage = false;
 
   constructor(private paintingService: PaintingService,
               private artistService: ArtistService,
@@ -21,57 +25,47 @@ export class PaintingDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        console.log(urlSegments['0'].path, urlSegments['1'].path);
-        this.paintingService.getPaintingArtistData(Number(urlSegments[1].path)).subscribe(
-          (data: any) => {
-            this.painting = data[1].Data; // Storing Painting Details Data
-            data[2].Data.map(res => {     // Storing Artist Data For This Painting
-              if (res.name === this.painting['0'].artist) {
-                this.artist = res;
+        this.paintingService.getPainting(Number(urlSegments[1].path)).subscribe(
+            data => {
+              this.painting = data;
+              // Loop To Catch The Secondary Images For This Painting
+              for (let num = 2; num < 6; num++) {
+                if (this.painting[num]) {
+                  this.secondaryPaintings.push({
+                    secondImage: this.painting[num].image
+                  });
+                }
               }
-            });
-            // console.log(this.painting['0'].artistId);
-            // this.artistService.getArtist(Number(this.painting['0'].artistId)).subscribe(
-            //     artistResponse => {
-            //       this.artist = artistResponse;
-            //       console.log('artist', this.artist);
-            //     }
-            // );
-            console.log('painting: ', this.painting, 'Artist:', this.artist);
-          });
+              // Fetch Artist For This Painting
+              this.artistService.getArtist(this.painting['0'].artistId).subscribe(
+                  res => {
+                    this.artist = res;
+                    console.log('Artist Detail : ', this.artist);
+                  }
+              );
+              console.log('Painting Detail: ', this.painting);
+            }
+        );
       }
     );
   }
 
-
   setMainPainting(event) {
+    // Get THe Current Target Element
     const target = event.target || event.srcElement || event.currentTarget;
+    // Get THe Current Target Src
     const paintingSrc = target.attributes.src;
-    const value = paintingSrc.nodeValue;
-    const mainImage = document.getElementById('main-img');
-    mainImage.setAttribute('src', value);
-    document.getElementById('full-size-img').setAttribute('src', value);
+    const value = paintingSrc.nodeValue;          // Get src attribute for Current Element
+    this.mainImg.nativeElement.src = value;       // Set The src attribute value to MainImage
+    this.fullSizeImg.nativeElement.src = value;   // Set The src attribute value to FullSizeImage
   }
 
   showImageInFullSize() {
-    document.getElementById('full-size-img').classList.add('active');
+    this.fullImage = true;  // Display Painting In Full Size
   }
 
   hideFullScreenMode() {
-    document.getElementById('full-size-img').classList.remove('active');
+    this.fullImage = false;   // Exit From Painting Full Size
   }
-
-  // Navigate To Next Painting
-  goNext() {
-    return;
-  }
-
-
-  // Navigate To Previous Painting
-  goBack() {
-    return;
-  }
-
-
 
 }

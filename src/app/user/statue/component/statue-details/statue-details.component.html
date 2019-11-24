@@ -1,8 +1,8 @@
-<div class="statues-detail bg-light py-4">
+<div class="statues-detail bg-light py-4" *ngIf="statueDetails != null && artist != null">
   <div class="container-fluid">
     <div class="details">
-      <div id="full-size-img" #fullSizeImage [ngClass]="fullSizeImageActive ? 'active' : ''">
-        <img class="img-fluid" src="{{statueDetails.image}}" alt="...">
+      <div id="full-size-img" [class.active]="fullSizeImageActive">
+        <img #fullSizeImage class="img-fluid" src="{{statueDetails?.image}}" alt="...">
         <button (click)="hideFullScreenMode()"><span>&times;</span></button>
       </div>
       <div class="row">
@@ -16,7 +16,7 @@
               </div>
               <div class="col-12 col-sm-11 col-md-10 mx-auto">
                 <div class="statue-image border border-secondary position-relative">
-                  <img src="{{statueDetails?.image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto"
+                  <img #mainImg src="{{statueDetails?.image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto"
                        alt="{{statueDetails?.name}} Image" id="main-img">
                   <button class="statue-img-favorite position-absolute" *ngIf="!isFavoriteAdded"
                           (click)="addToFavorite()"><i class="far fa-star fa-2x"></i></button>
@@ -29,8 +29,8 @@
               <div class="col-12 col-sm-11 mx-auto d-md-none d-none mt-2">
                 <div class="statue-seconds-img">
                   <div class="row">
-                    <div class="col" *ngFor="let i of [1,1,1]">
-                      <img src="{{statueDetails?.image}}" (click)="setMainPainting($event)" class="img-fluid" alt="">
+                    <div class="col" *ngFor="let secondaryStatue of secondaryStatues">
+                      <img class="img-fluid" src="{{secondaryStatue?.secondStatue}}" alt="..." (click)="setMainPainting($event)">
                     </div>
                   </div>
                 </div>
@@ -58,14 +58,14 @@
               <div class="col-6 statue-artist text-lg-center text-xl-left mb-3">
                 <div class="statue-artist-img d-inline-block">
                   <img
-                    src="{{!statueDetails.artist?.path ? '../../../../../assets/default-avatar.jpg' : statueDetails.artist?.path}}"
+                    src="{{!artist[0]?.path ? '../../../../../assets/default-avatar.jpg' : artist[0]?.path}}"
                     class=""
                     alt="">
                 </div>
                 <p class="statue-artist-name d-inline-block m-0">
                   <a>
-                    <h5 routerLink="/artist/{{statueDetails.artist?.id}}"
-                        class="mb-0">{{statueDetails.artist?.name}}</h5>
+                    <h5 routerLink="/artist/{{artist[0]?.id}}"
+                        class="mb-0">{{artist[0]?.name}}</h5>
                     <span>Paintings: {{statueDetails.artist?.painting}}</span>
                   </a>
                 </p>
@@ -89,8 +89,10 @@
                 </ul>
               </div>
               <div class="col-4 align-self-center">
-                <i class="far fa-eye m-1"></i>
-                <span>{{statueView[0]?.interactions}} Seen</span>
+                <span>
+                  <app-interaction [Entity]="'statue'" [Row]="statueDetails?.id" [interaction]="'view'"></app-interaction>
+                  Seen
+                </span>
               </div>
               <div class="col-6 col-lg-12 d-none">
                 <button mdbBtn class="btn btn-block m-0 my-2"

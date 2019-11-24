@@ -1,0 +1,44 @@
+<div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4" *ngIf="paintingList != null">
+  <h4 class="text-center pt-4">Artist Painting</h4>
+  <hr class="w-25 border border-dark mb-2">
+  <!-- Use THis Div If Painting Length is Less Than 5 painting-->
+  <div class="painting-list" *ngIf="paintingList.length < 5">
+    <div class="row">
+      <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto"
+           *ngFor="let painting of paintingList"
+           routerLink="/painting/{{painting?.id}}">
+        <div class="img-container my-1">
+          <img class="img-fluid" src="{{painting?.image}}"
+               (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
+          <div class="painting-info">
+            <p class="painting-name">{{painting?.name}}</p>
+            <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting?.artist}}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Use THis Div If Painting Length is large Than 4 painting-->
+  <div class="painting-list" *ngIf="paintingList.length > 4">
+    <div class="row">
+      <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation slide"  [type]="'carousel-multi-item'"
+                    [animation]="'slide'">
+        <mdb-carousel-item *ngFor="let paintings of paintingSlidesPage">
+          <div class="painting-list-item col-lg-4 col-md-4 col-sm-6 col-xs-12 mx-auto"
+               [ngClass]="{'d-none d-md-block': paintingsIndex !== 0}"
+               *ngFor="let painting of paintings; let paintingsIndex = index"
+               routerLink="/painting/{{painting?.id}}">
+            <div class="img-container my-1">
+              <img class="img-fluid" src="{{painting?.image}}"
+                   (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
+              <div class="painting-info">
+                <p class="painting-name">{{painting?.name}}</p>
+                <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting?.artist}}</span></p>
+              </div>
+            </div>
+          </div>
+        </mdb-carousel-item>
+      </mdb-carousel>
+    </div>
+  </div>
+</div>
