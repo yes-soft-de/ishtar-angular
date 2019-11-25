@@ -48,7 +48,6 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
 import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
 import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
-import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
@@ -68,6 +67,7 @@ import {ArtistListPageComponent} from './artist/component/artist-list-page/artis
 import {ArtistDetailsPageComponent} from './artist/component/artist-details-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './artist/component/artist-details/artist-details.component';
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
+import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 
 @NgModule({
   declarations: [
