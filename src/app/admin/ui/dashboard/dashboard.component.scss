@@ -40,6 +40,12 @@
 .home-stat .st_comment {
   background: #8e44ad
 }
+.home-stat .st_interactions {
+  background: #218c74
+}
+.home-stat .st_clients {
+  background: #40407a
+}
 .home-stat .stat div {
   float:right;
 }
@@ -79,13 +85,13 @@
   float: left;
   padding: 6px 10px;
   color: #329de5;
-  font-size: 18px;
-  width: 100px
+  font-size: 16px;
+  width: 140px
 }
 
 .late .member_comment p {
   float: right;
-  width: calc(100% - 100px);
+  width: calc(100% - 140px);
   background: #eee;
   padding: 10px;
   position: relative

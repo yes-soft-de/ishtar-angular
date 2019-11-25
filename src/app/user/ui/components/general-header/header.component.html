@@ -3,22 +3,34 @@
   <header class="d-none d-lg-block">
     <nav id="header-nav" class="container-fluid">
       <div class="header-top">
-        <div class="container">
+        <div class="">
           <div class="row">
-            <div class="col-4 d-flex justify-content-end p-3">
+            <div class="col-4 p-3">
               <div class="row">
-                <div class="col-6 pr-0">
-                  <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid"
+                <div class="col-4 pr-0">
+                  <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid logo"
                        alt="logo image" style="cursor: pointer;">
                 </div>
-                <div class="col-2 pl-0 align-self-center">
+                <div class="col-1 pl-0 align-self-center">
                   <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
                   <!--                  <h4 class="mb-0">ISHTAR</h4>-->
 <!--                  <span>Home Of Art</span>-->
                 </div>
               </div>
             </div>
-            <div class="col-8 align-self-center">
+            <div class="col-4">
+              <div class="search-box">
+                <div class="search">
+                  <div id="input-search">
+                    <form (ngSubmit)="goToSearch()" [formGroup]="searchFrom">
+                      <input mdbInput type="text" class="form-control py-0" id="inlineFormInputGroup"
+                             placeholder="Search" formControlName="search">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 align-self-center">
               <ul class="mb-0">
                 <li class="float-right">
                   <a>
@@ -26,12 +38,20 @@
                       <span class="login" *ngIf="!userLoggedIn">
                         <a (click)="showDialog()">Login</a>
                       </span>
-                      <span class="logout" *ngIf="userLoggedIn">
-                        <a class="" (click)="logout()">Logout</a>
-                      </span>
-                      <mdb-icon mdbDropdownToggle fas icon="user-circle" size="2x"
-                                *ngIf="!userLoggedIn"></mdb-icon>
-                      <div class="d-inline-block" mdbDropdownToggle id="letter-circle" *ngIf="userLoggedIn">{{userInfo.userName.substring(0, 1)}}</div>
+                      <div class="d-inline-block" mdbDropdownToggle id="letter-circle" *ngIf="userLoggedIn">
+                          <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
+                          <div class="info">
+                            <span class="email">{{userInfo.username}}</span>
+                            <div>
+                              <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px;">Profile</a>
+                            </div>
+                           <div class="login-btn" *ngIf="userLoggedIn"> 
+                             <!--            <a class="dropdown-item">Show Wish List</a>-->
+                             <!--            <a class="dropdown-item">Show Favorite List</a>-->
+                               <a class="dropdown-item" (click)="logout()">Logout !</a>
+                             </div>
+                           </div>
+                         </div>
 <!--                      <div class="dropdown-menu dropdown-primary" *ngIf="!userLoggedIn">-->
 <!--                        <a class="dropdown-item" (click)="showDialog()">Login</a>-->
 <!--                      </div>-->
@@ -43,17 +63,15 @@
                     </div>
                   </a>
                 </li>
-                <li class="search-box float-right">
-                  <div class="search" [ngStyle]="{'right': !userLoggedIn ? '110px' : '120px'}">
-                    <mdb-icon id="open-search" fas icon="search" (click)="showInputFeild()"></mdb-icon>
-                    <mdb-icon id="close-search" fas icon="times" (click)="hideInputFeild()"></mdb-icon>
-                    <div id="input-search">
-                      <form (ngSubmit)="goToSearch()" [formGroup]="searchFrom">
-                        <input mdbInput type="text" class="form-control py-0" id="inlineFormInputGroup"
-                               placeholder="Search" formControlName="search">
-                      </form>
-                    </div>
-                  </div>
+<!--                <li class="float-right">-->
+<!--                  <a routerLink="/statue-list">-->
+<!--                    Statues-->
+<!--                  </a>-->
+<!--                </li>-->
+                <li class="float-right">
+                  <a routerLink="/about-ishtar">
+                    About Ishtar
+                  </a>
                 </li>
                 <li class="float-right">
                   <a routerLink="/painting-list">
@@ -93,6 +111,12 @@
           <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>
+          </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Ishtar</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <div class="search-mobile">
             <div id="input-mobile-search">
               <form [formGroup]="searchFrom">
@@ -118,15 +142,22 @@
               <a class="dropdown-item" (click)="showDialog()">Login</a>
             </div>
           <!--  <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn"> -->
-            <div class="login-btn" *ngIf="userLoggedIn">
-              <!--            <a class="dropdown-item">Show Wish List</a>-->
-              <!--            <a class="dropdown-item">Show Favorite List</a>-->
-              <a class="dropdown-item" (click)="logout()">Logout !</a>
+              
+        <div mdbDropdownToggle class="letter-circle"
+             *ngIf="userLoggedIn">
+             <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
+             <div class="info">
+               <span class="email">{{userInfo.username}}</span>
+               <div>
+                 <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
+               </div>
+              <div class="login-btn" *ngIf="userLoggedIn"> 
+                <!--            <a class="dropdown-item">Show Wish List</a>-->
+                <!--            <a class="dropdown-item">Show Favorite List</a>-->
+                  <a class="dropdown-item" (click)="logout()">Logout !</a>
+                </div>
+              </div>
             </div>
-            <mdb-icon mdbDropdownToggle fas icon="user-circle" size="2x"
-                  *ngIf="!userLoggedIn"></mdb-icon>
-            <div mdbDropdownToggle class="letter-circle"
-             *ngIf="userLoggedIn">{{userInfo.userName.substring(0, 1)}}</div>
 
       </div>
     </a>

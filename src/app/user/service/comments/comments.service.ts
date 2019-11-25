@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router';
-import {CommentsEntity} from '../../entity/comments/comments-entity';
-import {CommentsResponse} from '../../entity/comments/comments-response';
 import {UserConfig} from '../../UserConfig';
 
 @Injectable({
@@ -14,33 +11,61 @@ export class CommentsService {
   }
 
   // Add Mew Comments
-  postComment(itemType: string, itemId: string, msg: string, clientId: number) {
+  postComment(entityName: string, itemId: number, msg: string, clientId: number) {
     const request: {
       entity: number,
-      row: string,
+      row: number,
       body: string,
       client: number,
       spacial: number,
     } = {
-      entity: this.toEntityId(itemType),
+      entity: this.toEntityId(entityName),
       row: itemId,
       body: msg,
       client: clientId,
       spacial: 0
     };
-    return this.httpClient.post(UserConfig.postNewCommentAPI, JSON.stringify(request));
+    return this.httpClient.post(`${UserConfig.commentsAPI}`, JSON.stringify(request));
   }
 
   // Get All Comments
-  getAllComments(itemId: string, itemType: string) {
-    const requestData: {
-      id: string,
-      entity: number
+  getAllSectionComments(entityName: string, itemId: number) {
+    const entityNumber = this.toEntityId(entityName);
+    return this.httpClient.get(`${UserConfig.specialSectionComments}/${entityNumber}/${itemId}`);
+  }
+  // getAllComments(itemId: string, itemType: string) {
+  //   const requestData: {
+  //     id: string,
+  //     entity: number
+  //   } = {
+  //     id: itemId,
+  //     entity: this.toEntityId(itemType)
+  //   };
+  //   return this.httpClient.post<CommentsResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
+  // }
+
+
+  // Edit Mew Comments
+  updateComment(commentId: number, entityName: string, itemId: number, msg: string, clientId: number) {
+    const request: {
+      entity: number,
+      row: number,
+      body: string,
+      client: number,
+      spacial: number,
     } = {
-      id: itemId,
-      entity: this.toEntityId(itemType)
+      entity: this.toEntityId(entityName),
+      row: itemId,
+      body: msg,
+      client: clientId,
+      spacial: 0
     };
-    return this.httpClient.post<CommentsResponse>(UserConfig.getAllCommentsAPI, JSON.stringify(requestData));
+    return this.httpClient.put(`${UserConfig.commentAPI}/${commentId}`, JSON.stringify(request));
+  }
+
+
+  deleteComment(commentId: number) {
+    return this.httpClient.delete(`${UserConfig.commentAPI}/${commentId}`);
   }
 
   private toEntityId(itemType): number {
@@ -54,36 +79,9 @@ export class CommentsService {
     if (itemType === 'artType') {
       entityId = 3;
     }
+    if (itemType === 'statue') {
+      entityId = 6;
+    }
     return entityId;
-  }
-
-
-  // Edit Mew Comments
-  updateComment(commentId: number, itemType: string, itemId: string, msg: string, clientId: number) {
-    const request: {
-      id: number,
-      entity: number,
-      row: string,
-      body: string,
-      client: number,
-      spacial: number,
-    } = {
-      id: commentId,
-      entity: this.toEntityId(itemType),
-      row: itemId,
-      body: msg,
-      client: clientId,
-      spacial: 0
-    };
-    return this.httpClient.post(`${UserConfig.updateCommentAPI}`, JSON.stringify(request));
-  }
-
-
-  deleteComment(commentId: number) {
-    return this.httpClient.post(
-      `${UserConfig.deleteCommentAPI}`,
-      JSON.stringify({id: commentId}),
-      {responseType: 'json'}
-    );
   }
 }

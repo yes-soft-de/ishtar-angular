@@ -17,6 +17,11 @@ import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
 import {FAQComponent} from './ui/Pages/faq/faq.component';
 import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
 import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
+import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
+import {StatueListPageComponent} from './ui/Pages/statue-list-page/statue-list-page.component';
+import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 
 
 const routes: Routes = [
@@ -24,11 +29,11 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      {path: '', component: HomePageComponent, data: {index: 0}},
+      {path: '', component: HomePageComponent},
       {path: 'search/:query', component: SearchPageComponent},
-      {path: 'artist-list', component: ArtistListPageComponent, data: {index: 1}},
+      {path: 'artist-list', component: ArtistListPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
-      {path: 'painting-list-by-name/:id', component: ImagesByArtistPageComponent},
+      {path: 'painting-by-name/:id', component: ImagesByArtistPageComponent},
       {path: 'art-type/:id', component: ArtTypePageComponent},
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent},
@@ -39,7 +44,12 @@ const routes: Routes = [
       {path: 'about-us', component: AboutUsComponent},
       {path: 'faq', component: FAQComponent},
       {path: 'imprint', component: ImprintPageComponent},
-      {path: 'data-processing', component: DataProcessingPageComponent}
+      {path: 'data-processing', component: DataProcessingPageComponent},
+      {path: 'statue-list', component: StatueListPageComponent},
+      {path: 'statue/:id', component: StatueDetailPageComponent},
+      {path: 'profile', component: ProfilePageComponent},
+      {path: 'edit-profile', component: ProfileEditPageComponent},
+      {path: 'about-ishtar', component: AboutIshtarPageComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'
   }

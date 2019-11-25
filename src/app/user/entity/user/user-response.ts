@@ -1,4 +1,4 @@
-import {UserInfo} from './user-info';
+import {UserInfo} from '../../entity-protected/profile/user-info';
 
 export interface UserResponse {
   status_code: number;

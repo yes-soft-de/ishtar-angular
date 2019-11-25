@@ -1,12 +1,13 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {ArtTypeService} from '../../../../admin/service/art-type/art-type.service';
 import {ArtTypeListItem} from '../../../entity/art-type-list/art-type-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {ArtistListItem} from '../../../entity/artist-list/artist-list-item';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
+import {ArtistService} from '../../../service/artist/artist.service';
 import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../../UserConfig';
+import {ArtTypeListResponse} from '../../../entity/art-type-list/art-type-list-response';
+import {UserArtTypeService} from '../../../service/art-type/user-art-type.service';
 
 @Component({
   selector: 'app-home-page',
@@ -40,8 +41,8 @@ export class HomePageComponent implements OnInit {
   showNavbar = true;
   artistList: ArtistListItem[];
 
-  constructor(private artTpeService: ArtTypeService, private paintingService: PaintingListService,
-              private artistService: ArtistListService, private httpClient: HttpClient) {
+  constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingService,
+              private artistService: ArtistService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -59,8 +60,8 @@ export class HomePageComponent implements OnInit {
 
   // Fetch Art Type
   requestArtTypeList() {
-    this.artTpeService.getAllArtType().subscribe(
-        data => {
+    this.userArtTypeService.getAllArtType().subscribe(
+        (data: ArtTypeListResponse) => {
           this.artTypeList = data.Data;
           this.mostSeenArtType = data.Data[parseInt(`${(Math.random() * 100000)}`, 10) % data.Data.length];
           this.checkLoadingFinished();
@@ -92,7 +93,7 @@ export class HomePageComponent implements OnInit {
 
   requestArtistList() {
     this.artistService.requestArtistList().subscribe(
-        data => {
+        (data: any) => {
           this.artistList = data.Data;
           this.checkLoadingFinished();
         }, error1 => {

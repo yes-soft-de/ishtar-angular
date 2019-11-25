@@ -1,10 +1,12 @@
 export interface LoveRequest {
   // Entity Type
-  entity: string;
+  entity: number;
   // Entity Id
-  row: string;
+  row: number;
   // Interaction Type
   interaction: number;
   // Client Id
   client: number;
+  // Interaction Type
+  interactions?: number;
 }

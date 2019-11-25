@@ -1,16 +1,24 @@
 export interface ClientInterface {
   id: number;
-  firstName: string;
-  lastName: string;
-  image: string;
-  roll: number;
-  userName: string;
-  password: string;
+  fullName: string;
+  image?: string;
+  roles?: ['ROLE_ADMIN', 'ROLE_USER'];
+  username: string;
+  password?: string;
   email: string;
-  birthDate: Date;
+  birthDate: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
   phone: number;
-  createDate: Date;
-  createdBy: string;
-  updateDate: Date;
-  updatedBy: string;
+  createDate?: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  createdBy?: string;
+  updateDate?: {
+    timezone: { name: string; },
+    timestamp: number;
+  };
+  updatedBy?: string;
 }

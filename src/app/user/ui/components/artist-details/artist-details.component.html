@@ -1,177 +1,188 @@
 <!-- ######################################## Artist Page ######################################## -->
 
-<section class= "artist-page">
-  <div class="artist-header">
-      <div class="position-absolute d-flex justify-content-end" *ngIf="artistMainPainting != null">
-        <div class="artist-banner-text text-center p-3 p-md-5">
-          <h4 class="font-weight-bold">{{artistMainPainting.name}}</h4>
-          <span class="d-block artist-banner-dimension">{{artistMainPainting.width}}cm X {{artistMainPainting.height}}cm</span>
-          <span class="d-block artist-banner-type">{{artistMainPainting.colorsType}} On {{artistMainPainting.artType}}</span>
-        </div>
-      </div>
-      <div class="banner-background">
-<!--        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting?.image + ')'}" class="parallax" *ngIf="artistMainPainting?.image != null"></div>-->
-        <img class="parallax d-block" [src]="artistMainPainting?.image" style="background-size: cover">
-      </div>
-      <div class="artist-header-details">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-lg-3 text-center">
-              <div class="artist-header-details-top">
-                <div class="row">
-                  <div class="col-6 col-lg-12">
-                    <img src="{{artist?.path}}" alt="..." class="artist-image">
-                  </div>
-                  <div class="col-6 d-lg-none">
-                    <div class="artist-video-icon mx-auto">
-                      <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
-                        <i class="fas fa-envelope fa-lg"></i>
-                      </a>
-                    </div>
-<!--                    <div class="artist-video-icon mx-auto">-->
-<!--                      <i class="fas fa-envelope"></i>-->
-<!--&lt;!&ndash;                      <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">&ndash;&gt;-->
-<!--&lt;!&ndash;                      <mdb-icon fas icon="video fa-lg"></mdb-icon>&ndash;&gt;-->
-<!--                    </div>-->
-                  </div>
-                </div>
-              </div>
+<div class="main-carousel">
+  <div class="carousel-cell">
+    <section class= "artist-page">
+      <div class="artist-header">
+          <div class="position-absolute d-flex justify-content-end" *ngIf="artistMainPainting != null">
+            <div class="artist-banner-text text-center p-3 p-md-5">
+              <h4 class="font-weight-bold">{{artistMainPainting.name}}</h4>
+              <span class="d-block artist-banner-dimension">{{artistMainPainting.width}}cm X {{artistMainPainting.height}}cm</span>
+              <span class="d-block artist-banner-type">{{artistMainPainting.colorsType}} On {{artistMainPainting.artType}}</span>
             </div>
-            <div class="col-12 col-lg-9">
-                <div class="artist-header-details-bottom text-center">
-                  <div class="row">
-                    <div class="col-12 col-md-6 d-none d-lg-block text-left">
-                      <div class="artist-video-icon">
-                        <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
-                          <i class="fas fa-envelope fa-lg"></i>
-                        </a>
+          </div>
+          <div class="banner-background">
+    <!--        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting?.image + ')'}" class="parallax" *ngIf="artistMainPainting?.image != null"></div>-->
+            <img class="parallax d-block" [src]="artistMainPainting?.image" style="background-size: cover">
+          </div>
+          <div class="artist-header-details">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-lg-3 text-center">
+                  <div class="artist-header-details-top">
+                    <div class="row">
+                      <div class="col-6 col-lg-12">
+                        <img src="{{artist?.path}}" alt="..." class="artist-image img-fluid">
                       </div>
-<!--                      <div class="artist-video-icon">-->
-<!--                        <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">-->
-<!--                        <mdb-icon fas icon="video fa-lg"></mdb-icon>-->
-<!--                      </div>-->
-                    </div>
-                    <div class="col-5 col-sm-6 contact-artist">
-                      <app-follow-widget [ParentId]="artist?.id" [ParentType]="2" class="follow-artist" id="follow-artist"></app-follow-widget>
-<!--                        <a type="button" class="btn" href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}"-->
-<!--                           style="color: white">Contact Artist</a>-->
-                    </div>
-
-                    <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
-                      <h2>{{artist?.name}}</h2>
-                      <ul class="list-unstyled">
-                        <li class="m-1">
-                          <a href="{{artist?.facebook}}">
-                            <mdb-icon fab icon="facebook"></mdb-icon>
+                      <div class="col-6 d-lg-none">
+                        <div class="artist-video-icon mx-auto">
+                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
+                            <i class="fas fa-envelope fa-lg"></i>
                           </a>
-                        </li>
-                        <li class="m-1">
-                          <a href="{{artist?.twitter}}">
-                            <mdb-icon fab icon="twitter"></mdb-icon>
-                          </a>
-                        </li>
-                        <li class="m-1">
-                          <a href="{{artist?.linkedin}}">
-                            <mdb-icon fab icon="linkedin"></mdb-icon>
-                          </a>
-                        </li>
-                      </ul>
+                        </div>
+    <!--                    <div class="artist-video-icon mx-auto">-->
+    <!--                      <i class="fas fa-envelope"></i>-->
+    <!--&lt;!&ndash;                      <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">&ndash;&gt;-->
+    <!--&lt;!&ndash;                      <mdb-icon fas icon="video fa-lg"></mdb-icon>&ndash;&gt;-->
+    <!--                    </div>-->
+                      </div>
                     </div>
                   </div>
                 </div>
-            </div>
-          </div> <!--End Row Div-->
-        </div>
-      </div><!--End Artist-header-detail Div-->
-  </div> <!--End Artist-header Div-->
+                <div class="col-12 col-lg-9">
+                    <div class="artist-header-details-bottom text-center">
+                      <div class="row">
+                        <div class="col-12 col-md-6 d-none d-lg-block text-left">
+                          <div class="artist-video-icon">
+                            <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
+                              <i class="fas fa-envelope fa-lg"></i>
+                            </a>
+                          </div>
+    <!--                      <div class="artist-video-icon">-->
+    <!--                        <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">-->
+    <!--                        <mdb-icon fas icon="video fa-lg"></mdb-icon>-->
+    <!--                      </div>-->
+                        </div>
+                        <div class="col-5 col-sm-6 contact-artist">
+                          <app-follow-widget [ParentId]="artist?.id" [ParentType]="2" class="follow-artist" id="follow-artist"></app-follow-widget>
+    <!--                        <a type="button" class="btn" href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}"-->
+    <!--                           style="color: white">Contact Artist</a>-->
+                        </div>
 
-  <div class="artist-body bg-light pt-3">
-    <div class="container">
-      <div class="col-12 col-lg-9 col-xl-10 mx-auto">
-        <h3 class="text-dark pl-5">Biography</h3>
-        <p>{{artist?.story}}</p>
-        <hr class="border">
-      </div>
-      <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
-        </div>
-        <hr class="border">
-      </div>
-      <!--Starting Painting Comment Section-->
-      <div class="painting-comment py-4">
-        <div class="container text-dark">
-          <div class="col-lg-10 col-xl-12 mx-auto">
-            <div class="painting-tab">
-              <p style="font-weight: bold; margin:0 0 20px"> community:</p>
-              <app-comments [pageType]="'artist'"></app-comments>
+                        <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
+                          <h2>{{artist?.name}}</h2>
+                          <ul class="list-unstyled">
+                            <li class="m-1">
+                              <a href="{{artist?.facebook}}">
+                                <mdb-icon fab icon="facebook"></mdb-icon>
+                              </a>
+                            </li>
+                            <li class="m-1">
+                              <a href="{{artist?.twitter}}">
+                                <mdb-icon fab icon="twitter"></mdb-icon>
+                              </a>
+                            </li>
+                            <li class="m-1">
+                              <a href="{{artist?.linkedin}}">
+                                <mdb-icon fab icon="linkedin"></mdb-icon>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div> <!--End Row Div-->
             </div>
+          </div><!--End Artist-header-detail Div-->
+      </div> <!--End Artist-header Div-->
+
+      <div class="artist-body bg-light pt-3">
+        <div class="container">
+          <div class="col-12 col-lg-9 col-xl-10 mx-auto">
+            <h3 class="text-dark pl-5">Biography</h3>
+            <p>{{artist?.story}}</p>
+            <hr class="border">
           </div>
-        </div>
-      </div>
-      <!--End Painting Comment Section-->
-
-      <div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4" *ngIf="featuredPaintings != null">
-        <h4 class="text-center pt-4">Artist Painting</h4>
-        <hr class="w-25 border border-dark mb-2">
-<!--        <app-c-painting-list [formattedPaintingList]="featuredPaintings" [filter]="false"-->
-<!--                             *ngIf="featuredPaintings != null"></app-c-painting-list>-->
-        <!-- Use THis Div If Painting Length is Less Than 5 painting-->
-        <div class="painting-list" *ngIf="featuredPaintings.length < 5">
-          <div class="row">
-            <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto"
-                 *ngFor="let painting of featuredPaintings"
-                 routerLink="/painting/{{painting.id}}">
-              <div class="img-container my-1">
-                <img class="img-fluid" src="{{painting.image}}"
-                     (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
-                <div class="painting-info">
-                  <p class="painting-name">{{painting.name}}</p>
-                  <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span></p>
-                  <!--                     <ul class="statistics">-->
-                  <!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
-                  <!--                       <li>-->
-                  <!--                           <i class="far fa-eye"></i>-->
-                  <!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
-                  <!--                       </li>-->
-                  <!--                     </ul>-->
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
+            </div>
+            <hr class="border">
+          </div>
+          <!--Starting Painting Comment Section-->
+          <div class="painting-comment py-4">
+            <div class="container text-dark">
+              <div class="col-lg-10 col-xl-12 mx-auto">
+                <div class="painting-tab">
+                  <p style="font-weight: bold; margin:0 0 20px"> community:</p>
+                  <app-comments [pageType]="'artist'"></app-comments>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Use THis Div If Painting Length is large Than 4 painting-->
-        <div class="painting-list" *ngIf="featuredPaintings.length > 4">
-          <div class="row">
-            <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-                          [animation]="'slide'">
-              <mdb-carousel-item *ngFor="let paintings of paintingSlides">
+          <!--End Painting Comment Section-->
+
+          <div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4" *ngIf="featuredPaintings != null">
+            <h4 class="text-center pt-4">Artist Painting</h4>
+            <hr class="w-25 border border-dark mb-2">
+    <!--        <app-c-painting [formattedPaintingList]="featuredPaintings" [filter]="false"-->
+    <!--                             *ngIf="featuredPaintings != null"></app-c-painting>-->
+            <!-- Use THis Div If Painting Length is Less Than 5 painting-->
+            <div class="painting-list" *ngIf="featuredPaintings.length < 5">
+              <div class="row">
                 <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto"
-                     [ngClass]="{'d-none d-md-block': paintingsIndex !== 0}"
-                     *ngFor="let painting of paintings; let paintingsIndex = index"
-                      routerLink="/painting/{{painting.id}}">
+                    *ngFor="let painting of featuredPaintings"
+                    routerLink="/painting/{{painting.id}}">
                   <div class="img-container my-1">
                     <img class="img-fluid" src="{{painting.image}}"
-                                   (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
+                        (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
                     <div class="painting-info">
-                     <p class="painting-name">{{painting.name}}</p>
+                      <p class="painting-name">{{painting.name}}</p>
                       <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span></p>
-<!--                     <ul class="statistics">-->
-<!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
-<!--                       <li>-->
-<!--                           <i class="far fa-eye"></i>-->
-<!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
-<!--                       </li>-->
-<!--                     </ul>-->
-                      </div>
+                      <!--                     <ul class="statistics">-->
+                      <!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
+                      <!--                       <li>-->
+                      <!--                           <i class="far fa-eye"></i>-->
+                      <!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
+                      <!--                       </li>-->
+                      <!--                     </ul>-->
+                    </div>
                   </div>
                 </div>
-              </mdb-carousel-item>
-            </mdb-carousel>
+              </div>
+            </div>
+            <!-- Use THis Div If Painting Length is large Than 4 painting-->
+            <div class="painting-list" *ngIf="featuredPaintings.length > 4">
+              <div class="row">
+                <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation slide"  [type]="'carousel-multi-item'"
+                              [animation]="'slide'">
+                  <mdb-carousel-item *ngFor="let paintings of paintingSlides">
+                    <div class="painting-list-item col-lg-4 col-md-4 col-sm-6 col-xs-12 mx-auto"
+                        [ngClass]="{'d-none d-md-block': paintingsIndex !== 0}"
+                        *ngFor="let painting of paintings; let paintingsIndex = index"
+                          routerLink="/painting/{{painting.id}}">
+                      <div class="img-container my-1">
+                        <img class="img-fluid" src="{{painting.image}}"
+                                      (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
+                        <div class="painting-info">
+                        <p class="painting-name">{{painting.name}}</p>
+                          <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span></p>
+    <!--                     <ul class="statistics">-->
+    <!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
+    <!--                       <li>-->
+    <!--                           <i class="far fa-eye"></i>-->
+    <!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
+    <!--                       </li>-->
+    <!--                     </ul>-->
+                          </div>
+                      </div>
+                    </div>
+                  </mdb-carousel-item>
+                </mdb-carousel>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+    <!-- ./Next & prev paintings -->
+    <button class="btn-prev" (click)="goBack()"  [disabled]="!prevArtistExists"><i class="fas fa-chevron-left"></i></button>
+
+    <button class="btn-next" (click)="goNext()"  [disabled]="!nextArtistExists"><i class="fas fa-chevron-right"></i></button>
+    <!-- ./Next & prev paintings -->
+
+    </section>
   </div>
-</section>
+</div>
 <!-- ###################################### End Artist Page ###################################### -->

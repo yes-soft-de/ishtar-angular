@@ -1,15 +1,25 @@
 <header>
   <app-header class="floating-header"></app-header>
 </header>
-
 <main class="row m-0 p-0" *ngIf="loadFinished">
   <app-home-header [paintings]="headerSlides" [artTypeList]="artTypeList" class="w-100"
                    style="z-index: -1;"></app-home-header>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10 about-ishtar">
+          <h1 class="font-weight-bolder">About Ishtar</h1>
+          <p>
+              Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.
+          </p>
+          <a  routerLink="/about-ishtar">Read more</a>
+      </div>
+    </div>
+  </div>
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
     <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
     <app-c-painting-list style="display: flex; justify-content: center;" (PaintingViewNumber)="getMostSeenPainting($event)" [formattedPaintingList]="paintingList.reverse().slice(0, 12)" [filter]="false"></app-c-painting-list>
   </section>
-  <app-home-auction-section class="w-100"></app-home-auction-section>
+  <!-- <app-home-auction-section class="w-100"></app-home-auction-section> -->
   <section class="w-100">
     <div class="col-12" style="padding-top: 2rem">
       <h1 class="text-center font-weight-bolder">Latest Active Artist</h1>

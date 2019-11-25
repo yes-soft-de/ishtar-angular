@@ -1,0 +1,59 @@
+<div class="filters-group">
+    <div class="filter">
+        <p class="title" (click)="openList($event)">Filter by style name <i class="fas fa-chevron-down"></i> </p>
+        <button (click)="noFilter()">All</button>
+        <button *ngFor="let statue of statuesList" 
+                name="{{statue['0'].style}}"
+                (click)="filterName($event)">{{statue['0'].style}}</button>
+    </div>
+    <div class="filter">
+        <p class="title" (click)="openList($event)">Filter by artist name <i class="fas fa-chevron-down"></i></p>
+        <button (click)="noFilter()">All</button>
+        <button *ngFor="let statue of statuesList"
+                name="{{statue['0']?.artist?.name}}"
+                (click)="filterArtistName($event)">{{statue['0']?.artist?.name}}</button>
+    </div>
+    <!--
+    <div class="filter">
+        <p class="title">Filter by price range</p>
+    </div>
+    -->
+    <div class="filter">
+       <p class="title" (click)="openList($event)">Filter by materials <i class="fas fa-chevron-down"></i></p>
+       <button (click)="noFilter()">All</button>
+       <button *ngFor="let statue of statuesList" 
+               name="{{statue['0'].material}}"
+               (click)="filterMaterial($event)">{{statue['0'].material}}</button>
+    </div>
+    <div class="filter">
+        <p class="title" (click)="openList($event)">Filter by size <i class="fas fa-chevron-down"></i></p>
+        <button class="size-btn text-center" (click)="noFilter()">All</button>
+        <button class="size-btn" (click)="filterSmallSize()"><span>Small</span> <small>less than 1 x 1/2"</small></button>
+        <button class="size-btn" (click)="filterMediumSize()"><span>Medium</span> <small>between 1 x 1/2" and 1.5 x 1"</small></button>
+        <button class="size-btn" (click)="filterBigSize()"><span>Big</span> <small>more than 1.5 x 1"</small></button>
+    </div>
+</div>
+
+<div class="statues-list">
+    <div class="wrapper">
+        <div class="statue"
+            *ngFor="let statue of statuesListFiltered">
+            <ngx-image-zoom
+                thumbImage="{{statue['0'].image}}"
+                [enableLens]=false>
+            </ngx-image-zoom>
+            <div class="info" id="info_{{statue['0'].id}}" routerLink="/statue/{{statue['0'].id}}" (click)="viewStatue(statue['0'].id)">
+                <div class="info-wrapper">
+                    <h3>{{statue['0'].name}}</h3>
+                    <p class="artist-name">{{statue['0']?.artist?.name}}</p>
+                    <p class="views"><i class="far fa-eye mr-2"></i> <span *ngFor="let view of statuesInteraction">{{view.id == statue['0'].id ? view.viewNumber : ''}}</span></p>
+                </div>
+               <!-- <span class="price">200e</span> -->
+            </div>
+            <button class="fas fa-search magnifying"  name="{{statue['0'].id}}" (click)="MagnifyingImage($event)">
+            </button>
+           <!-- <button class="favourite"><i class="far fa-star"></i></button> -->
+        </div>
+
+    </div>
+</div>

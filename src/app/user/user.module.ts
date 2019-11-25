@@ -4,6 +4,7 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
@@ -20,7 +21,6 @@ import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.c
 import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
 import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
-import {AlternatingListComponent} from './ui/components/alternating-list/alternating-list.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -52,6 +52,16 @@ import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.c
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
 import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
+import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
+import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
+import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
+import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
+import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
+import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
+import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
+import { CommentListComponent } from './ui/components/comments-list/comment-list.component';
+import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -68,13 +78,13 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
     HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    AlternatingListComponent,
     SchoolListComponent,
     ItemBriefComponent,
     ArtTypeComponent,
@@ -96,7 +106,16 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
     ImprintPageComponent,
     DataProcessingPageComponent,
     LoadingWidgetComponent,
-    MostSeenPaintingsComponent
+    MostSeenPaintingsComponent,
+    StatuesDetailComponent,
+    StatueDetailPageComponent,
+    NgxImageZoomComponent,
+    StatueListComponent,
+    StatueListPageComponent,
+    ProfilePageComponent,
+    AboutIshtarPageComponent,
+    CommentListComponent,
+    CommentItemComponent
   ],
   exports: [
     // User
@@ -111,13 +130,13 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
     HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    AlternatingListComponent,
     SchoolListComponent,
     ItemBriefComponent,
     CommentsComponent,
@@ -149,6 +168,7 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
+    NgxImageZoomModule.forRoot()
     // BrowserAnimationsModule
   ]
 })

@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ClapService} from '../../../service/clap/clap.service';
-import {UserInfo} from '../../../entity/user/user-info';
 import {interval, Subscription} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
-import {isBoolean} from 'util';
 
 @Component({
   selector: 'app-clap-widget',
@@ -33,6 +31,7 @@ export class ClapWidgetComponent implements OnInit {
   }
 
   ObserveClaps() {
+    // this.clapService.getClientClap(6, this.ParentType, this.ParentId);
     // Fetch THe Clap Request
     this.clapService.initClap(this.ParentType, this.ParentId);
     // Response From Clap Services

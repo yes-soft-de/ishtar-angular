@@ -22,6 +22,12 @@ import {EditClientComponent} from './ui/client/edit-client/edit-client.component
 import { AddImagesComponent } from './ui/images/add-images/add-images.component';
 import {AddAuctionComponent} from './ui/auction/add-auction/add-auction.component';
 import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.component';
+import { ListStatueComponent } from './ui/statue/list-statue/list-statue.component';
+import { AddStatueComponent } from './ui/statue/add-statue/add-statue.component';
+import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.component';
+import { ListCommentComponent } from './ui/comments/list-comment/list-comment.component';
+import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,12 @@ import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.co
     EditClientComponent,
     AddImagesComponent,
     AddAuctionComponent,
-    ListAuctionsComponent
+    ListAuctionsComponent,
+    ListStatueComponent,
+    AddStatueComponent,
+    EditStatueComponent,
+    ListCommentComponent,
+    ListInteractionComponent
    ],
   exports: [
     AdminComponent,
@@ -53,6 +64,7 @@ import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.co
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     // BrowserAnimationsModule
   ]
 })

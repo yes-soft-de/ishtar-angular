@@ -8,6 +8,7 @@ import {Artist} from '../../entity/artist/artist';
 import { catchError } from 'rxjs/operators';
 import {Observable, pipe, throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Injectable({
@@ -15,75 +16,91 @@ import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 })
 export class ArtistService {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   // Handling the error
   private static errorHandler(error: HttpErrorResponse) {
     return throwError(error || 'Server Error');
   }
 
+  // Fetch All Artist
   getAllArtists() {
-    return this.httpClient.get<ArtistListResponse>(
-      `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
+    return this.httpClient.get(
+        AdminConfig.allArtistsAPI,
+      {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
+  // getAllPaintings() {
+  //   return this.httpClient.get<ArtistListResponse>(
+  //       `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
+  //   ).pipe(catchError(ArtistService.errorHandler));
+  // }
 
-  getArtistByArtist(artistId: string) {
+  // get artist detail
+  getArtistByArtist(artistId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<ArtistInterface>(
-        AdminConfig.artistAPI,
-        JSON.stringify({artist: artistId}),
-        httpOptions
+    return this.httpClient.get(
+        `${AdminConfig.artistAPI}/${artistId}`,
+        {responseType: 'json'}
     );
   }
+  // getArtistByArtist(artistId: string) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   };
+  //   return this.httpClient.post<ArtistInterface>(
+  //       AdminConfig.artistAPI,
+  //       JSON.stringify({artist: artistId}),
+  //       httpOptions
+  //   );
+  // }
 
 
-  getArtistPainting(artistId: string) {
-    // This Should Take the List From the API
-    return this.httpClient.get<PaintingFullList>(
-      `${AdminConfig.artistPaintingsAPI}/${artistId}`,
-      {responseType: 'json'});
-  }
   // Admin Section - Add Artist Page
   postAddArtist(artist: Artist) {
     return this.httpClient.post<Artist>(
-        `${AdminConfig.addArtistAPI}`,
-        JSON.stringify(artist)
+        `${AdminConfig.artistsAPI}`,
+        JSON.stringify(artist),
+        {responseType: 'json'}
     );
   }
 
   // Admin Section - Update Artist
-  updateArtist(artistId: string, data) {
+  updateArtist(artistId: number, data: ArtistInterface) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<ArtistInterface>(
-        AdminConfig.editArtistAPI,
+    return this.httpClient.put(
+        `${AdminConfig.artistAPI}/${artistId}`,
         JSON.stringify(data),
-        httpOptions
+        {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
+  // updateArtist(artistId: string, data) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   };
+  //   return this.httpClient.post<ArtistInterface>(
+  //       AdminConfig.editArtistAPI,
+  //       JSON.stringify(data),
+  //       httpOptions
+  //   ).pipe(catchError(ArtistService.errorHandler));
+  // }
+
 
   // Admin Section - Delete Artist
   deleteArtist(artistId: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post(
-        AdminConfig.deleteArtistAPI,
-        JSON.stringify({id: artistId}),
-        httpOptions
-    ).pipe(catchError(ArtistService.errorHandler));
+    return this.httpClient.delete(`${AdminConfig.artistAPI}/${artistId}`);
   }
 
   // Admin Section - Uplaod Image For Artist

@@ -3,13 +3,13 @@ export interface ArtistInterface {
   name: string;
   nationality: string;
   residence: string;
-  birthDate: string;
-  facebook: string;
-  instagram: string;
-  linkedin: string;
-  twitter: string;
-  image: string;
-  video: string;
+  birthDate: {timestamp: number};
+  Facebook: string;
+  Instagram: string;
+  Linkedin: string;
+  Twitter: string;
+  path: string;
+  video?: string;
   details: string;
   story: string;
 }

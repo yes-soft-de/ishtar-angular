@@ -1,0 +1,100 @@
+<div *ngIf="statues!= null">
+  <div *ngIf="statues.length !== 0">
+    <div class="container-fluid">
+      <h1 class="text-center my-4">Manage Statues Page</h1>
+      <div class="row">
+      <div class="col-4">
+        <div class="form-group mb-4">
+          <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Statue Name And Artist Name" class="form-control form-control-underlined border-primary">
+        </div>
+      </div>
+      <div class="col-8 align-self-center">
+        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
+          <i class="fa fa-plus"></i>
+          Add New Statue
+        </a>
+        </div>
+      </div>
+      <div class="table-responsive text-center">
+        <table class="table table-bordered main-table">
+          <tr class="bg-dark text-white">
+            <td>#ID</td>
+            <td>Name</td>
+            <td>Image</td>
+            <td>Artist</td>
+            <td>Height</td>
+            <td>Width</td>
+            <td>Weight</td>
+            <td>Length</td>
+            <td>Price</td>
+            <td>State</td>
+            <td>Active</td>
+            <td>KeyWords</td>
+            <td>Style</td>
+            <td>Mediums</td>
+            <td>Period</td>
+            <td>Features</td>
+            <td>Material</td>
+            <td>Description</td>
+            <td>Create Date</td>
+            <td>Created By</td>
+            <td>Updated Date</td>
+            <td>Updated By</td>
+            <td>Control</td>
+          </tr>
+          <tr *ngFor="let statue of statuesFilterList | paginate: config">
+            <td>{{statue.id}}</td>
+            <td>{{statue.name}}</td>
+            <td><img src="{{statue.image}}" alt="{{statue.name}} Image" class="img-fluid img-thumbnail img-custom"></td>
+            <td>{{statue.artist}}</td>
+            <td>{{statue.height}}</td>
+            <td>{{statue.width}}</td>
+            <td>{{statue.weight}}</td>
+            <td>{{statue.length}}</td>
+            <td>{{statue.price}} $</td>
+            <td>{{statue.state ? 'Sold' : 'available'}}</td>
+            <td>{{statue.active}}</td>
+            <td>{{statue.keyWord}}</td>
+            <td>{{statue.style}}</td>
+            <td class="td-custom">{{statue.mediums}}</td>
+            <td>{{statue.period}}</td>
+            <td class="td-custom">{{statue.features}}</td>
+            <td>{{statue.material}}</td>
+            <td class="td-custom">{{statue.description}}</td>
+            <td>{{statue.createDate ? (statue.createDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+            <td>{{statue.createdBy ? statue.createdBy : '-'}}</td>
+            <td>{{statue.updatedDate ? (statue.updatedDate.timestamp * 1000 | date: 'short') : '-'}}</td>
+            <td>{{statue.updatedBy ? statue.updatedBy : '-'}}</td>
+            <td>
+              <a routerLink="/admin/edit-statue/{{statue.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+              <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
+              <a href="#" *ngIf="!statue.active" class="btn btn-primary btn-sm mr-1">Active</a>
+            </td>
+          </tr>
+        </table>
+        <pagination-controls class="my-pagination"
+                             (pageChange)="pageChanged($event)"
+                             autoHide="true"
+                             maxSize="5"
+                             responsive="true"
+                             previousLabel="Prev"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="statues.length === 0">
+    <div class="container">
+      <div class="alert alert-primary text-center mt-5">There Isn't Any Statue To Show</div>
+      <a routerLink="/admin/add-statue" class="btn btn-primary btn-sm mb-2 float-right">
+        <i class="fa fa-plus"></i>
+        Add New Statue
+      </a>
+    </div>
+  </div>
+</div>
+<div *ngIf="statues == null">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>

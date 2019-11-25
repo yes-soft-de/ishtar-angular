@@ -24,33 +24,36 @@ export class FollowService {
               public dialog: MatDialog) { }
 
 
+  public initFollow(parentType, rowId) {
+    // See If Loading User
+    if (!this.userRequestSent) {
+      // If Not Request Him
+      this.userRequestSent = true;
+      this.userService.requestUserDetails().subscribe(
+          (user: any) => {
+            // Assign the Data to the User
+            if (this.isUserNode(user.Data)) {
+              console.log('Assigning User');
+              this.userInfo = user.Data;
+              this.getClientInteraction(this.userInfo.id, parentType, rowId);
+            }
+          }
+      );
+    } else if (this.checkUserDetailsExists()) {
+      console.log('User Exists, Requesting Love Status');
+      this.getClientInteraction(this.userInfo.id, parentType, rowId);
+    }
+  }
+
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
   private getClientInteraction(clientId: number, parentType: number, rowId) {
-    let entityName = '';
-    // fetch entity name
-    if (parentType === 1) {
-      entityName = 'painting';
-    } else if (parentType === 2) {
-      entityName = 'artist';
-    } else if (parentType === 3) {
-      entityName = 'artType';
-    } else if (parentType === 4) {
-      entityName = 'auction';
-    }
     // check if user is login or not
-    const request: {client: number} = {
-      client: clientId
-    };
-    return this.httpClient.post(
-        `${UserConfig.getClientInteractionsAPI}`,
-        JSON.stringify(request),
-        {responseType: 'json'}
-    ).subscribe(
+    return this.httpClient.get(`${UserConfig.specificClientInteractions}/${clientId}`).subscribe(
         (res: {Data: any}) => {
           console.log('Response For Follow Interactions : ', res);
           res.Data.map(response => {  // Response: {entity: "artist", id: 2, interaction: "follow", interactionID: 103}
             // Check For Entity Name and Interaction IS follow
-            if (response.entity === entityName && response.interaction === 'follow') {
+            if (response.entity === this.toEntityName(parentType) && response.interaction === 'follow') {
               // Check For Specify Painting
               if (response.id === rowId) {
                 this.statusSubject.next({success: true, value: response});
@@ -58,30 +61,9 @@ export class FollowService {
             }
           });
         }, error => {
-          console.log('Error From getClientInteraction  From Follow service : ', error);
+          console.log('Error From getClientInteraction From Follow service : ', error);
         }
     );
-  }
-
-  public initFollow(parentType, rowId) {
-    // See If Loading User
-    if (!this.userRequestSent) {
-      // If Not Request Him
-      this.userRequestSent = true;
-      this.userService.requestUserDetails().subscribe(
-        user => {
-          // Assign the Data to the User
-          if (this.isUserNode(user.Data)) {
-            console.log('Assigning User');
-            this.userInfo = user.Data;
-            this.getClientInteraction(this.userInfo.id, parentType, rowId);
-          }
-        }
-      );
-    } else if (this.checkUserDetailsExists()) {
-      console.log('User Exists, Requesting Love Status');
-      this.getClientInteraction(this.userInfo.id, parentType, rowId);
-    }
   }
 
   public postFollow(entityId, entityType) {
@@ -104,8 +86,8 @@ export class FollowService {
       entity: entityType,
       interaction: InteractionConsts.INTERACTION_TYPE_FOLLOW
     };
-    this.httpClient.post<FollowInteractionResponse>(`${UserConfig.postInteractionAPI}`, JSON.stringify(request)).subscribe(
-      res => {
+    this.httpClient.post<FollowInteractionResponse>(`${UserConfig.interactionsAPI}`, JSON.stringify(request)).subscribe(
+        (res: any) => {
         this.statusSubject.next({success: true, value: res});
       }
     );
@@ -114,15 +96,9 @@ export class FollowService {
   // Delete Follow Interaction
   public deleteFollowInteraction(interactionID: number) {
     if (this.checkUserDetailsExists()) {
-      const request: {id: number} = {
-        id: interactionID
-      };
-      return this.httpClient.post(
-          `${UserConfig.deleteClientInteractionsAPI}`,
-          JSON.stringify(request),
-          {responseType: 'json'}
+      return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`
       ).subscribe(
-          res => {
+          (res: any) => {
             console.log('Response deleted from Follow.service', res);
             this.statusSubject.next(false);
           }
@@ -148,6 +124,23 @@ export class FollowService {
 
   private isUserNode(user: UserInfo) {
     return user.id !== undefined;
+  }
+
+  private toEntityName(parentType) {
+    let entityName = '';
+    // fetch entity name
+    if (parentType === 1) {
+      entityName = 'painting';
+    } else if (parentType === 2) {
+      entityName = 'artist';
+    } else if (parentType === 3) {
+      entityName = 'artType';
+    } else if (parentType === 4) {
+      entityName = 'auction';
+    } else if (parentType === 6) {
+      entityName = 'statue';
+    }
+    return entityName;
   }
   // endregion
 }

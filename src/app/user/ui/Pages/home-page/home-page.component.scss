@@ -60,3 +60,28 @@
   }
 }
 
+
+.about-ishtar {
+  padding: 15px;
+  margin-top: 25px;
+  border: 1px solid goldenrod;
+  h1 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    border: 1px solid goldenrod;
+    padding: 5px 10px;
+    color: goldenrod;
+    &:hover {
+      color: #fff;
+      background: goldenrod;
+    }
+  }
+
+}
+

@@ -3,6 +3,8 @@ import {PaintingListItem} from '../../../entity/painting-list/painting-list-item
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
+import {LoveRequest} from '../../../entity/love-interaction/love-request';
+import { all } from 'q';
 
 @Component({
   selector: 'app-c-painting-list',
@@ -19,15 +21,13 @@ export class PaintingListComponent implements OnInit {
   config: any;
   filterArtType = false;
   filterArtist = false;
-  viewData: ViewInterface = {
-    entity: InteractionConsts.ENTITY_TYPE_PAINTING,      // 1: For Painting Entity
-    row: 0,         // this for painting id
-    interaction: InteractionConsts.INTERACTION_TYPE_VIEW, // 3: for view interaction
-    client: 0,      // this for client id
-  };
   paintingsView: {
     id: number,
     viewNumber: number
+  }[] = [];
+  paintingsLove: {
+    id: number,
+    loveNumber: number
   }[] = [];
 
   constructor(private interactionService: IshtarInteractionService) { }
@@ -39,20 +39,60 @@ export class PaintingListComponent implements OnInit {
     this.artists = [];
     for (const image of this.formattedPaintingList) {
       this.artists.push(image.artist);
+      // Get View Interaction For Every Painting
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          image.id,
+          InteractionConsts.INTERACTION_TYPE_VIEW)
+          .subscribe(
+              (data: any) => {
+                // console.log('Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
+                this.paintingsView.push({
+                  id: image.id,
+                  viewNumber: data.Data[0].interactions
+                });
+              }, error => {
+                console.log(error);
+              }
+          );
+      // Get Love Interaction For Every Painting
+      this.interactionService.getInteractionsNumber(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          image.id,
+          InteractionConsts.INTERACTION_TYPE_LOVE)
+          .subscribe(
+              (data: any) => {
+                console.log('Painting Love: Id:', image.id, ' => Love: ' , data.Data[0].interactions);
+                this.paintingsLove.push({
+                  id: image.id,
+                  loveNumber: data.Data[0].interactions
+                });
+              }, error => {
+                console.log(error);
+              }
+          );
+      /*
       // Fetch Painting View Interaction
       this.viewData.row = image.id;
       this.interactionService.getInteraction(this.viewData).subscribe(
           (data: {Data: any}) => {
+            console.log(data);
             this.paintingsView.push({
               id: image.id,
               viewNumber: data.Data[0].interactions
             });
-          },
-          error => {
-            console.log(error);
           }
-
       );
+      // Get All Paintings Love Interactions
+      this.loveData.row = image.id;
+      this.interactionService.getInteraction(this.loveData).subscribe(
+          (data: {Data: any}) => {
+            this.paintingsLove.push({
+              id: image.id,
+              loveNumber: data.Data[0].interactions
+            });
+          }
+      );*/
     }
     // make loop inside paintingsView and remove the repeated value
     this.paintingsView = [...new Set(this.paintingsView)];
@@ -96,6 +136,11 @@ export class PaintingListComponent implements OnInit {
       }
       this.paintingList = paintingList;
     }
+    if (this.paintingList.length > 12) {
+      document.getElementById('my-pagination').style.display = 'block';
+     } else {
+       document.getElementById('my-pagination').style.display = 'none';
+     }
   }
 
 
@@ -105,18 +150,15 @@ export class PaintingListComponent implements OnInit {
       painting.artist === name ? paintingList.push(painting) : console.log(painting.artist === name);
     }
     this.paintingList = paintingList;
+    if (this.paintingList.length > 12) {
+      document.getElementById('my-pagination').style.display = 'block';
+     } else {
+       document.getElementById('my-pagination').style.display = 'none';
+     }
   }
 
-  viewImage(id: number) {
-    this.viewData.row = id;
-    this.interactionService.addViewInteraction(this.viewData).subscribe(
-        res => {
-          console.log('Painting Reviewed : ', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+  viewImage(paintingId: number) {
+    this.interactionService.addViewInteraction(paintingId, 'painting');
   }
 
   // view & hide filter button options
@@ -137,7 +179,5 @@ export class PaintingListComponent implements OnInit {
       this.filterArtist = true;
     }
   }
-
-
 
 }

@@ -1,4 +1,7 @@
 #header {
+  .logo {
+    margin-left: 20px;
+  }
   #letter-circle {
     font-size:1em;
     width:2.5em;
@@ -9,6 +12,35 @@
     background:plum;
     vertical-align:middle;
     color:white;
+    .info {
+      position: absolute;
+      cursor: auto;
+      right: 0px;
+      top: 45px;
+      border-radius: 15px;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #e1e1e1;
+      box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+      -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+      visibility: hidden;
+      opacity: 0;
+      transition: all 1s ease-in-out;
+      -webkit-transition: all 1s ease-in-out;
+      .email {
+        color: #000;
+      }
+      &:hover {
+        opacity: 1;
+        visibility: visible !important;
+      }
+    }
+    &:hover {
+      .info {
+        opacity: 1;
+        visibility: visible !important;
+      }
+    }
   }
 
   #spacer {
@@ -35,7 +67,7 @@
     left: 0;
     width: 100%;
     background: #fff;
-    z-index: 999999;
+    z-index: 999;
     #header-nav {
       .header-top {
         margin-left: -15px;
@@ -49,14 +81,18 @@
         img.demo-img {
           width: 30px;
           vertical-align: top !important;
-          margin-left: -10px;
+          margin-left: 15px;
         }
         li {
           display: inline-block;
-          margin: 1rem;
+          margin: 0.5rem;
           .dropdown {
             .login, .logout {
               margin-right: 10px;
+              a {
+                color: goldenrod;
+                font-weight: bold;
+              }
             }
             mdb-icon {
               vertical-align: middle;
@@ -101,7 +137,7 @@
     right: 0;
     direction: rtl;
     background: #ffffff;
-    z-index: 99999;
+    z-index: 999;
     .letter-circle {
       font-size:1em;
       width:2.5em;
@@ -113,6 +149,25 @@
       vertical-align:middle;
       margin-right:1em;
       color:white;
+      .info {
+        position: absolute;
+        cursor: auto;
+        right: 0px;
+        top: 45px;
+        border-radius: 15px;
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #e1e1e1;
+        box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+        .email {
+          color: #000;
+        }
+      }
+      .letter:hover + .info {
+        opacity: 1;
+        visibility: visible;
+      }
     }
     .btn-wish-list {
       background: #bfb049;
@@ -242,43 +297,25 @@
 .search-box {
   margin-left: 35px;
   .search{
-    position: absolute;
-    //right: 115px;
-    top: 29px;
-    width: 100%;
     text-align: right;
     #input-search,
     #input-mobile-search{
       width: 0;
       height: 40px;
-      position: absolute;
-      top: -10px;
-      right: 0;
-      overflow: hidden;
       transition: all .3s ease-in-out;
       -o-transition: all .3s ease-in-out;
       -ms-transition: all .3s ease-in-out;
       -moz-transition: all .3s ease-in-out;
       -webkit-transition: all .3s ease-in-out;
+    }
+    #input-search {
+      margin-top: 1rem;
+      width: 100%;
       input {
-        position: absolute;
-        right: 0;
-      }
-      #input-search.open,
-      #input-mobile-search.open{
         width: 100%;
+        display: block;
+        background: #fff;
       }
-    }
-    #open-search,
-    #close-search {
-      position: absolute;
-      right: 0;
-      padding: 0 10px;
-      cursor: pointer;
-    }
-    #close-search {
-      z-index: -1;
-      opacity: 0;
     }
   }
   
@@ -319,6 +356,11 @@
   .navbar-nav {
     border-top: 1px solid #e1e1e1;
   }
+  .navbar .navbar-toggler {
+    position: absolute;
+    right: 150px;
+    top: 8px;
+  }
 }
 
 
@@ -337,6 +379,10 @@
       &:nth-child(3){
         animation: pull-right 1.5s ease-in-out;
         -webkit-animation: pull-right 1.5s ease-in-out;
+      }
+      &:nth-child(4){
+        animation: pull-right 2s ease-in-out;
+        -webkit-animation: pull-right 2s ease-in-out;
       }
     }
     li.active {
@@ -370,9 +416,20 @@
 
 @media (max-width:991px) {
   .login-btn {
-    position: absolute;
-    right: 40px;
-    top: 2px;
+    background: #fff !important;
+    .dropdown-item {
+      color: goldenrod !important;
+      font-weight: bold;
+      background: #fff !important;
+      &:focus {
+        background: #fff !important;
+      }
+    }
+  }
+  .navbar-light .navbar-toggler {
+    position: absolute !important;
+    right: 150px;
+    top: 7px;
   }
 }
 

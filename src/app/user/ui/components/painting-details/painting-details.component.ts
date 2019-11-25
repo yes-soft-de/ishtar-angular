@@ -1,13 +1,13 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {PaintingDetails} from '../../../entity/painting-details/painting-details';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
-import {PaintingListService} from '../../../service/painting-list/painting-list.service';
-import {PaintingViewsService} from '../../../service/painting-views/painting-views.service';
+import {PaintingService} from '../../../service/painting/painting.service';
 import {PaintingViewsItem} from '../../../entity/painting-views/painting-views-item';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ToastrService} from 'ngx-toastr';
-import {ArtistListService} from '../../../service/artist-list/artist-list.service';
-
+import {ArtistService} from '../../../service/artist/artist.service';
+import { Router } from '@angular/router';
+import Flickity from 'flickity';
 
 @Component({
   selector: 'app-painting-details',
@@ -18,22 +18,44 @@ import {ArtistListService} from '../../../service/artist-list/artist-list.servic
 export class PaintingDetailsComponent implements OnInit {
   @Input() painting: PaintingDetails;
   @Input() artist: any;
+  @Input() paintingList: PaintingListItem[];
+  @Input() nextPaintingExists: boolean;
+  @Input() prevPaintingExists: boolean;
   featuredList: PaintingListItem[];
   paintingViews: PaintingViewsItem;
+  paintingNumber: number;
+  CurrentPaintingId: number;
 
-  constructor(private paintingService: PaintingListService,
-              private paintingViewsService: PaintingViewsService,
+  constructor(private paintingService: PaintingService,
               private interactionService: IshtarInteractionService,
-              private artistListService: ArtistListService,
-              private toaster: ToastrService) {
+              private artistListService: ArtistService,
+              private toaster: ToastrService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.paintingService.requestPaintingList().subscribe(
-      data => {
-        this.featuredList = data.Data;
-      }
-    );
+    // this.paintingService.requestPaintingList().subscribe(
+    //   data => {
+    //     this.featuredList = data.Data;
+    //   }
+    // );
+    if (window.innerWidth < 768) {
+      const flkty = new Flickity('.main-carousel', {
+        draggable: true,
+        wrapAround: true,
+        prevNextButtons: false,
+        pageDots: false
+      });
+      flkty.on( 'dragEnd', ( event, pointer ) => {
+        console.log('slider', pointer);
+        if (pointer.clientX < -10) {
+          this.goNext();
+        }
+        if (pointer.clientX > 30) {
+          this.goBack();
+        }
+      });
+    }
     if (document.readyState === 'complete') {
       if (this.painting[0].name == null) {
         document.getElementById('painting-name').style.display = 'none';
@@ -55,6 +77,7 @@ export class PaintingDetailsComponent implements OnInit {
         document.getElementById('painting-artist').style.display = 'none';
       }
     }
+    this.CurrentPaintingId = this.painting[0].id;
   }
 
   addToWishList() {
@@ -79,5 +102,55 @@ export class PaintingDetailsComponent implements OnInit {
   hideFullScreenMode() {
     document.getElementById('full-size-img').classList.remove('active');
   }
+
+  // Navigate To Next Painting
+  goNext() {
+    const nextId = this.painting['0'].id + 1;
+    this.router.navigate(['/painting', nextId]);
+  }
+
+
+  // Navigate To Previous Painting
+  goBack() {
+    const prevId = this.painting['0'].id - 1;
+    this.router.navigate(['/painting', prevId]);
+  }
+
+
+
+
+  // goBack() {
+  //   for (let i = 0; i < this.paintingList.length; i++) {
+  //     // tslint:disable-next-line:triple-equals
+  //     if (this.paintingList[i].id == this.CurrentPaintingId) {
+  //       this.paintingNumber = i - 1;
+  //     }
+  //   }
+  //   if (this.paintingNumber > 0) {
+  //     // this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+  //     // this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+  //     console.log(this.paintingList[this.paintingNumber].id, this.CurrentPaintingId, 'true');
+  //   } else {
+  //     console.log(this.paintingList[this.paintingNumber].id, this.CurrentPaintingId, 'false');
+  //     // this.router.navigate(['/painting', this.paintingList[this.paintingList.length - 1].id]);
+  //     // this.CurrentPaintingId = this.paintingList[this.paintingList.length - 1].id;
+  //   }
+  // }
+  //
+  // goNext() {
+  //   for (let i = 0; i < this.paintingList.length; i++ ) {
+  //     // tslint:disable-next-line:triple-equals
+  //     if (this.paintingList[i].id == this.CurrentPaintingId) {
+  //       this.paintingNumber = i + 1;
+  //     }
+  //   }
+  //   if (this.paintingNumber < this.paintingList.length - 1) {
+  //     this.router.navigate(['/painting', this.paintingList[this.paintingNumber].id]);
+  //     this.CurrentPaintingId = this.paintingList[this.paintingNumber].id;
+  //   } else {
+  //     this.router.navigate(['/painting', this.paintingList[0].id]);
+  //     this.CurrentPaintingId = this.paintingList[0].id;
+  //   }
+  // }
 
 }

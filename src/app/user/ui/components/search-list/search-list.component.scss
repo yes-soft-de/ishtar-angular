@@ -1,3 +1,16 @@
-ngx-tabs {
-  color: black !important;
+.search-result-block {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #aaa;
+  &:last-child {
+      border: 0;
+  }
+  .title {
+    font-weight: bold;
+    color: goldenrod;
+    margin-bottom: 25px;
+  }
+}
+
+.artist-list-section {
+    border: 0 !important;
 }

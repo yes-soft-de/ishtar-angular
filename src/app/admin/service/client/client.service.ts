@@ -6,7 +6,7 @@ import {ClientInterface} from '../../entity/client/client-interface';
 import {Client} from '../../entity/client/client';
 import { catchError } from 'rxjs/operators';
 import {Observable, pipe, throwError} from 'rxjs';
-import {ClientListResponse} from '../../entity/ClientList/client-list-response';
+import {ClientListResponse} from '../../entity/client/client-list-response';
 
 
 @Injectable({
@@ -23,59 +23,47 @@ export class ClientService {
     return throwError(error || 'Server Error');
   }
 
+  // Admin Section - Get All Clients
   getAllClients() {
-    return this.httpClient.get<ClientListResponse>(
-      `${AdminConfig.allClientsAPI}`, {responseType: 'json'}
-    ).pipe(catchError(ClientService.errorHandler));
+    return this.httpClient.get(`${AdminConfig.clientsAPI}`).pipe(catchError(ClientService.errorHandler));
   }
 
-  getClientByClient(clientId: string) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post<ClientInterface>(
-        AdminConfig.clientAPI,
-        JSON.stringify({client: clientId}),
-        httpOptions
-    );
+  // Admin Section - GET Specific Client Using ClientId
+  getClientUsingId(clientId: number) {
+    return this.httpClient.get(`${AdminConfig.clientAPI}/${clientId}`);
   }
 
   // Admin Section - Add Client Page
   postAddClient(client: Client) {
-    return this.httpClient.post<Client>(
-        `${AdminConfig.addClientAPI}`,
+    return this.httpClient.post(
+        `${AdminConfig.clientsAPI}`,
         JSON.stringify(client)
     );
   }
 
   // Admin Section - Update Client
-  updateUser(clientId: string, data) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post<ClientInterface>(
-        AdminConfig.editClientAPI,
-        JSON.stringify(data),
-        httpOptions
+  updateClient(clientId: number, data) {
+    return this.httpClient.put(
+        `${AdminConfig.clientAPI}/${clientId}`,
+        JSON.stringify(data)
     ).pipe(catchError(ClientService.errorHandler));
   }
 
   // Admin Section - Delete Client
   deleteClient(clientId: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.httpClient.post(
-        AdminConfig.deleteClientAPI,
-        JSON.stringify({id: clientId}),
-        httpOptions
+    return this.httpClient.delete(
+        `${AdminConfig.clientAPI}/${clientId}`,
     ).pipe(catchError(ClientService.errorHandler));
   }
+
+  // Admin Section - Uplosd Image For Artist
+  public uploadImage(image: File): Observable<{ url: string }> {
+    const formData = new FormData();
+    formData.append('image', image);
+    return this.httpClient.post<{
+      url: string
+    }>(`${AdminConfig.generalUploadAPI}`, formData);
+  }
+
 
 }
