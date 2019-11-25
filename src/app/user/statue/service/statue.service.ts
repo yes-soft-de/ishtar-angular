@@ -21,4 +21,14 @@ export class StatueService {
     );
     return this.statueSubject.asObservable();
   }
+
+  getStatueList(): Observable<StatueObject[]> {
+    const listSubject = new Subject<StatueObject[]>();
+    this.statueManager.getStatueList().subscribe(
+      statueListResponse => {
+        listSubject.next(statueListResponse.Data);
+      }
+    );
+    return listSubject.asObservable();
+  }
 }

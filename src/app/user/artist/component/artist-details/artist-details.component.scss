@@ -188,36 +188,36 @@
     background: goldenrod;
     font-size: 14px;
     padding: 5px;
-    color:#fff;  
+    color:#fff;
     padding: 5px;
     outline: none !important;
     opacity: 0.7;
   }
-  
+
   .btn-prev:hover,
   .btn-next:hover {
     background: #fff;
     color: goldenrod;
   }
-  
+
   .btn-prev:disabled,
   .btn-next:disabled {
     background: gray !important;
     color: #fff !important;
   }
-  
+
   .btn-prev {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     left: 0px;
   }
-  
+
   .btn-next {
     right: 0px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
   }
-  
+
   @media (max-width:767px) {
     .btn-prev,
     .btn-next {
@@ -243,7 +243,7 @@
 
 }
 
-.main-carousel {  
+.main-carousel {
   width: 100%;
   overflow: hidden;
   .flickity-viewport {
@@ -414,7 +414,7 @@
         }
       }
     }
-  } 
+  }
   .artist-video-icon {
     position: absolute;
     top: 32%;
@@ -471,7 +471,7 @@
         }
       }
     }
-  }  
+  }
 }
 
 mdb-carousel {

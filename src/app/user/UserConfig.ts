@@ -74,14 +74,14 @@ public static ArtistDetailsAPI = UserConfig.sourceAPI + 'getArtistById';
 public static ArtTypeAPI = UserConfig.sourceAPI + 'getArtTypeById';
 public static allArtTypeAPI = UserConfig.sourceAPI + 'getAllArtType';
 public static getInteractionAPI = UserConfig.sourceAPI + 'getInteraction';
-public static postInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
+public static postInteractionAPI = UserConfig.sourceAPI + 'createLove';
 public static getClientInteractionsAPI = UserConfig.sourceAPI + 'getClientInteraction';
 public static deleteClientInteractionsAPI = UserConfig.sourceAPI + 'deleteInteraction';
 public static getClientClapAPI = UserConfig.sourceAPI + 'getClientClap';
 public static deleteClientClapAPI = UserConfig.sourceAPI + 'deleteClap';
-public static addInteractionAPI = UserConfig.sourceAPI + 'createInteraction';
+public static addInteractionAPI = UserConfig.sourceAPI + 'createLove';
 public static getFollowInteractionAPI = UserConfig.sourceAPI + 'getEntityInteraction';
-public static paintingViewsAPI = UserConfig.sourceAPI + 'createInteraction';
+public static paintingViewsAPI = UserConfig.sourceAPI + 'createLove';
 public static createClapAPI = UserConfig.sourceAPI + 'createClap';
 public static getClapAPI = UserConfig.sourceAPI + 'getEntityClap';
 // Comments API
