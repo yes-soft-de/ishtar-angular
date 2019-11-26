@@ -5,7 +5,7 @@ import {ArtistService} from '../../service/artist.service';
 import {PaintingListItem} from '../../../painting/entity/painting-list-item';
 
 @Component({
-  selector: 'app-artist-page',
+  selector: 'app-artist-details',
   templateUrl: './artist-details.component.html',
   styleUrls: ['./artist-details.component.scss'],
   encapsulation: ViewEncapsulation.None
@@ -24,7 +24,6 @@ export class ArtistDetailsComponent implements OnInit {
           this.artistService.getArtist(Number(urlSegments[1].path)).subscribe(
               data => {
                 this.artist = data;
-                console.log('artist', this.artist);
               }
           );
         }

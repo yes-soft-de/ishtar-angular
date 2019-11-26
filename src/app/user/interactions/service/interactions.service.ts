@@ -28,7 +28,7 @@ export class InteractionsService {
           return EMPTY;
         }), map(res => {
             return {
-            paintingID: row,
+            id: row,
             interactionType: interactionsType,
             interactionNumber: res.Data[0].interactions
           };

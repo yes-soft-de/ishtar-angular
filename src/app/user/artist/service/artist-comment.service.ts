@@ -14,6 +14,7 @@ export class ArtistCommentService extends BaseCommentService {
   constructor(protected commentManager: CommentManagerService,
               private routeToApi: RouteToAPIService) {
     super(commentManager);
+    this.artistCommentsSubject = new Subject<CommentObject[]>();
   }
 
   getArtistComment(artistId: number) {

@@ -66,8 +66,10 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {ArtistListPageComponent} from './artist/component/artist-list-page/artist-list-page.component';
 import {ArtistDetailsPageComponent} from './artist/component/artist-details-page/artist-details-page.component';
 import {ArtistDetailsComponent} from './artist/component/artist-details/artist-details.component';
+import {ArtistPaintingsComponent} from './artist/component/artist-paintings/artist-paintings.component';
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
+import {InteractionComponent} from './interactions/component/interaction/interaction.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +129,9 @@ import {StatueListPageComponent} from './statue/component/statue-list-page/statu
     StatueDetailsPageComponent,
     ArtistCommentComponent,
     LoveComponent,
-    ArtistDetailsComponent
+    ArtistDetailsComponent,
+    ArtistPaintingsComponent,
+    InteractionComponent
   ],
   exports: [
     // User
@@ -146,6 +150,7 @@ import {StatueListPageComponent} from './statue/component/statue-list-page/statu
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
+    ArtistPaintingsComponent,
     HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,

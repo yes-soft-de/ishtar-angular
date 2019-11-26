@@ -1,71 +1,76 @@
-<div class="d-flex justify-content-center artist-list-section"
-     [ngStyle]="{'border-top': search ? '1px solid #333333' : 'none'}">
-  <div class="col-2 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
-    <div>
-      <h5>Filter By Art Type</h5>
-      <button mdbBtn class="btn-light" *ngFor="let i of activeTypes"
-              [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"
-              (click)="filterByArtType(i)">{{i}}</button>
-    </div>
-  </div>
-  <div class="col-12 col-lg-10 px-5">
-    <div class="row" *ngIf="search">
-      <div class="col-12 col-lg-6 sort-artist mb-lg-2 my-3">
-        <ul class="navbar-nav nav-flex-icons d-inline-block">
-          <li class="nav-item">
-            <a class="nav-link">
-              <div class="btn-group" mdbDropdown>
-                Sort By <span class="d-none d-md-block pl-1">Follow  Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
-                <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                  <a class="dropdown-item" (click)="sortItemsByLargeFollowNumber()">Greatest Number</a>
-                  <a class="dropdown-item" (click)="sortItemsByLowerFollowNumber()">Lowest Number</a>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav nav-flex-icons d-inline-block d-lg-none ml-3">
-          <li class="nav-item">
-            <a class="nav-link">
-              <div class="btn-group" mdbDropdown>
-                Filter By <span class="d-none d-md-block pl-1">Art Type</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
-                <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                  <a class="dropdown-item" *ngFor="let i of activeTypes" (click)="filterByArtType(i)">{{i}}</a>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
+<div *ngIf="artistList != null">
+  <div class="d-flex justify-content-center artist-list-section"
+       [ngStyle]="{'border-top': search ? '1px solid #333333' : 'none'}">
+    <div class="col-2 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
+      <div>
+        <h5>Filter By Art Type</h5>
+        <button mdbBtn class="btn-light" *ngFor="let i of activeTypes"
+                [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"
+                (click)="filterByArtType(i)">{{i}}</button>
       </div>
     </div>
-    <section id="photos" class="row">
-      <div *ngFor="let artist of artistList | paginate: config; index as i"
-           class="col-xs-6 col-sm-6 col-md-6 col-xl-3 mx-auto">
-        <a routerLink="/artist/{{artist.id}}">
-          <div class="artist-card text-center my-2 my-lg-3 my-xl-4">
-            <img class="img-fluid" src="{{artist.path}}" alt="...">
-            <div class="w-100 details-container">
-              <div class="inner-details-container">
-                <h3 class="col-12 text-center">{{artist.name}}</h3>
-                <span class="col-12 text-center artist-detail-number">{{artist.paintingNumber }} painting</span>
-                <span class="col-12 text-center artist-detail-follower">{{artist.artistFollowers}} Follow</span>
+    <div class="col-12 col-lg-10 px-5">
+      <div class="row" *ngIf="search">
+        <div class="col-12 col-lg-6 sort-artist mb-lg-2 my-3">
+          <ul class="navbar-nav nav-flex-icons d-inline-block">
+            <li class="nav-item">
+              <a class="nav-link">
+                <div class="btn-group" mdbDropdown>
+                  Sort By <span class="d-none d-md-block pl-1">Follow  Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
+                    <a class="dropdown-item" (click)="sortItemsByLargeFollowNumber()">Greatest Number</a>
+                    <a class="dropdown-item" (click)="sortItemsByLowerFollowNumber()">Lowest Number</a>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav nav-flex-icons d-inline-block d-lg-none ml-3">
+            <li class="nav-item">
+              <a class="nav-link">
+                <div class="btn-group" mdbDropdown>
+                  Filter By <span class="d-none d-md-block pl-1">Art Type</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
+                    <a class="dropdown-item" *ngFor="let i of activeTypes" (click)="filterByArtType(i)">{{i}}</a>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section id="photos" class="row">
+        <div *ngFor="let artist of artistList | paginate: config; index as i"
+             class="col-xs-6 col-sm-6 col-md-6 col-xl-3 mx-auto">
+          <a routerLink="/artist/{{artist.id}}">
+            <div class="artist-card text-center my-2 my-lg-3 my-xl-4">
+              <img class="img-fluid" src="{{artist.path}}" alt="...">
+              <div class="w-100 details-container">
+                <div class="inner-details-container">
+                  <h3 class="col-12 text-center">{{artist.name}}</h3>
+                  <span class="col-12 text-center artist-detail-number">{{artist.painting }} painting</span>
+                  <span class="col-12 text-center artist-detail-follower">
+                    <app-interaction [Entity]="'artist'" [Row]="artist?.id" [interaction]="'follow'"></app-interaction>
+                    Follow
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+      </section>
+      <div class="text-center mt-3">
+        <pagination-controls class="my-pagination"
+                             (pageChange)="pageChanged($event)"
+                             autoHide="true"
+                             responsive="true"
+                             previousLabel="Prev"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page"></pagination-controls>
       </div>
-    </section>
-    <div class="text-center mt-3">
-      <pagination-controls class="my-pagination"
-                           (pageChange)="pageChanged($event)"
-                           autoHide="true"
-                           responsive="true"
-                           previousLabel="Prev"
-                           nextLabel="Next"
-                           screenReaderPaginationLabel="Pagination"
-                           screenReaderPageLabel="page"
-                           screenReaderCurrentLabel="You're on page"></pagination-controls>
     </div>
-  </div>
 
+  </div>
 </div>

@@ -1,4 +1,3 @@
-<app-header></app-header>
 <app-statues-detail [statueDetail]="statueDetailPage"
                     [artist]="artistDetail"
                     [statuesList]="statuesListPage"
@@ -6,4 +5,3 @@
                     [statuesView]="statuesViewPage"
                     *ngIf="statueDetailPage != null || statuesListPage != null"></app-statues-detail>
 <app-loading-widget *ngIf="statueDetailPage == null || statuesListPage == null"></app-loading-widget>
-<app-footer></app-footer>

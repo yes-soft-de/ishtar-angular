@@ -10,7 +10,7 @@ import {Interactions} from '../../entitiy/interactions';
 })
 export class InteractionComponent implements OnInit {
   interactions: {
-    paintingID: number,
+    id: number,
     interactionType: string,
     interactionNumber: number
   }[] = [];

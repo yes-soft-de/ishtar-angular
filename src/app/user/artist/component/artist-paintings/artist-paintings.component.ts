@@ -29,7 +29,6 @@ export class ArtistPaintingsComponent implements OnInit {
           this.artistRandomPainting = this.paintingList[randPainting];
           // Send Data To Parent Component
           this.randomArtistPainting.emit(this.artistRandomPainting);
-          console.log('artistMainPainting', this.artistRandomPainting);
         });
       }
     );
