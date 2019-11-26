@@ -8,8 +8,9 @@ export class ArtistFilterService {
   private readonly originalList: ArtistListItem[] = [];
 
   // region Filters Keywords, Java Style for Class Members Naming :)
-  private mArtistNameFilter: string = null;
   private mArtTypeFilter: string = null;
+  // Needle Of a Name String
+  private mArtistNameFilter: string = null;
 
   constructor(private rowList: ArtistListItem[]) {
     this.originalList = rowList;
@@ -21,8 +22,8 @@ export class ArtistFilterService {
     return this.getFilteredList();
   }
 
-  public activateArtistNameFilter(artistName: string): ArtistListItem[] {
-    this.mArtistNameFilter = artistName;
+  public activateArtistNameFilter(artistNameNeedle: string): ArtistListItem[] {
+    this.mArtistNameFilter = artistNameNeedle;
     return this.getFilteredList();
   }
 
@@ -55,7 +56,7 @@ export class ArtistFilterService {
   private processArtistNameFilter(rowList: ArtistListItem[]): ArtistListItem[] {
     const resultList: ArtistListItem[] = [];
     for (const artist of rowList) {
-      if (artist.name === this.mArtistNameFilter) {
+      if (artist.name.includes(this.mArtistNameFilter)) {
         resultList.push(artist);
       }
     }
