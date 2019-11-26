@@ -4,6 +4,7 @@
     <div class="col-2 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
       <div>
         <h5>Filter By Art Type</h5>
+        <button mdbBtn class="btn-light" (click)="cancelFilterByArtType()">All</button>
         <button mdbBtn class="btn-light" *ngFor="let i of activeTypes"
                 [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"
                 (click)="filterByArtType(i)">{{i}}</button>
@@ -18,8 +19,8 @@
                 <div class="btn-group" mdbDropdown>
                   Sort By <span class="d-none d-md-block pl-1">Follow  Number</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
                   <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                    <a class="dropdown-item" (click)="sortItemsByLargeFollowNumber()">Greatest Number</a>
-                    <a class="dropdown-item" (click)="sortItemsByLowerFollowNumber()">Lowest Number</a>
+                    <a class="dropdown-item" (click)="sortArtistsByFollowerNumberDesc()">Greatest Number</a>
+                    <a class="dropdown-item" (click)="sortArtistsByFollowerNumberAsc()">Lowest Number</a>
                   </div>
                 </div>
               </a>
@@ -31,6 +32,7 @@
                 <div class="btn-group" mdbDropdown>
                   Filter By <span class="d-none d-md-block pl-1">Art Type</span> <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
                   <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
+                    <a class="dropdown-item" (click)="cancelFilterByArtType()">All</a>
                     <a class="dropdown-item" *ngFor="let i of activeTypes" (click)="filterByArtType(i)">{{i}}</a>
                   </div>
                 </div>
@@ -71,6 +73,5 @@
                              screenReaderCurrentLabel="You're on page"></pagination-controls>
       </div>
     </div>
-
   </div>
 </div>

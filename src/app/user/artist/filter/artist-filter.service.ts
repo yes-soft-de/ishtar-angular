@@ -22,6 +22,18 @@ export class ArtistFilterService {
     return this.getFilteredList();
   }
 
+  public sortArtistsByFollowerNumberAsc() {
+    return this.originalList.sort(
+      (a, b) => (Number(a.artistFollowers) > Number(b.artistFollowers))
+        ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
+          ? ((Number(a.artistFollowers) > Number(b.artistFollowers))
+            ? 1 : -1) : -1);
+  }
+
+  public sortArtistsByFollowerNumberDesc() {
+    return this.sortArtistsByFollowerNumberAsc().reverse();
+  }
+
   public activateArtistNameFilter(artistNameNeedle: string): ArtistListItem[] {
     this.mArtistNameFilter = artistNameNeedle;
     return this.getFilteredList();
@@ -32,12 +44,12 @@ export class ArtistFilterService {
     return this.getFilteredList();
   }
 
-  public activateStyleNameFilter(artTypeName: string): ArtistListItem[] {
+  public activateArtTypeNameFilter(artTypeName: string): ArtistListItem[] {
     this.mArtTypeFilter = artTypeName;
     return this.getFilteredList();
   }
 
-  public deactivateStyleNameFilter(): ArtistListItem[] {
+  public deactivateArtTypeNameFilter(): ArtistListItem[] {
     this.mArtTypeFilter = null;
     return this.getFilteredList();
   }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArtistListItem} from '../../entity/artist-list-item';
 import {ArtistService} from '../../service/artist.service';
+import {ArtistFilterService} from '../../filter/artist-filter.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -19,6 +20,8 @@ export class ArtistListComponent implements OnInit {
     totalItems: number
   };  // Config For Paginate
 
+  private filterService: ArtistFilterService = null;
+
   constructor(private artistService: ArtistService) {
     this.config = {
       itemsPerPage: 8,
@@ -34,11 +37,13 @@ export class ArtistListComponent implements OnInit {
         this.artistList = artists;
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
+        this.filterService = new ArtistFilterService(artists);
       }
     );
   }
 
   private calculateActiveArtTypes() {
+    // TODO: Use Map Reduce
     const types: string[] = [];
     for (const artist of this.artistList) {
       types.push(artist.artType);
@@ -51,19 +56,18 @@ export class ArtistListComponent implements OnInit {
   }
 
   filterByArtType(name: string) {
-    this.activeArtType = name;
-    this.artistService.filterByArtType(name);
+    this.artistList = this.filterService.activateArtTypeNameFilter(name);
   }
 
-  sortItemsByLargeFollowNumber() {
-    this.artistService.sortItemsByLargeFollowNumber();
+  sortArtistsByFollowerNumberDesc() {
+    this.artistList = this.filterService.sortArtistsByFollowerNumberDesc();
   }
 
-  sortItemsByLowerFollowNumber() {
-    this.artistService.sortItemsByLowerFollowNumber();
+  sortArtistsByFollowerNumberAsc() {
+    this.artistList = this.filterService.sortArtistsByFollowerNumberAsc();
   }
 
   cancelFilterByArtType() {
-    this.artistService.cancelFilterArtType();
+    this.artistList = this.filterService.deactivateArtTypeNameFilter();
   }
 }
