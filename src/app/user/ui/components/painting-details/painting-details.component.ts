@@ -34,12 +34,14 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO new push for new processing
     // this.paintingService.requestPaintingList().subscribe(
     //   data => {
     //     this.featuredList = data.Data;
     //   }
     // );
     if (window.innerWidth < 768) {
+      // TODO Replace This With Ngx Component
       const flkty = new Flickity('.main-carousel', {
         draggable: true,
         wrapAround: true,

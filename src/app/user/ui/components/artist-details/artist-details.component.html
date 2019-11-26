@@ -3,7 +3,6 @@
 <div class="main-carousel">
   <div class="carousel-cell">
     <section class= "artist-page">
-
       <div class="artist-header">
           <div class="position-absolute d-flex justify-content-end" *ngIf="artistMainPainting != null">
             <div class="artist-banner-text text-center p-3 p-md-5">
@@ -13,7 +12,8 @@
             </div>
           </div>
           <div class="banner-background">
-            <img class="parallax d-block" [src]="artistMainPainting?.image">
+    <!--        <div parallax [ngStyle]="{'background': 'url(' + artistMainPainting?.image + ')'}" class="parallax" *ngIf="artistMainPainting?.image != null"></div>-->
+            <img class="parallax d-block" [src]="artistMainPainting?.image" style="background-size: cover">
           </div>
           <div class="artist-header-details">
             <div class="container">
@@ -30,6 +30,11 @@
                             <i class="fas fa-envelope fa-lg"></i>
                           </a>
                         </div>
+    <!--                    <div class="artist-video-icon mx-auto">-->
+    <!--                      <i class="fas fa-envelope"></i>-->
+    <!--&lt;!&ndash;                      <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">&ndash;&gt;-->
+    <!--&lt;!&ndash;                      <mdb-icon fas icon="video fa-lg"></mdb-icon>&ndash;&gt;-->
+    <!--                    </div>-->
                       </div>
                     </div>
                   </div>
@@ -43,9 +48,15 @@
                               <i class="fas fa-envelope fa-lg"></i>
                             </a>
                           </div>
+    <!--                      <div class="artist-video-icon">-->
+    <!--                        <img src="../../../../../assets/video-camera.svg" class="img-fluid" alt="video icon">-->
+    <!--                        <mdb-icon fas icon="video fa-lg"></mdb-icon>-->
+    <!--                      </div>-->
                         </div>
-                        <div class="col-5 col-sm-6">
-                          <app-follow-widget [ParentId]="artist?.id" [ParentType]="2" class="follow-artist"></app-follow-widget>
+                        <div class="col-5 col-sm-6 contact-artist">
+                          <app-follow-widget [ParentId]="artist?.id" [ParentType]="2" class="follow-artist" id="follow-artist"></app-follow-widget>
+    <!--                        <a type="button" class="btn" href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}"-->
+    <!--                           style="color: white">Contact Artist</a>-->
                         </div>
 
                         <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
@@ -71,7 +82,7 @@
                       </div>
                     </div>
                 </div>
-              </div><!--End Row Div-->
+              </div> <!--End Row Div-->
             </div>
           </div><!--End Artist-header-detail Div-->
       </div> <!--End Artist-header Div-->
@@ -83,20 +94,18 @@
             <p>{{artist?.story}}</p>
             <hr class="border">
           </div>
-          <!--
           <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
             </div>
             <hr class="border">
           </div>
-          -->
           <!--Starting Painting Comment Section-->
-          <div class="py-4">
+          <div class="painting-comment py-4">
             <div class="container text-dark">
               <div class="col-lg-10 col-xl-12 mx-auto">
                 <div class="painting-tab">
-                  <p> community:</p>
+                  <p style="font-weight: bold; margin:0 0 20px"> community:</p>
                   <app-comments [pageType]="'artist'"></app-comments>
                 </div>
               </div>
@@ -104,12 +113,15 @@
           </div>
           <!--End Painting Comment Section-->
 
-          <div class="col-12 col-lg-10 mx-auto mb-4" *ngIf="featuredPaintings != null">
+          <div id="artist-images" class="col-12 col-lg-10 mx-auto mb-4" *ngIf="featuredPaintings != null">
             <h4 class="text-center pt-4">Artist Painting</h4>
             <hr class="w-25 border border-dark mb-2">
+    <!--        <app-c-painting [formattedPaintingList]="featuredPaintings" [filter]="false"-->
+    <!--                             *ngIf="featuredPaintings != null"></app-c-painting>-->
+            <!-- Use THis Div If Painting Length is Less Than 5 painting-->
             <div class="painting-list" *ngIf="featuredPaintings.length < 5">
               <div class="row">
-                <div class="painting-list-item col-md-4 col-sm-6 col-xs-12 mx-auto"
+                <div class="painting-list-item col-lg-3 col-md-4 col-sm-6 col-xs-12 mx-auto"
                     *ngFor="let painting of featuredPaintings"
                     routerLink="/painting/{{painting.id}}">
                   <div class="img-container my-1">
@@ -118,6 +130,13 @@
                     <div class="painting-info">
                       <p class="painting-name">{{painting.name}}</p>
                       <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span></p>
+                      <!--                     <ul class="statistics">-->
+                      <!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
+                      <!--                       <li>-->
+                      <!--                           <i class="far fa-eye"></i>-->
+                      <!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
+                      <!--                       </li>-->
+                      <!--                     </ul>-->
                     </div>
                   </div>
                 </div>
@@ -137,11 +156,16 @@
                         <img class="img-fluid" src="{{painting.image}}"
                                       (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="...">
                         <div class="painting-info">
-                          <p class="painting-name">{{painting.name}}</p>
-                          <p class="artist">
-                            <i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span>
-                          </p>
-                        </div>
+                        <p class="painting-name">{{painting.name}}</p>
+                          <p class="artist"><i class="fa fa-user fa-sm mr-1"></i><span>{{painting.artist}}</span></p>
+    <!--                     <ul class="statistics">-->
+    <!--                       <li><i class="fas fa-thumbs-up"></i> {{painting.id}} </li>-->
+    <!--                       <li>-->
+    <!--                           <i class="far fa-eye"></i>-->
+    <!--                           <span *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}</span>-->
+    <!--                       </li>-->
+    <!--                     </ul>-->
+                          </div>
                       </div>
                     </div>
                   </mdb-carousel-item>
@@ -152,10 +176,11 @@
         </div>
       </div>
 
-      <!-- ./Next & prev paintings -->
-      <button class="btn-prev" (click)="goBack()"  [disabled]="!prevArtistExists"><i class="fas fa-chevron-left"></i></button>
-      <button class="btn-next" (click)="goNext()"  [disabled]="!nextArtistExists"><i class="fas fa-chevron-right"></i></button>
-      <!-- ./Next & prev paintings -->
+    <!-- ./Next & prev paintings -->
+    <button class="btn-prev" (click)="goBack()"  [disabled]="!prevArtistExists"><i class="fas fa-chevron-left"></i></button>
+
+    <button class="btn-next" (click)="goNext()"  [disabled]="!nextArtistExists"><i class="fas fa-chevron-right"></i></button>
+    <!-- ./Next & prev paintings -->
 
     </section>
   </div>

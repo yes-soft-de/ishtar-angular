@@ -1,16 +1,4 @@
-.main-carousel {  
-  width: 100%;
-  overflow: hidden;
-  .flickity-viewport {
-    height: auto !important;
-  }
-  .carousel-cell {
-    width: 100% ;
-    position: relative !important;
-    outline: none !important;
-  }
-}
-
+/*Global Class For This Page*/
 .artist-video-icon {
   line-height: 2.1;
   width: 45px;
@@ -28,9 +16,16 @@
     color: #385161 !important;
     vertical-align: sub;
   }
-
+  //img {
+  //  width: 25px;
+  //  height: 28px;
+  //  margin: 2px 0 0 2px;
+  //}
+  //mdb-icon {
+  //  margin: 13px 9px;
+  //}
 }
-
+/*End Global Class For This Page*/
 .artist-page {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   .artist-header {
@@ -40,6 +35,9 @@
       top: 10%;
       .artist-banner-text {
         max-width: 20rem;
+        @media (max-width:500px) {
+          max-width: 17rem;
+        }
         overflow: auto;
         background: rgba(255, 255, 255, .5);
         span {
@@ -47,41 +45,57 @@
         }
       }
     }
+
     .banner-background {
       width: 100%;
       height: 20rem;
+
       .parallax {
+        height: 20rem;
         /* Create the parallax scrolling effect */
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+      }
+
+      img {
         width: 100%;
         height: 20rem;
         object-fit: cover;
         overflow: hidden;
       }
     }
+
     .artist-header-details {
       position: relative;
       top: -6rem;
-      .artist-image {
-        width: 15rem;
-        height: 15rem;
-        object-fit: cover;
-        border-radius: 15px;
-        box-shadow: 1px 3px 10px rgba(0,0,32,0.7);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+      .artist-header-details-top {
+        .artist-image {
+          width: 15rem;
+          height: 15rem;
+          object-fit: cover;
+          border-radius: 15px;
+          box-shadow: 1px 3px 10px rgba(0,0,32,0.7);
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
       }
       .artist-header-details-bottom {
         margin-top: 4.5rem;
+        #followBtn {
+          background: #bfb049;
+          color: black;
+          font-weight: 600;
+        }
         .artist-name-social {
           h2 {
             font-weight: 600;
           }
+
           li {
             display: inline-block;
+
             mdb-icon {
               font-size: 1.5rem;
               color: #8f9091
@@ -91,34 +105,17 @@
       }
     }
   }
+
   .artist-body {
     margin-top : -5rem;
     border-top: 1px outset #efefef;
     .painting-list {
       margin-bottom: 15px;
-      mdb-carousel {
-        .btn-floating {
-          background: goldenrod;
-          width: 40px;
-          height: 40px;
-          margin-right: 10px;
-          display: inline-block;
-          line-height: 40px;
-          text-align: center;
-          padding: 3px;
-          i {
-            color: #fff;
-            font-size: 22px;
-          }
-        }
-        .carousel-indicators {
-          display: none;
-        }
-      }
       .painting-list-item {
         height: 350px;
         outline: none;
         .img-container {
+          //width: 100%;
           height: 100%;
           background: #ddd;
           margin-bottom: 15px;
@@ -163,6 +160,18 @@
                 padding-top: 2px;
               }
             }
+            .statistics {
+              position: absolute;
+              right: 10px;
+              bottom: 15px;
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              li {
+                display: inline-block;
+                margin-left: 10px;
+              }
+            }
           }
           &:hover .painting-info{
             opacity: 1;
@@ -171,62 +180,195 @@
       }
     }
   }
-  .painting-tab {
-    p {
-      font-weight: bold;
-      margin:0 0 20px
+  .btn-prev,
+  .btn-next {
+    position: fixed;
+    top: 50vh;
+    border: 1px solid goldenrod;
+    background: goldenrod;
+    font-size: 14px;
+    padding: 5px;
+    color:#fff;  
+    padding: 5px;
+    outline: none !important;
+    opacity: 0.7;
+  }
+  
+  .btn-prev:hover,
+  .btn-next:hover {
+    background: #fff;
+    color: goldenrod;
+  }
+  
+  .btn-prev:disabled,
+  .btn-next:disabled {
+    background: gray !important;
+    color: #fff !important;
+  }
+  
+  .btn-prev {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    left: 0px;
+  }
+  
+  .btn-next {
+    right: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  @media (max-width:767px) {
+    .btn-prev,
+    .btn-next {
+      display: none;
     }
+  }
+  //#artist-header-avatar {
+  //  position: relative;
+  //  top: -5rem;
+  //  img {
+  //    width: 15rem;
+  //    height: 15rem;
+  //    border-radius: 50%;
+  //    object-fit: cover;
+  //    background-repeat: repeat-y
+  //  }
+  //}
+  //#painting-header {
+  //  padding-top: 5rem;
+  //  padding-left: 10rem;
+  //  padding-bottom: 5rem;
+  //}
+
+}
+
+.main-carousel {  
+  width: 100%;
+  overflow: hidden;
+  .flickity-viewport {
+    height: auto !important;
+  }
+  .carousel-cell {
+    width: 100% ;
+    position: relative !important;
+    outline: none !important;
   }
 }
 
-.btn-prev,
-.btn-next {
-  position: fixed;
-  top: 50vh;
-  border: 1px solid goldenrod;
-  background: goldenrod;
-  font-size: 14px;
-  padding: 5px;
-  color:#fff;  
-  padding: 5px;
-  outline: none !important;
-  opacity: 0.7;
-}
-
-.btn-prev:hover,
-.btn-next:hover {
-  background: #fff;
-  color: goldenrod;
-}
-
-.btn-prev:disabled,
-.btn-next:disabled {
-  background: gray !important;
-  color: #fff !important;
-}
-
-.btn-prev {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  left: 0px;
-}
-
-.btn-next {
-  right: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
- 
-@media (min-width: 1200px) and (max-width: 1374px) {
+// Start xs Size Screen
+@media (max-width: 575px) {
   .artist-page {
+    margin-top: 0.1rem;
     .artist-header {
       div.position-absolute {
-        right: 10.5vw;
+        right: 3.4rem;
+        top: 15%
+      }
+      .artist-header-details {
+        top: -3.5rem;
+        .artist-header-details-top {
+          .artist-image {
+            width: 7rem;
+            height: 7rem;
+          }
+        }
+        .artist-header-details-bottom {
+          margin-top: 0;
+          direction: rtl;
+          #followBtn {
+            padding: 0.4rem 1rem;
+          }
+          .artist-name-social {
+            padding-left: 1.5rem;
+            h2 {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+    .artist-body {
+      margin-top: -3rem;
+      p {
+        text-align: justify;
       }
     }
   }
 }
-
+// Start sm Size Screen
+@media (min-width: 576px) and (max-width: 767px) {
+  .artist-page {
+    margin-top: 0.1rem;
+    .artist-header {
+      div.position-absolute {
+        right: 6rem;
+        top: 15%
+      }
+      .artist-header-details {
+        top: -4.5rem;
+        .artist-header-details-top {
+          .artist-image {
+            width: 9rem;
+            height: 9rem;
+          }
+        }
+        .artist-header-details-bottom {
+          margin-top: 0;
+          direction: rtl;
+          #followBtn {
+            padding: .7rem 2rem;
+          }
+          .artist-name-social {
+            h2 {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+    .artist-body {
+      margin-top: -4rem;
+      p {
+        text-align: justify;
+      }
+    }
+  }
+}
+// Start md Size Screen
+@media (min-width: 768px) and (max-width: 991px) {
+  .artist-page {
+    margin-top: 0.1rem;
+    .artist-header {
+      div.position-absolute {
+        right: 12%;
+      }
+      .artist-header-details {
+        top: -5.5rem;
+        .artist-header-details-top {
+          .artist-image {
+            width: 11rem;
+            height: 11rem;
+          }
+        }
+        .artist-header-details-bottom {
+          margin-top: 0.5rem;
+          direction: rtl;
+          .artist-name-social {
+            ul {
+              text-align: left;
+              margin-left: 4rem;
+              li {
+                padding: 0 5px
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// Start lg Size Screen
 @media (min-width: 992px) and (max-width: 1199px) {
   .artist-page {
     .artist-header {
@@ -244,10 +386,20 @@
     }
   }
 }
-
-@media (min-width: 768px) and (max-width: 991px) {
+// Start xl Size Screen
+@media (min-width: 1200px) and (max-width: 1374px) {
   .artist-page {
-    margin-top: 0.1rem;
+    .artist-header {
+      div.position-absolute {
+        right: 10.5vw;
+      }
+    }
+  }
+}
+
+
+@media (max-width:991px) {
+  .artist-page{
     .artist-header {
       .banner-background {
         .parallax {
@@ -255,195 +407,89 @@
           border-bottom: 2px solid goldenrod;
         }
       }
-      div.position-absolute {
-        right: 12%;
-      }
       .artist-header-details {
-        top: -5.5rem;
-        .artist-header-details-top {
-          .artist-image {
-            width: 11rem;
-            height: 11rem;
-            border: 2px solid goldenrod;
-          }
-          .artist-video-icon {
-            border: 2px solid goldenrod;
-            position: absolute;
-            top: 32%;
-          }
-        }
-        .artist-header-details-bottom {
-          margin-top: 0.5rem;
-          direction: rtl;
-          .follow-artist {
-            position: absolute;
-            top: -125px;
-            right: 0;
-            button {
-              border-radius: 10px;
-              display: inline-block;
-              padding: 10px;
-              background: #fff !important;
-              border: 2px solid goldenrod;
-              color: goldenrod;
-            }
-          }
-          .artist-name-social {
-            ul {
-              text-align: left;
-              margin-left: 4rem;
-              li {
-                padding: 0 5px
-              }
-            }
-          }
+        .artist-image,
+        .artist-video-icon {
+          border: 2px solid goldenrod;
         }
       }
+    }
+  } 
+  .artist-video-icon {
+    position: absolute;
+    top: 32%;
+  }
+  .follow-artist {
+    position: absolute;
+    top: -125px;
+    right: 0;
+    button {
+      border-radius: 10px;
+      display: inline-block;
+      padding: 10px;
+      background: #fff !important;
+      border: 2px solid goldenrod;
+      color: goldenrod;
     }
   }
 }
 
-@media (min-width: 576px) and (max-width: 767px) {
-  .artist-page {
-    margin-top: 0.1rem;
-    .artist-header {
-      div.position-absolute {
-        right: 6rem;
-        top: 15%
-      }
-      .banner-background {
-        .parallax {
-          background-size: cover !important;
-          border-bottom: 2px solid goldenrod;
-        }
-      }
-      .artist-header-details {
-        top: -4.5rem;
-        .artist-header-details-top {
-          .artist-image {
-            width: 9rem;
-            height: 9rem;
-            border: 2px solid goldenrod;
-          }
-          .artist-video-icon {
-            border: 2px solid goldenrod;
-            position: absolute;
-            top: 32%;
-          }
-        }
-        .artist-header-details-bottom {
-          margin-top: 0;
-          direction: rtl;
-          .follow-artist {
-            position: absolute;
-            top: -125px;
-            right: 0;
-            button {
-              border-radius: 10px;
-              display: inline-block;
-              padding: 10px;
-              background: #fff !important;
-              border: 2px solid goldenrod;
-              color: goldenrod;
-            }
-          }
-          .artist-name-social {
-            h2 {
-              font-size: 1.6rem;
-            }
-          }
-        }
-      }
-    }
-    .artist-body {
-      margin-top: -4rem;
-      p {
-        text-align: justify;
-      }
-    }
-  }
-  .btn-prev,
-  .btn-next {
-    display: none;
+@media (max-width:767px) {
+  .follow-artist {
+    top: -95px;
   }
 }
 
-@media (max-width: 575px) {
-  .artist-page {
-    margin-top: 0.1rem;
-    .artist-header {
-      div.position-absolute {
+@media (max-width:575px) {
+  .follow-artist {
+    top: -85px;
+  }
+  .artist-video-icon {
+    top: 30%;
+  }
+  .artist-body {
+    h3 {
+      padding-left: 0 !important;
+    }
+  }
+  .artist-page{
+    .artist-header{
+      div.position-absolute{
         right: 15px !important;
         top: 15px !important;
-        .artist-banner-text {
-          max-width: 17rem;
-        }
-      }
-      .banner-background {
-        .parallax {
-          background-size: cover !important;
-          border-bottom: 2px solid goldenrod;
-        }
       }
       .artist-header-details {
-        top: -3.5rem;
-        .artist-header-details-top {
-          .artist-image {
-            width: 7rem;
-            height: 7rem;
-            border: 2px solid goldenrod;
-          }
-          .artist-video-icon {
-            border: 2px solid goldenrod;
-            position: absolute;
-            top: 20%;
-          }
-        }
-        .artist-header-details-bottom {
-          margin-top: 0;
-          direction: rtl;
-          .follow-artist {
-            position: absolute;
-            top: -125px;
-            right: 0;
-            button {
-              border-radius: 10px;
-              display: inline-block;
-              padding: 10px;
-              background: #fff !important;
-              border: 2px solid goldenrod;
-              color: goldenrod;
-            }
-          }
-          .artist-name-social {
-            padding-left: 1.5rem;
-            h2 {
-              font-size: 1.3rem;
-            }
-            ul {
-              padding-right: 0;
-              li {
-                mdb-icon{
-                  margin-left: 10px !important;
-                }
+        .artist-name-social {
+          ul {
+            padding-right: 0;
+            li {
+              mdb-icon{
+                margin-left: 10px !important;
               }
             }
           }
         }
       }
     }
-    .artist-body {
-      margin-top: -3rem;
-      p {
-        text-align: justify;
-      }
-      h3 {
-        padding-left: 0 !important;
-      }
+  }  
+}
+
+mdb-carousel {
+  .btn-floating {
+    background: goldenrod;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    padding: 3px;
+    i {
+      color: #fff;
+      font-size: 22px;
     }
   }
-  .btn-prev,
-  .btn-next {
+  .carousel-indicators {
     display: none;
   }
 }

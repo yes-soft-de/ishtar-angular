@@ -1,7 +1,7 @@
 export class UserConfig {
   // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
   public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
- // public static sourceAPI = '/ishtar-backend/public/';
+  // public static sourceAPI = '/ishtar-backend/public/';
   public static localAPI = 'http://localhost:8002/';
 
   public static diagnoseAPI = 'https://webhook.site/ed0764a6-f85a-4f5f-937d-127d0741832d';
@@ -32,6 +32,7 @@ export class UserConfig {
   // Painting API
   public static paintingsAPI = UserConfig.sourceAPI + 'paintings';    // This route for GET all & POST
   public static paintingAPI = UserConfig.sourceAPI + 'painting';     // this route for GET ById & PUT
+  public static paintingByIdAPI = UserConfig.sourceAPI + 'paintingById';
   /* PaintingByApi About:
   * get every thing from painting table dependent on painting column
   * ex : paintingby/artist/2 => fetch all painting for this artist, ex : paintingby/id/2 => fetch painting with id 2
