@@ -41,4 +41,57 @@ export class InteractionsService {
     // Return The Data To Print It In Component
     return this.interactionsNumberSubject.asObservable();
   }
+
+
+  addViewInteraction(entityId: number, entityType: string) {
+    if (!this.userRequestSent) {
+      // If Not Request Him
+      this.userRequestSent = true;
+      this.userService.requestUserDetails().subscribe(
+          (user: any) => {
+            // Assign the Data to the User
+            if (this.isUserNode(user.Data)) {
+              console.log('Assigning User');
+              this.userInfo = user.Data;
+              this.postViewInteractions(entityId, entityType);
+            }
+          }
+      );
+    } else if (this.checkUserDetailsExists()) {
+      console.log('User Exists, Requesting Love Status');
+      this.postViewInteractions(entityId, entityType);
+    }
+  }
+
+
+  // region Class Specific Validators
+  private checkUserDetailsExists(): boolean {
+    if (this.userInfo == null) {
+      return false;
+    }
+    console.log('Apparently user data is ' + this.userInfo.id !== null);
+    return this.userInfo.id !== undefined;
+  }
+
+  private isUserNode(user: UserInfo) {
+    return user.id !== undefined;
+  }
+
+  private toEntityId(itemType): number {
+    let entityId = 0;
+    if (itemType === 'painting') {
+      entityId = 1;
+    }
+    if (itemType === 'artist') {
+      entityId = 2;
+    }
+    if (itemType === 'artType') {
+      entityId = 3;
+    }
+    if (itemType === 'statue') {
+      entityId = 6;
+    }
+    return entityId;
+  }
+
 }

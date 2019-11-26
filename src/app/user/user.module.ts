@@ -54,6 +54,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
+import {PaintingMayLikeComponent} from './painting/component/painting-may-like/painting-may-like.component';
 import {CommentItemComponent} from './ui/widgets/comment-item/comment-item.component';
 import {PaintingCommentComponent} from './painting/component/painting-comment/painting-comment.component';
 import { StatueDetailsComponent } from './statue/component/statue-details/statue-details.component';
@@ -71,6 +72,7 @@ import {ArtistListComponent} from './artist/component/artist-list/artist-list.co
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
 
+
 @NgModule({
   declarations: [
     // User
@@ -84,6 +86,7 @@ import {InteractionComponent} from './interactions/component/interaction/interac
     HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
     ProfileEditPageComponent,
@@ -145,6 +148,7 @@ import {InteractionComponent} from './interactions/component/interaction/interac
     HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
     ProfileEditPageComponent,
     // Components

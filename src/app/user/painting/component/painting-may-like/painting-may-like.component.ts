@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
-import {ArtistService} from '../../../artist/service/artist.service';
 import {ActivatedRoute} from '@angular/router';
 import {PaintingListItem} from '../../entity/painting-list-item';
-import {takeLast} from 'rxjs/operators';
 
 @Component({
   selector: 'app-paintings-may-like',
