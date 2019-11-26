@@ -9,33 +9,32 @@ import {UserInfo} from '../../entity/user/user-info';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * InteractionsRepository Class is Create, Delete, Get Interactions For (Love, Follow, View) Only
+ */
 export class InteractionsRepositoryService {
 
-  constructor(private httpClient: HttpClient,
-              private userService: UserProfileService) { }
+  constructor(private httpClient: HttpClient) { }
 
   // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.httpClient.get<InteractionsResponse>(`${UserConfig.interactionsNumberAPI}/${entity}/${row}/${interactionsNumber}`);
   }
 
+  // Get (love, view, follow) Interaction For This Client And This (artist, painting, ..) Dependence On Client ID
+  getClientInteraction(clientId: number): Observable<any> {
+    return this.httpClient.get(`${UserConfig.specificClientInteractions}/${clientId}`);
+  }
 
-
-  postViewInteractions(entityId: number, entityType: string, userInfo: UserInfo) {
+  // Post Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
+  postInteractions(entityTypeNumber: number, entityId: number, userInfo: UserInfo, interactionsTypeNumber: number): Observable<any>  {
     const request = {
       client: userInfo.id,
       row: entityId,
-      entity: entityType,
-      interaction: InteractionConsts.INTERACTION_TYPE_VIEW
+      entity: entityTypeNumber,
+      interaction: interactionsTypeNumber
     };
-    return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request)).subscribe(
-        (res: any) => {
-          console.log('This Artist Was Reviewed', res);
-        },
-        error => {
-          console.log(error);
-        }
-    );
+    return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request));;
   }
 
 
@@ -48,6 +47,11 @@ export class InteractionsRepositoryService {
       id: `${id}`
     };
     return this.httpClient.post(UserConfig.interactionsAPI, JSON.stringify(request));
+  }
+
+  // Delete Interactions
+  deleteInteractions(interactionID: number): Observable<any>  {
+    return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`);
   }
 
 
