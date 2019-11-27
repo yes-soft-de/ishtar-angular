@@ -70,7 +70,7 @@ export class PaintingFilterService {
   private processArtistNameFilter(rowList: PaintingListItem[]): PaintingListItem[] {
     const resultList: PaintingListItem[] = [];
     for (const painting of rowList) {
-      if (painting.artist === this.mArtistNameFilter) {
+      if (painting.artist.includes(this.mArtistNameFilter)) {
         resultList.push(painting);
       }
     }

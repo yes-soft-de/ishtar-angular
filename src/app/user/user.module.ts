@@ -48,7 +48,6 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
 import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
 import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
-import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
@@ -71,6 +70,7 @@ import {ArtistPaintingsComponent} from './artist/component/artist-paintings/arti
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
+import {StatueListComponent} from './statue/component/statue-list/statue-list.component';
 
 
 @NgModule({
@@ -134,7 +134,8 @@ import {InteractionComponent} from './interactions/component/interaction/interac
     LoveComponent,
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
-    InteractionComponent
+    InteractionComponent,
+    StatueListComponent
   ],
   exports: [
     // User

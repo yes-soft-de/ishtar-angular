@@ -13,12 +13,11 @@ import {ArtistObject} from '../../entity-protected/artist/artist-object';
  * Artist Service Class For Subscribe Data And Send It To Component
  */
 export class ArtistService {
+  private artistListSubject = new Subject<ArtistListItem[]>();
+  private artistDetailsSubject = new Subject<ArtistDetails>();
 
   constructor(private artistManagerService: ArtistManagerService) {
   }
-
-  private artistListSubject = new Subject<ArtistListItem[]>();
-  private artistDetailsSubject = new Subject<ArtistDetails>();
 
   private artistList: ArtistListItem[];
 
