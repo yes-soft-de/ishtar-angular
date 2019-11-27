@@ -43,12 +43,12 @@ export class PaintingFilterService {
     return this.getFilteredList();
   }
 
-  public activateStyleNameFilter(artTypeName: string): PaintingListItem[] {
+  public activateArtTypeNameFilter(artTypeName: string): PaintingListItem[] {
     this.mArtTypeFilter = artTypeName;
     return this.getFilteredList();
   }
 
-  public deactivateStyleNameFilter(): PaintingListItem[] {
+  public deactivateArtTypeNameFilter(): PaintingListItem[] {
     this.mArtTypeFilter = null;
     return this.getFilteredList();
   }

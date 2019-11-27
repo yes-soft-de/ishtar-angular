@@ -10,9 +10,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
-import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
-import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
@@ -70,6 +68,9 @@ import {ArtistPaintingsComponent} from './artist/component/artist-paintings/arti
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {StatueListComponent} from './statue/component/statue-list/statue-list.component';
+import {InteractionComponent} from './interactions/component/interaction/interaction.component';
+import {PaintingListComponent} from './painting/component/painting-list/painting-list.component';
+import {PaintingListPageComponent} from './painting/component/painting-list-page/painting-list-page.component';
 
 @NgModule({
   declarations: [
