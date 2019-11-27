@@ -13,6 +13,7 @@ export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
   filterService: StatueListFilterService = null;
+  magnifiedStatue: number = null;
 
   constructor(private statueService: StatueService) {
   }
@@ -28,15 +29,19 @@ export class StatueListComponent implements OnInit {
   }
 
   openList(e) {
-    // TODO Implement This
+    // TODO Implement Open List
   }
 
   viewStatue(statue) {
-    // TODO Implement This
+    // TODO Implement View Statue
   }
 
-  MagnifyingImage(someImage) {
-    // TODO Implement This
+  MagnifyingImage(statueId: number) {
+    if (this.magnifiedStatue !== null && this.magnifiedStatue !== undefined) {
+      this.magnifiedStatue = null;
+    } else {
+      this.magnifiedStatue = statueId;
+    }
   }
 
   filterSmallSize() {
