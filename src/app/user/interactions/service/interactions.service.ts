@@ -10,6 +10,8 @@ import {LoveRequest} from '../../entity/love-interaction/love-request';
 import {InteractionConsts} from '../../consts/interaction/interaction-consts';
 import {LoveInteractionResponse} from '../../entity/love-interaction/love-interaction-response';
 import {UserConfig} from '../../UserConfig';
+import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
+import {MatDialog} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,8 @@ export class InteractionsService {
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToApi: RouteToAPIService,
-              protected interactionTypeToNumberService: InteractionTypeToNumberService) { }
+              protected interactionTypeToNumberService: InteractionTypeToNumberService,
+              protected dialog: MatDialog) { }
 
   // Get Interactions number
   getInteractionsNumber(entity: string, row: number, interactionsType: string): Observable<any> {
@@ -49,9 +52,7 @@ export class InteractionsService {
   }
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  getClientInteraction(clientId: number, parentType: number, rowId, interactionSubject: Subject<any>) {
-    // Fetch Entity Number
-    const entityName = this.pageTypeToApi.convertApiTypeToPageType(parentType.toString());
+  getClientInteraction(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
     // check if user is login or not
     return this.interactionsManagerService.getClientInteraction(clientId)
         .pipe(catchError(err => {
@@ -59,11 +60,11 @@ export class InteractionsService {
           return EMPTY;
         })).subscribe(
             (res: { Data: any }) => {
-              console.log('Response For Love Interactions : ', res);
+              // console.log('res: ', res);
               res.Data.map(response => {  // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
                 if (response.interaction === 'like') {
                   // Check For Entity Name and Interaction IS Like
-                  if (response.entity === entityName) {
+                  if (response.entity === parentType) {
                     // Check For Specify (artist, painting, ...)
                     if (response.id === rowId) {
                       interactionSubject.next({success: true, value: response});
@@ -71,15 +72,15 @@ export class InteractionsService {
                   }
                 } else if (response.interaction === 'follow') {
                   // Check For Entity Name and Interaction IS Clap
-                  if (response.entity === entityName) {
+                  if (response.entity === parentType) {
                     // Check For Specify (artist, painting, ...)
                     if (response.id === rowId) {
                       interactionSubject.next({success: true, value: response});
                     }
                   }
-                } else {
+                } else if (response.interaction === 'clap') {
                   // Check For Entity Name and Interaction IS Clap
-                  if (response.entity === entityName) {
+                  if (response.entity === parentType) {
                     // Check For Specify (artist, painting, ...)
                     if (response.id === rowId) {
                       interactionSubject.next({success: true, value: response});
@@ -91,18 +92,23 @@ export class InteractionsService {
         );
   }
 
-  // region Post Interactions Methods
-  postInteractionToAPI(entityType: string, entityId: number, userInfo: UserInfo, interactionsType: string, interactionSubject: Subject<any>) {
-    // Fetch Entity Number
+  // Post Interactions (entityType: artistTableNumber, entityId: artistId, interactionsType = (love, follow, clap)
+  postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
+    // Convert Entity Name To Entity Type
     const entityTypeNumber = +this.pageTypeToApi.convertPageTypeToApiType(entityType);
+    console.log(entityType, entityTypeNumber);
     // Fetch Interactions Number
     const interactionsNumber = +this.interactionTypeToNumberService.convertInteractionsTypeToNumber(interactionsType);
-    this.interactionsManagerService.postInteractions(entityTypeNumber, entityId, userInfo, interactionsNumber)
-        .pipe(map(res => {
-          return {
-            success: true,
-            value: res
-          };
+    this.interactionsManagerService.postInteractions(entityTypeNumber, entityId, userId, interactionsNumber)
+        .pipe(catchError(err => {
+            interactionSubject.error('Error Getting Data');
+            return EMPTY;
+          }),
+          map(res => {
+            return {
+              success: true,
+              value: res
+            };
         }))
         .subscribe(
         (interactionsRes: any) => {
@@ -111,8 +117,35 @@ export class InteractionsService {
     );
   }
 
+  // Delete Love Interaction
+  deleteInteraction(interactionID: number, user: UserInfo, interactionSubject: Subject<any>) {
+    // if (this.checkUserDetailsExists(user)) {
+      return this.interactionsManagerService.deleteInteractions(interactionID)
+        .pipe(catchError(err => {
+          interactionSubject.error('Error Getting Data');
+          return EMPTY;
+        }))
+        .subscribe(
+        (res: any) => {
+          console.log('response deleted from love.service', res);
+          interactionSubject.next(false);
+        }
+      );
+    // } else {
+    //   return false;
+    // }
+  }
+
   getInteractionsObservable(interactionSubject: Subject<any>): Observable<any> {
     return interactionSubject.asObservable();
+  }
+
+  // Region Class To Open Dialog If User Not Login
+  openDialog() {
+    return this.dialog.open(LoginPageComponent, {
+      minWidth: '100vw',
+      hasBackdrop: true
+    });
   }
 
   // region Class Specific Validators

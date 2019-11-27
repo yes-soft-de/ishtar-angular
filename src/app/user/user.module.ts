@@ -71,6 +71,7 @@ import {ArtistPaintingsComponent} from './artist/component/artist-paintings/arti
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
+import { FollowComponent } from './shared/interaction-follow/component/follow/follow.component';
 
 
 @NgModule({
@@ -134,7 +135,8 @@ import {InteractionComponent} from './interactions/component/interaction/interac
     LoveComponent,
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
-    InteractionComponent
+    InteractionComponent,
+    FollowComponent
   ],
   exports: [
     // User

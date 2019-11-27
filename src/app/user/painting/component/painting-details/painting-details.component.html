@@ -43,7 +43,7 @@
                           <app-clap-widget [ParentType]="1" [ParentId]="painting[0]?.id"></app-clap-widget>
                         </li>
                         <li class="m-1 d-inline-block">
-                          <app-love-interaction [ParentType]="1" [ParentId]="painting[0]?.id"></app-love-interaction>
+                          <app-love [ParentType]="'painting'" [ParentId]="painting[0]?.id"></app-love>
                         </li>
                         <li class="my-1 mx-3 buy-painting">
                           <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0]?.id}}"

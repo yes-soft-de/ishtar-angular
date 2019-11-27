@@ -20,8 +20,8 @@ export class InteractionsManagerService {
   }
 
   // Post Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsType = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userInfo: UserInfo, interactionsType: number) {
-    return this.interactionsRepositoryService.postInteractions(entityTypeNumber, entityId, userInfo, interactionsType);
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsType: number) {
+    return this.interactionsRepositoryService.postInteractions(entityTypeNumber, entityId, userId, interactionsType);
   }
 
   // Get (love, view, follow) Interaction For This Client And This (artist, painting, ..) Dependence On Client ID

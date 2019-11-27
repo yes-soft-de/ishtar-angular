@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoveManagerService } from './love-manager.service';
+import { FollowService } from './follow.service';
 
-describe('LoveManagerService', () => {
+describe('FollowService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LoveManagerService = TestBed.get(LoveManagerService);
+    const service: FollowService = TestBed.get(FollowService);
     expect(service).toBeTruthy();
   });
 });

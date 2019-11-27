@@ -27,9 +27,9 @@ export class InteractionsRepositoryService {
   }
 
   // Post Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userInfo: UserInfo, interactionsTypeNumber: number): Observable<any>  {
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any>  {
     const request = {
-      client: userInfo.id,
+      client: userId,
       row: entityId,
       entity: entityTypeNumber,
       interaction: interactionsTypeNumber

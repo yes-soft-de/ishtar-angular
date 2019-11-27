@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {LoveService} from '../../service/love.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class LoveComponent implements OnInit {
     // Fetch THe Follow Request
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
-    this.loveService.getStatusObservable().subscribe(
+    this.loveService.getLoveObservable().subscribe(
         (data: { success: boolean, value: any }) => {
           if (data) {
             this.loved = data.success;  // this data = true if success
@@ -39,7 +38,7 @@ export class LoveComponent implements OnInit {
   // Send love interaction
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove(this.ParentId, this.ParentType);
+    this.loveService.postLove( this.ParentType, this.ParentId, 'love');
   }
 
   // delete the love interaction

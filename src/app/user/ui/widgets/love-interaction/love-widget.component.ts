@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserConfig} from '../../../UserConfig';
 import {LoveService} from '../../../shared/interaction-love/service/love.service';
 
 @Component({
@@ -39,12 +38,12 @@ export class LoveWidgetComponent implements OnInit {
   // Send love interaction
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
-    // this.loveService.postLove(this.ParentId, this.ParentType);
+    this.loveService.postLove( this.ParentType, this.ParentId, 'love');
   }
 
   // delete the love interaction
   deleteLove() {
     console.log('Send delete Love Request');
-    // this.loveService.deleteLoveInteraction(this.interactionId);
+    this.loveService.deleteLoveInteraction(this.interactionId);
   }
 }
