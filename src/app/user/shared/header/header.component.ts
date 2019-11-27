@@ -17,8 +17,6 @@ import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo;
   userLoggedIn = false;
-  loginClick = false;
-  userLogoutLink = UserConfig.userLogoutLink;
   searchFrom = new FormGroup({
     search: new FormControl('')
   });
@@ -31,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // (2) This Firs When the User is Logged In, Notice that i don't need errors here!
+    // (2) This First When the User is Logged In, Notice that i don't need errors here!
     this.userProfileService.getManagerObservable().subscribe(
       usr => {
         console.log(usr);
@@ -44,7 +42,7 @@ export class HeaderComponent implements OnInit {
 
     // For Logout
     this.userManager.getObservable().subscribe(
-      data => {
+      () => {
         this.router.navigate(['/']);
       }, error1 => {
         console.log(error1);
