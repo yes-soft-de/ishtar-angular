@@ -72,6 +72,7 @@ import {ArtistListComponent} from './artist/component/artist-list/artist-list.co
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
 import { FollowComponent } from './shared/interaction-follow/component/follow/follow.component';
+import { ClapComponent } from './shared/interaction-clap/component/clap/clap.component';
 
 
 @NgModule({
@@ -136,7 +137,8 @@ import { FollowComponent } from './shared/interaction-follow/component/follow/fo
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
     InteractionComponent,
-    FollowComponent
+    FollowComponent,
+    ClapComponent
   ],
   exports: [
     // User

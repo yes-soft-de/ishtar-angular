@@ -59,7 +59,7 @@ export class FollowService extends InteractionsService {
 
   // Delete Love Interactions
   deleteFollowInteraction(interactionID: number) {
-    this.deleteInteraction(interactionID, this.userInfo, this.followSubject);
+    return this.deleteInteraction(interactionID, this.userInfo, this.followSubject);
   }
 
   // Love Observable To Receive Sending Data

@@ -81,10 +81,10 @@ export class ClapService {
 
   private postClapToAPI(entityId, entityType, clapValue) {
     const request: CreateClapRequest = {
-      client: this.userInfo.id,
-      value: clapValue,
       entity: entityType,
-      row: entityId
+      row: entityId,
+      value: clapValue,
+      client: this.userInfo.id
     };
     this.httpClient.post<CreateClapResponse>(`${UserConfig.clapsAPI}`, JSON.stringify(request)).subscribe(
         (res: any) => {

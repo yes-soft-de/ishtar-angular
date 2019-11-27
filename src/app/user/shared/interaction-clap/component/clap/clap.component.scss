@@ -1,0 +1,48 @@
+.clap-icon {
+  div, h5 {
+    display: inline-block;
+  }
+  .clap-container {
+    cursor: pointer;
+    max-height: 64px;
+    height: 32px;
+    line-height: 0;
+    position: relative;
+
+    img {
+      margin-bottom: 5px;
+    }
+
+    p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      line-height: 0;
+      font-size: 12pt;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .clap-icon {
+    .clap-container {
+      max-height: 64px;
+      height: 32px;
+      line-height: 0;
+      font-size: .8rem !important;
+      img {
+        margin-bottom: 5px;
+        height: 25px !important;
+        width: 25px !important;
+      }
+      h5 {
+        font-size: 15pt !important;
+      }
+      p {
+        position: absolute;
+        font-size: 10pt;
+      }
+    }
+  }
+}
+

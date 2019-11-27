@@ -96,7 +96,6 @@ export class InteractionsService {
   postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
     // Convert Entity Name To Entity Type
     const entityTypeNumber = +this.pageTypeToApi.convertPageTypeToApiType(entityType);
-    console.log(entityType, entityTypeNumber);
     // Fetch Interactions Number
     const interactionsNumber = +this.interactionTypeToNumberService.convertInteractionsTypeToNumber(interactionsType);
     this.interactionsManagerService.postInteractions(entityTypeNumber, entityId, userId, interactionsNumber)
@@ -117,9 +116,27 @@ export class InteractionsService {
     );
   }
 
+  postClapToAPI(entityType: string, entityId: number, clapValue: number, userId: number, interactionSubject: Subject<any>) {
+    // Convert Entity Name To Entity Type
+    const entityTypeNumber = +this.pageTypeToApi.convertPageTypeToApiType(entityType);
+    this.interactionsManagerService.postClap(entityTypeNumber, entityId, clapValue, userId)
+      .pipe(catchError(err => {
+        interactionSubject.error('Error Getting Data');
+        return EMPTY;
+      }))
+      .subscribe(
+          (res: any) => {
+            console.log('Response from clap : ', res);
+            if (res.Data.value > 0) {
+              interactionSubject.next({success: true, value: res});
+            }
+          }
+      );
+  }
+
   // Delete Love Interaction
   deleteInteraction(interactionID: number, user: UserInfo, interactionSubject: Subject<any>) {
-    // if (this.checkUserDetailsExists(user)) {
+    if (this.checkUserDetailsExists(user)) {
       return this.interactionsManagerService.deleteInteractions(interactionID)
         .pipe(catchError(err => {
           interactionSubject.error('Error Getting Data');
@@ -131,9 +148,27 @@ export class InteractionsService {
           interactionSubject.next(false);
         }
       );
-    // } else {
-    //   return false;
-    // }
+    } else {
+      return false;
+    }
+  }
+
+  // Delete Clap Interaction
+  deleteClap(interactionID: number, user: UserInfo, interactionSubject: Subject<any>) {
+    if (this.checkUserDetailsExists(user)) {
+      return this.interactionsManagerService.deleteClap(interactionID)
+        .pipe(catchError(err => {
+          interactionSubject.error('Error Getting Data');
+          return EMPTY;
+        }))
+        .subscribe(
+          (res: any) => {
+            interactionSubject.next(false);
+          }
+        );
+    } else {
+      return false;
+    }
   }
 
   getInteractionsObservable(interactionSubject: Subject<any>): Observable<any> {
