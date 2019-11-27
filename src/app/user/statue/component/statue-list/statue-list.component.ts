@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {document} from 'ngx-bootstrap';
 import {StatueService} from '../../service/statue.service';
 import {StatueObject} from '../../entity/statue-object';
+import {Observable} from 'rxjs';
+import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 
 @Component({
   selector: 'app-statue-list',
@@ -9,112 +10,60 @@ import {StatueObject} from '../../entity/statue-object';
   styleUrls: ['./statue-list.component.scss']
 })
 export class StatueListComponent implements OnInit {
-  magnifyingImage = false;
-  statueList: StatueObject[] = null;
+  statuesList: StatueObject[];
+  filteredList: StatueObject[];
+  filterService: StatueListFilterService = null;
+
   constructor(private statueService: StatueService) {
   }
 
   ngOnInit() {
     this.statueService.getStatueList().subscribe(
       statueList => {
-        this.statueList = statueList;
+        this.statuesList = statueList;
+        this.filteredList = statueList;
+        this.filterService = new StatueListFilterService(statueList);
       }
     );
   }
 
-  // Increase view for Statue
-  viewStatue(statueId: number) {
-    // this.interactionService.addViewInteraction(statueId, 'statue');
+  openList(e) {
+    // TODO Implement This
   }
 
-  noFilter() {
-    // this.statuesListFiltered = this.statuesList;
+  viewStatue(statue) {
+    // TODO Implement This
   }
 
-  filterName(event) {
-    // const BTN_NAME = event.target.name;
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if (BTN_NAME === this.statuesList[i].name) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
-  }
-
-  filterArtistName(event) {
-    // const BTN_NAME = event.target.name;
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if (BTN_NAME === this.statuesList[i].artist.name) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
-  }
-
-  filterMaterial(event) {
-    // const BTN_NAME = event.target.name;
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if (BTN_NAME === this.statuesList[i].material) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
+  MagnifyingImage(someImage) {
+    // TODO Implement This
   }
 
   filterSmallSize() {
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if ((this.statuesList[i].width <= 2.54) && (this.statuesList[i].height <= 1.27)) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
+    this.filteredList = this.filterService.activateWeightFilter('S');
   }
 
   filterMediumSize() {
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if ((this.statuesList[i].width > 2.54) &&
-    //     (this.statuesList[i].width <= 3.81) &&
-    //     (this.statuesList[i].height > 1.27) &&
-    //     (this.statuesList[i].height <= 2.54)) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
+    this.filteredList = this.filterService.activateWeightFilter('M');
   }
 
   filterBigSize() {
-    // this.statuesListFiltered = [];
-    // for (let i = 0; i < this.statuesList.length; i++) {
-    //   if ((this.statuesList[i].width > 3.81) && (this.statuesList[i].height > 2.54)) {
-    //     this.statuesListFiltered[i] = this.statuesList[i];
-    //   }
-    // }
+    this.filteredList = this.filterService.activateWeightFilter('L');
   }
 
-  MagnifyingImage(event) {
-    // const BTN_NUMBER = event.target.name;
-    // const INFO_ID: string = 'info_' + BTN_NUMBER;
-    // console.log(BTN_NUMBER);
-    // if (this.magnifyingImage) {
-    //   document.getElementById(INFO_ID).style.display = 'block';
-    //   this.magnifyingImage = false;
-    // } else {
-    //   document.getElementById(INFO_ID).style.display = 'none';
-    //   this.magnifyingImage = true;
-    // }
+  filterMaterial(materialName: string) {
+    this.filteredList = this.filterService.activateMaterialFilter(materialName);
   }
 
-  openList(event) {
-    // if(window.innerWidth < 768) {
-    //   if(event.target.parentElement.classList.contains('active')){
-    //     event.target.parentElement.classList.remove('active');
-    //   } else {
-    //     var title = document.getElementsByClassName('title');
-    //     for(var i=0; i < title.length; i++){
-    //       title[i].parentElement.classList.remove('active');
-    //     }
-    //     event.target.parentElement.classList.add('active');
-    //   }
-    // }
+  filterArtistName(artistName: string) {
+    this.filteredList = this.filterService.activateArtistNameFilter(artistName);
+  }
+
+  filterStyleName(styleName: string) {
+    this.filteredList = this.filterService.activateStyleNameFilter(styleName);
+  }
+
+  noFilter() {
+    this.filteredList = this.filterService.deactivateAllFilters();
   }
 }

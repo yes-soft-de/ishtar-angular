@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="banner-background">
-            <img class="parallax d-block" [src]="randomPaintingForArtist?.image" style="background-size: cover">
+            <img class="parallax d-block" [src]="randomPaintingForArtist?.image">
           </div>
           <div class="artist-header-details">
             <div class="container">
@@ -44,7 +44,7 @@
                           </div>
                         </div>
                         <div class="col-5 col-sm-6 contact-artist">
-                          <app-follow-widget [ParentId]="artist[0]?.id" [ParentType]="2" class="follow-artist" id="follow-artist"></app-follow-widget>
+                          <app-follow-widget [ParentId]="artist[0]?.id" [ParentType]="2" class="follow-artist"></app-follow-widget>
                         </div>
 
                         <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
@@ -82,12 +82,12 @@
             <p>{{artist[0]?.story}}</p>
             <hr class="border">
           </div>
-          <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto d-none">
+<!--          <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto d-none">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
             </div>
             <hr class="border">
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

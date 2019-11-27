@@ -69,9 +69,7 @@ import {ArtistDetailsComponent} from './artist/component/artist-details/artist-d
 import {ArtistPaintingsComponent} from './artist/component/artist-paintings/artist-paintings.component';
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
-import {InteractionComponent} from './interactions/component/interaction/interaction.component';
 import {StatueListComponent} from './statue/component/statue-list/statue-list.component';
-
 
 @NgModule({
   declarations: [

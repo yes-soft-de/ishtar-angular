@@ -4,26 +4,21 @@
     <button (click)="noFilter()">All</button>
     <button *ngFor="let statue of statuesList"
             name="{{statue['0'].style}}"
-            (click)="filterName($event)">{{statue['0'].style}}</button>
+            (click)="filterStyleName(statue.style)">{{statue['0'].style}}</button>
   </div>
   <div class="filter">
     <p class="title" (click)="openList($event)">Filter by artist name <i class="fas fa-chevron-down"></i></p>
     <button (click)="noFilter()">All</button>
     <button *ngFor="let statue of statuesList"
             name="{{statue['0']?.artist?.name}}"
-            (click)="filterArtistName($event)">{{statue['0']?.artist?.name}}</button>
+            (click)="filterArtistName(statue.artist.name)">{{statue['0']?.artist?.name}}</button>
   </div>
-  <!--
-  <div class="filter">
-      <p class="title">Filter by price range</p>
-  </div>
-  -->
   <div class="filter">
     <p class="title" (click)="openList($event)">Filter by materials <i class="fas fa-chevron-down"></i></p>
     <button (click)="noFilter()">All</button>
     <button *ngFor="let statue of statuesList"
-            name="{{statue['0'].material}}"
-            (click)="filterMaterial($event)">{{statue['0'].material}}</button>
+            name="{{statue.material}}"
+            (click)="filterMaterial(statue.material)">{{statue.material}}</button>
   </div>
   <div class="filter">
     <p class="title" (click)="openList($event)">Filter by size <i class="fas fa-chevron-down"></i></p>
@@ -37,7 +32,7 @@
 <div class="statues-list">
   <div class="wrapper">
     <div class="statue"
-         *ngFor="let statue of statuesListFiltered">
+         *ngFor="let statue of filteredList">
       <ngx-image-zoom
         thumbImage="{{statue['0'].image}}"
         [enableLens]=false>
@@ -46,13 +41,11 @@
         <div class="info-wrapper">
           <h3>{{statue['0'].name}}</h3>
           <p class="artist-name">{{statue['0']?.artist?.name}}</p>
-          <p class="views"><i class="far fa-eye mr-2"></i> <span *ngFor="let view of statuesInteraction">{{view.id == statue['0'].id ? view.viewNumber : ''}}</span></p>
+          <!-- TODO Implement Interaction -->>
         </div>
-        <!-- <span class="price">200e</span> -->
       </div>
       <button class="fas fa-search magnifying"  name="{{statue['0'].id}}" (click)="MagnifyingImage($event)">
       </button>
-      <!-- <button class="favourite"><i class="far fa-star"></i></button> -->
     </div>
 
   </div>
