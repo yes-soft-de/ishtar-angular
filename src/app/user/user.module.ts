@@ -5,7 +5,6 @@ import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
@@ -71,6 +70,9 @@ import {StatueListComponent} from './statue/component/statue-list/statue-list.co
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
 import {PaintingListComponent} from './painting/component/painting-list/painting-list.component';
 import {PaintingListPageComponent} from './painting/component/painting-list-page/painting-list-page.component';
+import { FollowComponent } from './shared/interaction-follow/component/follow/follow.component';
+import { ClapComponent } from './shared/interaction-clap/component/clap/clap.component';
+
 
 @NgModule({
   declarations: [
@@ -134,7 +136,9 @@ import {PaintingListPageComponent} from './painting/component/painting-list-page
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
     InteractionComponent,
-    StatueListComponent
+    StatueListComponent,
+    FollowComponent,
+    ClapComponent
   ],
   exports: [
     // User
@@ -189,7 +193,6 @@ import {PaintingListPageComponent} from './painting/component/painting-list-page
     MatDialogModule,
     NgxPaginationModule,
     NgxImageZoomModule.forRoot()
-    // BrowserAnimationsModule
   ], schemas: [
     NO_ERRORS_SCHEMA
   ]

@@ -20,8 +20,13 @@ export class InteractionsManagerService {
   }
 
   // Post Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsType = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userInfo: UserInfo, interactionsType: number) {
-    return this.interactionsRepositoryService.postInteractions(entityTypeNumber, entityId, userInfo, interactionsType);
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsType: number) {
+    return this.interactionsRepositoryService.postInteractions(entityTypeNumber, entityId, userId, interactionsType);
+  }
+
+  // Post (Clap) interactions
+  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<any> {
+    return this.interactionsRepositoryService.postClap(entityTypeNumber, entityId, clapValue, userId);
   }
 
   // Get (love, view, follow) Interaction For This Client And This (artist, painting, ..) Dependence On Client ID
@@ -37,5 +42,10 @@ export class InteractionsManagerService {
   // Delete Interactions
   deleteInteractions(interactionsId: number): Observable<any> {
     return this.interactionsRepositoryService.deleteInteractions(interactionsId);
+  }
+
+  // Delete Clap Interactions
+  deleteClap(interactionsId: number): Observable<any> {
+    return this.interactionsRepositoryService.deleteClap(interactionsId);
   }
 }

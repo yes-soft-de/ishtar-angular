@@ -1,8 +1,8 @@
 export interface CreateClapRequest {
   // Entity Type
-  entity: string;
+  entity: number;
   // Entity Id
-  row: string;
+  row: number;
   // Interaction Type
   value: number;
   // Client Id

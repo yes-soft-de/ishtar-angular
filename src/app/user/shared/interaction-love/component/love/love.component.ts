@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 import {LoveService} from '../../service/love.service';
 
 @Component({
@@ -19,26 +18,27 @@ export class LoveComponent implements OnInit {
     // Fetch THe Follow Request
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
-    // this.loveService.getStatusObservable().subscribe(
-    //     (data: { success: boolean, value: any }) => {
-    //       if (data) {
-    //         this.loved = data.success;  // this data = true if success
-    //         if (data.value.interactionID) {     // Response Data After Reload The Page
-    //           this.interactionId = data.value.interactionID;
-    //         } else if (data.value.Data.id) {    // Response Data After Create New Love
-    //           this.interactionId = data.value.Data.id;
-    //         }
-    //         console.log('Interaction Response : ', data);
-    //       } else {
-    //         this.loved = false;
-    //       }
-    //     }
-    // );
+    this.loveService.getLoveObservable().subscribe(
+        (data: { success: boolean, value: any }) => {
+          if (data) {
+            this.loved = data.success;  // this data = true if success
+            if (data.value.interactionID) {     // Response Data After Reload The Page
+              this.interactionId = data.value.interactionID;
+            } else if (data.value.Data.id) {    // Response Data After Create New Love
+              this.interactionId = data.value.Data.id;
+            }
+            console.log('Interaction Response : ', data);
+          } else {
+            this.loved = false;
+          }
+        }
+    );
   }
 
   // Send love interaction
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
+    this.loveService.postLove( this.ParentType, this.ParentId, 'love');
   }
 
   // delete the love interaction

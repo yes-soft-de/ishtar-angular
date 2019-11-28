@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LoveService} from '../../../service/love/love.service';
-import {UserConfig} from '../../../UserConfig';
+import {LoveService} from '../../../shared/interaction-love/service/love.service';
 
 @Component({
   selector: 'app-love-interaction',
@@ -19,7 +18,7 @@ export class LoveWidgetComponent implements OnInit {
     // Fetch THe Follow Request
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
-    this.loveService.getStatusObservable().subscribe(
+    this.loveService.getLoveObservable().subscribe(
         (data: { success: boolean, value: any }) => {
           if (data) {
             this.loved = data.success;  // this data = true if success
@@ -39,7 +38,7 @@ export class LoveWidgetComponent implements OnInit {
   // Send love interaction
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove(this.ParentId, this.ParentType);
+    this.loveService.postLove( this.ParentType, this.ParentId, 'love');
   }
 
   // delete the love interaction

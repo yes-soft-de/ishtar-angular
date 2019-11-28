@@ -16,7 +16,7 @@
                 <div class="col-md-12 col-lg-8 mx-auto image mt-3 pb-3">
                   <div class="d-lg-none painting-artist">
                     <img src="{{artist[0]?.path}}" class="" alt="">
-                    <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>
+                    <app-follow [ParentType]="'painting'" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow>
                     <p class="painting-artist-name">
                       <a routerLink="/artist/{{artist[0]?.id}}">
                         {{artist[0]?.name}}
@@ -40,10 +40,11 @@
                     <div class="col-12 mt-3 painting-interaction">
                       <ul>
                         <li class="ml-0 my-1 mr-1 d-inline-block">
-                          <app-clap-widget [ParentType]="1" [ParentId]="painting[0]?.id"></app-clap-widget>
+<!--                          <app-clap-widget [ParentType]="1" [ParentId]="painting[0]?.id"></app-clap-widget>-->
+                          <app-clap [ParentType]="'painting'" [ParentId]="painting[0]?.id"></app-clap>
                         </li>
                         <li class="m-1 d-inline-block">
-                          <app-love-interaction [ParentType]="1" [ParentId]="painting[0]?.id"></app-love-interaction>
+                          <app-love [ParentType]="'painting'" [ParentId]="painting[0]?.id"></app-love>
                         </li>
                         <li class="my-1 mx-3 buy-painting">
                           <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0]?.id}}"
@@ -64,7 +65,8 @@
                         <a routerLink="/artist/{{artist[0]?.id}}">
                           {{artist[0]?.name}}
                         </a>
-                        <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>
+<!--                        <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>-->
+                        <app-follow [ParentType]="'painting'" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow>
                       </p>
                     </div>
                     <div class="col-12">

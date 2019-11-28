@@ -40,10 +40,9 @@ export class PaintingDetailsComponent implements OnInit {
               this.artistService.getArtist(this.painting['0'].artistId).subscribe(
                   res => {
                     this.artist = res;
-                    console.log('Artist Detail : ', this.artist);
+                    console.log(this.artist, this.painting);
                   }
               );
-              console.log('Painting Detail: ', this.painting);
             }
         );
       }

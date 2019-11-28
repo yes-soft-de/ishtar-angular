@@ -5,12 +5,14 @@ import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
 import {UserProfileService} from '../../service/client-profile/user-profile.service';
 import {UserInfo} from '../../entity/user/user-info';
+import {CreateClapResponse} from '../../entity/clap/create-clap-response';
+import {CreateClapRequest} from '../../entity/clap/create-clap-request';
 
 @Injectable({
   providedIn: 'root'
 })
 /**
- * InteractionsRepository Class is Create, Delete, Get Interactions For (Love, Follow, View) Only
+ * InteractionsRepository Class is Create, Delete, Get Interactions For (Love, Follow, View, clap)
  */
 export class InteractionsRepositoryService {
 
@@ -26,15 +28,26 @@ export class InteractionsRepositoryService {
     return this.httpClient.get(`${UserConfig.specificClientInteractions}/${clientId}`);
   }
 
-  // Post Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userInfo: UserInfo, interactionsTypeNumber: number): Observable<any>  {
+  // Post (love, view, follow) Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any>  {
     const request = {
-      client: userInfo.id,
+      client: userId,
       row: entityId,
       entity: entityTypeNumber,
       interaction: interactionsTypeNumber
     };
-    return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request));;
+    return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request));
+  }
+
+  // Post (Clap) interactions
+  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<any> {
+    const request = {
+      entity: entityTypeNumber,
+      row: entityId,
+      value: clapValue,
+      client: userId
+    };
+    return this.httpClient.post(`${UserConfig.clapsAPI}`, JSON.stringify(request));
   }
 
 
@@ -52,6 +65,11 @@ export class InteractionsRepositoryService {
   // Delete Interactions
   deleteInteractions(interactionID: number): Observable<any>  {
     return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`);
+  }
+
+  // Delete Clap Interactions
+  deleteClap(clapID: number): Observable<any>  {
+    return this.httpClient.delete(`${UserConfig.clapAPI}/${clapID}`);
   }
 
 

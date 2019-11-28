@@ -8,7 +8,8 @@ export class InteractionTypeToNumberService {
   private interactionsParam: {interactionsType: string, interactionNumber: number}[] = [
     {interactionsType: 'love', interactionNumber: 1},
     {interactionsType: 'follow', interactionNumber: 2},
-    {interactionsType: 'view', interactionNumber: 3}
+    {interactionsType: 'view', interactionNumber: 3},
+    {interactionsType: 'clap', interactionNumber: 4},
   ];
   constructor() {
   }
