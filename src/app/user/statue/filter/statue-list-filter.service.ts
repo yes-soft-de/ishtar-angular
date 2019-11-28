@@ -15,7 +15,10 @@ export class StatueListFilterService {
 
   // endregion
 
-  constructor(statueList: StatueObject[]) {
+  constructor() {
+  }
+
+  public setList(statueList: StatueObject[]) {
     this.originalList = statueList;
   }
 

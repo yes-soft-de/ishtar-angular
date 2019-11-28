@@ -5,14 +5,17 @@ import {PaintingListItem} from '../entity/painting-list-item';
   providedIn: 'root'
 })
 export class PaintingFilterService {
-  private readonly originalList: PaintingListItem[] = [];
+  private originalList: PaintingListItem[] = [];
 
   // region Filters Keywords, Java Style for Class Members Naming :)
   private mArtistNameFilter: string = null;
   private mArtTypeFilter: string = null;
   private mColorFilter: string = null;
 
-  constructor(private rowList: PaintingListItem[]) {
+  constructor() {
+  }
+
+  public setList(rowList: PaintingListItem[]) {
     this.originalList = rowList;
   }
 

@@ -20,9 +20,8 @@ export class ArtistListComponent implements OnInit {
     totalItems: number
   };  // Config For Paginate
 
-  private filterService: ArtistFilterService = null;
-
-  constructor(private artistService: ArtistService) {
+  constructor(private artistService: ArtistService,
+              private filterService: ArtistFilterService) {
     this.config = {
       itemsPerPage: 8,
       currentPage: 1,
@@ -37,7 +36,7 @@ export class ArtistListComponent implements OnInit {
         this.artistList = artists;
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
-        this.filterService = new ArtistFilterService(artists);
+        this.filterService.setList(artists);
       }
     );
   }

@@ -28,16 +28,15 @@ export class PaintingListComponent implements OnInit {
     loveNumber: number
   }[] = [];
 
-  filterService: PaintingFilterService = null;
-
-  constructor(private paintingService: PaintingService) {
+  constructor(private paintingService: PaintingService,
+              private filterService: PaintingFilterService) {
   }
 
   ngOnInit() {
     this.paintingService.getPaintings().subscribe(
       paintingList => {
         this.paintingList = paintingList;
-        this.filterService = new PaintingFilterService(paintingList);
+        this.filterService.setList(paintingList);
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,

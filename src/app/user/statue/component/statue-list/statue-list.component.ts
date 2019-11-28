@@ -12,10 +12,9 @@ import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
-  filterService: StatueListFilterService = null;
   magnifiedStatue: number = null;
 
-  constructor(private statueService: StatueService) {
+  constructor(private statueService: StatueService, private filterService: StatueListFilterService) {
   }
 
   ngOnInit() {
@@ -23,7 +22,7 @@ export class StatueListComponent implements OnInit {
       statueList => {
         this.statuesList = statueList;
         this.filteredList = statueList;
-        this.filterService = new StatueListFilterService(statueList);
+        this.filterService.setList(statueList);
       }
     );
   }
