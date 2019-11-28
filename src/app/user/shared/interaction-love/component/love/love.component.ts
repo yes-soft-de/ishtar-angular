@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LoveService} from '../../service/love.service';
+import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
 
 @Component({
   selector: 'app-love',
@@ -38,7 +39,7 @@ export class LoveComponent implements OnInit {
   // Send love interaction
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove( this.ParentType, this.ParentId, 'love');
+    this.loveService.postLove( this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE);
   }
 
   // delete the love interaction

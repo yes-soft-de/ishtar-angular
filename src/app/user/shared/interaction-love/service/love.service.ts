@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {RouteToAPIService} from '../../comment/helper/route-to-api.service';
+import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
-import {InteractionTypeToNumberService} from '../../../interactions/service/interaction-type-to-number.service';
+import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
 import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {Observable, Subject} from 'rxjs';
@@ -17,8 +17,8 @@ export class LoveService extends InteractionsService {
   userRequestSent = false;
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToApi: RouteToAPIService,
-              protected interactionTypeToNumberService: InteractionTypeToNumberService,
+              protected pageTypeToApi: PageTypeToNumberService,
+              protected interactionTypeToNumberService: InteractionConstantService,
               private userService: UserProfileService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);

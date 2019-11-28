@@ -26,8 +26,8 @@ export class PaintingDetailsComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         this.paintingService.getPainting(Number(urlSegments[1].path)).subscribe(
-            data => {
-              this.painting = data;
+            paintingResponse => {
+              this.painting = paintingResponse;
               // Loop To Catch The Secondary Images For This Painting
               for (let num = 2; num < 6; num++) {
                 if (this.painting[num]) {
@@ -38,9 +38,8 @@ export class PaintingDetailsComponent implements OnInit {
               }
               // Fetch Artist For This Painting
               this.artistService.getArtist(this.painting['0'].artistId).subscribe(
-                  res => {
-                    this.artist = res;
-                    console.log(this.artist, this.painting);
+                  artistResponse => {
+                    this.artist = artistResponse;
                   }
               );
             }

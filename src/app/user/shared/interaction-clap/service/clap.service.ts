@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {UserInfo} from '../../../entity/user/user-info';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
-import {RouteToAPIService} from '../../comment/helper/route-to-api.service';
-import {InteractionTypeToNumberService} from '../../../interactions/service/interaction-type-to-number.service';
+import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
+import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
@@ -17,8 +17,8 @@ export class ClapService extends InteractionsService {
   userRequestSent = false;
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToApi: RouteToAPIService,
-              protected interactionTypeToNumberService: InteractionTypeToNumberService,
+              protected pageTypeToApi: PageTypeToNumberService,
+              protected interactionTypeToNumberService: InteractionConstantService,
               private userService: UserProfileService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);

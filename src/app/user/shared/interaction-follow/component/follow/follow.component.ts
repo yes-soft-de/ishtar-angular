@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FollowService} from '../../service/follow.service';
+import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
 
 @Component({
   selector: 'app-follow',
@@ -37,7 +38,7 @@ export class FollowComponent implements OnInit {
   // Start Following
   startFollow() {
     console.log(`Sending Some Follow Buddy ;)`);
-    this.followService.postFollow(this.ParentType, this.ParentId, 'follow');
+    this.followService.postFollow(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_FOLLOW);
   }
 
   // Stop Following
