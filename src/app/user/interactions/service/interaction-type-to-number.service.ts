@@ -13,7 +13,7 @@ export class InteractionTypeToNumberService {
   constructor() {
   }
 
-  convertinteractionsTypeToNumber(interactionsType: string): number {
+  convertInteractionsTypeToNumber(interactionsType: string): number {
     for (const param of this.interactionsParam) {
       if (interactionsType.toLocaleLowerCase() === param.interactionsType) {
         return param.interactionNumber;

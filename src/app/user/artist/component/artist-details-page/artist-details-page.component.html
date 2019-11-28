@@ -1,12 +1,5 @@
-  <app-artist-page [randomPaintingForArtist]="randomArtistPainting"></app-artist-page>
-
-  <div class="container">
-    <app-artist-paintings (randomArtistPainting)="getRandomArtistPainting($event)"></app-artist-paintings>
-  </div>
-  <!--Start Next Previous Button-->
-  <div class="container py-2">
-    <div class="row">
-      <div class="col-6 text-right"><app-pre></app-pre></div>
-      <div class="col-6 text-left"><app-next></app-next></div>
-    </div>
-  </div>
+<app-artist-details [randomPaintingForArtist]="randomArtistPainting"></app-artist-details>
+<div class="container">
+  <app-artist-comment></app-artist-comment>
+</div>
+<app-artist-paintings (randomArtistPainting)="getRandomArtistPainting($event)"></app-artist-paintings>

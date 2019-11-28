@@ -1,7 +1,5 @@
-<app-header></app-header>
 <app-statue-list [statuesList]="statuesListPage"
                  [statuesListFiltered]="statuesListPage"
                  [statuesInteraction]="statueIDView"
                  *ngIf="statuesListPage != null"></app-statue-list>
 <app-loading-widget *ngIf="statuesListPage == null"></app-loading-widget>
-<app-footer></app-footer>

@@ -16,7 +16,7 @@
       overflow: hidden;
     }
   }
-} 
+}
 
 .wraper {
   position: relative;
@@ -24,7 +24,7 @@
   .art-type-avatar {
     height: 15rem;
     border: 2px solid goldenrod;
-    width: 15rem; 
+    width: 15rem;
     border-radius: 50%;
   }
   .art-type-info {
@@ -80,6 +80,40 @@
     }
   }
   .art-type-avatar {
+    max-width: 10rem !important;
+    height: 12rem;
+    margin-left: -45px;
+  }
+}
+
+.art-type-follow {
+  position: relative;
+  top: -13px;
+  button {
+    background: #fff !important;
+    padding: 10px 15px;
+    border: 2px solid goldenrod;
+  }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  #art-type-avatar {
+    max-width: 10rem !important;
+    height: 10rem;
+    margin-left: -45px;
+  }
+  .art-type-follow {
+    top: 30px;
+  }
+}
+
+@media (max-width:767px) {
+  #art-type-info{
+    h3 {
+      margin-left: 100px;
+    }
+  }
+  #art-type-avatar {
     max-width: 10rem !important;
     height: 12rem;
     margin-left: -45px;
