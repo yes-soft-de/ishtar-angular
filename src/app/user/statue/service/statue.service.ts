@@ -26,7 +26,12 @@ export class StatueService {
     const listSubject = new Subject<StatueObject[]>();
     this.statueManager.getStatueList().subscribe(
       statueListResponse => {
-        listSubject.next(statueListResponse.Data);
+        // TODO Remove When Response Fixed From the backend -->
+        const list: StatueObject[] = [];
+        for (const i of statueListResponse.Data) {
+          list.push(i[0]);
+        }
+        listSubject.next(list);
       }
     );
     return listSubject.asObservable();

@@ -44,6 +44,5 @@ export class LoveComponent implements OnInit {
   // delete the love interaction
   deleteLove() {
     console.log('Send delete Love Request');
-    this.loveService.deleteLoveInteraction(this.interactionId);
   }
 }

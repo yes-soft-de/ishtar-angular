@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { StatueDetailInterface } from 'src/app/user/entity/statue/statue-detail-interface';
+import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
+import {StatueDetailInterface} from 'src/app/user/entity/statue/statue-detail-interface';
 import {IshtarInteractionService} from '../../../service/ishtar-interaction/ishtar-interaction.service';
 import {ViewInterface} from '../../../entity/interaction/view.interface';
 import {InteractionConsts} from '../../../consts/interaction/interaction-consts';
-import { document } from 'ngx-bootstrap';
+import {document} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-statue-list',
@@ -17,13 +17,13 @@ export class StatueListComponent implements OnInit {
   @Input() statuesInteraction: { id: number, viewNumber: number }[];
   magnifyingImage = false;
 
-  constructor(private interactionService: IshtarInteractionService) { }
+  constructor(private interactionService: IshtarInteractionService) {
+  }
 
   ngOnInit() {
     console.log(this.statuesList, this.statuesListFiltered, this.statuesInteraction);
     // for (const)
   }
-
 
 
   // Increase view for Statue
@@ -40,7 +40,7 @@ export class StatueListComponent implements OnInit {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
       if (BTN_NAME === this.statuesList[i].name) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
@@ -50,7 +50,7 @@ export class StatueListComponent implements OnInit {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
       if (BTN_NAME === this.statuesList[i].artist.name) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
@@ -60,16 +60,16 @@ export class StatueListComponent implements OnInit {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
       if (BTN_NAME === this.statuesList[i].material) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
-   }
+    }
   }
 
   filterSmallSize() {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
-      if ((this.statuesList[i].width <= 2.54) && (this.statuesList[i].height <= 1.27) ) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+      if ((this.statuesList[i].width <= 2.54) && (this.statuesList[i].height <= 1.27)) {
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
@@ -78,10 +78,10 @@ export class StatueListComponent implements OnInit {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
       if ((this.statuesList[i].width > 2.54) &&
-          (this.statuesList[i].width <= 3.81) &&
-          (this.statuesList[i].height > 1.27) &&
-          (this.statuesList[i].height <= 2.54)) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+        (this.statuesList[i].width <= 3.81) &&
+        (this.statuesList[i].height > 1.27) &&
+        (this.statuesList[i].height <= 2.54)) {
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
@@ -89,8 +89,8 @@ export class StatueListComponent implements OnInit {
   filterBigSize() {
     this.statuesListFiltered = [];
     for (let i = 0; i < this.statuesList.length; i++) {
-      if ((this.statuesList[i].width > 3.81) && (this.statuesList[i].height > 2.54) ) {
-       this.statuesListFiltered[i] = this.statuesList[i];
+      if ((this.statuesList[i].width > 3.81) && (this.statuesList[i].height > 2.54)) {
+        this.statuesListFiltered[i] = this.statuesList[i];
       }
     }
   }
@@ -108,18 +108,18 @@ export class StatueListComponent implements OnInit {
     }
   }
 
-  openList(event){
-    if(window.innerWidth < 768) {
-      if(event.target.parentElement.classList.contains('active')){
+  openList(event) {
+    if (window.innerWidth < 768) {
+      if (event.target.parentElement.classList.contains('active')) {
         event.target.parentElement.classList.remove('active');
       } else {
         var title = document.getElementsByClassName('title');
-        for(var i=0; i < title.length; i++){
+        for (var i = 0; i < title.length; i++) {
           title[i].parentElement.classList.remove('active');
         }
         event.target.parentElement.classList.add('active');
       }
-    } 
+    }
   }
 
 }

@@ -13,35 +13,13 @@ import {ArtistObject} from '../../entity-protected/artist/artist-object';
  * Artist Service Class For Subscribe Data And Send It To Component
  */
 export class ArtistService {
+  private artistListSubject = new Subject<ArtistListItem[]>();
+  private artistDetailsSubject = new Subject<ArtistDetails>();
 
   constructor(private artistManagerService: ArtistManagerService) {
   }
 
-  private artistListSubject = new Subject<ArtistListItem[]>();
-  private artistDetailsSubject = new Subject<ArtistDetails>();
-
   private artistList: ArtistListItem[];
-
-  // region Filters and It's Methods
-  private activeArtType: string = null;
-  private activeFollowerRange: number;
-
-  private static applyArtTypeFilter(artistList: ArtistListItem[]): ArtistListItem[] {
-    const filteredArtists: ArtistListItem[] = [];
-    for (const artist of artistList) {
-      if (artist.artType === name) {
-        filteredArtists.push(artist);
-      }
-    }
-    return filteredArtists;
-  }
-
-  private static applyActiveFollowerRangeFilter(artistList: ArtistListItem[]): ArtistListItem[] {
-    // TODO Implement a Filter
-    return artistList;
-  }
-
-  // endregion
 
   // region Fetch All Artists
   getArtistList(): Observable<ArtistListItem[]> {
@@ -81,61 +59,4 @@ export class ArtistService {
   }
 
   // endregion
-
-  // Sort Method From larger FollowNumber To Smallest
-  sortItemsByLargeFollowNumber() {
-    this.artistList.sort(
-      (a, b) => (Number(a.artistFollowers) < Number(b.artistFollowers))
-        ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
-          ? ((Number(a.artistFollowers) < Number(b.artistFollowers))
-            ? 1 : -1) : -1);
-    this.artistListSubject.next(this.artistList);
-  }
-
-  // Sort Method From Small FollowNumber To Biggest
-  sortItemsByLowerFollowNumber() {
-    this.artistList.sort(
-      (a, b) => (Number(a.artistFollowers) > Number(b.artistFollowers))
-        ? 1 : (Number(a.artistFollowers) === Number(b.artistFollowers))
-          ? ((Number(a.artistFollowers) > Number(b.artistFollowers))
-            ? 1 : -1) : -1);
-    this.artistListSubject.next(this.artistList);
-  }
-
-  public filterByArtType(name: string) {
-    this.activeArtType = name;
-    this.calculateResultList();
-  }
-
-  public cancelFilterArtType() {
-    this.activeArtType = null;
-    this.calculateResultList();
-  }
-
-  public cancelFilterFollowersRange() {
-    this.activeFollowerRange = null;
-    this.calculateResultList();
-  }
-
-  public filterByFollowersRange(above: number) {
-    this.activeFollowerRange = above;
-  }
-
-  public cancelAllFilters() {
-    this.activeArtType = null;
-    this.activeFollowerRange = null;
-    this.artistListSubject.next(this.artistList);
-  }
-
-  private calculateResultList() {
-    let finalArtistList: ArtistListItem[] = this.artistList;
-    if (this.activeArtType !== null) {
-      finalArtistList = ArtistService.applyArtTypeFilter(finalArtistList);
-    }
-    if (this.activeFollowerRange !== null) {
-      finalArtistList = ArtistService.applyActiveFollowerRangeFilter(finalArtistList);
-    }
-
-    this.artistListSubject.next(finalArtistList);
-  }
 }

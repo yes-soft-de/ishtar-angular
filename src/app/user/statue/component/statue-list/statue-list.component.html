@@ -1,0 +1,52 @@
+<div class="filters-group">
+  <div class="filter">
+    <p class="title" (click)="openList($event)">Filter by style name <i class="fas fa-chevron-down"></i> </p>
+    <button (click)="noFilter()">All</button>
+    <button *ngFor="let statue of statuesList"
+            name="{{statue.style}}"
+            (click)="filterStyleName(statue.style)">{{statue.style}}</button>
+  </div>
+  <div class="filter">
+    <p class="title" (click)="openList($event)">Filter by artist name <i class="fas fa-chevron-down"></i></p>
+    <button (click)="noFilter()">All</button>
+    <button *ngFor="let statue of statuesList"
+            name="{{statue.artist?.name}}"
+            (click)="filterArtistName(statue.artist.name)">{{statue.artist.name}}</button>
+  </div>
+  <div class="filter">
+    <p class="title" (click)="openList($event)">Filter by materials <i class="fas fa-chevron-down"></i></p>
+    <button (click)="noFilter()">All</button>
+    <button *ngFor="let statue of statuesList"
+            name="{{statue.material}}"
+            (click)="filterMaterial(statue.material)">{{statue.material}}</button>
+  </div>
+  <div class="filter">
+    <p class="title" (click)="openList($event)">Filter by size <i class="fas fa-chevron-down"></i></p>
+    <button class="size-btn text-center" (click)="noFilter()">All</button>
+    <button class="size-btn" (click)="filterSmallSize()"><span>Small</span> <small>less than 1 x 1/2"</small></button>
+    <button class="size-btn" (click)="filterMediumSize()"><span>Medium</span> <small>between 1 x 1/2" and 1.5 x 1"</small></button>
+    <button class="size-btn" (click)="filterBigSize()"><span>Big</span> <small>more than 1.5 x 1"</small></button>
+  </div>
+</div>
+
+<div class="statues-list">
+  <div class="wrapper">
+    <div class="statue"
+         *ngFor="let statue of filteredList">
+      <ngx-image-zoom
+        thumbImage="{{statue.image}}"
+        [enableLens]=false>
+      </ngx-image-zoom>
+      <div class="info" [ngClass]="magnifiedStatue === statue.id ? 'd-block' : 'd-none'" routerLink="/statue/{{statue.id}}" (click)="viewStatue(statue.id)">
+        <div class="info-wrapper">
+          <h3>{{statue.name}}</h3>
+          <p class="artist-name">{{statue?.artist?.name}}</p>
+          <!-- TODO Implement Interaction -->
+        </div>
+      </div>
+      <button class="fas fa-search magnifying"  name="{{statue.id}}" (click)="MagnifyingImage(statue.id)">
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,4 +1,44 @@
+.filters-group {
+  display: block;
+  width: 350px;
+  padding: 1.5rem;
+  float: left;
+  .filter {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 20px 0;
+    i {
+      display: none;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+    .title {
+      font-size: 20px;
+    }
+    button {
+      border: 1px solid #aaa;
+      margin: 5px;
+      padding: 5px;
+      background: #fff;
+      outline: none;
+      &:hover {
+        background: goldenrod;
+      }
+    }
+    .size-btn {
+      width: 100%;
+      display: block;
+      text-align: left;
+      span {
+        display: inline-block;
+        width: 70px;
+      }
+    }
+  }
+}
+
 .artist-list-section {
+
   //margin-top: 6rem;
   //border-top: 1px solid #333333;
   #artist-sidebar {

@@ -5,14 +5,11 @@ import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
-import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
-import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
@@ -48,7 +45,6 @@ import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/
 import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
 import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
-import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
@@ -70,7 +66,10 @@ import {ArtistDetailsComponent} from './artist/component/artist-details/artist-d
 import {ArtistPaintingsComponent} from './artist/component/artist-paintings/artist-paintings.component';
 import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
+import {StatueListComponent} from './statue/component/statue-list/statue-list.component';
 import {InteractionComponent} from './interactions/component/interaction/interaction.component';
+import {PaintingListComponent} from './painting/component/painting-list/painting-list.component';
+import {PaintingListPageComponent} from './painting/component/painting-list-page/painting-list-page.component';
 import { FollowComponent } from './shared/interaction-follow/component/follow/follow.component';
 import { ClapComponent } from './shared/interaction-clap/component/clap/clap.component';
 
@@ -137,6 +136,7 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
     InteractionComponent,
+    StatueListComponent,
     FollowComponent,
     ClapComponent
   ],
@@ -193,7 +193,6 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     MatDialogModule,
     NgxPaginationModule,
     NgxImageZoomModule.forRoot()
-    // BrowserAnimationsModule
   ], schemas: [
     NO_ERRORS_SCHEMA
   ]
