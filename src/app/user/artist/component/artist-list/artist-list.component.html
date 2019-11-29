@@ -1,5 +1,5 @@
 <div id="artist-list-section">
-  <div *ngIf="artistList != null">
+  <div *ngIf="filteredList != null">
     <div class="d-flex justify-content-center artist-list-section"
          [ngStyle]="{'border-top': search ? '1px solid #333333' : 'none'}">
       <!-- region Filters -->
@@ -7,9 +7,9 @@
         <div>
           <h5>Filter By Art Type</h5>
           <button mdbBtn class="btn-light" (click)="cancelFilterByArtType()">All</button>
-          <button mdbBtn class="btn-light" *ngFor="let i of activeTypes"
-                  [ngStyle]="{'background-color':i !== activeArtType ? 'goldenrod' : 'white' }"
-                  (click)="filterByArtType(i)">{{i}}</button>
+          <button mdbBtn class="btn-light" *ngFor="let artType of activeTypes"
+                  [ngStyle]="{'background-color':artType === activeArtType ? 'goldenrod' : 'white' }"
+                  (click)="filterByArtType(artType)">{{artType}}</button>
         </div>
       </div>
       <!-- endregion Filters -->
@@ -47,7 +47,7 @@
           </div>
         </div>
         <section id="photos" class="row">
-          <div *ngFor="let artist of artistList | paginate: config; index as i"
+          <div *ngFor="let artist of filteredList | paginate: config; index as i"
                class="col-xs-6 col-sm-6 col-md-6 col-xl-3 mx-auto">
             <a routerLink="/artist/{{artist.id}}">
               <div class="artist-card text-center my-2 my-lg-3 my-xl-4">

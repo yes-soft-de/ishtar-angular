@@ -5,95 +5,34 @@ import {PaintingListItem} from '../entity/painting-list-item';
   providedIn: 'root'
 })
 export class PaintingFilterService {
-  private originalList: PaintingListItem[] = [];
-
-  // region Filters Keywords, Java Style for Class Members Naming :)
-  private mArtistNameFilter: string = null;
-  private mArtTypeFilter: string = null;
-  private mColorFilter: string = null;
 
   constructor() {
   }
 
-  public setList(rowList: PaintingListItem[]) {
-    this.originalList = rowList;
-  }
-
-  public deactivateAllFilters(): PaintingListItem[] {
-    this.mArtistNameFilter = null;
-    this.mColorFilter = null;
-    this.mArtTypeFilter = null;
-    return this.getFilteredList();
-  }
-
-  public activateArtistNameFilter(artistName: string): PaintingListItem[] {
-    this.mArtistNameFilter = artistName;
-    return this.getFilteredList();
-  }
-
-  public deactivateArtistNameFilter(): PaintingListItem[] {
-    this.mArtistNameFilter = null;
-    return this.getFilteredList();
-  }
-
-  public activateColorFilter(colorName: string): PaintingListItem[] {
-    this.mColorFilter = colorName;
-    return this.getFilteredList();
-  }
-
-  public deactivateColorFilter() {
-    this.mColorFilter = null;
-    return this.getFilteredList();
-  }
-
-  public activateArtTypeNameFilter(artTypeName: string): PaintingListItem[] {
-    this.mArtTypeFilter = artTypeName;
-    return this.getFilteredList();
-  }
-
-  public deactivateArtTypeNameFilter(): PaintingListItem[] {
-    this.mArtTypeFilter = null;
-    return this.getFilteredList();
-  }
-
-  private getFilteredList(): PaintingListItem[] {
-    let resultList = this.originalList;
-    if (this.mArtistNameFilter !== null) {
-      resultList = this.processArtistNameFilter(resultList);
-    }
-    if (this.mArtTypeFilter !== null) {
-      resultList = this.processStyleFilter(resultList);
-    }
-    if (this.mColorFilter !== null) {
-      resultList = this.processColorFilter(resultList);
-    }
-    return resultList;
-  }
-
-  private processArtistNameFilter(rowList: PaintingListItem[]): PaintingListItem[] {
+  public processArtistNameFilter(rowList: PaintingListItem[], artistName: string): PaintingListItem[] {
     const resultList: PaintingListItem[] = [];
     for (const painting of rowList) {
-      if (painting.artist.includes(this.mArtistNameFilter)) {
+      if (painting.artist.includes(artistName)) {
         resultList.push(painting);
       }
     }
     return resultList;
   }
 
-  private processColorFilter(rowList: PaintingListItem[]): PaintingListItem[] {
+  public processColorFilter(rowList: PaintingListItem[], color: string): PaintingListItem[] {
     const resultList: PaintingListItem[] = [];
     for (const painting of rowList) {
-      if (painting.colorsType === this.mColorFilter) {
+      if (painting.colorsType === color) {
         resultList.push(painting);
       }
     }
     return resultList;
   }
 
-  private processStyleFilter(rowList: PaintingListItem[]): PaintingListItem[] {
+  public processArtTypeFilter(rowList: PaintingListItem[], artType: string): PaintingListItem[] {
     const resultList: PaintingListItem[] = [];
     for (const painting of rowList) {
-      if (painting.artType === this.mArtTypeFilter) {
+      if (painting.artType === artType) {
         resultList.push(painting);
       }
     }

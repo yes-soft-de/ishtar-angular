@@ -11,6 +11,7 @@ import {PaintingFilterService} from '../../filter/painting-filter.service';
 export class PaintingListComponent implements OnInit {
   public artists: string[];
   public artTypes: string[];
+  originalList: PaintingListItem[];
   paintingList: PaintingListItem[];
   @Input() filter = true;
 
@@ -35,8 +36,8 @@ export class PaintingListComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getPaintings().subscribe(
       paintingList => {
+        this.originalList = paintingList;
         this.paintingList = paintingList;
-        this.filterService.setList(paintingList);
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,
@@ -55,38 +56,45 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     this.filterActiveArtType = name;
-    this.paintingList = this.filterService.activateArtTypeNameFilter(name);
+    this.paintingList = this.getFilteredList();
   }
 
   public disableArtTypeFilter() {
-    this.paintingList = this.filterService.deactivateArtTypeNameFilter();
+    this.filterActiveArtType = null;
+    this.paintingList = this.getFilteredList();
   }
 
   public filterByArtist(name: string) {
     this.filterActiveArtist = name;
-    this.paintingList = this.filterService.activateArtistNameFilter(name);
+    this.paintingList = this.getFilteredList();
   }
 
   public disableArtistNameFilter() {
-    this.paintingList = this.filterService.deactivateArtistNameFilter();
+    this.filterActiveArtist = null;
+    this.paintingList = this.getFilteredList();
   }
 
   viewImage(paintingId: number) {
+    // TODO Implement View Image Function
+    // Dependent on Reaction
   }
 
   getArtistNamesList() {
-    const artists: string[] = [];
-    for (const painting of this.paintingList) {
-      artists.push(painting.artist);
-    }
-    this.artists = [...new Set(artists)];
+    this.artists = [...new Set(this.paintingList.map(painting => painting.artist))];
   }
 
   getArtTypesList() {
-    const artTypes: string[] = [];
-    for (const painting of this.paintingList) {
-      artTypes.push(painting.artType);
+    this.artTypes = [...new Set(this.paintingList.map(painting => painting.artType))];
+  }
+
+  private getFilteredList(): PaintingListItem[] {
+    let resultList = this.paintingList;
+    if (this.filterActiveArtist !== null) {
+      resultList = this.filterService.processArtistNameFilter(resultList, this.filterActiveArtist);
     }
-    this.artTypes = [...new Set(artTypes)];
+    if (this.filterActiveArtType !== null) {
+      resultList = this.filterService.processArtTypeFilter(resultList, this.filterActiveArtType);
+    }
+    return resultList;
   }
 }
