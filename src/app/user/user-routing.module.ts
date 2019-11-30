@@ -1,11 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {UserComponent} from './user.component';
-import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
-import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
@@ -22,6 +19,9 @@ import {ArtistDetailsPageComponent} from './artist/component/artist-details-page
 import {StatueDetailsPageComponent} from './statue/component/statue-details-page/statue-details-page.component';
 import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
 import {PaintingListPageComponent} from './painting/component/painting-list-page/painting-list-page.component';
+import {HomePageComponent} from './home/component/home-page/home-page.component';
+import {ArtTypeDetailsPageComponent} from './art-type/component/art-type-details-page/art-type-details-page.component';
+import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/art-type-list-page.component';
 
 
 const routes: Routes = [
@@ -34,7 +34,7 @@ const routes: Routes = [
       {path: 'artist-list', component: ArtistListPageComponent},
       {path: 'painting-list', component: PaintingListPageComponent},
       {path: 'painting-by-name/:id', component: ImagesByArtistPageComponent},
-      {path: 'art-type/:id', component: ArtTypePageComponent},
+      {path: 'art-type/:id', component: ArtTypeDetailsPageComponent},
       {path: 'artist/:id', component: ArtistDetailsPageComponent},
       {path: 'art-schools-list', component: ArtTypeListPageComponent},
       {path: 'login', component: LoginPageComponent},

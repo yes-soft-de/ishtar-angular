@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {InteractionsManagerService} from '../manager/interactions-manager.service';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {PageTypeToNumberService} from '../../shared/comment/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
 import {InteractionConstantService} from './interaction-constant.service';
 import {UserInfo} from '../../entity-protected/profile/user-info';
 import {UserProfileService} from '../../service/client-profile/user-profile.service';
@@ -195,7 +195,4 @@ export class InteractionsService {
   isUserNode(user: UserInfo) {
     return user.id !== undefined;
   }
-
-
-
 }

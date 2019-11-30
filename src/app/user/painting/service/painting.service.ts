@@ -6,11 +6,12 @@ import {catchError} from 'rxjs/operators';
 import {PaintingListItem} from '../entity/painting-list-item';
 import {InteractionsService} from '../../interactions/service/interactions.service';
 import {InteractionsManagerService} from '../../interactions/manager/interactions-manager.service';
-import {PageTypeToNumberService} from '../../shared/comment/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
 import {InteractionConstantService} from '../../interactions/service/interaction-constant.service';
 import {UserProfileService} from '../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {UserInfo} from '../../entity/user/user-info';
+import {MostViewedListItem} from '../entity/most-viewed-list-item';
 
 
 @Injectable({
@@ -128,4 +129,13 @@ export class PaintingService extends InteractionsService {
     }
   }
 
+  getMostViewedPaintings(): Observable<MostViewedListItem[]> {
+    const mostViewedSubject = new Subject<MostViewedListItem[]>();
+    this.paintingManager.getMostViewedPainting().subscribe(
+      mostViewedResponse => {
+        mostViewedSubject.next(mostViewedResponse.Data);
+      }
+    );
+    return mostViewedSubject.asObservable();
+  }
 }

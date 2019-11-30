@@ -13,6 +13,7 @@ export class ArtistListComponent implements OnInit {
   @Input() filter = true;
   @Input() artistListFormatted: ArtistListItem[];
   @Input() search = true;
+  filteredList: ArtistListItem[] = [];
   public artistList: {
     id: number,
     image: string,

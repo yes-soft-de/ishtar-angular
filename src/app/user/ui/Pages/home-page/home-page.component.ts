@@ -15,8 +15,6 @@ import {UserArtTypeService} from '../../../service/art-type/user-art-type.servic
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  position = 0;
-  direction = 'down';
   artTypeList: ArtTypeListItem[];
   loadFinished = false;
   viewNumbers: { id: number, viewNumber: number }[];  // All Painting Seen Number
@@ -38,7 +36,6 @@ export class HomePageComponent implements OnInit {
       text: ' '
     }];
   paintingList: PaintingListItem[];
-  showNavbar = true;
   artistList: ArtistListItem[];
 
   constructor(private userArtTypeService: UserArtTypeService, private paintingService: PaintingService,
@@ -51,11 +48,6 @@ export class HomePageComponent implements OnInit {
     this.requestArtistList();
     this.requestPaintingList();
 
-  }
-
-  // Fetch Most Seen Painting From Child Component
-  getMostSeenPainting(event: { id: number, viewNumber: number }[]) {
-    this.viewNumbers = event;
   }
 
   // Fetch Art Type
@@ -99,37 +91,6 @@ export class HomePageComponent implements OnInit {
         }, error1 => {
           console.log(error1);
         });
-  }
-
-  // region Direction Calculator
-  @HostListener('window:scroll', [])
-  ShowHeader() {
-    if (window.pageYOffset < 360) {
-      this.showNavbar = true;
-      return;
-    }
-    // Get the Past Location and direction
-    const past = this.position;
-    const oldDir = this.direction;
-    // Get the new Location
-    const current = window.pageYOffset;
-    // Calc the difference
-    const delta = current - past;
-    if (Math.abs(delta) < 20) {
-      // discard
-      this.position = window.pageYOffset;
-      return;
-    }
-    // So there is a movement
-    if (delta > 0 && oldDir !== 'Down') {
-      this.direction = 'Down';
-      this.showNavbar = true;
-    } else if (delta < 0 && oldDir !== 'Up') {
-      this.direction = 'Up';
-      this.showNavbar = true;
-    }
-    // Save Data For Future Calculations
-    this.position = window.pageYOffset;
   }
 
   // endregion

@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
-import {PageTypeToNumberService} from '../../../shared/comment/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
 
 @Component({
   selector: 'app-painting-list',

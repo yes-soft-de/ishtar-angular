@@ -31,34 +31,6 @@ export class MostSeenPaintingsComponent implements OnInit {
           this.mostViewedData = data.Data.slice(0, 3);
         }
     );
-    // region Artists Collecting
-    // this.artists = [];
-    // for (const image of this.formattedPaintingList) {
-    //   this.artists.push(image.artist);
-      // Fetch Painting View Interaction
-      // this.interactionService.getInteractionsNumber(
-      //     InteractionConsts.ENTITY_TYPE_PAINTING,
-      //     image.id,
-      //     InteractionConsts.INTERACTION_TYPE_VIEW)
-      //     .subscribe(
-      //         (data: any) => {
-      //           // console.log('Most Seen Painting View: Id:', image.id, ' => View Number: ' , data.Data[0].interactions);
-      //           this.paintingsView.push({
-      //             id: image.id,
-      //             viewNumber: data.Data[0].interactions
-      //           });
-      //           this.paintingsView.sort((a, b) =>  Number(b.viewNumber) - Number(a.viewNumber));
-      //         }, error => {
-      //           console.log(error);
-      //         }
-      //     );
-
-    // }
-    // make loop inside paintingsView and remove the repeated value
-    // this.paintingsView = [...new Set(this.paintingsView)];
-    // console.log('sort: ', this.paintingsView);
-    // make loop inside artists and remove the repeated value
-    // this.artists = [...new Set(this.artists)];
   }
 
 }
