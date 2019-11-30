@@ -79,7 +79,7 @@ export class ArtistListComponent implements OnInit {
               id: i.id,
               followNumber: data.Data[0].interactions
             });
-            this.artistList.push({
+            this.filteredList.push({
               id: i.id,
               image: i.path,
               name: i.name,
@@ -87,7 +87,7 @@ export class ArtistListComponent implements OnInit {
               artistFollowers: data.Data[0].interactions
             });
             // sort the array Elements
-            this.artistList.sort(
+            this.filteredList.sort(
                 (a, b) => (Number(a.id) > Number(b.id))
                     ? 1 : (Number(a.id) === Number(b.id))
                         ? ((Number(a.id) > Number(b.id))
@@ -113,7 +113,7 @@ export class ArtistListComponent implements OnInit {
   filterByArtType(name: string) {
     let followNumber = 0;
     this.activeArtType = name;
-    this.artistList = [];
+    this.filteredList = [];
     if (name === 'all') {
       for (const i of this.artistListFormatted) {
         this.artistIDFollow.forEach((item) => {
