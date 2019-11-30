@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CommentManagerService} from '../manager/comment-manager.service';
 import {CreateCommentRequest} from '../request/create-comment-request';
 import {UpdateCommentRequest} from '../request/update-comment-request';
-import {RouteToAPIService} from '../helper/route-to-api.service';
+import {PageTypeToNumberService} from '../helper/page-type-to-number.service';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {CommentObject} from '../entity/comment-object';
 import {catchError} from 'rxjs/operators';

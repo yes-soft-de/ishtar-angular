@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
+import {PageTypeToNumberService} from '../../../shared/comment/helper/page-type-to-number.service';
 
 @Component({
   selector: 'app-painting-list',
@@ -9,16 +10,15 @@ import {PaintingFilterService} from '../../filter/painting-filter.service';
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
+  @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
   originalList: PaintingListItem[];
   paintingList: PaintingListItem[];
-  @Input() filter = true;
-
   config: any;
-
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
+
 
   paintingsView: {
     id: number,
@@ -36,7 +36,9 @@ export class PaintingListComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getPaintings().subscribe(
       paintingList => {
+
         this.originalList = paintingList;
+        console.log('NgxPaginationModule', paintingList);
         this.paintingList = paintingList;
         this.config = {
           itemsPerPage: 12,
@@ -77,6 +79,7 @@ export class PaintingListComponent implements OnInit {
   viewImage(paintingId: number) {
     // TODO Implement View Image Function
     // Dependent on Reaction
+    this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
   }
 
   getArtistNamesList() {

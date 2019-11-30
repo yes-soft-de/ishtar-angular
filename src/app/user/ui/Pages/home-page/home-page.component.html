@@ -15,15 +15,16 @@
   </div>
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
     <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
-    <app-c-painting-list style="display: flex; justify-content: center;" (PaintingViewNumber)="getMostSeenPainting($event)" [formattedPaintingList]="paintingList.reverse().slice(0, 12)" [filter]="false"></app-c-painting-list>
+<!--    <app-c-painting-list style="display: flex; justify-content: center;" (PaintingViewNumber)="getMostSeenPainting($event)" [formattedPaintingList]="paintingList.reverse().slice(0, 12)" [filter]="false"></app-c-painting-list>-->
+    <app-painting-list style="display: flex; justify-content: center;" [filter]="false"></app-painting-list>
   </section>
   <!-- <app-home-auction-section class="w-100"></app-home-auction-section> -->
   <section class="w-100">
     <div class="col-12" style="padding-top: 2rem">
       <h1 class="text-center font-weight-bolder">Latest Active Artist</h1>
     </div>
-
-    <app-artist-list [artistListFormatted]="artistList.reverse().slice(0,4)" [filter]="false" [search]="false"></app-artist-list>
+    <app-artist-list [filter]="false" [search]="false"></app-artist-list>
+<!--    <app-artist-list [artistListFormatted]="artistList.reverse().slice(0,4)" [filter]="false" [search]="false"></app-artist-list>-->
   </section>
 
   <section class="row w-100 m-0">
