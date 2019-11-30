@@ -42,4 +42,20 @@ export class UserService {
     );
     return registerSubject.asObservable();
   }
+
+  public getToken() {
+    return localStorage.getItem('token');
+  }
+
+  public setToken(token: string) {
+    localStorage.setItem('token', 'Bearer ' + token);
+  }
+
+  public isLoggedIn(): boolean {
+    return this.getToken() !== null && this.getToken() !== undefined;
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
+  }
 }
