@@ -31,14 +31,14 @@ export class LoveService extends InteractionsService {
       // If Not Request Him
       this.userRequestSent = true;
       this.userService.requestUserDetails().subscribe(
-          (user: any) => {
-            // Assign the Data to the User
-            if (this.isUserNode(user.Data)) {
-              console.log('Assigning User');
-              this.userInfo = user.Data;
-              this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
-            }
+        (user: any) => {
+          // Assign the Data to the User
+          if (this.isUserNode(user.Data)) {
+            console.log('Assigning User');
+            this.userInfo = user.Data;
+            this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
           }
+        }
       );
     } else if (this.checkUserDetailsExists(this.userInfo)) {
       console.log('User Exists, Requesting Love Status');
@@ -66,6 +66,4 @@ export class LoveService extends InteractionsService {
   getLoveObservable(): Observable<any> {
     return this.getInteractionsObservable(this.loveSubject);
   }
-
-
 }

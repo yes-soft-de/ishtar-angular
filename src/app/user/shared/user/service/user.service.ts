@@ -8,6 +8,7 @@ import {RegisterRequest} from '../request/register-request';
   providedIn: 'root'
 })
 export class UserService {
+  public readonly KEY_TOKEN = 'token';
 
   constructor(private userManager: UserManagerService) {
   }
@@ -20,7 +21,7 @@ export class UserService {
     };
     this.userManager.login(loginRequest).subscribe(
       loginResponse => {
-        loginSubject.next(loginResponse.token);
+        localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
       }
     );
     return loginSubject.asObservable();
@@ -41,5 +42,17 @@ export class UserService {
       }
     );
     return registerSubject.asObservable();
+  }
+
+  public isLoggedIn(): boolean {
+    return this.getToken() !== null && this.getToken() !== undefined;
+  }
+
+  public getToken(): string {
+    return localStorage.getItem(this.KEY_TOKEN);
+  }
+
+  public logout() {
+    return localStorage.removeItem(this.KEY_TOKEN);
   }
 }
