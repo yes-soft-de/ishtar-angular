@@ -1,14 +1,30 @@
 <div class="statues-detail bg-light py-4" *ngIf="statueDetails != null && artist != null">
   <div class="container-fluid">
     <div class="details">
-      <div id="full-size-img" [class.active]="fullSizeImageActive">
+      <div class="full-size-img" [class.active]="fullSizeImageActive">
         <img #fullSizeImage class="img-fluid" src="{{statueDetails?.image}}" alt="...">
         <button (click)="hideFullScreenMode()"><span>&times;</span></button>
       </div>
       <div class="row">
         <div class="col-12 col-lg-8">
-          <div id="statue-img-section" class="statue-img">
+          <div class="statue-img">
             <div class="row">
+              <div class="col-12 statue-artist text-lg-center text-xl-left mb-3">
+                  <div class="statue-artist-img d-inline-block">
+                    <img
+                      src="{{!artist[0]?.path ? '../../../../../assets/default-avatar.jpg' : artist[0]?.path}}"
+                      class=""
+                      alt="">
+                  </div>
+                  <p class="statue-artist-name d-inline-block m-0">
+                    <a>
+                      <h5 routerLink="/artist/{{artist[0]?.id}}"
+                          class="mb-0">{{artist[0]?.name}}</h5>
+                      <span>Paintings: {{statueDetails.artist?.painting}}</span>
+                    </a>
+                  </p>
+                  <app-follow-widget [ParentId]="statueDetails?.id" [ParentType]="6"></app-follow-widget>
+                </div>
               <div class="col-2 d-none d-md-block invisible pr-0">
                 <div class="statue-seconds-img border border-secondary" *ngFor="let i of [1,1,1]">
                   <img src="{{statueDetails?.image}}" (click)="setMainPainting($event)" class="img-fluid" alt="">
@@ -17,7 +33,7 @@
               <div class="col-12 col-sm-11 col-md-10 mx-auto">
                 <div class="statue-image border border-secondary position-relative">
                   <img #mainImg src="{{statueDetails?.image}}" (click)="showImageInFullSize()" class="img-fluid mx-auto"
-                       alt="{{statueDetails?.name}} Image" id="main-img">
+                       alt="{{statueDetails?.name}} Image">
                   <button class="statue-img-favorite position-absolute" *ngIf="!isFavoriteAdded"
                           (click)="addToFavorite()"><i class="far fa-star fa-2x"></i></button>
                   <button class="statue-img-favorite position-absolute" *ngIf="isFavoriteAdded"
@@ -39,7 +55,7 @@
           </div>
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-4 mx-auto">
-          <div id="statue-content-section" class="statue-content">
+          <div class="statue-content">
             <div class="row">
               <div class="col-12">
                 <h2 class="statue-name mt-3 mt-lg-0">{{statueDetails?.name}}</h2>
@@ -54,24 +70,6 @@
                 <div class="statue-style">
                   <p class="h4 my-3">Style: <span>{{statueDetails?.style}}</span></p>
                 </div>
-              </div>
-              <div class="col-6 statue-artist text-lg-center text-xl-left mb-3">
-                <div class="statue-artist-img d-inline-block">
-                  <img
-                    src="{{!artist[0]?.path ? '../../../../../assets/default-avatar.jpg' : artist[0]?.path}}"
-                    class=""
-                    alt="">
-                </div>
-                <p class="statue-artist-name d-inline-block m-0">
-                  <a>
-                    <h5 routerLink="/artist/{{artist[0]?.id}}"
-                        class="mb-0">{{artist[0]?.name}}</h5>
-                    <span>Paintings: {{statueDetails.artist?.painting}}</span>
-                  </a>
-                </p>
-              </div>
-              <div class="col-6 text-right">
-                <app-follow-widget [ParentId]="statueDetails?.id" [ParentType]="6"></app-follow-widget>
               </div>
               <div class="col-12">
                 <p class="statue-dimension mt-2">Size: <span>{{statueDetails?.height}}CM</span> X
@@ -116,32 +114,66 @@
         </div>
       </div>
     </div>
-    <div id="information-section" class="information py-4">
+    <div class="py-4">
       <div class="row">
         <div class="col-12 col-lg-7 col-xl-8">
-          <div class="tab-information border border-secondary">
-            <div class="row">
-              <tabset>
-                <tab heading="Material">
-                  <p>{{statueDetails?.material}}</p>
-                </tab>
-                <tab heading="description">
-                  <p>{{statueDetails?.description}}</p>
-                </tab>
-                <tab heading="style">
-                  <p>{{statueDetails?.style}}</p>
-                </tab>
-                <tab heading="How long it take to be done">
-                  <p>{{statueDetails?.period}}</p>
-                </tab>
-                <tab heading="mediums">
-                  <p>{{statueDetails?.mediums}}</p>
-                </tab>
-                <tab heading="Products features">
-                  <p>{{statueDetails?.features}}</p>
-                </tab>
-              </tabset>
+          <div class="row information-section">
+            <h2>About the statue</h2>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">Description</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.description}}</p>
+              </div>
             </div>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">Material</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.material}}</p>
+              </div>
+            </div>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">Style</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.style}}</p>
+              </div>
+            </div>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">How long it take to be done</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.period}}</p>
+              </div>
+            </div>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">Mediums</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.mediums}}</p>
+              </div>
+            </div>
+
+            <div class="sub-block">
+              <div class="col-sm-3 col-xs-12">
+                <p class="title">Features</p>
+              </div>
+              <div class="col-sm-9 col-xs-12">
+                <p class="info">{{statueDetails?.features}}</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

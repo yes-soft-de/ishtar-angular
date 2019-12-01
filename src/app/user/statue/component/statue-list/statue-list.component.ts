@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StatueService} from '../../service/statue.service';
 import {StatueObject} from '../../entity/statue-object';
+import {Observable} from 'rxjs';
 import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 
 @Component({
@@ -11,17 +12,9 @@ import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
-  magnifiedStatue: number = null;
+  filterService: StatueListFilterService = null;
 
-  // region Filters Keywords, Java Style for Class Members Naming :)
-  private mArtistNameFilter: string = null;
-  private mMaterialFilter: string = null;
-  private mWeightFilter: string = null;
-  private mStyleFilter: string = null;
-
-  // endregion
-
-  constructor(private statueService: StatueService, private filterService: StatueListFilterService) {
+  constructor(private statueService: StatueService) {
   }
 
   ngOnInit() {
@@ -29,100 +22,48 @@ export class StatueListComponent implements OnInit {
       statueList => {
         this.statuesList = statueList;
         this.filteredList = statueList;
+        this.filterService = new StatueListFilterService(statueList);
       }
     );
   }
 
   openList(e) {
-    // TODO Implement Open List
+    // TODO Implement This
   }
 
   viewStatue(statue) {
-    // TODO Implement View Statue
+    // TODO Implement This
   }
 
-  MagnifyingImage(statueId: number) {
-    if (this.magnifiedStatue !== null && this.magnifiedStatue !== undefined) {
-      this.magnifiedStatue = null;
-    } else {
-      this.magnifiedStatue = statueId;
-    }
+  MagnifyingImage(someImage) {
+    // TODO Implement This
   }
 
-  // region Filter Functions
   filterSmallSize() {
-    this.mWeightFilter = 'S';
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateWeightFilter('S');
   }
 
   filterMediumSize() {
-    this.mWeightFilter = 'M';
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateWeightFilter('M');
   }
 
   filterBigSize() {
-    this.mWeightFilter = 'L';
-    this.filteredList = this.getFilteredList();
-  }
-
-  cancelSizeFilter() {
-    this.mWeightFilter = null;
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateWeightFilter('L');
   }
 
   filterMaterial(materialName: string) {
-    this.mMaterialFilter = materialName;
-    this.filteredList = this.getFilteredList();
-  }
-
-  cancelMaterialFilter() {
-    this.mMaterialFilter = null;
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateMaterialFilter(materialName);
   }
 
   filterArtistName(artistName: string) {
-    this.mArtistNameFilter = artistName;
-    this.filteredList = this.getFilteredList();
-  }
-
-  cancelArtistNameFilter() {
-    this.mArtistNameFilter = null;
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateArtistNameFilter(artistName);
   }
 
   filterStyleName(styleName: string) {
-    this.mStyleFilter = styleName;
-    this.filteredList = this.getFilteredList();
-  }
-
-  cancelStyleNameFilter() {
-    this.filteredList = null;
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.activateStyleNameFilter(styleName);
   }
 
   noFilter() {
-    this.mMaterialFilter = null;
-    this.mArtistNameFilter = null;
-    this.mWeightFilter = null;
-    this.filteredList = this.getFilteredList();
+    this.filteredList = this.filterService.deactivateAllFilters();
   }
-
-  private getFilteredList(): StatueObject[] {
-    let resultList = this.statuesList;
-    if (this.mArtistNameFilter !== null) {
-      resultList = this.filterService.processArtistNameFilter(resultList, this.mArtistNameFilter);
-    }
-    if (this.mMaterialFilter !== null) {
-      resultList = this.filterService.processMaterialFilter(resultList, this.mMaterialFilter);
-    }
-    if (this.mWeightFilter !== null) {
-      resultList = this.filterService.processWeightFilter(resultList, this.mWeightFilter);
-    }
-    if (this.mStyleFilter !== null) {
-      resultList = this.filterService.processStyleFilter(resultList, this.mStyleFilter);
-    }
-    return resultList;
-  }
-
-  // endregion
 }

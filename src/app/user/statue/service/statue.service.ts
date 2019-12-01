@@ -29,7 +29,7 @@ export class StatueService {
         // TODO Remove When Response Fixed From the backend -->
         const list: StatueObject[] = [];
         for (const i of statueListResponse.Data) {
-          list.push(i);
+          list.push(i[0]);
         }
         listSubject.next(list);
       }
