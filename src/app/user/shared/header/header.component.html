@@ -14,7 +14,7 @@
                 <div class="col-1 pl-0 align-self-center">
                   <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
                   <!--                  <h4 class="mb-0">ISHTAR</h4>-->
-<!--                  <span>Home Of Art</span>-->
+                  <!--                  <span>Home Of Art</span>-->
                 </div>
               </div>
             </div>
@@ -33,163 +33,128 @@
             <div class="col-4 align-self-center">
               <ul class="mb-0 pl-0">
                 <li class="float-right">
-                  <a>
-                    <div class="dropdown" mdbDropdown>
-                      <span class="login" *ngIf="!userLoggedIn">
+                  <span class="login" *ngIf="!userLoggedIn">
                         <a (click)="showDialog()">Login</a>
-                      </span>
-                      <div class="d-inline-block" mdbDropdownToggle id="letter-circle" *ngIf="userLoggedIn">
-                          <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
-                          <div class="info">
-                            <span class="email">{{userInfo.username}}</span>
-                            <div>
-                              <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px;">Profile</a>
-                            </div>
-                           <div class="login-btn" *ngIf="userLoggedIn"> 
-                             <!--            <a class="dropdown-item">Show Wish List</a>-->
-                             <!--            <a class="dropdown-item">Show Favorite List</a>-->
-                               <a class="dropdown-item" (click)="logout()">Logout !</a>
-                             </div>
-                           </div>
-                         </div>
-<!--                      <div class="dropdown-menu dropdown-primary" *ngIf="!userLoggedIn">-->
-<!--                        <a class="dropdown-item" (click)="showDialog()">Login</a>-->
+                  </span>
+                  <div mdbDropdown id="letter-circle" *ngIf="userLoggedIn">
+                    <span mdbDropdownToggle class="letter dropdown-toggle">{{userInfo?.username.substring(0, 1)}}</span>
+                    <div class="info dropdown-menu" *ngIf="userLoggedIn">
+                      <span class="email dropdown-item">{{userInfo?.username}}</span>
+<!--                      <div class="dropdown-item">-->
+<!--                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px;">Profile</a>-->
 <!--                      </div>-->
-<!--                      <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn">-->
-<!--                        &lt;!&ndash;                        <a class="dropdown-item">Show Wish List</a>&ndash;&gt;-->
-<!--                        &lt;!&ndash;                        <a class="dropdown-item">Show Favorite List</a>&ndash;&gt;-->
-<!--                        <a class="dropdown-item" (click)="logout()">Logout !</a>-->
-<!--                      </div>-->
+                      <div class="login-btn dropdown-item" *ngIf="userLoggedIn">
+                        <a (click)="logout()">Logout !</a>
+                      </div>
                     </div>
-                  </a>
-                </li>
-<!--                <li class="float-right">-->
-<!--                  <a routerLink="/statue-list">-->
-<!--                    Statues-->
-<!--                  </a>-->
-<!--                </li>-->
-                <li class="float-right">
-                  <a routerLink="/about-ishtar">
-                    About Us
-                  </a>
-                </li>
-                <li class="float-right">
-                  <a routerLink="/painting-list">
-                    Paintings
-                  </a>
-                </li>
-                <!--                <li class="float-right">-->
-                <!--                  <a routerLink="/art-schools-list">-->
-                <!--                    Art Schools-->
-                <!--                  </a>-->
-                <!--                </li>-->
-                <li class="float-right">
-                  <a routerLink="/artist-list">
-                    Artists
-                  </a>
-                </li>
-              </ul>
-            </div>
+                  </div>
+            </li>
+            <li class="float-right">
+              <a routerLink="/about-ishtar">
+                About Us
+              </a>
+            </li>
+            <li class="float-right">
+              <a routerLink="/painting-list">
+                Paintings
+              </a>
+            </li>
+            <li class="float-right">
+              <a routerLink="/artist-list">
+                Artists
+              </a>
+            </li>
+            </ul>
           </div>
         </div>
       </div>
-    </nav>
-    <!-- #header-nav -->
-  </header>
+</div>
+</nav>
+<!-- #header-nav -->
+</header>
 
 
-  <!--Navbar-->
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light d-lg-none" [containerInside]="true">
-    <!-- Collapsible content -->
-    <links>
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/painting-list" class="nav-link waves-light" mdbWavesEffect>Paintings</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>
-          </li>
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Us</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <div class="search-mobile">
-            <div id="input-mobile-search">
-              <form [formGroup]="searchFrom">
-                <input mdbInput type="text" class="form-control py-0" 
-                       placeholder="Search" formControlName="search">           
-                <mdb-icon fas icon="search" class="search-btn" (click)="goToSearch()"></mdb-icon>
-              </form>
-            </div>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light d-lg-none" [containerInside]="true">
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/painting-list" class="nav-link waves-light" mdbWavesEffect>Paintings</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Us</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <div class="search-mobile">
+          <div id="input-mobile-search">
+            <form [formGroup]="searchFrom">
+              <input mdbInput type="text" class="form-control py-0"
+                     placeholder="Search" formControlName="search">
+              <mdb-icon fas icon="search" class="search-btn" (click)="goToSearch()"></mdb-icon>
+            </form>
           </div>
-        </li>
-        <!-- Dropdown -->
-        <!--        <li class="float-right"><a routerLink="/art-schools-list">Art Schools</a></li>-->
-      </ul>
-      <!--    <mdb-navbar-brand><a class="navbar-brand" href="#">Ishtar Admin</a></mdb-navbar-brand>-->
-    </links>
-    <!-- Collapsible content -->
-
-    <!--    <li class="float-right">-->
-    <a>
-      <div class="dropdown" mdbDropdown>
-         <!-- <div class="dropdown-menu dropdown-primary" *ngIf="!userLoggedIn"> -->
-            <div class="login-btn" *ngIf="!userLoggedIn"> 
-              <a class="dropdown-item" (click)="showDialog()">Login</a>
-            </div>
-          <!--  <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn"> -->
-              
-        <div mdbDropdownToggle class="letter-circle"
-             *ngIf="userLoggedIn">
-             <span class="letter">{{userInfo.username.substring(0, 1)}}</span>
-             <div class="info">
-               <span class="email">{{userInfo.username}}</span>
-               <div>
-                 <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
-               </div>
-              <div class="login-btn" *ngIf="userLoggedIn"> 
-                <!--            <a class="dropdown-item">Show Wish List</a>-->
-                <!--            <a class="dropdown-item">Show Favorite List</a>-->
-                  <a class="dropdown-item" (click)="logout()">Logout !</a>
-                </div>
-              </div>
-            </div>
-
-      </div>
-    </a>
-    <!--    </li>-->
-    <!--    <button mdbBtn class="btn-wish-list" mdbWavesEffect>Wish List</button>-->
-    <!--    <button mdbBtn class="btn-favorite" mdbWavesEffect>Favorite</button>-->
-    <div class="header-mobile-section d-inline-flex">
-      <div class="row">
-        <div class="col-3 pl-0">
-          <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
         </div>
-        <div class="col-8 pr-0">
-          <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid"
-               alt="logo image" style="cursor: pointer;">
+      </li>
+    </ul>
+  </links>
+  <a>
+    <div class="dropdown" mdbDropdown>
+      <!-- <div class="dropdown-menu dropdown-primary" *ngIf="!userLoggedIn"> -->
+      <div class="login-btn" *ngIf="!userLoggedIn">
+        <a class="dropdown-item" (click)="showDialog()">Login</a>
+      </div>
+      <!--  <div class="dropdown-menu dropdown-primary" *ngIf="userLoggedIn"> -->
+
+      <div mdbDropdown class="letter-circle"
+           *ngIf="userLoggedIn">
+        <span class="letter" mdbDropdownToggle>{{userInfo?.username.substring(0, 1)}}</span>
+        <div class="info dropdown-menu">
+          <span class="email dropdown-item">{{userInfo?.username}}</span>
+          <div class="dropdown-item">
+            <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
+          </div>
+          <div class="login-btn dropdown-item" *ngIf="userLoggedIn">
+            <a class="dropdown-item" (click)="logout()">Logout !</a>
+          </div>
         </div>
       </div>
-<!--      <div class="pr-0 text-center">-->
-<!--        <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image" routerLink="/">-->
-<!--        <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">-->
-<!--        <span>-->
-<!--          &lt;!&ndash;                  <h4 class="mb-0">ISHTAR</h4>&ndash;&gt;-->
-<!--          &lt;!&ndash;                  <span>Home Of Art</span>&ndash;&gt;-->
-<!--         </span>-->
-<!--      </div>-->
-      <!--    <div class="pl-0 align-self-center">-->
-      <!--      <h6 class="mb-0">ISHTAR</h6>-->
-      <!--      <span>Home Of Art</span>-->
-      <!--    </div>-->
+
     </div>
-    <!-- Navbar brand -->
-  </mdb-navbar>
-  <!--/.Navbar-->
+  </a>
+  <div class="header-mobile-section d-inline-flex">
+    <div class="row">
+      <div class="col-3 pl-0">
+        <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
+      </div>
+      <div class="col-8 pr-0">
+        <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid"
+             alt="logo image" style="cursor: pointer;">
+      </div>
+    </div>
+    <!--      <div class="pr-0 text-center">-->
+    <!--        <img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image" routerLink="/">-->
+    <!--        <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">-->
+    <!--        <span>-->
+    <!--          &lt;!&ndash;                  <h4 class="mb-0">ISHTAR</h4>&ndash;&gt;-->
+    <!--          &lt;!&ndash;                  <span>Home Of Art</span>&ndash;&gt;-->
+    <!--         </span>-->
+    <!--      </div>-->
+    <!--    <div class="pl-0 align-self-center">-->
+    <!--      <h6 class="mb-0">ISHTAR</h6>-->
+    <!--      <span>Home Of Art</span>-->
+    <!--    </div>-->
+  </div>
+  <!-- Navbar brand -->
+</mdb-navbar>
+<!--/.Navbar-->
 
 </div>
 

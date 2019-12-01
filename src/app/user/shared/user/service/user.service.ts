@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {UserManagerService} from '../manager/user-manager.service';
 import {LoginRequest} from '../request/login-request';
-import {Observable, Subject} from 'rxjs';
+import {EMPTY, Observable, Subject} from 'rxjs';
 import {RegisterRequest} from '../request/register-request';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,15 @@ export class UserService {
       username,
       password
     };
-    this.userManager.login(loginRequest).subscribe(
+    this.userManager.login(loginRequest)
+      .pipe(
+        catchError(err => {
+          loginSubject.error('Error Logging In! ');
+          console.log(JSON.stringify(err));
+          return EMPTY;
+        })
+      )
+      .subscribe(
       loginResponse => {
         localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
       }
@@ -32,9 +41,18 @@ export class UserService {
     const registerRequest: RegisterRequest = {
       username,
       email,
-      password
+      password,
+      image: 'https://via.placeholder.com/150?text=avatar'
     };
-    this.userManager.register(registerRequest).subscribe(
+    this.userManager.register(registerRequest)
+      .pipe(
+        catchError(err => {
+          registerSubject.error('Error Logging In! ');
+          console.log(JSON.stringify(err));
+          return EMPTY;
+        })
+      )
+      .subscribe(
       () => {
         registerSubject.next(200);
       }, () => {
