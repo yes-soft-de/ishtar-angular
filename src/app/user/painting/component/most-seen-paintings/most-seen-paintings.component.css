@@ -1,0 +1,30 @@
+.most-painting-seen {
+  padding: 2rem 0;
+  background: #343a40;
+}
+.most-painting-seen .custom-card-header {
+  height: 15rem;
+}
+.most-painting-seen .content .painting-name a {
+  color: #ccb832;
+}
+.most-painting-seen .content .painting-viewed-number {
+  font-size: 0.9rem;
+}
+.most-painting-seen .content .painting-artist-name,
+.most-painting-seen .content .painting-dimension {
+  border-bottom: 1px solid;
+}
+.most-painting-seen .content .painting-artist-name a:hover,
+.most-painting-seen .content .painting-name a:hover {
+  color: #f4db75;
+}
+.most-painting-seen .content .painting-artist-name a,
+.most-painting-seen .content .painting-color-type .h5,
+.most-painting-seen .content p span {
+  color: #b2b67a;
+}
+.most-painting-seen .null-most-seen-painting,
+.most-painting-seen .most-seen-painting-loading h3 {
+  color: #ccb832;
+}

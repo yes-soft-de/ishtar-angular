@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
