@@ -20,7 +20,7 @@ export class LoveComponent implements OnInit {
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
     this.loveService.getLoveObservable().subscribe(
-        (loveResponse: { success: boolean, value: any }) => {     
+        (loveResponse: { success: boolean, value: any }) => {
           // Check If There Is Data Or Not Return From The Server
           if (loveResponse) {
             if (loveResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_LOVE || 
@@ -50,7 +50,6 @@ export class LoveComponent implements OnInit {
 
   // delete the love interaction
   deleteLove() {
-    console.log('Send delete Love Request', this.interactionId);
     this.loveService.deleteLoveInteraction(this.interactionId);
   }
 }
