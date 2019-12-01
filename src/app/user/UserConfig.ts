@@ -1,7 +1,7 @@
 export class UserConfig {
   // public static sourceAPI = 'http://ishtar-art.de/ishtar-backend/public/';
-  public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
-  // public static sourceAPI = '/ishtar-backend/public/';
+  // public static sourceAPI = 'http://dev-ishtar.96.lt/ishtar-backend/public/';
+  public static sourceAPI = '/ishtar-backend/public/';
   public static localAPI = 'http://localhost:8002/';
 
   public static diagnoseAPI = 'https://webhook.site/ed0764a6-f85a-4f5f-937d-127d0741832d';
