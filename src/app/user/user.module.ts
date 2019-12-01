@@ -8,19 +8,14 @@ import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
-import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
-import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
-import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
 import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/home-auction-section.component';
-import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {SearchListComponent} from './ui/components/search-list/search-list.component';
 import {TabsModule} from 'ngx-bootstrap';
@@ -38,8 +33,6 @@ import {ContactSupportComponent} from './ui/Pages/contact-support/contact-suppor
 import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
-import {StatuesDetailComponent} from './ui/components/statues-detail/statues-detail.component';
-import {StatueDetailPageComponent} from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import {NgxImageZoomComponent} from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
 import {AboutIshtarPageComponent} from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
@@ -92,19 +85,14 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     PaintingDetailsPageComponent,
     PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
-    ArtTypePageComponent,
     ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
-    HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
     ItemBriefComponent,
-    CommentsComponent,
     HomeAuctionSectionComponent,
-    HomeNavbarComponent,
     SearchPageComponent,
     SearchListComponent,
     ArtTypeListPageComponent,
@@ -121,8 +109,6 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     DataProcessingPageComponent,
     LoadingWidgetComponent,
     MostSeenPaintingsComponent,
-    StatuesDetailComponent,
-    StatueDetailPageComponent,
     NgxImageZoomComponent,
     StatueListComponent,
     StatueListPageComponent,
@@ -166,12 +152,9 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     ArtistListComponent,
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
-    HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
     ItemBriefComponent,
-    CommentsComponent,
     SearchPageComponent,
     SearchListComponent,
     ArtTypeListPageComponent,

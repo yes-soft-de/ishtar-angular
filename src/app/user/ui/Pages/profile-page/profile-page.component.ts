@@ -8,7 +8,7 @@ import {UserInfo} from '../../../entity-protected/profile/user-info';
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss', '../../components/statue-list/statue-list.component.scss'],
+  styleUrls: ['./profile-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ProfilePageComponent implements OnInit {
