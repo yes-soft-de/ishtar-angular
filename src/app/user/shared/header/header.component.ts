@@ -3,10 +3,7 @@ import {MatDialog} from '@angular/material';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserInfo} from '../../entity/user/user-info';
-import {UserConfig} from '../../UserConfig';
 import {ArtTypeService} from '../../../admin/service/art-type/art-type.service';
-import {UserProfileManagerService} from '../../manager/user-profile/user-profile-manager.service';
-import {UserManagerService} from '../../manager/user/user-manager.service';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserService} from '../user/service/user.service';
 
@@ -45,6 +42,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToSearch() {
+    // this.searchFrom.get('search').reset();
     this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }
 

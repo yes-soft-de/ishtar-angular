@@ -1,79 +1,11 @@
-.filters-group {
-  display: block;
-  width: 350px;
-  padding: 1.5rem;
-  float: left;
-  .filter {
-    border-bottom: 1px solid #e1e1e1;
-    padding: 20px 0;
-    i {
-      display: none;
-    }
-    &:last-child {
-      border-bottom: 0;
-    }
-    .title {
-      font-size: 20px;
-    }
-    button {
-      border: 1px solid #aaa;
-      margin: 5px;
-      padding: 5px;
-      background: #fff;
-      outline: none;
-      &:hover {
-        background: goldenrod;
-      }
-    }
-    .size-btn {
-      width: 100%;
-      display: block;
-      text-align: left;
-      span {
-        display: inline-block;
-        width: 70px;
-      }
-    }
-  }
-}
-
-.artist-list-section {
-
-  //margin-top: 6rem;
-  //border-top: 1px solid #333333;
-  #artist-sidebar {
-    border-right: 1px solid #aaa;
-    button {
-      background-color: white !important;
-      color: black;
-      padding: .375rem .75rem !important;
-      border: 1px solid #aaa;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      -o-box-shadow: none;
-      box-shadow: none;
-    }
-
-    button:hover {
-      background-color: goldenrod !important;
-    }
-  }
-
-  .sort-artist {
-    position: relative;
-    .sort-artist-dropdown {
-      z-index: 9999;
-      position: absolute;
-
-    }
-  }
+h3.title{ color: #CCB832 }
   #photos {
     .artist-card {
       position: relative;
       overflow: hidden;
       &:hover {
         .details-container {
-          bottom: 4rem;
+          bottom: 5rem;
         }
         img {
           padding: 0;
@@ -114,7 +46,7 @@
       }
     }
   }
-}
+
 @media (max-width: 767px) {
   .artist-list-section {
     margin-top: 0;
@@ -219,41 +151,8 @@
         border-top-right-radius: 12px;
         padding: 15px;
         padding-top: calc((13rem / 2) + 15px);
-        h3,
-        span {
+        h3 {
           color: #000 !important;
-        }
-        span {
-          margin-left: 15px !important;
-        }
-        i {
-          visibility: visible !important;
-        }
-      }
-    }
-  }
-
-  .artist-list-section {
-    border-top: 0 !important;
-    .sort-artist {
-      ul {
-        padding-left: 10px;
-        padding-right: 10px;
-        .sort-artist-dropdown {
-          right: 0;
-          left: 0;
-          top: 30px !important;
-          min-width: 145px;
-          padding: 0;
-          box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-          -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-          a {
-            padding: 5px;
-            border-bottom: 1px solid #e1e1e1;
-            &:last-child {
-              border-bottom: 0;
-            }
-          }
         }
       }
     }

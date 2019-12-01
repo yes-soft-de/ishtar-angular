@@ -28,9 +28,9 @@ export class SearchComponent implements OnInit {
       const searchParams = param.get('query').replace('%20', ' ');
       this.searchService.search(searchParams).subscribe(
           result => {
-            console.log(result);
             this.artistList = this.searchHelper.getArtistList(result);
             this.paintingList = this.searchHelper.getPaintingList(result);
+            console.log(this.artistList, this.paintingList);
           }
       );
     });
