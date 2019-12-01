@@ -17,7 +17,8 @@ export class InteractionsService {
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
               protected interactionConstantService: InteractionConstantService,
-              protected dialog: MatDialog) { }
+              protected dialog: MatDialog) {
+  }
 
   // Get Interactions number
   getInteractionsNumber(entity: string, row: number, interactionsType: string): Observable<any> {
@@ -31,15 +32,15 @@ export class InteractionsService {
           this.interactionsNumberSubject.error('Error Getting Data');
           return EMPTY;
         }), map(oldStructureInteraction => {
-            return {
+          return {
             id: row,
             interactionType: interactionsType,
             interactionNumber: oldStructureInteraction.Data[0].interactions
           };
         })).subscribe(
-          newStructureInteractions => {
-            // Send Data If Successfully Fetching
-            this.interactionsNumberSubject.next(newStructureInteractions);
+      newStructureInteractions => {
+        // Send Data If Successfully Fetching
+        this.interactionsNumberSubject.next(newStructureInteractions);
       }
     );
     // Return The Data To Print It In Component
@@ -50,36 +51,35 @@ export class InteractionsService {
   getClientInteraction(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
     // check if user is login or not
     return this.interactionsManagerService.getClientInteraction(clientId)
-        .pipe(catchError(err => {
-          interactionSubject.error('Error Getting Data');
-          return EMPTY;
-        })).subscribe(
-            (clientInteractionsResponse: { Data: any }) => {
-              // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
-              clientInteractionsResponse.Data.map(interactionResponse => {
-                if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_LOVE) {
-                  // Check For Entity Name and Interaction IS Like
-                  if (interactionResponse.entity === parentType) {
-                    // Check For Specify (artist, painting, ...)
-                    if (interactionResponse.id === rowId) {
-                      interactionSubject.next({success: true, value: interactionResponse});
-                    }
-                  }
+      .pipe(catchError(err => {
+        interactionSubject.error('Error Getting Data');
+        return EMPTY;
+      })).subscribe(
+        (clientInteractionsResponse: { Data: any }) => {
+          // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
+          clientInteractionsResponse.Data.map(interactionResponse => {
+            if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_LOVE) {
+              // Check For Entity Name and Interaction IS Like
+              if (interactionResponse.entity === parentType) {
+                // Check For Specify (artist, painting, ...)
+                if (interactionResponse.id === rowId) {
+                  interactionSubject.next({success: true, value: interactionResponse});
                 }
-                if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-                  // Check For Entity Name and Interaction IS Follow
-                  if (interactionResponse.entity === parentType) {
-                    // Check For Specify (artist, painting, ...)
-                    if (interactionResponse.id === rowId) {
-                      interactionSubject.next({success: true, value: interactionResponse});
-                      
-                    }
-                  }
-                }
-
-              });
+              }
             }
-        );
+            if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
+              // Check For Entity Name and Interaction IS Follow
+              if (interactionResponse.entity === parentType) {
+                // Check For Specify (artist, painting, ...)
+                if (interactionResponse.id === rowId) {
+                  interactionSubject.next({success: true, value: interactionResponse});
+                }
+              }
+            }
+
+          });
+        }
+      );
   }
 
   // Post Interactions (entityType: artistTableNumber, entityId: artistId, interactionsType = (love, follow, clap)
@@ -89,38 +89,38 @@ export class InteractionsService {
     // Fetch Interactions Number
     const interactionsNumber = +this.interactionConstantService.convertInteractionsTypeToNumber(interactionsType);
     this.interactionsManagerService.postInteractions(entityTypeNumber, entityId, userId, interactionsNumber)
-        .pipe(catchError(err => {
-            interactionSubject.error('Error Getting Data');
-            return EMPTY;
-          }),
-          map(oldStructureInteraction => {
-            return {
-              success: true,
-              value: oldStructureInteraction.Data
-            };
+      .pipe(catchError(err => {
+          interactionSubject.error('Error Getting Data');
+          return EMPTY;
+        }),
+        map(oldStructureInteraction => {
+          return {
+            success: true,
+            value: oldStructureInteraction.Data
+          };
         }))
-        .subscribe(
+      .subscribe(
         (newStructureInteraction: any) => {
           interactionSubject.next(newStructureInteraction);
         }
-    );
+      );
   }
 
-  
+
   // Get The Client Clap Dependence On Client ID , entityName: string, rowId
   getClientClap(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
     return this.interactionsManagerService.getClientClap(clientId).subscribe(
-        (clapInteractionsResponse: {Data: any}) => {
-          clapInteractionsResponse.Data.map(clapResponse => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
-              // Check For Entity Name and Interaction IS Clap
-              if (clapResponse.entity === parentType) {
-                // Check For Specify (artist, painting, ...)
-                if (clapResponse.id === rowId) {
-                  interactionSubject.next({success: true, value: clapResponse});
-                }
-              }
-          });
-        }
+      (clapInteractionsResponse: { Data: any }) => {
+        clapInteractionsResponse.Data.map(clapResponse => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
+          // Check For Entity Name and Interaction IS Clap
+          if (clapResponse.entity === parentType) {
+            // Check For Specify (artist, painting, ...)
+            if (clapResponse.id === rowId) {
+              interactionSubject.next({success: true, value: clapResponse});
+            }
+          }
+        });
+      }
     );
   }
 
@@ -133,11 +133,11 @@ export class InteractionsService {
         return EMPTY;
       }))
       .subscribe(
-          (createClapResponse: any) => {
-            if (createClapResponse.Data.value > 0) {
-              interactionSubject.next({success: true, value: createClapResponse});
-            }
+        (createClapResponse: any) => {
+          if (createClapResponse.Data.value > 0) {
+            interactionSubject.next({success: true, value: createClapResponse});
           }
+        }
       );
   }
 
@@ -150,10 +150,10 @@ export class InteractionsService {
           return EMPTY;
         }))
         .subscribe(
-        (deleteInteraction: any) => {
-          interactionSubject.next(false);
-        }
-      );
+          (deleteInteraction: any) => {
+            interactionSubject.next(false);
+          }
+        );
     } else {
       return false;
     }
@@ -201,7 +201,6 @@ export class InteractionsService {
   isUserNode(user: UserInfo) {
     return user.id !== undefined;
   }
-
 
 
 }

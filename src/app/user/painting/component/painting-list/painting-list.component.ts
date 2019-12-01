@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
 import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
+import {PaintingListItem} from '../../entity/painting-list-item';
 
 @Component({
   selector: 'app-painting-list',

@@ -4,7 +4,6 @@ import {ArtistListItem} from '../entity/artist-list-item';
 import {ArtistDetails} from '../entity/artist-details';
 import {ArtistManagerService} from '../manager/artist-manager.service';
 import {catchError} from 'rxjs/operators';
-import {ArtistObject} from '../../entity-protected/artist/artist-object';
 
 @Injectable({
   providedIn: 'root'
