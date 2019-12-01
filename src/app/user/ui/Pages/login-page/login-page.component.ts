@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserManagerService} from '../../../manager/user/user-manager.service';
 import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../../../shared/user/service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -22,6 +23,7 @@ export class LoginPageComponent implements OnInit {
   private registering = false;
 
   constructor(private userService: UserService,
+              private router: Router,
               private fb: FormBuilder,
               private toaster: ToastrService) {
 
@@ -52,7 +54,13 @@ export class LoginPageComponent implements OnInit {
 
   // (c) This Fires After (b) is Successful
   private submitLoginAfterRegister(username: string, password: string) {
-    this.userService.login(username, password);
+    this.userService.login(username, password).subscribe(
+      () => {
+        this.router.navigate(['/']);
+      }, error1 => {
+        this.toaster.error('Error' + error1);
+      }
+    );
   }
 
   submitRegister() {
