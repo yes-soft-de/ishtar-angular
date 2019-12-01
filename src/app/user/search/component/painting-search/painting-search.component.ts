@@ -14,6 +14,11 @@ export class PaintingSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.config = {
+      itemsPerPage: 8,
+      currentPage: 1,
+      totalItems: this.paintingList.length
+    };
   }
 
   pageChanged(event) {

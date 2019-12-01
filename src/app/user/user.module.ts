@@ -14,22 +14,21 @@ import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
-import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/home-auction-section.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
-import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
-import {FAQComponent} from './ui/Pages/faq/faq.component';
-import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
-import {ContactSupportComponent} from './ui/Pages/contact-support/contact-support.component';
-import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
-import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
+import {DataProcessingPageComponent} from './static-pages/data-processing-page/data-processing-page.component';
+import {ImprintPageComponent} from './static-pages/imprint-page/imprint-page.component';
+import {FAQComponent} from './static-pages/faq/faq.component';
+import {AboutUsComponent} from './static-pages/about-us/about-us.component';
+import {ContactSupportComponent} from './static-pages/contact-support/contact-support.component';
+import {PrivacyPolicyComponent} from './static-pages/privacy-policy/privacy-policy.component';
+import {TOSPageComponent} from './static-pages/tospage/tospage.component';
 import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
 import {NgxImageZoomComponent} from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
-import {AboutIshtarPageComponent} from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {AboutIshtarPageComponent} from './static-pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
@@ -89,7 +88,6 @@ import {SearchPageComponent} from './search/component/search-page/search-page.co
     ArtistDetailsComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    HomeAuctionSectionComponent,
     SearchPageComponent,
     SearchComponent,
     ArtTypeListPageComponent,
