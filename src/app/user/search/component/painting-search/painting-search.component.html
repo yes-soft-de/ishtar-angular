@@ -1,4 +1,4 @@
-<h3 class="title">Painting</h3>
+<h3 class="title">Artist</h3>
 <div class="col-sm-9 col-xs-12 floating">
   <div id="painting-list">
     <div class="row">
@@ -12,7 +12,7 @@
               <i class="fas fa-shopping-cart"></i>
             </a>
           </span>
-          <img class="img-fluid" src="{{painting.path}}"
+          <img class="img-fluid" src="{{painting?.path}}"
                (error)="painting.path = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
           <span class="painting-info">
              <p class="painting-name">{{painting?.name}}</p>

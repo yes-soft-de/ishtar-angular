@@ -14,6 +14,7 @@ export class SearchHelpersService {
     const artistList: SearchListItem[] = [];
     for (const i of searchList) {
       if (i.artist !== null && i.artist !== undefined) {
+        console.log('artist', i);
         artistList.push(i);
       }
     }
@@ -24,6 +25,7 @@ export class SearchHelpersService {
     const paintingList: SearchListItem[] = [];
     for (const i of searchList) {
       if (!(i.artist !== null && i.artist !== undefined)) {
+        console.log('painting', i);
         paintingList.push(i);
       }
     }
