@@ -1,12 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserConfig} from '../../UserConfig';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
-import {UserProfileService} from '../../service/client-profile/user-profile.service';
-import {UserInfo} from '../../entity/user/user-info';
-import {CreateClapResponse} from '../../entity/clap/create-clap-response';
-import {CreateClapRequest} from '../../entity/clap/create-clap-request';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +12,8 @@ import {CreateClapRequest} from '../../entity/clap/create-clap-request';
  */
 export class InteractionsRepositoryService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
@@ -28,8 +25,10 @@ export class InteractionsRepositoryService {
     return this.httpClient.get(`${UserConfig.specificClientInteractions}/${clientId}`);
   }
 
-  // Post (love, view, follow) Interactions (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId, interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any>  {
+  // Post (love, view, follow) Interactions
+  // (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId,
+  // interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any> {
     const request = {
       client: userId,
       row: entityId,
@@ -68,12 +67,12 @@ export class InteractionsRepositoryService {
   }
 
   // Delete Interactions
-  deleteInteractions(interactionID: number): Observable<any>  {
+  deleteInteractions(interactionID: number): Observable<any> {
     return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`);
   }
 
   // Delete Clap Interactions
-  deleteClap(clapID: number): Observable<any>  {
+  deleteClap(clapID: number): Observable<any> {
     return this.httpClient.delete(`${UserConfig.clapAPI}/${clapID}`);
   }
 

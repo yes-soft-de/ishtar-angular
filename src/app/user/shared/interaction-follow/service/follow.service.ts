@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {UserInfo} from '../../../entity/user/user-info';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
-import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
+import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 
 @Injectable({
   providedIn: 'root'

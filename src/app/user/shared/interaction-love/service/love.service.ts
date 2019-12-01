@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
@@ -8,6 +7,7 @@ import {UserProfileService} from '../../../service/client-profile/user-profile.s
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import { LoveResponse } from '../response/love-response';
+import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 
 @Injectable({
   providedIn: 'root'

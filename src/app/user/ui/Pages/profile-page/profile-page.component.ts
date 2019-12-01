@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {IshtarInteractionService} from 'src/app/user/service/ishtar-interaction/ishtar-interaction.service';
 import {UserProfileManagerService} from 'src/app/user/manager/user-profile/user-profile-manager.service';
 import {Router} from '@angular/router';
 import {UserInfo} from '../../../entity-protected/profile/user-info';
+import {InteractionsService} from '../../../interactions/service/interactions.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +14,7 @@ export class ProfilePageComponent implements OnInit {
   magnifyingImage = false;
   public userProfileInfo: UserInfo;
 
-  constructor(private interactionService: IshtarInteractionService,
+  constructor(private interactionService: InteractionsService,
               private userProfileManager: UserProfileManagerService,
               private router: Router) {
   }

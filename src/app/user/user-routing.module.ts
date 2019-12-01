@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {UserComponent} from './user.component';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
@@ -22,6 +21,7 @@ import {PaintingListPageComponent} from './painting/component/painting-list-page
 import {HomePageComponent} from './home/component/home-page/home-page.component';
 import {ArtTypeDetailsPageComponent} from './art-type/component/art-type-details-page/art-type-details-page.component';
 import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/art-type-list-page.component';
+import {SearchPageComponent} from './search/component/search-page/search-page.component';
 
 
 const routes: Routes = [

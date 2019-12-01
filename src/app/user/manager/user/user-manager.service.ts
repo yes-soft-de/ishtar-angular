@@ -3,15 +3,15 @@ import {LoginRepoService} from '../../repository/login/login-repo.service';
 import {RegisterRepoService} from '../../repository/register/register-repo.service';
 import {Subject, Observable} from 'rxjs';
 import {LoginResponse} from '../../entity-protected/login/login-response';
-import {RegisterResponse} from '../../entity-protected/register/register-response';
 import {LogoutRepoService} from '../../repository/logout/logout-repo.service';
 import {UserConfig} from '../../UserConfig';
+import {RegisterResponse} from '../../shared/user/response/register-response';
 
 /**
  * This Class is Used as a Middle Ground Between Page and Repo Services
  * The Definition I'm Following Here is that a Repo is a service that contains
  * HttpClient Service inside. While the Manager Aggregate the Result
- * This is Due to change to More Elaborate Structure Soon.
+ * This is Due to change to More Elaborate Structure  Soon.
  * Now there Are 3 Observables Inside, The Manager Serves a Facade to User functionality.
  */
 @Injectable({

@@ -18,7 +18,6 @@ export class ArtistCommentService extends BaseCommentService {
   }
 
   getArtistComment(artistId: number) {
-    // TODO: We Should Replace This with a Config File
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_ARTIST);
     this.getComments(apiType, artistId).subscribe(
       commentsResponse => {
