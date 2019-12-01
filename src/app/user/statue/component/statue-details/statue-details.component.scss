@@ -1,5 +1,40 @@
 .details {
-  #full-size-img {
+  .statue-artist {
+    .statue-artist-img {
+      vertical-align: bottom;
+      img {
+        width: 3rem;
+        height: 3rem;
+        border: 1px solid #cabc83;
+        border-radius: 50%;
+        padding: 1px;
+        margin-right: 20px;
+      }
+    }
+    .statue-artist-name {
+      a {
+        color: #CCB832;
+        font-size: .9rem;
+        letter-spacing: 2px;
+        &:hover {
+          color: #f4db75;
+        }
+        span {
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+
+  .statue-artist-name a:hover,
+  .statue-name a:hover {
+    color: #f4db75;
+  }
+  .statue-artist-name a,
+  p span {
+    color: #b2b67a;
+  }
+  .full-size-img {
     z-index: 999999;
     width: 100%;
     height: 100%;
@@ -19,7 +54,7 @@
       max-height: 100%;
     }
   }
-  #full-size-img.active {
+  .full-size-img.active {
     display: flex;
     img {
       display: block;
@@ -84,41 +119,6 @@
         }
       }
     }
-    .statue-artist {
-      .statue-artist-img {
-        vertical-align: bottom;
-        img {
-          width: 3rem;
-          height: 3rem;
-          border: 1px solid #cabc83;
-          border-radius: 50%;
-          padding: 1px;
-          margin-right: 20px;
-        }
-      }
-      .statue-artist-name {
-        a {
-          color: #CCB832;
-          font-size: .9rem;
-          letter-spacing: 2px;
-          &:hover {
-            color: #f4db75;
-          }
-          span {
-            font-size: .8rem;
-          }
-        }
-      }
-    }
-
-    .statue-artist-name a:hover,
-    .statue-name a:hover {
-      color: #f4db75;
-    }
-    .statue-artist-name a,
-    p span {
-      color: #b2b67a;
-    }
     ul {
       list-style-type: none;
       padding: 0;
@@ -139,7 +139,7 @@
         }
       }
     }
-    #add-to-wish-btn {
+    .add-to-wish-btn {
       background-color: #CCB832;
       box-shadow: none;
       font-size: .8rem;
@@ -147,30 +147,9 @@
         font-size: 1rem;
       }
     }
-    //#make-an-offer {
-    //  //background-color: #CCB832;
-    //  box-shadow: none;
-    //  font-size: .8rem;
-    //}
   }
 }
-.tab-information {
-  border-radius: 5px;
-}
-/* Style the buttons inside the tab */
-.tab .tab-links {
-  color: #aaaaaa;
-  padding: 15px 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 17px;
-}
-/* Change background color of buttons on hover */
-.tab .tab-links:hover,
-.tab .tab-links.active {
-  background-color: #ddd;
-  color: #333333;
-}
+
 .statues-may-like {
   padding: 1.5rem;
   .statue {
@@ -235,6 +214,41 @@
       .info {
         opacity: 1;
         visibility: visible;
+      }
+    }
+  }
+}
+
+.information-section {
+  display: block;
+  padding: 25px;
+  h2 {
+    text-align: center;
+  }
+  .sub-block {
+    padding: 10px;
+    .title {
+      width: 200px;
+      float: left;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .info {
+      float: left;
+      width: calc(100% - 200px);
+      padding-left: 15px;
+      color: #555;
+    }
+  }
+}
+
+@media (max-width:500px) {
+  .information-section {
+    .sub-block {
+      .title,
+      .info {
+        float: none;
+        width: 100%;
       }
     }
   }

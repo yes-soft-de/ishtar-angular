@@ -2,8 +2,9 @@
 <div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
   <div>
     <div class="filter">
-      <h5>Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
-      <div class="btn-container hide">
+      <h5 (click)="fiterArtTypeOptionsView()">Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
+      <div class="btn-container hide"
+           [ngClass]="{'active': filterArtType == true, 'hide': filterArtType == false}">
         <button mdbBtn class="btn-light" (click)="disableArtTypeFilter()">All</button>
         <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
                 (click)="filterByArtType(artType)"
@@ -12,8 +13,9 @@
     </div>
     <hr>
     <div class="filter">
-      <h5>Filter By Artist <i class="fas fa-chevron-down"></i></h5>
-      <div class="btn-container hide">
+      <h5 (click)="fiterArtistOptionsView()">Filter By Artist <i class="fas fa-chevron-down"></i></h5>
+      <div class="btn-container hide"
+           [ngClass]="{'active': filterArtist == true, 'hide': filterArtist == false}">
         <button mdbBtn class="btn-light" (click)="disableArtistNameFilter()">All</button>
         <button mdbBtn class="btn-light"
                 *ngFor="let artist of artists; index as i"
@@ -24,7 +26,7 @@
     <hr>
   </div>
 </div>
-<div class="col-sm-9 col-xs-12 floating">
+<div class="col-sm-9 col-xs-12 mx-auto" [class.floating]="filter">
   <div id="painting-list">
     <div class="row">
       <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"

@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {PaintingSearchListItem} from '../../../entity/search-result/painting-search-list-item';
-import {ArtistSearchListItem} from '../../../entity/search-result/artist-search-list-item';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {SearchHelpersService} from '../../helper/search-helpers.service';
 import {SearchListItem} from '../../entity/search-list-item';
 
@@ -26,12 +24,15 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    const searchParams = this.activatedRoute.snapshot.paramMap.get('query').replace('%20', ' ');
-    this.searchService.search(searchParams).subscribe(
-      result => {
-        this.artistList = this.searchHelper.getArtistList(result);
-        this.paintingList = this.searchHelper.getPaintingList(result);
-      }
-    );
+    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+      const searchParams = param.get('query').replace('%20', ' ');
+      this.searchService.search(searchParams).subscribe(
+          result => {
+            this.artistList = this.searchHelper.getArtistList(result);
+            this.paintingList = this.searchHelper.getPaintingList(result);
+            console.log(this.artistList, this.paintingList);
+          }
+      );
+    });
   }
 }

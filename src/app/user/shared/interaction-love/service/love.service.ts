@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
@@ -6,8 +7,6 @@ import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
-import { LoveResponse } from '../response/love-response';
-import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,6 @@ export class LoveService extends InteractionsService {
           }
       );
     } else if (this.checkUserDetailsExists(this.userInfo)) {
-      console.log('User Exists, Requesting Love Status');
       this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
     }
   }
@@ -53,7 +51,6 @@ export class LoveService extends InteractionsService {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      console.log('Sending Love interaction');
       this.postInteractionToAPI(entityType, entityId, this.userInfo.id, interactionsType, this.loveSubject);
     }
   }

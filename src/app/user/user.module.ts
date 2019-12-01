@@ -8,7 +8,6 @@ import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
-// import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
@@ -65,7 +64,7 @@ import { SearchComponent } from './search/component/search/search.component';
 import { PaintingSearchComponent } from './search/component/painting-search/painting-search.component';
 import { ArtistSearchComponent } from './search/component/artist-search/artist-search.component';
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
-
+import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +125,8 @@ import {SearchPageComponent} from './search/component/search-page/search-page.co
     ArtTypeDetailsPageComponent,
     SearchComponent,
     PaintingSearchComponent,
-    ArtistSearchComponent
+    ArtistSearchComponent,
+    ItemBriefComponent
   ],
   exports: [
     // User
@@ -159,7 +159,8 @@ import {SearchPageComponent} from './search/component/search-page/search-page.co
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
+    DataProcessingPageComponent,
+    ItemBriefComponent
   ],
   imports: [
     CommonModule,
