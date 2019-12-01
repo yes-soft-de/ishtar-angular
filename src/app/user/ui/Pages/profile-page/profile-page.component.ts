@@ -70,7 +70,8 @@ export class ProfilePageComponent implements OnInit {
   }
 
   viewStatue(statueId: number) {
-    this.interactionService.addViewInteraction(statueId, 'statue');
+    // this.interactionService.addViewInteraction(statueId, 'statue');
+    return;
   }
 
 }

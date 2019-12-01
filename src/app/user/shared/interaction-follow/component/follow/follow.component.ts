@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FollowService} from '../../service/follow.service';
 import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-follow',
@@ -20,16 +21,22 @@ export class FollowComponent implements OnInit {
     this.followService.initFollow(this.ParentType, this.ParentId);
     // Response From Follow Services
     this.followService.getFollowObservable().subscribe(
-        (data: { success: boolean, value: any }) => {
-          if (data) {
-            this.followed = data.success;       // this data = true if success
-            if (data.value.interactionID) {     // Response Data After Reload The Page
-              this.interactionId = data.value.interactionID;
-            } else if (data.value.Data.id) {    // Response Data After Create New Follow
-              this.interactionId = data.value.Data.id;
+        (followResponse: { success: boolean, value: any }) => {
+          // Check If There Is Data Or Not Return From The Server
+          if (followResponse) {
+            if (followResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_FOLLOW ||
+              followResponse.value.interaction.name == InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
+              this.followed = followResponse.success;       // this followResponse = true if success
+              if (followResponse.value.interactionID) {     // Response followResponse After Reload The Page
+                this.interactionId = followResponse.value.interactionID;
+              } else if (followResponse.value.id) {    // Response followResponse After Create New Follow
+                this.interactionId = followResponse.value.id;
+              }
+              // console.log('Follow Interaction Response : ', followResponse);
+            } else {
+              return EMPTY;
             }
-            console.log('Interaction Response : ', data);
-          } else {
+          } else {  // If Not Data That Mean This Interaction Was Deleted
             this.followed = false;
           }
         }
@@ -43,7 +50,6 @@ export class FollowComponent implements OnInit {
 
   // Stop Following
   stopFollow() {
-    console.log('Send delete Follow Request');
     this.followService.deleteFollowInteraction(this.interactionId);
   }
 }

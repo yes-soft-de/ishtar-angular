@@ -16,7 +16,7 @@ export class Statue {
   features: string;
   active: boolean;
   keyWord: string;
-  price: string;
+  price: number;
   createDate: {
     timezone: { name: string; },
     timestamp: number;

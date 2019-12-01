@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {InteractionsManagerService} from '../manager/interactions-manager.service';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../shared/comment/helper/page-type-to-number.service';
 import {InteractionConstantService} from './interaction-constant.service';
 import {UserInfo} from '../../entity-protected/profile/user-info';
 import {UserProfileService} from '../../service/client-profile/user-profile.service';
@@ -70,23 +70,18 @@ export class InteractionsService {
                       interactionSubject.next({success: true, value: interactionResponse});
                     }
                   }
-                } else if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-                  // Check For Entity Name and Interaction IS Clap
+                }
+                if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
+                  // Check For Entity Name and Interaction IS Follow
                   if (interactionResponse.entity === parentType) {
                     // Check For Specify (artist, painting, ...)
                     if (interactionResponse.id === rowId) {
                       interactionSubject.next({success: true, value: interactionResponse});
-                    }
-                  }
-                } else if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_CLAP) {
-                  // Check For Entity Name and Interaction IS Clap
-                  if (interactionResponse.entity === parentType) {
-                    // Check For Specify (artist, painting, ...)
-                    if (interactionResponse.id === rowId) {
-                      interactionSubject.next({success: true, value: interactionResponse});
+                      
                     }
                   }
                 }
+
               });
             }
         );
@@ -106,12 +101,30 @@ export class InteractionsService {
           map(oldStructureInteraction => {
             return {
               success: true,
-              value: oldStructureInteraction
+              value: oldStructureInteraction.Data
             };
         }))
         .subscribe(
         (newStructureInteraction: any) => {
           interactionSubject.next(newStructureInteraction);
+        }
+    );
+  }
+
+  
+  // Get The Client Clap Dependence On Client ID , entityName: string, rowId
+  getClientClap(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
+    return this.interactionsManagerService.getClientClap(clientId).subscribe(
+        (clapInteractionsResponse: {Data: any}) => {
+          clapInteractionsResponse.Data.map(clapResponse => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
+              // Check For Entity Name and Interaction IS Clap
+              if (clapResponse.entity === parentType) {
+                // Check For Specify (artist, painting, ...)
+                if (clapResponse.id === rowId) {
+                  interactionSubject.next({success: true, value: clapResponse});
+                }
+              }
+          });
         }
     );
   }
@@ -126,7 +139,6 @@ export class InteractionsService {
       }))
       .subscribe(
           (createClapResponse: any) => {
-            console.log('Response from clap : ', createClapResponse);
             if (createClapResponse.Data.value > 0) {
               interactionSubject.next({success: true, value: createClapResponse});
             }
@@ -144,7 +156,6 @@ export class InteractionsService {
         }))
         .subscribe(
         (deleteInteraction: any) => {
-          console.log('response deleted from love.service', deleteInteraction);
           interactionSubject.next(false);
         }
       );
@@ -162,7 +173,7 @@ export class InteractionsService {
           return EMPTY;
         }))
         .subscribe(
-          (res: any) => {
+          (deleteClapResponse: any) => {
             interactionSubject.next(false);
           }
         );
@@ -195,4 +206,7 @@ export class InteractionsService {
   isUserNode(user: UserInfo) {
     return user.id !== undefined;
   }
+
+
+
 }

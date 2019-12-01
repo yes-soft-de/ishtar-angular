@@ -20,14 +20,14 @@
               <span class="painting-info">
                 <p class="painting-name">{{painting?.name}}</p>
                 <p class="artist">{{painting?.artist}}</p>
-               <ul class="statistics">
-                 <li>
-                   <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'like'"></app-interaction>
-                 </li>
-                 <li>
-                  <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'view'"></app-interaction>
-                 </li>
-               </ul>
+                <ul class="statistics">
+                  <li>
+                    <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'like'"></app-interaction>
+                  </li>
+                  <li>
+                    <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'view'"></app-interaction>
+                  </li>
+                </ul>
               </span>
             </div>
           </div>

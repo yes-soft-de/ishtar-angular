@@ -169,7 +169,6 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     FAQComponent,
     ImprintPageComponent,
     DataProcessingPageComponent
-
   ],
   imports: [
     CommonModule,

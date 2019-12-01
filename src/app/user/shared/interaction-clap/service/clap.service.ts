@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {UserInfo} from '../../../entity/user/user-info';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
-import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../comment/helper/page-type-to-number.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
@@ -36,13 +36,12 @@ export class ClapService extends InteractionsService {
             if (this.isUserNode(user.Data)) {
               console.log('Assigning User');
               this.userInfo = user.Data;
-              this.getClientInteraction(this.userInfo.id, parentType, rowId, this.clapSubject);
+              this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
             }
           }
       );
     } else if (this.checkUserDetailsExists(this.userInfo)) {
-      console.log('User Exists, Requesting Clap Status');
-      this.getClientInteraction(this.userInfo.id, parentType, rowId, this.clapSubject);
+      this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
     }
   }
 
@@ -52,7 +51,6 @@ export class ClapService extends InteractionsService {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      console.log('Sending Clap interaction');
       this.postClapToAPI(entityType, entityId, clapValue, this.userInfo.id, this.clapSubject);
     }
   }
