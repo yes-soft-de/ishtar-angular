@@ -5,6 +5,8 @@ import { EMPTY, Subject, Observable } from 'rxjs';
 import { PaintingDetails } from '../../entity/painting-details/painting-details';
 import {UserConfig} from '../../UserConfig';
 import {PaintingListResponse} from '../response/painting-list-response';
+import {MostViewedListItem} from '../entity/most-viewed-list-item';
+import {MostViewedPaintingResponse} from '../response/most-viewed-painting-response';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +33,7 @@ export class PaintingRepositoryService {
     return this.httpClient.get(`${UserConfig.paintingByAPI}/${param}/${value}`);
   }
 
+  getMostViewedPainting(): Observable<MostViewedPaintingResponse> {
+    return this.httpClient.get<MostViewedPaintingResponse>(UserConfig.mostViewedAPI);
+  }
 }

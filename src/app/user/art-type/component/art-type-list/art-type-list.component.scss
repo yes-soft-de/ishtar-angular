@@ -1,0 +1,80 @@
+#school-list-section {
+  max-width: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  #cards-list {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+
+    .school-list-card {
+      position: relative;
+      padding: 2rem;
+
+      #school-bg {
+        img {
+          object-fit: cover;
+          @media screen and (min-width: 0) {
+            height: 22rem;
+            width: 22rem;
+          }
+          @media screen and (min-height: 960px) {
+            height: 25rem;
+            width: 25rem;
+          }
+        }
+      }
+
+      #school-fg {
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 2rem;
+        right: 2rem;
+        padding: 2rem;
+        div {
+          background: rgba(0, 0, 0, .5);
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+
+        color: white;
+
+        z-index: 15;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media (max-width:500px) {
+  #school-list-section{
+    #cards-list {
+      .school-list-card {
+        padding: 0;
+        #school-bg{
+          img {
+            width: calc(100% - 30px);
+            margin: 0 15px;
+            height: auto;
+          }
+        }
+        #school-fg{
+          padding: 0;
+        }
+      }
+    }
+  }
+}

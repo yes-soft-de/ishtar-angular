@@ -13,7 +13,7 @@ export class HomeHeaderComponent implements OnInit {
   activeSlide = 0;
   @ViewChild('heroSlider', {static: true}) public carousel: CarouselComponent;
   constructor() {
-    console.log(this.paintings.length);
+    // console.log(this.paintings.length);
   }
 
   ngOnInit() {

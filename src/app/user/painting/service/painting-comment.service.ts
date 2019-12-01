@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {BaseCommentService} from '../../shared/comment/service/base-comment.service';
 import {CommentObject} from '../../shared/comment/entity/comment-object';
-import {PageTypeToNumberService} from '../../shared/comment/helper/page-type-to-number.service';
+import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
 import {CommentManagerService} from '../../shared/comment/manager/comment-manager.service';
 
 @Injectable({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StatueService} from '../../service/statue.service';
 import {StatueObject} from '../../entity/statue-object';
+import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 
 @Component({
   selector: 'app-statue-list',
@@ -10,19 +11,24 @@ import {StatueObject} from '../../entity/statue-object';
 export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
-  // filterService: StatueListFilterService = null;
   magnifiedStatue: number = null;
 
-  constructor(private statueService: StatueService) {
+  // region Filters Keywords, Java Style for Class Members Naming :)
+  private mArtistNameFilter: string = null;
+  private mMaterialFilter: string = null;
+  private mWeightFilter: string = null;
+  private mStyleFilter: string = null;
+
+  // endregion
+
+  constructor(private statueService: StatueService, private filterService: StatueListFilterService) {
   }
 
   ngOnInit() {
     this.statueService.getStatueList().subscribe(
       statueList => {
-        console.log(statueList);
         this.statuesList = statueList;
         this.filteredList = statueList;
-        // this.filterService = new StatueListFilterService(statueList);
       }
     );
   }
@@ -43,31 +49,80 @@ export class StatueListComponent implements OnInit {
     }
   }
 
+  // region Filter Functions
   filterSmallSize() {
-    // this.filteredList = this.filterService.activateWeightFilter('S');
+    this.mWeightFilter = 'S';
+    this.filteredList = this.getFilteredList();
   }
 
   filterMediumSize() {
-    // this.filteredList = this.filterService.activateWeightFilter('M');
+    this.mWeightFilter = 'M';
+    this.filteredList = this.getFilteredList();
   }
 
   filterBigSize() {
-    // this.filteredList = this.filterService.activateWeightFilter('L');
+    this.mWeightFilter = 'L';
+    this.filteredList = this.getFilteredList();
+  }
+
+  cancelSizeFilter() {
+    this.mWeightFilter = null;
+    this.filteredList = this.getFilteredList();
   }
 
   filterMaterial(materialName: string) {
-    // this.filteredList = this.filterService.activateMaterialFilter(materialName);
+    this.mMaterialFilter = materialName;
+    this.filteredList = this.getFilteredList();
+  }
+
+  cancelMaterialFilter() {
+    this.mMaterialFilter = null;
+    this.filteredList = this.getFilteredList();
   }
 
   filterArtistName(artistName: string) {
-    // this.filteredList = this.filterService.activateArtistNameFilter(artistName);
+    this.mArtistNameFilter = artistName;
+    this.filteredList = this.getFilteredList();
+  }
+
+  cancelArtistNameFilter() {
+    this.mArtistNameFilter = null;
+    this.filteredList = this.getFilteredList();
   }
 
   filterStyleName(styleName: string) {
-    // this.filteredList = this.filterService.activateStyleNameFilter(styleName);
+    this.mStyleFilter = styleName;
+    this.filteredList = this.getFilteredList();
+  }
+
+  cancelStyleNameFilter() {
+    this.filteredList = null;
+    this.filteredList = this.getFilteredList();
   }
 
   noFilter() {
-    // this.filteredList = this.filterService.deactivateAllFilters();
+    this.mMaterialFilter = null;
+    this.mArtistNameFilter = null;
+    this.mWeightFilter = null;
+    this.filteredList = this.getFilteredList();
   }
+
+  private getFilteredList(): StatueObject[] {
+    let resultList = this.statuesList;
+    if (this.mArtistNameFilter !== null) {
+      resultList = this.filterService.processArtistNameFilter(resultList, this.mArtistNameFilter);
+    }
+    if (this.mMaterialFilter !== null) {
+      resultList = this.filterService.processMaterialFilter(resultList, this.mMaterialFilter);
+    }
+    if (this.mWeightFilter !== null) {
+      resultList = this.filterService.processWeightFilter(resultList, this.mWeightFilter);
+    }
+    if (this.mStyleFilter !== null) {
+      resultList = this.filterService.processStyleFilter(resultList, this.mStyleFilter);
+    }
+    return resultList;
+  }
+
+  // endregion
 }

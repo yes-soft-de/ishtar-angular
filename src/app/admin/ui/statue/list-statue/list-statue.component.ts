@@ -38,7 +38,7 @@ export class ListStatueComponent implements OnInit {
               id: statue.id,
               name: statue.name,
               image: statue.image,
-              artist: statue.artist,
+              artist: statue.artist.name,
               height: statue.height,
               width: statue.width,
               weight: statue.weight,
