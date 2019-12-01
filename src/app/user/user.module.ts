@@ -8,18 +8,14 @@ import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
-import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
-import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
+import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
-import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
 import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/home-auction-section.component';
-import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
 import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
 import {SearchListComponent} from './ui/components/search-list/search-list.component';
 import {TabsModule} from 'ngx-bootstrap';
@@ -89,18 +85,14 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     PaintingDetailsPageComponent,
     PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
-    ArtTypePageComponent,
     ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
-    HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
-    CommentsComponent,
+    ItemBriefComponent,
     HomeAuctionSectionComponent,
-    HomeNavbarComponent,
     SearchPageComponent,
     SearchListComponent,
     ArtTypeListPageComponent,
@@ -160,11 +152,9 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     ArtistListComponent,
     ArtistDetailsComponent,
     ArtistPaintingsComponent,
-    HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
-    CommentsComponent,
+    ItemBriefComponent,
     SearchPageComponent,
     SearchListComponent,
     ArtTypeListPageComponent,
@@ -179,6 +169,7 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
     FAQComponent,
     ImprintPageComponent,
     DataProcessingPageComponent
+
   ],
   imports: [
     CommonModule,

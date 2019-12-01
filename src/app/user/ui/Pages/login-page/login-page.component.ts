@@ -22,7 +22,8 @@ export class LoginPageComponent implements OnInit {
   private registering = false;
 
   constructor(private userService: UserService,
-              private fb: FormBuilder, private toaster: ToastrService) {
+              private fb: FormBuilder,
+              private toaster: ToastrService) {
 
   }
 
