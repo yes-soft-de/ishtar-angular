@@ -13,7 +13,7 @@ import {ClientInterface} from '../../../entity/client/client-interface';
   styleUrls: ['./list-client.component.scss']
 })
 export class ListClientComponent implements OnInit, OnDestroy {
-  clients: ClientInterface[];
+  clients: Client[];
   clientsList: ClientInterface[] = [];
   clientsFilterList: ClientInterface[] = [];
   allClientObservable: Subscription;
@@ -41,19 +41,20 @@ export class ListClientComponent implements OnInit, OnDestroy {
         this.clients = data.Data;
         this.clientsList = [];
         for (const client of this.clients) {
+          console.log(client['0'].id);
           this.clientsList.push({
-            id: client.id,
-            fullName: client.fullName,
+            id: client['0'].id,
+            fullName: client['0'].fullName,
             image: client.image,
-            roles: client.roles,
-            username: client.username,
-            email: client.email,
-            birthDate: client.birthDate,
-            phone: client.phone,
-            createDate: client.createDate,
-            createdBy: client.createdBy,
-            updateDate: client.updateDate,
-            updatedBy: client.updatedBy
+            roles: client['0'].roles,
+            username: client['0'].username,
+            email: client['0'].email,
+            birthDate: client['0'].birthDate,
+            phone: client['0'].phone,
+            createDate: client['0'].createDate,
+            createdBy: client['0'].createdBy,
+            updateDate: client['0'].updateDate,
+            updatedBy: client['0'].updatedBy
           });
         }
         console.log('Admin Clients: ', this.clients);
@@ -108,14 +109,14 @@ export class ListClientComponent implements OnInit, OnDestroy {
         let fullNameResult;
         let userNameResult;
         // Check if the full name field is null
-        if (res.fullName) {
+        if (res['0'].fullName) {
           // Search In First Name Column
-          fullNameResult = res.fullName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+          fullNameResult = res['0'].fullName.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         }
         // Check if the Username field is null
-        if (res.username) {
+        if (res['0'].username) {
           // Search In userName Column
-          userNameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+          userNameResult = res['0'].username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         }
 
         if (fullNameResult) {

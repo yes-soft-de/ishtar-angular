@@ -1,57 +1,45 @@
 import {Injectable} from '@angular/core';
-import {EMPTY, of, Subject, throwError} from 'rxjs';
+import {EMPTY, Subject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
-import {LoginAuthRequest} from '../../entity/auth/login-auth-request';
-import {LoginAuthResponse} from '../../entity/auth/login-auth-response';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
-import {UserKeys} from '../../entity/auth/user-keys';
 import {catchError} from 'rxjs/operators';
+import {LoginResponse} from '../../entity-protected/login/login-response';
+import {CookieService} from 'ngx-cookie-service';
+import {LoginRequest} from '../../entity-protected/login/login-request';
+import {UserCookiesConfig} from '../../UserCookiesConfig';
+
+
+/*
+  * Function: Get the Token
+  * Flow:
+  * 1. Get the Email and The Password
+  * 2. Request the Token From The Backend
+  * 3. Save the Token in a Cookie, in order to share across Front-End
+   */
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginRepoService {
-  private userObservable = new Subject<UserKeys>();
-  private token: string;
-
-  private userKeys: UserKeys;
-
+  private repoSubject: Subject<LoginResponse>;
   private userName: string;
   private pass: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
-
-  /*
-  * To do login it's a 3 steps process:
-  * 1. send the username and password
-  * 2. get the token as a response
-  * 3. send the token to /user
-  * 4. get the client id as a response
-  * 5. assign the token as a header (maybe not necessary since a cookie is involved)
-  * 6. you have 2 keys: token and user_id, so send so interactions :)
-   */
 
   /**
    * the Request returns TOKEN for future use
    */
-  public login(email: string, pass: string) {
+  public login(email: string, pass: string, eventListener: Subject<LoginResponse>) {
     this.userName = email;
     this.pass = pass;
-
+    this.repoSubject = eventListener;
     this.requestPreFlight();
-
-    return this.userObservable.asObservable();
   }
 
   private requestPreFlight() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).pipe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI).pipe(
       catchError(() => {
         // If this had an error, CORS is still affective, and We can Precede to Getting the Token
         this.requestToken();
@@ -67,34 +55,29 @@ export class LoginRepoService {
       })
     };
     // The Actual Request for the API
-    const request: LoginAuthRequest = {
+    const request: LoginRequest = {
       username: this.userName,
       password: this.pass,
     };
-    this.httpClient.post<LoginAuthResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions).subscribe(
-      data => {
-        this.token = data.token;
-        this.requestUser();
-      }
-    );
-  }
-
-  private requestUser() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
-      })
-    };
-    this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
-      data => {
-        this.userKeys = {
-          token: this.token,
-          user_id: data.Data.id
-        };
-
-        this.userObservable.next(this.userKeys);
-      }
-    );
+    this.httpClient.post<LoginResponse>(UserConfig.userLoginAuthAPI, JSON.stringify(request), httpOptions)
+      .pipe(
+        catchError(() => {
+          // If this had an error, CORS is still affective, and We can Precede to Getting the Token
+          this.repoSubject.error('Error Getting the Response From Backend!');
+          return EMPTY;
+        })
+      ).subscribe(
+        response => {
+          if (response.token !== null) {
+            this.cookieService.set(UserCookiesConfig.TOKEN, response.token);
+            this.repoSubject.next(response);
+          }
+        },
+        error => {
+          if (this.repoSubject !== null) {
+            this.repoSubject.error(error);
+          }
+        }
+      );
   }
 }

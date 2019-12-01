@@ -1,12 +1,26 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserProfileRepoService } from './user-profile-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {CookieService} from 'ngx-cookie-service';
 
 describe('UserProfileRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let userProfileRepoService: UserProfileRepoService;
+  let httpTestController: HttpTestingController;
+  let cookieService: CookieService;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+          UserProfileRepoService,
+          CookieService]
+    });
+    userProfileRepoService = TestBed.get(UserProfileRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+    cookieService = TestBed.get(CookieService);
+  });
   it('should be created', () => {
-    const service: UserProfileRepoService = TestBed.get(UserProfileRepoService);
-    expect(service).toBeTruthy();
+    expect(userProfileRepoService).toBeTruthy();
   });
 });

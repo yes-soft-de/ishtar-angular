@@ -39,7 +39,7 @@
                         (change)="changeRow($event)"
                         [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('row').errors}">
                     <option value="">Select One</option>
-                    <option value="{{row.id}}" *ngFor="let row of rowEntity">{{row?.userName || row.name}}</option>
+                    <option value="{{row.id}}" *ngFor="let row of rowEntity">{{row?.username || row.name}}</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('row').errors?.required">Table Row Field Is Required</span>
             </div>

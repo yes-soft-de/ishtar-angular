@@ -1,34 +1,29 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {UserKeys} from '../../entity/auth/user-keys';
 import {UserConfig} from '../../UserConfig';
 import {Subject} from 'rxjs';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
+import {UserProfileResponse} from '../../entity-protected/profile/user-profile-response';
+import {CookieService} from 'ngx-cookie-service';
+import {UserCookiesConfig} from '../../UserCookiesConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserProfileRepoService {
-  private userKeys: UserKeys;
-  private userSubject = new Subject<UserProfileResponse>();
+  private token: string;
+  private eventHandler: Subject<UserProfileResponse>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
   }
 
-  public requestUserProfile(keys: UserKeys) {
-    this.userKeys = keys;
+  public requestUserProfile(eventHandler: Subject<UserProfileResponse>) {
+    this.eventHandler = eventHandler;
+    this.token = this.cookieService.get(UserCookiesConfig.TOKEN);
     this.requestPreFlight();
-
-    return this.userSubject.asObservable();
   }
 
   private requestPreFlight() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    this.httpClient.get(UserConfig.CrosHeaderAPI, httpOptions).subscribe(
+    this.httpClient.get(UserConfig.CrosHeaderAPI).subscribe(
       () => this.getUserProfile(),
       () => this.getUserProfile());
   }
@@ -36,13 +31,14 @@ export class UserProfileRepoService {
   private getUserProfile() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.userKeys.token
+        Authorization: `Bearer ${this.token}`
       })
     };
     this.httpClient.post<UserProfileResponse>(UserConfig.userProfileAPI, null, httpOptions).subscribe(
       data => {
-        this.userSubject.next(data);
+        this.eventHandler.next(data);
+      }, error1 => {
+        this.eventHandler.error(error1);
       }
     );
   }

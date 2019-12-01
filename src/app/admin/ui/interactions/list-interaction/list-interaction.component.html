@@ -2,7 +2,7 @@
   <div *ngIf="interactions.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Interactions Page</h1>
-      <div class="col-4">
+      <div class="col-12 col-md-6 col-xl-4">
         <div class="form-group mb-4">
           <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Interactions And Section Name" class="form-control form-control-underlined border-primary">
         </div>
@@ -19,7 +19,7 @@
           <tr *ngFor="let interaction of interactionsFilterList | paginate: config; index as i">
             <td>{{interaction.id}}</td>
             <td>{{interaction.interaction}}</td>
-            <td>{{!interaction.client ? 'Visitors' : interaction.client}}</td>
+            <td>{{!interaction.client ? 'Visitors' : 'Client Id : ' + interaction.client}}</td>
             <td>{{interaction.entities}}</td>
             <td>{{interaction.row}}</td>
           </tr>

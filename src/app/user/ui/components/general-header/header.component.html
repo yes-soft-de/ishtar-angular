@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="col-4 align-self-center">
-              <ul class="mb-0">
+              <ul class="mb-0 pl-0">
                 <li class="float-right">
                   <a>
                     <div class="dropdown" mdbDropdown>
@@ -43,7 +43,7 @@
                           <div class="info">
                             <span class="email">{{userInfo.username}}</span>
                             <div>
-                              <a routerLink="/profile">profile</a>
+                              <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px;">Profile</a>
                             </div>
                            <div class="login-btn" *ngIf="userLoggedIn"> 
                              <!--            <a class="dropdown-item">Show Wish List</a>-->
@@ -68,6 +68,11 @@
 <!--                    Statues-->
 <!--                  </a>-->
 <!--                </li>-->
+                <li class="float-right">
+                  <a routerLink="/about-ishtar">
+                    About Us
+                  </a>
+                </li>
                 <li class="float-right">
                   <a routerLink="/painting-list">
                     Paintings
@@ -109,6 +114,9 @@
             <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>
           </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Us</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <div class="search-mobile">
             <div id="input-mobile-search">
               <form [formGroup]="searchFrom">
@@ -141,7 +149,7 @@
              <div class="info">
                <span class="email">{{userInfo.username}}</span>
                <div>
-                 <a routerLink="/profile">profile</a>
+                 <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
                </div>
               <div class="login-btn" *ngIf="userLoggedIn"> 
                 <!--            <a class="dropdown-item">Show Wish List</a>-->

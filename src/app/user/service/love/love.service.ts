@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserInfo} from '../../entity/user/user-info';
 import {LoveRequest} from '../../entity/love-interaction/love-request';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

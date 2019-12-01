@@ -183,7 +183,7 @@
                         <span *ngFor="let view of statuesView"> {{view.id == statue['0'].id ? view.viewNumber : ''}}</span>
                       </p>
                     </div>
-                    <span class="price d-none">200e</span>
+                    <span class="price d-none">{{'200e' | currency: 'GBP'}}</span>
                   </div>
                   <button class="favourite position-absolute" *ngIf="!isFavoriteAdded" (click)="addToFavorite()"><i class="far fa-star fa-lg"></i></button>
                   <button class="favourite position-absolute" *ngIf="isFavoriteAdded" (click)="removeFromFavorite()"><i class="fas fa-star fa-lg"></i></button>

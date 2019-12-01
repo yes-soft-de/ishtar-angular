@@ -1,33 +1,30 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
-import {UserKeys} from '../../entity/auth/user-keys';
-import {UserProfileResponse} from '../../entity/auth/user-profile-response';
 import {UserConfig} from '../../UserConfig';
-import {RegisterRequest} from '../../entity/auth/register-request';
 import {catchError} from 'rxjs/operators';
+import {RegisterResponse} from '../../entity-protected/register/register-response';
+import {RegisterRequest} from '../../entity-protected/register/register-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterRepoService {
-  private registrationComplete = new Subject<boolean>();
-
   private email: string;
   private pass: string;
   private username: string;
+  private repoSubject: Subject<RegisterResponse>;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public register(email: string, username: string, pass: string) {
+  public register(email: string, username: string, pass: string, repoSubject: Subject<RegisterResponse>) {
     this.email = email;
     this.pass = pass;
     this.username = username;
+    this.repoSubject = repoSubject;
 
     this.requestPreFlight();
-
-    return this.registrationComplete.asObservable();
   }
 
   private requestPreFlight() {
@@ -47,22 +44,27 @@ export class RegisterRepoService {
     const req: RegisterRequest = {
       email: this.email,
       username: this.username,
-      password: this.pass
+      password: this.pass,
+      image: 'https://api.adorable.io/avatars/285/abott@adorable.png'
     };
 
-    this.httpClient.post<UserProfileResponse>(UserConfig.userRegisterAuthAPI, JSON.stringify(req), httpOptions)
+    this.httpClient.post<RegisterResponse>(UserConfig.userRegisterAuthAPI, JSON.stringify(req), httpOptions)
       .pipe(
         catchError(() => {
           // If this had an error, CORS is still affective, and We can Precede to Getting the Token
-          this.registrationComplete.next(true);
+          this.repoSubject.error('Error Getting the Response From Backend!');
           return EMPTY;
         })
       ).subscribe(
-      () => {
-        this.registrationComplete.next(true);
+      response => {
+        this.repoSubject.next(response);
       }, () => {
-        this.registrationComplete.next(true);
+        this.repoSubject.error('Error Getting the Response From Backend!');
       }
     );
+  }
+
+  private getObservable() {
+    return this.repoSubject.asObservable();
   }
 }

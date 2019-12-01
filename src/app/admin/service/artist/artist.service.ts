@@ -30,7 +30,7 @@ export class ArtistService {
       {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
-  // getAllArtists() {
+  // getAllPaintings() {
   //   return this.httpClient.get<ArtistListResponse>(
   //       `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
   //   ).pipe(catchError(ArtistService.errorHandler));

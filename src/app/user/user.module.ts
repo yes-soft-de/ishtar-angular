@@ -38,7 +38,7 @@ import {SearchListComponent} from './ui/components/search-list/search-list.compo
 import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ClapWidgetComponent} from './ui/widgets/clap-widget/clap-widget.component';
 import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
@@ -59,6 +59,8 @@ import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list
 import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
+import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
     ArtTypePageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
@@ -109,7 +112,8 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
     StatueListComponent,
     StatueListPageComponent,
     ProfilePageComponent,
-    AboutIshtarPageComponent
+    AboutIshtarPageComponent,
+    CommentItemComponent
   ],
   exports: [
     // User
@@ -124,6 +128,7 @@ import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ish
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     ImagesByArtistPageComponent,
+    ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,

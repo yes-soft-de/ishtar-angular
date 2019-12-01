@@ -19,7 +19,8 @@ describe('HomeHeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Home Header Component', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ClientService } from './client.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
-describe('UserProfileService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('ClientService', () => {
+  let clientService: ClientService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [ClientService]
+    });
+    clientService = TestBed.get(ClientService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: ClientService = TestBed.get(ClientService);
-    expect(service).toBeTruthy();
+    expect(clientService).toBeTruthy();
   });
 });
