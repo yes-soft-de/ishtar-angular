@@ -32,7 +32,8 @@ export class UserService {
     const registerRequest: RegisterRequest = {
       username,
       email,
-      password
+      password,
+      image: 'https://via.placeholder.com/150?text=avatar'
     };
     this.userManager.register(registerRequest).subscribe(
       () => {

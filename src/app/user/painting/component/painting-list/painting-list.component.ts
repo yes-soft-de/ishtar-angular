@@ -84,7 +84,7 @@ export class PaintingListComponent implements OnInit {
   }
 
   private getFilteredList(): PaintingListItem[] {
-    let resultList = this.paintingList;
+    let resultList = this.originalList;
     if (this.filterActiveArtist !== null) {
       resultList = this.filterService.processArtistNameFilter(resultList, this.filterActiveArtist);
     }

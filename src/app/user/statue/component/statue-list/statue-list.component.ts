@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatueService} from '../../service/statue.service';
 import {StatueObject} from '../../entity/statue-object';
 import {StatueListFilterService} from '../../filter/statue-list-filter.service';
@@ -6,12 +6,14 @@ import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 @Component({
   selector: 'app-statue-list',
   templateUrl: './statue-list.component.html',
-  styleUrls: ['./statue-list.component.scss']
+  styleUrls: ['./statue-list.component.scss', '../../../ui/widgets/ngx-image-zoom/ngx-image-zoom.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
   magnifiedStatue: number = null;
+  magnifyingImage = false;
 
   // region Filters Keywords, Java Style for Class Members Naming :)
   private mArtistNameFilter: string = null;
@@ -38,15 +40,18 @@ export class StatueListComponent implements OnInit {
   }
 
   viewStatue(statue) {
-    // TODO Implement View Statue
+    
   }
 
-  MagnifyingImage(statueId: number) {
-    if (this.magnifiedStatue !== null && this.magnifiedStatue !== undefined) {
-      this.magnifiedStatue = null;
+  MagnifyingImage(statueId: number) {    
+    const INFO_ID: string = 'info_' + statueId;
+    if (this.magnifyingImage) {
+      document.getElementById(INFO_ID).style.display = 'block';
+      this.magnifyingImage = false;
     } else {
-      this.magnifiedStatue = statueId;
-    }
+      document.getElementById(INFO_ID).style.display = 'none';
+      this.magnifyingImage = true;
+    }  
   }
 
   // region Filter Functions
