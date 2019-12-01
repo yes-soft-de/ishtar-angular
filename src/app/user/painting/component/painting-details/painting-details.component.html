@@ -16,7 +16,7 @@
                 <div class="col-md-12 col-lg-8 mx-auto image mt-3 pb-3">
                   <div class="d-lg-none painting-artist">
                     <img src="{{artist[0]?.path}}" class="" alt="">
-                    <app-follow [ParentType]="'painting'" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow>
+                    <app-follow [ParentType]="'artist'" [ParentId]="artist[0]?.id" class="follow-artist"></app-follow>
                     <p class="painting-artist-name">
                       <a routerLink="/artist/{{artist[0]?.id}}">
                         {{artist[0]?.name}}
@@ -65,8 +65,7 @@
                         <a routerLink="/artist/{{artist[0]?.id}}">
                           {{artist[0]?.name}}
                         </a>
-<!--                        <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>-->
-                        <app-follow [ParentType]="'painting'" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow>
+                        <app-follow [ParentType]="'artist'" [ParentId]="artist[0]?.id" class="follow-artist"></app-follow>
                       </p>
                     </div>
                     <div class="col-12">

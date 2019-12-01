@@ -11,7 +11,7 @@ import {UserComponent} from './user.component';
 import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
 import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
 // import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
-import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
+// import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
 import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
@@ -42,8 +42,8 @@ import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.c
 import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
 import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
 import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
-import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
-import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
+// import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
+// import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
 import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
 import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
@@ -98,7 +98,7 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     PaintingDetailsComponent,
     PaintingListComponent,
     SchoolListComponent,
-    ItemBriefComponent,
+    // ItemBriefComponent,
     ArtTypeComponent,
     CommentsComponent,
     HomeAuctionSectionComponent,
@@ -119,8 +119,8 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     DataProcessingPageComponent,
     LoadingWidgetComponent,
     MostSeenPaintingsComponent,
-    StatuesDetailComponent,
-    StatueDetailPageComponent,
+    // StatuesDetailComponent,
+    // StatueDetailPageComponent,
     NgxImageZoomComponent,
     StatueListComponent,
     StatueListPageComponent,
@@ -163,7 +163,7 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     PaintingDetailsComponent,
     PaintingListComponent,
     SchoolListComponent,
-    ItemBriefComponent,
+    // ItemBriefComponent,
     CommentsComponent,
     SearchPageComponent,
     SearchListComponent,
@@ -178,7 +178,8 @@ import { ClapComponent } from './shared/interaction-clap/component/clap/clap.com
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
+    DataProcessingPageComponent,
+    ProfilePageComponent
 
   ],
   imports: [

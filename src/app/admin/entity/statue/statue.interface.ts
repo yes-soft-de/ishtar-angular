@@ -1,10 +1,8 @@
-import {ArtistInterface} from '../artist/artist-interface';
-
 export interface StatueInterface {
   id: number;
   name: string;
   image: string;
-  artist: ArtistInterface;
+  artist: string;
   height: number;
   width: number;
   weight: string;
@@ -13,6 +11,7 @@ export interface StatueInterface {
   description: string;
   style: string;
   period: string;
+  price?: number;
   mediums: string;
   material: string;
   features: string;

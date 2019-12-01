@@ -1,6 +1,6 @@
 <div class="clap-icon" *ngIf="clapped">
   <div class="clap-container">
-    <img src="{{clapFiled}}" [ngStyle]="{'opacity': clapping ? '.4' : '1'}" alt="clap icon" width="{{clapIconSize}}" height="{{clapIconSize}}" (click)="deleteClap()">
+    <img src="{{clapFiled}}" [ngStyle]="{'opacity': clapping ? '.4' : '1'}" alt="clap icon" width="32" height="32" (click)="deleteClap()">
   </div>
   <h5 class="mb-0">Clapped {{clappedNumber}} Times By You!</h5>
 </div>

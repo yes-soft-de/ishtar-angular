@@ -91,7 +91,7 @@
                 (change)="changeArtist($event)"
                 [ngClass]="{'is-invalid': isSubmitted && artist.errors}">
           <option value="">Select The Artist For This Statue</option>
-          <option value="{{artist['0'].id}}" *ngFor="let artist of artists" [selected]="statuesData['0']?.artist?.name == artist['0'].name">{{artist['0'].name}}</option>
+          <option value="{{artist['0'].id}}" *ngFor="let artist of artists" [selected]="statuesData?.artist == artist['0'].name">{{artist['0'].name}}</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && artist.errors?.required">Artist Field Is Required</span>
       </div>
@@ -161,8 +161,8 @@
                 (change)="changeState($event)"
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('state').errors}">
           <option value="">Select Statue State</option>
-          <option value="0" [selected]="statuesData['0']?.state == false">Not Sold</option>
-          <option value="1" [selected]="statuesData['0']?.state == true">Sold</option>
+          <option value="0" [selected]="statuesData?.state == false">Not Sold</option>
+          <option value="1" [selected]="statuesData?.state == true">Sold</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('state').errors?.required">State Field Is Required</span>
       </div>
@@ -176,8 +176,8 @@
                 (change)="changeActive($event)"
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('active').errors}">
           <option value="">Select Active State</option>
-          <option value="0" [selected]="statuesData['0']?.active == false">Not Active</option>
-          <option value="1" [selected]="statuesData['0']?.active == true">Active</option>
+          <option value="0" [selected]="statuesData?.active == false">Not Active</option>
+          <option value="1" [selected]="statuesData?.active == true">Active</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('active').errors?.required">Active Field Is Required</span>
       </div>

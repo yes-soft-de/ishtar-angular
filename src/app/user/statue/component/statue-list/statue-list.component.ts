@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StatueService} from '../../service/statue.service';
 import {StatueObject} from '../../entity/statue-object';
-import {Observable} from 'rxjs';
-import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 
 @Component({
   selector: 'app-statue-list',
@@ -12,7 +10,7 @@ import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 export class StatueListComponent implements OnInit {
   statuesList: StatueObject[];
   filteredList: StatueObject[];
-  filterService: StatueListFilterService = null;
+  // filterService: StatueListFilterService = null;
   magnifiedStatue: number = null;
 
   constructor(private statueService: StatueService) {
@@ -21,9 +19,10 @@ export class StatueListComponent implements OnInit {
   ngOnInit() {
     this.statueService.getStatueList().subscribe(
       statueList => {
+        console.log(statueList);
         this.statuesList = statueList;
         this.filteredList = statueList;
-        this.filterService = new StatueListFilterService(statueList);
+        // this.filterService = new StatueListFilterService(statueList);
       }
     );
   }
@@ -45,30 +44,30 @@ export class StatueListComponent implements OnInit {
   }
 
   filterSmallSize() {
-    this.filteredList = this.filterService.activateWeightFilter('S');
+    // this.filteredList = this.filterService.activateWeightFilter('S');
   }
 
   filterMediumSize() {
-    this.filteredList = this.filterService.activateWeightFilter('M');
+    // this.filteredList = this.filterService.activateWeightFilter('M');
   }
 
   filterBigSize() {
-    this.filteredList = this.filterService.activateWeightFilter('L');
+    // this.filteredList = this.filterService.activateWeightFilter('L');
   }
 
   filterMaterial(materialName: string) {
-    this.filteredList = this.filterService.activateMaterialFilter(materialName);
+    // this.filteredList = this.filterService.activateMaterialFilter(materialName);
   }
 
   filterArtistName(artistName: string) {
-    this.filteredList = this.filterService.activateArtistNameFilter(artistName);
+    // this.filteredList = this.filterService.activateArtistNameFilter(artistName);
   }
 
   filterStyleName(styleName: string) {
-    this.filteredList = this.filterService.activateStyleNameFilter(styleName);
+    // this.filteredList = this.filterService.activateStyleNameFilter(styleName);
   }
 
   noFilter() {
-    this.filteredList = this.filterService.deactivateAllFilters();
+    // this.filteredList = this.filterService.deactivateAllFilters();
   }
 }

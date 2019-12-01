@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArtistListItem} from '../../entity/artist-list-item';
 import {ArtistService} from '../../service/artist.service';
-import {ArtistFilterService} from '../../filter/artist-filter.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -20,7 +19,7 @@ export class ArtistListComponent implements OnInit {
     totalItems: number
   };  // Config For Paginate
 
-  private filterService: ArtistFilterService = null;
+  // private filterService: ArtistFilterService = null;
 
   constructor(private artistService: ArtistService) {
     this.config = {
@@ -37,7 +36,7 @@ export class ArtistListComponent implements OnInit {
         this.artistList = artists;
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
-        this.filterService = new ArtistFilterService(artists);
+        // this.filterService = new ArtistFilterService(artists);
       }
     );
   }
@@ -56,18 +55,18 @@ export class ArtistListComponent implements OnInit {
   }
 
   filterByArtType(name: string) {
-    this.artistList = this.filterService.activateArtTypeNameFilter(name);
+    // this.artistList = this.filterService.activateArtTypeNameFilter(name);
   }
 
   sortArtistsByFollowerNumberDesc() {
-    this.artistList = this.filterService.sortArtistsByFollowerNumberDesc();
+    // this.artistList = this.filterService.sortArtistsByFollowerNumberDesc();
   }
 
   sortArtistsByFollowerNumberAsc() {
-    this.artistList = this.filterService.sortArtistsByFollowerNumberAsc();
+    // this.artistList = this.filterService.sortArtistsByFollowerNumberAsc();
   }
 
   cancelFilterByArtType() {
-    this.artistList = this.filterService.deactivateArtTypeNameFilter();
+    // this.artistList = this.filterService.deactivateArtTypeNameFilter();
   }
 }

@@ -34,6 +34,11 @@ export class InteractionsManagerService {
     return this.interactionsRepositoryService.getClientInteraction(clientId);
   }
 
+  // Get (clap) Interaction For This Client And This (artist, painting. ....) Dependence On Client ID
+  getClientClap(clientId: number): Observable<any> {
+    return this.interactionsRepositoryService.getClientClap(clientId);
+  }
+
   // Add To Wish List Method
   addToWishList(id: string, entityType: string) {
     return this.interactionsRepositoryService.addToWishList(id, entityType);

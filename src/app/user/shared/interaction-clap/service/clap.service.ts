@@ -36,13 +36,12 @@ export class ClapService extends InteractionsService {
             if (this.isUserNode(user.Data)) {
               console.log('Assigning User');
               this.userInfo = user.Data;
-              this.getClientInteraction(this.userInfo.id, parentType, rowId, this.clapSubject);
+              this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
             }
           }
       );
     } else if (this.checkUserDetailsExists(this.userInfo)) {
-      console.log('User Exists, Requesting Clap Status');
-      this.getClientInteraction(this.userInfo.id, parentType, rowId, this.clapSubject);
+      this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
     }
   }
 
@@ -52,7 +51,6 @@ export class ClapService extends InteractionsService {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      console.log('Sending Clap interaction');
       this.postClapToAPI(entityType, entityId, clapValue, this.userInfo.id, this.clapSubject);
     }
   }

@@ -20,16 +20,22 @@ export class LoveComponent implements OnInit {
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
     this.loveService.getLoveObservable().subscribe(
-        (data: { success: boolean, value: any }) => {
-          if (data) {
-            this.loved = data.success;  // this data = true if success
-            if (data.value.interactionID) {     // Response Data After Reload The Page
-              this.interactionId = data.value.interactionID;
-            } else if (data.value.Data.id) {    // Response Data After Create New Love
-              this.interactionId = data.value.Data.id;
+        (loveResponse: { success: boolean, value: any }) => {     
+          // Check If There Is Data Or Not Return From The Server
+          if (loveResponse) {
+            if (loveResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_LOVE || 
+              loveResponse.value.interaction.name == InteractionConstantService.INTERACTION_TYPE_LOVE) {
+              this.loved = loveResponse.success;  // this loveResponse = true if success
+              if (loveResponse.value.interactionID) {     // Response loveResponse After Reload The Page
+                this.interactionId = loveResponse.value.interactionID;
+              } else if (loveResponse.value.id) {         // Response loveResponse After Create New Love
+                this.interactionId = loveResponse.value.id;
+              }
+              console.log('Love Interaction Response : ', loveResponse);
+            } else {
+              return;
             }
-            console.log('Interaction Response : ', data);
-          } else {
+          } else {  // If Not Data That Mean This Interaction Was Deleted
             this.loved = false;
           }
         }
@@ -44,6 +50,7 @@ export class LoveComponent implements OnInit {
 
   // delete the love interaction
   deleteLove() {
-    console.log('Send delete Love Request');
+    console.log('Send delete Love Request', this.interactionId);
+    this.loveService.deleteLoveInteraction(this.interactionId);
   }
 }

@@ -41,7 +41,6 @@ export class FollowService extends InteractionsService {
           }
       );
     } else if (this.checkUserDetailsExists(this.userInfo)) {
-      console.log('User Exists, Requesting Follow Status');
       this.getClientInteraction(this.userInfo.id, parentType, rowId, this.followSubject);
     }
   }
@@ -52,7 +51,6 @@ export class FollowService extends InteractionsService {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      console.log('Sending Follow interaction');
       this.postInteractionToAPI(entityType, entityId, this.userInfo.id, interactionsType, this.followSubject);
     }
   }

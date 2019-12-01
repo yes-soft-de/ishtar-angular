@@ -39,6 +39,11 @@ export class InteractionsRepositoryService {
     return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request));
   }
 
+  // Get (clap) Interaction For This Client And This (artist, painting. ....) Dependence On Client ID
+  getClientClap(clientId: number): Observable<any> {
+    return this.httpClient.get(`${UserConfig.specificClientClaps}/${clientId}`);
+  }
+
   // Post (Clap) interactions
   postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<any> {
     const request = {

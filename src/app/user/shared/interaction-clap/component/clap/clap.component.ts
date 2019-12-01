@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {interval} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {ClapService} from '../../service/clap.service';
+import { InteractionConstantService } from 'src/app/user/interactions/service/interaction-constant.service';
 
 @Component({
   selector: 'app-clap',
@@ -35,18 +36,24 @@ export class ClapComponent implements OnInit {
     this.clapService.initClap(this.ParentType, this.ParentId);
     // Response From Clap Services
     this.clapService.getClapObservable().subscribe(
-        (data: { success: boolean, value: any }) => {
-          if (data) {
-            this.clapped = data.success;  // this data = true if success
-            if (data.value.ClapID) {      // Response Data After Reload The Page
-              this.clapId = data.value.ClapID;
-              this.clappedNumber = data.value.value;
-            } else if (data.value.Data.id) {  // Response Data After Create New Clap
-              this.clapId = data.value.Data.id;
-              this.clappedNumber = data.value.Data.value;
+        (clapResponse: { success: boolean, value: any }) => {
+          // Check If There Is Data Or Not Return From The Server
+          if (clapResponse) {
+            // Check If the Reponse Interaction Not follow And Love | Then Will Be Clap
+            if (clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_LOVE && 
+                clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_FOLLOW) {             
+              this.clapped = clapResponse.success;  // this clapResponse = true if success
+              if (clapResponse.value.ClapID) {      // Response clapResponse After Reload The Page
+                this.clapId = clapResponse.value.ClapID;
+                this.clappedNumber = clapResponse.value.value;
+              } else if (clapResponse.value.Data.id) {  // Response  After Create New Clap
+                this.clapId = clapResponse.value.Data.id;
+                this.clappedNumber = clapResponse.value.Data.value;
+              }
+            } else {
+              return;
             }
-            console.log('Interaction Response : ', data);
-          } else {
+          } else {  // If Not Data That Mean This Interaction Was Deleted
             this.clapping = false;
             this.clapped = false;
           }

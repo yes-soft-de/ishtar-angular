@@ -7,6 +7,7 @@ import {UserInfo} from '../../../entity/user/user-info';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
+import { LoveResponse } from '../response/love-response';
 
 @Injectable({
   providedIn: 'root'
