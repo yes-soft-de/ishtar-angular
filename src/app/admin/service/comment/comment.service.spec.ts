@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CommentService } from './comment.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
-describe('CommentService', () => {
+describe('PaintingCommentService', () => {
   let commentService: CommentService;
   let httpTestController: HttpTestingController;
 

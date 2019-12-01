@@ -1,0 +1,121 @@
+.art-type-header-img {
+  border-bottom: 2px solid goldenrod;
+  .art-type-banner-text {
+    max-width: 20rem;
+    max-height: 10rem;
+    background: rgba(255, 255, 255, .5);
+    margin-right: 5rem;
+  }
+  .banner-background {
+    width: 100%;
+    height: 20rem;
+    img {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+}
+
+.wraper {
+  position: relative;
+  top: -5rem;
+  .art-type-avatar {
+    height: 15rem;
+    border: 2px solid goldenrod;
+    width: 15rem;
+    border-radius: 50%;
+  }
+  .art-type-info {
+    position: relative;
+    top: 1.5rem;
+  }
+  .follow-box {
+    position: relative;
+    top: -2rem;
+    .art-type-follow {
+      position: relative;
+      top: -13px;
+      button {
+        background: #fff !important;
+        padding: 10px 15px;
+        border: 2px solid goldenrod;
+      }
+    }
+  }
+}
+
+.art-type-info {
+  position: relative;
+  top: 1.5rem;
+}
+
+.art-type-bio {
+  padding-left: 10rem;
+}
+
+.art-type-images {
+  margin-bottom: 5rem;
+  .img-loading {
+    object-fit: contain
+  }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  .art-type-avatar {
+    max-width: 10rem !important;
+    height: 10rem;
+    margin-left: -45px;
+  }
+  .art-type-follow {
+    top: 30px;
+  }
+}
+
+@media (max-width:767px) {
+  .art-type-info{
+    h3 {
+      margin-left: 100px;
+    }
+  }
+  .art-type-avatar {
+    max-width: 10rem !important;
+    height: 12rem;
+    margin-left: -45px;
+  }
+}
+
+.art-type-follow {
+  position: relative;
+  top: -13px;
+  button {
+    background: #fff !important;
+    padding: 10px 15px;
+    border: 2px solid goldenrod;
+  }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  #art-type-avatar {
+    max-width: 10rem !important;
+    height: 10rem;
+    margin-left: -45px;
+  }
+  .art-type-follow {
+    top: 30px;
+  }
+}
+
+@media (max-width:767px) {
+  #art-type-info{
+    h3 {
+      margin-left: 100px;
+    }
+  }
+  #art-type-avatar {
+    max-width: 10rem !important;
+    height: 12rem;
+    margin-left: -45px;
+  }
+}
