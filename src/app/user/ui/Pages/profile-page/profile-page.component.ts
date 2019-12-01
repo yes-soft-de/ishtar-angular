@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {IshtarInteractionService} from 'src/app/user/service/ishtar-interaction/ishtar-interaction.service';
-import {UserProfileResponse} from 'src/app/user/entity-protected/profile/user-profile-response';
 import {UserProfileManagerService} from 'src/app/user/manager/user-profile/user-profile-manager.service';
 import {Router} from '@angular/router';
 import {UserInfo} from '../../../entity-protected/profile/user-info';
