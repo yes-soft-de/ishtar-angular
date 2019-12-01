@@ -29,10 +29,11 @@ export class UserService {
         })
       )
       .subscribe(
-      loginResponse => {
-        localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
-      }
-    );
+        loginResponse => {
+          localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
+          localStorage.setItem('date', new Date().toString());
+        }
+      );
     return loginSubject.asObservable();
   }
 
@@ -53,17 +54,24 @@ export class UserService {
         })
       )
       .subscribe(
-      () => {
-        registerSubject.next(200);
-      }, () => {
-        registerSubject.next(403);
-      }
-    );
+        () => {
+          registerSubject.next(200);
+        }, () => {
+          registerSubject.next(403);
+        }
+      );
     return registerSubject.asObservable();
   }
 
   public isLoggedIn(): boolean {
-    return this.getToken() !== null && this.getToken() !== undefined;
+    const diff = +new Date().valueOf() - +new Date(Date.parse(localStorage.getItem('date'))).valueOf();
+    // Millisecond to Minutes
+    if (diff / 60000 < 45) {
+      return this.getToken() !== null && this.getToken() !== undefined;
+    } else {
+      localStorage.clear();
+      return false;
+    }
   }
 
   public getToken(): string {
