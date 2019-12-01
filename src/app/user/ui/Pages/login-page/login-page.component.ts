@@ -49,7 +49,13 @@ export class LoginPageComponent implements OnInit {
 
   submitLogin() {
     // (1) This Starts Login Process
-    this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
+    this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(
+      () => {
+        window.location.reload();
+      }, error1 => {
+        this.toaster.error(error1);
+      }
+    );
   }
 
   // (c) This Fires After (b) is Successful
