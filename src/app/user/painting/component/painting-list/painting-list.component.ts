@@ -13,21 +13,14 @@ export class PaintingListComponent implements OnInit {
   @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
+  filterArtType = false;
+  filterArtist = false;
   originalList: PaintingListItem[];
   paintingList: PaintingListItem[];
   config: any;
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
 
-
-  paintingsView: {
-    id: number,
-    viewNumber: number
-  }[] = [];
-  paintingsLove: {
-    id: number,
-    loveNumber: number
-  }[] = [];
 
   constructor(private paintingService: PaintingService,
               private filterService: PaintingFilterService) {
@@ -99,5 +92,26 @@ export class PaintingListComponent implements OnInit {
       resultList = this.filterService.processArtTypeFilter(resultList, this.filterActiveArtType);
     }
     return resultList;
+  }
+
+  // view & hide filter button options
+  fiterArtTypeOptionsView() {
+    console.log('artytpe');
+    this.filterArtist = false;
+    if (this.filterArtType) {
+      this.filterArtType = false;
+    } else {
+      this.filterArtType = true;
+    }
+  }
+
+  fiterArtistOptionsView() {
+    console.log('artist');
+    this.filterArtType = false;
+    if (this.filterArtist) {
+      this.filterArtist = false;
+    } else {
+      this.filterArtist = true;
+    }
   }
 }

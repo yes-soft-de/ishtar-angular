@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PaintingListItem} from '../../../painting/entity/painting-list-item';
 import {SearchListItem} from '../../entity/search-list-item';
 
 @Component({
