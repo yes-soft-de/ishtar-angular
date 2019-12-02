@@ -31,7 +31,6 @@ export class PaintingListComponent implements OnInit {
       paintingList => {
 
         this.originalList = paintingList;
-        console.log('NgxPaginationModule', paintingList);
         this.paintingList = paintingList;
         this.config = {
           itemsPerPage: 12,
@@ -96,7 +95,6 @@ export class PaintingListComponent implements OnInit {
 
   // view & hide filter button options
   fiterArtTypeOptionsView() {
-    console.log('artytpe');
     this.filterArtist = false;
     if (this.filterArtType) {
       this.filterArtType = false;
@@ -106,7 +104,6 @@ export class PaintingListComponent implements OnInit {
   }
 
   fiterArtistOptionsView() {
-    console.log('artist');
     this.filterArtType = false;
     if (this.filterArtist) {
       this.filterArtist = false;

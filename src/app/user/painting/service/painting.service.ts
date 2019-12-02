@@ -101,13 +101,6 @@ export class PaintingService extends InteractionsService {
                 this.userInfo.id,
                 InteractionConstantService.INTERACTION_TYPE_VIEW,
                 this.viewSubject);
-            setTimeout(() => {
-              this.getInteractionsObservable(this.viewSubject).subscribe(
-                  data => {
-                    console.log('view painting', data);
-                  }
-              );
-            }, 2000);
           }
         }
       );
@@ -119,13 +112,6 @@ export class PaintingService extends InteractionsService {
           this.userInfo.id,
           InteractionConstantService.INTERACTION_TYPE_VIEW,
           this.viewSubject);
-      setTimeout(() => {
-        this.getInteractionsObservable(this.viewSubject).subscribe(
-            data => {
-              console.log('view painting', data);
-            }
-        );
-      }, 2000);
     }
   }
 
