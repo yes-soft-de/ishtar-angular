@@ -20,7 +20,6 @@ export class ArtTypeDetailsComponent implements OnInit {
       urlSegments => {
         this.artTypeService.getArtType(+urlSegments[1].path).subscribe(
           artTypeDetails => {
-            console.log('artTypeDetails', artTypeDetails[0]);
             this.artType = artTypeDetails;
           }
         );

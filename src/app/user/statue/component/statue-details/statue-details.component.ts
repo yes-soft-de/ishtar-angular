@@ -20,7 +20,6 @@ export class StatueDetailsComponent implements OnInit {
   activePaintingUrl = 'some url';
 
   // TODO Move This to Interaction Component
-  statueView = [];
 
   constructor(private statueService: StatueService,
               private activatedRoute: ActivatedRoute) {

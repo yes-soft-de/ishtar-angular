@@ -23,8 +23,8 @@
                       <span>Paintings: {{statueDetails.artist?.painting}}</span>
                     </a>
                   </p>
-                  <app-follow-widget [ParentId]="statueDetails?.id" [ParentType]="6"></app-follow-widget>
-                </div>
+                  <app-follow [ParentType]="'artist'" [ParentId]="statueDetails?.id" class="follow-artist"></app-follow>
+              </div>
               <div class="col-2 d-none d-md-block invisible pr-0">
                 <div class="statue-seconds-img border border-secondary" *ngFor="let i of [1,1,1]">
                   <img src="{{statueDetails?.image}}" (click)="setMainPainting($event)" class="img-fluid" alt="">
@@ -79,10 +79,10 @@
               <div class="col-8 mt-3 statue-interaction">
                 <ul>
                   <li class="ml-0 my-1 mr-1 d-inline-block">
-                    <app-clap-widget [ParentType]="6" [ParentId]="statueDetails?.id"></app-clap-widget>
+                    <app-clap [ParentType]="'painting'" [ParentId]="statueDetails?.id"></app-clap>
                   </li>
                   <li class="m-1 d-inline-block">
-                    <app-love-interaction [ParentType]="6" [ParentId]="statueDetails?.id"></app-love-interaction>
+                    <app-love [ParentType]="'painting'" [ParentId]="statueDetails?.id"></app-love>
                   </li>
                 </ul>
               </div>
