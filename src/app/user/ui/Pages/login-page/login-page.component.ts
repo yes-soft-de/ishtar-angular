@@ -3,6 +3,7 @@ import {UserConfig} from '../../../UserConfig';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserManagerService} from '../../../manager/user/user-manager.service';
 import {ToastrService} from 'ngx-toastr';
+import {UserService} from '../../../shared/user/service/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -20,26 +21,10 @@ export class LoginPageComponent implements OnInit {
 
   private registering = false;
 
-  constructor(private userManager: UserManagerService,
-              private fb: FormBuilder, private toaster: ToastrService) {
-    // This Observable Should Fire Checking For Login
-    // (2) This Fires After (1), If Successful
-    this.userManager.getObservable().subscribe(
-      () => {
-        if (this.registering) {
-          this.submitLoginAfterRegister(this.email, this.password);
-        } else {
-          window.location.reload();
-        }
-        this.toaster.success('Success');
-        this.registering = false;
-      }, error1 => {
-        // TODO: Do Something When Login Error Happen
-        console.log(error1);
-        this.toaster.error('Error: ' + error1);
-        this.registering = false;
-      }
-    );
+  constructor(private userService: UserService,
+              private fb: FormBuilder,
+              private toaster: ToastrService) {
+
   }
 
   ngOnInit() {
@@ -62,12 +47,12 @@ export class LoginPageComponent implements OnInit {
 
   submitLogin() {
     // (1) This Starts Login Process
-    this.userManager.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
+    this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value);
   }
 
   // (c) This Fires After (b) is Successful
   private submitLoginAfterRegister(username: string, password: string) {
-    this.userManager.login(username, password);
+    this.userService.login(username, password);
   }
 
   submitRegister() {
@@ -79,10 +64,16 @@ export class LoginPageComponent implements OnInit {
       this.username = this.registerForm.get('username').value;
       this.password = this.registerForm.get('password').value;
       this.registering = true;
-      this.userManager.register(
+      this.userService.register(
         this.registerForm.get('email').value,
         this.registerForm.get('username').value,
         this.registerForm.get('password').value
+      ).subscribe(
+        () => {
+          this.submitLoginAfterRegister(this.registerForm.get('email').value, this.registerForm.get('password').value);
+        }, () => {
+          this.toaster.error('Error in Registering user!');
+        }
       );
     } else {
       this.toaster.error('Password Mismatch!');

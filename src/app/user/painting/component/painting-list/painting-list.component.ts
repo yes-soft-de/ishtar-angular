@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../../entity/painting-list/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
+import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
 
 @Component({
   selector: 'app-painting-list',
@@ -9,15 +10,15 @@ import {PaintingFilterService} from '../../filter/painting-filter.service';
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
+  @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
+  originalList: PaintingListItem[];
   paintingList: PaintingListItem[];
-  @Input() filter = true;
-
   config: any;
-
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
+
 
   paintingsView: {
     id: number,
@@ -28,16 +29,17 @@ export class PaintingListComponent implements OnInit {
     loveNumber: number
   }[] = [];
 
-  filterService: PaintingFilterService = null;
-
-  constructor(private paintingService: PaintingService) {
+  constructor(private paintingService: PaintingService,
+              private filterService: PaintingFilterService) {
   }
 
   ngOnInit() {
     this.paintingService.getPaintings().subscribe(
       paintingList => {
+
+        this.originalList = paintingList;
+        console.log('NgxPaginationModule', paintingList);
         this.paintingList = paintingList;
-        this.filterService = new PaintingFilterService(paintingList);
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,
@@ -56,38 +58,46 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     this.filterActiveArtType = name;
-    this.paintingList = this.filterService.activateArtTypeNameFilter(name);
+    this.paintingList = this.getFilteredList();
   }
 
   public disableArtTypeFilter() {
-    this.paintingList = this.filterService.deactivateArtTypeNameFilter();
+    this.filterActiveArtType = null;
+    this.paintingList = this.getFilteredList();
   }
 
   public filterByArtist(name: string) {
     this.filterActiveArtist = name;
-    this.paintingList = this.filterService.activateArtistNameFilter(name);
+    this.paintingList = this.getFilteredList();
   }
 
   public disableArtistNameFilter() {
-    this.paintingList = this.filterService.deactivateArtistNameFilter();
+    this.filterActiveArtist = null;
+    this.paintingList = this.getFilteredList();
   }
 
   viewImage(paintingId: number) {
+    // TODO Implement View Image Function
+    // Dependent on Reaction
+    this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
   }
 
   getArtistNamesList() {
-    const artists: string[] = [];
-    for (const painting of this.paintingList) {
-      artists.push(painting.artist);
-    }
-    this.artists = [...new Set(artists)];
+    this.artists = [...new Set(this.paintingList.map(painting => painting.artist))];
   }
 
   getArtTypesList() {
-    const artTypes: string[] = [];
-    for (const painting of this.paintingList) {
-      artTypes.push(painting.artType);
+    this.artTypes = [...new Set(this.paintingList.map(painting => painting.artType))];
+  }
+
+  private getFilteredList(): PaintingListItem[] {
+    let resultList = this.paintingList;
+    if (this.filterActiveArtist !== null) {
+      resultList = this.filterService.processArtistNameFilter(resultList, this.filterActiveArtist);
     }
-    this.artTypes = [...new Set(artTypes)];
+    if (this.filterActiveArtType !== null) {
+      resultList = this.filterService.processArtTypeFilter(resultList, this.filterActiveArtType);
+    }
+    return resultList;
   }
 }

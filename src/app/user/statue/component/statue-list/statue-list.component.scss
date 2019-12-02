@@ -66,13 +66,13 @@
       cursor: pointer;
 
       ngx-image-zoom {
-        width: 100% !important;
+        width: 100%;
         display: block;
 
         img {
           background: #fff;
-          width: 100% !important;
-          min-height: 200px !important;
+          width: 100%;
+          min-height: 200px;
         }
 
         .ngxImageZoomFull {

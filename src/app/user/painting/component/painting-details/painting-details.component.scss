@@ -1,4 +1,4 @@
-#full-size-img {
+.full-size-img {
   z-index: 999999;
   width: 100%;
   height: 100%;
@@ -18,7 +18,7 @@
     max-height: 100%;
   }
 }
-#full-size-img.active {
+.full-size-img.active {
   display: flex;
   img {
     display: block;
@@ -46,6 +46,44 @@
   }
 }
 
+.btn-prev,
+.btn-next {
+  position: fixed;
+  top: 50vh;
+  border: 1px solid goldenrod;
+  background: goldenrod;
+  font-size: 14px;
+  padding: 5px;
+  color:#fff;
+  padding: 5px;
+  outline: none !important;
+  opacity: 0.7;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background: #fff;
+  color: goldenrod;
+}
+
+.btn-prev:disabled,
+.btn-next:disabled {
+  background: gray !important;
+  color: #fff !important;
+}
+
+.btn-prev {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  left: 0px;
+}
+
+.btn-next {
+  right: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
 .most-painting-seen {
   .image {
     img {
@@ -65,15 +103,6 @@
       -o-transition: all .2s ease-in-out;
       -moz-transition: all .2s ease-in-out;
       -webkit-transition: all .2s ease-in-out;
-      @media (max-width:991px) and (min-width:400px) {
-        top: 20px;
-        right: 20px;
-      }
-      @media (max-width:399px) {
-        top : 10px;
-        right: 10px;
-        padding: 10px;
-      }
     }
     &:hover {
       button {
@@ -139,12 +168,9 @@
     }
     .painting-art-type {
       display: inline-block;
-      //border: 1px solid #dddddd;
-      //padding: .84rem 1.14rem;
       p {
         font-size: 1rem;
         span {
-          //margin-left: 0.47rem;
           font-weight: 600;
           letter-spacing: 1px;
           font-size: 1rem;
@@ -153,7 +179,6 @@
     }
     ul {
       list-style-type: none;
-      //margin: 20px 0;
       padding: 0;
       .buy-painting {
         background: #CCB832;
@@ -164,6 +189,9 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        a {
+          color: white
+        }
         &:hover {
           background-color: #F4DB75;
         }
@@ -176,16 +204,10 @@
       background-color: #CCB832;
       box-shadow: none;
       font-size: .8rem;
-      //padding: .84rem 2.14rem;
       span {
         font-size: 1rem;
       }
     }
-    //.painting-secondary {
-    //  img {
-    //    height: 80px;
-    //  }
-    //}
   }
 }
 
@@ -201,365 +223,36 @@
     outline: none !important;
   }
 }
-
 .painting-video {
   background: #efefef;
 }
 
-.btn-prev,
-.btn-next {
-  position: fixed;
-  top: 50vh;
-  border: 1px solid goldenrod;
-  background: goldenrod;
-  font-size: 14px;
-  padding: 5px;
-  color:#fff;
-  padding: 5px;
-  outline: none !important;
-  opacity: 0.7;
-}
 
-.btn-prev:hover,
-.btn-next:hover {
-  background: #fff;
-  color: goldenrod;
-}
-
-.btn-prev:disabled,
-.btn-next:disabled {
-  background: gray !important;
-  color: #fff !important;
-}
-
-.btn-prev {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  left: 0px;
-}
-
-.btn-next {
-  right: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-@media (max-width:767px) {
-  .btn-prev,
-  .btn-next {
-    display: none;
-  }
-}
-
-//#painting-details {
-//  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-//  margin: 1rem 0 20px 0;
-//  .row {
-//    margin-left: -5px;
-//    margin-right: -5px;
-//    #full-size-img {
-//      z-index: 999999;
-//      width: 100%;
-//      height: 100%;
-//      position: fixed;
-//      top: 0;
-//      left: 0;
-//      right: 0;
-//      bottom: 0;
-//      background: rgba(0, 0, 0, 0.5);
-//      display: none;
-//      justify-content: center;
-//      align-items: center;
-//      padding: 25px;
-//
-//      img {
-//        display: none;
-//        max-width: 100%;
-//        max-height: 100%;
-//      }
-//    }
-//    #full-size-img.active {
-//      display: flex;
-//
-//      img {
-//        display: block;
-//      }
-//
-//      button {
-//        position: absolute;
-//        top: -20px;
-//        right: -20px;
-//        border-radius: 50%;
-//        border: none;
-//        background: rgba(0, 0, 0, 0.3);
-//        color: #fff;
-//        font-size: 25px;
-//        width: 55px;
-//        height: 55px;
-//        display: flex;
-//        justify-content: left;
-//        padding: 15px;
-//        outline: none;
-//
-//        span {
-//          position: absolute;
-//          bottom: 2px;
-//          left: 13px;
-//        }
-//      }
-//    }
-//    #painting-images {
-//      img {
-//        width: 100%;
-//        height: 125px;
-//        object-fit: cover;
-//        overflow: hidden;
-//        cursor: pointer;
-//        &:first-of-type {
-//          padding-top: 0 !important;
-//        }
-//      }
-//    }
-//
-//    #main-image {
-//      position: relative;
-//      overflow: hidden;
-//      @media (max-width:991px) {
-//        padding-right: 0 ;
-//      }
-//      .image-box {
-//        height: 85vh;
-//        @media (max-width:450px) {
-//          height: 300px;
-//        }
-//        img {
-//          height: 100%;
-//          width: 100%;
-//          object-fit: cover;
-//          @media (max-width:991px) {
-//            object-fit: unset;
-//          }
-//        }
-//      }
-//      .full-size {
-//        position: absolute;
-//        top: -60px;
-//        right: 40px;
-//        border: none;
-//        padding: 0.8rem 2.14rem;
-//        background: rgba(248, 247, 247, 0.5);
-//        color: #333;
-//        outline: none;
-//        transition: all .2s ease-in-out;
-//        -o-transition: all .2s ease-in-out;
-//        -moz-transition: all .2s ease-in-out;
-//        -webkit-transition: all .2s ease-in-out;
-//        @media (max-width:991px)  and (min-width:400px){
-//          top: 20px;
-//          right: 20px;
-//        }
-//        @media (max-width:399px) {
-//          top : 10px;
-//          right: 10px;
-//          padding: 10px;
-//        }
-//      }
-//      &:hover {
-//        button {
-//          @media (min-width:400px) {
-//            top: 20px;
-//          }
-//        }
-//      }
-//      .video-box {
-//        width: 100%;
-//        margin-top: 1rem;
-//        iframe {
-//          width: 100%;
-//          height: 350px;
-//        }
-//        i {
-//          position: absolute;
-//          font-size: 2.3rem;
-//          color: #000;
-//        }
-//      }
-//    }
-//    .painting-info {
-//      //position: relative;
-//      //min-height: 510px;
-//      .painting-name {
-//        font-size: 40pt;
-//        letter-spacing: -2px;
-//        margin-bottom: 0;
-//      }
-//      p {
-//        font-size: 21px;
-//      }
-//      .painting-artist {
-//        a {
-//          color: #CCB832;
-//          font-size: 16pt;
-//          &:hover {
-//            color: #F4DB75;
-//          }
-//        }
-//
-//      }
-//      .painting-art-type {
-//        //width: 55%;
-//        display: inline-block;
-//        border: 1px solid #dddddd;
-//        padding: .84rem 1.14rem;
-//        p {
-//          font-size: 1.2rem;
-//          span {
-//            margin-left: 0.47rem;
-//            font-weight: 600;
-//            letter-spacing: 1px;
-//            font-size: 1.3rem;
-//          }
-//        }
-//      }
-//      ul {
-//        list-style-type: none;
-//        margin: 20px 0;
-//        padding: 0;
-//        .buy-painting {
-//          background: #CCB832;
-//          color: #fff;
-//          border-radius: 50%;
-//          height: 32px;
-//          width: 32px;
-//          display: inline-flex;
-//          justify-content: center;
-//          align-items: center;
-//          &:hover {
-//            background-color: #F4DB75;
-//          }
-//          mdb-icon {
-//            margin-right: 2px;
-//          }
-//        }
-//      }
-//      #add-to-wish-btn {
-//        background-color: #CCB832;
-//        box-shadow: none;
-//        font-size: 1rem;
-//        padding: .84rem 2.14rem;
-//        span {
-//          font-size: 1.3rem;
-//        }
-//      }
-//    }
-//  }
-//}
-//.painting-tab {
-//  width: 100%;
-//}
-//.related-paintings {
-//  h3 {
-//    text-align: center;
-//    font-size: 1.5rem;
-//  }
-//}
-//#artist-area {
-//  flex-basis: 25%;
-//  max-width: 25%;
-//  img {
-//  }
-//}
-//#main-painting {
-//  flex-basis: 75%;
-//  img {
-//    min-width: 100%;
-//    object-fit: fill;
-//  }
-//}
-//#painting-carousel {
-//  img {
-//    min-width: 100%;
-//  }
-//}
-//.image-link {
-//  min-width: 100%;
-//  height: 20rem;
-//  img {
-//    min-width: 100%;
-//    object-fit: fill;
-//    object-position: center;
-//  }
-//}
-//#famous-quote {
-//  img {
-//    border-radius: 50%;
-//  }
-//  h5 {
-//    font-size: 30pt;
-//  }
-//  h1 {
-//    padding: 10px 20px;
-//    margin-top: 25px;
-//    font-size: 50pt;
-//    i {
-//      font-size: 1.7rem;
-//      margin: 0 10px;
-//      position: relative;
-//      top: -26px;
-//    }
-//    i.fa-quote-right {
-//      top: 6px;
-//    }
-//  }
-//}
-
-
-@media (max-width: 400px) {
-  #painting-details {
-    .painting-info {
-      h3 {
-        font-size: 2rem;
-      }
-    }
-  }
-  //#famous-quote { h3 {font-size: 18px; i { font-size: 20px; }}}
-}
-
-@media (max-width: 767px) {
-  #painting-details {
-    display: block !important;
-    #painting-list-images {
-      display: none !important;
-    }
-    #main-image,
-    .painting-info {
-      display: block;
-      max-width: 100% !important;
-      flex: 100%;
-      min-height: auto;
-      .video-box {
-        position: relative;
-        iframe {
-          height: 250px;
+@media (min-width:400px) {
+  .most-painting-seen {
+    .image {
+      &:hover {
+        button {
+          top: 20px;
         }
       }
     }
   }
 }
-// style for md screen size
-@media (min-width: 768px) and (max-width: 991px) {
-  .painting-info {
-    h3 {
-      font-size: 1.7rem
-    }
-    button {
-      padding: 10px 5px;
+
+@media (max-width:991px) and (min-width:400px) {
+  .most-painting-seen {
+    .image {
+      .full-size {
+        top: 20px;
+        right: 20px;
+      }
     }
   }
 }
-// style for lg screen size
+
 @media (min-width: 992px) and (max-width: 1199px) {
-  #painting-details {
+  .painting-details {
     .row {
       #painting-list-images {
         padding-left: 0 !important;
@@ -602,6 +295,14 @@
 }
 
 @media (max-width:991px) {
+  .painting-info {
+    h3 {
+      font-size: 1.7rem
+    }
+    button {
+      padding: 10px 5px;
+    }
+  }
   .most-painting-seen{
     .image {
       text-align: center;
@@ -669,10 +370,51 @@
   }
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
+  .painting-details {
+    display: block !important;
+    #painting-list-images {
+      display: none !important;
+    }
+    .painting-info {
+      display: block;
+      max-width: 100% !important;
+      flex: 100%;
+      min-height: auto;
+      .video-box {
+        position: relative;
+        iframe {
+          height: 250px;
+        }
+      }
+    }
+  }
   .bg-light {
     > .container {
       max-width: 100%;
+    }
+  }
+  .btn-prev,
+  .btn-next {
+    display: none;
+  }
+}
+
+@media (max-width:399px)  {
+  .most-painting-seen {
+    .image {
+      .full-size {
+        top : 10px;
+        right: 10px;
+        padding: 10px;
+      }
+    }
+  }
+  .painting-details {
+    .painting-info {
+      h3 {
+        font-size: 2rem;
+      }
     }
   }
 }

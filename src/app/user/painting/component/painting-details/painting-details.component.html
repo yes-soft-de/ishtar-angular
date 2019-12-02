@@ -1,29 +1,28 @@
 <div *ngIf="painting != null && artist != null">
   <!-- For View Image in full screen -->
-  <div id="full-size-img" [class.active]="fullImage">
+  <div class="full-size-img" [class.active]="fullImage">
     <img #fullSizeImg class="img-fluid" src="{{painting[0]?.image}}" alt="...">
     <button (click)="hideFullScreenMode()"><span>&times;</span></button>
   </div>
   <!-- #For View Image in full screen -->
-
   <div class="main-carousel">
     <div class="carousel-cell">
       <div class="bg-light">
         <div class="container">
-          <div id="painting-details" class="most-painting-seen mb-0">
+          <div class="painting-details most-painting-seen mb-0">
             <div class="col-sm-8 col-md-10 col-xl-11 mx-auto">
               <div class="row">
                 <div class="col-md-12 col-lg-8 mx-auto image mt-3 pb-3">
                   <div class="d-lg-none painting-artist">
                     <img src="{{artist[0]?.path}}" class="" alt="">
-                    <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>
+                    <app-follow [ParentType]="'artist'" [ParentId]="artist[0]?.id" class="follow-artist"></app-follow>
                     <p class="painting-artist-name">
                       <a routerLink="/artist/{{artist[0]?.id}}">
                         {{artist[0]?.name}}
                       </a>
                     </p>
                   </div>
-                  <img #mainImg id="main-img"
+                  <img #mainImg 
                        src="{{painting[0]?.image}}"
                        (click)="showImageInFullSize()"
                        class="img-fluid mx-auto"
@@ -40,14 +39,14 @@
                     <div class="col-12 mt-3 painting-interaction">
                       <ul>
                         <li class="ml-0 my-1 mr-1 d-inline-block">
-                          <app-clap-widget [ParentType]="1" [ParentId]="painting[0]?.id"></app-clap-widget>
+<!--                          <app-clap-widget [ParentType]="1" [ParentId]="painting[0]?.id"></app-clap-widget>-->
+                          <app-clap [ParentType]="'painting'" [ParentId]="painting[0]?.id"></app-clap>
                         </li>
                         <li class="m-1 d-inline-block">
-                          <app-love-interaction [ParentType]="1" [ParentId]="painting[0]?.id"></app-love-interaction>
+                          <app-love [ParentType]="'painting'" [ParentId]="painting[0]?.id"></app-love>
                         </li>
                         <li class="my-1 mx-3 buy-painting">
-                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0]?.id}}"
-                             style="color: white">
+                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting[0]?.id}}">
                             <mdb-icon fas icon="shopping-cart"></mdb-icon>
                           </a>
                         </li>
@@ -64,7 +63,7 @@
                         <a routerLink="/artist/{{artist[0]?.id}}">
                           {{artist[0]?.name}}
                         </a>
-                        <app-follow-widget [ParentType]="1" [ParentId]="painting[0]?.id" class="follow-artist"></app-follow-widget>
+                        <app-follow [ParentType]="'artist'" [ParentId]="artist[0]?.id" class="follow-artist"></app-follow>
                       </p>
                     </div>
                     <div class="col-12">

@@ -1,0 +1,15 @@
+<div class="clap-icon" *ngIf="clapped">
+  <div class="clap-container">
+    <img src="{{clapFiled}}" [ngStyle]="{'opacity': clapping ? '.4' : '1'}" alt="clap icon" width="32" height="32" (click)="deleteClap()">
+  </div>
+  <h5 class="mb-0">Clapped {{clappedNumber}} Times By You!</h5>
+</div>
+<div class="clap-icon" *ngIf="!clapped">
+  <div class="clap-container">
+    <img (mousedown)="startCalc()" (mouseup)="endClac()" src="{{clapOutlined}}"
+         alt="clap icon" width="30" height="30">
+  </div>
+  <h5 class="mb-0" *ngIf="!holding">Clap </h5>
+  <h5 class="mb-0" *ngIf="holding">Clapping {{calculateClaps()}} Times</h5>
+</div>
+

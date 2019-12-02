@@ -1,4 +1,5 @@
-<div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
+<div *ngIf="paintingList != null">
+<div class="col-sm-3 col-xs-12 floating painting-list-sidebar filter-paintings" *ngIf="filter">
   <div>
     <div class="filter">
       <h5>Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
@@ -24,10 +25,11 @@
   </div>
 </div>
 <div class="col-sm-9 col-xs-12 floating">
-  <div id="painting-list">
+  <div class="painting-list">
     <div class="row">
       <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
-           *ngFor="let painting of paintingList | paginate: config; index as i" (click)="viewImage(painting.id)"
+           *ngFor="let painting of paintingList | paginate: config; index as i"
+           (click)="viewImage(painting.id)"
            routerLink="/painting/{{painting.id}}">
         <div class="img-container">
           <span class="painting-buy" data-toggle="modal" data-target="#exampleModal" style="display: none;">
@@ -39,20 +41,14 @@
           <img class="img-fluid" src="{{painting.image}}"
                (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
           <span class="painting-info">
-             <p class="painting-name">{{painting.name}}</p>
-             <p class="artist">{{painting.artist}}</p>
+             <p class="painting-name">{{painting?.name}}</p>
+             <p class="artist">{{painting?.artist}}</p>
              <ul class="statistics">
                <li>
-                 <i class="fas fa-heart"></i>
-                 <span *ngFor="let paintingLove of paintingsLove">
-                   {{paintingLove.id == painting.id ? paintingLove.loveNumber : ''}}
-                 </span>
+                 <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'like'"></app-interaction>
                </li>
                <li>
-                   <i class="far fa-eye"></i>
-                   <span
-                     *ngFor="let paintingView of paintingsView"> {{paintingView.id == painting.id ? paintingView.viewNumber : ''}}
-                   </span>
+                 <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'view'"></app-interaction>
                </li>
              </ul>
            </span>
@@ -61,7 +57,7 @@
     </div>
   </div>
 </div>
-<div class="text-center mt-3" id="my-pagination">
+<div class="text-center mt-3">
   <pagination-controls
     class="my-pagination"
     (pageChange)="pageChanged($event)"
@@ -72,4 +68,5 @@
     screenReaderPaginationLabel="Pagination"
     screenReaderPageLabel="page"
     screenReaderCurrentLabel="You're on page"></pagination-controls>
+</div>
 </div>

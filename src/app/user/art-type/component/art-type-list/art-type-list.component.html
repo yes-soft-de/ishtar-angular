@@ -1,0 +1,14 @@
+<section class="school-list-section">
+  <div class="cards-list">
+    <div class="school-list-card" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
+      <div class="school-bg">
+        <img src="{{i.path}}" alt="...">
+      </div>
+      <div class="school-fg">
+        <div>
+          <h5>{{i.name}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

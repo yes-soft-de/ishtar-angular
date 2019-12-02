@@ -1,4 +1,4 @@
-#painting-list {
+.painting-list {
   margin-bottom: 15px;
   .painting-list-item {
     outline: none;
@@ -73,9 +73,6 @@
             margin-left: 10px;
           }
         }
-        @media (max-width:991px) {
-          opacity: 1;
-        }
       }
       &:hover .painting-info{
         opacity: 1;
@@ -86,7 +83,7 @@
 .floating {
   float: left;
 }
-#painting-list-sidebar {
+.painting-list-sidebar {
   margin-bottom: 15px;
   > div {
     padding-top: 1rem;
@@ -108,8 +105,21 @@
     }
   }
 }
+
+@media (max-width:991px) {
+  .painting-list {
+    .painting-list-item {
+      .img-container {
+        .painting-info {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width:800px) {
-  #painting-list {
+  .painting-list {
     .painting-list-item {
       padding: 1rem !important;
       .img-container {
@@ -117,24 +127,10 @@
         img {
           height: 100%;
         }
-        @media (max-width:767px) and (min-width:575px) {
-          height: 275px;
-          .painting-info {
-            .painting-name,
-            .artist {
-              width: 70%;
-            }
-            .statistics {
-              li {
-                display: block;
-              }
-            }
-          }
-        }
       }
     }
   }
-  #painting-list-sidebar {
+  .painting-list-sidebar {
     div {
       button {
         padding: 7px;
@@ -142,71 +138,54 @@
     }
   }
 }
+
+@media (max-width:767px) and (min-width:575px) {
+  .painting-list {
+    .painting-list-item {
+      .img-container {
+        height: 275px;
+        .painting-info {
+          .painting-name,
+          .artist {
+            width: 70%;
+          }
+          .statistics {
+            li {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width:575px) {
   .filter-paintings {
-    @media (max-width:380px) {
-      padding: 0;
+    hr {
+      display: none;
     }
     .filter {
       position: relative;
-      float: left;
       margin-right: 10px;
+      float: none;
+      display: block;
+      padding-bottom: 20px;
       h5 {
-        border: 1px solid #000;
-        display: inline-block;
         padding: 10px;
         font-size: 16px !important;
-        @media (max-width:350px) {
-          font-size: 14px !important;
-        }
+        display: block;
+        border: 0;
+        border-bottom: 1px solid #e1e1e1;
         i {
           visibility: visible !important;
         }
       }
       .btn-container {
-        position: absolute;
-        border: 1px solid #e1e1e1;
-        z-index: 99;
         background: #fff;
         width: 100%;
-        box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-        visibility: hidden;
         transition: all .7s ease-in-out;
         -webkit-transition: all .7s ease-in-out;
-        button {
-          text-align: left;
-          padding: 5px !important;
-          margin: 0 5px !important;
-          border-bottom: 1px solid #e1e1e1 !important;
-          display: block;
-          background: none !important;
-          width: calc(100% - 10px);
-          &:last-child {
-            border-bottom: none !important;
-          }
-        }
-
-      }
-    }
-    hr {
-      display: none;
-    }
-  }
-}
-
-
-@media (max-width:575px) {
-  .filter-paintings {
-    .filter {
-      float: none;
-      display: block;
-      padding-bottom: 20px;
-      h5 {
-        display: block;
-        border: 0;
-        border-bottom: 1px solid #e1e1e1;
-      }
-      .btn-container {
         position: static;
         visibility: visible;
         box-shadow: none;
@@ -217,11 +196,30 @@
         button {
           border: 0 !important;
           border-bottom: 1px solid #e1e1e1 !important;
-          padding: 10px;
+          text-align: left;
+          padding: 5px !important;
+          margin: 0 5px !important;
+          display: block;
+          background: none !important;
+          width: calc(100% - 10px);
+          &:last-child {
+            border-bottom: none !important;
+          }
         }
         &.active {
           max-height: 1000px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width:380px) {
+  .filter-paintings {
+    padding: 0;
+    .filter {
+      h5 {
+        font-size: 14px !important;
       }
     }
   }

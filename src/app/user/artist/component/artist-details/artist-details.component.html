@@ -1,5 +1,5 @@
 <!-- ######################################## Artist Page ######################################## -->
-
+<div *ngIf="artist != null">
 <div class="main-carousel" *ngIf="randomPaintingForArtist != null">
   <div class="carousel-cell">
     <section class="artist-page">
@@ -44,7 +44,7 @@
                           </div>
                         </div>
                         <div class="col-5 col-sm-6 contact-artist">
-                          <app-follow-widget [ParentId]="artist[0]?.id" [ParentType]="2" class="follow-artist"></app-follow-widget>
+                          <app-follow [ParentId]="artist[0]?.id" [ParentType]="'artist'" class="follow-artist"></app-follow>
                         </div>
 
                         <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
@@ -93,4 +93,5 @@
     </section>
   </div> <!--End Carousel cell-->
 </div> <!--End Main Carousel-->
+</div>
 <!-- ###################################### End Artist Page ###################################### -->

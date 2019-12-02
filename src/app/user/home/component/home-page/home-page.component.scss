@@ -1,0 +1,99 @@
+.floating-header {
+  width: 100%;
+  height: 3rem;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.about-ishtar {
+  padding: 15px;
+  margin-top: 25px;
+  border: 1px solid goldenrod;
+  h1 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    border: 1px solid goldenrod;
+    padding: 5px 10px;
+    color: goldenrod;
+    &:hover {
+      color: #fff;
+      background: goldenrod;
+    }
+  }
+
+}
+
+.most-painting-seen {
+  padding: 2rem 0;
+  background: #343a40;
+  color: #fff;
+  .content {
+    .painting-name {
+      a {
+        color: #CCB832;
+      }
+    }
+    .painting-artist-name,
+    .painting-dimension {
+      border-bottom: 1px solid;
+    }
+    .painting-artist-name a:hover,
+    .painting-name a:hover {
+      color: #f4db75;
+    }
+    .painting-artist-name a,
+    .painting-story .h4,
+    p span {
+      color: #b2b67a;
+    }
+  }
+}
+
+.home-hero {
+  z-index: -1;
+}
+.app-painting-list {
+  display: flex;
+  justify-content: center;
+}
+.artists-list {
+  padding-top: 2rem;
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  .most-painting-seen {
+    .image {
+      img {
+        min-height: 250px;
+      }
+    }
+  }
+}
+
+@media (max-height: 767px) {
+  .most-painting-seen {
+    .image {
+      img {
+        max-height: 300px;
+        display: block;
+        margin: 15px auto;
+      }
+    }
+  }
+}
+
+@media (max-width:500px){
+  h1 {
+    font-size: 25pt !important;
+    margin: 1rem !important;
+  }
+}
+

@@ -19,11 +19,7 @@ footer {
       }
     }
   }
-  .footer-space {
-
-  }
   .custom-bottom-footer {
-    //color: #8f9091;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -35,7 +31,7 @@ footer {
     a{
       color: #fff;
     }
-    #footer-bottom-left {
+    .footer-bottom-left {
       ul {
         list-style-type: none;
         li {
@@ -49,7 +45,7 @@ footer {
         }
       }
     }
-    #footer-bottom-right {
+    .footer-bottom-right {
       a {
         &:hover {
           .facebook {
@@ -79,59 +75,6 @@ footer {
   }
 }
 
-@media (max-width: 575px) {
-  footer {
-    .logo {
-      text-align: center;
-      justify-content: center !important;
-      -webkit-box-pack: center !important;
-      img {
-        width: 200px;
-        margin: 0 auto;
-        display: block;
-      }
-    }
-    .site-map {
-      padding-bottom: 0 !important;
-      ul {
-        padding: 0 !important;
-        margin: 0 !important;
-        li {
-          text-align: left;
-          padding: 5px;
-          @media (max-width:991px) {
-            text-align: center;
-          }
-        }
-      }
-    }
-  }
-  #footer-bottom-left {
-    ul {
-      text-align: center;
-      margin-top: 10px
-    }
-  }
-  #footer-bottom-right {
-    text-align: center !important;
-    margin-bottom: 15px !important;
-    i {
-      margin-left: 5px !important;
-      margin-right: 5px !important;
-    }
-  }
-}
-
-// style for lg screen size
-@media (min-width: 992px) and (max-width: 1199px) {
-  footer {
-    .site-map {
-      letter-spacing: 3px;
-    }
-  }
-}
-
-// style for xl screen size
 @media (min-width: 1200px) {
   footer {
     .site-map {
@@ -142,10 +85,17 @@ footer {
 
 @media (max-width:991px) {
   footer {
-    #footer-bottom-right {
+    .footer-bottom-right {
       margin-bottom: 0 !important;
     }
     .custom-bottom-footer {
+      .site-map  {
+        ul {
+          li {
+            text-align: center;
+          }
+        }
+      }
       .container  {
         margin: 0;
         max-width: 100% !important;
@@ -194,6 +144,46 @@ footer {
           font-size: 11px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  footer {
+    .logo {
+      text-align: center;
+      justify-content: center !important;
+      -webkit-box-pack: center !important;
+      img {
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    .site-map {
+      padding-bottom: 0 !important;
+      ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        li {
+          text-align: left;
+          padding: 5px;
+        }
+      }
+    }
+  }
+  .footer-bottom-left {
+    ul {
+      text-align: center;
+      margin-top: 10px
+    }
+  }
+  .footer-bottom-right {
+    text-align: center !important;
+    margin-bottom: 15px !important;
+    i {
+      margin-left: 5px !important;
+      margin-right: 5px !important;
     }
   }
 }

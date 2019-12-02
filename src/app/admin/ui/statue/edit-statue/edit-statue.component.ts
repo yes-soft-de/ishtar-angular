@@ -15,7 +15,7 @@ import {ArtistInterface} from '../../../entity/artist/artist-interface';
   styleUrls: ['./edit-statue.component.scss']
 })
 export class EditStatueComponent implements OnInit {
-  statuesData: {0: StatueInterface, price: string};
+  statuesData: StatueInterface;
   statueId: number;
   isSubmitted = false;
   uploadForm: FormGroup;
@@ -61,39 +61,41 @@ export class EditStatueComponent implements OnInit {
       this.artists = data.artists.Data;
       // select the statue for this route
       data.statues.Data.map(statuesRes => {
-        if (statuesRes['0'].id === this.statueId) {
+        console.log(statuesRes);
+        if (statuesRes.id === this.statueId) {
           this.statuesData = statuesRes;
         }
       });
       // fetch the artists Id For This Statue
       data.artists.Data.map(artistRes => {
-        if (artistRes['0'].name === this.statuesData['0'].artist.name) {
+        console.log(artistRes['0'].name, this.statuesData.artist);
+        if (artistRes['0'].name === this.statuesData.artist) {
           this.artistId = artistRes['0'].id;
         }
       });
-      console.log(this.artistId, this.statuesData, data);
-      console.log(this.uploadForm.errors, this.uploadForm.valid);
+      // console.log(this.artistId, this.statuesData, data);
+      // console.log(this.uploadForm.errors, this.uploadForm.valid);
         /* setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent.
         It is recommended to use patchValue therefore
        */
       this.uploadForm.patchValue({  // Insert Our Statues Data Into Form Fields
-        name:         this.statuesData['0'].name,
+        name:         this.statuesData.name,
         artist:       this.artistId,
-        height:       this.statuesData['0'].height,
-        width:        this.statuesData['0'].width,
-        weight:       this.statuesData['0'].weight,
-        length:       this.statuesData['0'].length,
+        height:       this.statuesData.height,
+        width:        this.statuesData.width,
+        weight:       this.statuesData.weight,
+        length:       this.statuesData.length,
         price:        this.statuesData.price,
-        state:        +this.statuesData['0'].state,   // + : Here use to convert true to 1 and false to 0
-        image:        this.statuesData['0'].image,
-        active:       +this.statuesData['0'].active,  // + : Here use to convert true to 1 and false to 0
-        keyWords:     this.statuesData['0'].keyWord,
-        material:     this.statuesData['0'].material,
-        style:        this.statuesData['0'].style,
-        period:       this.statuesData['0'].period,
-        mediums:      this.statuesData['0'].mediums,
-        features:     this.statuesData['0'].features,
-        description:  this.statuesData['0'].description,
+        state:        +this.statuesData.state,   // + : Here use to convert true to 1 and false to 0
+        image:        this.statuesData.image,
+        active:       +this.statuesData.active,  // + : Here use to convert true to 1 and false to 0
+        keyWords:     this.statuesData.keyWord,
+        material:     this.statuesData.material,
+        style:        this.statuesData.style,
+        period:       this.statuesData.period,
+        mediums:      this.statuesData.mediums,
+        features:     this.statuesData.features,
+        description:  this.statuesData.description,
       });
     });
 
