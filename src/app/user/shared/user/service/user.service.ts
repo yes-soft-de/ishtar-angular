@@ -4,6 +4,7 @@ import {LoginRequest} from '../request/login-request';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {RegisterRequest} from '../request/register-request';
 import {catchError} from 'rxjs/operators';
+import {UserInfo} from '../../../entity/user/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,20 @@ export class UserService {
         }
       );
     return registerSubject.asObservable();
+  }
+
+  getUserInfo(): Observable<UserInfo> {
+    const userSubject = new Subject<UserInfo>();
+    if (this.isLoggedIn()) {
+      this.userManager.getUserProfile().subscribe(
+        userInfo => {
+          userSubject.next(userInfo.Data);
+        }
+      );
+    } else {
+      userSubject.error('User is Not Logged in!');
+    }
+    return userSubject.asObservable();
   }
 
   public isLoggedIn(): boolean {

@@ -6,6 +6,9 @@ import {Observable} from 'rxjs';
 import {LoginResponse} from '../response/login-response';
 import {RegisterRequest} from '../request/register-request';
 import {RegisterResponse} from '../response/register-response';
+import {UserInfo} from '../../../entity/user/user-info';
+import {UserResponse} from '../../../entity/user/user-response';
+import {IshtarClientService} from '../../client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +20,8 @@ export class UserRepositoryService {
     })
   };
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) {
   }
 
   public login(loginRequest: LoginRequest): Observable<LoginResponse> {
@@ -26,5 +30,9 @@ export class UserRepositoryService {
 
   public register(registerRequest: RegisterRequest) {
     return this.httpClient.post<RegisterResponse>(UserConfig.userRegisterAuthAPI, JSON.stringify(registerRequest), this.httpOptions);
+  }
+
+  getUserProfile(): Observable<UserResponse> {
+    return this.ishtarClient.get(UserConfig.userProfileAPI);
   }
 }

@@ -22,11 +22,17 @@ export class HeaderComponent implements OnInit {
   constructor(private artTpeService: ArtTypeService,
               public dialog: MatDialog,
               private router: Router,
+              private userProfileService: UserService,
               private userService: UserService) {
   }
 
   ngOnInit() {
     this.userLoggedIn = this.userService.isLoggedIn();
+    this.userService.getUserInfo().subscribe(
+      data => {
+        this.userInfo = data;
+      }
+    );
   }
 
   showDialog() {
