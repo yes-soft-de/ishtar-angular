@@ -16,7 +16,7 @@ export class MostSeenPaintingsComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getMostViewedPaintings().subscribe(
       mostViewedItems => {
-        this.mostViewedData = mostViewedItems;
+        this.mostViewedData = mostViewedItems.slice(0, 3);
       }
     );
   }
