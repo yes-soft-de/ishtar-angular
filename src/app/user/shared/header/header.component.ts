@@ -28,11 +28,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userLoggedIn = this.userService.isLoggedIn();
-    this.userService.getUserInfo().subscribe(
-      data => {
-        this.userInfo = data;
-      }
-    );
+    if (this.userLoggedIn) {
+      this.userService.getUserInfo().subscribe(
+        data => {
+          this.userInfo = data;
+        }
+      );
+    }
   }
 
   showDialog() {

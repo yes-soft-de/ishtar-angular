@@ -33,6 +33,7 @@ export class UserService {
         loginResponse => {
           localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
           localStorage.setItem('date', new Date().toString());
+          loginSubject.next();
         }
       );
     return loginSubject.asObservable();

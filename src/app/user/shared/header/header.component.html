@@ -40,9 +40,6 @@
                     <span mdbDropdownToggle class="letter dropdown-toggle">{{userInfo?.username.substring(0, 1)}}</span>
                     <div class="info dropdown-menu" *ngIf="userLoggedIn">
                       <span class="email dropdown-item">{{userInfo?.username}}</span>
-<!--                      <div class="dropdown-item">-->
-<!--                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px;">Profile</a>-->
-<!--                      </div>-->
                       <div class="login-btn dropdown-item" *ngIf="userLoggedIn">
                         <a (click)="logout()">Logout !</a>
                       </div>
