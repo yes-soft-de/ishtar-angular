@@ -5,6 +5,7 @@ import {UserManagerService} from '../../../manager/user/user-manager.service';
 import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../../../shared/user/service/user.service';
 import {Router} from '@angular/router';
+import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-login-page',
@@ -23,6 +24,7 @@ export class LoginPageComponent implements OnInit {
   private registering = false;
 
   constructor(private userService: UserService,
+              private userProfileService: UserProfileService,
               private router: Router,
               private fb: FormBuilder,
               private toaster: ToastrService) {
@@ -31,15 +33,15 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
 
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      confirm_password: ['', [Validators.required]]
+      confirm_password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -47,9 +49,18 @@ export class LoginPageComponent implements OnInit {
     window.open();
   }
 
+  googleLogin() {
+    console.log('Is date Store In Cookie: ', localStorage.getItem('date'));
+    if (!localStorage.getItem('date')) {
+      console.log('cookie Is set', localStorage.getItem('date'));
+      localStorage.setItem('date', new Date().toString());
+    }
+    return true;
+  }
+
   submitLogin() {
     // (1) This Starts Login Process
-    this.userService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(
+    this.userService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
       () => {
         window.location.reload();
       }, error1 => {
@@ -74,16 +85,16 @@ export class LoginPageComponent implements OnInit {
     // (a) This Fires First
     if (this.registerForm.get('password').value === this.registerForm.get('confirm_password').value) {
       // Save This For Future Login Process
-      this.email = this.registerForm.get('email').value;
       this.username = this.registerForm.get('username').value;
       this.password = this.registerForm.get('password').value;
+      this.email = this.registerForm.get('email').value;
       this.registering = true;
       this.userService.register(
-        this.registerForm.get('email').value,
         this.registerForm.get('username').value,
+        this.registerForm.get('email').value,
         this.registerForm.get('password').value
       ).subscribe(
-        () => {
+        (submitRegister) => {
           this.submitLoginAfterRegister(this.registerForm.get('email').value, this.registerForm.get('password').value);
         }, () => {
           this.toaster.error('Error in Registering user!');

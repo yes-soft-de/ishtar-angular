@@ -12,7 +12,9 @@
     background:plum;
     vertical-align:middle;
     color:white;
+    cursor: pointer;
     .info {
+      min-width: 100px;
       position: absolute;
       cursor: auto;
       right: 0px;

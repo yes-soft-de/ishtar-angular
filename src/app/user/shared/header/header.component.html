@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../home/component/home-page/home-page.component.scss">
 <div id="header">
   <div id="spacer"></div>
   <header class="d-none d-lg-block">
@@ -33,39 +34,50 @@
             <div class="col-4 align-self-center">
               <ul class="mb-0 pl-0">
                 <li class="float-right">
-                  <span class="login" *ngIf="!userLoggedIn">
-                        <a (click)="showDialog()">Login</a>
-                  </span>
-                  <div mdbDropdown id="letter-circle" *ngIf="userLoggedIn">
-                    <span mdbDropdownToggle class="letter dropdown-toggle">{{userInfo?.username.substring(0, 1)}}</span>
-                    <div class="info dropdown-menu" *ngIf="userLoggedIn">
-                      <span class="email dropdown-item">{{userInfo?.username}}</span>
-                      <div class="login-btn dropdown-item" *ngIf="userLoggedIn">
-                        <a (click)="logout()">Logout !</a>
+                  <div class="dropdown">
+                    <span class="login" *ngIf="!userLoggedIn">
+                          <a (click)="showDialog()">Login</a>
+                    </span>
+                    <div mdbDropdown id="letter-circle" *ngIf="userLoggedIn">
+                      <span mdbDropdownToggle class="letter">{{userInfo?.username.substring(0, 1) | uppercase}}</span>
+                      <div class="info">
+                        <span class="email">{{userInfo?.username}}</span>
+                        <div class="login-btn" *ngIf="userLoggedIn">
+                          <a (click)="logout()">Logout !</a>
+                        </div>
                       </div>
                     </div>
+<!--                    <div mdbDropdown id="letter-circle" *ngIf="userLoggedIn || userGoogleLoggedIn">-->
+<!--                      <span mdbDropdownToggle class="letter">{{userInfo?.username.substring(0, 1) | uppercase}}</span>-->
+<!--                      <div class="info">-->
+<!--                        <span class="email">{{userInfo?.username}}</span>-->
+<!--                        <div class="login-btn" *ngIf="userLoggedIn || userGoogleLoggedIn">-->
+<!--                          <a (click)="logout()">Logout !</a>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
                   </div>
-            </li>
-            <li class="float-right">
-              <a routerLink="/about-ishtar">
-                About Us
-              </a>
-            </li>
-            <li class="float-right">
-              <a routerLink="/painting-list">
-                Paintings
-              </a>
-            </li>
-            <li class="float-right">
-              <a routerLink="/artist-list">
-                Artists
-              </a>
-            </li>
-            </ul>
+                </li>
+                <li class="float-right">
+                  <a routerLink="/about-ishtar">
+                    About Us
+                  </a>
+                </li>
+                <li class="float-right">
+                  <a routerLink="/painting-list">
+                    Paintings
+                  </a>
+                </li>
+                <li class="float-right">
+                  <a routerLink="/artist-list">
+                    Artists
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-</div>
+  </div>
 </nav>
 <!-- #header-nav -->
 </header>

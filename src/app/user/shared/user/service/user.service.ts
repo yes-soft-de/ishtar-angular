@@ -21,6 +21,7 @@ export class UserService {
       username,
       password
     };
+    console.log('loginRequest: ', loginRequest);
     this.userManager.login(loginRequest)
       .pipe(
         catchError(err => {
@@ -32,8 +33,8 @@ export class UserService {
       .subscribe(
         loginResponse => {
           localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
-          localStorage.setItem('date', new Date().toString());
-          loginSubject.next();
+          localStorage.setItem('date', new Date().toString());  // Result : Wed Dec 04 2019 15:46:54 GMT+0200 (Eastern European Standard Time)
+          loginSubject.next('true');
         }
       );
     return loginSubject.asObservable();
@@ -51,7 +52,7 @@ export class UserService {
       .pipe(
         catchError(err => {
           registerSubject.error('Error Logging In! ');
-          console.log(JSON.stringify(err));
+          console.log(err);
           return EMPTY;
         })
       )

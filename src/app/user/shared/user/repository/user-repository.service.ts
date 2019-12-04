@@ -35,4 +35,5 @@ export class UserRepositoryService {
   getUserProfile(): Observable<UserResponse> {
     return this.ishtarClient.get(UserConfig.userProfileAPI);
   }
+
 }
