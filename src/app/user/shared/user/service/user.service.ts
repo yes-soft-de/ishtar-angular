@@ -26,7 +26,6 @@ export class UserService {
       .pipe(
         catchError(err => {
           loginSubject.error('Error Logging In! ');
-          console.log(JSON.stringify(err));
           return EMPTY;
         })
       )

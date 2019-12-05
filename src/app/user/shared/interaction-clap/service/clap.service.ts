@@ -7,6 +7,7 @@ import {InteractionConstantService} from '../../../interactions/service/interact
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
+import {UserService} from '../../user/service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,34 +16,49 @@ export class ClapService extends InteractionsService {
   private clapSubject = new Subject<any>();
   userInfo: UserInfo;
   userRequestSent = false;
+  userLoggedIn = false;
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToApi: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserProfileService,
+              private userProfileService: UserProfileService,
+              private userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);
   }
 
   // region Love Getter Methods
   initClap(parentType: string, rowId: number) {
-    // See If Loading User
-    if (!this.userRequestSent) {
-      // If Not Request Him
-      this.userRequestSent = true;
-      this.userService.requestUserDetails().subscribe(
-          (user: any) => {
+    this.userLoggedIn = this.userService.isLoggedIn();
+    if (this.userLoggedIn) {
+      this.userService.getUserInfo().subscribe(
+          userInfoResponse => {
             // Assign the Data to the User
-            if (this.isUserNode(user.Data)) {
+            if (this.isUserNode(userInfoResponse)) {
               console.log('Assigning User');
-              this.userInfo = user.Data;
+              this.userInfo = userInfoResponse;
               this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
             }
           }
       );
-    } else if (this.checkUserDetailsExists(this.userInfo)) {
-      this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
     }
+    // See If Loading User
+    // if (!this.userRequestSent) {
+    //   // If Not Request Him
+    //   this.userRequestSent = true;
+    //   this.userProfileService.requestUserDetails().subscribe(
+    //       (user: any) => {
+    //         // Assign the Data to the User
+    //         if (this.isUserNode(user.Data)) {
+    //           console.log('Assigning User');
+    //           this.userInfo = user.Data;
+    //           this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
+    //         }
+    //       }
+    //   );
+    // } else if (this.checkUserDetailsExists(this.userInfo)) {
+    //   this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
+    // }
   }
 
   // Check if The User is login to make his clap interaction

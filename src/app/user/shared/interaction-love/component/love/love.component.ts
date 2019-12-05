@@ -23,7 +23,7 @@ export class LoveComponent implements OnInit {
         (loveResponse: { success: boolean, value: any }) => {
           // Check If There Is Data Or Not Return From The Server
           if (loveResponse) {
-            if (loveResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_LOVE || 
+            if (loveResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_LOVE ||
               loveResponse.value.interaction.name == InteractionConstantService.INTERACTION_TYPE_LOVE) {
               this.loved = loveResponse.success;  // this loveResponse = true if success
               if (loveResponse.value.interactionID) {     // Response loveResponse After Reload The Page

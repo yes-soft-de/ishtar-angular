@@ -73,7 +73,7 @@ export class LoginPageComponent implements OnInit {
   private submitLoginAfterRegister(username: string, password: string) {
     this.userService.login(username, password).subscribe(
       () => {
-        this.router.navigate(['/']);
+        window.location.reload();
       }, error1 => {
         this.toaster.error('Error' + error1);
       }
