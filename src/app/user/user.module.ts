@@ -54,7 +54,6 @@ import {PaintingListPageComponent} from './painting/component/painting-list-page
 import {FollowComponent} from './shared/interaction-follow/component/follow/follow.component';
 import {ClapComponent} from './shared/interaction-clap/component/clap/clap.component';
 import {HomeHeroComponent} from './home/component/home-hero/home-hero.component';
-import {HomePageComponent} from './home/component/home-page/home-page.component';
 import {MostSeenPaintingsComponent} from './painting/component/most-seen-paintings/most-seen-paintings.component';
 import {ArtTypeListComponent} from './art-type/component/art-type-list/art-type-list.component';
 import {ArtTypeDetailsComponent} from './art-type/component/art-type-details/art-type-details.component';
@@ -65,6 +64,7 @@ import { PaintingSearchComponent } from './search/component/painting-search/pain
 import { ArtistSearchComponent } from './search/component/artist-search/artist-search.component';
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
+import { HomePageComponent } from './home/component/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +76,6 @@ import {ItemBriefComponent} from './ui/components/item-brief/item-brief.componen
     // Pages
     ArtistListPageComponent,
     ArtistDetailsPageComponent,
-    HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     PaintingMayLikeComponent,
@@ -126,7 +125,8 @@ import {ItemBriefComponent} from './ui/components/item-brief/item-brief.componen
     SearchComponent,
     PaintingSearchComponent,
     ArtistSearchComponent,
-    ItemBriefComponent
+    ItemBriefComponent,
+    HomePageComponent
   ],
   exports: [
     // User
@@ -137,7 +137,6 @@ import {ItemBriefComponent} from './ui/components/item-brief/item-brief.componen
     // Pages
     ArtistListPageComponent,
     ArtistDetailsPageComponent,
-    HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
     PaintingMayLikeComponent,
