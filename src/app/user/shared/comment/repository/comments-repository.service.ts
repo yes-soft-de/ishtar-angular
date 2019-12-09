@@ -8,28 +8,31 @@ import {CommentObject} from '../entity/comment-object';
 import {CreateCommentResponse} from '../response/create-comment-response';
 import {CreateCommentRequest} from '../request/create-comment-request';
 import {UpdateCommentRequest} from '../request/update-comment-request';
+import {IshtarClientService} from '../../client/ishtar-client.service';
+import {DeleteCommentResponse} from '../response/delete-comment-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsRepositoryService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) {
   }
 
-  public createComment(comment: CreateCommentRequest) {
-    return this.httpClient.post<CreateCommentResponse>(`${UserConfig.commentAPI}`, JSON.stringify(comment));
+  public createComment(comment: CreateCommentRequest): Observable<CreateCommentResponse> {
+    return this.ishtarClient.post(`${UserConfig.commentAPI}`, JSON.stringify(comment));
   }
 
   public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
     return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
   }
 
-  public deleteComment(commentId: number) {
-    return this.httpClient.delete(`${UserConfig.commentAPI}/${commentId}`);
+  public deleteComment(commentId: number): Observable<DeleteCommentResponse> {
+    return this.ishtarClient.delete(`${UserConfig.commentAPI}/${commentId}`);
   }
 
   public updateComment(commentId: number, updateCommentRequest: UpdateCommentRequest) {
-    return this.httpClient.put(`${UserConfig.commentAPI}/${commentId}`, JSON.stringify(updateCommentRequest));
+    return this.ishtarClient.put(`${UserConfig.commentAPI}/${commentId}`, JSON.stringify(updateCommentRequest));
   }
 }

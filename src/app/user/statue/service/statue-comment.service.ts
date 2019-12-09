@@ -4,6 +4,9 @@ import {BaseCommentService} from '../../shared/comment/service/base-comment.serv
 import {Observable, Subject} from 'rxjs';
 import {CommentObject} from '../../shared/comment/entity/comment-object';
 import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
+import {CreateCommentResponse} from '../../shared/comment/response/create-comment-response';
+import {UpdateCommentResponse} from '../../shared/comment/response/update-comment-response';
+import {DeleteCommentResponse} from '../../shared/comment/response/delete-comment-response';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +28,20 @@ export class StatueCommentService extends BaseCommentService {
       }
     );
     return this.statueCommentSubject.asObservable();
+  }
+
+  createStatueComment(comment: string, artistId: number, clientId: number): Observable<CreateCommentResponse> {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_STATUE);
+    return this.createComment(comment, apiType, artistId, clientId);
+  }
+
+  updateStatueComment(pageId: number, oldCommentId: number,
+                      newComment: string, clientId: number): Observable<UpdateCommentResponse> {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_STATUE);
+    return this.updateComment(oldCommentId, apiType, pageId, clientId, newComment);
+  }
+
+  deleteStatueComment(commentId: number): Observable<DeleteCommentResponse> {
+    return this.deleteComment(commentId);
   }
 }
