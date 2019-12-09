@@ -12,6 +12,7 @@ export class UserConfig {
 
   // public static userProfileAPI = UserConfig.diagnoseAPI;
   public static userLoginLink = UserConfig.sourceAPI + 'connect/google';
+  public static tokenWithGoogle = UserConfig.sourceAPI + 'googletoken';
   public static userLogoutLink = UserConfig.sourceAPI + 'logout';
 
   public static CrosHeaderAPI = UserConfig.sourceAPI + 'headers';

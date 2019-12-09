@@ -10,14 +10,14 @@
         <form class="form-group" [formGroup]="loginForm">
           <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
           <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
-<!--          <div class="google-login">-->
-<!--            <span>Login directly with:</span>-->
-<!--            <button type="button" class="google-button">-->
-<!--              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">-->
-<!--                <i class="fab fa-google"></i>-->
-<!--              </a>-->
-<!--            </button>-->
-<!--          </div>-->
+          <div class="google-login">
+            <span>Login directly with:</span>
+            <button type="button" class="google-button">
+              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">
+                <i class="fab fa-google"></i>
+              </a>
+            </button>
+          </div>
           <button class="login-btn"
                   (click)="submitLogin()"
                   [disabled]="loginButtonActive"
@@ -34,14 +34,14 @@
           <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
           <input formControlName="confirm_password" class="form-control" type="password" placeholder="Confirm Password ...">
           <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
-<!--          <div class="google-login">-->
-<!--            <span>Sign up directly with:</span>-->
-<!--            <button type="button" class="google-button">-->
-<!--              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">-->
-<!--                <i class="fab fa-google"></i>-->
-<!--              </a>-->
-<!--            </button>-->
-<!--          </div>-->
+          <div class="google-login">
+            <span>Sign up directly with:</span>
+            <button type="button" class="google-button">
+              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">
+                <i class="fab fa-google"></i>
+              </a>
+            </button>
+          </div>
           <button class="login-btn"
                   (click)="submitRegister()"
                   [disabled]="registerButtonActive"

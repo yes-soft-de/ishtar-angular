@@ -31,20 +31,21 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.userInfo == null) {
-    //   this.userManager.getUserProfile().subscribe(
-    //       (userInfoResponse: any) => {
-    //         console.log('userInfoResponse: ', userInfoResponse.Data);
-    //         // tslint:disable-next-line:triple-equals
-    //         if (userInfoResponse.Data.id != undefined) {
-    //           this.userInfo = userInfoResponse;
-    //           this.userGoogleLoggedIn = true;
-    //         }
-    //       }
-    //   );
-    // }
+    this.userService.getTokenWithGoogleLogin().subscribe(
+        tokenGoogleResponse => {
+          console.log('tokenGoogleResponse', tokenGoogleResponse);
+          console.log('this.userService.isLoggedIn() = ', this.userService.isLoggedIn());
+          this.userService.getUserInfo().subscribe(
+              userInfoResponse => {
+                this.userInfo = userInfoResponse;
+                console.log('userInfo: ', this.userInfo);
+              }
+          );
+        }
+    );
 
     this.userLoggedIn = this.userService.isLoggedIn();
+    console.log('this.userLoggedIn = ', this.userLoggedIn);
     if (this.userLoggedIn) {
       this.userService.getUserInfo().subscribe(
         userInfoResponse => {

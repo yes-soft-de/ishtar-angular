@@ -26,4 +26,12 @@ export class UserManagerService {
   getUserProfile(): Observable<UserResponse> {
     return this.userRepository.getUserProfile();
   }
+
+  getTokenWithGoogleLogin(): Observable<any> {
+    return this.userRepository.getTokenWithGoogleLogin();
+  }
+
+  googleLogout(): Observable<any> {
+    return this.userRepository.googleLogout();
+  }
 }
