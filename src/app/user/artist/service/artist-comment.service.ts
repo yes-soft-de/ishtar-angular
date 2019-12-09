@@ -26,4 +26,19 @@ export class ArtistCommentService extends BaseCommentService {
     );
     return this.artistCommentsSubject.asObservable();
   }
+
+  createArtistComment(comment: string, artistId: number, clientId: number) {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_ARTIST);
+    return this.createComment(comment, apiType, artistId, clientId);
+  }
+
+  updateArtistComment(commentId: number, oldCommentId: number, newComment: string, clientId: number) {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_ARTIST);
+    return this.updateComment(commentId, apiType, oldCommentId, clientId, newComment);
+  }
+
+  deleteArtistComment(commentId: number) {
+    return this.deleteComment(commentId);
+  }
+
 }

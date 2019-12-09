@@ -1,0 +1,9 @@
+- Add about ishtar sction.
+- Inhance login by adding new way to signup using the user email.
+- Add register with the login pubup.
+- General inhances in all site like search and filters.
+- inhance mobile view.
+- Add new sections and inhance admin area.
+- Add user profile page.
+- Add statue section (desablied for now).
+- Fix bugs.
