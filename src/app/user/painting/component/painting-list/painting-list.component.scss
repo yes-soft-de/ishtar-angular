@@ -103,7 +103,8 @@
       border: 1px solid #bbb;
       box-shadow: none;
     }
-    button:hover {
+    button:hover,
+    button.active {
       background-color: goldenrod !important;
     }
   }

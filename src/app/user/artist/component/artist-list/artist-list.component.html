@@ -8,8 +8,8 @@
           <h5>Filter By Art Type</h5>
           <button mdbBtn class="btn-light" (click)="cancelFilterByArtType()">All</button>
           <button mdbBtn class="btn-light" *ngFor="let artType of activeTypes"
-                  [ngStyle]="{'background-color':artType === activeArtType ? 'goldenrod' : 'white' }"
-                  (click)="filterByArtType(artType)">{{artType}}</button>
+                  (click)="filterByArtType(artType)"
+                  [ngClass]="artType === activeArtType ? 'active' : ''">{{artType}}</button>
         </div>
       </div>
       <!-- endregion Filters -->

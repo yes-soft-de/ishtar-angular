@@ -69,15 +69,16 @@ export class PaintingListComponent implements OnInit {
   }
 
   viewImage(paintingId: number) {
-    // TODO Implement View Image Function
     // Dependent on Reaction
     this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
   }
 
+  // Fetch All Artists Filters Name
   getArtistNamesList() {
     this.artists = [...new Set(this.paintingList.map(painting => painting.artist))];
   }
 
+  // Fetch All Art Type Filters Name
   getArtTypesList() {
     this.artTypes = [...new Set(this.paintingList.map(painting => painting.artType))];
   }

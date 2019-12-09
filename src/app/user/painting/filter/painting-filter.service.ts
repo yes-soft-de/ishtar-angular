@@ -30,12 +30,14 @@ export class PaintingFilterService {
   }
 
   public processArtTypeFilter(rowList: PaintingListItem[], artType: string): PaintingListItem[] {
+    console.log('rowlist', rowList);
     const resultList: PaintingListItem[] = [];
     for (const painting of rowList) {
       if (painting.artType === artType) {
         resultList.push(painting);
       }
     }
+    console.log(resultList);
     return resultList;
   }
 }

@@ -9,8 +9,8 @@ import {ArtistFilterService} from '../../filter/artist-filter.service';
   styleUrls: ['./artist-list.component.scss']
 })
 export class ArtistListComponent implements OnInit {
-  private originalList: ArtistListItem[] = [];
-  public activeArtType: string;
+  originalList: ArtistListItem[];
+  public activeArtType: string = null;
   public activeArtist: string;
 
   public filteredList: ArtistListItem[] = [];
@@ -35,8 +35,8 @@ export class ArtistListComponent implements OnInit {
   ngOnInit() {
     this.artistService.getArtistList().subscribe(
       artists => {
-        this.filteredList = artists;
         this.originalList = artists;
+        this.filteredList = artists;
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
       }
@@ -60,7 +60,7 @@ export class ArtistListComponent implements OnInit {
 
   filterByArtType(artTypeName: string) {
     this.activeArtType = artTypeName;
-    return this.getFilteredList();
+    this.filteredList = this.getFilteredList();
   }
 
   cancelFilterByArtType() {
@@ -88,10 +88,10 @@ export class ArtistListComponent implements OnInit {
 
   private getFilteredList(): ArtistListItem[] {
     let resultList = this.originalList;
-    if (this.activeArtist !== null) {
+    if (this.activeArtist) {
       resultList = this.filterService.processArtistNameFilter(resultList, this.activeArtist);
     }
-    if (this.activeArtType !== null) {
+    if (this.activeArtType) {
       resultList = this.filterService.processArtTypeFilter(resultList, this.activeArtType);
     }
     return resultList;

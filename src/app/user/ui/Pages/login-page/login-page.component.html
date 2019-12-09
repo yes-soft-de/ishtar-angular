@@ -18,7 +18,10 @@
 <!--              </a>-->
 <!--            </button>-->
 <!--          </div>-->
-          <button (click)="submitLogin()" class="login-btn">Login</button>
+          <button class="login-btn"
+                  (click)="submitLogin()"
+                  [disabled]="loginButtonActive"
+                  [ngStyle]="{'opacity': registerButtonActive ? '.5' : '1'}">Login</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">
       </div>
@@ -39,7 +42,10 @@
 <!--              </a>-->
 <!--            </button>-->
 <!--          </div>-->
-          <button class="login-btn" (click)="submitRegister()">SignUp</button>
+          <button class="login-btn"
+                  (click)="submitRegister()"
+                  [disabled]="registerButtonActive"
+                  [ngStyle]="{'opacity': registerButtonActive ? '.5' : '1'}">SignUp</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">
       </div>
