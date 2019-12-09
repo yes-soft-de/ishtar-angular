@@ -1,8 +1,12 @@
-#header {
+.header {
+  height: 50px;
   .logo {
     margin-left: 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    outline: none !important;
   }
-  #letter-circle {
+  .letter-circle {
     font-size:1em;
     width:2.5em;
     height:2.5em;
@@ -44,8 +48,7 @@
       }
     }
   }
-
-  #spacer {
+  .spacer {
     @media screen and (min-width: 0){
       height: 0;
     }
@@ -70,7 +73,7 @@
     width: 100%;
     background: #fff;
     z-index: 999;
-    #header-nav {
+    .header-nav {
       .header-top {
         margin-left: -15px;
         margin-right: -15px;
@@ -87,7 +90,7 @@
         }
         li {
           display: inline-block;
-          margin: 0.5rem;
+          margin: 0.4rem;
           .dropdown {
             .login, .logout {
               margin-right: 10px;
@@ -100,7 +103,6 @@
               vertical-align: middle;
             }
           }
-
           a {
             color: black;
           }
@@ -109,21 +111,17 @@
       .header-bottom {
         margin-top: 10px;
       }
-
-
-      #btn-wish-list {
+      .btn-wish-list {
         background: #bfb049;
         font-weight: 600;
       }
-
-      #btn-favorite {
+      .btn-favorite {
         font-weight: 600;
         border-left: 1px solid #aaa;
         border-right: 1px solid #aaa;
       }
-
-      #btn-wish-list,
-      #btn-favorite {
+      .btn-wish-list,
+      .btn-favorite {
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         -o-box-shadow: none;
@@ -131,7 +129,6 @@
       }
     }
   }
-
   mdb-navbar {
     position: fixed;
     top: 0;
@@ -199,19 +196,6 @@
         display: inline-block;
         margin-left: -5px;
       }
-      //margin-right: 30rem;
-      @media (max-width:991px) and (min-width:768px) {
-        height: 50px;
-        width: 30%;
-      }
-      @media (max-width:767px) {
-        height: 50px;
-        width: 40%;
-      }
-      @media (max-width:400px) {
-        width: 50%;
-        margin-left: -10%;
-      }
       span {
         display: inline-block;
       }
@@ -223,68 +207,9 @@
       }
     }
   }
-
-
-  // Start xs Size Screen
-  @media (max-width: 400px) {
-    mdb-navbar {
-      width: 100vw;
-      mdb-icon {
-        padding: 0 .7rem;
-        font-size: .8rem!important;
-      }
-      .dropdown-menu {
-        right: 0;
-      }
-      .btn-wish-list,
-      .btn-favorite {
-        margin: 0;
-        padding: .1rem .3rem;
-        font-size: .7rem;
-      }
-      .header-mobile-section {
-        span {
-          font-size: 0.6rem;
-        }
-      }
-    }
-  }
-  // Start sm Size Screen
-  @media (min-width: 401px) and (max-width: 767px) {
-    mdb-navbar {
-      width: 100vw;
-      mdb-icon {
-        padding: 0 .7rem;
-      }
-      .btn-favorite {
-        margin: 0 0 0 6rem;
-      }
-      .header-mobile-section {
-        span {
-          font-size: .9rem;
-        }
-      }
-    }
-  }
-  // Start md Size Screen
-  @media (min-width: 768px) and (max-width: 991px) {
-    mdb-navbar {
-      .btn-favorite {
-        margin: 0 0 0 14rem;
-      }
-      .header-mobile-section {
-        span {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-
 }
-
 //Search 
-
-#header-nav {
+.header-nav {
   ul {
     float: right;
     position: relative;
@@ -295,13 +220,12 @@
     }
   }
 }
-
 .search-box {
   margin-left: 35px;
   .search{
     text-align: right;
-    #input-search,
-    #input-mobile-search{
+    .input-search,
+    .input-mobile-search{
       width: 0;
       height: 40px;
       transition: all .3s ease-in-out;
@@ -310,8 +234,8 @@
       -moz-transition: all .3s ease-in-out;
       -webkit-transition: all .3s ease-in-out;
     }
-    #input-search {
-      margin-top: 1rem;
+    .input-search {
+      margin-top: 8px;
       width: 100%;
       input {
         width: 100%;
@@ -322,9 +246,7 @@
   }
   
 }
-
 // Search in Mobile 
-
 .search-mobile{
   position: relative;
   padding: 10px 0;
@@ -345,8 +267,63 @@
     -webkit-transform: scale(1.2);
   }
 }
-
-@media (max-width: 991px) {
+@keyframes pull-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+@-webkit-keyframes pull-right {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+ .header{
+    mdb-navbar {
+      .header-mobile-section{
+        height: 50px;
+        width: 30%;
+      }
+      .btn-favorite {
+        margin: 0 0 0 14rem;
+      }
+      .header-mobile-section {
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 401px) and (max-width: 767px) {
+  .header{
+    mdb-navbar {
+      width: 100vw;
+      .header-mobile-section{
+        height: 50px;
+        width: 40%;
+      }
+      mdb-icon {
+        padding: 0 .7rem;
+      }
+      .btn-favorite {
+        margin: 0 0 0 6rem;
+      }
+      .header-mobile-section {
+        span {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width:991px) {
   .dropdown.show {
     .dropdown-menu {
       padding: 0;
@@ -355,19 +332,8 @@
       -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
     }
   }
-  .navbar-nav {
-    border-top: 1px solid #e1e1e1;
-  }
-  .navbar .navbar-toggler {
-    position: absolute;
-    right: 150px;
-    top: 8px;
-  }
-}
-
-
-@media (max-width:991px) {
   .navbar-nav{
+    border-top: 1px solid #e1e1e1;
     li {
       position: relative;
       right: 0%;
@@ -394,29 +360,6 @@
       }
     }
   }
-}
-
-@keyframes pull-right {
-  0% {
-    right: -100%;
-  }
-
-  100% {
-    right: 0%;
-  }
-}
-
-@-webkit-keyframes pull-right {
-  0% {
-    right: -100%;
-  }
-
-  100% {
-    right: 0%;
-  }
-}
-
-@media (max-width:991px) {
   .login-btn {
     background: #fff !important;
     .dropdown-item {
@@ -434,9 +377,35 @@
     top: 7px;
   }
 }
-
 @media (max-width:400px) {
   .login-btn {
     right: 20px;
+  }
+  .header{
+    mdb-navbar {
+      width: 100vw;
+      .header-mobile-section{
+        width: 50%;
+        margin-left: -10%;
+      }
+      mdb-icon {
+        padding: 0 .7rem;
+        font-size: .8rem!important;
+      }
+      .dropdown-menu {
+        right: 0;
+      }
+      .btn-wish-list,
+      .btn-favorite {
+        margin: 0;
+        padding: .1rem .3rem;
+        font-size: .7rem;
+      }
+      .header-mobile-section {
+        span {
+          font-size: 0.6rem;
+        }
+      }
+    }
   }
 }

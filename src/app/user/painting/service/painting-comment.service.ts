@@ -29,4 +29,19 @@ export class PaintingCommentService extends BaseCommentService {
     );
     return this.paintingCommentsSubject.asObservable();
   }
+
+
+  createPaintingComment(comment: string, artistId: number, clientId: number) {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
+    return this.createComment(comment, apiType, artistId, clientId);
+  }
+
+  updatePaintingComment(commentId: number, oldCommentId: number, newComment: string, clientId: number) {
+    const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
+    return this.updateComment(commentId, apiType, oldCommentId, clientId, newComment);
+  }
+
+  deletePaintingComment(commentId: number) {
+    return this.deleteComment(commentId);
+  }
 }

@@ -1,9 +1,12 @@
 .most-painting-seen {
     padding: 2rem 0;
     background: #343a40;
-    //color: #fff;
+
     .custom-card-header {
       height: 15rem;
+      .card-img-top {
+        height: 100%;
+      }
     }
     .content {
       .painting-name {
