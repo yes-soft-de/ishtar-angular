@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
 import {AdminConfig} from '../../AdminConfig';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import {IshtarAdminClientService} from '../../client/ishtar-admin-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotosListService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: IshtarAdminClientService) {
+  }
 
 
   // Handling the error
@@ -19,11 +21,6 @@ export class PhotosListService {
   }
 
   getPaintingInfo(paintingId: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
     // This Should Take the List From the API
     return this.httpClient.get(
       `${AdminConfig.paintingAPI}/${paintingId}`
@@ -34,7 +31,7 @@ export class PhotosListService {
   // Get All Painting List
   getAllPainting() {
     return this.httpClient.get(
-      `${AdminConfig.paintingsAPI}`, {responseType: 'json'}
+      `${AdminConfig.paintingsAPI}`
     ).pipe(catchError(PhotosListService.errorHandler));
   }
 
@@ -42,18 +39,13 @@ export class PhotosListService {
   // Admin Section - POST Add New Painting
   postAddPainting(paintingData) {
     return this.httpClient.post(
-        `${AdminConfig.paintingsAPI}`,
+      `${AdminConfig.paintingsAPI}`,
       JSON.stringify(paintingData)
     );
   }
 
   // Admin Section - Update Painting
   updatePainting(paintingId: number, data: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
     return this.httpClient.put(
       `${AdminConfig.paintingAPI}/${paintingId}`,
       JSON.stringify(data)
@@ -69,8 +61,6 @@ export class PhotosListService {
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.httpClient.post<{
-      url: string
-    }>(`${AdminConfig.paintingUploadAPI}`, formData);
+    return this.httpClient.post(`${AdminConfig.paintingUploadAPI}`, formData);
   }
 }

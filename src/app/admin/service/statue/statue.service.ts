@@ -6,13 +6,14 @@ import {catchError} from 'rxjs/operators';
 import {StatueInterface} from '../../entity/statue/statue.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {IshtarAdminClientService} from '../../client/ishtar-admin-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatueService {
 
-  constructor(private httpClient: HttpClient,
+  constructor(private httpClient: IshtarAdminClientService,
               private route: Router,
               private activatedRoute: ActivatedRoute,
               private toaster: ToastrService) {}
@@ -24,33 +25,29 @@ export class StatueService {
   // Fetch All Statue List
   getAllStatues() {
     return this.httpClient.get(
-        `${AdminConfig.statuesAPI}`,
-        {responseType: 'json'}
+        `${AdminConfig.statuesAPI}`
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   // Get Statue Info Using Statue id
-  getStatueUsingId(statueId: number) {
-    return this.httpClient.get<StatueInterface>(
-        `${AdminConfig.statueAPI}/${statueId}`,
-        {responseType: 'json'}
+  getStatueUsingId(statueId: number): Observable<StatueInterface> {
+    return this.httpClient.get(
+        `${AdminConfig.statueAPI}/${statueId}`
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   // Admin Section - POST Add New Statue
-  postAddStatue(statueData) {
-    return this.httpClient.post<StatueInterface>(
+  postAddStatue(statueData): Observable<StatueInterface> {
+    return this.httpClient.post(
         AdminConfig.statuesAPI,
-        JSON.stringify(statueData),
-        {responseType: 'json'}
+        JSON.stringify(statueData)
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   updateStatue(statueId: number, data: StatueInterface) {
     return this.httpClient.put(
         `${AdminConfig.statueAPI}/${statueId}`,
-        JSON.stringify(data),
-        {responseType: 'json'}
+        JSON.stringify(data)
     ).pipe(catchError(StatueService.errorHandler));
   }
 
@@ -63,9 +60,7 @@ export class StatueService {
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.httpClient.post<{
-      url: string
-    }>(`${AdminConfig.paintingUploadAPI}`, formData);
+    return this.httpClient.post(`${AdminConfig.paintingUploadAPI}`, formData);
   }
 
 }
