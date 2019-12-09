@@ -17,7 +17,7 @@ import {UserManagerService} from '../user/manager/user-manager.service';
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo = null;
   userLoggedIn = false;
-  // userGoogleLoggedIn = false;
+  userGoogleLoggedIn = false;
   searchFrom = new FormGroup({
     search: new FormControl('')
   });
@@ -31,29 +31,33 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Check Login With Google
     this.userService.getTokenWithGoogleLogin().subscribe(
         tokenGoogleResponse => {
-          console.log('tokenGoogleResponse', tokenGoogleResponse);
-          console.log('this.userService.isLoggedIn() = ', this.userService.isLoggedIn());
-          this.userService.getUserInfo().subscribe(
-              userInfoResponse => {
-                this.userInfo = userInfoResponse;
-                console.log('userInfo: ', this.userInfo);
-              }
-          );
+          if (tokenGoogleResponse) {
+            this.userGoogleLoggedIn = true;
+            this.userLoggedIn = this.userService.isLoggedIn();
+            this.userService.getUserInfo().subscribe(
+                userInfoResponse => {
+                  this.userInfo = userInfoResponse;
+                }
+            );
+          }
         }
     );
 
-    this.userLoggedIn = this.userService.isLoggedIn();
-    console.log('this.userLoggedIn = ', this.userLoggedIn);
-    if (this.userLoggedIn) {
-      this.userService.getUserInfo().subscribe(
-        userInfoResponse => {
-          this.userInfo = userInfoResponse;
-          // this.userGoogleLoggedIn = false;
-        }
-      );
+    // Check Login Without Google
+    if (!this.userGoogleLoggedIn) {
+      this.userLoggedIn = this.userService.isLoggedIn();
+      if (this.userLoggedIn) {
+        this.userService.getUserInfo().subscribe(
+            userInfoResponse => {
+              this.userInfo = userInfoResponse;
+            }
+        );
+      }
     }
+
   }
 
   showDialog() {
@@ -64,15 +68,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    // if (this.userLoggedIn) {
-    //   this.userService.logout();
-    // } else if (this.userGoogleLoggedIn) {
-    //   this.userProfileService.requestUserLogout().subscribe(
-    //       () => {
-    //         console.log('logout');
-    //       }
-    //   );
-    // }
+    this.userGoogleLoggedIn = false;
     this.userService.logout();
     window.location.reload();
   }

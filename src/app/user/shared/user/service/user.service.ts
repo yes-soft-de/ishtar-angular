@@ -51,7 +51,6 @@ export class UserService {
       .pipe(
         catchError(err => {
           registerSubject.error('Error Logging In! ');
-          console.log(err);
           return EMPTY;
         })
       )
@@ -79,33 +78,23 @@ export class UserService {
     return userSubject.asObservable();
   }
 
-  getTokenWithGoogleLogin(): Observable<string> {
-    const googleSubject = new Subject();
+  getTokenWithGoogleLogin(): Observable<boolean> {
+    const googleSubject = new Subject<boolean>();
   // Connect TO fetch Token After Google Connect
     this.userManager.getTokenWithGoogleLogin()
         .pipe(
             catchError(err => {
               googleSubject.error('Error Google Logging In! ');
-              console.log(err);
+              this.googleConnect = false;
               return EMPTY;
             })
         ).subscribe(
         tokenResponse => {
-          if (tokenResponse) {
+          if (tokenResponse.token) {
             this.googleConnect = true;
-            console.log('tokenResponse', tokenResponse);
             localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + tokenResponse.token);
             localStorage.setItem('date', new Date().toString());
-            googleSubject.next('true');
-            // this.userManager.getUserProfile().subscribe(
-            //     userInfo => {
-            //       if (userInfo) {
-            //         localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + tokenResponse.token);
-            //         localStorage.setItem('date', new Date().toString());
-            //         googleSubject.next('true');
-            //       }
-            //     }
-            // );
+            googleSubject.next(true);
           }
         }
     );
