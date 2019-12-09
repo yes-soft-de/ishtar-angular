@@ -13,6 +13,7 @@ import {UserManagerService} from '../user/manager/user-manager.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss', '../../home/component/home-page/home-page.component.scss']
+
 })
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo = null;

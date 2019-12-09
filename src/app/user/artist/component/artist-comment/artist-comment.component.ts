@@ -5,6 +5,7 @@ import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../shared/user/service/user.service';
 
+
 @Component({
   selector: 'app-artist-comment',
   templateUrl: './artist-comment.component.html',
@@ -12,6 +13,7 @@ import {UserService} from '../../../shared/user/service/user.service';
 })
 export class ArtistCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
+
   activeArtistId: number;
   activeClientId: number;
 
@@ -23,6 +25,7 @@ export class ArtistCommentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
+
         this.activeArtistId = +urlSegments[1];
         this.commentsObservable = this.artistCommentService.getArtistComment(+urlSegments[1].path);
       }
@@ -46,4 +49,5 @@ export class ArtistCommentComponent implements OnInit {
   deleteComment(commendId) {
     this.artistCommentService.deleteArtistComment(commendId);
   }
+
 }

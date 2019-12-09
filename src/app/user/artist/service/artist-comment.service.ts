@@ -40,4 +40,5 @@ export class ArtistCommentService extends BaseCommentService {
   deleteArtistComment(commentId: number) {
     return this.deleteComment(commentId);
   }
+
 }

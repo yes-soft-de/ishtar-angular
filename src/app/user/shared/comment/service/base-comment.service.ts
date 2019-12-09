@@ -2,22 +2,28 @@ import {Injectable} from '@angular/core';
 import {CommentManagerService} from '../manager/comment-manager.service';
 import {CreateCommentRequest} from '../request/create-comment-request';
 import {UpdateCommentRequest} from '../request/update-comment-request';
-import {Observable, Subject} from 'rxjs';
+
+
 import {CommentObject} from '../entity/comment-object';
 import {GetCommentResponse} from '../response/get-comment-response';
 import {UpdateCommentResponse} from '../response/update-comment-response';
 import {DeleteCommentResponse} from '../response/delete-comment-response';
 import {CreateCommentResponse} from '../response/create-comment-response';
+import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
+import {EMPTY, Observable, Subject} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {CommentResponse} from '../../../../admin/entity/comment/comment.response';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseCommentService {
   commentSubject: Subject<CommentObject[]>;
-
   constructor(protected commentManager: CommentManagerService) {
     this.commentSubject = new Subject<CommentObject[]>();
   }
+
 
   protected createComment(comment: string, pageType: string, pageId: number, userId: number): Observable<CreateCommentResponse> {
     const newComment: CreateCommentRequest = {
@@ -27,6 +33,7 @@ export class BaseCommentService {
       client: +userId,
       spacial: 0,
     };
+
     return this.commentManager.createComment(newComment);
   }
 
@@ -40,6 +47,7 @@ export class BaseCommentService {
       client: +clientId,
       spacial: 0,
     };
+
     return this.commentManager.updateComment(commentId, comment);
   }
 
@@ -48,6 +56,7 @@ export class BaseCommentService {
   }
 
   protected getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
+
     // Example: Painting Type is 2 in the API
     return this.commentManager.getComments(pageType, pageId);
   }

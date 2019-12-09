@@ -5,12 +5,14 @@ import {Observable} from 'rxjs';
 import {PaintingCommentService} from '../../service/painting-comment.service';
 import {UserService} from '../../../shared/user/service/user.service';
 
+
 @Component({
   selector: 'app-comment',
   templateUrl: './painting-comment.component.html',
   styleUrls: ['./painting-comment.component.scss']
 })
 export class PaintingCommentComponent implements OnInit {
+
   commentsObservable: Observable<CommentObject[]>;
   activePaintingId: number;
   activeClientId: number;
@@ -22,6 +24,7 @@ export class PaintingCommentComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
+
       urlSegments => {
         this.activePaintingId = +urlSegments[1];
         this.commentsObservable = this.paintingCommentService.getPaintingComments(+urlSegments[1].path);
@@ -35,6 +38,7 @@ export class PaintingCommentComponent implements OnInit {
     );
   }
 
+
   createComment(comment) {
     this.paintingCommentService.createPaintingComment(comment, this.activePaintingId, this.activeClientId);
   }
@@ -46,4 +50,5 @@ export class PaintingCommentComponent implements OnInit {
   deleteComment(commendId) {
     this.paintingCommentService.deletePaintingComment(commendId);
   }
+
 }

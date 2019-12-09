@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {StatueCommentService} from '../../service/statue-comment.service';
 import {Observable} from 'rxjs';
@@ -6,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {UserService} from '../../../shared/user/service/user.service';
 
+
 @Component({
   selector: 'app-statue-comment',
   templateUrl: './statue-comment.component.html',
@@ -13,6 +15,7 @@ import {UserService} from '../../../shared/user/service/user.service';
 })
 export class StatueCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
+
   activeStatueId: number;
   activeClientId: number;
 
@@ -24,6 +27,7 @@ export class StatueCommentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
+
         this.activeStatueId = +urlSegments[1];
         this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
       }
@@ -47,4 +51,5 @@ export class StatueCommentComponent implements OnInit {
   deleteComment(commendId) {
     this.statueCommentService.deleteStatueComment(commendId);
   }
+
 }
