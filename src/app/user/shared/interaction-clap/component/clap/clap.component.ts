@@ -24,8 +24,7 @@ export class ClapComponent implements OnInit {
   clapId: number;         // Storing clap id
   subscription;
 
-  constructor(private clapService: ClapService,
-              private toaster: ToastrService) {}
+  constructor(private clapService: ClapService) {}
 
   ngOnInit() {
     this.ObserveClaps();
@@ -84,7 +83,7 @@ export class ClapComponent implements OnInit {
     console.log(Math.abs(timeDiff));
     this.holding = false;
     const clapsNumber = this.calculateClaps();
-    this.toaster.success(`Sending ${clapsNumber} to Painting`);
+    // this.toaster.success(`Sending ${clapsNumber} to Painting`);
     this.clapIconSize = 32;
 
     this.sendClap(clapsNumber);
