@@ -8,10 +8,7 @@ import {AdminConfig} from '../../../AdminConfig';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistService} from '../../../service/artist/artist.service';
-
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
+import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 
 @Component({
   selector: 'app-add-images',
@@ -23,7 +20,7 @@ export class AddImagesComponent implements OnInit {
   uploadForm: FormGroup;
   paintings: Painting[];
   entityID: number;
-  Entity: any = ['Painting', 'Artist', 'ArtType', 'Auction', 'Client'];
+  Entity: any = ['Painting', 'Artist', 'ArtType', 'Auction', 'Client', 'Statue'];
   rowEntity: {Data: any[]};
   rowActive = true;
   uploadButtonValue = 'Upload';
@@ -58,7 +55,7 @@ export class AddImagesComponent implements OnInit {
       entity: ['', Validators.required],
       row: [{value: '', disabled: this.rowActive}, Validators.required],
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-      path: ['']
+      image: ['']
     });
   }
 
@@ -89,28 +86,28 @@ export class AddImagesComponent implements OnInit {
   }
   // Choose Entity Using Select Dropdown
   changeEntity(event) {
-    // this.uploadForm.get('row').disable();
+    // Disable the row dropdown until fetching the rowEntity data
+    this.uploadForm.get('row').disable();
     this.entityID = event.target.value[0];
-    console.log(this.entityID);
     const entityName = event.target.value.slice(3);
+    console.log(event.target.value, this.entityID, entityName);
     this.uploadForm.get('entity').setValue(event.target.value, {
       onlySelf : true
     });
     // fetch the All Rows For this Entity
-    this.httpClient.post(
-      `${AdminConfig.allRowSelectedEntityAPI}`,
-      JSON.stringify({entity: entityName})
-    ).subscribe(
+    this.httpClient.get(`${AdminConfig.allRowSelectedEntityAPI}/${entityName}`).subscribe(
         (data: {Data: any}) => {
-          if (entityName === 'Client') {
-            // TODO Create Boolean Variable to Fix this
+          if (entityName === 'Auction') {
+            this.uploadForm.get('row').disable();
+            return;
           }
           this.rowEntity = data.Data;
           this.uploadForm.get('row').enable();
           // this.rowActive = false;
-          console.log(this.rowEntity);
+          console.log('Row Entity: ', this.rowEntity);
       },
       error => {
+        this.uploadForm.get('row').disable();
         console.log('Error Fetch Row Entity : ', error);
       }
     );
@@ -128,7 +125,7 @@ export class AddImagesComponent implements OnInit {
   processFile(imageInput: any) {
     let imageUploadApiMethod: any;
     // tslint:disable-next-line:triple-equals
-    imageUploadApiMethod = this.entityID == 2 ? this.artistService : this.photosListService;
+    imageUploadApiMethod = this.entityID == 1 ? this.photosListService : this.artistService;
     this.fileSelected = false;
     this.uploadButtonValue = 'Uploading...';
     console.log('Progressing File');
@@ -161,7 +158,7 @@ export class AddImagesComponent implements OnInit {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.entity = this.entityID;
-      formObj.path = this.imageUrl;
+      formObj.image = this.imageUrl;
       console.log(formObj);
       this.httpClient.post(
           `${AdminConfig.addMediaAPI}`,

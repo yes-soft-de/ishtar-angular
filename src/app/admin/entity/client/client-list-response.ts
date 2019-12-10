@@ -1,5 +1,5 @@
-import {ClientInterface} from './client-interface';
+import {Client} from './client';
 
 export interface ClientListResponse {
-  Data: ClientInterface[];
+  Data: Client[];
 }

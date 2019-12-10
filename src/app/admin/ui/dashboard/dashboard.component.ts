@@ -15,6 +15,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ClientService} from '../../service/client/client.service';
 import {InteractionInterface} from '../../entity/interactions/interaction-interface';
 import {ClientInterface} from '../../entity/client/client-interface';
+import {Client} from '../../entity/client/client';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   statues: {0: StatueInterface, price: string}[];
   comments: CommentInterface[];
   interactions: InteractionInterface[];
-  clients: ClientInterface[];
+  clients: Client[];
   latestArtistNumber = 5;
   latestPaintingNumber = 5;
   latestStatueNumber = 5;
@@ -61,8 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.comments     = data[3].Data.reverse();
       this.interactions = data[4].Data.reverse();
       this.clients      = data[5].Data.reverse();
-      console.log('dashboard', data);
-      console.log(this.clients);
+      console.log('dashboard', data, this.statues);
     });
   }
 

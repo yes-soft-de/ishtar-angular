@@ -8,16 +8,16 @@
       <div class="login">
         <p>To login please fill the boxes below:</p>
         <form class="form-group" [formGroup]="loginForm">
-          <input formControlName="username" class="form-control" type="email" placeholder="Email ...">
+          <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
           <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
-          <div class="google-login">
-            <span>Login directly with:</span>
-            <button type="button" class="google-button">
-              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">
-                <i class="fab fa-google"></i>
-              </a>
-            </button>
-          </div>
+<!--          <div class="google-login">-->
+<!--            <span>Login directly with:</span>-->
+<!--            <button type="button" class="google-button">-->
+<!--              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">-->
+<!--                <i class="fab fa-google"></i>-->
+<!--              </a>-->
+<!--            </button>-->
+<!--          </div>-->
           <button (click)="submitLogin()" class="login-btn">Login</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">
@@ -27,18 +27,18 @@
       <div class="register">
         <p>To signup please fill the boxes below:</p>
         <form class="form-group" [formGroup]="registerForm">
-          <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
           <input formControlName="username" class="form-control" type="text" placeholder="Username ...">
           <input formControlName="password" class="form-control" type="password" placeholder="Password ...">
           <input formControlName="confirm_password" class="form-control" type="password" placeholder="Confirm Password ...">
-          <div class="google-login">
-            <span>Signup directly with:</span>
-            <button type="button" class="google-button">
-              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">
-                <i class="fab fa-google"></i>
-              </a>
-            </button>
-          </div>
+          <input formControlName="email" class="form-control" type="email" placeholder="Email ...">
+<!--          <div class="google-login">-->
+<!--            <span>Sign up directly with:</span>-->
+<!--            <button type="button" class="google-button">-->
+<!--              <a href="{{userLoginLink}}" style="color: black" class="d-flex align-items-center">-->
+<!--                <i class="fab fa-google"></i>-->
+<!--              </a>-->
+<!--            </button>-->
+<!--          </div>-->
           <button class="login-btn" (click)="submitRegister()">SignUp</button>
         </form>
         <img src="../../../../../assets/slider-images/7.png" class="lion">

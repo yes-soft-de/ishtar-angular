@@ -1,5 +1,5 @@
 export interface ClientInterface {
-  id: number;
+  id?: number;
   fullName: string;
   image?: string;
   roles?: ['ROLE_ADMIN', 'ROLE_USER'];

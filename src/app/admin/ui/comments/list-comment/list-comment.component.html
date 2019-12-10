@@ -2,7 +2,7 @@
   <div *ngIf="comments.length !== 0">
     <div class="container-fluid">
       <h1 class="text-center my-4">Manage Comments Page</h1>
-      <div class="col-4">
+      <div class="col-12 col-md-6 col-xl-4">
         <div class="form-group mb-4">
           <input id="exampleFormControlInput2" [(ngModel)]="name" (keyup)="applyFilter()" type="text" placeholder="Searching for Username And Comments Section" class="form-control form-control-underlined border-primary">
         </div>
@@ -32,7 +32,7 @@
             <td>
               <a (click)="delete(comment.id)" class="btn btn-danger btn-sm mr-1 mb-1">Delete</a>
               <a *ngIf="!comment.spacial" (click)="special(comment.id)" class="btn btn-primary btn-sm mr-1">Special</a>
-<!--              <a (click)="notSpecial(comment.id)" class="btn btn-primary btn-sm mr-1">Normal</a>-->
+<!--              <a (click)="notSpecial(painting-comment.id)" class="btn btn-primary btn-sm mr-1">Normal</a>-->
             </td>
           </tr>
         </table>

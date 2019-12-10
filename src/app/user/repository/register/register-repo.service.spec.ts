@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { RegisterRepoService } from './register-repo.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('RegisterRepoService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let registerRepoService: RegisterRepoService;
+  let httpTestController: HttpTestingController;
 
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [RegisterRepoService]
+    });
+    registerRepoService = TestBed.get(RegisterRepoService);
+    httpTestController = TestBed.get(HttpTestingController);
+  });
   it('should be created', () => {
-    const service: RegisterRepoService = TestBed.get(RegisterRepoService);
-    expect(service).toBeTruthy();
+    expect(registerRepoService).toBeTruthy();
   });
 });

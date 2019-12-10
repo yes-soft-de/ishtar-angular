@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
 import {UserConfig} from '../../UserConfig';
 import {catchError} from 'rxjs/operators';
-import {RegisterResponse} from '../../entity-protected/register/register-response';
-import {RegisterRequest} from '../../entity-protected/register/register-request';
+import {RegisterResponse} from '../../shared/user/response/register-response';
+import {RegisterRequest} from '../../shared/user/request/register-request';
 
 @Injectable({
   providedIn: 'root'
