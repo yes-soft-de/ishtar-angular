@@ -6,7 +6,6 @@ import {UserInfo} from '../../entity/user/user-info';
 import {ArtTypeService} from '../../../admin/service/art-type/art-type.service';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserService} from '../user/service/user.service';
-import {UserProfileService} from '../../service/client-profile/user-profile.service';
 import {UserManagerService} from '../user/manager/user-manager.service';
 
 @Component({
@@ -25,7 +24,6 @@ export class HeaderComponent implements OnInit {
   constructor(private artTpeService: ArtTypeService,
               public dialog: MatDialog,
               private router: Router,
-              private userProfileService: UserProfileService,
               private userManager: UserManagerService,
               private userService: UserService) {
   }

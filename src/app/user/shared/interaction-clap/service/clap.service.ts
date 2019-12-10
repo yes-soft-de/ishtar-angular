@@ -4,7 +4,6 @@ import {UserInfo} from '../../../entity/user/user-info';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {UserService} from '../../user/service/user.service';
@@ -21,7 +20,6 @@ export class ClapService extends InteractionsService {
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToApi: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userProfileService: UserProfileService,
               private userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);

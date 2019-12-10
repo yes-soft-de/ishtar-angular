@@ -3,7 +3,6 @@ import {StatueCommentService} from '../../service/statue-comment.service';
 import {Observable} from 'rxjs';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {UserService} from '../../../shared/user/service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
