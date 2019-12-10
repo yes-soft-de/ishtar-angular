@@ -118,12 +118,15 @@ export class UserService {
 
   public logout() {
     if (this.googleConnect) {
+      console.log('google Is COnnecting');
       this.userManager.googleLogout().subscribe(
           () => {
+            console.log('google Not Connect');
             this.googleConnect = false;
           }
       );
     }
+    console.log('google');
     return localStorage.removeItem(this.KEY_TOKEN);
   }
 
