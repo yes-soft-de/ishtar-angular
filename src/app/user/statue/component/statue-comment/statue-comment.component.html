@@ -1,7 +1,11 @@
+<form [formGroup]="createCommentForm" (ngSubmit)="submitComment()">
+  <textarea formControlName="comment"></textarea>
+  <button type="submit">Add</button>
+</form>
+
 <!-- Comments -->
 <div class="all-comments">
   <div class="sub-comment" *ngFor="let comment of commentsObservable | async; index as i">
     <app-statue-comment-item [comment]="comment" [editable]="comment.id === activeClientId"></app-statue-comment-item>
   </div>
-
 </div>
