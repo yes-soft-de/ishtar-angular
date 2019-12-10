@@ -20,9 +20,6 @@ export class ArtistCommentComponent implements OnInit {
     comment: new FormControl('')
   });
 
-  activeArtistId: number;
-  activeClientId: number;
-
   constructor(private artistCommentService: ArtistCommentService,
               private activatedRoute: ActivatedRoute,
               private userProfileService: UserService) {

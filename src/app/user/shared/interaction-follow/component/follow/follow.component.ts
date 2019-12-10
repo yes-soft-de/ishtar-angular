@@ -32,7 +32,6 @@ export class FollowComponent implements OnInit {
               } else if (followResponse.value.id) {    // Response followResponse After Create New Follow
                 this.interactionId = followResponse.value.id;
               }
-              // console.log('Follow Interaction Response : ', followResponse);
             } else {
               return EMPTY;
             }

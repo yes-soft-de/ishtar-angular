@@ -40,8 +40,8 @@ export class ClapComponent implements OnInit {
           // Check If There Is Data Or Not Return From The Server
           if (clapResponse) {
             // Check If the Reponse Interaction Not follow And Love | Then Will Be Clap
-            if (clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_LOVE && 
-                clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_FOLLOW) {             
+            if (clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_LOVE &&
+                clapResponse.value.interaction != InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
               this.clapped = clapResponse.success;  // this clapResponse = true if success
               if (clapResponse.value.ClapID) {      // Response clapResponse After Reload The Page
                 this.clapId = clapResponse.value.ClapID;
