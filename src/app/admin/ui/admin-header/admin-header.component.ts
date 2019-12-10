@@ -9,8 +9,7 @@ import {UserService} from '../../../user/shared/user/service/user.service';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor(private userService: UserService,
-              private router: Router) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -18,7 +17,6 @@ export class AdminHeaderComponent implements OnInit {
   logout() {
     this.userService.logout();
     window.location.reload();
-    // this.router.navigate(['/']);
   }
 
 }
