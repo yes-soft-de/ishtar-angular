@@ -32,7 +32,6 @@ import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edi
 import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
 import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
 import {PaintingMayLikeComponent} from './painting/component/painting-may-like/painting-may-like.component';
-import {CommentItemComponent} from './ui/widgets/comment-item/comment-item.component';
 import {PaintingCommentComponent} from './painting/component/painting-comment/painting-comment.component';
 import {StatueDetailsComponent} from './statue/component/statue-details/statue-details.component';
 import {StatueCommentComponent} from './statue/component/statue-comment/statue-comment.component';
@@ -65,6 +64,9 @@ import { PaintingSearchComponent } from './search/component/painting-search/pain
 import { ArtistSearchComponent } from './search/component/artist-search/artist-search.component';
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
+import {ArtistCommentItemComponent} from './artist/component/artist-comment-item/artist-comment-item.component';
+import { PaintingCommentItemComponent } from './painting/component/painting-comment-item/painting-comment-item.component';
+import { StatueCommentItemComponent } from './statue/component/statue-comment-item/statue-comment-item.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,7 @@ import {ItemBriefComponent} from './ui/components/item-brief/item-brief.componen
     StatueListPageComponent,
     ProfilePageComponent,
     AboutIshtarPageComponent,
-    CommentItemComponent,
+    ArtistCommentItemComponent,
     PaintingCommentComponent,
     StatueDetailsComponent,
     StatueCommentComponent,
@@ -126,7 +128,10 @@ import {ItemBriefComponent} from './ui/components/item-brief/item-brief.componen
     SearchComponent,
     PaintingSearchComponent,
     ArtistSearchComponent,
-    ItemBriefComponent
+    ItemBriefComponent,
+    HomePageComponent,
+    PaintingCommentItemComponent,
+    StatueCommentItemComponent
   ],
   exports: [
     // User

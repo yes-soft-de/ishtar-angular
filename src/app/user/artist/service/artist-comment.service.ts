@@ -32,9 +32,9 @@ export class ArtistCommentService extends BaseCommentService {
     return this.createComment(comment, apiType, artistId, clientId);
   }
 
-  updateArtistComment(commentId: number, oldCommentId: number, newComment: string, clientId: number) {
+  updateArtistComment(commentId: number, pageId: number, newComment: string, clientId: number) {
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_ARTIST);
-    return this.updateComment(commentId, apiType, oldCommentId, clientId, newComment);
+    return this.updateComment(commentId, apiType, pageId, clientId, newComment);
   }
 
   deleteArtistComment(commentId: number) {
