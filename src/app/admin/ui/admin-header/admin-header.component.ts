@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 import {UserService} from '../../../user/shared/user/service/user.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class AdminHeaderComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-    window.location.reload();
+    window.location.href = '/';
   }
 
 }
