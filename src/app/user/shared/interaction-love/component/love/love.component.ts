@@ -11,6 +11,7 @@ export class LoveComponent implements OnInit {
   @Input() ParentType;  // this for entity number (1: painting)
   @Input() ParentId;    // This is for painting id
   loved = false;
+  loving = false;
   interactionId: number;
 
   constructor(private loveService: LoveService) {}
@@ -31,11 +32,12 @@ export class LoveComponent implements OnInit {
               } else if (loveResponse.value.id) {         // Response loveResponse After Create New Love
                 this.interactionId = loveResponse.value.id;
               }
-              console.log('Love Interaction Response : ', loveResponse);
+              // console.log('Love Interaction Response : ', loveResponse);
             } else {
               return;
             }
           } else {  // If Not Data That Mean This Interaction Was Deleted
+            this.loving = false;
             this.loved = false;
           }
         }
@@ -50,6 +52,7 @@ export class LoveComponent implements OnInit {
 
   // delete the love interaction
   deleteLove() {
+    this.loving = true;
     this.loveService.deleteLoveInteraction(this.interactionId);
   }
 }

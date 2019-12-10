@@ -3,6 +3,7 @@ import {UserProfileService} from '../../../user/service/client-profile/user-prof
 import {ArtTypeService} from '../../service/art-type/art-type.service';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
+import {UserService} from '../../../user/shared/user/service/user.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -11,18 +12,16 @@ import {Router} from '@angular/router';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor(private userService: UserProfileService,
+  constructor(private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
   }
 
   logout() {
-    this.userService.requestUserLogout().subscribe(
-      () => {
-        console.log('Logout Successfully');
-        this.router.navigate(['/']);
-      });
+    this.userService.logout();
+    // window.location.reload();
+    this.router.navigate(['/']);
   }
 
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {UserProfileService} from '../user/service/client-profile/user-profile.service';
+import {UserService} from '../user/shared/user/service/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -34,7 +34,7 @@ import {UserProfileService} from '../user/service/client-profile/user-profile.se
           ])
         ])
       ]),
-      transition('7 => 6, 7 => 5, 7 => 4, 7 => 3, 7 => 2, 7 => 1, 7 => 0,' + 
+      transition('7 => 6, 7 => 5, 7 => 4, 7 => 3, 7 => 2, 7 => 1, 7 => 0,' +
           '6 => 5, 6 => 4, 6 => 3, 6 => 2, 6 => 1, 6 => 0, ' +
           '5 => 4, 5 => 3, 5 => 2, 5 => 1, 5 => 0, ' +
           '4 => 3, 4 => 2, 4 => 1, 4 => 0, ' +
@@ -63,16 +63,16 @@ import {UserProfileService} from '../user/service/client-profile/user-profile.se
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private userConnector: UserProfileService, private toaster: ToastrService) { }
+  constructor(private router: Router, private userService: UserService, private toaster: ToastrService) { }
 
   ngOnInit() {
-    this.userConnector.requestUserDetails().subscribe(
-         (data: any) => {
-         if (data.Data.username === undefined) {
+    this.userService.getUserInfo().subscribe(
+         userInfoResponse => {
+         if (userInfoResponse.username === undefined) {
            alert('Unauthorized Access, Please Login!');
            this.router.navigate(['/']);
          } else {
-          this.toaster.success('Welcome ' + data.Data.username);
+          this.toaster.success('Welcome ' + userInfoResponse.username);
         }
       }
     );

@@ -80,10 +80,9 @@ export class ClapComponent implements OnInit {
   endClac() {
     const timeEnd = new Date();
     const timeDiff = (timeEnd.getMilliseconds() - this.timeStart.getMilliseconds()) / 1000;
-    console.log(Math.abs(timeDiff));
+    // console.log(Math.abs(timeDiff));
     this.holding = false;
     const clapsNumber = this.calculateClaps();
-    // this.toaster.success(`Sending ${clapsNumber} to Painting`);
     this.clapIconSize = 32;
 
     this.sendClap(clapsNumber);

@@ -1,6 +1,6 @@
 <!-- Filled Icon -->
 <div class="love-icon" *ngIf="loved">
-  <mdb-icon fas icon="heart" class="fa-lg m-1" (click)="deleteLove()"></mdb-icon>
+  <mdb-icon fas icon="heart" [ngStyle]="{'opacity': loving ? '.5' : '1'}" class="fa-lg m-1" (click)="deleteLove()"></mdb-icon>
   <span>Love</span>
 </div>
 <!-- #Filled Icon -->
