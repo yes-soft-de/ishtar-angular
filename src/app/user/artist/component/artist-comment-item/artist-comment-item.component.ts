@@ -4,6 +4,7 @@ import {ArtistCommentService} from '../../service/artist-comment.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../shared/user/service/user.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-artist-comment-item',
@@ -13,6 +14,7 @@ import {UserService} from '../../../shared/user/service/user.service';
 export class ArtistCommentItemComponent implements OnInit {
   @Input() comment: CommentObject;
   @Input() editable: boolean;
+  @Input() eventSubject: Subject<any>;
 
   editMode = false;
   activeArtistId: number;
@@ -50,7 +52,13 @@ export class ArtistCommentItemComponent implements OnInit {
       this.comment.id,
       this.activeArtistId,
       this.updateCommentForm.get('newComment').value,
-      this.activeClientId);
+      this.activeClientId).subscribe(
+      () => {
+        this.eventSubject.next();
+      }, error1 => {
+        this.eventSubject.error(error1);
+      }
+    );
   }
 
   startEditMode() {
@@ -58,6 +66,12 @@ export class ArtistCommentItemComponent implements OnInit {
   }
 
   deleteComment() {
-    this.commentService.deleteArtistComment(this.comment.id);
+    this.commentService.deleteArtistComment(this.comment.id).subscribe(
+      () => {
+        this.eventSubject.next();
+      }, error1 => {
+        this.eventSubject.error(error1);
+      }
+    );
   }
 }
