@@ -11,20 +11,18 @@ import {UpdateCommentRequest} from '../request/update-comment-request';
 import {IshtarClientService} from '../../client/ishtar-client.service';
 import {DeleteCommentResponse} from '../response/delete-comment-response';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsRepositoryService {
 
-
   constructor(private httpClient: HttpClient,
               private ishtarClient: IshtarClientService) {
   }
 
+
   public createComment(comment: CreateCommentRequest): Observable<CreateCommentResponse> {
     return this.ishtarClient.post(`${UserConfig.commentAPI}`, JSON.stringify(comment));
-
   }
 
   public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {

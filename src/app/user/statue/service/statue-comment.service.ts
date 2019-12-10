@@ -4,10 +4,10 @@ import {BaseCommentService} from '../../shared/comment/service/base-comment.serv
 import {Observable, Subject} from 'rxjs';
 import {CommentObject} from '../../shared/comment/entity/comment-object';
 import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
-
 import {CreateCommentResponse} from '../../shared/comment/response/create-comment-response';
 import {UpdateCommentResponse} from '../../shared/comment/response/update-comment-response';
 import {DeleteCommentResponse} from '../../shared/comment/response/delete-comment-response';
+
 
 
 @Injectable({
@@ -32,7 +32,6 @@ export class StatueCommentService extends BaseCommentService {
     return this.statueCommentSubject.asObservable();
   }
 
-
   createStatueComment(comment: string, artistId: number, clientId: number): Observable<CreateCommentResponse> {
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_STATUE);
     return this.createComment(comment, apiType, artistId, clientId);
@@ -47,5 +46,4 @@ export class StatueCommentService extends BaseCommentService {
   deleteStatueComment(commentId: number): Observable<DeleteCommentResponse> {
     return this.deleteComment(commentId);
   }
-
 }

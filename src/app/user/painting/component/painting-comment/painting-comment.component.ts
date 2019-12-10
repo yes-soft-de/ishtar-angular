@@ -4,7 +4,7 @@ import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {Observable} from 'rxjs';
 import {PaintingCommentService} from '../../service/painting-comment.service';
 import {UserService} from '../../../shared/user/service/user.service';
-
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-comment',
@@ -16,6 +16,10 @@ export class PaintingCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
   activePaintingId: number;
   activeClientId: number;
+
+  createCommentForm = new FormGroup({
+    comment: new FormControl('')
+  });
 
   constructor(private paintingCommentService: PaintingCommentService,
               private activatedRoute: ActivatedRoute,
@@ -38,7 +42,6 @@ export class PaintingCommentComponent implements OnInit {
     );
   }
 
-
   createComment(comment) {
     this.paintingCommentService.createPaintingComment(comment, this.activePaintingId, this.activeClientId);
   }
@@ -51,4 +54,8 @@ export class PaintingCommentComponent implements OnInit {
     this.paintingCommentService.deletePaintingComment(commendId);
   }
 
+  submitComment() {
+    this.paintingCommentService.createPaintingComment(this.createCommentForm.get('comment').value,
+      this.activePaintingId, this.activeClientId);
+  }
 }

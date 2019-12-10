@@ -1,4 +1,3 @@
-
 import {Component, OnInit} from '@angular/core';
 import {StatueCommentService} from '../../service/statue-comment.service';
 import {Observable} from 'rxjs';
@@ -6,7 +5,7 @@ import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
 import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {UserService} from '../../../shared/user/service/user.service';
-
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-statue-comment',
@@ -15,9 +14,12 @@ import {UserService} from '../../../shared/user/service/user.service';
 })
 export class StatueCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
-
   activeStatueId: number;
   activeClientId: number;
+
+  createCommentForm = new FormGroup({
+    comment: new FormControl('')
+  });
 
   constructor(private statueCommentService: StatueCommentService,
               private activatedRoute: ActivatedRoute,
@@ -27,7 +29,6 @@ export class StatueCommentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-
         this.activeStatueId = +urlSegments[1];
         this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
       }
@@ -52,4 +53,7 @@ export class StatueCommentComponent implements OnInit {
     this.statueCommentService.deleteStatueComment(commendId);
   }
 
+  submitComment() {
+    this.statueCommentService.createStatueComment(this.createCommentForm.get('comment').value, this.activeStatueId, this.activeClientId);
+  }
 }

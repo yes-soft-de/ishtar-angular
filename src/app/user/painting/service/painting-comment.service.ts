@@ -30,7 +30,6 @@ export class PaintingCommentService extends BaseCommentService {
     return this.paintingCommentsSubject.asObservable();
   }
 
-
   createPaintingComment(comment: string, artistId: number, clientId: number) {
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
     return this.createComment(comment, apiType, artistId, clientId);

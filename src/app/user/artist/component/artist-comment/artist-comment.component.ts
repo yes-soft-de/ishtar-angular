@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../shared/user/service/user.service';
-
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-artist-comment',
@@ -13,6 +13,12 @@ import {UserService} from '../../../shared/user/service/user.service';
 })
 export class ArtistCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
+  activeArtistId: number;
+  activeClientId: number;
+
+  createCommentForm = new FormGroup({
+    comment: new FormControl('')
+  });
 
   activeArtistId: number;
   activeClientId: number;
@@ -25,7 +31,6 @@ export class ArtistCommentComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-
         this.activeArtistId = +urlSegments[1];
         this.commentsObservable = this.artistCommentService.getArtistComment(+urlSegments[1].path);
       }
@@ -49,5 +54,7 @@ export class ArtistCommentComponent implements OnInit {
   deleteComment(commendId) {
     this.artistCommentService.deleteArtistComment(commendId);
   }
-
+  submitComment() {
+    this.artistCommentService.createArtistComment(this.createCommentForm.get('comment').value, this.activeArtistId, this.activeClientId);
+  }
 }
