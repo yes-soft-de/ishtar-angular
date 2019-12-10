@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ArtistCommentService} from '../../service/artist-comment.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../shared/user/service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-artist-comment',
@@ -15,17 +16,26 @@ export class ArtistCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
   activeArtistId: number;
   activeClientId: number;
-
+  activeClientName: string;
+  commentEventSubject = new Subject<any>();
   createCommentForm = new FormGroup({
     comment: new FormControl('')
   });
 
   constructor(private artistCommentService: ArtistCommentService,
               private activatedRoute: ActivatedRoute,
-              private userProfileService: UserService) {
+              private userProfileService: UserService,
+              private toaster: ToastrService) {
   }
 
   ngOnInit() {
+    this.commentEventSubject.asObservable().subscribe(
+      () => {
+        this.commentsObservable = this.artistCommentService.getArtistComment(this.activeArtistId);
+      }, error1 => {
+        this.toaster.error(error1);
+      }
+    );
     this.activatedRoute.url.subscribe(
       urlSegments => {
         this.activeArtistId = +urlSegments[1];
@@ -36,22 +46,21 @@ export class ArtistCommentComponent implements OnInit {
     this.userProfileService.getUserInfo().subscribe(
       userProfile => {
         this.activeClientId = userProfile.id;
+        this.activeClientName = userProfile.username;
       }
     );
   }
 
-  createComment(comment) {
-    this.artistCommentService.createArtistComment(comment, this.activeArtistId, this.activeClientId);
-  }
-
-  updateComment(oldCommentId, newComment) {
-    this.artistCommentService.updateArtistComment(this.activeArtistId, oldCommentId, newComment, this.activeClientId);
-  }
-
-  deleteComment(commendId) {
-    this.artistCommentService.deleteArtistComment(commendId);
-  }
   submitComment() {
-    this.artistCommentService.createArtistComment(this.createCommentForm.get('comment').value, this.activeArtistId, this.activeClientId);
+    this.artistCommentService.createArtistComment(
+      this.createCommentForm.get('comment').value,
+      this.activeArtistId,
+      this.activeClientId).subscribe(
+      () => {
+        this.commentsObservable = this.artistCommentService.getArtistComment(this.activeArtistId);
+      }, error1 => {
+        this.toaster.error(error1);
+      }
+    );
   }
 }

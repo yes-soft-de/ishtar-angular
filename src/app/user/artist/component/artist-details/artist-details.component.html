@@ -50,17 +50,17 @@
                         <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
                           <h2>{{artist[0]?.name}}</h2>
                           <ul class="list-unstyled">
-                            <li class="m-1">
+                            <li class="m-1" *ngIf="facebookValid">
                               <a href="{{artist[0]?.Facebook}}">
                                 <mdb-icon fab icon="facebook"></mdb-icon>
                               </a>
                             </li>
-                            <li class="m-1">
+                            <li class="m-1" *ngIf="twitterValid">
                               <a href="{{artist[0]?.Twitter}}">
                                 <mdb-icon fab icon="twitter"></mdb-icon>
                               </a>
                             </li>
-                            <li class="m-1">
+                            <li class="m-1" *ngIf="linkedInValid">
                               <a href="{{artist[0]?.Linkedin}}">
                                 <mdb-icon fab icon="linkedin"></mdb-icon>
                               </a>

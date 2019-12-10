@@ -6,6 +6,8 @@
 <!-- Comments -->
 <div class="all-comments">
   <div class="sub-comment" *ngFor="let comment of commentsObservable | async; index as i">
-    <app-statue-comment-item [comment]="comment" [editable]="comment.id === activeClientId"></app-statue-comment-item>
+    <app-statue-comment-item [comment]="comment"
+                             [editable]="comment.username === activeClientName"
+                             [eventSubject]="commentEventSubject"></app-statue-comment-item>
   </div>
 </div>

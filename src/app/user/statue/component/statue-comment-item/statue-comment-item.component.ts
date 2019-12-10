@@ -5,6 +5,7 @@ import {PaintingCommentService} from '../../../painting/service/painting-comment
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../shared/user/service/user.service';
 import {StatueCommentService} from '../../service/statue-comment.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-statue-comment-item',
@@ -14,6 +15,7 @@ import {StatueCommentService} from '../../service/statue-comment.service';
 export class StatueCommentItemComponent implements OnInit {
   @Input() comment: CommentObject;
   @Input() editable: boolean;
+  @Input() eventSubject: Subject<any>;
 
   editMode = false;
   activeArtistId: number;
@@ -52,7 +54,13 @@ export class StatueCommentItemComponent implements OnInit {
       this.comment.id,
       this.activeArtistId,
       this.updateCommentForm.get('newComment').value,
-      this.activeClientId);
+      this.activeClientId).subscribe(
+      () => {
+        this.eventSubject.next();
+      }, error1 => {
+        this.eventSubject.error(error1);
+      }
+    );
   }
 
   startEditMode() {
@@ -60,6 +68,12 @@ export class StatueCommentItemComponent implements OnInit {
   }
 
   deleteComment() {
-    this.commentService.deleteStatueComment(this.comment.id);
+    this.commentService.deleteStatueComment(this.comment.id).subscribe(
+      () => {
+        this.eventSubject.next();
+      }, error1 => {
+        this.eventSubject.error(error1);
+      }
+    );
   }
 }
