@@ -27,7 +27,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   artists: {0: ArtistInterface, path: string, artType: string}[];
   paintings: PaintingInterface[];
   auctions: AuctionList[];
-  statues: {0: StatueInterface, price: string}[];
+  // statues: {0: StatueInterface, price: string}[];
+  statues: StatueInterface[];
   comments: CommentInterface[];
   interactions: InteractionInterface[];
   clients: Client[];
