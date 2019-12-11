@@ -74,6 +74,10 @@ export class AdminComponent implements OnInit {
          } else {
           this.toaster.success('Welcome ' + userInfoResponse.username);
         }
+      }, error1 => {
+        alert('Unauthorized Access, Please Login!');
+        console.log(error1);
+        this.router.navigate(['/']);
       }
     );
   }
