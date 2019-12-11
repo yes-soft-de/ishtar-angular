@@ -8,6 +8,11 @@
         <div class="col-12">
           <app-artist-search [artistList]="artistList"></app-artist-search>
         </div>
+        <div class="col-12" *ngIf="paintingList.length == 0 && artistList.length == 0">
+          <div class="empty-result">
+            <div class="alert alert-info text-center">There isn't any result to show</div>
+          </div>
+        </div>
       </div>
     </section>
   </div>

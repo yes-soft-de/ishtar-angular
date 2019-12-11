@@ -12,6 +12,7 @@ export class FollowComponent implements OnInit {
   @Input() ParentType;  // this for entity (painting, artist, ...) number ex:(1: painting)
   @Input() ParentId;    // This is for (painting, artist, ...) id
   followed = false;
+  following = false;
   interactionId: number;
 
   constructor(private followService: FollowService) { }
@@ -32,11 +33,11 @@ export class FollowComponent implements OnInit {
               } else if (followResponse.value.id) {    // Response followResponse After Create New Follow
                 this.interactionId = followResponse.value.id;
               }
-              // console.log('Follow Interaction Response : ', followResponse);
             } else {
               return EMPTY;
             }
           } else {  // If Not Data That Mean This Interaction Was Deleted
+            this.following = false;
             this.followed = false;
           }
         }
@@ -50,6 +51,7 @@ export class FollowComponent implements OnInit {
 
   // Stop Following
   stopFollow() {
+    this.following = true;
     this.followService.deleteFollowInteraction(this.interactionId);
   }
 }

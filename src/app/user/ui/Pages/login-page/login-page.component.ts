@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../../../shared/user/service/user.service';
 import {Router} from '@angular/router';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 
 @Component({
   selector: 'app-login-page',
@@ -25,7 +24,6 @@ export class LoginPageComponent implements OnInit {
   private registering = false;
 
   constructor(private userService: UserService,
-              private userProfileService: UserProfileService,
               private router: Router,
               private fb: FormBuilder,
               private toaster: ToastrService) {  }

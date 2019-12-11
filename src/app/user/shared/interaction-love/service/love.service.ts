@@ -4,7 +4,6 @@ import {InteractionsService} from '../../../interactions/service/interactions.se
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
 import {UserInfo} from '../../../entity/user/user-info';
-import {UserProfileService} from '../../../service/client-profile/user-profile.service';
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {UserService} from '../../user/service/user.service';
@@ -21,7 +20,6 @@ export class LoveService extends InteractionsService {
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToApi: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userProfileService: UserProfileService,
               private userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);

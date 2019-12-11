@@ -8,7 +8,6 @@ import {InteractionsService} from '../../interactions/service/interactions.servi
 import {InteractionsManagerService} from '../../interactions/manager/interactions-manager.service';
 import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
 import {InteractionConstantService} from '../../interactions/service/interaction-constant.service';
-import {UserProfileService} from '../../service/client-profile/user-profile.service';
 import {MatDialog} from '@angular/material';
 import {UserInfo} from '../../entity/user/user-info';
 import {MostViewedListItem} from '../entity/most-viewed-list-item';
@@ -34,7 +33,6 @@ export class PaintingService extends InteractionsService {
               protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userProfileService: UserProfileService,
               private userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToNumberService, interactionTypeToNumberService, dialog);

@@ -1,6 +1,6 @@
 <section id="school-list-section">
   <div id="cards-list" style="display: flex; flex-wrap: wrap">
-    <div class="school-list-card" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
+    <div class="school-list-card mx-auto" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
       <div id="school-bg">
         <img src="{{i.path}}" alt="...">
       </div>
