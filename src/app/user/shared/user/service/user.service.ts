@@ -71,8 +71,10 @@ export class UserService {
     if (this.isLoggedIn()) {
       this.userManager.getUserProfile().subscribe(
         userInfo => {
-          console.log('userInfo Inside = ', userInfo);
-          userSubject.next(userInfo.Data);
+          // console.log('userInfo getUserInfo = ', userInfo);
+          if (userInfo.Data.email || userInfo.Data.username) {
+            userSubject.next(userInfo.Data);
+          }
         }
       );
     } else {
