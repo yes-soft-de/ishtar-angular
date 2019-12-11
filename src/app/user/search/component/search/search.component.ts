@@ -30,7 +30,6 @@ export class SearchComponent implements OnInit {
           result => {
             this.artistList = this.searchHelper.getArtistList(result);
             this.paintingList = this.searchHelper.getPaintingList(result);
-            console.log(this.artistList, this.paintingList);
           }
       );
     });
