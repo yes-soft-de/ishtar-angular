@@ -16,22 +16,6 @@
   }
 
   .all-comments {
-    //height: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    &::-webkit-scrollbar {
-      width: 7px;
-    }
-    &::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-
     .sub-comment {
       position: relative;
       padding: 10px 15px;
@@ -61,43 +45,31 @@
         padding: 1px;
       }
       .comment-body {
-        border-radius: 5px;
-        &:before {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 0;
-          top: 12px;
-          left: -5px;
-          border-style: solid;
-          border-color: transparent #6c757d transparent transparent;
-          border-width: 10px;
-        }
+        border-radius: 15px;
+        margin-bottom: 10px;
+        padding: 15px;
+        border: 1px solid #e1e1e1;
         .time {
           span {
-            color: #e0e86f;
+            color: #999;
+            border-bottom: 1px solid #e1e1e1;
+          }
+        }
+        button {
+          border: 1px solid transparent;
+          background: goldenrod;
+          color: #fff;
+          margin: 15px 10px;
+          outline: none;
+          transition: all 0.5s ease-in-out;
+          -webkit-transition: all 0.5s ease-in-out;
+          &:hover{
+            background: none;
+            color: goldenrod;
+            border: 1px solid goldenrod;
           }
         }
       }
-      //.time {
-      //  margin-left: 15px;
-      //  padding-left: 15px;
-      //  position: relative;
-      //
-      //  &::after {
-      //    content: '';
-      //    position: absolute;
-      //    left: 0;
-      //    top: calc(50% - 2px);
-      //    height: 4px;
-      //    width: 4px;
-      //    background: #000;
-      //  }
-      //}
-      //
-      //p {
-      //  margin-top: 20px;
-      //}
     }
   }
 }
@@ -111,6 +83,7 @@ form {
     border-color: #e1e1e1;
     padding: 15px;
     height: 100px;
+    resize: none;
     &:focus {
       border-color: goldenrod;
     }
