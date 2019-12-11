@@ -27,9 +27,11 @@ export class IshtarClientService {
   }
 
   post(url: string, request: any): Observable<any> {
-    const subject = new Subject();
+    console.log('Posting Request');
     if (!this.isLoggedIn()) {
+      const subject = new Subject();
       subject.error('User Not Logged In');
+      return subject;
     } else {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -37,15 +39,16 @@ export class IshtarClientService {
           Authorization: this.getToken()
         })
       };
-      subject.next(this.httpClient.post(url, request, httpOptions));
+      return this.httpClient.post(url, request, httpOptions);
     }
-    return subject.asObservable();
   }
 
   put(url: string, request): Observable<any> {
-    const subject = new Subject();
     if (!this.isLoggedIn()) {
+      const subject = new Subject();
       subject.error('User Not Logged In');
+      console.log('User Not Logged In');
+      return subject.asObservable();
     } else {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -53,15 +56,15 @@ export class IshtarClientService {
           Authorization: this.getToken()
         })
       };
-      subject.next(this.httpClient.put(url, request, httpOptions));
+      return this.httpClient.put(url, request, httpOptions);
     }
-    return subject.asObservable();
   }
 
   delete(url): Observable<any> {
-    const subject = new Subject();
     if (!this.isLoggedIn()) {
+      const subject = new Subject();
       subject.error('User Not Logged In');
+      return subject.asObservable();
     } else {
       const httpOptions = {
         headers: new HttpHeaders({
@@ -69,9 +72,8 @@ export class IshtarClientService {
           Authorization: this.getToken()
         })
       };
-      subject.next(this.httpClient.delete(url, httpOptions));
+      return this.httpClient.delete(url, httpOptions);
     }
-    return subject.asObservable();
   }
 
   public isLoggedIn(): boolean {
