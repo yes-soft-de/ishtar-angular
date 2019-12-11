@@ -13,7 +13,7 @@ export class IshtarClientService {
   }
 
   get(url: string): Observable<any> {
-    if (this.isLoggedIn()) {
+    if (!this.isLoggedIn()) {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export class IshtarClientService {
 
   post(url: string, request: any): Observable<any> {
     const subject = new Subject();
-    if (this.isLoggedIn()) {
+    if (!this.isLoggedIn()) {
       subject.error('User Not Logged In');
     } else {
       const httpOptions = {
@@ -44,7 +44,7 @@ export class IshtarClientService {
 
   put(url: string, request): Observable<any> {
     const subject = new Subject();
-    if (this.isLoggedIn()) {
+    if (!this.isLoggedIn()) {
       subject.error('User Not Logged In');
     } else {
       const httpOptions = {
@@ -60,7 +60,7 @@ export class IshtarClientService {
 
   delete(url): Observable<any> {
     const subject = new Subject();
-    if (this.isLoggedIn()) {
+    if (!this.isLoggedIn()) {
       subject.error('User Not Logged In');
     } else {
       const httpOptions = {

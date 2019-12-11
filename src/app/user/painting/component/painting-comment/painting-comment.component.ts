@@ -52,6 +52,10 @@ export class PaintingCommentComponent implements OnInit {
 
   submitComment() {
     console.log('Submitting');
+    if (!this.userProfileService.isLoggedIn()) {
+      this.toaster.error('Please Login');
+      return;
+    }
     this.paintingCommentService.createPaintingComment(this.createCommentForm.get('comment').value,
       this.activePaintingId, this.activeClientId).subscribe(
       () => {

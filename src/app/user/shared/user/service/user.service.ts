@@ -32,7 +32,8 @@ export class UserService {
       .subscribe(
         loginResponse => {
           localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + loginResponse.token);
-          localStorage.setItem('date', new Date().toString());  // Result : Wed Dec 04 2019 15:46:54 GMT+0200 (Eastern European Standard Time)
+          localStorage.setItem('date', new Date().toString());
+          // Result : Wed Dec 04 2019 15:46:54 GMT+0200 (Eastern European Standard Time)
           loginSubject.next('true');
         }
       );
@@ -80,23 +81,23 @@ export class UserService {
 
   getTokenWithGoogleLogin(): Observable<boolean> {
     const googleSubject = new Subject<boolean>();
-  // Connect TO fetch Token After Google Connect
+    // Connect TO fetch Token After Google Connect
     this.userManager.getTokenWithGoogleLogin()
-        .pipe(
-            catchError(err => {
-              googleSubject.error('Error Google Logging In! ');
-              this.googleConnect = false;
-              return EMPTY;
-            })
-        ).subscribe(
-        tokenResponse => {
-          if (tokenResponse.token) {
-            this.googleConnect = true;
-            localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + tokenResponse.token);
-            localStorage.setItem('date', new Date().toString());
-            googleSubject.next(true);
-          }
+      .pipe(
+        catchError(err => {
+          googleSubject.error('Error Google Logging In! ');
+          this.googleConnect = false;
+          return EMPTY;
+        })
+      ).subscribe(
+      tokenResponse => {
+        if (tokenResponse.token) {
+          this.googleConnect = true;
+          localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + tokenResponse.token);
+          localStorage.setItem('date', new Date().toString());
+          googleSubject.next(true);
         }
+      }
     );
     return googleSubject.asObservable();
   }
@@ -119,9 +120,9 @@ export class UserService {
   public logout() {
     if (this.googleConnect) {
       this.userManager.googleLogout().subscribe(
-          () => {
-            this.googleConnect = false;
-          }
+        () => {
+          this.googleConnect = false;
+        }
       );
     }
     return localStorage.removeItem(this.KEY_TOKEN);
