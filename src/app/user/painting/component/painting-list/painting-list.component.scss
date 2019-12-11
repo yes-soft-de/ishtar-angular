@@ -112,9 +112,9 @@
 @media (max-width:800px) {
   #painting-list {
     .painting-list-item {
-      padding: 1rem !important;
+      padding: 0.5rem 1rem !important;
       .img-container {
-        height: 350px;
+        height: 275px;
         img {
           height: 100%;
         }
@@ -152,6 +152,7 @@
       position: relative;
       float: left;
       margin-right: 10px;
+      padding-bottom: 0;
       h5 {
         border: 1px solid #000;
         display: inline-block;
@@ -201,7 +202,7 @@
     .filter {
       float: none;
       display: block;
-      padding-bottom: 20px;
+      padding-bottom: 0;
       h5 {
         display: block;
         border: 0;

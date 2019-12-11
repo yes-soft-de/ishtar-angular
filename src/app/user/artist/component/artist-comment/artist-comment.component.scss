@@ -1,0 +1,28 @@
+form {
+    textarea{
+    width: 100%;
+    display: block;
+    outline: none;
+    border-radius: 15px;
+    border-color: #e1e1e1;
+    padding: 15px;
+    height: 100px;
+    &:focus {
+      border-color: goldenrod;
+    }
+  }
+  button{
+    border: 1px solid transparent;
+    background: goldenrod;
+    color: #fff;
+    margin: 15px 10px;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    &:hover{
+      background: none;
+      color: goldenrod;
+      border: 1px solid goldenrod;
+    }
+  }
+}

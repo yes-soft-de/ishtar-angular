@@ -38,6 +38,9 @@
                     <span mdbDropdownToggle class="letter">{{userInfo?.username.substring(0, 1) | uppercase}}</span>
                     <div class="info">
                       <span class="email">{{userInfo?.username}}</span>
+                      <div>
+                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
+                      </div>
                       <div class="login-btn" *ngIf="userLoggedIn">
                         <a (click)="logout()">Logout !</a>
                       </div>
