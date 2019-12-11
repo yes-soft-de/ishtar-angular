@@ -72,12 +72,12 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.userManager.getUserProfile().subscribe(
         userInfoResponse => {
-           console.log('userInfoResponse', userInfoResponse.Data);
-           if (userInfoResponse.Data.username === undefined) {
-             alert('Unauthorized Access, Please Login!');
-             this.router.navigate(['/']);
+           if (userInfoResponse.Data.username || userInfoResponse.Data.email) {
+             console.log('userInfoResponse', userInfoResponse.Data);
+             this.toaster.success('Welcome ' + userInfoResponse.Data.username);
            } else {
-            this.toaster.success('Welcome ' + userInfoResponse.Data.username);
+             alert('User Is Not Exists!');
+             this.router.navigate(['/']);
           }
         }, error1 => {
         alert('Unauthorized Access, Please Login!');

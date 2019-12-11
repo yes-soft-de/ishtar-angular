@@ -66,10 +66,12 @@ export class UserService {
   }
 
   getUserInfo(): Observable<UserInfo> {
+    console.log('getUserInfo is started');
     const userSubject = new Subject<UserInfo>();
     if (this.isLoggedIn()) {
       this.userManager.getUserProfile().subscribe(
         userInfo => {
+          console.log('userInfo Inside = ', userInfo);
           userSubject.next(userInfo.Data);
         }
       );
