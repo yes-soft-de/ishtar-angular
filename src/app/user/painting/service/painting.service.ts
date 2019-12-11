@@ -12,6 +12,7 @@ import {UserProfileService} from '../../service/client-profile/user-profile.serv
 import {MatDialog} from '@angular/material';
 import {UserInfo} from '../../entity/user/user-info';
 import {MostViewedListItem} from '../entity/most-viewed-list-item';
+import {UserService} from '../../shared/user/service/user.service';
 
 
 @Injectable({
@@ -27,12 +28,14 @@ export class PaintingService extends InteractionsService {
   private viewSubject = new Subject<any>();
   userInfo: UserInfo;
   userRequestSent = false;
+  userLoggedIn = false;
 
   constructor(private paintingManager: PaintingManagerService,
               protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserProfileService,
+              private userProfileService: UserProfileService,
+              private userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, pageTypeToNumberService, interactionTypeToNumberService, dialog);
   }
@@ -86,33 +89,51 @@ export class PaintingService extends InteractionsService {
 
   // Add View Interaction When User Inter To The Painting Detail
   viewPainting(entityType: string, entityId: number) {
-    if (!this.userRequestSent) {
-      // If Not Request Him
-      this.userRequestSent = true;
-      this.userService.requestUserDetails().subscribe(
-        (user: any) => {
-          // Assign the Data to the User
-          if (this.isUserNode(user.Data)) {
-            console.log('Assigning User');
-            this.userInfo = user.Data;
-            this.postInteractionToAPI(
-                entityType,
-                entityId,
-                this.userInfo.id,
-                InteractionConstantService.INTERACTION_TYPE_VIEW,
-                this.viewSubject);
+    this.userLoggedIn = this.userService.isLoggedIn();
+    if (this.userLoggedIn) {
+      this.userService.getUserInfo().subscribe(
+          userInfoResponse => {
+            // Assign the Data to the User
+            if (this.isUserNode(userInfoResponse)) {
+              console.log('Assigning User');
+              this.userInfo = userInfoResponse;
+              this.postInteractionToAPI(
+                  entityType,
+                  entityId,
+                  this.userInfo.id,
+                  InteractionConstantService.INTERACTION_TYPE_VIEW,
+                  this.viewSubject);
+            }
           }
-        }
       );
-    } else if (this.checkUserDetailsExists(this.userInfo)) {
-      console.log('User Exists, Requesting Love Status');
-      this.postInteractionToAPI(
-          entityType,
-          entityId,
-          this.userInfo.id,
-          InteractionConstantService.INTERACTION_TYPE_VIEW,
-          this.viewSubject);
     }
+    // if (!this.userRequestSent) {
+    //   // If Not Request Him
+    //   this.userRequestSent = true;
+    //   this.userProfileService.requestUserDetails().subscribe(
+    //     (user: any) => {
+    //       // Assign the Data to the User
+    //       if (this.isUserNode(user.Data)) {
+    //         console.log('Assigning User');
+    //         this.userInfo = user.Data;
+    //         this.postInteractionToAPI(
+    //             entityType,
+    //             entityId,
+    //             this.userInfo.id,
+    //             InteractionConstantService.INTERACTION_TYPE_VIEW,
+    //             this.viewSubject);
+    //       }
+    //     }
+    //   );
+    // } else if (this.checkUserDetailsExists(this.userInfo)) {
+    //   console.log('User Exists, Requesting Love Status');
+    //   this.postInteractionToAPI(
+    //       entityType,
+    //       entityId,
+    //       this.userInfo.id,
+    //       InteractionConstantService.INTERACTION_TYPE_VIEW,
+    //       this.viewSubject);
+    // }
   }
 
   getMostViewedPaintings(): Observable<MostViewedListItem[]> {

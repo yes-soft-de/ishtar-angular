@@ -17,7 +17,7 @@ import {UserManagerService} from '../user/manager/user-manager.service';
 export class HeaderComponent implements OnInit {
   userInfo: UserInfo = null;
   userLoggedIn = false;
-  // userGoogleLoggedIn = false;
+  userGoogleLoggedIn = false;
   searchFrom = new FormGroup({
     search: new FormControl('')
   });
@@ -31,28 +31,33 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.userInfo == null) {
-    //   this.userManager.getUserProfile().subscribe(
-    //       (userInfoResponse: any) => {
-    //         console.log('userInfoResponse: ', userInfoResponse.Data);
-    //         // tslint:disable-next-line:triple-equals
-    //         if (userInfoResponse.Data.id != undefined) {
-    //           this.userInfo = userInfoResponse;
-    //           this.userGoogleLoggedIn = true;
-    //         }
-    //       }
-    //   );
-    // }
-
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
-      this.userService.getUserInfo().subscribe(
-        userInfoResponse => {
-          this.userInfo = userInfoResponse;
-          // this.userGoogleLoggedIn = false;
+    // Check Login With Google
+    this.userService.getTokenWithGoogleLogin().subscribe(
+        tokenGoogleResponse => {
+          if (tokenGoogleResponse) {
+            this.userGoogleLoggedIn = true;
+            this.userLoggedIn = this.userService.isLoggedIn();
+            this.userService.getUserInfo().subscribe(
+                userInfoResponse => {
+                  this.userInfo = userInfoResponse;
+                }
+            );
+          }
         }
-      );
+    );
+
+    // Check Login Without Google
+    if (!this.userGoogleLoggedIn) {
+      this.userLoggedIn = this.userService.isLoggedIn();
+      if (this.userLoggedIn) {
+        this.userService.getUserInfo().subscribe(
+            userInfoResponse => {
+              this.userInfo = userInfoResponse;
+            }
+        );
+      }
     }
+
   }
 
   showDialog() {
@@ -63,15 +68,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    // if (this.userLoggedIn) {
-    //   this.userService.logout();
-    // } else if (this.userGoogleLoggedIn) {
-    //   this.userProfileService.requestUserLogout().subscribe(
-    //       () => {
-    //         console.log('logout');
-    //       }
-    //   );
-    // }
+    this.userGoogleLoggedIn = false;
     this.userService.logout();
     window.location.reload();
   }

@@ -36,6 +36,7 @@ export class PaintingFilterService {
         resultList.push(painting);
       }
     }
+    console.log(resultList);
     return resultList;
   }
 }

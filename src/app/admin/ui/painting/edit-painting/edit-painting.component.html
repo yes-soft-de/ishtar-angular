@@ -106,8 +106,8 @@
                         (change)="changeState($event)"
                         [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('state').errors}">
                     <option value="">Select Painting State</option>
-                    <option value="0" [selected]="paintingData['0']?.state == false">Not Sold</option>
-                    <option value="1" [selected]="paintingData['0']?.state == true">Sold</option>
+                    <option value="0" [selected]="paintingData['0']?.state == false">Sold</option>
+                    <option value="1" [selected]="paintingData['0']?.state == true">Not Sold</option>
                 </select>
                 <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('state').errors?.required">State Field Is Required</span>
             </div>

@@ -20,6 +20,7 @@ export class CommentsRepositoryService {
               private ishtarClient: IshtarClientService) {
   }
 
+
   public createComment(comment: CreateCommentRequest): Observable<CreateCommentResponse> {
     return this.ishtarClient.post(`${UserConfig.commentAPI}`, JSON.stringify(comment));
   }
@@ -27,6 +28,7 @@ export class CommentsRepositoryService {
   public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
     return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
   }
+
 
   public deleteComment(commentId: number): Observable<DeleteCommentResponse> {
     return this.ishtarClient.delete(`${UserConfig.commentAPI}/${commentId}`);

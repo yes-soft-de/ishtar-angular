@@ -11,6 +11,7 @@ import {UserInfo} from '../../../entity/user/user-info';
 })
 export class UserService {
   public readonly KEY_TOKEN = 'token';
+  googleConnect = false;
 
   constructor(private userManager: UserManagerService) {
   }
@@ -21,7 +22,6 @@ export class UserService {
       username,
       password
     };
-    console.log('loginRequest: ', loginRequest);
     this.userManager.login(loginRequest)
       .pipe(
         catchError(err => {
@@ -51,7 +51,6 @@ export class UserService {
       .pipe(
         catchError(err => {
           registerSubject.error('Error Logging In! ');
-          console.log(err);
           return EMPTY;
         })
       )
@@ -79,6 +78,29 @@ export class UserService {
     return userSubject.asObservable();
   }
 
+  getTokenWithGoogleLogin(): Observable<boolean> {
+    const googleSubject = new Subject<boolean>();
+  // Connect TO fetch Token After Google Connect
+    this.userManager.getTokenWithGoogleLogin()
+        .pipe(
+            catchError(err => {
+              googleSubject.error('Error Google Logging In! ');
+              this.googleConnect = false;
+              return EMPTY;
+            })
+        ).subscribe(
+        tokenResponse => {
+          if (tokenResponse.token) {
+            this.googleConnect = true;
+            localStorage.setItem(this.KEY_TOKEN, 'Bearer ' + tokenResponse.token);
+            localStorage.setItem('date', new Date().toString());
+            googleSubject.next(true);
+          }
+        }
+    );
+    return googleSubject.asObservable();
+  }
+
   public isLoggedIn(): boolean {
     const diff = +new Date().valueOf() - +new Date(Date.parse(localStorage.getItem('date'))).valueOf();
     // Millisecond to Minutes
@@ -95,6 +117,14 @@ export class UserService {
   }
 
   public logout() {
+    if (this.googleConnect) {
+      this.userManager.googleLogout().subscribe(
+          () => {
+            this.googleConnect = false;
+          }
+      );
+    }
     return localStorage.removeItem(this.KEY_TOKEN);
   }
+
 }

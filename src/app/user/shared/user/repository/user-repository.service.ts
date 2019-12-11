@@ -36,4 +36,13 @@ export class UserRepositoryService {
     return this.ishtarClient.get(UserConfig.userProfileAPI);
   }
 
+  getTokenWithGoogleLogin(): Observable<any> {
+    return this.httpClient.get(UserConfig.tokenWithGoogle);
+  }
+
+  // Logout From Google Login
+  googleLogout(): Observable<any> {
+    return this.httpClient.get(UserConfig.userLogoutLink);
+  }
+
 }
