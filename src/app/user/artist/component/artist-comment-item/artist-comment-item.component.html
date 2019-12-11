@@ -21,7 +21,7 @@
 <div *ngIf="editMode && editable">
   <form [formGroup]="updateCommentForm" (ngSubmit)="submitEditedComment()">
     <!-- TODO Write a Form for the Edited Comment -->
-    <textarea formControlName="newComment"></textarea>
+    <textarea formControlName="newComment">{{comment.body}}</textarea>
     <button type="submit">Save</button>
   </form>
 </div>
