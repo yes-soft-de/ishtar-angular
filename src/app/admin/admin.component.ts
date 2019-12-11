@@ -3,6 +3,7 @@ import {animate, group, query, style, transition, trigger} from '@angular/animat
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../user/shared/user/service/user.service';
+import {UserManagerService} from '../user/shared/user/manager/user-manager.service';
 
 @Component({
   selector: 'app-admin',
@@ -63,18 +64,21 @@ import {UserService} from '../user/shared/user/service/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService, private toaster: ToastrService) { }
+  constructor(private router: Router,
+              private userService: UserService,
+              private toaster: ToastrService,
+              private userManager: UserManagerService) { }
 
   ngOnInit() {
-    this.userService.getUserInfo().subscribe(
-         userInfoResponse => {
-         if (userInfoResponse.username === undefined) {
-           alert('Unauthorized Access, Please Login!');
-           this.router.navigate(['/']);
-         } else {
-          this.toaster.success('Welcome ' + userInfoResponse.username);
+    this.userManager.getUserProfile().subscribe(
+        userInfoResponse => {
+           if (userInfoResponse.Data.username === undefined) {
+             alert('Unauthorized Access, Please Login!');
+             this.router.navigate(['/']);
+           } else {
+            this.toaster.success('Welcome ' + userInfoResponse.Data.username);
+          }
         }
-      }
     );
   }
 
