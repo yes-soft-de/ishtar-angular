@@ -15,6 +15,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PaintingCommentComponent implements OnInit {
   commentEventSubject = new Subject<any>();
   commentsObservable: Observable<CommentObject[]>;
+  commentsList: CommentObject[];
   activePaintingId: number;
   activeClientId: number;
   activeClientName: string;
@@ -38,7 +39,7 @@ export class PaintingCommentComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         this.activePaintingId = +urlSegments[1];
-        this.commentsObservable = this.paintingCommentService.getPaintingComments(+urlSegments[1].path);
+        this.updateCommentList();
       }
     );
 
@@ -46,6 +47,16 @@ export class PaintingCommentComponent implements OnInit {
       userProfile => {
         this.activeClientId = userProfile.id;
         this.activeClientName = userProfile.username;
+      }
+    );
+  }
+
+  updateCommentList() {
+    this.paintingCommentService.getPaintingComments(this.activePaintingId).subscribe(
+      commentsList => {
+        this.commentsList = commentsList;
+      }, error1 => {
+        this.toaster.error(error1);
       }
     );
   }
@@ -59,9 +70,9 @@ export class PaintingCommentComponent implements OnInit {
     this.paintingCommentService.createPaintingComment(this.createCommentForm.get('comment').value,
       this.activePaintingId, this.activeClientId).subscribe(
       () => {
-        this.commentsObservable = this.paintingCommentService.getPaintingComments(this.activePaintingId);
+        this.updateCommentList();
       }, err => {
-          this.toaster.error(err);
+        this.toaster.error(err);
       }
     );
   }
