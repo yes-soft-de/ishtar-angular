@@ -14,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ArtistCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
+  commentsList: CommentObject[];
   activeArtistId: number;
   activeClientId: number;
   activeClientName: string;
@@ -51,7 +52,22 @@ export class ArtistCommentComponent implements OnInit {
     );
   }
 
+  updateCommentList() {
+    this.artistCommentService.getArtistComment(this.activeArtistId).subscribe(
+      commentsList => {
+        this.commentsList = commentsList;
+      }, error1 => {
+        this.toaster.error(error1);
+      }
+    );
+  }
+
   submitComment() {
+    console.log('Submitting');
+    if (!this.userProfileService.isLoggedIn()) {
+      this.toaster.error('Please Login');
+      return;
+    }
     this.artistCommentService.createArtistComment(
       this.createCommentForm.get('comment').value,
       this.activeArtistId,

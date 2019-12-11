@@ -4,8 +4,8 @@
 </form>
 
 <!-- Comments -->
-<div class="all-comments">
-  <div class="sub-comment" *ngFor="let comment of commentsObservable | async; index as i">
+<div class="all-comments" *ngIf="commentsList !== null && commentsList !== undefined">
+  <div class="sub-comment" *ngFor="let comment of commentsList; index as i">
     <app-artist-comment-item [comment]="comment"
                              [editable]="comment.username === activeClientName"
                              [eventSubject]="commentEventSubject"></app-artist-comment-item>

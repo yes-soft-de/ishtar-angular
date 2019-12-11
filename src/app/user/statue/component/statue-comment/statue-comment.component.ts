@@ -14,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class StatueCommentComponent implements OnInit {
   commentsObservable: Observable<CommentObject[]>;
+  commentsList: CommentObject[];
   activeStatueId: number;
   activeClientId: number;
   activeClientName: string;
@@ -59,7 +60,21 @@ export class StatueCommentComponent implements OnInit {
     );
   }
 
+  updateCommentList() {
+    this.statueCommentService.getStatueComment(this.activeStatueId).subscribe(
+      commentsList => {
+        this.commentsList = commentsList;
+      }, error1 => {
+        this.toaster.error(error1);
+      }
+    );
+  }
   submitComment() {
+    console.log('Submitting');
+    if (!this.userProfileService.isLoggedIn()) {
+      this.toaster.error('Please Login');
+      return;
+    }
     this.statueCommentService.createStatueComment(
       this.createCommentForm.get('comment').value, this.activeStatueId, this.activeClientId
     ).subscribe(
