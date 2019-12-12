@@ -47,6 +47,8 @@ export class ArtistCommentItemComponent implements OnInit {
     // TODO: INIT the Form
   }
 
+ 
+
   submitEditedComment() {
     this.commentService.updateArtistComment(
       this.comment.id,
@@ -63,6 +65,10 @@ export class ArtistCommentItemComponent implements OnInit {
 
   startEditMode() {
     this.editMode = true;
+  }
+
+  endEditMode(){
+    this.editMode = false;
   }
 
   deleteComment() {
