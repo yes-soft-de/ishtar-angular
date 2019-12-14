@@ -64,6 +64,11 @@ export class PaintingCommentItemComponent implements OnInit {
     this.editMode = true;
   }
 
+
+  endEditMode(){
+    this.editMode = false;
+  }
+
   deleteComment() {
     this.commentService.deletePaintingComment(this.comment.id).subscribe(
       () => {

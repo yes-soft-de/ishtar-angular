@@ -67,6 +67,11 @@ export class StatueCommentItemComponent implements OnInit {
     this.editMode = true;
   }
 
+  endEditMode() {
+    this.editMode = false;
+  }
+
+
   deleteComment() {
     this.commentService.deleteStatueComment(this.comment.id).subscribe(
       () => {
