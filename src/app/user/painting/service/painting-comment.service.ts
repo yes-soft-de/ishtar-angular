@@ -21,9 +21,11 @@ export class PaintingCommentService extends BaseCommentService {
 
   public getPaintingComments(pageId: number): Observable<CommentObject[]> {
     // TODO: We Should Replace This with a Config File
+    console.log('Get Painting Comments');
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
     this.getComments(apiType, pageId).subscribe(
       commentsResponse => {
+        console.log('sendingPaintingCommentsResponse = ', commentsResponse);
         this.paintingCommentsSubject.next(commentsResponse.Data);
       }
     );
@@ -31,6 +33,7 @@ export class PaintingCommentService extends BaseCommentService {
   }
 
   createPaintingComment(comment: string, artistId: number, clientId: number) {
+    console.log('Create Painting Comment');
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
     return this.createComment(comment, apiType, artistId, clientId);
   }

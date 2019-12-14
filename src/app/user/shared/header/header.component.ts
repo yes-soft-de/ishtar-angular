@@ -34,9 +34,12 @@ export class HeaderComponent implements OnInit {
         tokenGoogleResponse => {
           if (tokenGoogleResponse) {
             this.userGoogleLoggedIn = true;
+            console.log('userGoogleLoggedIn = ', this.userGoogleLoggedIn);
             this.userLoggedIn = this.userService.isLoggedIn();
+            console.log('userLoggedIn is true Inside Google Login = ', this.userLoggedIn);
             this.userService.getUserInfo().subscribe(
                 userInfoResponse => {
+                  console.log('userInfoGoogleResponse = ', userInfoResponse);
                   this.userInfo = userInfoResponse;
                 }
             );
@@ -46,16 +49,23 @@ export class HeaderComponent implements OnInit {
 
     // Check Login Without Google
     if (!this.userGoogleLoggedIn) {
+      console.log('!userGoogleLoggedIn = ', this.userGoogleLoggedIn);
       this.userLoggedIn = this.userService.isLoggedIn();
+      console.log('userLoggedIn is true = ', this.userLoggedIn);
       if (this.userLoggedIn) {
         this.userService.getUserInfo().subscribe(
             userInfoResponse => {
+              console.log('userInfoResponse = ', userInfoResponse);
               this.userInfo = userInfoResponse;
             }
         );
       }
     }
 
+    // try to catch user data after few seconds
+    setTimeout(() => {
+      console.log('userInfo after 5000 second: ', this.userInfo);
+    }, 5000);
   }
 
   showDialog() {

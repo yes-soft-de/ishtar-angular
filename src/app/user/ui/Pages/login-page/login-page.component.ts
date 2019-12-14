@@ -46,15 +46,6 @@ export class LoginPageComponent implements OnInit {
     window.open();
   }
 
-  googleLogin() {
-    console.log('Is date Store In Cookie: ', localStorage.getItem('date'));
-    if (!localStorage.getItem('date')) {
-      console.log('cookie Is set', localStorage.getItem('date'));
-      localStorage.setItem('date', new Date().toString());
-    }
-    return true;
-  }
-
   submitLogin() {
     this.loginButtonActive = true;
     // (1) This Starts Login Process
