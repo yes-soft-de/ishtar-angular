@@ -20,7 +20,7 @@ export class AddImagesComponent implements OnInit {
   uploadForm: FormGroup;
   paintings: Painting[];
   entityID: number;
-  Entity: any = ['Painting', 'Artist', 'ArtType', 'Auction', 'Client'];
+  Entity: any = ['Painting', 'Artist', 'ArtType', 'Auction', 'Client', 'Statue'];
   rowEntity: {Data: any[]};
   rowActive = true;
   uploadButtonValue = 'Upload';

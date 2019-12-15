@@ -1,0 +1,24 @@
+<!--THis For View Interactions Number-->
+<span *ngIf="interaction == 'view'">
+  <i class="far fa-eye fa-fw m-1"></i>
+  <span *ngFor="let interactionValue of interactions">
+    {{interactionValue.id == Row && interactionValue.interactionType == interaction ? interactionValue.interactionNumber : ''}}
+  </span>
+</span>
+
+<!--This is for Love Interaction Number-->
+<span *ngIf="interaction == 'like'">
+  <i class="fas fa-heart fa-fw m-1"></i>
+  <span *ngFor="let interactionValue of interactions">
+    {{interactionValue.id == Row && interactionValue.interactionType == interaction ? interactionValue.interactionNumber : ''}}
+  </span>
+</span>
+
+<!--This is for Follow Interaction Number-->
+<span *ngIf="interaction == 'follow'">
+  <i class="fas fa-heart fa-fw m-1 d-none"></i>
+  <span *ngFor="let interactionValue of interactions">
+    {{interactionValue.id == Row && interactionValue.interactionType == interaction ? interactionValue.interactionNumber : ''}}
+  </span>
+</span>
+

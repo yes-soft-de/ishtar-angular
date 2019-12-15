@@ -1,0 +1,30 @@
+<div class="row comment-block" *ngIf="!editMode">
+  <div class="col-2 col-lg-1 text-center">
+    <div class="user-img">
+      <img class="res-image"
+          src="{{comment.userImage ? comment.userImage :  '../../../../../assets/default-avatar.jpg'}}" 
+          alt=""/>
+    </div>
+  </div>
+  <div class="col-10 col-lg-11 mt-2 mt-sm-0">
+    <div class="comment-body py-2 px-3">
+      <div class="time">
+            <span
+              class="border-bottom pb-1">{{comment.username}} {{comment.date != null ? '( ' + (comment.date.timestamp * 1000 | date) + ' )' : ''}}</span>
+      </div>
+      <p class="comment m-0 mt-2">
+        {{comment.body}}
+      </p>
+      <button *ngIf="editable" (click)="startEditMode()"><i class="fas fa-pencil-alt"></i></button>
+      <button *ngIf="editable" (click)="deleteComment()"><i class="far fa-trash-alt"></i></button>
+    </div>
+  </div>
+</div>
+<div *ngIf="editMode">
+  <form [formGroup]="updateCommentForm" (ngSubmit)="submitEditedComment()">
+    <!-- TODO Write a Form for the Edited Comment -->
+    <textarea formControlName="newComment">{{comment.body}}</textarea>
+    <button type="submit"><i class="far fa-save"></i> Save</button>
+    <button (click)="endEditMode()"><i class="far fa-times-circle"></i> Cancel</button>
+  </form>
+</div>

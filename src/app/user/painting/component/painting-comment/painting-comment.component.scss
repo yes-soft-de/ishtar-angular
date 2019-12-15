@@ -1,0 +1,119 @@
+.comments-box {
+  border: 1px solid #e1e1e1;
+  padding-top: 10px;
+  ul {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0 15px;
+    li {
+      margin-right: 15px;
+    }
+  }
+  textarea {
+    background: #eee;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+  }
+
+  .all-comments {
+    .sub-comment {
+      position: relative;
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      &:last-child {
+        border-bottom: 0;
+      }
+      .hidden-button {
+        position: absolute;
+        right: -122px;
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        z-index: 20;
+      }
+
+      &:hover .hidden-button {
+        right: 20px
+      }
+
+      img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 1px solid;
+        padding: 1px;
+      }
+      .comment-body {
+        border-radius: 15px;
+        margin-bottom: 10px;
+        padding: 15px;
+        border: 1px solid #e1e1e1;
+        .time {
+          span {
+            color: #999;
+            border-bottom: 1px solid #e1e1e1;
+          }
+        }
+        button {
+          border: 1px solid transparent;
+          background: goldenrod;
+          color: #fff;
+          margin: 15px 10px;
+          outline: none;
+          transition: all 0.5s ease-in-out;
+          -webkit-transition: all 0.5s ease-in-out;
+          &:hover{
+            background: none;
+            color: goldenrod;
+            border: 1px solid goldenrod;
+          }
+        }
+      }
+    }
+  }
+}
+
+form {
+  textarea{
+    width: 100%;
+    display: block;
+    outline: none;
+    border-radius: 15px;
+    border-color: #e1e1e1;
+    padding: 15px;
+    height: 100px;
+    resize: none;
+    &:focus {
+      border-color: goldenrod;
+    }
+  }
+  button{
+    border: 1px solid transparent;
+    background: goldenrod;
+    color: #fff;
+    margin: 15px 10px;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    &:hover{
+      background: none;
+      color: goldenrod;
+      border: 1px solid goldenrod;
+    }
+  }
+}
+
+@media (max-width: 632px) {
+  .comments-box {
+    .all-comments {
+      .sub-comment {
+        .comment-body {
+          &:before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}

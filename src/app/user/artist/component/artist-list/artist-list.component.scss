@@ -1,0 +1,296 @@
+.filters-group {
+  display: block;
+  width: 350px;
+  padding: 1.5rem;
+  float: left;
+  .filter {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 20px 0;
+    i {
+      display: none;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+    .title {
+      font-size: 20px;
+    }
+    button {
+      border: 1px solid #aaa;
+      margin: 5px;
+      padding: 5px;
+      background: #fff;
+      outline: none;
+      &:hover {
+        background: goldenrod;
+      }
+    }
+    .size-btn {
+      width: 100%;
+      display: block;
+      text-align: left;
+      span {
+        display: inline-block;
+        width: 70px;
+      }
+    }
+  }
+}
+
+.artist-list-section {
+
+  //margin-top: 6rem;
+  //border-top: 1px solid #333333;
+  #artist-sidebar {
+    border-right: 1px solid #aaa;
+    button {
+      background-color: white !important;
+      color: black;
+      padding: .375rem .75rem !important;
+      border: 1px solid #aaa;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none;
+    }
+
+    button:hover,
+    button.active {
+      background-color: goldenrod !important;
+    }
+  }
+
+  .sort-artist {
+    position: relative;
+    .sort-artist-dropdown {
+      z-index: 9999;
+      position: absolute;
+
+    }
+  }
+  #photos {
+    .artist-card {
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        .details-container {
+          bottom: 4rem;
+        }
+        img {
+          padding: 0;
+        }
+      }
+      img {
+        height: 14rem;
+        width: 14rem;
+        border: 1px solid #bfb049;
+        padding: 3px;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 1;
+      }
+      .details-container {
+        color: #ffffff;
+        position: absolute;
+        bottom: -6rem;
+        h3 {
+          font-size: 1.3rem;
+          font-weight: bold;
+        }
+        .artist-detail-number,
+        .artist-detail-follower {
+          margin-bottom: 5px;
+          padding: 0 5px;
+        }
+        i {
+          visibility: hidden;
+        }
+      }
+      img, .details-container {
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all  .5s ease-in-out;
+        -ms-transition: all  .5s ease-in-out;
+        -o-transition: all  .5s ease-in-out;
+        transition: all  .5s ease-in-out;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .artist-list-section {
+    margin-top: 0;
+    .sort-artist {
+      ul {
+        border: 1px solid #333;
+        padding: 0 7px;
+      }
+    }
+    #photos {
+      .artist-card {
+        &:hover {
+          .details-container {
+            bottom: 4rem;
+          }
+        }
+        img {
+          height: 12rem;
+          width: 12rem;
+        }
+        .details-container {
+          bottom: -4rem;
+          h3 {
+            font-size: 1.2rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .artist-list-section {
+    margin-top: 0;
+    .sort-artist {
+      ul {
+        border: 1px solid #333;
+        padding: 0 7px;
+      }
+    }
+    #photos {
+      .artist-card {
+        &:hover {
+          .details-container {
+            bottom: 4rem;
+          }
+        }
+        img {
+          height: 12rem;
+          width: 12rem;
+        }
+        .details-container {
+          bottom: -4rem;
+          h3 {
+            font-size: 1.2rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .artist-list-section {
+    margin-top: .5rem;
+    #artist-sidebar {
+      h5 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) and (max-width: 1374px) {
+  .artist-list-section {
+    #photos {
+      .artist-card {
+        img {
+          height: 13rem;
+          width: 13rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:991px) {
+  .artist-card {
+    overflow: visible !important;
+    img {
+      border: 2px solid goldenrod !important;
+      background: #fff;
+      padding: 5px !important;
+    }
+    .details-container{
+      position: relative !important;
+      bottom: calc(13rem / 2) !important;
+      margin-bottom: calc(15px - (13rem / 2)) !important;
+      z-index: -1;
+      .inner-details-container {
+        border: 2px solid goldenrod;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        padding: 15px;
+        padding-top: calc((13rem / 2) + 15px);
+        h3,
+        span {
+          color: #000 !important;
+        }
+        span {
+          margin-left: 15px !important;
+        }
+        i {
+          visibility: visible !important;
+        }
+      }
+    }
+  }
+
+  .artist-list-section {
+    border-top: 0 !important;
+    .sort-artist {
+      ul {
+        padding-left: 10px;
+        padding-right: 10px;
+        .sort-artist-dropdown {
+          right: 0;
+          left: 0;
+          top: 30px !important;
+          min-width: 145px;
+          padding: 0;
+          box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+          -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+          a {
+            padding: 5px;
+            border-bottom: 1px solid #e1e1e1;
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:991px) and (min-width:576px) {
+  .artist-card{
+    .details-container{
+      .inner-details-container {
+        span {
+          display: block;
+          margin-left: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:400px) {
+  .artist-card {
+    img {
+      height: 10rem !important;
+      width: 10rem !important;
+    }
+    .details-container{
+      bottom: calc(10rem / 2) !important;
+      margin-bottom: calc(15px - (10rem / 2)) !important;
+      .inner-details-container {
+        padding-top: calc((10rem / 2) + 15px);
+        span {
+          display: block;
+          margin-left: 0 !important;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

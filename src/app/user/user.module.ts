@@ -1,66 +1,72 @@
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
-import {HomePageComponent} from './ui/Pages/home-page/home-page.component';
-import {FooterComponent} from './ui/components/general-footer/footer.component';
-import {HeaderComponent} from './ui/components/general-header/header.component';
-import {PaintingListPageComponent} from './ui/Pages/painting-list/painting-list-page.component';
-import {ArtistListComponent} from './ui/components/artist-list/artist-list.component';
-import {HomeHeaderComponent} from './ui/components/home-header/home-header.component';
-import {PaintingListComponent} from './ui/components/painting-list/painting-list.component';
-import {PaintingDetailsComponent} from './ui/components/painting-details/painting-details.component';
-import {ArtistListPageComponent} from './ui/Pages/artist-list/artist-list-page.component';
-import {ArtistDetailsPageComponent} from './ui/Pages/artist-page/artist-details-page.component';
-import {ArtistDetailsComponent} from './ui/components/artist-details/artist-details.component';
-import {PaintingDetailsPageComponent} from './ui/Pages/painting/painting-details-page.component';
-import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
-import {SchoolListComponent} from './ui/components/school-art-list/school-list.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CarouselModule} from 'ngx-carousel-lib';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
-import {ArtTypePageComponent} from './ui/Pages/art-type-page/art-type-page.component';
-import {ArtTypeComponent} from './ui/components/art-type/art-type.component';
-import {CommentsComponent} from './ui/components/comments/comments.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParallaxModule} from 'ngx-parallax';
-import {HomeAuctionSectionComponent} from './ui/components/home-auction-section/home-auction-section.component';
-import {HomeNavbarComponent} from './ui/components/home-navbar/home-navbar.component';
-import {SearchPageComponent} from './ui/Pages/search-page/search-page.component';
-import {SearchListComponent} from './ui/components/search-list/search-list.component';
-import {ArtTypeListPageComponent} from './ui/Pages/art-type-list-page/art-type-list-page.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {ClapWidgetComponent} from './ui/widgets/clap-widget/clap-widget.component';
-import {FollowWidgetComponent} from './ui/widgets/follow-widget/follow-widget.component';
-import {LoveWidgetComponent} from './ui/widgets/love-interaction/love-widget.component';
-import {DataProcessingPageComponent} from './ui/Pages/data-processing-page/data-processing-page.component';
-import {ImprintPageComponent} from './ui/Pages/imprint-page/imprint-page.component';
-import {FAQComponent} from './ui/Pages/faq/faq.component';
-import {AboutUsComponent} from './ui/Pages/about-us/about-us.component';
-import {ContactSupportComponent} from './ui/Pages/contact-support/contact-support.component';
-import {PrivacyPolicyComponent} from './ui/Pages/privacy-policy/privacy-policy.component';
-import {TOSPageComponent} from './ui/Pages/tospage/tospage.component';
-import { LoadingWidgetComponent } from './ui/widgets/loading-widget/loading-widget.component';
-import { MostSeenPaintingsComponent } from './ui/components/most-seen-paintings/most-seen-paintings.component';
-import { StatuesDetailComponent } from './ui/components/statues-detail/statues-detail.component';
-import { StatueDetailPageComponent } from './ui/Pages/statue-detail-page/statue-detail-page.component';
-import { NgxImageZoomComponent } from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
-import { StatueListPageComponent } from './ui/Pages/statue-list-page/statue-list-page.component';
-import {StatueListComponent} from './ui/components/statue-list/statue-list.component';
-import { ProfilePageComponent } from './ui/Pages/profile-page/profile-page.component';
-import { AboutIshtarPageComponent } from './ui/Pages/about-ishtar-page/about-ishtar-page.component';
+import {DataProcessingPageComponent} from './static-pages/data-processing-page/data-processing-page.component';
+import {ImprintPageComponent} from './static-pages/imprint-page/imprint-page.component';
+import {FAQComponent} from './static-pages/faq/faq.component';
+import {AboutUsComponent} from './static-pages/about-us/about-us.component';
+import {ContactSupportComponent} from './static-pages/contact-support/contact-support.component';
+import {PrivacyPolicyComponent} from './static-pages/privacy-policy/privacy-policy.component';
+import {TOSPageComponent} from './static-pages/tospage/tospage.component';
+import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
+import {NgxImageZoomComponent} from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
+import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
+import {AboutIshtarPageComponent} from './static-pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
-import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.component';
+import {PaintingDetailsPageComponent} from './painting/component/painting-details-page/painting-details-page.component';
+import {PaintingDetailsComponent} from './painting/component/painting-details/painting-details.component';
+import {PaintingMayLikeComponent} from './painting/component/painting-may-like/painting-may-like.component';
+import {PaintingCommentComponent} from './painting/component/painting-comment/painting-comment.component';
+import {StatueDetailsComponent} from './statue/component/statue-details/statue-details.component';
+import {StatueCommentComponent} from './statue/component/statue-comment/statue-comment.component';
+import {StatueDetailsPageComponent} from './statue/component/statue-details-page/statue-details-page.component';
+import {ArtistCommentComponent} from './artist/component/artist-comment/artist-comment.component';
+import {LoveComponent} from './shared/interaction-love/component/love/love.component';
+import {HeaderComponent} from './shared/header/header.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import {ArtistListPageComponent} from './artist/component/artist-list-page/artist-list-page.component';
+import {ArtistDetailsPageComponent} from './artist/component/artist-details-page/artist-details-page.component';
+import {ArtistDetailsComponent} from './artist/component/artist-details/artist-details.component';
+import {ArtistPaintingsComponent} from './artist/component/artist-paintings/artist-paintings.component';
+import {ArtistListComponent} from './artist/component/artist-list/artist-list.component';
+import {StatueListPageComponent} from './statue/component/statue-list-page/statue-list-page.component';
+import {StatueListComponent} from './statue/component/statue-list/statue-list.component';
+import {InteractionComponent} from './interactions/component/interaction/interaction.component';
+import {PaintingListComponent} from './painting/component/painting-list/painting-list.component';
+import {PaintingListPageComponent} from './painting/component/painting-list-page/painting-list-page.component';
+import {FollowComponent} from './shared/interaction-follow/component/follow/follow.component';
+import {ClapComponent} from './shared/interaction-clap/component/clap/clap.component';
+import {HomeHeroComponent} from './home/component/home-hero/home-hero.component';
+import {MostSeenPaintingsComponent} from './painting/component/most-seen-paintings/most-seen-paintings.component';
+import {ArtTypeListComponent} from './art-type/component/art-type-list/art-type-list.component';
+import {ArtTypeDetailsComponent} from './art-type/component/art-type-details/art-type-details.component';
+import {ArtTypeDetailsPageComponent} from './art-type/component/art-type-details-page/art-type-details-page.component';
+import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/art-type-list-page.component';
+import { SearchComponent } from './search/component/search/search.component';
+import { PaintingSearchComponent } from './search/component/painting-search/painting-search.component';
+import { ArtistSearchComponent } from './search/component/artist-search/artist-search.component';
+import {SearchPageComponent} from './search/component/search-page/search-page.component';
+import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
+import { HomePageComponent } from './home/component/home-page/home-page.component';
+import {ArtistCommentItemComponent} from './artist/component/artist-comment-item/artist-comment-item.component';
+import { PaintingCommentItemComponent } from './painting/component/painting-comment-item/painting-comment-item.component';
+import { StatueCommentItemComponent } from './statue/component/statue-comment-item/statue-comment-item.component';
 
 @NgModule({
   declarations: [
@@ -72,31 +78,20 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     // Pages
     ArtistListPageComponent,
     ArtistDetailsPageComponent,
-    HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
-    ArtTypePageComponent,
     ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
-    HomeHeaderComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
-    ItemBriefComponent,
-    ArtTypeComponent,
-    CommentsComponent,
-    HomeAuctionSectionComponent,
-    HomeNavbarComponent,
     SearchPageComponent,
-    SearchListComponent,
+    SearchComponent,
     ArtTypeListPageComponent,
     LoginPageComponent,
-    ClapWidgetComponent,
-    LoveWidgetComponent,
-    FollowWidgetComponent,
     TOSPageComponent,
     PrivacyPolicyComponent,
     ContactSupportComponent,
@@ -106,14 +101,36 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     DataProcessingPageComponent,
     LoadingWidgetComponent,
     MostSeenPaintingsComponent,
-    StatuesDetailComponent,
-    StatueDetailPageComponent,
     NgxImageZoomComponent,
     StatueListComponent,
     StatueListPageComponent,
     ProfilePageComponent,
     AboutIshtarPageComponent,
-    CommentItemComponent
+    ArtistCommentItemComponent,
+    PaintingCommentComponent,
+    StatueDetailsComponent,
+    StatueCommentComponent,
+    StatueDetailsPageComponent,
+    ArtistCommentComponent,
+    LoveComponent,
+    ArtistDetailsComponent,
+    ArtistPaintingsComponent,
+    InteractionComponent,
+    StatueListComponent,
+    FollowComponent,
+    ClapComponent,
+    HomeHeroComponent,
+    MostSeenPaintingsComponent,
+    ArtTypeListComponent,
+    ArtTypeDetailsComponent,
+    ArtTypeDetailsPageComponent,
+    SearchComponent,
+    PaintingSearchComponent,
+    ArtistSearchComponent,
+    ItemBriefComponent,
+    HomePageComponent,
+    PaintingCommentItemComponent,
+    StatueCommentItemComponent
   ],
   exports: [
     // User
@@ -124,36 +141,29 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     // Pages
     ArtistListPageComponent,
     ArtistDetailsPageComponent,
-    HomePageComponent,
     PaintingListPageComponent,
     PaintingDetailsPageComponent,
+    PaintingMayLikeComponent,
     ImagesByArtistPageComponent,
     ProfileEditPageComponent,
     // Components
     ArtistListComponent,
     ArtistDetailsComponent,
-    HomeHeaderComponent,
+    ArtistPaintingsComponent,
     PaintingDetailsComponent,
     PaintingListComponent,
-    SchoolListComponent,
-    ItemBriefComponent,
-    CommentsComponent,
     SearchPageComponent,
-    SearchListComponent,
-
+    SearchComponent,
     ArtTypeListPageComponent,
     LoginPageComponent,
-    ClapWidgetComponent,
-    LoveWidgetComponent,
-    FollowWidgetComponent,
     TOSPageComponent,
     PrivacyPolicyComponent,
     ContactSupportComponent,
     AboutUsComponent,
     FAQComponent,
     ImprintPageComponent,
-    DataProcessingPageComponent
-
+    DataProcessingPageComponent,
+    ItemBriefComponent
   ],
   imports: [
     CommonModule,
@@ -167,7 +177,8 @@ import { CommentItemComponent } from './ui/widgets/comment-item/comment-item.com
     MatDialogModule,
     NgxPaginationModule,
     NgxImageZoomModule.forRoot()
-    // BrowserAnimationsModule
+  ], schemas: [
+    NO_ERRORS_SCHEMA
   ]
 })
 export class UserModule {

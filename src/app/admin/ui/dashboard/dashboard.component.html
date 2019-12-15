@@ -9,7 +9,7 @@
           <i class="fas fa-user-friends fa-fw fa-5x"></i>
           <div>
             <h6>Total Artists</h6>
-            <span><a routerLink="/admin/list-artists">{{artists.length}}</a></span>
+            <span><a routerLink="/admin/list-artists">{{artists?.length}}</a></span>
           </div>
         </div>
       </div>
@@ -18,13 +18,12 @@
           <i class="far fa-images fa-fw fa-5x"></i>
           <div>
             <h6>Total Paintings</h6>
-            <span><a routerLink="/admin/list-paintings">{{paintings.length}}</a></span>
+            <span><a routerLink="/admin/list-paintings">{{paintings?.length}}</a></span>
           </div>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="stat st_item">
-<!--          <i class="fas fa-monument fa-fw fa-5x"></i>-->
           <i class="fas fa-archway fa-fw fa-5x"></i>
           <div>
             <h6>Total Statues</h6>
@@ -59,7 +58,7 @@
           <i class="fas fa-star-half-alt fa-fw fa-5x"></i>
           <div>
             <h6>Total Interactions</h6>
-            <span><a routerLink="/admin/list-interactions">{{interactions.length}}</a></span>
+            <span><a routerLink="/admin/list-interactions">{{interactions?.length}}</a></span>
           </div>
         </div>
       </div>
@@ -68,7 +67,7 @@
           <i class="fa fa-users fa-fw fa-5x"></i>
           <div>
             <h6>Total Clients</h6>
-            <span><a routerLink="/admin/list-clients">{{clients.length}}</a></span>
+            <span><a routerLink="/admin/list-clients">{{clients?.length}}</a></span>
           </div>
         </div>
       </div>
@@ -84,17 +83,17 @@
             <div class="card-header">
               Latest {{latestArtistNumber}} Artists
             </div>
-            <div class="card-body" *ngIf="artists.length != 0">
+            <div class="card-body" *ngIf="artists?.length != 0">
               <ng-container *ngFor="let artist of artists; let i = index">
                 <ng-container *ngIf="i < latestArtistNumber">
                   <div class="late_info">
-                    {{artist["0"].name}}
-                    <a routerLink="/admin/edit-artist/{{artist['0'].id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{artist["0"]?.name}}
+                    <a routerLink="/admin/edit-artist/{{artist['0']?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
             </div>
-            <div class="card-body" *ngIf="artists.length == 0">
+            <div class="card-body" *ngIf="artists?.length == 0">
               <div class="late_info">
                 There isn't any Artists To Show Yet
               </div>
@@ -109,17 +108,17 @@
             <div class="card-header">
               Latest {{latestPaintingNumber}} Paintings
             </div>
-            <div class="card-body" *ngIf="paintings.length != 0">
+            <div class="card-body" *ngIf="paintings?.length != 0">
               <ng-container *ngFor="let painting of paintings; let i = index">
                 <ng-container *ngIf="i < latestPaintingNumber">
                   <div class="late_info">
-                    {{painting.name}}
-                    <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{painting?.name}}
+                    <a routerLink="/admin/edit-painting/{{painting?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
             </div>
-            <div class="card-body" *ngIf="paintings.length == 0">
+            <div class="card-body" *ngIf="paintings?.length == 0">
               <div class="late_info">
                 There isn't any Paintings To Show Yet
               </div>
@@ -134,17 +133,17 @@
             <div class="card-header">
               Latest {{latestStatueNumber}} Statues
             </div>
-            <div class="card-body" *ngIf="statues.length != 0">
+            <div class="card-body" *ngIf="statues?.length != 0">
               <ng-container *ngFor="let statue of statues; let i = index">
                 <ng-container *ngIf="i < latestStatueNumber">
                   <div class="late_info">
-                    {{statue["0"].name}}
-                    <a routerLink="/admin/edit-statue/{{statue['0'].id}}" href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{statue?.name}}
+                    <a routerLink="/admin/edit-statue/{{statue?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
             </div>
-            <div class="card-body" *ngIf="statues.length == 0">
+            <div class="card-body" *ngIf="statues?.length == 0">
               <div class="late_info">
                 There isn't any Statues To Show Yet
               </div>
@@ -179,7 +178,7 @@
             <div class="card-header">
               Latest {{latestCommentNumber}} Comments
             </div>
-            <div class="card-body" *ngIf="comments.length != 0">
+            <div class="card-body" *ngIf="comments?.length != 0">
               <ng-container *ngFor="let comment of comments; let i = index">
                 <ng-container *ngIf="i < latestCommentNumber">
                   <div class="member_comment">
@@ -189,7 +188,7 @@
                 </ng-container>
               </ng-container>
             </div>
-            <div class="card-body" *ngIf="comments.length == 0">
+            <div class="card-body" *ngIf="comments?.length == 0">
               <div class="late_info">
                 There isn't any Comments To Show Yet
               </div>
@@ -204,17 +203,17 @@
             <div class="card-header">
               Latest {{latestClientsNumber}} Clients
             </div>
-            <div class="card-body" *ngIf="clients.length != 0">
+            <div class="card-body" *ngIf="clients?.length != 0">
               <ng-container *ngFor="let client of clients; let i = index">
                 <ng-container *ngIf="i < latestClientsNumber">
                   <div class="late_info">
-                    {{client["0"].username == null ? 'User' : client["0"].username}}
-                    <a routerLink="/admin/edit-client/{{client['0'].id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    {{client["0"]?.username == null ? 'User' : client["0"]?.username}}
+                    <a routerLink="/admin/edit-client/{{client['0']?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
                   </div>
                 </ng-container>
               </ng-container>
             </div>
-            <div class="card-body" *ngIf="clients.length == 0">
+            <div class="card-body" *ngIf="clients?.length == 0">
               <div class="late_info">
                 There isn't any Clients To Show Yet
               </div>

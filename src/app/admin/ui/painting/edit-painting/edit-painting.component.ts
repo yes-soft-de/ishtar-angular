@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Artist} from '../../../entity/artist/artist';
 import {ArtType} from '../../../entity/art-type/art-type';
 import {ImageSnippet} from '../../../entity/image-snippet/image-snippet';
 import {ArtistService} from '../../../service/artist/artist.service';
@@ -97,7 +96,7 @@ export class EditPaintingComponent implements OnInit {
         active:       +this.paintingData['0'].active,
         keyWords:     this.paintingData['0'].keyWords,
         artType:      this.artTypeId,
-        gallery:      '',
+        gallery:      '1',
         story:        this.paintingData['0'].story
       });
     });

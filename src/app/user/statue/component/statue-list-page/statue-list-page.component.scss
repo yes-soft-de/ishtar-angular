@@ -1,0 +1,219 @@
+.filters-group {
+  display: block;
+  width: 350px;
+  padding: 1.5rem;
+  float: left;
+  .filter {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 20px 0;
+    i {
+      display: none;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+    .title {
+      font-size: 20px;
+    }
+    button {
+      border: 1px solid #aaa;
+      margin: 5px;
+      padding: 5px;
+      background: #fff;
+      outline: none;
+      &:hover {
+        background: goldenrod;
+      }
+    }
+    .size-btn {
+      width: 100%;
+      display: block;
+      text-align: left;
+      span {
+        display: inline-block;
+        width: 70px;
+      }
+    }
+  }
+}
+
+.statues-list {
+  padding: 1.5rem;
+  .wrapper {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    column-gap: 0;
+    .statue {
+      display: inline-block;
+      width: calc(100% - 30px);
+      vertical-align: top;
+      margin: 15px;
+      border: 1px solid #e1e1e1;
+      position: relative;
+      cursor: pointer;
+      ngx-image-zoom {
+        width: 100%;
+        display: block;
+        img {
+          background: #fff;
+          width: 100%;
+          min-height: 200px;
+        }
+        .ngxImageZoomFull {
+          max-height: auto;
+          min-height: auto;
+        }
+        .ngxImageZoomFullContainer.ngxImageZoomLensEnabled {
+          border: 2px solid goldenrod !important;
+          cursor: crosshair;
+        }
+      }
+      .magnifying {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border: 1px solid #e1e1e1;
+        padding: 10px;
+        background: #fff;
+        outline: none;
+      }
+      .favourite {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        color: #000;
+        border: 1px solid #e1e1e1;
+        text-align: center;
+        line-height: 25px;
+        padding: 0;
+        outline: none;
+      }
+      .info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        padding: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .1s ease-in-out;
+        -o-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+        -moz-transition: all .1s ease-in-out;
+        -webkit-transition: all .1s ease-in-out;
+        @media (max-width:991px) {
+          visibility: visible !important;
+          opacity: 1;
+        }
+        .info-wrapper {
+          position: absolute;
+          bottom: 40px;
+        }
+        p {
+          margin-bottom: 5px;
+        }
+        .price {
+          position: absolute;
+          bottom: 20px;
+          right: 0;
+          padding: 5px 20px;
+          background: goldenrod;
+          color: #000;
+        }
+      }
+      &:hover {
+        .info {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:1199px) and (min-width:768px) {
+  .statues-list {
+    .wrapper {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+    }
+  }
+}
+
+@media (max-width:991px) and (min-width:768px) {
+  .filters-group {
+    width: 200px;
+  }
+}
+
+@media (max-width:767px) {
+  .filters-group {
+    width: 100%;
+    float: none;
+    .filter {
+      max-height: 60px;
+      overflow: hidden;
+      transition: all 1s ease-in-out;
+      -webkit-transition: all 1s ease-in-out;
+      i {
+        transition: all 0.75s ease-in-out;
+        -webkit-transition: all .75s ease-in-out;
+        display: inline-block;
+      }
+      &:last-child {
+        border-bottom: 1px solid #e1e1e1;
+      }
+      button {
+        display: block;
+        border: 0;
+        border-bottom: 1px solid #e1e1e1;
+        width: 100%;
+        text-align: left;
+        padding-left: 25px;
+      }
+      .title{
+        cursor: pointer;
+      }
+      &.active {
+        max-height: 1500px;
+        .title {
+          i {
+            transform: rotateZ(-180deg);
+            -webkit-transform: rotateZ(-180deg);
+          }
+        }
+      }
+    }
+  }
+  .statues-list {
+    .wrapper {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+    }
+  }
+}
+
+@media (max-width:550px) {
+  .statues-list {
+    .wrapper {
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+      column-count: 1;
+    }
+  }
+}
+
+
+
