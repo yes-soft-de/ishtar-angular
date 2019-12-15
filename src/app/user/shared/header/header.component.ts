@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
 
     // Check Login Without Google
     if (!this.userGoogleLoggedIn) {
-      console.log('!userGoogleLoggedIn = ', this.userGoogleLoggedIn);
+      console.log('userGoogleLoggedIn = ', this.userGoogleLoggedIn);
       this.userLoggedIn = this.userService.isLoggedIn();
       console.log('userLoggedIn is true = ', this.userLoggedIn);
       if (this.userLoggedIn) {
