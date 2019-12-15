@@ -25,7 +25,7 @@ export class PaintingCommentService extends BaseCommentService {
     const apiType = this.pageTypeToNumberService.convertPageTypeToNumber(PageTypeToNumberService.ENTITY_TYPE_PAINTING);
     this.getComments(apiType, pageId).subscribe(
       commentsResponse => {
-        console.log('sendingPaintingCommentsResponse = ', commentsResponse);
+        // console.log('sendingPaintingCommentsResponse = ', commentsResponse);
         this.paintingCommentsSubject.next(commentsResponse.Data);
       }
     );
