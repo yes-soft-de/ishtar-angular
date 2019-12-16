@@ -32,16 +32,18 @@ export class ArtistCommentComponent implements OnInit {
   ngOnInit() {
     this.commentEventSubject.asObservable().subscribe(
       () => {
-        this.commentsObservable = this.artistCommentService.getArtistComment(this.activeArtistId);
+        console.log('Global Observable Inside Artist');
+        this.artistCommentService.getArtistComment(this.activeArtistId);
       }, error1 => {
         this.toaster.error(error1);
       }
     );
     this.activatedRoute.url.subscribe(
-      urlSegments => {
-        this.activeArtistId = +urlSegments[1];
-        this.commentsObservable = this.artistCommentService.getArtistComment(+urlSegments[1].path);
-      }
+        urlSegments => {
+          this.activeArtistId = +urlSegments[1];
+          // this.artistCommentService.getArtistComment(+urlSegments[1].path);
+          this.updateCommentList();
+        }
     );
 
     this.userProfileService.getUserInfo().subscribe(

@@ -42,7 +42,8 @@ export class StatueCommentComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         this.activeStatueId = +urlSegments[1];
-        this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
+        this.updateCommentList();
+        // this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
       }
     );
 
@@ -53,11 +54,11 @@ export class StatueCommentComponent implements OnInit {
       }
     );
 
-    this.commentEventSubject.asObservable().subscribe(
-      () => {
-        this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
-      }
-    );
+    // this.commentEventSubject.asObservable().subscribe(
+    //   () => {
+    //     this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
+    //   }
+    // );
   }
 
   updateCommentList() {

@@ -34,6 +34,7 @@ export class BaseCommentService {
   protected updateComment(commentId: number, pageType: string,
                           pageId: number, clientId: number,
                           newComment: string): Observable<UpdateCommentResponse> {
+    console.log('General Update Comment');
     const comment: UpdateCommentRequest = {
       entity: +pageType,
       row: +pageId,
@@ -45,6 +46,7 @@ export class BaseCommentService {
   }
 
   protected deleteComment(commentId: number): Observable<DeleteCommentResponse> {
+    console.log('General Delete Comment');
     return this.commentManager.deleteComment(commentId);
   }
 
