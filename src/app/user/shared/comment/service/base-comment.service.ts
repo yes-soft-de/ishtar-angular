@@ -27,14 +27,12 @@ export class BaseCommentService {
       client: +userId,
       spacial: 0,
     };
-    console.log('General Create Comment');
     return this.commentManager.createComment(newComment);
   }
 
   protected updateComment(commentId: number, pageType: string,
                           pageId: number, clientId: number,
                           newComment: string): Observable<UpdateCommentResponse> {
-    console.log('General Update Comment');
     const comment: UpdateCommentRequest = {
       entity: +pageType,
       row: +pageId,
@@ -46,13 +44,11 @@ export class BaseCommentService {
   }
 
   protected deleteComment(commentId: number): Observable<DeleteCommentResponse> {
-    console.log('General Delete Comment');
     return this.commentManager.deleteComment(commentId);
   }
 
   protected getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
     // Example: Painting Type is 2 in the API
-    console.log('General Get Comments');
     return this.commentManager.getComments(pageType, pageId);
   }
 }

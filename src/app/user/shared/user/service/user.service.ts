@@ -5,8 +5,6 @@ import {EMPTY, Observable, Subject} from 'rxjs';
 import {RegisterRequest} from '../request/register-request';
 import {catchError} from 'rxjs/operators';
 import {UserInfo} from '../../../entity/user/user-info';
-import {CreateCommentRequest} from '../../comment/request/create-comment-request';
-import {CommentManagerService} from '../../comment/manager/comment-manager.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +13,7 @@ export class UserService {
   public readonly KEY_TOKEN = 'token';
   googleConnect = false;
 
-  constructor(private userManager: UserManagerService,
-              private commentManagerService: CommentManagerService) {
+  constructor(private userManager: UserManagerService) {
   }
 
   login(username: string, password: string): Observable<string> {
@@ -74,21 +71,6 @@ export class UserService {
     if (this.isLoggedIn()) {
       this.userManager.getUserProfile().subscribe(
         userInfo => {
-          if (userInfo.Data == '0') {
-            const newComment: CreateCommentRequest = {
-              entity: 1,
-              row: 2,
-              body: 'comment to catch user data',
-              client: undefined,
-              spacial: 0,
-            };
-            this.commentManagerService.createComment(newComment).subscribe(
-                commentResponse => {
-                  console.log('creating new comment if user is zero ');
-                  window.location.reload();
-                }
-            );
-          }
           if (userInfo.Data.email || userInfo.Data.username) {
             userSubject.next(userInfo.Data);
           }

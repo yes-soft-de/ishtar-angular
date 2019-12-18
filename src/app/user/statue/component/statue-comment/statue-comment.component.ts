@@ -80,6 +80,7 @@ export class StatueCommentComponent implements OnInit {
       this.createCommentForm.get('comment').value, this.activeStatueId, this.activeClientId
     ).subscribe(
       () => {
+        this.createCommentForm.reset();
         this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
       }, error1 => {
         this.toaster.error(error1);

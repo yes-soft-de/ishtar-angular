@@ -32,7 +32,6 @@ export class ArtistCommentComponent implements OnInit {
   ngOnInit() {
     this.commentEventSubject.asObservable().subscribe(
       () => {
-        console.log('Global Observable Inside Artist');
         this.artistCommentService.getArtistComment(this.activeArtistId);
       }, error1 => {
         this.toaster.error(error1);
@@ -75,6 +74,7 @@ export class ArtistCommentComponent implements OnInit {
       this.activeArtistId,
       this.activeClientId).subscribe(
       () => {
+        this.createCommentForm.reset();
         this.commentsObservable = this.artistCommentService.getArtistComment(this.activeArtistId);
       }, error1 => {
         this.toaster.error(error1);

@@ -69,7 +69,6 @@ export class PaintingCommentComponent implements OnInit {
 
   submitComment() {
     console.log('Submitting');
-    // console.log('activeClientId In Painting = ', this.activeClientId);
     if (!this.userService.isLoggedIn()) {
       this.toaster.error('Please Login');
       return;
@@ -77,6 +76,7 @@ export class PaintingCommentComponent implements OnInit {
     this.paintingCommentService.createPaintingComment(this.createCommentForm.get('comment').value,
       this.activePaintingId, this.activeClientId).subscribe(
       () => {
+        this.createCommentForm.reset();
         this.updateCommentList();
       }, err => {
         this.toaster.error(err);
