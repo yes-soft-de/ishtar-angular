@@ -73,7 +73,6 @@ export class AdminComponent implements OnInit {
     this.userManager.getUserProfile().subscribe(
         userInfoResponse => {
            if (userInfoResponse.Data.username || userInfoResponse.Data.email) {
-             console.log('userInfoResponse', userInfoResponse.Data);
              this.toaster.success('Welcome ' + userInfoResponse.Data.username);
            } else {
              alert('User Is Not Exists!');
