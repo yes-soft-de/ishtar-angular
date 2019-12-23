@@ -42,7 +42,8 @@ export class StatueCommentComponent implements OnInit {
     this.activatedRoute.url.subscribe(
       urlSegments => {
         this.activeStatueId = +urlSegments[1];
-        this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
+        this.updateCommentList();
+        // this.commentsObservable = this.statueCommentService.getStatueComment(+urlSegments[1].path);
       }
     );
 
@@ -53,11 +54,11 @@ export class StatueCommentComponent implements OnInit {
       }
     );
 
-    this.commentEventSubject.asObservable().subscribe(
-      () => {
-        this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
-      }
-    );
+    // this.commentEventSubject.asObservable().subscribe(
+    //   () => {
+    //     this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
+    //   }
+    // );
   }
 
   updateCommentList() {
@@ -79,6 +80,7 @@ export class StatueCommentComponent implements OnInit {
       this.createCommentForm.get('comment').value, this.activeStatueId, this.activeClientId
     ).subscribe(
       () => {
+        this.createCommentForm.reset();
         this.commentsObservable = this.statueCommentService.getStatueComment(this.activeStatueId);
       }, error1 => {
         this.toaster.error(error1);

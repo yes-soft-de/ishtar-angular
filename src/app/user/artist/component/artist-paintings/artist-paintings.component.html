@@ -19,12 +19,12 @@
     </div>
   </div>
   <!-- Use THis Div If Painting Length is large Than 4 painting-->
-  <div class="painting-list" *ngIf="paintingList.length > 4">
+  <div class="painting-list col-12" *ngIf="paintingList.length > 4">
     <div class="row">
       <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation slide"  [type]="'carousel-multi-item'"
                     [animation]="'slide'">
         <mdb-carousel-item *ngFor="let paintings of paintingSlidesPage">
-          <div class="painting-list-item col-lg-4 col-md-4 col-sm-6 col-xs-12 mx-auto"
+          <div class="painting-list-item col-12 col-sm-6 col-md-4 col-lg-3 mx-auto"
                [ngClass]="{'d-none d-md-block': paintingsIndex !== 0}"
                *ngFor="let painting of paintings; let paintingsIndex = index"
                routerLink="/painting/{{painting?.id}}">

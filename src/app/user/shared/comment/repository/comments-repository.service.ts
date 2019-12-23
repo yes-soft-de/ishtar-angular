@@ -10,6 +10,7 @@ import {CreateCommentRequest} from '../request/create-comment-request';
 import {UpdateCommentRequest} from '../request/update-comment-request';
 import {IshtarClientService} from '../../client/ishtar-client.service';
 import {DeleteCommentResponse} from '../response/delete-comment-response';
+import {UpdateCommentResponse} from '../response/update-comment-response';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,6 @@ export class CommentsRepositoryService {
               private ishtarClient: IshtarClientService) {
   }
 
-
   public createComment(comment: CreateCommentRequest): Observable<CreateCommentResponse> {
     return this.ishtarClient.post(`${UserConfig.commentAPI}`, JSON.stringify(comment));
   }
@@ -29,12 +29,11 @@ export class CommentsRepositoryService {
     return this.httpClient.get<GetCommentResponse>(`${UserConfig.specialSectionComments}/${pageType}/${pageId}`);
   }
 
-
   public deleteComment(commentId: number): Observable<DeleteCommentResponse> {
     return this.ishtarClient.delete(`${UserConfig.commentAPI}/${commentId}`);
   }
 
-  public updateComment(commentId: number, updateCommentRequest: UpdateCommentRequest) {
+  public updateComment(commentId: number, updateCommentRequest: UpdateCommentRequest): Observable<any>  {
     return this.ishtarClient.put(`${UserConfig.commentAPI}/${commentId}`, JSON.stringify(updateCommentRequest));
   }
 }

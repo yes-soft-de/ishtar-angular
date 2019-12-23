@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="col-10 col-lg-11 mt-2 mt-sm-0">
-    <div class="comment-body bg-secondary text-white py-2 px-3">
+    <div class="comment-body py-2 px-3">
       <div class="time">
             <span
               class="border-bottom pb-1">{{comment.username}} {{comment.date != null ? '( ' + (comment.date.timestamp * 1000 | date) + ' )' : ''}}</span>
@@ -15,7 +15,7 @@
         {{comment.body}}
       </p>
       <button *ngIf="editable" (click)="startEditMode()"><i class="fas fa-pencil-alt"></i></button>
-      <button *ngIf="editMode" (click)="deleteComment()"><i class="far fa-trash-alt"></i></button>
+      <button *ngIf="editable" (click)="deleteComment()"><i class="far fa-trash-alt"></i></button>
     </div>
   </div>
 </div>

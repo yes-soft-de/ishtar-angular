@@ -65,7 +65,7 @@ export class PaintingCommentItemComponent implements OnInit {
   }
 
 
-  endEditMode(){
+  endEditMode() {
     this.editMode = false;
   }
 

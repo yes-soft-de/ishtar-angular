@@ -30,15 +30,12 @@ export class PaintingCommentComponent implements OnInit {
   constructor(private paintingCommentService: PaintingCommentService,
               private activatedRoute: ActivatedRoute,
               private userService: UserService,
-              private toaster: ToastrService) {
-  }
+              private toaster: ToastrService) {}
 
   ngOnInit() {
     this.commentEventSubject.asObservable().subscribe(
       () => {
-        // console.log('commentEventSubject for any');
         this.commentsObservable = this.paintingCommentService.getPaintingComments(this.activePaintingId);
-        // console.log('this.commentsObservable = ', this.commentsObservable);
       }
     );
     this.activatedRoute.url.subscribe(
@@ -48,18 +45,10 @@ export class PaintingCommentComponent implements OnInit {
       }
     );
 
-    // this.userProfileService.getUserInfo().subscribe(
-    //   userProfile => {
-    //     console.log('userProfile from painting comment', userProfile);
-    //     this.activeClientId = userProfile.id;
-    //     this.activeClientName = userProfile.username;
-    //   }
-    // );
     this.userLoggedIn = this.userService.isLoggedIn();
     if (this.userLoggedIn) {
       this.userService.getUserInfo().subscribe(
         userInfoResponse => {
-            // console.log('userProfile from painting comment', userInfoResponse);
             this.userInfo = userInfoResponse;
             this.activeClientId = userInfoResponse.id;
             this.activeClientName = userInfoResponse.username;
@@ -71,7 +60,6 @@ export class PaintingCommentComponent implements OnInit {
   updateCommentList() {
     this.paintingCommentService.getPaintingComments(this.activePaintingId).subscribe(
       commentsList => {
-        // console.log('commentsList from painting = ', commentsList);
         this.commentsList = commentsList;
       }, error1 => {
         this.toaster.error(error1);
@@ -87,8 +75,8 @@ export class PaintingCommentComponent implements OnInit {
     }
     this.paintingCommentService.createPaintingComment(this.createCommentForm.get('comment').value,
       this.activePaintingId, this.activeClientId).subscribe(
-      (data: any) => {
-        // console.log('create comment responsting', data);
+      () => {
+        this.createCommentForm.reset();
         this.updateCommentList();
       }, err => {
         this.toaster.error(err);

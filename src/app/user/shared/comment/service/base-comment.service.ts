@@ -27,7 +27,6 @@ export class BaseCommentService {
       client: +userId,
       spacial: 0,
     };
-    console.log('General Create Comment');
     return this.commentManager.createComment(newComment);
   }
 
@@ -50,7 +49,6 @@ export class BaseCommentService {
 
   protected getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {
     // Example: Painting Type is 2 in the API
-    console.log('General Get Comments');
     return this.commentManager.getComments(pageType, pageId);
   }
 }

@@ -68,11 +68,9 @@ export class UserService {
   getUserInfo(): Observable<UserInfo> {
     // console.log('getUserInfo is started');
     const userSubject = new Subject<UserInfo>();
-    // console.log('is User LoggedIn = ', this.isLoggedIn());
     if (this.isLoggedIn()) {
       this.userManager.getUserProfile().subscribe(
         userInfo => {
-          // console.log('userInfo getUserInfo = ', userInfo);
           if (userInfo.Data.email || userInfo.Data.username) {
             userSubject.next(userInfo.Data);
           }
@@ -123,13 +121,19 @@ export class UserService {
   }
 
   public logout() {
-    if (this.googleConnect) {
-      this.userManager.googleLogout().subscribe(
+    // if (this.googleConnect) {
+    //   this.userManager.googleLogout().subscribe(
+    //     () => {
+    //       this.googleConnect = false;
+    //     }
+    //   );
+    // }
+    this.userManager.googleLogout().subscribe(
         () => {
           this.googleConnect = false;
+          console.log('Success Logout');
         }
-      );
-    }
+    );
     return localStorage.removeItem(this.KEY_TOKEN);
   }
 
