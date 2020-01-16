@@ -1,4 +1,4 @@
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
@@ -58,15 +58,15 @@ import {ArtTypeListComponent} from './art-type/component/art-type-list/art-type-
 import {ArtTypeDetailsComponent} from './art-type/component/art-type-details/art-type-details.component';
 import {ArtTypeDetailsPageComponent} from './art-type/component/art-type-details-page/art-type-details-page.component';
 import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/art-type-list-page.component';
-import { SearchComponent } from './search/component/search/search.component';
-import { PaintingSearchComponent } from './search/component/painting-search/painting-search.component';
-import { ArtistSearchComponent } from './search/component/artist-search/artist-search.component';
+import {SearchComponent} from './search/component/search/search.component';
+import {PaintingSearchComponent} from './search/component/painting-search/painting-search.component';
+import {ArtistSearchComponent} from './search/component/artist-search/artist-search.component';
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
 import {ItemBriefComponent} from './ui/components/item-brief/item-brief.component';
-import { HomePageComponent } from './home/component/home-page/home-page.component';
+import {HomePageComponent} from './home/component/home-page/home-page.component';
 import {ArtistCommentItemComponent} from './artist/component/artist-comment-item/artist-comment-item.component';
-import { PaintingCommentItemComponent } from './painting/component/painting-comment-item/painting-comment-item.component';
-import { StatueCommentItemComponent } from './statue/component/statue-comment-item/statue-comment-item.component';
+import {PaintingCommentItemComponent} from './painting/component/painting-comment-item/painting-comment-item.component';
+import {StatueCommentItemComponent} from './statue/component/statue-comment-item/statue-comment-item.component';
 
 @NgModule({
   declarations: [
@@ -177,9 +177,14 @@ import { StatueCommentItemComponent } from './statue/component/statue-comment-it
     MatDialogModule,
     NgxPaginationModule,
     NgxImageZoomModule.forRoot()
-  ], schemas: [
-    NO_ERRORS_SCHEMA
-  ]
+  ],
+  schemas: [
+    // NO_ERRORS_SCHEMA
+  ],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'de-DE' // 'de-DE' for Germany, 'fr-FR' for France ...
+  }]
 })
 export class UserModule {
 }
