@@ -5,10 +5,11 @@ import {PaintingFullList} from '../../entity/painting-full-list/painting-full-li
 import {AdminConfig} from '../../AdminConfig';
 import {ArtistInterface} from '../../entity/artist/artist-interface';
 import {Artist} from '../../entity/artist/artist';
-import { catchError } from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {Observable, pipe, throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {ToastrService} from 'ngx-toastr';
+import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
 
 
 @Injectable({
@@ -16,7 +17,9 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ArtistService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) {
+  }
 
   // Handling the error
   private static errorHandler(error: HttpErrorResponse) {
@@ -24,86 +27,53 @@ export class ArtistService {
   }
 
   // Fetch All Artist
-  getAllArtists() {
-    return this.httpClient.get(
-        AdminConfig.allArtistsAPI,
+  getAllArtists(): Observable<ArtistListResponse> {
+    return this.httpClient.get<ArtistListResponse>(
+      AdminConfig.allArtistsAPI,
       {responseType: 'json'}
     ).pipe(catchError(ArtistService.errorHandler));
   }
-  // getAllPaintings() {
-  //   return this.httpClient.get<ArtistListResponse>(
-  //       `${AdminConfig.allArtistsAPI}`, {responseType: 'json'}
-  //   ).pipe(catchError(ArtistService.errorHandler));
-  // }
 
   // get artist detail
   getArtistByArtist(artistId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type': 'application/json'
       })
     };
     return this.httpClient.get(
-        `${AdminConfig.artistAPI}/${artistId}`,
-        {responseType: 'json'}
+      `${AdminConfig.artistAPI}/${artistId}`,
+      {responseType: 'json'}
     );
   }
-  // getArtistByArtist(artistId: string) {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/json'
-  //     })
-  //   };
-  //   return this.httpClient.post<ArtistInterface>(
-  //       AdminConfig.artistAPI,
-  //       JSON.stringify({artist: artistId}),
-  //       httpOptions
-  //   );
-  // }
-
 
   // Admin Section - Add Artist Page
-  postAddArtist(artist: Artist) {
-    return this.httpClient.post<Artist>(
-        `${AdminConfig.artistsAPI}`,
-        JSON.stringify(artist),
-        {responseType: 'json'}
+  postAddArtist(artist: Artist): Observable<Artist> {
+    return this.ishtarClient.post(
+      `${AdminConfig.artistsAPI}`,
+      JSON.stringify(artist)
     );
   }
 
   // Admin Section - Update Artist
-  updateArtist(artistId: number, data: ArtistInterface) {
+  updateArtist(artistId: number, data: ArtistInterface): Observable<Artist> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type': 'application/json'
       })
     };
-    return this.httpClient.put(
-        `${AdminConfig.artistAPI}/${artistId}`,
-        JSON.stringify(data),
-        {responseType: 'json'}
+    return this.ishtarClient.put(
+      `${AdminConfig.artistAPI}/${artistId}`,
+      JSON.stringify(data),
     ).pipe(catchError(ArtistService.errorHandler));
   }
-  // updateArtist(artistId: string, data) {
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/json'
-  //     })
-  //   };
-  //   return this.httpClient.post<ArtistInterface>(
-  //       AdminConfig.editArtistAPI,
-  //       JSON.stringify(data),
-  //       httpOptions
-  //   ).pipe(catchError(ArtistService.errorHandler));
-  // }
-
 
   // Admin Section - Delete Artist
-  deleteArtist(artistId: any) {
-    return this.httpClient.delete(`${AdminConfig.artistAPI}/${artistId}`);
+  deleteArtist(artistId: any): Observable<any> {
+    return this.ishtarClient.delete(`${AdminConfig.artistAPI}/${artistId}`);
   }
 
-  // Admin Section - Uplaod Image For Artist
+  // Admin Section - Upload Image For Artist
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
@@ -111,5 +81,4 @@ export class ArtistService {
       url: string
     }>(`${AdminConfig.generalUploadAPI}`, formData);
   }
-
 }

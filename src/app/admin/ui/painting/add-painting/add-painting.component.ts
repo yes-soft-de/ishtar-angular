@@ -21,7 +21,7 @@ import {ArtistInterface} from '../../../entity/artist/artist-interface';
 export class AddPaintingComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: {0: ArtistInterface, path: string, artType: string}[];
+  artists: ArtistInterface[];
   artTypes: ArtType[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';

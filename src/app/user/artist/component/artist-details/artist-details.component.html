@@ -21,11 +21,11 @@
                   <div class="artist-header-details-top">
                     <div class="row">
                       <div class="col-6 col-lg-12">
-                        <img src="{{artist[0]?.path}}" alt="..." class="artist-image img-fluid">
+                        <img src="{{artist?.path}}" alt="..." class="artist-image img-fluid">
                       </div>
                       <div class="col-6 d-lg-none">
                         <div class="artist-video-icon mx-auto">
-                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist[0]?.id}}">
+                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
                             <i class="fas fa-envelope fa-lg"></i>
                           </a>
                         </div>
@@ -38,30 +38,30 @@
                       <div class="row">
                         <div class="col-12 col-md-6 d-none d-lg-block text-left">
                           <div class="artist-video-icon">
-                            <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist[0]?.id}}">
+                            <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
                               <i class="fas fa-envelope fa-lg"></i>
                             </a>
                           </div>
                         </div>
                         <div class="col-5 col-sm-6 contact-artist">
-                          <app-follow [ParentId]="artist[0]?.id" [ParentType]="'artist'" class="follow-artist"></app-follow>
+                          <app-follow [ParentId]="artist?.id" [ParentType]="'artist'" class="follow-artist"></app-follow>
                         </div>
 
                         <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
-                          <h2>{{artist[0]?.name}}</h2>
+                          <h2>{{artist?.name}}</h2>
                           <ul class="list-unstyled">
                             <li class="m-1" *ngIf="facebookValid">
-                              <a href="{{artist[0]?.Facebook}}">
+                              <a href="{{artist?.Facebook}}">
                                 <mdb-icon fab icon="facebook"></mdb-icon>
                               </a>
                             </li>
                             <li class="m-1" *ngIf="twitterValid">
-                              <a href="{{artist[0]?.Twitter}}">
+                              <a href="{{artist?.Twitter}}">
                                 <mdb-icon fab icon="twitter"></mdb-icon>
                               </a>
                             </li>
                             <li class="m-1" *ngIf="linkedInValid">
-                              <a href="{{artist[0]?.Linkedin}}">
+                              <a href="{{artist?.Linkedin}}">
                                 <mdb-icon fab icon="linkedin"></mdb-icon>
                               </a>
                             </li>
@@ -79,7 +79,7 @@
         <div class="container">
           <div class="col-12 col-lg-9 col-xl-10 mx-auto">
             <h3 class="text-dark pl-5">Biography</h3>
-            <p>{{artist[0]?.story}}</p>
+            <p>{{artist?.story}}</p>
             <hr class="border">
           </div>
 <!--          <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto d-none">

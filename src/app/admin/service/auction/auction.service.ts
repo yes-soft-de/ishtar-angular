@@ -7,13 +7,15 @@ import {AdminConfig} from '../../AdminConfig';
 import {Auction} from '../../entity/auction/auction';
 import {AuctionListResponse} from '../../entity/auction/auction-list-response';
 import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
+import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuctionService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) {}
 
 
   // Handling the error
@@ -30,15 +32,9 @@ export class AuctionService {
 
   // Create New Auction
   postAddAuction(auctionData: Auction) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-      })
-    };
-    return this.httpClient.post(
+    return this.ishtarClient.post(
         AdminConfig.auctionsAPI,
-        JSON.stringify(auctionData),
-        httpOptions
+        JSON.stringify(auctionData)
     );
   }
 }

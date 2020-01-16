@@ -4,13 +4,15 @@ import {AdminConfig} from '../../AdminConfig';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotosListService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) {}
 
 
   // Handling the error
@@ -41,7 +43,7 @@ export class PhotosListService {
 
   // Admin Section - POST Add New Painting
   postAddPainting(paintingData) {
-    return this.httpClient.post(
+    return this.ishtarClient.post(
         `${AdminConfig.paintingsAPI}`,
       JSON.stringify(paintingData)
     );
@@ -54,7 +56,7 @@ export class PhotosListService {
         'Content-Type': 'application/json'
       })
     };
-    return this.httpClient.put(
+    return this.ishtarClient.put(
       `${AdminConfig.paintingAPI}/${paintingId}`,
       JSON.stringify(data)
     ).pipe(catchError(PhotosListService.errorHandler));
@@ -62,15 +64,13 @@ export class PhotosListService {
 
   // Admin Section - Delete Painting
   deletePainting(paintingId: number) {
-    return this.httpClient.delete(`${AdminConfig.paintingAPI}/${paintingId}`);
+    return this.ishtarClient.delete(`${AdminConfig.paintingAPI}/${paintingId}`);
   }
 
   // Admin Section - Upload Image For Painting
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.httpClient.post<{
-      url: string
-    }>(`${AdminConfig.paintingUploadAPI}`, formData);
+    return this.ishtarClient.post(`${AdminConfig.paintingUploadAPI}`, formData);
   }
 }

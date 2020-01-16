@@ -10,6 +10,11 @@ import {PaintingListItem} from '../../entity/painting-list-item';
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
+
+
+  constructor(private paintingService: PaintingService,
+              private filterService: PaintingFilterService) {
+  }
   @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
@@ -21,17 +26,31 @@ export class PaintingListComponent implements OnInit {
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
 
+  static shuffle(arra1): Array<any> {
+    let ctr = arra1.length;
+    let temp;
+    let index;
 
-  constructor(private paintingService: PaintingService,
-              private filterService: PaintingFilterService) {
+    // While there are elements in the array
+    while (ctr > 0) {
+      // Pick a random index
+      index = Math.floor(Math.random() * ctr);
+      // Decrease ctr by 1
+      ctr--;
+      // And swap the last element with it
+      temp = arra1[ctr];
+      arra1[ctr] = arra1[index];
+      arra1[index] = temp;
+    }
+    return arra1;
   }
 
   ngOnInit() {
     this.paintingService.getPaintings().subscribe(
       paintingList => {
 
-        this.originalList = paintingList;
-        this.paintingList = paintingList;
+        this.originalList = PaintingListComponent.shuffle(paintingList);
+        this.paintingList = PaintingListComponent.shuffle(paintingList);
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,

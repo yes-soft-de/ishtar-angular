@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AdminConfig} from '../../AdminConfig';
+import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService) { }
 
   // Fetch All Comments
   getAllComments() {
@@ -16,10 +18,10 @@ export class CommentService {
 
   // Make the Comment As Special
   specialComment(commentId: number, data) {
-    return this.httpClient.put(`${AdminConfig.specialCommentAPI}/${commentId}`, JSON.stringify(data));
+    return this.ishtarClient.put(`${AdminConfig.specialCommentAPI}/${commentId}`, JSON.stringify(data));
   }
   // Delete The Comment
   deleteComment(commentId: number) {
-    return this.httpClient.delete(`${AdminConfig.commentAPI}/${commentId}`);
+    return this.ishtarClient.delete(`${AdminConfig.commentAPI}/${commentId}`);
   }
 }

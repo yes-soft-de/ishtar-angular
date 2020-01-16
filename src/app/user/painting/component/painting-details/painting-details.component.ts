@@ -8,7 +8,7 @@ import {PaintingDetails} from '../../entity/painting-details';
 @Component({
   selector: 'app-painting-details',
   templateUrl: './painting-details.component.html',
-  styleUrls: ['./painting-details.component.scss','../../../shared/interaction-follow/component/follow/follow.component.scss'],
+  styleUrls: ['./painting-details.component.scss', '../../../shared/interaction-follow/component/follow/follow.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class PaintingDetailsComponent implements OnInit {
@@ -38,7 +38,7 @@ export class PaintingDetailsComponent implements OnInit {
                 }
               }
               // Fetch Artist For This Painting
-              this.artistService.getArtist(this.painting['0'].artistId).subscribe(
+              this.artistService.getArtist(this.painting.artistId).subscribe(
                   artistResponse => {
                     this.artist = artistResponse;
                   }

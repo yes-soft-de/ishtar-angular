@@ -19,17 +19,21 @@ export class InteractionComponent implements OnInit {
   @Input() interaction: string;   // interactions Name as : love, view, ....
 
   constructor(private activatedRoute: ActivatedRoute,
-              private interactionsService: InteractionsService) { }
+              private interactionsService: InteractionsService) {
+  }
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
-        urlSegments => {
-          this.interactionsService.getInteractionsNumber(this.Entity, this.Row, this.interaction).subscribe(
-              data => {
-                this.interactions.push(data);
-              }
-          );
-        }
+      urlSegments => {
+        this.interactionsService.getInteractionsNumber(this.Entity, this.Row, this.interaction).subscribe(
+          data => {
+            if (data !== null && data !== undefined
+              && data.interactionNumber !== undefined) {
+              this.interactions.push(data);
+            }
+          }
+        );
+      }
     );
   }
 

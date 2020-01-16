@@ -13,7 +13,7 @@ import {ArtistsList} from '../../../entity/artist/artists-list';
   styleUrls: ['./list-artist.component.scss']
 })
 export class ListArtistComponent implements OnInit, OnDestroy {
-  public artists: {0: ArtistInterface, path: string, artType: string}[];
+  public artists: ArtistInterface[];
   allArtistObservable: Subscription;
   artistsList: ArtistsList[] = [];
   artistsFilterList = [];         // We Create It Second For Filter
@@ -42,19 +42,19 @@ export class ListArtistComponent implements OnInit, OnDestroy {
             this.artistsList = [];
             for (const artist of this.artists) {
               this.artistsList.push({
-                id: +artist['0'].id,
-                name: artist['0'].name,
-                nationality: artist['0'].nationality,
-                residence: artist['0'].residence,
-                birthDate: artist['0'].birthDate,
-                Facebook: artist['0'].Facebook,
-                Instagram: artist['0'].Instagram,
-                Linkedin: artist['0'].Linkedin,
-                Twitter: artist['0'].Twitter,
+                id: +artist.id,
+                name: artist.name,
+                nationality: artist.nationality,
+                residence: artist.residence,
+                birthDate: artist.birthDate,
+                Facebook: artist.Facebook,
+                Instagram: artist.Instagram,
+                Linkedin: artist.Linkedin,
+                Twitter: artist.Twitter,
                 path: artist.path,
                 artType: artist.artType,
-                details: artist['0'].details,
-                story: artist['0'].story,
+                details: artist.details,
+                story: artist.story,
               });
             }
             console.log(data);

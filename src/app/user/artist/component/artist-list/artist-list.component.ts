@@ -23,6 +23,25 @@ export class ArtistListComponent implements OnInit {
     totalItems: number
   };  // Config For Paginate
 
+  static shuffle(arra1): Array<any> {
+    let ctr = arra1.length;
+    let temp;
+    let index;
+
+    // While there are elements in the array
+    while (ctr > 0) {
+      // Pick a random index
+      index = Math.floor(Math.random() * ctr);
+      // Decrease ctr by 1
+      ctr--;
+      // And swap the last element with it
+      temp = arra1[ctr];
+      arra1[ctr] = arra1[index];
+      arra1[index] = temp;
+    }
+    return arra1;
+  }
+
   constructor(private artistService: ArtistService,
               private filterService: ArtistFilterService) {
     this.config = {
@@ -35,8 +54,8 @@ export class ArtistListComponent implements OnInit {
   ngOnInit() {
     this.artistService.getArtistList().subscribe(
       artists => {
-        this.originalList = artists;
-        this.filteredList = artists;
+        this.originalList = ArtistListComponent.shuffle(artists);
+        this.filteredList = ArtistListComponent.shuffle(artists);
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
       }

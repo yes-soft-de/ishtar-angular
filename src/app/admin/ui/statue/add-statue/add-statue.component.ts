@@ -18,7 +18,7 @@ import {ArtistInterface} from '../../../entity/artist/artist-interface';
 export class AddStatueComponent implements OnInit {
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: {0: ArtistInterface, path: string, artType: string}[];
+  artists: ArtistInterface[];
   uploadButtonValue = 'Upload';
   imageName = 'Select Image';
   fileSelected = false;
@@ -37,7 +37,7 @@ export class AddStatueComponent implements OnInit {
   ngOnInit() {
     // Fetch All Artists
     this.artistService.getAllArtists().subscribe(
-      (data: ArtistListResponse) => {
+      (data) => {
         if (data) {
           console.log('artist in admin:', data);
           this.artists = data.Data;

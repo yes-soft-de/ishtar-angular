@@ -4,4 +4,5 @@ export class ArtType {
   public history: string;
   public story: string;
   public path: string;
+  public artType: string;
 }

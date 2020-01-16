@@ -1,6 +1,16 @@
-import {ArtistInterface} from './artist-interface';
-
 export class Artist {
-  0: ArtistInterface;
-  1: {artType: string};
+  id: number;
+  name: string;
+  nationality: string;
+  residence: string;
+  birthDate: {timestamp: number};
+  Facebook: string;
+  Instagram: string;
+  Linkedin: string;
+  Twitter: string;
+  path: string;
+  video?: string;
+  details: string;
+  story: string;
+  artType: string;
 }

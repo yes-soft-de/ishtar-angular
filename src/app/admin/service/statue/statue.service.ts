@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {StatueInterface} from '../../entity/statue/statue.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
 export class StatueService {
 
   constructor(private httpClient: HttpClient,
+              private ishtarClient: IshtarClientService,
               private route: Router,
               private activatedRoute: ActivatedRoute,
               private toaster: ToastrService) {}
@@ -38,25 +40,23 @@ export class StatueService {
   }
 
   // Admin Section - POST Add New Statue
-  postAddStatue(statueData) {
-    return this.httpClient.post<StatueInterface>(
+  postAddStatue(statueData): Observable<StatueInterface> {
+    return this.ishtarClient.post(
         AdminConfig.statuesAPI,
-        JSON.stringify(statueData),
-        {responseType: 'json'}
+        JSON.stringify(statueData)
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   updateStatue(statueId: number, data: StatueInterface) {
-    return this.httpClient.put(
+    return this.ishtarClient.put(
         `${AdminConfig.statueAPI}/${statueId}`,
-        JSON.stringify(data),
-        {responseType: 'json'}
+        JSON.stringify(data)
     ).pipe(catchError(StatueService.errorHandler));
   }
 
   // Delete Statue
   deleteStatue(statueId: number) {
-    return this.httpClient.delete(`${AdminConfig.statueAPI}/${statueId}`);
+    return this.ishtarClient.delete(`${AdminConfig.statueAPI}/${statueId}`);
   }
 
   // Admin Section - Upload Image For Statue

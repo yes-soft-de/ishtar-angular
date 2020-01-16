@@ -22,8 +22,9 @@ export class ArtistDetailsComponent implements OnInit {
   facebookValid = false;
 
   // tslint:disable-next-line:max-line-length
-  twitterRegex =  new RegExp('(?:(?:http|https):\\/\\/)?(?:www.)?twitter.com\\/(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\-]*)?');
+  twitterRegex = new RegExp('(?:(?:http|https):\\/\\/)?(?:www.)?twitter.com\\/(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\-]*)?');
   twitterValid = false;
+
   constructor(private activatedRoute: ActivatedRoute,
               private artistService: ArtistService) {
   }
@@ -34,13 +35,13 @@ export class ArtistDetailsComponent implements OnInit {
         this.artistService.getArtist(Number(urlSegments[1].path)).subscribe(
           data => {
             this.artist = data;
-            this.linkedInValid = this.linkedInRegex.test(this.artist['0'].Linkedin);
-            this.facebookValid = this.facebookRegex.test(this.artist['0'].Facebook);
-            this.twitterValid = this.twitterRegex.test(this.artist['0'].Twitter);
+            console.log(JSON.stringify(this.artist));
+            this.linkedInValid = this.linkedInRegex.test(this.artist.Linkedin);
+            this.facebookValid = this.facebookRegex.test(this.artist.Facebook);
+            this.twitterValid = this.twitterRegex.test(this.artist.Twitter);
           }
         );
       }
     );
   }
-
 }

@@ -9,4 +9,7 @@ export interface PaintingListItem {
   image: string; // This is the Image url
   artist: string; // Name of Artist
   artType: string;
+  active: boolean;
+  keyWords: string;
+  price: number;
 }

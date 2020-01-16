@@ -12,4 +12,5 @@ export interface ArtistInterface {
   video?: string;
   details: string;
   story: string;
+  artType: string;
 }

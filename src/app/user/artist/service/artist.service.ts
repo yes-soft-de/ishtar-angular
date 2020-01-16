@@ -44,7 +44,7 @@ export class ArtistService {
   // region
   getArtist(artistId: number): Observable<ArtistDetails> {
     this.artistManagerService.getArtist(artistId)
-      .pipe(catchError(err => {
+      .pipe(catchError(() => {
         this.artistDetailsSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(

@@ -23,7 +23,7 @@ export class EditArtistComponent implements OnInit {
   artistId: number;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artistData: {0: ArtistInterface, path: string, artType: string};
+  artistData: ArtistInterface;
   artTypes: ArtType[];
   artTypeId: number;
   uploadButtonValue = 'Upload';
@@ -72,7 +72,7 @@ export class EditArtistComponent implements OnInit {
         // select the artist for this route
         data.artists.Data.map(artistRes => {
           // tslint:disable-next-line:triple-equals
-          if (artistRes['0'].id == this.artistId) {
+          if (artistRes.id == this.artistId) {
             this.artistData = artistRes;
           }
         });
@@ -84,7 +84,8 @@ export class EditArtistComponent implements OnInit {
           }
         });
         console.log(this.artistData, data);
-        // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
+        // setValue = patchValue: Not that setValue wont fail silently. But patchValue
+        // will fail silent. It is recommended to use patchValue therefore
         this.uploadForm.setValue({    // Insert Our artist Data Into Form Fields
           name:         this.artistData['0'].name,
           nationality:  this.artistData['0'].nationality,

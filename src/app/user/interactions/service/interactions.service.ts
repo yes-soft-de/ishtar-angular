@@ -21,22 +21,30 @@ export class InteractionsService {
   }
 
   // Get Interactions number
-  getInteractionsNumber(entity: string, row: number, interactionsType: string): Observable<any> {
+  getInteractionsNumber(entity: string, row: number, interactionsType: string): Observable<{
+    id: number,
+    interactionType: string,
+    interactionNumber: number
+  }> {
     // Fetch Entity Number
     const entityNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entity);
     // Fetch Interactions Number
     const interactionsNumber = +this.interactionConstantService.convertInteractionsTypeToNumber(interactionsType);
     this.interactionsManagerService.getInteractionsNumber(entityNumber, row, interactionsNumber)
       .pipe(
-        catchError(err => {
+        catchError(() => {
           this.interactionsNumberSubject.error('Error Getting Data');
           return EMPTY;
-        }), map(oldStructureInteraction => {
-          return {
-            id: row,
-            interactionType: interactionsType,
-            interactionNumber: oldStructureInteraction.Data[0].interactions
-          };
+        }),
+        map(oldStructureInteraction => {
+          if (oldStructureInteraction !== null &&
+            oldStructureInteraction.Data !== undefined) {
+            return {
+              id: row,
+              interactionType: interactionsType,
+              interactionNumber: oldStructureInteraction.Data.interactions
+            };
+          }
         })).subscribe(
       newStructureInteractions => {
         // Send Data If Successfully Fetching
