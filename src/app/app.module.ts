@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {AppRoutingModule, routingComponents} from './controller/app-routing.module';
 import {AppComponent} from './app/app.component';

@@ -7,6 +7,7 @@ export class Artist {
   Facebook: string;
   Instagram: string;
   Linkedin: string;
+  image: string;
   Twitter: string;
   path: string;
   video?: string;

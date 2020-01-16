@@ -181,10 +181,7 @@ import {StatueCommentItemComponent} from './statue/component/statue-comment-item
   schemas: [
     // NO_ERRORS_SCHEMA
   ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: 'de-DE' // 'de-DE' for Germany, 'fr-FR' for France ...
-  }]
+  providers: []
 })
 export class UserModule {
 }

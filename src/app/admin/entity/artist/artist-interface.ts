@@ -10,6 +10,7 @@ export interface ArtistInterface {
   Twitter: string;
   path: string;
   video?: string;
+  image?: string;
   details: string;
   story: string;
   artType: string;

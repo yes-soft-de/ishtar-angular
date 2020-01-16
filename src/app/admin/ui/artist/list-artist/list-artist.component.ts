@@ -6,6 +6,7 @@ import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-respons
 import {ArtistInterface} from '../../../entity/artist/artist-interface';
 import {ToastrService} from 'ngx-toastr';
 import {ArtistsList} from '../../../entity/artist/artists-list';
+import {Artist} from '../../../entity/artist/artist';
 
 @Component({
   selector: 'app-list-artist',
@@ -15,8 +16,8 @@ import {ArtistsList} from '../../../entity/artist/artists-list';
 export class ListArtistComponent implements OnInit, OnDestroy {
   public artists: ArtistInterface[];
   allArtistObservable: Subscription;
-  artistsList: ArtistsList[] = [];
-  artistsFilterList = [];         // We Create It Second For Filter
+  artistsList: ArtistInterface[] = [];
+  artistsFilterList: ArtistInterface[] = [];         // We Create It Second For Filter
   config: any;                    // Config Variable For Pagination Configuration
   name: string;                   // name variable to store the input search value
 
@@ -39,24 +40,7 @@ export class ListArtistComponent implements OnInit, OnDestroy {
         (data: ArtistListResponse) => {
           if (data) {
             this.artists = data.Data;
-            this.artistsList = [];
-            for (const artist of this.artists) {
-              this.artistsList.push({
-                id: +artist.id,
-                name: artist.name,
-                nationality: artist.nationality,
-                residence: artist.residence,
-                birthDate: artist.birthDate,
-                Facebook: artist.Facebook,
-                Instagram: artist.Instagram,
-                Linkedin: artist.Linkedin,
-                Twitter: artist.Twitter,
-                path: artist.path,
-                artType: artist.artType,
-                details: artist.details,
-                story: artist.story,
-              });
-            }
+            this.artistsList = data.Data;
             console.log(data);
           }
         }, error1 => {
