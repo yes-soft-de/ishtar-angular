@@ -73,7 +73,7 @@ export class EditStatueComponent implements OnInit {
           this.artistId = artistRes['0'].id;
         }
       });
-      // console.log(this.artistId, this.statuesData, data);
+      // console.log(this.artistID, this.statuesData, data);
       // console.log(this.uploadForm.errors, this.uploadForm.valid);
         /* setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent.
         It is recommended to use patchValue therefore

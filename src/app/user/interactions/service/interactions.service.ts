@@ -89,7 +89,7 @@ export class InteractionsService {
       );
   }
 
-  // Post Interactions (entityType: artistTableNumber, entityId: artistId, interactionsType = (love, follow, clap)
+  // Post Interactions (entityType: artistTableNumber, entityId: artistID, interactionsType = (love, follow, clap)
   postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
     // Convert Entity Name To Entity Type
     const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);

@@ -38,7 +38,7 @@ export class PaintingDetailsComponent implements OnInit {
                 }
               }
               // Fetch Artist For This Painting
-              this.artistService.getArtist(this.painting.artistId).subscribe(
+              this.artistService.getArtist(this.painting.artistID).subscribe(
                   artistResponse => {
                     this.artist = artistResponse;
                   }

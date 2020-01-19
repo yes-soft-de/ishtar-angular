@@ -17,14 +17,14 @@ export class InteractionsManagerService {
   constructor(private interactionsRepositoryService: InteractionsRepositoryService) {
   }
 
-  // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
+  // Get Interactions number(entity: artistTableNumber, row: artistID, interactionsNumber: 1 for love & 2 for follow)
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.interactionsRepositoryService.getInteractionsNumber(entity, row, interactionsNumber);
   }
 
   // Post Interactions
   // (entityTypeNumber = entity: artistTableNumber,
-  // entityId = row: artistId,
+  // entityId = row: artistID,
   // interactionsType = interactionsNumber: 1 for love & 2 for follow)
   postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsType: number) {
     return this.interactionsRepositoryService.postInteractions(entityTypeNumber, entityId, userId, interactionsType);

@@ -15,7 +15,7 @@ export class InteractionsRepositoryService {
   constructor(private httpClient: HttpClient) {
   }
 
-  // Get Interactions number(entity: artistTableNumber, row: artistId, interactionsNumber: 1 for love & 2 for follow)
+  // Get Interactions number(entity: artistTableNumber, row: artistID, interactionsNumber: 1 for love & 2 for follow)
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.httpClient.get<InteractionsResponse>(`${UserConfig.interactionsNumberAPI}/${entity}/${row}/${interactionsNumber}`);
   }
@@ -26,7 +26,7 @@ export class InteractionsRepositoryService {
   }
 
   // Post (love, view, follow) Interactions
-  // (entityTypeNumber = entity: artistTableNumber, entityId = row: artistId,
+  // (entityTypeNumber = entity: artistTableNumber, entityId = row: artistID,
   // interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
   postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any> {
     const request = {

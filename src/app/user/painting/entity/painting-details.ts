@@ -1,6 +1,6 @@
 export interface PaintingDetails {
   id?: number;
-  artistId?: number;
+  artistID?: number;
   name?: string;
   keyWords?: string;
   state?: boolean;
