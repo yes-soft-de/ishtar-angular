@@ -1,6 +1,12 @@
-import {PaintingListItem} from './painting-list-item';
-
 export interface MostViewedListItem {
-  0: PaintingListItem;
+  entity: string;
+  id: number;
+  name: string;
+  artist: string;
+  artistID: number;
   viewed: number;
+  image: string;
+  height: number;
+  colorsType: string;
+  width: number;
 }

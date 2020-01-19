@@ -11,7 +11,7 @@
 
               <!-- Card image -->
               <div class="view overlay custom-card-header">
-                <img class="card-img-top" src="{{item['0'].image}}" alt="{{item['0'].name}} Image">
+                <img class="card-img-top" src="{{item?.image}}" alt="{{item?.name}} Image">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -22,26 +22,26 @@
                 <div class="row">
                   <div class="col-8">
                     <h2 class="painting-name mt-3 mt-lg-0">
-                      <a routerLink="/painting/{{item['0'].id}}">{{item['0'].name}}</a>
+                      <a routerLink="/painting/{{item?.id}}">{{item?.name}}</a>
                     </h2>
                   </div>
                   <div class="col-4 align-self-center">
                     <div class="painting-viewed-number text-secondary">
                       <i class="far fa-eye m-1"></i>
-                      <span>{{item.viewed}} Seen</span>
+                      <span>{{item?.viewed}} Seen</span>
                     </div>
                   </div>
                 </div>
 
                 <p class="painting-artist-name">
                   Artist Name :
-                  <a routerLink="/artist/{{item['0']?.artist?.id}}">
-                    {{item['0']?.artist?.name}}
+                  <a routerLink="/artist/{{item?.artistID}}">
+                    {{item?.artist}}
                   </a>
                 </p>
-                <p class="painting-dimension">Height: <span>{{item['0'].height}}CM</span> | Width: <span>{{item['0'].width}}CM</span></p>
+                <p class="painting-dimension">Height: <span>{{item?.height}}CM</span> | Width: <span>{{item?.width}}CM</span></p>
                 <p class="painting-color-type mb-0">
-                  Color Type : <strong class="h5">{{item['0'].colorsType}}</strong>
+                  Color Type : <strong class="h5">{{item?.colorsType}}</strong>
                 </p>
               </div>
 

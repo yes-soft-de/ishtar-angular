@@ -8,7 +8,7 @@
             <div class="row">
               <div class="col-4 pr-0">
                 <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid logo"
-                      alt="logo image">
+                     alt="logo image">
               </div>
               <div class="col-1 pl-0 align-self-center">
                 <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
@@ -21,7 +21,7 @@
                 <div class="input-search">
                   <form (ngSubmit)="goToSearch()" [formGroup]="searchFrom">
                     <input mdbInput type="text" class="form-control py-0" id="inlineFormInputGroup"
-                            placeholder="Search" formControlName="search">
+                           placeholder="Search" formControlName="search">
                   </form>
                 </div>
               </div>
@@ -38,9 +38,9 @@
                     <span mdbDropdownToggle class="letter">{{userInfo?.username.substring(0, 1) | uppercase}}</span>
                     <div class="info">
                       <span class="email">{{userInfo?.username}}</span>
-<!--                      <div>-->
-<!--                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>-->
-<!--                      </div>-->
+                      <!--                      <div>-->
+                      <!--                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>-->
+                      <!--                      </div>-->
                       <div class="login-btn" *ngIf="userLoggedIn">
                         <a (click)="logout()">Logout !</a>
                       </div>
@@ -66,9 +66,9 @@
             </ul>
           </div>
         </div>
-    </div>
-  </nav>
-  <!-- #header-nav -->
+      </div>
+    </nav>
+    <!-- #header-nav -->
   </header>
 
   <!--Navbar-->
@@ -83,9 +83,9 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
         </li>
-  <!--      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
-  <!--        <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>-->
-  <!--      </li>-->
+        <!--      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
+        <!--        <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>-->
+        <!--      </li>-->
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Ishtar</a>
         </li>
@@ -94,7 +94,7 @@
             <div class="input-mobile-search">
               <form [formGroup]="searchFrom">
                 <input mdbInput type="text" class="form-control py-0"
-                      placeholder="Search" formControlName="search">
+                       placeholder="Search" formControlName="search">
                 <mdb-icon fas icon="search" class="search-btn" (click)="goToSearch()"></mdb-icon>
               </form>
             </div>
@@ -109,7 +109,7 @@
         </div>
 
         <div mdbDropdown class="letter-circle"
-            *ngIf="userLoggedIn">
+             *ngIf="userLoggedIn">
           <span class="letter" mdbDropdownToggle>{{userInfo?.username.substring(0, 1)}}</span>
           <div class="info dropdown-menu">
             <span class="email dropdown-item">{{userInfo?.username}}</span>
@@ -131,7 +131,7 @@
         </div>
         <div class="col-8 pr-0">
           <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid"
-              alt="logo image" style="cursor: pointer;">
+               alt="logo image" style="cursor: pointer;">
         </div>
       </div>
     </div>
