@@ -1,4 +1,4 @@
-import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
@@ -67,6 +67,7 @@ import {HomePageComponent} from './home/component/home-page/home-page.component'
 import {ArtistCommentItemComponent} from './artist/component/artist-comment-item/artist-comment-item.component';
 import {PaintingCommentItemComponent} from './painting/component/painting-comment-item/painting-comment-item.component';
 import {StatueCommentItemComponent} from './statue/component/statue-comment-item/statue-comment-item.component';
+import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/artist-knowledge.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import {StatueCommentItemComponent} from './statue/component/statue-comment-item
     ItemBriefComponent,
     HomePageComponent,
     PaintingCommentItemComponent,
-    StatueCommentItemComponent
+    StatueCommentItemComponent,
+    ArtistKnowledgeComponent
   ],
   exports: [
     // User
