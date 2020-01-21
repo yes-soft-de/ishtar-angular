@@ -4,19 +4,21 @@
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
       <div class="col-10">
-          <input class="form-control"
-                 [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
                  (uploadForm.get('name').touched || uploadForm.get('name').dirty)}"
-                 type="text"
-                 name="name"
-                 formControlName="name"
-                 placeholder="Type The Name">
-          <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.required">Name Field Is Required</span>
-          <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.minlength">Name Must Be Greater Than 2</span>
-          <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than 45</span>
+               type="text"
+               name="name"
+               formControlName="name"
+               placeholder="Type The Name">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.required">Name Field Is Required</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('name').errors?.minlength">Name Must Be Greater Than 2</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than 45</span>
       </div>
     </div>
-     <div class="form-group row">
+    <div class="form-group row">
       <label class="col-2 col-form-label">Nationality</label>
       <div class="col-10">
         <input class="form-control"
@@ -26,9 +28,9 @@
                name="nationality"
                formControlName="nationality"
                placeholder="Type The Nationality">
-          <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.required">Nationality Field Is Required</span>
-          <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.minlength">Nationality Must Be Greater Than 2</span>
-          <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.maxlength">Nationality Must Be Lower Than 45</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.required">Nationality Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.minlength">Nationality Must Be Greater Than 2</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('nationality').errors?.maxlength">Nationality Must Be Lower Than 45</span>
       </div>
     </div>
     <div class="form-group row">
@@ -41,87 +43,90 @@
                name="residence"
                formControlName="residence"
                placeholder="Type The Residence">
-        <span class="invalid-feedback" *ngIf="uploadForm.get('residence').errors?.required">Residence Field Is Required</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('residence').errors?.required">Residence Field Is Required</span>
         <span class="invalid-feedback" *ngIf="uploadForm.get('residence').errors?.minlength">Residence Must Be Greater Than 2</span>
         <span class="invalid-feedback" *ngIf="uploadForm.get('residence').errors?.maxlength">Residence Must Be Lower Than 45</span>
       </div>
     </div>
     <div class="form-group row">
-       <label class="col-2 col-form-label">Birth</label>
-       <div class="col-10">
-         <input class="form-control"
-                [ngClass]="{'is-invalid': uploadForm.get('birthDate').errors &&
+      <label class="col-2 col-form-label">Birth</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('birthDate').errors &&
                 (uploadForm.get('birthDate').touched || uploadForm.get('birthDate').dirty)}"
-                type="date"
-                name="birthDate"
-                formControlName="birthDate">
-         <span class="invalid-feedback" *ngIf="uploadForm.get('birthDate').errors?.required">Birth Date Field Is Required</span>
-       </div>
-     </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Sold</label>
-      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+               type="date"
+               name="birthDate"
+               formControlName="birthDate">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('birthDate').errors?.required">Birth Date Field Is Required</span>
+      </div>
     </div>
-     <div class="form-group row">
-       <label class="col-2 col-form-label">Facebook</label>
-       <div class="col-10">
-         <input class="form-control"
-                [ngClass]="{'is-invalid': uploadForm.get('Facebook').errors &&
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Facebook</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('Facebook').errors &&
                 (uploadForm.get('Facebook').touched || uploadForm.get('Facebook').dirty)}"
-                type="text"
-                name="Facebook"
-                formControlName="Facebook"
-                placeholder="Type Facebook Link">
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Facebook').errors?.required">Facebook Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Facebook').errors?.minlength">Facebook Must Be Greater Than  2</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Facebook').errors?.maxlength">Facebook Must Be Lower Than 50</span>
-       </div>
-     </div>
-     <div class="form-group row">
-       <label class="col-2 col-form-label">Instagram</label>
-       <div class="col-10">
-         <input class="form-control"
-                [ngClass]="{'is-invalid': uploadForm.get('Instagram').errors &&
+               type="text"
+               name="Facebook"
+               formControlName="Facebook"
+               placeholder="Type Facebook Link">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('Facebook').errors?.required">Facebook Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Facebook').errors?.minlength">Facebook Must Be Greater Than  2</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Facebook').errors?.maxlength">Facebook Must Be Lower Than 50</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Instagram</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('Instagram').errors &&
                 (uploadForm.get('Instagram').touched || uploadForm.get('Instagram').dirty)}"
-                type="text"
-                name="Instagram"
-                formControlName="Instagram"
-                placeholder="Type Instagram Link">
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Instagram').errors?.required">Instagram Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Instagram').errors?.minlength">Instagram Must Be Greater Than  2</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Instagram').errors?.maxlength">Instagram Must Be Lower Than 50</span>
-       </div>
-     </div>
-     <div class="form-group row">
-       <label class="col-2 col-form-label">Twitter</label>
-       <div class="col-10">
-         <input class="form-control"
-                [ngClass]="{'is-invalid': uploadForm.get('Twitter').errors &&
+               type="text"
+               name="Instagram"
+               formControlName="Instagram"
+               placeholder="Type Instagram Link">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('Instagram').errors?.required">Instagram Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Instagram').errors?.minlength">Instagram Must Be Greater Than  2</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Instagram').errors?.maxlength">Instagram Must Be Lower Than 50</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Twitter</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('Twitter').errors &&
                 (uploadForm.get('Twitter').touched || uploadForm.get('Twitter').dirty)}"
-                type="text"
-                name="Twitter"
-                formControlName="Twitter"
-                placeholder="Type Twitter Link">
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Twitter').errors?.required">Twitter Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Twitter').errors?.minlength">Twitter Must Be Greater Than  2</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Twitter').errors?.maxlength">Twitter Must Be Lower Than 50</span>
-       </div>
-     </div>
-     <div class="form-group row">
-       <label class="col-2 col-form-label">Linkedin</label>
-       <div class="col-10">
-         <input class="form-control"
-                [ngClass]="{'is-invalid': uploadForm.get('Linkedin').errors &&
+               type="text"
+               name="Twitter"
+               formControlName="Twitter"
+               placeholder="Type Twitter Link">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('Twitter').errors?.required">Twitter Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Twitter').errors?.minlength">Twitter Must Be Greater Than  2</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('Twitter').errors?.maxlength">Twitter Must Be Lower Than 50</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Linkedin</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('Linkedin').errors &&
                 (uploadForm.get('Linkedin').touched || uploadForm.get('Linkedin').dirty)}"
-                type="text"
-                name="Linkedin"
-                formControlName="Linkedin"
-                placeholder="Type Linkedin Link">
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Linkedin').errors?.required">Linkedin Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Linkedin').errors?.minlength">Linkedin Must Be Greater Than  2</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('Linkedin').errors?.maxlength">Linkedin Must Be Lower Than 50</span>
-       </div>
-     </div>
+               type="text"
+               name="Linkedin"
+               formControlName="Linkedin"
+               placeholder="Type Linkedin Link">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('Linkedin').errors?.required">Linkedin Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Linkedin').errors?.minlength">Linkedin Must Be Greater Than  2</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('Linkedin').errors?.maxlength">Linkedin Must Be Lower Than 50</span>
+      </div>
+    </div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Upload</label>
       <div class="input-group col-10">
@@ -137,52 +142,54 @@
         </div>
       </div>
     </div>
-<!--     <div class="form-group row">-->
-<!--        <label class="col-2 col-form-label">Video</label>-->
-<!--        <div class="col-10">-->
-<!--          <input class="form-control" type="text" name="video"  formControlName="name" placeholder="Type video Link">-->
-<!--        </div>-->
-<!--      </div>-->
-      <div class="form-group row">
-          <label class="col-2 col-form-label">Art Type</label>
-          <div class="col-10">
-              <select class="form-control"
-                      name="artType"
-                      formControlName="artType"
-                      (change)="changeArtType($event)"
-                       [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
-                  <option value="">Select Art Type For This Artist</option>
-                  <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
-              </select>
-            <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
-          </div>
+    <!--     <div class="form-group row">-->
+    <!--        <label class="col-2 col-form-label">Video</label>-->
+    <!--        <div class="col-10">-->
+    <!--          <input class="form-control" type="text" name="video"  formControlName="name" placeholder="Type video Link">-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Art Type</label>
+      <div class="col-10">
+        <select class="form-control"
+                name="artType"
+                formControlName="artType"
+                (change)="changeArtType($event)"
+                [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
+          <option value="">Select Art Type For This Artist</option>
+          <option value="{{artType.id}}" *ngFor="let artType of artTypes">{{artType.name}}</option>
+        </select>
+        <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
       </div>
-      <div class="form-group row">
-       <label class="col-2 col-form-label">Details</label>
-       <div class="col-10">
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Details</label>
+      <div class="col-10">
          <textarea class="form-control"
                    [ngClass]="{'is-invalid': uploadForm.get('details').errors &&
                    (uploadForm.get('details').touched || uploadForm.get('details').dirty)}"
                    name="details"
                    formControlName="details"
                    placeholder="Type The Details"></textarea>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('details').errors?.required">Details Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('details').errors?.minlength">Details Must Be Greater Than  2</span>
-       </div>
-     </div>
-     <div class="form-group row">
-       <label class="col-2 col-form-label">Story</label>
-       <div class="col-10">
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('details').errors?.required">Details Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('details').errors?.minlength">Details Must Be Greater Than  2</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Story</label>
+      <div class="col-10">
          <textarea class="form-control"
                    [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
                    (uploadForm.get('story').touched || uploadForm.get('story').dirty)}"
                    name="story"
                    formControlName="story"
                    placeholder="Type The Story"></textarea>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
-         <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than  2</span>
-       </div>
-     </div>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than  2</span>
+      </div>
+    </div>
 
 
     <div class="form-group offset-md-2 mt-3">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ArtistService} from '../../../service/artist/artist.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,7 +17,7 @@ import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-respons
   selector: 'app-edit-artist',
   templateUrl: './edit-artist.component.html',
   styleUrls: ['./edit-artist.component.scss'],
-  providers: [ DatePipe ]     // Add DatePipe from @angular/common
+  providers: [DatePipe]     // Add DatePipe from @angular/common
 })
 export class EditArtistComponent implements OnInit {
   artistId: number;
@@ -42,7 +42,8 @@ export class EditArtistComponent implements OnInit {
               private router: Router,
               private datePipe: DatePipe,
               private toaster: ToastrService,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     // fetch artist id using observable
@@ -55,18 +56,18 @@ export class EditArtistComponent implements OnInit {
     const mergeObs = allArtistsObs.pipe(
       mergeMap(artistResponse => {
         return allArtTypeObs.pipe(
-            map(artTypeResponse => {
-              return {
-                artists: artistResponse,
-                artTypes: artTypeResponse
-              };
-            })
+          map(artTypeResponse => {
+            return {
+              artists: artistResponse,
+              artTypes: artTypeResponse
+            };
+          })
         );
       })
     );
     // Subscribe Data After Merge it
     mergeObs.subscribe(
-      (data: {artists: ArtistListResponse, artTypes: any}) => {
+      (data: { artists: ArtistListResponse, artTypes: any }) => {
         // fetch all art type
         this.artTypes = data.artTypes.Data;
         // select the artist for this route
@@ -87,43 +88,44 @@ export class EditArtistComponent implements OnInit {
         // setValue = patchValue: Not that setValue wont fail silently. But patchValue
         // will fail silent. It is recommended to use patchValue therefore
         this.uploadForm.setValue({    // Insert Our artist Data Into Form Fields
-          name:         this.artistData['0'].name,
-          nationality:  this.artistData['0'].nationality,
-          residence:    this.artistData['0'].residence,
+          name: this.artistData.name,
+          nationality: this.artistData.nationality,
+          residence: this.artistData.residence,
           // convert date to yyyy-MM-dd format
-          birthDate:    this.datePipe.transform(new Date(this.artistData['0'].birthDate.timestamp), 'yyyy-MM-dd'),
-          Facebook:     this.artistData['0'].Facebook,
-          Instagram:    this.artistData['0'].Instagram,
-          Linkedin:     this.artistData['0'].Linkedin,
-          Twitter:      this.artistData['0'].Twitter,
-          artType:      this.artTypeId,
-          image:        this.artistData.path,
-          details:      this.artistData['0'].details,
-          story:        this.artistData['0'].story
+          birthDate: this.datePipe.transform(new Date(this.artistData.birthDate.timestamp), 'yyyy-MM-dd'),
+          Facebook: this.artistData.Facebook,
+          Instagram: this.artistData.Instagram,
+          Linkedin: this.artistData.Linkedin,
+          Twitter: this.artistData.Twitter,
+          artType: this.artTypeId,
+          image: this.artistData.path,
+          details: this.artistData.details,
+          story: this.artistData.story
         });
       }
     );
     // Fetch Form Data
     this.uploadForm = this.formBuilder.group({
-      name:         ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
-      nationality:  ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
-      residence:    ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
-      birthDate:    ['', Validators.required],
-      Facebook:     ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      Instagram:    ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      Linkedin:     ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      Twitter:      ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      artType:      ['', [Validators.required]],
-      image:        [''],
-      details:      ['', [Validators.required, Validators.minLength(2)]],
-      story:        ['', [Validators.required, Validators.minLength(2)]]
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      nationality: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      residence: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      birthDate: ['', Validators.required],
+      Facebook: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      Instagram: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      Linkedin: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      Twitter: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      artType: ['', [Validators.required]],
+      image: [''],
+      sold: [false],
+      details: ['', [Validators.required, Validators.minLength(2)]],
+      story: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
   // Choose Art Type Using Select Dropdown
   changeArtType(event) {
     this.uploadForm.get('artType').setValue(event.target.value, {
-      onlySelf : true
+      onlySelf: true
     });
   }
 
@@ -145,16 +147,16 @@ export class EditArtistComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
       this.artistService.uploadImage(this.selectedFile.file).subscribe(
-          (res) => {
-            console.log(res);
-            this.imageUrl = res.url;
-            this.uploadButtonValue = 'Uploaded';
-            this.imagePathReady = true;
-            this.submitButtonValue = 'Update Artist';
-          },
-          (err) => {
-            console.log(err);
-          });
+        (res) => {
+          console.log(res);
+          this.imageUrl = res.url;
+          this.uploadButtonValue = 'Uploaded';
+          this.imagePathReady = true;
+          this.submitButtonValue = 'Update Artist';
+        },
+        (err) => {
+          console.log(err);
+        });
     });
     reader.readAsDataURL(file);
   }
@@ -173,17 +175,17 @@ export class EditArtistComponent implements OnInit {
       }
       console.log(formObj);
       this.artistService.updateArtist(this.artistId, formObj).subscribe(
-          data => {
-            console.log('The post request was successfully done', data);
-            this.toaster.success('Artist Uploaded Successfully');
-          },
-          error => {
-            this.toaster.error('Error : Please Try Again');
-            console.log('Error fetching data', error);
-          },
-          () => {
-            this.router.navigate(['admin/list-artists']);
-          }
+        data => {
+          console.log('The post request was successfully done', data);
+          this.toaster.success('Artist Uploaded Successfully');
+        },
+        error => {
+          this.toaster.error('Error : Please Try Again');
+          console.log('Error fetching data', error);
+        },
+        () => {
+          this.router.navigate(['admin/list-artists']);
+        }
       );
     }
   }

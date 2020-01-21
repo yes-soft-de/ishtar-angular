@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -22,7 +22,7 @@ export class EditPaintingComponent implements OnInit {
   paintingData: Painting;
   isSubmitted = false;
   uploadForm: FormGroup;
-  artists: {0: ArtistInterface, path: string, artType: string}[];
+  artists: ArtistInterface[];
   artTypes: ArtType[];
   artistId: number;
   artTypeId: number;
@@ -41,7 +41,8 @@ export class EditPaintingComponent implements OnInit {
               private toaster: ToastrService,
               private artTypeService: ArtTypeService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     // Fetch Painting Id
@@ -55,21 +56,16 @@ export class EditPaintingComponent implements OnInit {
     const combinedObs = forkJoin(paintingsInfoObs, artistsObs, artTypeObs);
     combinedObs.subscribe((data: any) => {
       // painting response
-      if (data[0]) {
-        this.paintingData = data[0].Data;
-        // data[0].Data.map(paintingResponse => {
-        //   if (paintingResponse.id === this.paintingID) {
-        //     this.paintingData = paintingResponse;
-        //   }
-        // });
+      if (data) {
+        this.paintingData = data.Data;
       }
       // artist response
       if (data[1]) {
         this.artists = data[1].Data;
         // Fetch User ID Automatically
         data[1].Data.map(artistResponse => {
-          if (artistResponse['0'].name === this.paintingData['0'].artist) {
-            this.artistId = artistResponse['0'].id;
+          if (artistResponse.name === this.paintingData.artist) {
+            this.artistId = artistResponse.id;
           }
         });
       }
@@ -83,21 +79,22 @@ export class EditPaintingComponent implements OnInit {
         });
       }
       console.log(this.paintingData, data);
-      // setValue = patchValue: Not that setValue wont fail silently. But patchValue will fail silent. It is recommended to use patchValue therefore
+      // setValue = patchValue: Not that setValue wont fail silently.
+      // But patchValue will fail silent. It is recommended to use patchValue therefore
       this.uploadForm.patchValue({  // insert input value into the form input
-        name:         this.paintingData['0'].name,
-        artist:       this.artistId,
-        height:       this.paintingData['0'].height,
-        width:        this.paintingData['0'].width,
-        colorsType:   this.paintingData['0'].colorsType,
-        price:        this.paintingData['0'].price,
-        state:        +this.paintingData['0'].state,
-        image:        this.paintingData['0'].image,
-        active:       +this.paintingData['0'].active,
-        keyWords:     this.paintingData['0'].keyWords,
-        artType:      this.artTypeId,
-        gallery:      '1',
-        story:        this.paintingData['0'].story
+        name: this.paintingData.name,
+        artist: this.artistId,
+        height: this.paintingData.height,
+        width: this.paintingData.width,
+        colorsType: this.paintingData.colorsType,
+        price: this.paintingData.price,
+        state: +this.paintingData.state,
+        image: this.paintingData.image,
+        active: +this.paintingData.active,
+        keyWords: this.paintingData.keyWords,
+        artType: this.artTypeId,
+        gallery: '1',
+        story: this.paintingData.story
       });
     });
 
@@ -111,6 +108,7 @@ export class EditPaintingComponent implements OnInit {
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],
+      sold: [false],
       // TODO tey it with radio box
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
@@ -132,28 +130,32 @@ export class EditPaintingComponent implements OnInit {
       onlySelf: true
     });
   }
+
   // Choose State Using Select Dropdown
   changeState(event) {
     this.uploadForm.get('state').setValue(event.target.value, {
-      onlySelf : true
+      onlySelf: true
     });
   }
+
   // Choose Art Type Using Select Dropdown
   changeArtType(event) {
     this.uploadForm.get('artType').setValue(event.target.value, {
-      onlySelf : true
+      onlySelf: true
     });
   }
+
   // Choose Gallery Using Select Dropdown
   changeGallery(event) {
     this.uploadForm.get('gallery').setValue(event.target.value, {
-      onlySelf : true
+      onlySelf: true
     });
   }
+
   // Choose State Using Select Dropdown
   changeActive(event) {
     this.uploadForm.get('active').setValue(event.target.value, {
-      onlySelf : true
+      onlySelf: true
     });
   }
 
@@ -176,13 +178,13 @@ export class EditPaintingComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
       this.photosListService.uploadImage(this.selectedFile.file).subscribe(
-          (res) => {
-            console.log(res);
-            this.imageUrl = res.url;
-            this.uploadButtonValue = 'Uploaded';
-            this.imagePathReady = true;
-            this.submitButtonValue = 'Update Painting';
-          });
+        (res) => {
+          console.log(res);
+          this.imageUrl = res.url;
+          this.uploadButtonValue = 'Uploaded';
+          this.imagePathReady = true;
+          this.submitButtonValue = 'Update Painting';
+        });
     });
     reader.readAsDataURL(file);
   }
@@ -201,18 +203,18 @@ export class EditPaintingComponent implements OnInit {
       }
       console.log('before update', this.paintingID, formObj);
       this.photosListService.updatePainting(this.paintingID, formObj).subscribe(
-          data => {
-            this.toaster.success('Painting Updated Successfully');
-            console.log('the post request was successfully done', data);
-          },
-          error => {
-            console.log('Error fetching data', error);
-            this.toaster.error('Error : Please Try Again');
-          },
-          () => {
-            // If Success Navigate to Admin List Paintings Page
-            this.router.navigate(['admin/list-paintings']);
-          }
+        data => {
+          this.toaster.success('Painting Updated Successfully');
+          console.log('the post request was successfully done', data);
+        },
+        error => {
+          console.log('Error fetching data', error);
+          this.toaster.error('Error : Please Try Again');
+        },
+        () => {
+          // If Success Navigate to Admin List Paintings Page
+          this.router.navigate(['admin/list-paintings']);
+        }
       );
     }
   }

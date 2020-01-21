@@ -3,7 +3,7 @@ export interface ArtistInterface {
   name: string;
   nationality: string;
   residence: string;
-  birthDate: {timestamp: number};
+  birthDate: { timestamp: number };
   Facebook: string;
   Instagram: string;
   Linkedin: string;
