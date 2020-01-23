@@ -1,0 +1,28 @@
+{
+  "name": "api-sitemap",
+  "version": "1.0.0",
+  "description": "Makes XML Sitemaps for API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib",
+    "start": "node lib/index.js"
+  },
+  "keywords": [
+    "SiteMaps",
+    "XML",
+    "API"
+  ],
+  "author": "Mohammad Al Kalaleeb",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "fs": "0.0.1-security",
+    "jsontoxml": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3"
+  }
+}
