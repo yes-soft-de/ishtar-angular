@@ -9,6 +9,7 @@ export class Painting {
   colorsType: string;
   price: number;
   state: number;
+  artistID: number;
   active: boolean;
   image: string;
   sold: boolean;

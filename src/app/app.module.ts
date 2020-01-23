@@ -12,6 +12,7 @@ import {UserModule} from './user/user.module';
 import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CookieService} from 'ngx-cookie-service';
+import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {CookieService} from 'ngx-cookie-service';
     AppRoutingModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
+    NgxJsonLdModule,
     NgxUIModule,
     IconsModule,
     HttpClientModule,

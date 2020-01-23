@@ -68,6 +68,8 @@ import {ArtistCommentItemComponent} from './artist/component/artist-comment-item
 import {PaintingCommentItemComponent} from './painting/component/painting-comment-item/painting-comment-item.component';
 import {StatueCommentItemComponent} from './statue/component/statue-comment-item/statue-comment-item.component';
 import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/artist-knowledge.component';
+import {NgxJsonLdModule} from '@ngx-lite/json-ld';
+import { PaintingKnowledgeGraphComponent } from './painting/component/painting-knowledge-graph/painting-knowledge-graph.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +134,8 @@ import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/arti
     HomePageComponent,
     PaintingCommentItemComponent,
     StatueCommentItemComponent,
-    ArtistKnowledgeComponent
+    ArtistKnowledgeComponent,
+    PaintingKnowledgeGraphComponent
   ],
   exports: [
     // User
@@ -178,7 +181,7 @@ import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/arti
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
-    NgxImageZoomModule.forRoot()
+    NgxImageZoomModule.forRoot(), NgxJsonLdModule
   ],
   schemas: [
     // NO_ERRORS_SCHEMA

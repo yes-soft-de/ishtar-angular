@@ -11,6 +11,8 @@ export class ArtistKnowledgeComponent implements OnInit {
   @Input() artist: ArtistDetails;
   jsonLD: SafeHtml;
 
+  public jsonLdObject: any;
+
   linkedInRegex = new RegExp('http(s)?:\\/\\/([w]{3}\\.)?linkedin\\.com\\/in\\/([a-zA-Z0-9-]{5,30})\\/?');
 
   // tslint:disable-next-line:max-line-length
@@ -23,7 +25,7 @@ export class ArtistKnowledgeComponent implements OnInit {
   }
 
   ngOnInit() {
-    const json = {
+    this.jsonLdObject = {
       '@context': 'http://www.schema.org',
       '@type': 'Person',
       '@id': 'https://ishtar-art.de/' + this.artist.id,
@@ -38,21 +40,10 @@ export class ArtistKnowledgeComponent implements OnInit {
       },
       Description: 'Artist',
       jobTitle: 'Artist',
-      worksFor: [
-        {
-          '@type': 'Organization',
-          name: 'Skunkworks Creative Group Inc.',
-          sameAs: [
-            this.facebookRegex.test(this.artist.Facebook) ? this.artist.Facebook : null,
-            this.twitterRegex.test(this.artist.Twitter) ? this.artist.Twitter : null,
-            this.linkedInRegex.test(this.artist.Linkedin) ? this.artist.Linkedin : null,
-          ]
-        }
-      ],
       image: this.artist.path
     };
 
-    this.jsonLD = this.getSafeHTML(json);
+    this.jsonLD = this.getSafeHTML(this.jsonLdObject);
   }
 
   getSafeHTML(value: {}) {
