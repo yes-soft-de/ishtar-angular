@@ -35,7 +35,7 @@ export class ArtistService {
   }
 
   // get artist detail
-  getArtistByArtist(artistId: number) {
+  getArtistById(artistId: number) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

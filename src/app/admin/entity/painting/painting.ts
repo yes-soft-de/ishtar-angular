@@ -12,7 +12,6 @@ export class Painting {
   artistID: number;
   active: boolean;
   image: string;
-  sold: boolean;
   createdBy: string;
   updatedBy: string;
   createDate: Date;

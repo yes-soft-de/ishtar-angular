@@ -10,6 +10,12 @@ import {ArtTypeService} from '../../../service/art-type/art-type.service';
 import {forkJoin} from 'rxjs';
 import {Painting} from '../../../entity/painting/painting';
 import {ArtistInterface} from '../../../entity/artist/artist-interface';
+import {PaintingDetailsResponse} from '../../../../user/painting/response/painting-details-response';
+import {PaintingDetails} from '../../../../user/painting/entity/painting-details';
+import {ArtistDetailsResponse} from '../../../../user/artist/response/artist-details-response';
+import {ArtistListResponse} from '../../../entity/ArtistList/artist-list-response';
+import {ArtTypeListResponse} from '../../../../user/art-type/response/art-type-list-response';
+import {ArtTypeListItem} from '../../../../user/art-type/entity/art-type-list-item';
 
 
 @Component({
@@ -19,11 +25,11 @@ import {ArtistInterface} from '../../../entity/artist/artist-interface';
 })
 export class EditPaintingComponent implements OnInit {
   paintingID: number;
-  paintingData: Painting;
+  paintingData: PaintingDetails;
   isSubmitted = false;
   uploadForm: FormGroup;
   artists: ArtistInterface[];
-  artTypes: ArtType[];
+  artTypes: ArtTypeListItem[];
   artistId: number;
   artTypeId: number;
   uploadButtonValue = 'Upload';
@@ -33,7 +39,6 @@ export class EditPaintingComponent implements OnInit {
   imagePathReady = true;
   submitButtonValue = 'Update Painting';
   selectedFile: ImageSnippet;
-
 
   constructor(private formBuilder: FormBuilder,
               private photosListService: PhotosListService,
@@ -49,54 +54,35 @@ export class EditPaintingComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
       this.paintingID = Number(param.get('id'));
     });
-    const paintingsInfoObs = this.photosListService.getPaintingInfo(this.paintingID); // Fetch Painting Data
-    const paintingsObs = this.photosListService.getAllPainting(); // Fetch Painting Data
-    const artistsObs = this.artistService.getAllArtists();      // Fetch All Artists
-    const artTypeObs = this.artTypeService.getAllArtType();     // Fetch All Art Type
-    const combinedObs = forkJoin(paintingsInfoObs, artistsObs, artTypeObs);
-    combinedObs.subscribe((data: any) => {
-      // painting response
-      if (data) {
-        this.paintingData = data.Data;
+
+    // Fetch Painting Data
+    const paintingsInfoObs = this.photosListService.getPaintingInfo(this.paintingID).subscribe(
+      (paintingResult: PaintingDetailsResponse) => {
+        if (paintingResult) {
+          this.paintingData = paintingResult.Data;
+          console.log(JSON.stringify(this.paintingData));
+          this.artistId = this.paintingData.artistID;
+
+          this.updatesValues();
+        }
       }
-      // artist response
-      if (data[1]) {
-        this.artists = data[1].Data;
-        // Fetch User ID Automatically
-        data[1].Data.map(artistResponse => {
-          if (artistResponse.name === this.paintingData.artist) {
-            this.artistId = artistResponse.id;
-          }
-        });
+    );
+
+    this.artistService.getAllArtists().subscribe(
+      (artistListResponse: ArtistListResponse) => {
+        this.artists = artistListResponse.Data;
+
+        this.updatesValues();
       }
-      // artType response
-      if (data[2]) {
-        this.artTypes = data[2].Data;
-        data[2].Data.map(artTypeResponse => {
-          if (artTypeResponse.name === this.paintingData['1'].artType) {
-            this.artTypeId = artTypeResponse.id;
-          }
-        });
+    );
+
+    this.artTypeService.getAllArtType().subscribe(
+      (artTypeListResponse: ArtTypeListResponse) => {
+        this.artTypes = artTypeListResponse.Data;
+
+        this.updatesValues();
       }
-      console.log(this.paintingData, data);
-      // setValue = patchValue: Not that setValue wont fail silently.
-      // But patchValue will fail silent. It is recommended to use patchValue therefore
-      this.uploadForm.patchValue({  // insert input value into the form input
-        name: this.paintingData.name,
-        artist: this.artistId,
-        height: this.paintingData.height,
-        width: this.paintingData.width,
-        colorsType: this.paintingData.colorsType,
-        price: this.paintingData.price,
-        state: +this.paintingData.state,
-        image: this.paintingData.image,
-        active: +this.paintingData.active,
-        keyWords: this.paintingData.keyWords,
-        artType: this.artTypeId,
-        gallery: '1',
-        story: this.paintingData.story
-      });
-    });
+    );
 
     // Storing Form Data
     this.uploadForm = this.formBuilder.group({
@@ -108,7 +94,6 @@ export class EditPaintingComponent implements OnInit {
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],
-      sold: [false],
       // TODO tey it with radio box
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
@@ -116,7 +101,26 @@ export class EditPaintingComponent implements OnInit {
       gallery: ['', Validators.required],
       story: ['', [Validators.required, Validators.minLength(4)]],
     });
+  }
 
+  updatesValues() {
+    // setValue = patchValue: Not that setValue wont fail silently.
+    // But patchValue will fail silent. It is recommended to use patchValue therefore
+    this.uploadForm.patchValue({  // insert input value into the form input
+      name: this.paintingData.name,
+      artist: this.artistId,
+      height: this.paintingData.height,
+      width: this.paintingData.width,
+      colorsType: this.paintingData.colorsType,
+      price: this.paintingData.price,
+      state: +this.paintingData.state,
+      image: this.paintingData.image,
+      active: +this.paintingData.active,
+      keyWords: this.paintingData.keyWords,
+      artType: this.artTypeId,
+      gallery: '1',
+      story: this.paintingData.story
+    });
   }
 
   // Getter method to fast access formControls

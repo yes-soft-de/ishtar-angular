@@ -24,7 +24,7 @@ import {Client} from '../../entity/client/client';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  artists: {0: ArtistInterface, path: string, artType: string}[];
+  artists: ArtistInterface[];
   paintings: PaintingInterface[];
   auctions: AuctionList[];
   // statues: {0: StatueInterface, price: string}[];
