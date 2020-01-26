@@ -1,1011 +1,1741 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>artist-list</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>painting-list</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>art-schools-list</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>tos</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>privacy</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>about-us</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>faq</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>imprint</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>data-processing</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>about-ishtar</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/1</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/2</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/3</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/4</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/5</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/6</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/7</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/8</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/9</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/10</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/11</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/12</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/13</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/14</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/15</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/16</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/17</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/18</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/19</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/20</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/21</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/22</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/23</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/24</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/25</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/26</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/27</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/28</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/29</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/30</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/31</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/32</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/33</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/34</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/35</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/36</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/37</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/38</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/39</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/40</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/41</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/42</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/43</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/44</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/45</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/46</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/47</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/48</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/49</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/50</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/51</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/52</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/53</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/54</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/55</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/56</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/57</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/58</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/59</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/60</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/61</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/62</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/63</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/64</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/65</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/66</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/67</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/68</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/69</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/70</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/71</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/72</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/73</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/74</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/94</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/95</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/96</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/97</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/98</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/99</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/100</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/101</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/102</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/103</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/104</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/105</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/117</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/118</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/119</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/120</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/121</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/122</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/123</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/124</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/125</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/126</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/127</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/128</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/129</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/130</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/131</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/132</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/133</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/134</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/135</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/136</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/137</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/138</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/139</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/140</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/141</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/142</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/143</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/144</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/145</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/146</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/147</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/148</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/149</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/150</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/151</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/152</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/153</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/154</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/155</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/156</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/157</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/158</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/159</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/160</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/161</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/162</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/163</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/164</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/165</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/166</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/167</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/168</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/169</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/170</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/171</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/172</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/173</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/174</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/175</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/painting/176</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/1</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/2</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/3</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/4</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/5</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/6</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/7</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/8</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/9</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/10</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/11</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>http://www.ishtar-art.de/artist/12</loc>
-        <lastmod>Thu Jan 23 2020 19:30:41 GMT+0200 (Eastern European Standard Time)</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/artist-list</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/painting-list</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/art-schools-list</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/tos</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/privacy</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/about-us</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/faq</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/imprint</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/data-processing</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ishtar-art.de/ishtar-backend/public/about-ishtar</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/1</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/01_Nedal_Khweiss-5dee35bc339ae.jpeg</image:loc>
+      <image:title> Life goes on</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/2</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/02_Nedal_Khweiss-5dd40a139092d.jpeg</image:loc>
+      <image:title> Human Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/3</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-17_16-38-52/03_Nedal_Khweiss-5dd2d1ec89300.jpeg</image:loc>
+      <image:title> Pains Theatre</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/4</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-17_16-38-52/04_Nedal_Khweiss-5dd2d41ed7f55.jpeg</image:loc>
+      <image:title> Woman's Fears</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/5</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-17_16-38-52/05_Nedal_Khweiss-5dd2d50f60f58.jpeg</image:loc>
+      <image:title> Confusion </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/6</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-17_16-38-52/06_Nedal_Khweiss-5dd2d59bbd8e3.jpeg</image:loc>
+      <image:title> The Bloody East</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/7</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-17_16-38-52/07_Nedal_Khweiss.jpg-5dd2d733ca62c.jpeg</image:loc>
+      <image:title> Atelier</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/8</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/08_Nedal_Khweiss.jpg-5dd40ea327217.jpeg</image:loc>
+      <image:title> Complaints and Hugs</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/9</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/09_Nedal_Khweiss.jpg-5dd4104a9cb65.jpeg</image:loc>
+      <image:title> Escaping from missiles</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/10</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/10_Nedal_Khweiss.jpg-5dd4111cde5c1.jpeg</image:loc>
+      <image:title> Tigh Bond</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/11</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/11_Nedal_Khweiss.jpg-5dd411b2b3239.jpeg</image:loc>
+      <image:title> Guitarist</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/12</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/12_Nedal_Khweiss.jpg-5dd412634d395.jpeg</image:loc>
+      <image:title> Emancipation</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/13</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/13_Nedal_Khweiss-5dd414b073d3d.jpeg</image:loc>
+      <image:title> Meditating in nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/14</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/14_Nedal_Khweiss-5dd415bd77481.jpeg</image:loc>
+      <image:title> Local Hights</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/15</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_15-22-55/15_Nedal_Khweiss-5dd4182eb29bf.jpeg</image:loc>
+      <image:title> A Small village</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/16</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/16_Nedal_Khweiss-5dd418d1db07a.jpeg</image:loc>
+      <image:title> Loneliness </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/17</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/17_Nedal_Khweiss-5dd41af5d21de.jpeg</image:loc>
+      <image:title> On raft board </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/18</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/18_Nedal_Khweiss-5dd41bee20be1.jpeg</image:loc>
+      <image:title> The Two Friends</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/19</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/19_Nedal_Khweiss-5dd4242599560.jpeg</image:loc>
+      <image:title> Long-haired girl</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/20</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/20_Nedal_Khweiss-5dd42530c9619.jpeg</image:loc>
+      <image:title> Volcanic</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/21</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/21_Nedal_Khweiss-5dd42660976b6.jpeg</image:loc>
+      <image:title> solitude on a Basalt Rock</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/22</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/22_Nedal_Khweiss-5dd42744d5d92.jpeg</image:loc>
+      <image:title> The loser</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/23</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/01_Mounir_Alied-5dd42de3aa2e3.jpeg</image:loc>
+      <image:title> The last dinner</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/24</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/02_Mounir_Alied-5dd42f6731060.jpeg</image:loc>
+      <image:title> I'm here</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/25</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_16-31-13/03_Mounir_Alied-5dd42fad13679.jpeg</image:loc>
+      <image:title> The king and the girl</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/26</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/04_Mounir_Alied-5dd430db88227.jpeg</image:loc>
+      <image:title> The scream</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/27</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/05_Mounir_Alied-5dd431556a8de.jpeg</image:loc>
+      <image:title> A girl with men</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/28</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/06_Mounir_Alied-5dd434f8628cb.jpeg</image:loc>
+      <image:title> Hunchback of Notre-Dame</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/29</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/07_Mounir_Alied-5dd435f94bd9f.jpeg</image:loc>
+      <image:title> The shattered woman</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/30</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/08_Mounir_Alied-5dd4390f86c31.jpeg</image:loc>
+      <image:title> The New Joconde</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/31</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/09_Mounir_Alied-5dd439d034dab.jpeg</image:loc>
+      <image:title> Woman</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/32</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/10_Mounir_Alied-5dd43f4dc2fb2.jpeg</image:loc>
+      <image:title> State of love</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/33</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/01_Buthina_Orabi-5dd562454f385.jpeg</image:loc>
+      <image:title> The Clown</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/34</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/02_Buthina_Orabi-5dd563177c9a1.jpeg</image:loc>
+      <image:title> The doll</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/35</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-19_18-13-47/03_Buthina_Orabi-5dd563a9cc02c.jpeg</image:loc>
+      <image:title> Searching for Nothing</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/36</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/04_Buthina_Orabi-5dd564408db20.jpeg</image:loc>
+      <image:title> Heart & Soul</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/37</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/05_Buthina_Orabi-5dd567a719d7a.jpeg</image:loc>
+      <image:title> Waiting</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/38</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/06_Buthina_Orabi-5dd5687f084de.jpeg</image:loc>
+      <image:title> Calmness </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/39</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/07_Buthina_Orabi-5dd5690076b33.jpeg</image:loc>
+      <image:title> Good Soul</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/40</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/08_Buthina_Orabi-5dd56a92b5cf7.jpeg</image:loc>
+      <image:title> Good Soul</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/41</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/09_Buthina_Orabi-5dd56d015b314.jpeg</image:loc>
+      <image:title> Waiting with a sense of doom</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/42</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/10_Buthina_Orabi-5dd56d6ecce27.jpeg</image:loc>
+      <image:title> Adoring </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/43</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/11_Buthina_Orabi-5dd56dde4956f.jpeg</image:loc>
+      <image:title> Making movements</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/44</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_16-05-20/01_Karam_ALNizami-5dd574fc66dc3.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/45</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/02_Karam_ALNizami-5dd575b80e78e.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/46</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/03_Karam_ALNizami-5dd57666484eb.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/47</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/04_Karam_ALNizami-5dd576eeb1854.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/48</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/05_Karam_ALNizami-5dd577df4cf5f.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/49</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/06_Karam_ALNizami-5dd5787bdd740.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/50</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/07_Karam_ALNizami-5dd5791bc35a0.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/51</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/01_Douaa_Battikh-5dd672da65ab7.jpeg</image:loc>
+      <image:title> Nature is cruelty</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/52</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/02_Douaa_Battikh-5dd673dd7745b.jpeg</image:loc>
+      <image:title> Hope</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/53</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/03_Douaa_Battikh-5dd6745be4300.jpeg</image:loc>
+      <image:title> Fall Memories</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/54</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-20_17-19-52/04_Douaa_Battikh-5dd676bbdcb17.jpeg</image:loc>
+      <image:title> Convergence</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/55</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/05_Douaa_Battikh-5dd6772abc9e7.jpeg</image:loc>
+      <image:title> Triple Access</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/56</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/06_Douaa_Battikh-5dd677d8d087a.jpeg</image:loc>
+      <image:title> Presence</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/57</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/07_Douaa_Battikh-5dd678a7833e8.jpeg</image:loc>
+      <image:title> A lunar night</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/58</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/08_Douaa_Battikh-5dd6793c22d7c.jpeg</image:loc>
+      <image:title> Waiting</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/59</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/09_Douaa_Battikh-5dd679c75bad2.jpeg</image:loc>
+      <image:title> Dream</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/60</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/10_Douaa_Battikh-5dd67a50c64a2.jpeg</image:loc>
+      <image:title> A female rebellion</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/61</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/01_Bashar_Barazi.jpg-5ddbf8deddc0a.jpeg</image:loc>
+      <image:title> Face</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/62</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/02_Bashar_Barazi-5ddbf9ec2b9cb.jpeg</image:loc>
+      <image:title> I Love you both</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/63</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/03_Bashar_Barazi-5ddbfa5e54f91.jpeg</image:loc>
+      <image:title> Selfie</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/64</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-21_11-38-18/04_Bashar_Barazi-5ddbfb1a0ee4f.jpeg</image:loc>
+      <image:title> The Blue again</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/65</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/05_Bashar_Barazi-5ddbfbde9131f.jpeg</image:loc>
+      <image:title> Something like sculpture</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/66</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/06_Bashar_Barazi-5ddbfc992f92a.jpeg</image:loc>
+      <image:title> Happiness </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/67</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/07_Bashar_Barazi.jpg-5ddbfd1a32611.jpeg</image:loc>
+      <image:title> Mysticism</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/68</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/08_Bashar_Barazi.jpg-5ddbfdebc1a6c.jpeg</image:loc>
+      <image:title> Special</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/69</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/09_Bashar_Barazi.jpg-5ddbfe3b3eb81.jpeg</image:loc>
+      <image:title> Neigh </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/70</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/01_Bassam_Abu_Zidan-5ddc2c14a55dd.jpeg</image:loc>
+      <image:title> War, Destruction and Peace </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/71</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/02_Bassam_Abu_Zidan-5ddc2dfcbda8e.jpeg</image:loc>
+      <image:title> The Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/72</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/10_Bashar_Barazi-5ddd03fd5ef81.jpeg</image:loc>
+      <image:title> The wakeful window</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/73</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/23_Nedal_Khweiss-5ddd0bd78f118.jpeg</image:loc>
+      <image:title> The Despondent</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/74</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-25_16-05-50/24_Nedal_Khweiss-5ddd0e0ed1ef1.jpeg</image:loc>
+      <image:title> Universe Corner</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/94</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-26_19-00-01/01_Lina_Rezek-5ddeb824e43dc.jpeg</image:loc>
+      <image:title> Acrobat</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/95</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/02_Lina_Rezek-5ddebcb31f276.jpeg</image:loc>
+      <image:title> Dancers</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/96</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/03_Lina_Rezek-5ddebf98a20b2.jpeg</image:loc>
+      <image:title> Flamenco Dancing</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/97</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/04_Lina_Rezek-5ddec1ca9dd4d.jpeg</image:loc>
+      <image:title> The Blue Lake</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/98</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/05_Lina_Rezek-5ddec23adfb88.jpeg</image:loc>
+      <image:title> Autumn</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/99</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/06_Lina_Rezek-5ddec2fd9f980.jpeg</image:loc>
+      <image:title> Indian woman</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/100</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/07_Lina_Rezek-5ddec39925699.jpeg</image:loc>
+      <image:title> The Dreamy Female</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/101</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/08_Lina_Rezek-5ddec3eec12a1.jpeg</image:loc>
+      <image:title> Classical woman</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/102</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/09_Lina_Rezek-5ddec4ebdefb6.jpeg</image:loc>
+      <image:title> The Chinese girl</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/103</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/10_Lina_Rezek-5ddec610c1c3e.jpeg</image:loc>
+      <image:title> Harmony</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/104</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-13-07/11_Lina_Rezek-5ddec67cd859b.jpeg</image:loc>
+      <image:title> Faces fall  in love</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/105</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-11-27_18-56-14/12_Lina_Rezek-5ddec6ce3c833.jpeg</image:loc>
+      <image:title> The Forgetfulness</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/117</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/01_Sargon_Boulos-5dedfbfe4f4d5.png</image:loc>
+      <image:title> Two Ladies</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/118</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/02_Sargon_Boulos-5dedfd38d9617.jpeg</image:loc>
+      <image:title> Wheat spikes</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/119</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/03_Sargon_Boulos-5dedfdb4e060a.jpeg</image:loc>
+      <image:title> Death</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/120</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/04_Sargon_Boulos-5dedfe6f42128.jpeg</image:loc>
+      <image:title> Leave</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/121</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/05_Sargon_Boulos-5dedfe930178a.jpeg</image:loc>
+      <image:title> Last Dinner</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/122</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/06_Sargon_Boulos-5dedff793c407.jpeg</image:loc>
+      <image:title> Ladies</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/123</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_07-33-52/01_Samoukan-5dee17d68bb27.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/124</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/02_Samoukan-5dee184536f3c.jpeg</image:loc>
+      <image:title> Search for Peace</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/125</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/03_Samoukan-5dee187112439.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/126</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/04_Samoukan-5dee18d634940.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/127</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/05_Samoukan-5dee197dcc76d.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/128</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/06_Samoukan-5dee199f6ee07.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/129</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/07_Samoukan-5dee1a046c769.jpeg</image:loc>
+      <image:title> Light Road</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/130</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/08_Samoukan-5dee1a6021c46.jpeg</image:loc>
+      <image:title> Peace</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/131</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/09_Samoukan-5dee1ad8711d4.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/132</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/10_Samoukan-5dee1b512d75c.jpeg</image:loc>
+      <image:title> Tree of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/133</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_09-47-49/01_Shadi_Al-aissami-5dee2bcf18e68.jpeg</image:loc>
+      <image:title> SA1</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/134</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/02_Shadi_Al-aissami-5dee321035fb4.jpeg</image:loc>
+      <image:title> SA2</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/135</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/03_Shadi_Al-aissami-5dee3286149d6.jpeg</image:loc>
+      <image:title> AS3</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/136</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/04_Shadi_Al-aissami-5dee32ded6722.jpeg</image:loc>
+      <image:title> AS4</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/137</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/05_Shadi_Al-aissami-5dee3382304fa.jpeg</image:loc>
+      <image:title> SA5</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/138</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/06_Shadi_Al-aissami-5dee344395255.jpeg</image:loc>
+      <image:title> SA6</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/139</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/01_Seham_Hunidi-5df21372019c2.jpeg</image:loc>
+      <image:title> The Scream</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/140</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-09_11-37-52/02_Seham_Hunidi-5df21711075b6.jpeg</image:loc>
+      <image:title> Yearning</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/141</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/04_Seham_Hunidi-5df218dea568b.jpeg</image:loc>
+      <image:title> Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/142</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/05_Seham_Hunidi-5df219e60249c.jpeg</image:loc>
+      <image:title> Damascus fragrance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/143</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/06_Seham_Hunidi-5df21a6758e78.jpeg</image:loc>
+      <image:title> Secret of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/144</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/07_Seham_Hunidi-5df21ae6208a7.jpeg</image:loc>
+      <image:title> Water of Life</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/145</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/08_Seham_Hunidi-5df21b3e906c7.jpeg</image:loc>
+      <image:title> Nature</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/146</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/09_Seham_Hunidi-5df21b945ea34.jpeg</image:loc>
+      <image:title> Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/147</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/10_Seham_Hunidi-5df21c2cb201a.jpeg</image:loc>
+      <image:title> Reverence </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/148</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/11_Seham_Hunidi-5df21c8d500db.jpeg</image:loc>
+      <image:title> Prayer</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/149</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/12_Seham_Hunidi-5df21d2c13def.jpeg</image:loc>
+      <image:title> Leave</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/150</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_10-39-26/13_Seham_Hunidi-5df21db66e0e9.jpeg</image:loc>
+      <image:title> Invocation </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/151</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/14_Seham_Hunidi-5df21ed85483e.jpeg</image:loc>
+      <image:title> Hope</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/152</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/15_Seham_Hunidi-5df21ff69c105.jpeg</image:loc>
+      <image:title> Leave</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/153</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/16_Seham_Hunidi-5df22095bdd4c.jpeg</image:loc>
+      <image:title> Ambiguity</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/154</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/17_Seham_Hunidi-5df22120d6d3d.jpeg</image:loc>
+      <image:title> Pomegranate</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/155</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/18_Seham_Hunidi-5df221aeca3dd.jpeg</image:loc>
+      <image:title> Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/156</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/19_Seham_Hunidi-5df222bc1023d.jpeg</image:loc>
+      <image:title> Leave in the storm.</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/157</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/22_Seham_Hunidi-5df223528cb61.jpeg</image:loc>
+      <image:title> Damascus fragrance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/158</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/23_Seham_Hunidi-5df2241ee7929.jpeg</image:loc>
+      <image:title> Damascus Fragrance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/159</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/24_Seham_Hunidi-5df22490d605a.jpeg</image:loc>
+      <image:title> Life & Death</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/160</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-04-56/25_Seham_Hunidi-5df22600dd628.jpeg</image:loc>
+      <image:title> Damascus Fragrance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/161</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/26_Seham_Hunidi-5df22662cef94.jpeg</image:loc>
+      <image:title> Damascus Fragrance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/162</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/27_Seham_Hunidi-5df226f9029f7.jpeg</image:loc>
+      <image:title> Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/163</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/28_Seham_Hunidi-5df227919a0c7.jpeg</image:loc>
+      <image:title> Sunrise is inevitable </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/164</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/29_Seham_Hunidi-5df2285e2fe66.jpeg</image:loc>
+      <image:title> Sunrise is inevitable </image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/165</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/30_Seham_Hunidi-5df22c0e122df.jpeg</image:loc>
+      <image:title> Storm</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/166</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/31_Seham_Hunidi-5df22c706d987.jpeg</image:loc>
+      <image:title> Leave</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/167</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/32_Seham_Hunidi-5df22ce0d6dc4.jpeg</image:loc>
+      <image:title> Spring is coming</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/168</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/33_Seham_Hunidi-5df22d706ecbf.jpeg</image:loc>
+      <image:title> Rain</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/169</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/03_Seham_Hunidi-5df29777e998f.jpeg</image:loc>
+      <image:title> The Fire</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/170</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-12_11-37-06/25_Nedal_Khweiss-5df6432b73ec2.jpeg</image:loc>
+      <image:title> Romani dance</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/171</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/08_Karam_ALNizami.jpeg-5df643b14f508.jpeg</image:loc>
+      <image:title> The Desert 1</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/172</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/09_Karam_ALNizami.jpeg-5df643fee4e4b.jpeg</image:loc>
+      <image:title> The Desert 2</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/173</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/10_Karam_ALNizami.jpeg-5df644313d7ae.jpeg</image:loc>
+      <image:title> The Desert 3</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/174</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/11_Karam_ALNizami.jpeg-5df6447ead95f.jpeg</image:loc>
+      <image:title> The Desert 4</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/175</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/12_Karam_ALNizami.jpeg-5df644aded215.jpeg</image:loc>
+      <image:title> The Desert 5</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/painting/176</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <image:image>
+      <image:loc>http://ishtar-art.de/ImageUploads/PaintingImages/2019-12-15_14-31-13/26_Nedal_Khweiss-5e21b503dbf6e.jpeg</image:loc>
+      <image:title> Summer</image:title>
+      <image:geo_location>Berlin, Germany</image:geo_location>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/1</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/2</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/3</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/4</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/5</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/6</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/7</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/8</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/9</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/10</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/11</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://www.ishtar-art.de/artist/12</loc>
+    <lastmod>Sun Jan 26 2020 15:10:13 GMT+0200 (Eastern European Standard Time)</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

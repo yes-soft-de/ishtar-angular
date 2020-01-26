@@ -2,7 +2,7 @@ import fs from 'fs';
 import jsonxml from 'jsontoxml';
 import axio from 'axios';
 
-const baseAPI = 'http://ishtar-art.de/ishtar-backend/public';
+const baseAPI = 'https://ishtar-art.de/ishtar-backend/public';
 
 const urls = [
     'artist-list',
@@ -23,7 +23,7 @@ let newDate = new Date(Date.now());
 
 for (const path of urls) {
     xml += '<url>';
-    xml += `<loc>${path}</loc>`;
+    xml += `<loc>${baseAPI}/${path}</loc>`;
     console.log(`Adding Path ${path}`);
     xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
     xml += `<changefreq>monthly</changefreq>`;
@@ -37,9 +37,13 @@ axio.get(`${baseAPI}/paintings`).then(
         for (const i of result.data.Data) {
             xml += '<url>';
             xml += `<loc>${root_path}/painting/${i.id}</loc>`;
-            console.log(`Adding Path /painting/${i.id}`);
             xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
             xml += `<changefreq>monthly</changefreq>`;
+            xml += `<image:image>`;
+            xml += `<image:loc>${i.image}</image:loc>`;
+            xml += `<image:title> ${i.name}</image:title>`;
+            xml += `<image:geo_location>Berlin, Germany</image:geo_location>`;
+            xml += `</image:image>`;
             xml += `<priority>0.8</priority>`;
             xml += '</url>';
         }
@@ -50,8 +54,6 @@ axio.get(`${baseAPI}/paintings`).then(
                 for (const i of artistResult.data.Data) {
                     xml += '<url>';
                     xml += `<loc>${root_path}/artist/${i.id}</loc>`;
-                    console.log(`Adding Path /artist/${i.id}`);
-
                     xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
                     xml += `<changefreq>monthly</changefreq>`;
                     xml += `<priority>0.7</priority>`;

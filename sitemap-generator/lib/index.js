@@ -6,9 +6,9 @@ var _jsontoxml = _interopRequireDefault(require("jsontoxml"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var baseAPI = 'http://ishtar-art.de/ishtar-backend/public';
+var baseAPI = 'https://ishtar-art.de/ishtar-backend/public';
 var urls = ['artist-list', 'painting-list', 'art-schools-list', 'tos', 'privacy', 'about-us', 'faq', 'imprint', 'data-processing', 'about-ishtar'];
 var root_path = 'http://www.ishtar-art.de';
 var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -17,7 +17,7 @@ var newDate = new Date(Date.now());
 for (var _i = 0, _urls = urls; _i < _urls.length; _i++) {
   var path = _urls[_i];
   xml += '<url>';
-  xml += "<loc>".concat(path, "</loc>");
+  xml += "<loc>".concat(baseAPI, "/").concat(path, "</loc>");
   console.log("Adding Path ".concat(path));
   xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
   xml += "<changefreq>monthly</changefreq>";
@@ -25,7 +25,7 @@ for (var _i = 0, _urls = urls; _i < _urls.length; _i++) {
   xml += '</url>';
 }
 
-_axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
+_axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
   console.log('Got Painting List');
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
@@ -36,9 +36,13 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
       var i = _step.value;
       xml += '<url>';
       xml += "<loc>".concat(root_path, "/painting/").concat(i.id, "</loc>");
-      console.log("Adding Path /painting/".concat(i.id));
       xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
       xml += "<changefreq>monthly</changefreq>";
+      xml += "<image:image>";
+      xml += "<image:loc>".concat(i.image, "</image:loc>");
+      xml += "<image:title> ".concat(i.name, "</image:title>");
+      xml += "<image:geo_location>Berlin, Germany</image:geo_location>";
+      xml += "</image:image>";
       xml += "<priority>0.8</priority>";
       xml += '</url>';
     }
@@ -47,8 +51,8 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
     _iteratorError = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-        _iterator["return"]();
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
       }
     } finally {
       if (_didIteratorError) {
@@ -57,7 +61,7 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
     }
   }
 
-  _axios["default"].get("".concat(baseAPI, "/artists")).then(function (artistResult) {
+  _axios.default.get("".concat(baseAPI, "/artists")).then(function (artistResult) {
     console.log('Got Artist List');
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
@@ -68,7 +72,6 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
         var i = _step2.value;
         xml += '<url>';
         xml += "<loc>".concat(root_path, "/artist/").concat(i.id, "</loc>");
-        console.log("Adding Path /artist/".concat(i.id));
         xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
         xml += "<changefreq>monthly</changefreq>";
         xml += "<priority>0.7</priority>";
@@ -79,8 +82,8 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
       _iteratorError2 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-          _iterator2["return"]();
+        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+          _iterator2.return();
         }
       } finally {
         if (_didIteratorError2) {
@@ -91,7 +94,7 @@ _axios["default"].get("".concat(baseAPI, "/paintings")).then(function (result) {
 
     xml += '</urlset>';
 
-    _fs["default"].writeFileSync('sitemap.xml', xml, function (err) {
+    _fs.default.writeFileSync('sitemap.xml', xml, function (err) {
       console.log(err);
     });
   });
