@@ -34,4 +34,11 @@ export class EditFeaturedImagesComponent implements OnInit {
     );
   }
 
+  selectPainting(painting: Painting) {
+    // TODO Add Painting to Selection
+  }
+
+  unselectPainting(painting: Painting) {
+    // TODO Remove Painting from Selection
+  }
 }

@@ -29,7 +29,7 @@ import { ListCommentComponent } from './ui/comments/list-comment/list-comment.co
 import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { EditFeaturedImagesComponent } from './ui/featured/edit-featured-images/edit-featured-images.component';
-import {MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -69,6 +69,7 @@ import {MatCardModule} from '@angular/material';
     ReactiveFormsModule,
     NgxPaginationModule,
     MatCardModule,
+    MatButtonModule,
     // BrowserAnimationsModule
   ]
 })

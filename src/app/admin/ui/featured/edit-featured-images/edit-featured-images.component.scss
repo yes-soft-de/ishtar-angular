@@ -1,7 +1,16 @@
+@import "../../../../../variables";
+@import "../../../../styles/grid";
+
 #selected-images {
   display: flex;
 
-  mat-card {
-    flex-basis: 33.33%;
+  @media screen and (min-width: 0){
+    @include col-4;
+  }
+  @media screen and (min-width: $bp-md){
+    @include col-3;
+  }
+  @media screen and (min-width: $bp-lg){
+    @include col-2;
   }
 }
