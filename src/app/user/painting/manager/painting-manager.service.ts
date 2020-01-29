@@ -36,4 +36,8 @@ export class PaintingManagerService {
   getMostViewedPainting(): Observable<MostViewedPaintingResponse> {
     return this.paintingRepository.getMostViewedPainting();
   }
+
+  getFeaturedPaintings(): Observable<PaintingListResponse> {
+    return this.paintingRepository.getFeaturedPaintings();
+  }
 }

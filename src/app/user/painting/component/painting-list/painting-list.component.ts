@@ -10,8 +10,6 @@ import {PaintingListItem} from '../../entity/painting-list-item';
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
-
-
   constructor(private paintingService: PaintingService,
               private filterService: PaintingFilterService) {
   }

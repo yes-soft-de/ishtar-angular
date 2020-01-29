@@ -16,6 +16,7 @@ import {ClientService} from '../../service/client/client.service';
 import {InteractionInterface} from '../../entity/interactions/interaction-interface';
 import {ClientInterface} from '../../entity/client/client-interface';
 import {Client} from '../../entity/client/client';
+import {PaintingListItem} from '../../entity/painting-full-list/painting-list-item';
 
 
 @Component({
@@ -30,6 +31,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // statues: {0: StatueInterface, price: string}[];
   statues: StatueInterface[];
   comments: CommentInterface[];
+
+  featuredImages: PaintingListItem[];
+
   interactions: InteractionInterface[];
   clients: Client[];
   latestArtistNumber = 5;
@@ -46,23 +50,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
               private commentService: CommentService,
               private statueService: StatueService,
               private interactionsService: InteractionsService,
-              private clientService: ClientService) { }
+              private clientService: ClientService) {
+  }
 
   ngOnInit() {
-    const allArtistObs    = this.artist.getAllArtists();              // fetch all Artists
-    const allPaintingObs  = this.photosListService.getAllPainting();  // fetch all Paintings
-    const allStatueObs    = this.statueService.getAllStatues();       // fetch all Statues
-    const allCommentsObs  = this.commentService.getAllComments();     // fetch all Comments
+    const allArtistObs = this.artist.getAllArtists();              // fetch all Artists
+    const allPaintingObs = this.photosListService.getAllPainting();  // fetch all Paintings
+    const allStatueObs = this.statueService.getAllStatues();       // fetch all Statues
+    const allCommentsObs = this.commentService.getAllComments();     // fetch all Comments
     const allInteractions = this.interactionsService.getAllInteractions(); // fetch all Interactions Number
-    const allClients      = this.clientService.getAllClients();       // fetch all Client
+    const allClients = this.clientService.getAllClients();       // fetch all Client
     const combinedObs = forkJoin(allArtistObs, allPaintingObs, allStatueObs, allCommentsObs, allInteractions, allClients);  // combined all
     this.combinedObservable = combinedObs.subscribe((data: any) => {
-      this.artists      = data[0].Data.reverse();
-      this.paintings    = data[1].Data.reverse();
-      this.statues      = data[2].Data.reverse();
-      this.comments     = data[3].Data.reverse();
+      this.artists = data[0].Data.reverse();
+      this.paintings = data[1].Data.reverse();
+      this.statues = data[2].Data.reverse();
+      this.comments = data[3].Data.reverse();
       this.interactions = data[4].Data.reverse();
-      this.clients      = data[5].Data.reverse();
+      this.clients = data[5].Data.reverse();
       console.log('dashboard', data, this.statues);
     });
   }

@@ -80,6 +80,12 @@ export class EditPaintingComponent implements OnInit {
       (artTypeListResponse: ArtTypeListResponse) => {
         this.artTypes = artTypeListResponse.Data;
 
+        for (const artType of this.artTypes) {
+          if (artType.name === this.paintingData.name) {
+            this.artTypeId = artType.id;
+          }
+        }
+
         this.updatesValues();
       }
     );
@@ -98,7 +104,7 @@ export class EditPaintingComponent implements OnInit {
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
       artType: ['', Validators.required],
-      gallery: ['', Validators.required],
+      // gallery: ['', Validators.required],
       story: ['', [Validators.required, Validators.minLength(4)]],
     });
   }

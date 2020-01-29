@@ -34,4 +34,8 @@ export class PaintingRepositoryService {
   getMostViewedPainting(): Observable<MostViewedPaintingResponse> {
     return this.httpClient.get<MostViewedPaintingResponse>(UserConfig.mostViewedAPI);
   }
+
+  getFeaturedPaintings(): Observable<PaintingListResponse> {
+    return this.httpClient.get<PaintingListResponse>(UserConfig.mostViewedAPI);
+  }
 }

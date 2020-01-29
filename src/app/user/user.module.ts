@@ -70,6 +70,8 @@ import {StatueCommentItemComponent} from './statue/component/statue-comment-item
 import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/artist-knowledge.component';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import { PaintingKnowledgeGraphComponent } from './painting/component/painting-knowledge-graph/painting-knowledge-graph.component';
+import { FeaturedImagesComponent } from './painting/component/featured-images/featured-images.component';
+import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
 
 @NgModule({
   declarations: [
@@ -135,7 +137,9 @@ import { PaintingKnowledgeGraphComponent } from './painting/component/painting-k
     PaintingCommentItemComponent,
     StatueCommentItemComponent,
     ArtistKnowledgeComponent,
-    PaintingKnowledgeGraphComponent
+    PaintingKnowledgeGraphComponent,
+    FeaturedImagesComponent,
+    PaintingCardComponent
   ],
   exports: [
     // User

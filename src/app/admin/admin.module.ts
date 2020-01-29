@@ -28,6 +28,8 @@ import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.compone
 import { ListCommentComponent } from './ui/comments/list-comment/list-comment.component';
 import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { EditFeaturedImagesComponent } from './ui/featured/edit-featured-images/edit-featured-images.component';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AddStatueComponent,
     EditStatueComponent,
     ListCommentComponent,
-    ListInteractionComponent
+    ListInteractionComponent,
+    EditFeaturedImagesComponent
    ],
   exports: [
     AdminComponent,
@@ -65,6 +68,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    MatCardModule,
     // BrowserAnimationsModule
   ]
 })

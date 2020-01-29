@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
+import {PaintingListResponse} from '../../entity/PaintingList/painting-list-response';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class PhotosListService {
 
 
   // Get All Painting List
-  getAllPainting() {
-    return this.httpClient.get(
+  getAllPainting(): Observable<PaintingListResponse> {
+    return this.httpClient.get<PaintingListResponse>(
       `${AdminConfig.paintingsAPI}`, {responseType: 'json'}
     ).pipe(catchError(PhotosListService.errorHandler));
   }
@@ -71,6 +72,8 @@ export class PhotosListService {
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.ishtarClient.post(`${AdminConfig.paintingUploadAPI}`, formData);
+    return this.httpClient.post<{
+      url: string
+    }>(`${AdminConfig.paintingUploadAPI}`, formData);
   }
 }
