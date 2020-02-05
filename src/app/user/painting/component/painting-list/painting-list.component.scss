@@ -228,3 +228,19 @@
     }
   }
 }
+
+#add-more-btn {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  a {
+    border-style: solid;
+    border-color: goldenrod;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+
+    color: goldenrod;
+  }
+}

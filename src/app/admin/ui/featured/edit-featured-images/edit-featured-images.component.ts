@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
 import {Painting} from '../../../entity/painting/painting';
+import {FeaturedPaintingsService} from '../../../service/featured/featured-paintings.service';
+import {ToastrService} from 'ngx-toastr';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-featured-images',
@@ -8,25 +11,66 @@ import {Painting} from '../../../entity/painting/painting';
   styleUrls: ['./edit-featured-images.component.scss']
 })
 export class EditFeaturedImagesComponent implements OnInit {
-  public paintingList: Painting[];
-  public selectedPaintingList: Painting[];
+  public featuredList: Painting[];
 
-  constructor(private paintingService: PhotosListService) {
+  public originalList: Painting[];
+  public filteredList: Painting[];
+
+  searchForm = new FormGroup({
+    searchTerm: new FormControl('')
+  });
+
+  constructor(private paintingService: PhotosListService,
+              private featuredService: FeaturedPaintingsService,
+              private toaster: ToastrService) {
   }
 
   ngOnInit() {
+    this.getAllPaintings();
+    this.getFeaturedPaintings();
+  }
+
+  selectPainting(painting: Painting) {
+    this.featuredService.selectFeaturedPainting(painting.id).subscribe(
+      () => {
+        this.toaster.success(`${painting.name} is Selected`);
+        this.getFeaturedPaintings();
+      }, error1 => {
+        this.toaster.error(`Error Selecting Painting: ${painting.name}`);
+        console.error(error1);
+      }
+    );
+  }
+
+  unselectPainting(painting: Painting) {
+    this.featuredService.removeFeaturedPainting(painting.id).subscribe(
+      () => {
+        this.toaster.success(`${painting.name} is Removed From the List`);
+        this.getFeaturedPaintings();
+      }, error1 => {
+        this.toaster.error(`Error Selecting Painting: ${painting.name}`);
+        console.error(error1);
+      }
+    );
+  }
+
+  getAllPaintings() {
     this.paintingService.getAllPainting().subscribe(
       paintingListResponse => {
-        this.paintingList = paintingListResponse.Data;
+        this.originalList = paintingListResponse.Data;
+        this.filterByName();
       }, error1 => {
         console.log(error1);
       }
     );
+  }
 
-    this.paintingService.getAllPainting().subscribe(
+  getFeaturedPaintings() {
+    this.featuredService.getFeaturedPaintings().subscribe(
       paintingListResponse => {
         if (paintingListResponse.Data.length) {
-          this.selectedPaintingList = paintingListResponse.Data.slice(0, 8);
+          this.featuredList = paintingListResponse.Data;
+          this.filterByName();
         }
       }, error1 => {
         console.log(error1);
@@ -34,11 +78,10 @@ export class EditFeaturedImagesComponent implements OnInit {
     );
   }
 
-  selectPainting(painting: Painting) {
-    // TODO Add Painting to Selection
-  }
-
-  unselectPainting(painting: Painting) {
-    // TODO Remove Painting from Selection
+  filterByName() {
+    this.filteredList = this.originalList.filter(a => {
+      console.log(`filtering on ${this.searchForm.get('searchTerm').value}`);
+      return a.name.toLowerCase().includes(this.searchForm.get('searchTerm').value.toLowerCase());
+    });
   }
 }

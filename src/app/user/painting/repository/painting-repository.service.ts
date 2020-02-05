@@ -36,6 +36,6 @@ export class PaintingRepositoryService {
   }
 
   getFeaturedPaintings(): Observable<PaintingListResponse> {
-    return this.httpClient.get<PaintingListResponse>(UserConfig.mostViewedAPI);
+    return this.httpClient.get<PaintingListResponse>(UserConfig.featuredImages);
   }
 }

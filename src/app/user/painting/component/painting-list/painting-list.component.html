@@ -1,53 +1,46 @@
-<div *ngIf="paintingList != null">
-<div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
-  <div>
-    <div class="filter">
-      <h5 (click)="fiterArtTypeOptionsView()">Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
-      <div class="btn-container hide"
-           [ngClass]="{'active': filterArtType == true, 'hide': filterArtType == false}">
-        <button mdbBtn class="btn-light" (click)="disableArtTypeFilter()">All</button>
-        <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
-                (click)="filterByArtType(artType)"
-                [ngClass]="artType === filterActiveArtType ? 'active' : ''">{{artType}}</button>
+<div *ngIf="visiblePaintingList != null">
+  <div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
+    <div>
+      <div class="filter">
+        <h5 (click)="fiterArtTypeOptionsView()">Filter By Art Type <i class="fas fa-chevron-down"></i></h5>
+        <div class="btn-container hide"
+             [ngClass]="{'active': filterArtType == true, 'hide': filterArtType == false}">
+          <button mdbBtn class="btn-light" (click)="disableArtTypeFilter()">All</button>
+          <button mdbBtn class="btn-light" *ngFor="let artType of artTypes; index as i"
+                  (click)="filterByArtType(artType)"
+                  [ngClass]="artType === filterActiveArtType ? 'active' : ''">{{artType}}</button>
+        </div>
       </div>
-    </div>
-    <hr>
-    <div class="filter">
-      <h5 (click)="fiterArtistOptionsView()">Filter By Artist <i class="fas fa-chevron-down"></i></h5>
-      <div class="btn-container hide"
-           [ngClass]="{'active': filterArtist == true, 'hide': filterArtist == false}">
-        <button mdbBtn class="btn-light" (click)="disableArtistNameFilter()">All</button>
-        <button mdbBtn class="btn-light"
-                *ngFor="let artist of artists; index as i"
-                (click)="filterByArtist(artist)"
-                [ngClass]="artist === filterActiveArtist ? 'active' : ''">{{artist}}</button>
+      <hr>
+      <div class="filter">
+        <h5 (click)="fiterArtistOptionsView()">Filter By Artist <i class="fas fa-chevron-down"></i></h5>
+        <div class="btn-container hide"
+             [ngClass]="{'active': filterArtist == true, 'hide': filterArtist == false}">
+          <button mdbBtn class="btn-light" (click)="disableArtistNameFilter()">All</button>
+          <button mdbBtn class="btn-light"
+                  *ngFor="let artist of artists; index as i"
+                  (click)="filterByArtist(artist)"
+                  [ngClass]="artist === filterActiveArtist ? 'active' : ''">{{artist}}</button>
+        </div>
       </div>
-    </div>
-    <hr>
-  </div>
-</div>
-<div class="col-sm-9 col-xs-12 mx-auto" [class.floating]="filter">
-  <div id="painting-list">
-    <div class="row">
-      <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
-           *ngFor="let painting of paintingList | paginate: config; index as i"
-           (click)="viewImage(painting.id)"
-           routerLink="/painting/{{painting.id}}">
-        <app-painting-card [painting]="painting"> </app-painting-card>
-      </div>
+      <hr>
     </div>
   </div>
-</div>
-<div class="text-center mt-3" id="my-pagination">
-  <pagination-controls
-    class="my-pagination"
-    (pageChange)="pageChanged($event)"
-    autoHide="true"
-    responsive="true"
-    previousLabel="Prev"
-    nextLabel="Next"
-    screenReaderPaginationLabel="Pagination"
-    screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page"></pagination-controls>
-</div>
+  <div class="col-sm-9 col-xs-12 mx-auto" [class.floating]="filter">
+    <div id="painting-list">
+      <div class="row">
+        <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
+             *ngFor="let painting of visiblePaintingList"
+             (click)="viewImage(painting.id)"
+             routerLink="/painting/{{painting.id}}">
+          <app-painting-card [painting]="painting"></app-painting-card>
+        </div>
+      </div>
+      <div id="add-more-btn" class="row" (click)="addMorePaintings()">
+        <a>
+          <mdb-icon fas icon="angle-double-down" size="2x"></mdb-icon>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

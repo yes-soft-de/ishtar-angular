@@ -1,27 +1,60 @@
-<div id="selected-images" class="row">
-  <mat-card *ngFor="let painting of selectedPaintingList">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{painting?.name}}</mat-card-title>
-      <mat-card-subtitle>{{painting?.artist}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{painting?.image}}" alt="{{painting?.story}}">
-    <mat-card-actions>
-      <button mat-button (click)="unselectPainting(painting)">REMOVE</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<section class="container">
+  <h3>Selected Paintings</h3>
+</section>
+<section class="container">
+  <div id="selected-images" class="row mx-0 justify-content-center">
+    <mdb-card *ngFor="let painting of featuredList" class="col-3 m-2">
+      <!--Card image-->
+      <mdb-card-img class="img-fluid" [src]="painting.image" alt="Card image cap"></mdb-card-img>
+      <!--Card content-->
+      <mdb-card-body>
 
-<div id="all-images" class="row">
-  <mat-card *ngFor="let painting of paintingList">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{painting?.name}}</mat-card-title>
-      <mat-card-subtitle>{{painting?.artist}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{painting?.image}}" alt="{{painting?.story}}">
-    <mat-card-actions>
-      <button mat-button (click)="unselectPainting(painting)">SELECT</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+        <!--Title-->
+        <mdb-card-title>
+          <h4>{{painting.name}}</h4>
+        </mdb-card-title>
+
+        <!--Text-->
+        <mdb-card-text>
+          {{painting.artist}}
+        </mdb-card-text>
+
+        <a href="#" mdbBtn color="primary" mdbWavesEffect (click)="selectPainting(painting)">Remove</a>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</section>
+<section class="container">
+  <h3>All Paintings Paintings</h3>
+</section>
+<section class="container">
+  <div class="row">
+    <form class="form-inline waves-light" mdbWavesEffect (ngSubmit)="filterByName()" [formGroup]="searchForm">
+      <div class="md-form mt-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="searchTerm">
+      </div>
+    </form>
+  </div>
+  <div id="all-images" class="row mx-auto justify-content-center">
+    <mdb-card *ngFor="let painting of filteredList" class="col-3 m-2">
+      <!--Card image-->
+      <mdb-card-img [src]="painting.image" alt="Card image cap" class="img-fluid"></mdb-card-img>
+      <!--Card content-->
+      <mdb-card-body>
+
+        <!--Title-->
+        <mdb-card-title>
+          <h4>{{painting.name}}</h4>
+        </mdb-card-title>
+
+        <!--Text-->
+        <mdb-card-text>
+          {{painting.artist}}
+        </mdb-card-text>
+
+        <a href="#" mdbBtn color="primary" mdbWavesEffect (click)="selectPainting(painting)">Select</a>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</section>
+

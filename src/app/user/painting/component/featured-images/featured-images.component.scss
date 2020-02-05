@@ -45,6 +45,7 @@
         opacity: 0;
         transition: all .5s ease-in-out;
         -o-transition: all .5s ease-in-out;
+        -ms-transition: all .5s ease-in-out;
         -moz-transition: all .5s ease-in-out;
         -webkit-transition: all .5s ease-in-out;
         .painting-name {
@@ -194,6 +195,8 @@
     }
   }
 }
+
+
 @media (max-width:575px) {
   .filter-paintings {
     .filter {
@@ -223,5 +226,21 @@
         }
       }
     }
+  }
+}
+
+#add-more-btn {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+
+  a {
+    border-style: solid;
+    border-color: goldenrod;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+
+    color: goldenrod;
   }
 }

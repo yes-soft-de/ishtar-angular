@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ArtistService} from '../../../artist/service/artist.service';
 import {ArtistDetails} from '../../../artist/entity/artist-details';
 import {PaintingDetails} from '../../entity/painting-details';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-painting-details',
@@ -21,7 +22,8 @@ export class PaintingDetailsComponent implements OnInit {
 
   constructor(private paintingService: PaintingService,
               private artistService: ArtistService,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute,
+              private titleService: Title) {}
 
   ngOnInit() {
     this.activatedRoute.url.subscribe(
@@ -29,6 +31,7 @@ export class PaintingDetailsComponent implements OnInit {
         this.paintingService.getPainting(Number(urlSegments[1].path)).subscribe(
             paintingResponse => {
               this.painting = paintingResponse;
+              this.titleService.setTitle(`${this.painting.name} | Ishtar-Art`);
               // Loop To Catch The Secondary Images For This Painting
               for (let num = 2; num < 6; num++) {
                 if (this.painting[num]) {

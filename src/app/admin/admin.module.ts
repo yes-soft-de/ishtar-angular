@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AdminRoutingModule} from '../controller/admin-routing.module';
-import { AdminComponent } from './admin.component';
+import {AdminComponent} from './admin.component';
 import {DashboardComponent} from './ui/dashboard/dashboard.component';
 import {AdminHeaderComponent} from './ui/admin-header/admin-header.component';
 import {AddArtistComponent} from './ui/artist/add-artist/add-artist.component';
@@ -19,17 +19,16 @@ import {EditPaintingComponent} from './ui/painting/edit-painting/edit-painting.c
 import {AddClientComponent} from './ui/client/add-client/add-client.component';
 import {ListClientComponent} from './ui/client/list-client/list-client.component';
 import {EditClientComponent} from './ui/client/edit-client/edit-client.component';
-import { AddImagesComponent } from './ui/images/add-images/add-images.component';
+import {AddImagesComponent} from './ui/images/add-images/add-images.component';
 import {AddAuctionComponent} from './ui/auction/add-auction/add-auction.component';
 import {ListAuctionsComponent} from './ui/auction/list-auctions/list-auctions.component';
-import { ListStatueComponent } from './ui/statue/list-statue/list-statue.component';
-import { AddStatueComponent } from './ui/statue/add-statue/add-statue.component';
-import { EditStatueComponent } from './ui/statue/edit-statue/edit-statue.component';
-import { ListCommentComponent } from './ui/comments/list-comment/list-comment.component';
-import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
+import {ListStatueComponent} from './ui/statue/list-statue/list-statue.component';
+import {AddStatueComponent} from './ui/statue/add-statue/add-statue.component';
+import {EditStatueComponent} from './ui/statue/edit-statue/edit-statue.component';
+import {ListCommentComponent} from './ui/comments/list-comment/list-comment.component';
+import {ListInteractionComponent} from './ui/interactions/list-interaction/list-interaction.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { EditFeaturedImagesComponent } from './ui/featured/edit-featured-images/edit-featured-images.component';
-import {MatButtonModule, MatCardModule} from '@angular/material';
+import {EditFeaturedImagesComponent} from './ui/featured/edit-featured-images/edit-featured-images.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,7 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
     ListCommentComponent,
     ListInteractionComponent,
     EditFeaturedImagesComponent
-   ],
+  ],
   exports: [
     AdminComponent,
     AdminHeaderComponent
@@ -68,9 +67,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    MatCardModule,
-    MatButtonModule,
     // BrowserAnimationsModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Painting} from '../../../../admin/entity/painting/painting';
 import {PaintingListItem} from '../../entity/painting-list-item';
+import {PaintingService} from '../../service/painting.service';
 
 @Component({
   selector: 'app-featured-images',
@@ -9,9 +10,16 @@ import {PaintingListItem} from '../../entity/painting-list-item';
 })
 export class FeaturedImagesComponent implements OnInit {
   public painingList: PaintingListItem[];
-  constructor() { }
+
+  constructor(private paintingService: PaintingService) {
+  }
 
   ngOnInit() {
+    this.paintingService.getFeaturedPaintings().subscribe(
+      result => {
+        this.painingList = result;
+      }
+    );
   }
 
 }

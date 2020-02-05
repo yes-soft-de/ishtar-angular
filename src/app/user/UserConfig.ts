@@ -67,5 +67,6 @@ export class UserConfig {
   public static specificClientClaps = UserConfig.sourceAPI + 'clapsclient';
   public static specificEntityClaps = UserConfig.sourceAPI + 'clapsentity';
 
+  public static featuredImages = UserConfig.sourceAPI + 'featuredpaintings';
 
 }

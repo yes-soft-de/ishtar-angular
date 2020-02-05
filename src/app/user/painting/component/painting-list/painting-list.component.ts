@@ -13,13 +13,18 @@ export class PaintingListComponent implements OnInit {
   constructor(private paintingService: PaintingService,
               private filterService: PaintingFilterService) {
   }
+
   @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
   filterArtType = false;
   filterArtist = false;
   originalList: PaintingListItem[];
-  paintingList: PaintingListItem[];
+  visiblePaintingList: PaintingListItem[];
+
+  visiblePaintingsLimit = 12;
+  visisbleSectionSize = 12;
+
   config: any;
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
@@ -48,11 +53,12 @@ export class PaintingListComponent implements OnInit {
       paintingList => {
 
         this.originalList = PaintingListComponent.shuffle(paintingList);
-        this.paintingList = PaintingListComponent.shuffle(paintingList);
+        this.visiblePaintingList = this.originalList.slice(0, this.visiblePaintingsLimit);
+
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,
-          totalItems: this.paintingList.length
+          totalItems: this.visiblePaintingList.length
         };
 
         this.getArtistNamesList();
@@ -67,22 +73,22 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     this.filterActiveArtType = name;
-    this.paintingList = this.getFilteredList();
+    this.visiblePaintingList = this.getFilteredList();
   }
 
   public disableArtTypeFilter() {
     this.filterActiveArtType = null;
-    this.paintingList = this.getFilteredList();
+    this.visiblePaintingList = this.getFilteredList();
   }
 
   public filterByArtist(name: string) {
     this.filterActiveArtist = name;
-    this.paintingList = this.getFilteredList();
+    this.visiblePaintingList = this.getFilteredList();
   }
 
   public disableArtistNameFilter() {
     this.filterActiveArtist = null;
-    this.paintingList = this.getFilteredList();
+    this.visiblePaintingList = this.getFilteredList();
   }
 
   viewImage(paintingId: number) {
@@ -92,23 +98,25 @@ export class PaintingListComponent implements OnInit {
 
   // Fetch All Artists Filters Name
   getArtistNamesList() {
-    this.artists = [...new Set(this.paintingList.map(painting => painting.artist))];
+    this.artists = [...new Set(this.visiblePaintingList.map(painting => painting.artist))];
   }
 
   // Fetch All Art Type Filters Name
   getArtTypesList() {
-    this.artTypes = [...new Set(this.paintingList.map(painting => painting.artType))];
+    this.artTypes = [...new Set(this.visiblePaintingList.map(painting => painting.artType))];
   }
 
   private getFilteredList(): PaintingListItem[] {
     let resultList = this.originalList;
     if (this.filterActiveArtist !== null) {
       resultList = this.filterService.processArtistNameFilter(resultList, this.filterActiveArtist);
+      console.log(`result List After Artist Filter: ${resultList.length}`);
     }
     if (this.filterActiveArtType !== null) {
       resultList = this.filterService.processArtTypeFilter(resultList, this.filterActiveArtType);
+      console.log(`result List After Art Type Filter: ${resultList.length}`);
     }
-    return resultList;
+    return resultList.slice(0, this.visiblePaintingsLimit);
   }
 
   // view & hide filter button options
@@ -128,5 +136,11 @@ export class PaintingListComponent implements OnInit {
     } else {
       this.filterArtist = true;
     }
+  }
+
+  addMorePaintings() {
+    this.visiblePaintingsLimit += this.visisbleSectionSize;
+    console.log(`New Visible Painting Size: ${this.visiblePaintingsLimit}`);
+    this.visiblePaintingList = this.getFilteredList();
   }
 }
