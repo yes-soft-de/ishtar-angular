@@ -126,22 +126,14 @@ export class PaintingListComponent implements OnInit {
   }
 
   // view & hide filter button options
-  fiterArtTypeOptionsView() {
+  filterArtTypeOptionsView() {
     this.filterArtist = false;
-    if (this.filterArtType) {
-      this.filterArtType = false;
-    } else {
-      this.filterArtType = true;
-    }
+    this.filterArtType = !this.filterArtType;
   }
 
-  fiterArtistOptionsView() {
+  filterArtistOptionsView() {
     this.filterArtType = false;
-    if (this.filterArtist) {
-      this.filterArtist = false;
-    } else {
-      this.filterArtist = true;
-    }
+    this.filterArtist = !this.filterArtist;
   }
 
   addMorePaintings() {
