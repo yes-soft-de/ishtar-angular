@@ -6,26 +6,23 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-10 about-ishtar">
-        <h1 class="font-weight-bolder">About Ishtar</h1>
-        <p>
-          Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is
-          the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.
-        </p>
-        <a routerLink="/about-ishtar">Read more</a>
+        <h1 routerLink="/about-ishtar" class="font-weight-bolder">
+          <a>About Ishtar</a>
+        </h1>
       </div>
     </div>
   </div>
 
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
     <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
-    <app-painting-list style="display: flex; justify-content: center;" [filter]="false"></app-painting-list>
+    <app-painting-list [visiblePaintingsLimit]="4" [paintingSectionSize]="8" style="display: flex; justify-content: center;" [filter]="false"></app-painting-list>
   </section>
 
   <section class="w-100">
     <div class="col-12" style="padding-top: 2rem">
       <h1 class="text-center font-weight-bolder">Latest Active Artist</h1>
     </div>
-    <app-artist-list [filter]="false" [search]="false"></app-artist-list>
+    <app-artist-list [visibleArtistSize]="4" [artistSectionSize]="8" [filter]="false" [search]="false"></app-artist-list>
   </section>
 
   <section class="w-100 m-0">

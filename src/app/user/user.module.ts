@@ -72,6 +72,7 @@ import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import { PaintingKnowledgeGraphComponent } from './painting/component/painting-knowledge-graph/painting-knowledge-graph.component';
 import { FeaturedImagesComponent } from './painting/component/featured-images/featured-images.component';
 import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
+import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { PaintingCardComponent } from './painting/widget/painting-card/painting-
     ArtistKnowledgeComponent,
     PaintingKnowledgeGraphComponent,
     FeaturedImagesComponent,
-    PaintingCardComponent
+    PaintingCardComponent,
+    ArtistCardComponent
   ],
   exports: [
     // User

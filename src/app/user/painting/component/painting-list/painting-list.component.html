@@ -1,4 +1,4 @@
-<div *ngIf="visiblePaintingList != null">
+<div *ngIf="filteredPaintingList != null">
   <div id="painting-list-sidebar" class="col-sm-3 col-xs-12 floating filter-paintings" *ngIf="filter">
     <div>
       <div class="filter">
@@ -30,7 +30,7 @@
     <div id="painting-list">
       <div class="row">
         <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
-             *ngFor="let painting of visiblePaintingList"
+             *ngFor="let painting of filteredPaintingList.slice(0, this.visiblePaintingsLimit)"
              (click)="viewImage(painting.id)"
              routerLink="/painting/{{painting.id}}">
           <app-painting-card [painting]="painting"></app-painting-card>
