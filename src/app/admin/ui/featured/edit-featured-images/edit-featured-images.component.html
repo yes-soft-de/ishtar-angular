@@ -19,7 +19,7 @@
           {{painting.artist}}
         </mdb-card-text>
 
-        <a href="#" mdbBtn color="primary" mdbWavesEffect (click)="selectPainting(painting)">Remove</a>
+        <a mdbBtn color="primary" mdbWavesEffect (click)="unselectPainting(painting)">Remove</a>
       </mdb-card-body>
     </mdb-card>
   </div>
@@ -31,7 +31,7 @@
   <div class="row">
     <form class="form-inline waves-light" mdbWavesEffect (ngSubmit)="filterByName()" [formGroup]="searchForm">
       <div class="md-form mt-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="searchTerm">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="query">
       </div>
     </form>
   </div>
@@ -52,7 +52,7 @@
           {{painting.artist}}
         </mdb-card-text>
 
-        <a href="#" mdbBtn color="primary" mdbWavesEffect (click)="selectPainting(painting)">Select</a>
+        <a mdbBtn color="primary" mdbWavesEffect (click)="selectPainting(painting)">Select</a>
       </mdb-card-body>
     </mdb-card>
   </div>

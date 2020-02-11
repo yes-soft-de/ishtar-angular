@@ -22,6 +22,7 @@ body {
   width: 64px;
   height: 64px;
 }
+
 .lds-ring div {
   box-sizing: border-box;
   display: block;
@@ -35,15 +36,19 @@ body {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #6c757d transparent transparent transparent;
 }
+
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
@@ -57,12 +62,14 @@ body {
 .form-control:focus {
   box-shadow: none;
 }
+
 .form-control-underlined {
   border-width: 0;
   border-bottom-width: 1px;
   border-radius: 0;
   padding-left: 0;
 }
+
 /*End Search Input style*/
 
 
@@ -82,34 +89,53 @@ body {
 .table-bordered td, .table-bordered th {
   vertical-align: middle;
 }
+
 .table-bordered tr {
   &:last-of-type {
     border-bottom: 1px solid #dee2e6;
   }
 }
+
 .td-custom, .td-custom-1 {
   max-height: 150px;
   overflow-y: scroll;
   display: block;
   border-bottom: none !important;
   overflow-x: hidden;
+
   &::-webkit-scrollbar {
     width: 7px;
   }
+
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
+
   &::-webkit-scrollbar-thumb {
     background: #888;
   }
+
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
 }
-.td-custom {margin-bottom: .75rem}
-.td-custom-1 {margin-bottom: .35rem}
+
+.td-custom {
+  margin-bottom: .75rem
+}
+
+.td-custom-1 {
+  margin-bottom: .35rem
+}
+
 /*End Style For All td tag in table that contain large text*/
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

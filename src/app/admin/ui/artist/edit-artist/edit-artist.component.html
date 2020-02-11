@@ -143,7 +143,7 @@
                 (change)="changeArtType($event)"
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
           <option value="">Select Art Type For This Artist</option>
-          <option value="{{artType.id}}" *ngFor="let artType of artTypes" [selected]="artistData?.artType == artType.name">{{artType.name}}</option>
+          <option value="{{artType.id}}" *ngFor="let artType of artTypes" [selected]="artistData?.artType === artType.name">{{artType.name}}</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
       </div>

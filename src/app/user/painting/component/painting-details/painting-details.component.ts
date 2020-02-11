@@ -1,10 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, LOCALE_ID, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
 import {ArtistService} from '../../../artist/service/artist.service';
 import {ArtistDetails} from '../../../artist/entity/artist-details';
 import {PaintingDetails} from '../../entity/painting-details';
 import {Title} from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-painting-details',

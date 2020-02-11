@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {PhotosListService} from '../../../service/PhotosList/photos-list.service';
-import {Painting} from '../../../entity/painting/painting';
-import {FeaturedPaintingsService} from '../../../service/featured/featured-paintings.service';
-import {ToastrService} from 'ngx-toastr';
-import {FormControl, FormGroup} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { PhotosListService } from '../../../service/PhotosList/photos-list.service';
+import { Painting } from '../../../entity/painting/painting';
+import { FeaturedPaintingsService } from '../../../service/featured/featured-paintings.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-featured-images',
@@ -17,7 +17,7 @@ export class EditFeaturedImagesComponent implements OnInit {
   public filteredList: Painting[];
 
   searchForm = new FormGroup({
-    searchTerm: new FormControl('')
+    query: new FormControl('')
   });
 
   constructor(private paintingService: PhotosListService,
@@ -31,6 +31,7 @@ export class EditFeaturedImagesComponent implements OnInit {
   }
 
   selectPainting(painting: Painting) {
+    console.log('Selecting a Painting');
     this.featuredService.selectFeaturedPainting(painting.id).subscribe(
       () => {
         this.toaster.success(`${painting.name} is Selected`);
@@ -43,6 +44,7 @@ export class EditFeaturedImagesComponent implements OnInit {
   }
 
   unselectPainting(painting: Painting) {
+    console.log('Removing a Painting');
     this.featuredService.removeFeaturedPainting(painting.id).subscribe(
       () => {
         this.toaster.success(`${painting.name} is Removed From the List`);
@@ -80,8 +82,8 @@ export class EditFeaturedImagesComponent implements OnInit {
 
   filterByName() {
     this.filteredList = this.originalList.filter(a => {
-      console.log(`filtering on ${this.searchForm.get('searchTerm').value}`);
-      return a.name.toLowerCase().includes(this.searchForm.get('searchTerm').value.toLowerCase());
+      console.log(`filtering on ${this.searchForm.get('query').value}`);
+      return a.name.toLowerCase().includes(`${this.searchForm.get('query').value.toLowerCase()}`);
     });
   }
 }

@@ -73,6 +73,7 @@ import { PaintingKnowledgeGraphComponent } from './painting/component/painting-k
 import { FeaturedImagesComponent } from './painting/component/featured-images/featured-images.component';
 import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
 import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -187,7 +188,9 @@ import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.com
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
-    NgxImageZoomModule.forRoot(), NgxJsonLdModule
+    NgxImageZoomModule.forRoot(),
+    NgxJsonLdModule,
+    MarkdownModule.forChild()
   ],
   schemas: [
     // NO_ERRORS_SCHEMA

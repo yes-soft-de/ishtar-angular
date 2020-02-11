@@ -37,7 +37,6 @@ export class AdminConfig {
   public static specialCommentAPI          = AdminConfig.sourceAPI + 'spacialcomment';
 
   public static interactionsAPI         = AdminConfig.sourceAPI + 'interactions';
-  // public static userProfileAPI = 'http://K-symfony.96.lt/OAuth2/public/user';
   // public static userProfileAPI = AdminConfig.sourceAPI + 'user';
 
   public static featuredAPI             = AdminConfig.sourceAPI + 'featuredpainting';

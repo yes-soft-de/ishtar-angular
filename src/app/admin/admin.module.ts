@@ -29,6 +29,7 @@ import {ListCommentComponent} from './ui/comments/list-comment/list-comment.comp
 import {ListInteractionComponent} from './ui/interactions/list-interaction/list-interaction.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EditFeaturedImagesComponent} from './ui/featured/edit-featured-images/edit-featured-images.component';
+import {MarkdownComponent, MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import {EditFeaturedImagesComponent} from './ui/featured/edit-featured-images/ed
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    // BrowserAnimationsModule
+    MarkdownModule.forChild()
   ]
 })
 export class AdminModule {
