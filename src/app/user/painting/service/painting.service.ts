@@ -87,8 +87,6 @@ export class PaintingService extends InteractionsService {
 
   // Add View Interaction When User Inter To The Painting Detail
   viewPainting(entityType: string, entityId: number) {
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
       this.userService.getUserInfo().subscribe(
         userInfoResponse => {
           // Assign the Data to the User
@@ -104,7 +102,6 @@ export class PaintingService extends InteractionsService {
           }
         }
       );
-    }
   }
 
   getFeaturedPaintings(): Observable<PaintingListItem[]> {
