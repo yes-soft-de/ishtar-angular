@@ -12,7 +12,7 @@ import {MatDialog} from '@angular/material';
   providedIn: 'root'
 })
 export class InteractionsService {
-  private interactionsNumberSubject = new Subject<any>();
+  private interactionsNumberSubject = new Subject<number>();
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
@@ -21,34 +21,17 @@ export class InteractionsService {
   }
 
   // Get Interactions number
-  getInteractionsNumber(entity: string, row: number, interactionsType: string): Observable<{
-    id: number,
-    interactionType: string,
-    interactionNumber: number
-  }> {
-    // Fetch Entity Number
-    const entityNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entity);
-    // Fetch Interactions Number
-    const interactionsNumber = +this.interactionConstantService.convertInteractionsTypeToNumber(interactionsType);
-    this.interactionsManagerService.getInteractionsNumber(entityNumber, row, interactionsNumber)
+  getInteractionsNumber(entity: number, row: number, interactionsCode: number): Observable<number> {
+    this.interactionsManagerService.getInteractionsNumber(entity, row, interactionsCode)
       .pipe(
         catchError(() => {
           this.interactionsNumberSubject.error('Error Getting Data');
           return EMPTY;
-        }),
-        map(oldStructureInteraction => {
-          if (oldStructureInteraction !== null &&
-            oldStructureInteraction.Data !== undefined) {
-            return {
-              id: row,
-              interactionType: interactionsType,
-              interactionNumber: oldStructureInteraction.Data.interactions
-            };
-          }
-        })).subscribe(
-      newStructureInteractions => {
+        }))
+        .subscribe(
+      interactionResponse => {
         // Send Data If Successfully Fetching
-        this.interactionsNumberSubject.next(newStructureInteractions);
+        this.interactionsNumberSubject.next(interactionResponse.Data.interactions);
       }
     );
     // Return The Data To Print It In Component
@@ -64,10 +47,10 @@ export class InteractionsService {
         return EMPTY;
       })).subscribe(
         (clientInteractionsResponse: { Data: any }) => {
-          // Response: {entity: "painting", id: 2, interaction: "like", interactionID: 103}
+          // Response: {entity: "painting", id: 2, interactionTypeString: "like", interactionID: 103}
           clientInteractionsResponse.Data.map(interactionResponse => {
-            if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_LOVE) {
-              // Check For Entity Name and Interaction IS Like
+            if (interactionResponse.interactionTypeString === InteractionConstantService.INTERACTION_TYPE_LOVE) {
+              // Check For EntityName Name and Interaction IS Like
               if (interactionResponse.entity === parentType) {
                 // Check For Specify (artist, painting, ...)
                 if (interactionResponse.id === rowId) {
@@ -75,8 +58,8 @@ export class InteractionsService {
                 }
               }
             }
-            if (interactionResponse.interaction === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-              // Check For Entity Name and Interaction IS Follow
+            if (interactionResponse.interactionTypeString === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
+              // Check For EntityName Name and Interaction IS Follow
               if (interactionResponse.entity === parentType) {
                 // Check For Specify (artist, painting, ...)
                 if (interactionResponse.id === rowId) {
@@ -91,7 +74,7 @@ export class InteractionsService {
 
   // Post Interactions (entityType: artistTableNumber, entityId: artistID, interactionsType = (love, follow, clap)
   postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
-    // Convert Entity Name To Entity Type
+    // Convert EntityName Name To EntityName Type
     const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);
     // Fetch Interactions Number
     const interactionsNumber = +this.interactionConstantService.convertInteractionsTypeToNumber(interactionsType);
@@ -119,7 +102,7 @@ export class InteractionsService {
     return this.interactionsManagerService.getClientClap(clientId).subscribe(
       (clapInteractionsResponse: { Data: any }) => {
         clapInteractionsResponse.Data.map(clapResponse => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
-          // Check For Entity Name and Interaction IS Clap
+          // Check For EntityName Name and Interaction IS Clap
           if (clapResponse.entity === parentType) {
             // Check For Specify (artist, painting, ...)
             if (clapResponse.id === rowId) {
@@ -132,7 +115,7 @@ export class InteractionsService {
   }
 
   postClapToAPI(entityType: string, entityId: number, clapValue: number, userId: number, interactionSubject: Subject<any>) {
-    // Convert Entity Name To Entity Type
+    // Convert EntityName Name To EntityName Type
     const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);
     this.interactionsManagerService.postClap(entityTypeNumber, entityId, clapValue, userId)
       .pipe(catchError(err => {

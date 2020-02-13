@@ -52,7 +52,7 @@ export class UserConfig {
 
   // View Follow Love Interactions API
   public static interactionsAPI = UserConfig.sourceAPI + 'interactions';
-  public static interactionAPI = UserConfig.sourceAPI + 'interaction';
+  public static interactionAPI = UserConfig.sourceAPI + 'interactionTypeString';
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
   public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
   public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviews';

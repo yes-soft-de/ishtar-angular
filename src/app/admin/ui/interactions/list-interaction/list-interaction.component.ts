@@ -70,12 +70,12 @@ export class ListInteractionComponent implements OnInit {
         // for (const [key, value] of Object.entries(res)) {
         //     console.log(`${key}: ${value}`);
         // }
-        // Search In Entity Column
+        // Search In EntityName Column
         const interactionsResult = res.interaction.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         // Search In Interactions Column
         const entitiesResult = res.entities.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (entitiesResult) {
-          // display the Entity Column
+          // display the EntityName Column
           return entitiesResult;
         } else if (interactionsResult) {
           // display the Interactions Column

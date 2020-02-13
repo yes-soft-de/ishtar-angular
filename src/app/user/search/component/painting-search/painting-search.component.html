@@ -21,10 +21,10 @@
              <p class="artist">{{painting?.artist}}</p>
              <ul class="statistics">
                <li>
-                 <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'like'"></app-interaction>
+                 <app-interaction [EntityName]="'painting'" [Row]="painting?.id" [interactionTypeString]="'like'"></app-interaction>
                </li>
                <li>
-                 <app-interaction [Entity]="'painting'" [Row]="painting?.id" [interaction]="'view'"></app-interaction>
+                 <app-interaction [EntityName]="'painting'" [Row]="painting?.id" [interactionTypeString]="'view'"></app-interaction>
                </li>
              </ul>
            </span>

@@ -6,7 +6,8 @@
         <h3 class="col-12 text-center">{{artist.name}}</h3>
         <span class="col-12 text-center artist-detail-number">{{artist.painting }} painting(s)</span>
         <span class="col-12 text-center artist-detail-follower">
-                    <app-interaction [Entity]="'artist'" [Row]="artist?.id" [interaction]="'follow'"></app-interaction>
+                    <app-interaction [EntityName]="'artist'" [Row]="artist?.id"
+                                     [interactionTypeString]="'follow'"></app-interaction>
                     Follow
                   </span>
       </div>

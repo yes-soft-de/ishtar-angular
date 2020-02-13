@@ -59,7 +59,7 @@ export class ClapService extends InteractionsService {
     // }
   }
 
-  // Check if The User is login to make his clap interaction
+  // Check if The User is login to make his clap interactionTypeString
   postClap(entityType: string, entityId: number, clapValue: number) {
     if (!this.checkUserDetailsExists(this.userInfo)) {
       // Open Dialog Box If User Not Login

@@ -3,6 +3,9 @@ import {UserConfig} from '../../UserConfig';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
+import {InteractionRequest} from '../request/interaction-request';
+import {ClapRequest} from '../request/clap-request';
+import {IshtarClientService} from '../../shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ import {InteractionsResponse} from '../response/interactions-response';
  */
 export class InteractionsRepositoryService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, ishtarClient: IshtarClientService) {
   }
 
   // Get Interactions number(entity: artistTableNumber, row: artistID, interactionsNumber: 1 for love & 2 for follow)
@@ -29,7 +32,7 @@ export class InteractionsRepositoryService {
   // (entityTypeNumber = entity: artistTableNumber, entityId = row: artistID,
   // interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
   postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any> {
-    const request = {
+    const request: InteractionRequest = {
       client: userId,
       row: entityId,
       entity: entityTypeNumber,
@@ -45,7 +48,7 @@ export class InteractionsRepositoryService {
 
   // Post (Clap) interactions
   postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<any> {
-    const request = {
+    const request: ClapRequest = {
       entity: entityTypeNumber,
       row: entityId,
       value: clapValue,
@@ -75,6 +78,4 @@ export class InteractionsRepositoryService {
   deleteClap(clapID: number): Observable<any> {
     return this.httpClient.delete(`${UserConfig.clapAPI}/${clapID}`);
   }
-
-
 }

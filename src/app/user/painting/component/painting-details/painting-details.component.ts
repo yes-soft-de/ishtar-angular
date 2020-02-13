@@ -70,5 +70,4 @@ export class PaintingDetailsComponent implements OnInit {
   hideFullScreenMode() {
     this.fullImage = false;   // Exit From Painting Full Size
   }
-
 }
