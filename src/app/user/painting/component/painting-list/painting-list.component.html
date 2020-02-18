@@ -36,7 +36,7 @@
           <app-painting-card [painting]="painting"></app-painting-card>
         </div>
       </div>
-      <div id="add-more-btn" class="row" (click)="addMorePaintings()">
+      <div id="add-more-btn" class="row" (click)="addMorePaintings()" *ngIf="visiblePaintingsLimit < originalList.length">
         <a>
           <mdb-icon fas icon="angle-double-down" size="2x"></mdb-icon>
         </a>

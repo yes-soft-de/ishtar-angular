@@ -4,15 +4,6 @@
     <div class="carousel-cell">
       <section class="artist-page">
         <div class="artist-header">
-          <div class="position-absolute">
-            <div class="artist-banner-text text-center p-3 p-md-5">
-              <h4 class="font-weight-bold">{{randomPaintingForArtist?.name}}</h4>
-              <span class="d-block artist-banner-dimension">{{randomPaintingForArtist?.width}}
-                cm X {{randomPaintingForArtist?.height}}cm</span>
-              <span class="d-block artist-banner-type">{{randomPaintingForArtist?.colorsType}}
-                On {{randomPaintingForArtist?.artType}}</span>
-            </div>
-          </div>
           <div class="banner-background">
             <img class="parallax d-block" [src]="randomPaintingForArtist?.image">
           </div>

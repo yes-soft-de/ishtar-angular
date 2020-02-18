@@ -22,6 +22,7 @@ export class InteractionsService {
 
   // Get Interactions number
   getInteractionsNumber(entity: number, row: number, interactionsCode: number): Observable<number> {
+    const interactionSubject = new Subject<number>();
     this.interactionsManagerService.getInteractionsNumber(entity, row, interactionsCode)
       .pipe(
         catchError(() => {
@@ -31,11 +32,11 @@ export class InteractionsService {
         .subscribe(
       interactionResponse => {
         // Send Data If Successfully Fetching
-        this.interactionsNumberSubject.next(interactionResponse.Data.interactions);
+            interactionSubject.next(interactionResponse.Data.interactions);
       }
     );
     // Return The Data To Print It In Component
-    return this.interactionsNumberSubject.asObservable();
+    return interactionSubject.asObservable();
   }
 
   // Get The All Client Interaction(love, view, follow) Dependence On Client ID

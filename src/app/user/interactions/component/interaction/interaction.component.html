@@ -1,17 +1,17 @@
 <!--THis For View Interactions Number-->
-<span *ngIf="interactionTypeString == 'view'">
+<span *ngIf="interactionTypeString === 'view'">
   <i class="far fa-eye fa-fw m-1"></i>
   <span>{{interactions}}</span>
 </span>
 
 <!--This is for Love Interaction Number-->
-<span *ngIf="interactionTypeString == 'like'">
+<span *ngIf="interactionTypeString === 'like'">
   <i class="fas fa-heart fa-fw m-1"></i>
   <span>{{interactions}}</span>
 </span>
 
 <!--This is for Follow Interaction Number-->
-<span *ngIf="interactionTypeString == 'follow'">
+<span *ngIf="interactionTypeString === 'follow'">
   <i class="fas fa-heart fa-fw m-1 d-none"></i>
   <span>{{interactions}}</span>
 </span>

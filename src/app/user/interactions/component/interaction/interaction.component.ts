@@ -30,7 +30,9 @@ export class InteractionComponent implements OnInit {
     if (this.interactionCode > -1 && this.entityCode > -1) {
       this.interactionsService.getInteractionsNumber(this.entityCode, this.Row, this.interactionCode).subscribe(
         data => {
-          this.interactions = data;
+          if (data) {
+            this.interactions = data;
+          }
         }
       );
     }

@@ -38,6 +38,11 @@ export class InteractionsRepositoryService {
       entity: entityTypeNumber,
       interaction: interactionsTypeNumber
     };
+
+    if (userId === null) {
+      console.log(`deleting client from request`);
+      delete request.client;
+    }
     return this.httpClient.post(`${UserConfig.interactionsAPI}`, JSON.stringify(request));
   }
 
