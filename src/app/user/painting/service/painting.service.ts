@@ -94,21 +94,12 @@ export class PaintingService extends InteractionsService {
 
   // Add View Interaction When User Inter To The Painting Detail
   viewPainting(entityType: string, entityId: number) {
-    this.userService.getUserInfo().subscribe(
-      userInfoResponse => {
-        // Assign the Data to the User
-        if (this.isUserNode(userInfoResponse)) {
-          console.log('Assigning User');
-          this.userInfo = userInfoResponse;
           this.postInteractionToAPI(
             entityType,
             entityId,
-            this.userInfo.id,
+            null,
             InteractionConstantService.INTERACTION_TYPE_VIEW,
             this.viewSubject);
-        }
-      }
-    );
   }
 
   getFeaturedPaintings(): Observable<PaintingListItem[]> {
