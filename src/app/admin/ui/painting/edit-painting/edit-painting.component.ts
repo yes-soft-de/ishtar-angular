@@ -56,13 +56,13 @@ export class EditPaintingComponent implements OnInit {
     });
 
     // Fetch Painting Data
-    const paintingsInfoObs = this.photosListService.getPaintingInfo(this.paintingID).subscribe(
+    this.photosListService.getPaintingInfo(this.paintingID).subscribe(
       (paintingResult: PaintingDetailsResponse) => {
         if (paintingResult) {
           this.paintingData = paintingResult.Data;
           console.log(JSON.stringify(this.paintingData));
           this.artistId = this.paintingData.artistID;
-
+          this.updateArtType();
           this.updatesValues();
         }
       }
@@ -80,9 +80,11 @@ export class EditPaintingComponent implements OnInit {
       (artTypeListResponse: ArtTypeListResponse) => {
         this.artTypes = artTypeListResponse.Data;
 
+        this.updateArtType();
         this.updatesValues();
       }
     );
+
 
     // Storing Form Data
     this.uploadForm = this.formBuilder.group({
@@ -98,7 +100,7 @@ export class EditPaintingComponent implements OnInit {
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
       artType: ['', Validators.required],
-      gallery: ['', Validators.required],
+      // gallery: ['', Validators.required],
       story: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
@@ -133,6 +135,19 @@ export class EditPaintingComponent implements OnInit {
     this.artist.setValue(event.target.value, {
       onlySelf: true
     });
+  }
+
+  updateArtType() {
+    console.log('Trying to Update Art Type, ');
+    if (this.paintingData.artType && this.artTypes ) {
+      for (const artType of this.artTypes) {
+        if (artType.name === this.paintingData.artType) {
+          this.artTypeId = artType.id;
+          console.log(`Trying ${artType.name} == ${this.paintingData.artType}`);
+        }
+        console.log(`Trying ${artType.name} != ${this.paintingData.artType}`);
+      }
+    }
   }
 
   // Choose State Using Select Dropdown

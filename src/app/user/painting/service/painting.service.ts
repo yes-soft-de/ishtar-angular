@@ -87,51 +87,34 @@ export class PaintingService extends InteractionsService {
 
   // Add View Interaction When User Inter To The Painting Detail
   viewPainting(entityType: string, entityId: number) {
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
       this.userService.getUserInfo().subscribe(
-          userInfoResponse => {
-            // Assign the Data to the User
-            if (this.isUserNode(userInfoResponse)) {
-              console.log('Assigning User');
-              this.userInfo = userInfoResponse;
-              this.postInteractionToAPI(
-                  entityType,
-                  entityId,
-                  this.userInfo.id,
-                  InteractionConstantService.INTERACTION_TYPE_VIEW,
-                  this.viewSubject);
-            }
+        userInfoResponse => {
+          // Assign the Data to the User
+          if (this.isUserNode(userInfoResponse)) {
+            console.log('Assigning User');
+            this.userInfo = userInfoResponse;
+            this.postInteractionToAPI(
+              entityType,
+              entityId,
+              this.userInfo.id,
+              InteractionConstantService.INTERACTION_TYPE_VIEW,
+              this.viewSubject);
           }
+        }
       );
-    }
-    // if (!this.userRequestSent) {
-    //   // If Not Request Him
-    //   this.userRequestSent = true;
-    //   this.userProfileService.requestUserDetails().subscribe(
-    //     (user: any) => {
-    //       // Assign the Data to the User
-    //       if (this.isUserNode(user.Data)) {
-    //         console.log('Assigning User');
-    //         this.userInfo = user.Data;
-    //         this.postInteractionToAPI(
-    //             entityType,
-    //             entityId,
-    //             this.userInfo.id,
-    //             InteractionConstantService.INTERACTION_TYPE_VIEW,
-    //             this.viewSubject);
-    //       }
-    //     }
-    //   );
-    // } else if (this.checkUserDetailsExists(this.userInfo)) {
-    //   console.log('User Exists, Requesting Love Status');
-    //   this.postInteractionToAPI(
-    //       entityType,
-    //       entityId,
-    //       this.userInfo.id,
-    //       InteractionConstantService.INTERACTION_TYPE_VIEW,
-    //       this.viewSubject);
-    // }
+  }
+
+  getFeaturedPaintings(): Observable<PaintingListItem[]> {
+    const featuredPaintingsSubject = new Subject<PaintingListItem[]>();
+    this.paintingManager.getFeaturedPaintings().subscribe(
+      paintingListResult => {
+        featuredPaintingsSubject.next(paintingListResult.Data);
+      }, error1 => {
+        console.log(error1);
+      }
+    );
+
+    return featuredPaintingsSubject.asObservable();
   }
 
   getMostViewedPaintings(): Observable<MostViewedListItem[]> {

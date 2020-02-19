@@ -1,35 +1,52 @@
 <main class="row m-0 p-0">
-  <app-home-hero class="w-100" style="z-index: -1;"></app-home-hero>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-10 about-ishtar">
-        <h1 class="font-weight-bolder">About Ishtar</h1>
+  <div class="block-left">
+    <div class="overlay"></div>
+    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'" [isControls]="true">
+      <mdb-carousel-item>
         <p>
-          Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is
-          the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.
+        With Ishtar, we try to unite artists from Syria and all over the world, to make, share and contribute with others, because we believe in the power of inspiration, so, it's about time you start to get inspired and inspire others like you, who are just waiting for that little push.
         </p>
-        <a routerLink="/about-ishtar">Read more</a>
-      </div>
-    </div>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <p>
+        Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is the counterpart to the Sumerian Inanna and is the cognate for the Northwest Semitic Aramean goddess Astarte.
+        </p>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <p>
+        Ishtar is a unique website that is designed for presenting modern Syrian painting art and artists. We are trying to highlight the best Syrian artists in the art market today.
+        </p>
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <a routerLink="/about-ishtar" class="read-more">
+      <img src="../../../../../assets/slider-images/7.png" class="left">
+      Read more
+      <img src="../../../../../assets/slider-images/7.png">
+    </a>
+  </div>
+  <div class="block-right">
+    <section class="w-100 d-flex justify-content-center flex-column align-items-center">
+      <app-featured-images class="w-100" style="display: flex; justify-content: center;"></app-featured-images>
+    </section>
   </div>
 
   <section class="w-100 d-flex justify-content-center flex-column align-items-center p-2">
-    <h1 class="font-weight-bolder m-5">Latest Paintings</h1>
-    <app-painting-list style="display: flex; justify-content: center;" [filter]="false"></app-painting-list>
+    <h2 class="font-weight-bolder m-5">Latest Paintings</h2>
+    <app-painting-list [visiblePaintingsLimit]="24" [paintingSectionSize]="12" style="display: flex; justify-content: center;" [filter]="false"></app-painting-list>
   </section>
 
   <section class="w-100">
     <div class="col-12" style="padding-top: 2rem">
-      <h1 class="text-center font-weight-bolder">Latest Active Artist</h1>
+      <h2 class="text-center font-weight-bolder">Latest Active Artist</h2>
     </div>
-    <app-artist-list [filter]="false" [search]="false"></app-artist-list>
+    <app-artist-list [visibleArtistSize]="4" [artistSectionSize]="8" [filter]="false" [search]="false"></app-artist-list>
   </section>
 
   <section class="w-100 m-0">
     <div class="pt-5 col-12">
-      <h1 class="text-center font-weight-bolder">Learn About Art Schools</h1>
+      <h2 class="text-center font-weight-bolder">Learn About Art Schools</h2>
     </div>
-    <app-art-type-list></app-art-type-list>
+    <app-art-type-list [viewedArtTypesLimit]="3"></app-art-type-list>
   </section>
 
   <section class="w-100 m-0">

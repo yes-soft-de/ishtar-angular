@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ArtistDetails} from '../../entity/artist-details';
 import {ArtistService} from '../../service/artist.service';
 import {PaintingListItem} from '../../../painting/entity/painting-list-item';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-artist-details',
@@ -26,7 +27,8 @@ export class ArtistDetailsComponent implements OnInit {
   twitterValid = false;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private artistService: ArtistService) {
+              private artistService: ArtistService,
+              private titleService: Title) {
   }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class ArtistDetailsComponent implements OnInit {
         this.artistService.getArtist(Number(urlSegments[1].path)).subscribe(
           data => {
             this.artist = data;
+            this.titleService.setTitle(`${this.artist.name} | Ishtar-Art`);
             console.log(JSON.stringify(this.artist));
             this.linkedInValid = this.linkedInRegex.test(this.artist.Linkedin);
             this.facebookValid = this.facebookRegex.test(this.artist.Facebook);

@@ -3,4 +3,5 @@ export interface RegisterRequest {
   password: string;
   email: string;
   image?: string;
+  google?: number;
 }
