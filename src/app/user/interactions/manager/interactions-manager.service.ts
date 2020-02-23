@@ -5,6 +5,7 @@ import {InteractionsResponse} from '../response/interactions-response';
 import { ClientInteractionResponse } from '../response/client-interaction-response';
 import { InteractionResponse } from 'src/app/admin/entity/interactions/interaction-response';
 import { ClapGetResponse } from '../response/clap-get-response';
+import { ClapEntity } from '../entity/clap-entity';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class InteractionsManagerService {
    * @param clapValue number
    * @param userId number
    */
-  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<ClapGetResponse> {
+  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<{Data: ClapEntity[]}> {
     return this.interactionsRepositoryService.postClap(entityTypeNumber, entityId, clapValue, userId);
   }
 

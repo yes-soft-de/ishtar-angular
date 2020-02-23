@@ -101,7 +101,7 @@ export class InteractionsService {
     return interactionSubject.asObservable();
   }
 
-  getClientClap(): Observable<number> {
+  getClientClap(pageId: number): Observable<number> {
     const interactionSubject = new Subject<number>();
 
     if (!this.checkUserDetailsExists()) {
@@ -109,13 +109,19 @@ export class InteractionsService {
       return interactionSubject.asObservable();
     }
 
+
+    let clapValue = -1;
+
     this.interactionsManagerService.getClientClap(this.userInfo.id).subscribe(
       clapInteractionsResponse => {
-        if (clapInteractionsResponse.Data.value) {
-          interactionSubject.next(clapInteractionsResponse.Data.value);
-        } else {
-          interactionSubject.next(0);
+        for (const i of clapInteractionsResponse.Data.filter(
+          clap => {
+            return clap.id === pageId;
+          }
+        )) {
+          clapValue = i.value;
         }
+        interactionSubject.next(clapValue);
       }
     );
     return interactionSubject.asObservable();
@@ -129,10 +135,12 @@ export class InteractionsService {
    */
   postClapToAPI(entityCode: number, entityId: number, clapValue: number): Observable<number> {
     const interactionSubject = new Subject<number>();
+
     if (this.userInfo === null) {
       interactionSubject.error('Please Login First!');
       return interactionSubject.asObservable();
     }
+
     this.interactionsManagerService.postClap(entityCode, entityId, clapValue, this.userInfo.id)
       .pipe(catchError(err => {
         interactionSubject.error('Error Getting Data');
@@ -140,15 +148,12 @@ export class InteractionsService {
         return EMPTY;
       }))
       .subscribe(
-        createClapResponse => {
-          if (createClapResponse.Data.value) {
-            interactionSubject.next(createClapResponse.Data.value);
-          } else {
-            interactionSubject.next(0);
-          }
+        () => {
+          interactionSubject.next(0);
+        }, err => {
+          interactionSubject.error(err);
         }
       );
-
     return interactionSubject.asObservable();
   }
 

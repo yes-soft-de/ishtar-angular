@@ -29,8 +29,8 @@ export class ClapService extends InteractionsService {
   }
 
   // region Love Getter Methods
-  getClaps() {
-    return this.getClientClap();
+  getClaps(pageId: number) {
+    return this.getClientClap(pageId);
   }
 
   // Check if The User is login to make his clap interactionTypeString

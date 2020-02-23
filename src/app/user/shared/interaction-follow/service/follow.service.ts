@@ -30,10 +30,11 @@ export class FollowService extends InteractionsService {
       return interactionSubject.asObservable();
     }
 
+    console.log('Looking for follows with rowID: ' + rowId);
+
     this.getClientInteraction(rowId).subscribe(
       clientInteractionList => {
-        console.log(JSON.stringify(clientInteractionList));
-        interactionSubject.next(clientInteractionList.filter(item => {
+        const followListSize = clientInteractionList.filter(item => {
           if (item.entity !== parentType) {
             return false;
           }
@@ -42,7 +43,10 @@ export class FollowService extends InteractionsService {
             return false;
           }
           return true;
-        }).length > 0);
+        }).length;
+
+        interactionSubject.next(followListSize > 0);
+        console.log('Follow List Size: ' + followListSize + ' While the original list is: ' + clientInteractionList.length);
       }
     );
 

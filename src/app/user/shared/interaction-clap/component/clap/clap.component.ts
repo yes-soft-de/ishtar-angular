@@ -32,7 +32,7 @@ export class ClapComponent implements OnInit {
   }
 
   getClaps() {
-    this.clapService.getClientClap().subscribe(
+    this.clapService.getClientClap(this.ParentId).subscribe(
       clapsValue => {
         if (clapsValue > 0) {
           this.clapped = true;
@@ -69,9 +69,8 @@ export class ClapComponent implements OnInit {
     }
 
     this.clapService.postClap(interactionType, this.ParentId, value).subscribe(
-      clapsValue => {
-        this.clapped = true;
-        this.clappedNumber = clapsValue;
+      () => {
+        this.getClaps();
       }
     );
 
