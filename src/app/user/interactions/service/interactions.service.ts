@@ -74,7 +74,8 @@ export class InteractionsService {
   }
 
   // Post Interactions (entityType: artistTableNumber, entityId: artistID, interactionsType = (love, follow, clap)
-  postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
+  postInteractionToAPI(entityType: string, entityId: number, userId: number,
+                       interactionsType: string, interactionSubject: Subject<any>): Observable<any> {
     // Convert EntityName Name To EntityName Type
     const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);
     // Fetch Interactions Number
@@ -95,8 +96,9 @@ export class InteractionsService {
           interactionSubject.next(newStructureInteraction);
         }
       );
-  }
 
+    return interactionSubject.asObservable();
+  }
 
   // Get The Client Clap Dependence On Client ID , entityName: string, rowId
   getClientClap(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {

@@ -1,9 +1,5 @@
+import { LoveEntity } from '../entity/love-entity';
+
 export class LoveResponse {
-    success: boolean;
-    value: {
-        entity: string;
-        id: number;
-        interaction: 'like';
-        interactionID: number
-    }
+  Data: LoveEntity;
 }

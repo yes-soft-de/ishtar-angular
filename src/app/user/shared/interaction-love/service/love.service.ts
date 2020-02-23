@@ -7,6 +7,7 @@ import {UserInfo} from '../../../entity/user/user-info';
 import {Observable, Subject} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {UserService} from '../../user/service/user.service';
+import { LoveEntity } from '../entity/love-entity';
 
 @Injectable({
   providedIn: 'root'
@@ -40,32 +41,15 @@ export class LoveService extends InteractionsService {
           }
       );
     }
-    // See If Loading User
-    // if (!this.userRequestSent) {
-    //   // If Not Request Him
-    //   this.userRequestSent = true;
-    //   this.userProfileService.requestUserDetails().subscribe(
-    //       (user: any) => {
-    //         // Assign the Data to the User
-    //         if (this.isUserNode(user.Data)) {
-    //           console.log('Assigning User');
-    //           this.userInfo = user.Data;
-    //           this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
-    //         }
-    //       }
-    //   );
-    // } else if (this.checkUserDetailsExists(this.userInfo)) {
-    //   this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
-    // }
   }
 
   // Check if The User is login to make his love interactionTypeString
-  postLove(entityType: string, entityId: number, interactionsType: string) {
+  postLove(entityType: string, entityId: number, interactionsType: string): Observable<any> {
     if (!this.checkUserDetailsExists(this.userInfo)) {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      this.postInteractionToAPI(entityType, entityId, this.userInfo.id, interactionsType, this.loveSubject);
+      return this.postInteractionToAPI(entityType, entityId, this.userInfo.id, interactionsType, this.loveSubject);
     }
   }
 
@@ -79,5 +63,22 @@ export class LoveService extends InteractionsService {
     return this.getInteractionsObservable(this.loveSubject);
   }
 
+  getLoveStatus(parentType: string, rowId: number): Observable<LoveEntity> {
+    const loveSubject = new Subject<LoveEntity>();
+
+    if (!this.userService.isLoggedIn()) {
+      loveSubject.error('Please Login');
+    } else {
+      this.userService.getUserInfo().subscribe(
+        userData => {
+        }, error => {
+          console.log(JSON.stringify(error));
+          loveSubject.error('Error Getting Data from Backend!');
+        }
+      );
+    }
+
+    return loveSubject.asObservable();
+  }
 
 }

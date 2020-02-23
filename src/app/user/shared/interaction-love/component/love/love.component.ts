@@ -21,20 +21,10 @@ export class LoveComponent implements OnInit {
     this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
     this.loveService.getLoveObservable().subscribe(
-        (loveResponse: { success: boolean, value: any }) => {
-          // Check If There Is Data Or Not Return From The Server
+        (loveResponse: { Data: {interactions: number} }) => {
           if (loveResponse) {
-            if (loveResponse.value.interactionTypeString == InteractionConstantService.INTERACTION_TYPE_LOVE ||
-              loveResponse.value.interactionTypeString.name == InteractionConstantService.INTERACTION_TYPE_LOVE) {
-              this.loved = loveResponse.success;  // this loveResponse = true if success
-              if (loveResponse.value.interactionID) {     // Response loveResponse After Reload The Page
-                this.interactionId = loveResponse.value.interactionID;
-              } else if (loveResponse.value.id) {         // Response loveResponse After Create New Love
-                this.interactionId = loveResponse.value.id;
-              }
-              // console.log('Love Interaction Response : ', loveResponse);
-            } else {
-              return;
+            if (loveResponse.Data.interactions > 0) {
+              this.loved = true;
             }
           } else {  // If Not Data That Mean This Interaction Was Deleted
             this.loving = false;
@@ -47,7 +37,14 @@ export class LoveComponent implements OnInit {
   // Send love interactionTypeString
   sendLove() {
     console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove( this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE);
+    this.loveService.postLove( this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE).subscribe(
+      (lovePostResult: any) => {
+        console.log(JSON.stringify(lovePostResult));
+        if (lovePostResult.success) {
+          this.loved = true;
+        }
+      }
+    );
   }
 
   // delete the love interactionTypeString
