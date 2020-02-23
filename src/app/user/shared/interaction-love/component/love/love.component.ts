@@ -33,11 +33,8 @@ export class LoveComponent implements OnInit {
 
   sendLove() {
     this.loveService.postLove(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE).subscribe(
-      (lovePostResult: any) => {
-        console.log(JSON.stringify(lovePostResult));
-        if (lovePostResult.success) {
-          this.loved = true;
-        }
+      lovePostResult => {
+        this.loved = lovePostResult;
       }
     );
   }

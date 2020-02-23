@@ -30,20 +30,18 @@ export class FollowService extends InteractionsService {
       return interactionSubject.asObservable();
     }
 
-    this.getClientInteraction(this.userInfo.id).subscribe(
+    this.getClientInteraction(rowId).subscribe(
       clientInteractionList => {
+        console.log(JSON.stringify(clientInteractionList));
         interactionSubject.next(clientInteractionList.filter(item => {
-          if (item.id !== rowId) {
-            return false;
-          }
           if (item.entity !== parentType) {
             return false;
           }
-          if (item.interaction === 'follow') {
+          if (item.interaction !== 'follow') {
             // It means that the 2 ifs above was passed, and it can be love or like
-            return true;
+            return false;
           }
-          return false;
+          return true;
         }).length > 0);
       }
     );
@@ -58,12 +56,12 @@ export class FollowService extends InteractionsService {
    * @param interactionsType number
    * @returns Observable<boolean>
    */
-  postFollow(entityType: number, entityId: number, interactionsType: string): Observable<boolean> {
+  postFollow(entityType: number, entityId: number): Observable<boolean> {
     if (!this.checkUserDetailsExists()) {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      return this.postInteractionToAPI(entityType, entityId, InteractionConstantService.INTERACTION_TYPE_FOLLOW);
+      return this.postInteractionToAPI(entityType, entityId, `${InteractionConsts.INTERACTION_TYPE_FOLLOW}`);
     }
   }
 

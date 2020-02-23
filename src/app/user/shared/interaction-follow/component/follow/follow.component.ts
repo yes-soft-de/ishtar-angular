@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FollowService} from '../../service/follow.service';
 import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
 import { EMPTY } from 'rxjs';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-follow',
@@ -9,11 +10,13 @@ import { EMPTY } from 'rxjs';
   styleUrls: ['./follow.component.scss']
 })
 export class FollowComponent implements OnInit {
-  @Input() ParentType;  // this for entity (painting, artist, ...) number ex:(1: painting)
-  @Input() ParentId;    // This is for (painting, artist, ...) id
+  @Input() ParentType: string;  // this for entity (painting, artist, ...) number ex:(1: painting)
+  @Input() ParentId: number;    // This is for (painting, artist, ...) id
   followed = false;
   following = false;
   interactionId: number;
+
+  parentCode = -1;
 
   constructor(private followService: FollowService) { }
 
@@ -24,15 +27,47 @@ export class FollowComponent implements OnInit {
         this.followed = isFollowed;
       }
     );
+
+    switch (this.ParentType.toLowerCase()) {
+      case 'painting':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_PAINTING;
+        break;
+      case 'artist':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ARTIST;
+        break;
+      case 'arttype':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art-type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art_type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'statue':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_STATUE;
+        break;
+      default:
+        break;
+    }
   }
   // Start Following
   startFollow() {
-    this.followService.postFollow(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_FOLLOW);
+    if (this.parentCode > 0){
+      this.followService.postFollow(this.parentCode, this.ParentId).subscribe(
+        requestResponse => {
+          this.followed = requestResponse;
+        }
+      );
+    }
   }
 
   // Stop Following
   stopFollow() {
-    this.following = true;
-    this.followService.deleteFollowInteraction(this.interactionId);
+    this.followService.deleteFollowInteraction(this.interactionId).subscribe(
+      stopedFollowing => {
+        this.followed = stopedFollowing;
+      }
+    );
   }
 }
