@@ -21,13 +21,7 @@ export class FollowComponent implements OnInit {
   constructor(private followService: FollowService) { }
 
   ngOnInit() {
-    // Fetch THe Follow Request
-    this.followService.getIsFollowed(this.ParentType, this.ParentId).subscribe(
-      isFollowed => {
-        this.followed = isFollowed;
-      }
-    );
-
+    this.getIsFollowing();
     switch (this.ParentType.toLowerCase()) {
       case 'painting':
         this.parentCode = InteractionConsts.ENTITY_TYPE_PAINTING;
@@ -51,12 +45,23 @@ export class FollowComponent implements OnInit {
         break;
     }
   }
+
+  getIsFollowing() {
+    // Fetch THe Follow Request
+    this.followService.getIsFollowed(this.ParentType, this.ParentId).subscribe(
+      isFollowed => {
+        this.followed = isFollowed > 0;
+        this.interactionId = isFollowed;
+      }
+    );
+  }
+
   // Start Following
   startFollow() {
     if (this.parentCode > 0){
       this.followService.postFollow(this.parentCode, this.ParentId).subscribe(
-        requestResponse => {
-          this.followed = requestResponse;
+        () => {
+          this.getIsFollowing();
         }
       );
     }
@@ -65,8 +70,8 @@ export class FollowComponent implements OnInit {
   // Stop Following
   stopFollow() {
     this.followService.deleteFollowInteraction(this.interactionId).subscribe(
-      stopedFollowing => {
-        this.followed = stopedFollowing;
+      () => {
+        this.getIsFollowing();
       }
     );
   }

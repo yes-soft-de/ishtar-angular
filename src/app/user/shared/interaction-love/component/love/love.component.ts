@@ -20,12 +20,17 @@ export class LoveComponent implements OnInit {
   constructor(private loveService: LoveService) { }
 
   ngOnInit() {
+    this.checkIfLoved();
+  }
+
+  checkIfLoved() {
     // Response From Love Services
     this.loveService.getLoveStatus(this.ParentType, this.ParentId).subscribe(
       isLoved => {
         console.log(isLoved);
         if (isLoved > 0) {
           this.loved = true;
+          this.interactionId = isLoved;
         } else {
           this.loved = false;
           this.loving = false;
@@ -59,7 +64,7 @@ export class LoveComponent implements OnInit {
     }
     this.loveService.postLove(this.parentCode, this.ParentId, `${InteractionConsts.INTERACTION_TYPE_LOVE}`).subscribe(
       lovePostResult => {
-        this.loved = lovePostResult;
+        this.checkIfLoved();
       }
     );
   }
@@ -67,6 +72,10 @@ export class LoveComponent implements OnInit {
   // delete the love interactionTypeString
   deleteLove() {
     this.loving = true;
-    this.loveService.deleteLoveInteraction(this.interactionId);
+    this.loveService.deleteLoveInteraction(this.interactionId).subscribe(
+      () => {
+        this.checkIfLoved();
+      }
+    );
   }
 }

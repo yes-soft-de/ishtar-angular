@@ -47,7 +47,8 @@ export class LoveService extends InteractionsService {
 
     this.getClientInteraction(rowId).subscribe(
       data => {
-        loveSubject.next(data.filter(
+        let loveId = -1;
+        for (const interaction of data.filter(
           // Just count the loves/likes, only 1 is needed by the way
           (item) => {
             if (item.id !== rowId) {
@@ -64,7 +65,10 @@ export class LoveService extends InteractionsService {
               return false;
             }
             return true;
-          }).length);
+          })) {
+            loveId = interaction.interactionID;
+          }
+        loveSubject.next(loveId);
       }
     );
     return loveSubject.asObservable();

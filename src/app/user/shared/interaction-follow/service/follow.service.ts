@@ -22,11 +22,11 @@ export class FollowService extends InteractionsService {
   }
 
   // region Follow Getter Methods
-  getIsFollowed(parentType: string, rowId: number): Observable<boolean> {
-    const interactionSubject = new Subject<boolean>();
+  getIsFollowed(parentType: string, rowId: number): Observable<number> {
+    const interactionSubject = new Subject<number>();
 
     if (this.userInfo === null) {
-      interactionSubject.next(false);
+      interactionSubject.next(-1);
       return interactionSubject.asObservable();
     }
 
@@ -34,7 +34,8 @@ export class FollowService extends InteractionsService {
 
     this.getClientInteraction(rowId).subscribe(
       clientInteractionList => {
-        const followListSize = clientInteractionList.filter(item => {
+        let followId = -1;
+        for (let followInteraction of clientInteractionList.filter(item => {
           if (item.entity !== parentType) {
             return false;
           }
@@ -43,10 +44,11 @@ export class FollowService extends InteractionsService {
             return false;
           }
           return true;
-        }).length;
+        })) {
+          followId = followInteraction.interactionID;
+        }
 
-        interactionSubject.next(followListSize > 0);
-        console.log('Follow List Size: ' + followListSize + ' While the original list is: ' + clientInteractionList.length);
+        interactionSubject.next(followId);
       }
     );
 

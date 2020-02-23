@@ -7,6 +7,7 @@ import { LoginPageComponent } from '../../ui/Pages/login-page/login-page.compone
 import { MatDialog } from '@angular/material';
 import { ClientInteractionListItem } from '../entity/client-interaction-list-item';
 import { UserService } from '../../shared/user/service/user.service';
+import { ClapEntity } from '../entity/clap-entity';
 
 @Injectable({
   providedIn: 'root'
@@ -101,29 +102,25 @@ export class InteractionsService {
     return interactionSubject.asObservable();
   }
 
-  getClientClap(pageId: number): Observable<number> {
-    const interactionSubject = new Subject<number>();
+  getClientClap(pageId: number): Observable<ClapEntity> {
+    const interactionSubject = new Subject<ClapEntity>();
 
     if (!this.checkUserDetailsExists()) {
       interactionSubject.error('Please Login');
       return interactionSubject.asObservable();
     }
 
-
-    let clapValue = -1;
-
     this.interactionsManagerService.getClientClap(this.userInfo.id).subscribe(
       clapInteractionsResponse => {
-        for (const i of clapInteractionsResponse.Data.filter(
-          clap => {
-            return clap.id === pageId;
+        interactionSubject.next(
+          clapInteractionsResponse.Data.filter(
+            clap => {
+              return clap.id === pageId;
           }
-        )) {
-          clapValue = i.value;
-        }
-        interactionSubject.next(clapValue);
+        )[0]);
       }
     );
+
     return interactionSubject.asObservable();
   }
 
