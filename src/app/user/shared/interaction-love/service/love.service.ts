@@ -1,84 +1,69 @@
-import {Injectable} from '@angular/core';
-import {PageTypeToNumberService} from '../../helper/page-type-to-number.service';
-import {InteractionsService} from '../../../interactions/service/interactions.service';
-import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
-import {InteractionConstantService} from '../../../interactions/service/interaction-constant.service';
-import {UserInfo} from '../../../entity/user/user-info';
-import {Observable, Subject} from 'rxjs';
-import {MatDialog} from '@angular/material';
-import {UserService} from '../../user/service/user.service';
+import { Injectable } from '@angular/core';
+import { PageTypeToNumberService } from '../../helper/page-type-to-number.service';
+import { InteractionsService } from '../../../interactions/service/interactions.service';
+import { InteractionsManagerService } from '../../../interactions/manager/interactions-manager.service';
+import { InteractionConstantService } from '../../../interactions/service/interaction-constant.service';
+import { UserInfo } from '../../../entity/user/user-info';
+import { Observable, Subject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { UserService } from '../../user/service/user.service';
 import { LoveEntity } from '../entity/love-entity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoveService extends InteractionsService {
-  private loveSubject = new Subject<any>();
-  userInfo: UserInfo;
   userRequestSent = false;
   userLoggedIn = false;
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToApi: PageTypeToNumberService,
-              protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserService,
+              protected userService: UserService,
               protected dialog: MatDialog) {
-    super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);
-  }
-
-  // region Love Getter Methods
-  initLove(parentType: string, rowId: number) {
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
-      this.userService.getUserInfo().subscribe(
-          userInfoResponse => {
-            // Assign the Data to the User
-            if (this.isUserNode(userInfoResponse)) {
-              console.log('Assigning User');
-              this.userInfo = userInfoResponse;
-              this.getClientInteraction(this.userInfo.id, parentType, rowId, this.loveSubject);
-            }
-          }
-      );
-    }
+    super(interactionsManagerService, userService, dialog);
+    this.setClientInfoIfExists();
   }
 
   // Check if The User is login to make his love interactionTypeString
-  postLove(entityType: string, entityId: number, interactionsType: string): Observable<any> {
-    if (!this.checkUserDetailsExists(this.userInfo)) {
+  postLove(entityType: number, entityId: number, interactionsType: string): Observable<boolean> {
+    if (!this.checkUserDetailsExists()) {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      return this.postInteractionToAPI(entityType, entityId, this.userInfo.id, interactionsType, this.loveSubject);
+      return this.postInteractionToAPI(entityType, entityId, interactionsType);
     }
   }
 
   // Delete Love Interactions
-  deleteLoveInteraction(interactionID: number) {
-    return this.deleteInteraction(interactionID, this.userInfo, this.loveSubject);
+  deleteLoveInteraction(interactionID: number): Observable<boolean> {
+    return this.deleteInteraction(interactionID);
   }
 
-  // Love Observable To Receive Sending Data
-  getLoveObservable(): Observable<any> {
-    return this.getInteractionsObservable(this.loveSubject);
-  }
-
-  getLoveStatus(parentType: string, rowId: number): Observable<LoveEntity> {
-    const loveSubject = new Subject<LoveEntity>();
-
-    if (!this.userService.isLoggedIn()) {
-      loveSubject.error('Please Login');
-    } else {
-      this.userService.getUserInfo().subscribe(
-        userData => {
-        }, error => {
-          console.log(JSON.stringify(error));
-          loveSubject.error('Error Getting Data from Backend!');
-        }
-      );
+  getLoveStatus(parentType: string, rowId: number): Observable<number> {
+    const loveSubject = new Subject<number>();
+    if (!this.checkUserDetailsExists()) {
+      loveSubject.error('Please Login!, user info doesn\'t exists');
+      return loveSubject.asObservable();
     }
 
+    this.getClientInteraction(this.userInfo.id).subscribe(
+      data => {
+        loveSubject.next(data.filter(
+          // Just count the loves/likes, only 1 is needed by the way
+          (item) => {
+            if (item.id !== rowId) {
+              return false;
+            }
+            if (item.entity !== parentType) {
+              return false;
+            }
+            if (item.interaction === 'like' || item.interaction === 'love') {
+              // It means that the 2 ifs above was passed, and it can be love or like
+              return true;
+            }
+            return false;
+        }).length);
+      }
+    );
     return loveSubject.asObservable();
   }
-
 }

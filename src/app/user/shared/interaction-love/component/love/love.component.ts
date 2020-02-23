@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {LoveService} from '../../service/love.service';
-import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { LoveService } from '../../service/love.service';
+import { InteractionConstantService } from '../../../../interactions/service/interaction-constant.service';
 
 @Component({
   selector: 'app-love',
@@ -14,30 +14,24 @@ export class LoveComponent implements OnInit {
   loving = false;
   interactionId: number;
 
-  constructor(private loveService: LoveService) {}
+  constructor(private loveService: LoveService) { }
 
   ngOnInit() {
-    // Fetch THe Follow Request
-    this.loveService.initLove(this.ParentType, this.ParentId);
     // Response From Love Services
-    this.loveService.getLoveObservable().subscribe(
-        (loveResponse: { Data: {interactions: number} }) => {
-          if (loveResponse) {
-            if (loveResponse.Data.interactions > 0) {
-              this.loved = true;
-            }
-          } else {  // If Not Data That Mean This Interaction Was Deleted
-            this.loving = false;
-            this.loved = false;
-          }
+    this.loveService.getLoveStatus(this.ParentType, this.ParentId).subscribe(
+      isLoved => {
+        if (isLoved > 0) {
+          this.loved = true;
+        } else {
+          this.loved = false;
+          this.loving = false;
         }
+      }
     );
   }
 
-  // Send love interactionTypeString
   sendLove() {
-    console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove( this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE).subscribe(
+    this.loveService.postLove(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE).subscribe(
       (lovePostResult: any) => {
         console.log(JSON.stringify(lovePostResult));
         if (lovePostResult.success) {

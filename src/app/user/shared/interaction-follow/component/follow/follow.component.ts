@@ -19,33 +19,14 @@ export class FollowComponent implements OnInit {
 
   ngOnInit() {
     // Fetch THe Follow Request
-    this.followService.initFollow(this.ParentType, this.ParentId);
-    // Response From Follow Services
-    this.followService.getFollowObservable().subscribe(
-        (followResponse: { success: boolean, value: any }) => {
-          // Check If There Is Data Or Not Return From The Server
-          if (followResponse) {
-            if (followResponse.value.interactionTypeString == InteractionConstantService.INTERACTION_TYPE_FOLLOW ||
-              followResponse.value.interactionTypeString.name == InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-              this.followed = followResponse.success;       // this followResponse = true if success
-              if (followResponse.value.interactionID) {     // Response followResponse After Reload The Page
-                this.interactionId = followResponse.value.interactionID;
-              } else if (followResponse.value.id) {    // Response followResponse After Create New Follow
-                this.interactionId = followResponse.value.id;
-              }
-            } else {
-              return EMPTY;
-            }
-          } else {  // If Not Data That Mean This Interaction Was Deleted
-            this.following = false;
-            this.followed = false;
-          }
-        }
+    this.followService.getIsFollowed(this.ParentType, this.ParentId).subscribe(
+      isFollowed => {
+        this.followed = isFollowed;
+      }
     );
   }
   // Start Following
   startFollow() {
-    console.log(`Sending Some Follow Buddy ;)`);
     this.followService.postFollow(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_FOLLOW);
   }
 

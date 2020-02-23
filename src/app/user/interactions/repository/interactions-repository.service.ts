@@ -31,12 +31,12 @@ export class InteractionsRepositoryService {
   // Post (love, view, follow) Interactions
   // (entityTypeNumber = entity: artistTableNumber, entityId = row: artistID,
   // interactionsTypeNumber = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsTypeNumber: number): Observable<any> {
+  postInteractions(entityTypeNumber: number, entityId: number, userId: number, interactionsCode: string): Observable<any> {
     const request: InteractionRequest = {
       client: userId,
       row: entityId,
       entity: entityTypeNumber,
-      interaction: interactionsTypeNumber
+      interaction: interactionsCode
     };
 
     if (userId === null) {

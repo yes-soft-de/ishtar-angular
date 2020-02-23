@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {InteractionsRepositoryService} from '../repository/interactions-repository.service';
 import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
-import {UserInfo} from '../../entity/user/user-info';
+import { ClientInteractionResponse } from '../response/client-interaction-response';
+import { InteractionResponse } from 'src/app/admin/entity/interactions/interaction-response';
+import { ClapGetResponse } from '../response/clap-get-response';
 
 @Injectable({
   providedIn: 'root'
@@ -17,45 +19,75 @@ export class InteractionsManagerService {
   constructor(private interactionsRepositoryService: InteractionsRepositoryService) {
   }
 
-  // Get Interactions number(entity: artistTableNumber, row: artistID, interactionsNumber: 1 for love & 2 for follow)
+  /**
+   * get the interactions from the API
+   * @param entity <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
+   * @param row number
+   * @param interactionsNumber <InteractionConsts.INTERACTION_TYPE_ ...>
+   */
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.interactionsRepositoryService.getInteractionsNumber(entity, row, interactionsNumber);
   }
 
-  // Post Interactions
-  // (entityTypeNumber = entity: artistTableNumber,
-  // entityId = row: artistID,
-  // interactionsType = interactionsNumber: 1 for love & 2 for follow)
-  postInteractions(entityCode: number, entityId: number, userId: number, interactionsType: number) {
+  /**
+   * posts interactions to the API
+   * @param entityCode <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
+   * @param entityId number
+   * @param userId number
+   * @param interactionsType <InteractionConsts.INTERACTION_TYPE_ ...>
+   */
+  postInteractions(entityCode: number, entityId: number, userId: number, interactionsType: string): Observable<InteractionResponse> {
     return this.interactionsRepositoryService.postInteractions(entityCode, entityId, userId, interactionsType);
   }
 
-  // Post (Clap) interactions
-  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<any> {
+  /**
+   * Post (Clap) interactions
+   * @param entityTypeNumber <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
+   * @param entityId number
+   * @param clapValue number
+   * @param userId number
+   */
+  postClap(entityTypeNumber: number, entityId: number, clapValue: number, userId: number): Observable<ClapGetResponse> {
     return this.interactionsRepositoryService.postClap(entityTypeNumber, entityId, clapValue, userId);
   }
 
-  // Get (love, view, follow) Interaction For This Client And This (artist, painting, ..) Dependence On Client ID
-  getClientInteraction(clientId: number): Observable<any> {
+  /**
+   * Get (love, view, follow) Interaction For This Client And This (artist, painting, ..) Dependence On Client ID
+   * @param clientId number
+   */
+  getClientInteraction(clientId: number): Observable<ClientInteractionResponse> {
     return this.interactionsRepositoryService.getClientInteraction(clientId);
   }
 
-  // Get (clap) Interaction For This Client And This (artist, painting. ....) Dependence On Client ID
-  getClientClap(clientId: number): Observable<any> {
+  /**
+   * Get (clap) Interaction For This Client And This (artist, painting. ....) Dependence On Client ID
+   * @param clientId number
+   */
+  getClientClap(clientId: number): Observable<ClapGetResponse> {
     return this.interactionsRepositoryService.getClientClap(clientId);
   }
 
-  // Add To Wish List Method
+  /**
+   * Add To Wish List Method
+   * @param id number
+   * @param entityType <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
+   */
   addToWishList(id: string, entityType: string) {
     return this.interactionsRepositoryService.addToWishList(id, entityType);
   }
 
-  // Delete Interactions
+  /**
+   * delete interactions
+   * @param interactionsId number
+   */
   deleteInteractions(interactionsId: number): Observable<any> {
     return this.interactionsRepositoryService.deleteInteractions(interactionsId);
   }
 
-  // Delete Clap Interactions
+  /**
+   * Delete Clap Interactions
+   * @param interactionsId number
+   */
   deleteClap(interactionsId: number): Observable<any> {
     return this.interactionsRepositoryService.deleteClap(interactionsId);
   }
