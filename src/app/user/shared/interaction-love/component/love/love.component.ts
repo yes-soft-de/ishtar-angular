@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoveService } from '../../service/love.service';
 import { InteractionConstantService } from '../../../../interactions/service/interaction-constant.service';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-love',
@@ -13,6 +14,8 @@ export class LoveComponent implements OnInit {
   loved = false;
   loving = false;
   interactionId: number;
+
+  parentCode = -1;
 
   constructor(private loveService: LoveService) { }
 
@@ -32,7 +35,29 @@ export class LoveComponent implements OnInit {
   }
 
   sendLove() {
-    this.loveService.postLove(this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE).subscribe(
+    switch (this.ParentType.toLowerCase()) {
+      case 'painting':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_PAINTING;
+        break;
+      case 'artist':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ARTIST;
+        break;
+      case 'arttype':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art-type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art_type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'statue':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_STATUE;
+        break;
+      default:
+        break;
+    }
+    this.loveService.postLove(this.parentCode, this.ParentId, `${InteractionConsts.INTERACTION_TYPE_LOVE}`).subscribe(
       lovePostResult => {
         this.loved = lovePostResult;
       }
