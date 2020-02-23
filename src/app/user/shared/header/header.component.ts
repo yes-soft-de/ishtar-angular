@@ -21,10 +21,8 @@ export class HeaderComponent implements OnInit {
     search: new FormControl('')
   });
 
-  constructor(private artTpeService: ArtTypeService,
-              public dialog: MatDialog,
+  constructor(public dialog: MatDialog,
               private router: Router,
-              private userManager: UserManagerService,
               private userService: UserService) {
   }
 

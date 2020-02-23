@@ -26,7 +26,7 @@ export class PaintingService extends InteractionsService {
   private paintingsListSubject = new Subject<PaintingListItem[]>();
   private paintingsListBySubject = new Subject<any>();
   private viewSubject = new Subject<any>();
-  userInfo: UserInfo;
+  protected userInfo: UserInfo;
   userRequestSent = false;
   userLoggedIn = false;
 

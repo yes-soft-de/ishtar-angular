@@ -59,22 +59,12 @@ export class FollowService extends InteractionsService {
    * @returns Observable<boolean>
    */
   postFollow(entityType: number, entityId: number, interactionsType: string): Observable<boolean> {
-    const interactionSubject = new Subject<boolean>();
     if (!this.checkUserDetailsExists()) {
       // Open Dialog Box If User Not Login
       this.openDialog();
     } else {
-      this.postInteractionToAPI(entityType, entityId, interactionsType).subscribe(
-        () => {
-          // Interaction Posted Successfully
-          interactionSubject.next(true);
-        }, () => {
-          // Interaction Didn't Post well :(
-          interactionSubject.next(false);
-        }
-      );
+      return this.postInteractionToAPI(entityType, entityId, InteractionConstantService.INTERACTION_TYPE_FOLLOW);
     }
-    return interactionSubject.asObservable();
   }
 
   /**

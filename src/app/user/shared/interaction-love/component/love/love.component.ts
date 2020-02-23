@@ -20,6 +20,7 @@ export class LoveComponent implements OnInit {
     // Response From Love Services
     this.loveService.getLoveStatus(this.ParentType, this.ParentId).subscribe(
       isLoved => {
+        console.log(isLoved);
         if (isLoved > 0) {
           this.loved = true;
         } else {

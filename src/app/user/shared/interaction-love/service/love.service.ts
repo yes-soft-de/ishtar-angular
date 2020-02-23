@@ -45,23 +45,26 @@ export class LoveService extends InteractionsService {
       return loveSubject.asObservable();
     }
 
-    this.getClientInteraction(this.userInfo.id).subscribe(
+    this.getClientInteraction(rowId).subscribe(
       data => {
         loveSubject.next(data.filter(
           // Just count the loves/likes, only 1 is needed by the way
           (item) => {
             if (item.id !== rowId) {
+              console.log(`if1: ${item.id} !== ${rowId}`);
               return false;
             }
             if (item.entity !== parentType) {
+              console.log(`if2: ${item.entity} !== ${parentType}`);
               return false;
             }
-            if (item.interaction === 'like' || item.interaction === 'love') {
+            if (item.interaction !== 'like' && item.interaction !== 'love') {
               // It means that the 2 ifs above was passed, and it can be love or like
-              return true;
+              console.log(`if3: ${item.interaction} !== like`);
+              return false;
             }
-            return false;
-        }).length);
+            return true;
+          }).length);
       }
     );
     return loveSubject.asObservable();

@@ -90,7 +90,7 @@ export class InteractionsService {
         return EMPTY;
       }))
       .subscribe(
-        postInteractionResponse => {
+        () => {
           interactionSubject.next(true);
         }, error => {
           console.log(JSON.stringify(error));
@@ -206,21 +206,25 @@ export class InteractionsService {
 
   // region Class Specific Validators
   checkUserDetailsExists(): boolean {
-    if (this.userInfo !== null) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.userService.isLoggedIn();
   }
 
   /**
    * sets client info
    */
   setClientInfoIfExists(): void {
-    this.userService.getUserInfo().subscribe(
-      userInfo => {
-        this.userInfo = userInfo;
-      }
-    );
+    console.log('Looking into user data');
+    if (this.userService.getSavedClientId() < 1) {
+      this.userService.getUserInfo().subscribe(
+        userInfo => {
+          console.log('Setting Client Info');
+          this.userInfo = userInfo;
+        }
+      );
+    } else {
+      this.userInfo = {
+        id: this.userService.getSavedClientId()
+      };
+    }
   }
 }

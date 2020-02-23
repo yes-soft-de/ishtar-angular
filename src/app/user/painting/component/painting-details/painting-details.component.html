@@ -68,7 +68,7 @@
                         <a routerLink="/artist/{{artist?.id}}">
                           {{artist?.name}}
                         </a>
-                        <app-follow [ParentType]="'artist'" [ParentId]="artist?.id" class="follow-artist"></app-follow>
+                        <app-follow [ParentType]="'artist'" [ParentId]="artist?.id" class="follow-artist" *ngIf="artist !== null"></app-follow>
                       </p>
                     </div>
                     <div class="col-12">
