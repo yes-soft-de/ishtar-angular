@@ -34,11 +34,13 @@ export class ClapComponent implements OnInit {
   getClaps() {
     this.clapService.getClientClap(this.ParentId).subscribe(
       clapsEntity => {
-        if (clapsEntity.value > 0) {
-          this.clapped = true;
-          this.clappedNumber = clapsEntity.value;
+        if (clapsEntity) {
+          if (clapsEntity.value > 0) {
+            this.clapped = true;
+            this.clappedNumber = clapsEntity.value;
 
-          this.clapId = clapsEntity.clapId;
+            this.clapId = clapsEntity.clapId;
+          }
         }
       }
     );

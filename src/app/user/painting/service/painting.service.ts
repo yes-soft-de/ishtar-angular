@@ -70,7 +70,7 @@ export class PaintingService extends InteractionsService {
           InteractionConsts.ENTITY_TYPE_PAINTING,
           paintingResponse.Data.id,
           null,
-          'view').subscribe();
+          `${InteractionConsts.INTERACTION_TYPE_VIEW}`).subscribe();
       }
     );
     // Return The Data To Print It In Component
