@@ -1,6 +1,6 @@
 <form [formGroup]="createCommentForm" (ngSubmit)="submitComment()">
   <textarea formControlName="comment"></textarea>
-  <button type="submit">Add</button>
+  <button type="submit">{{ 'user.artist.comments.add' | translate}}</button>
 </form>
 
 <!-- Comments -->

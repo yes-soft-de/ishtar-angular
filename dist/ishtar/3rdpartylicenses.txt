@@ -85,9 +85,6 @@ THE SOFTWARE.
 @angular/forms
 MIT
 
-@angular/localize
-MIT
-
 @angular/material
 MIT
 The MIT License
@@ -160,6 +157,12 @@ to represent the company, product, or service to which they refer.**
 
 
 @ngx-lite/json-ld
+MIT
+
+@ngx-translate/core
+MIT
+
+@ngx-translate/http-loader
 MIT
 
 @swimlane/ngx-ui

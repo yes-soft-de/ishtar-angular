@@ -23,7 +23,7 @@
   <form [formGroup]="updateCommentForm" (ngSubmit)="submitEditedComment()">
     <!-- TODO Write a Form for the Edited Comment -->
     <textarea formControlName="newComment">{{comment.body}}</textarea>
-    <button type="submit"><i class="far fa-save"></i> Save</button>
-    <button (click)="endEditMode()"><i class="far fa-times-circle"></i> Cancel</button>
+    <button type="submit"><i class="far fa-save"></i> {{ 'user.artist.comment-item.add' | translate}}</button>
+    <button (click)="endEditMode()"><i class="far fa-times-circle"></i>{{'user.artist.comment-item.cancel' | translate}}</button>
   </form>
 </div>

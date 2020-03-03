@@ -6,24 +6,22 @@
         <div class="row">
           <div class="col-sm-8 col-xs-12 pr-0"><img src="../../../../../assets/logo.png" class="img-fluid" alt="logo image"></div>
           <div class="col-sm-4 col-xs-12 pl-0 d-none d-lg-block align-self-center">
-<!--            <h4 class="mb-0">ISHTAR</h4>-->
-<!--            <span>Home Of Art</span>-->
           </div>
         </div>
       </div>
       <div class="col-sm-4 col-xs-12 text-center align-self-center site-map">
         <ul>
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/artist-list">Artists</a></li>
-          <li><a routerLink="/painting-list">Paintings</a></li>
+          <li><a routerLink="/">{{'user.shared.footer.home' | translate}}</a></li>
+          <li><a routerLink="/artist-list">{{'user.shared.footer.artists' | translate}}</a></li>
+          <li><a routerLink="/painting-list">{{'user.shared.footer.paintings' | translate}}</a></li>
         </ul>
       </div>
       <div class="col-sm-4 col-xs-12 text-center align-self-center site-map">
         <ul>
-          <li><a routerLink="/about-us">About Us</a></li>
-          <li><a routerLink="/faq">FAQ</a></li>
-          <li><a routerLink="/imprint">Imprint</a></li>
-          <li><a routerLink="/data-processing">Data Processing</a></li>
+          <li><a routerLink="/about-us">{{'user.shared.footer.about' | translate}}</a></li>
+          <li><a routerLink="/faq">{{'user.shared.footer.faq' | translate}}</a></li>
+          <li><a routerLink="/imprint">{{'user.shared.footer.imprint' | translate}}</a></li>
+          <li><a routerLink="/data-processing">{{'user.shared.footer.data-processing' | translate}}</a></li>
         </ul>
       </div>
     </div>
@@ -36,8 +34,11 @@
       <div class="row">
         <div id="footer-bottom-left" class="col-xs-5 col-md-5 align-self-center m-0 py-0">
           <ul class="p-0 m-xs-0 mb-xs-3 m-sm-0">
-            <li class="mx-2"><a routerLink="/tos">Terms of Services</a></li>
-            <li class="mx-2"><a routerLink="/privacy">Privacy Policy</a></li>
+            <li class="mx-2"><a routerLink="/tos">
+              {{'user.shared.footer.tos' | translate}}
+            </a>
+            </li>
+            <li class="mx-2"><a routerLink="/privacy">{{'user.shared.footer.privacy' | translate}}</a></li>
           </ul>
         </div>
         <div class="col-xs-4 col-md-4 copy-rights align-self-center py-0">

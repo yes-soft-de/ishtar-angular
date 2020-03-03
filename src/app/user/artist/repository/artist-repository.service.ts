@@ -4,6 +4,7 @@ import {ArtistListResponse} from '../response/artist-list-response';
 import {HttpClient} from '@angular/common/http';
 import {UserConfig} from '../../UserConfig';
 import {ArtistDetailsResponse} from '../response/artist-details-response';
+import { IshtarClientService } from '../../shared/client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,15 @@ import {ArtistDetailsResponse} from '../response/artist-details-response';
  */
 export class ArtistRepositoryService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: IshtarClientService) { }
 
   // Fetch All Artist
   getArtists(): Observable<ArtistListResponse> {
-    return this.httpClient.get<ArtistListResponse>(UserConfig.artistsAPI);
+    return this.httpClient.get(UserConfig.artistsAPI);
   }
 
   // Fetch Artist Details
   getArtist(artistId: number): Observable<ArtistDetailsResponse> {
-    return this.httpClient.get<ArtistDetailsResponse>(`${UserConfig.artistAPI}/${artistId}`);
+    return this.httpClient.get(`${UserConfig.artistAPI}/${artistId}`);
   }
 }

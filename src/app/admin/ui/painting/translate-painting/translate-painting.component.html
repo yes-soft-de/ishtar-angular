@@ -1,0 +1,60 @@
+<div class="container" *ngIf="paintingData != null">
+  <form [formGroup]="uploadForm" class="col-md-10 col-lg-8 col-xl-7 my-5 mx-auto" (ngSubmit)="mySubmit()">
+    <h2 class="h1 ml-5 text-center">
+      Translate Painting
+    </h2>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">
+        Name
+      </label>
+      <div class="col-10">
+        <input class="form-control" [ngClass]="{'is-invalid': uploadForm.get('name').errors &&
+                       (uploadForm.get('name').touched || uploadForm.get('name').dirty)}" type="text" name="name"
+          formControlName="name" placeholder="paintingData.name">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.required">Name Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.minlength">Name Must Be Greater Than
+          2</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than
+          45</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Key Words</label>
+      <div class="col-10">
+        <input class="form-control" [ngClass]="{'is-invalid': uploadForm.get('keyWords').errors &&
+                       (uploadForm.get('keyWords').touched || uploadForm.get('keyWords').dirty)}" type="text"
+          name="keyWords" formControlName="keyWords" placeholder="paintingData.keyWords">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('keyWords').errors?.required">Key Words Field Is
+          Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('keyWords').errors?.minlength">Key Words Must Be Greater
+          Than 2</span>
+      </div>
+    </div>
+
+    <div class="form-group row w">
+      <label class="col-2 col-form-label">Story</label>
+      <div class="col-10">
+        <textarea class="form-control" [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
+                  (uploadForm.get('story').touched || uploadForm.get('story').dirty)}" name="story"
+          formControlName="story" placeholder="paintingData.story"></textarea>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
+        <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than
+          4</span>
+      </div>
+    </div>
+
+    <div class="form-group offset-md-2 mt-3">
+      <input class="btn btn-primary btn-block" type="submit" value="{{submitButtonValue}}"
+        [disabled]="uploadForm.invalid || !imagePathReady">
+    </div>
+  </form>
+</div>
+<div *ngIf="paintingData == null">
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

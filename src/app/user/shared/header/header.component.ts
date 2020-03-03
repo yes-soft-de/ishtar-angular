@@ -7,6 +7,7 @@ import {ArtTypeService} from '../../../admin/service/art-type/art-type.service';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserService} from '../user/service/user.service';
 import {UserManagerService} from '../user/manager/user-manager.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              public translate: TranslateService) {
   }
 
   ngOnInit() {

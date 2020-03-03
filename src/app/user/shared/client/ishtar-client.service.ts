@@ -13,11 +13,15 @@ export class IshtarClientService {
   }
 
   get(url: string): Observable<any> {
+
+    const lang = localStorage.getItem('lang') === 'de' ? 'de' : 'en';
+
     if (this.isLoggedIn()) {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          Authorization: this.getToken()
+          Authorization: this.getToken(),
+          'Accept-Language': lang
         })
       };
       return this.httpClient.get(url, httpOptions);

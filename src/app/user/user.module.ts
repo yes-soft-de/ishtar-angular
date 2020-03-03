@@ -74,6 +74,7 @@ import { FeaturedImagesComponent } from './painting/component/featured-images/fe
 import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
 import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
 import {MarkdownModule} from 'ngx-markdown';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -190,7 +191,8 @@ import {MarkdownModule} from 'ngx-markdown';
     NgxPaginationModule,
     NgxImageZoomModule.forRoot(),
     NgxJsonLdModule,
-    MarkdownModule.forChild()
+    MarkdownModule.forChild(),
+    TranslateModule
   ],
   schemas: [
     // NO_ERRORS_SCHEMA
