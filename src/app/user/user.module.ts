@@ -75,6 +75,7 @@ import { PaintingCardComponent } from './painting/widget/painting-card/painting-
 import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
 import {MarkdownModule} from 'ngx-markdown';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartComponent } from './shared/cart/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -143,7 +144,8 @@ import { TranslateModule } from '@ngx-translate/core';
     PaintingKnowledgeGraphComponent,
     FeaturedImagesComponent,
     PaintingCardComponent,
-    ArtistCardComponent
+    ArtistCardComponent,
+    CartComponent
   ],
   exports: [
     // User

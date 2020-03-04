@@ -1,0 +1,11 @@
+<section class="row">
+    <div class="col-12" *ngFor="let painting of paintingList">
+        <img [src]="painting.image"]>
+        <p>{{painting.name}}</p>
+        <p>{{painting.price}}</p>
+    </div>
+
+    <div class="col-12 justify-content-end">
+        <button mat-button>Buy</button>
+    </div>
+</section>
