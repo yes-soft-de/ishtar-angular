@@ -84,7 +84,7 @@ export class AddImagesComponent implements OnInit {
       onlySelf: true
     });
   }
-  // Choose Entity Using Select Dropdown
+  // Choose EntityName Using Select Dropdown
   changeEntity(event) {
     // Disable the row dropdown until fetching the rowEntity data
     this.uploadForm.get('row').disable();
@@ -94,7 +94,7 @@ export class AddImagesComponent implements OnInit {
     this.uploadForm.get('entity').setValue(event.target.value, {
       onlySelf : true
     });
-    // fetch the All Rows For this Entity
+    // fetch the All Rows For this EntityName
     this.httpClient.get(`${AdminConfig.allRowSelectedEntityAPI}/${entityName}`).subscribe(
         (data: {Data: any}) => {
           if (entityName === 'Auction') {
@@ -104,11 +104,11 @@ export class AddImagesComponent implements OnInit {
           this.rowEntity = data.Data;
           this.uploadForm.get('row').enable();
           // this.rowActive = false;
-          console.log('Row Entity: ', this.rowEntity);
+          console.log('Row EntityName: ', this.rowEntity);
       },
       error => {
         this.uploadForm.get('row').disable();
-        console.log('Error Fetch Row Entity : ', error);
+        console.log('Error Fetch Row EntityName : ', error);
       }
     );
   }

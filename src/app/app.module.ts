@@ -13,6 +13,12 @@ import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CookieService} from 'ngx-cookie-service';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
+import {MarkdownModule} from 'ngx-markdown';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeFrExtra from '@angular/common/locales/extra/fr';
+
+registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
   declarations: [
@@ -31,7 +37,8 @@ import {NgxJsonLdModule} from '@ngx-lite/json-ld';
     NgwWowModule,
     TabsModule.forRoot(),
     UserModule,
-    AdminModule
+    AdminModule,
+    MarkdownModule.forRoot()
   ],
   providers: [CookieService],
   exports: [],

@@ -1,0 +1,27 @@
+<div class="img-container">
+          <span class="painting-buy" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+            <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting.id}}"
+               style="color: white">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </span>
+  <img class="img-fluid" src="{{painting.image}}"
+       (error)="painting.image = '../../../../../assets/1x/img-01.jpg'" alt="..."/>
+  <span class="painting-info">
+    <p class="painting-name">{{painting?.name}}</p>
+    <p class="artist">{{painting?.artist}}</p>
+    <ul class="statistics" *ngIf="painting.state">
+      <li>
+        <app-interaction [EntityName]="'painting'" [Row]="painting?.id" [interactionTypeString]="'like'"></app-interaction>
+      </li>
+      <li>
+        <app-interaction [EntityName]="'painting'" [Row]="painting?.id" [interactionTypeString]="'view'"></app-interaction>
+      </li>
+    </ul>
+    <ul class="statistics" *ngIf="!painting.state">
+      <li>
+        <p>Sold</p>
+      </li>
+    </ul>
+  </span>
+</div>

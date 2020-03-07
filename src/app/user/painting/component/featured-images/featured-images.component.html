@@ -1,0 +1,13 @@
+<div *ngIf="painingList != null">
+  <div class="col-sm-9 col-xs-12 mx-auto" [class.floating]="false">
+    <div id="painting-list">
+      <div class="row">
+        <div class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
+             *ngFor="let painting of painingList"
+             routerLink="/painting/{{painting.id}}">
+          <app-painting-card [painting]="painting"></app-painting-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

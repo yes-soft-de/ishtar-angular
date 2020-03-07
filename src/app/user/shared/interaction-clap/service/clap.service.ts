@@ -7,6 +7,7 @@ import {InteractionConstantService} from '../../../interactions/service/interact
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {UserService} from '../../user/service/user.service';
+import {IshtarClientService} from '../../client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,66 +19,28 @@ export class ClapService extends InteractionsService {
   userLoggedIn = false;
 
   constructor(protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToApi: PageTypeToNumberService,
-              protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserService,
+              protected userService: UserService,
               protected dialog: MatDialog) {
-    super(interactionsManagerService, pageTypeToApi, interactionTypeToNumberService, dialog);
+      super(interactionsManagerService,
+        userService,
+        dialog);
+
+      this.setClientInfoIfExists();
   }
 
   // region Love Getter Methods
-  initClap(parentType: string, rowId: number) {
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
-      this.userService.getUserInfo().subscribe(
-          userInfoResponse => {
-            // Assign the Data to the User
-            if (this.isUserNode(userInfoResponse)) {
-              console.log('Assigning User');
-              this.userInfo = userInfoResponse;
-              this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
-            }
-          }
-      );
-    }
-    // See If Loading User
-    // if (!this.userRequestSent) {
-    //   // If Not Request Him
-    //   this.userRequestSent = true;
-    //   this.userProfileService.requestUserDetails().subscribe(
-    //       (user: any) => {
-    //         // Assign the Data to the User
-    //         if (this.isUserNode(user.Data)) {
-    //           console.log('Assigning User');
-    //           this.userInfo = user.Data;
-    //           this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
-    //         }
-    //       }
-    //   );
-    // } else if (this.checkUserDetailsExists(this.userInfo)) {
-    //   this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
-    // }
+  getClaps(pageId: number) {
+    return this.getClientClap(pageId);
   }
 
-  // Check if The User is login to make his clap interaction
-  postClap(entityType: string, entityId: number, clapValue: number) {
-    if (!this.checkUserDetailsExists(this.userInfo)) {
-      // Open Dialog Box If User Not Login
-      this.openDialog();
-    } else {
-      this.postClapToAPI(entityType, entityId, clapValue, this.userInfo.id, this.clapSubject);
-    }
+  // Check if The User is login to make his clap interactionTypeString
+  postClap(entityType: number, entityId: number, clapValue: number): Observable<number> {
+    return this.postClapToAPI(entityType, entityId, clapValue);
   }
 
   // Delete Clap Interactions
   deleteClapInteraction(interactionID: number) {
-    return this.deleteClap(interactionID, this.userInfo, this.clapSubject);
+    return this.deleteClap(interactionID);
   }
-
-  // Clap Observable To Receive Sending Data
-  getClapObservable(): Observable<any> {
-    return this.getInteractionsObservable(this.clapSubject);
-  }
-
 }
 

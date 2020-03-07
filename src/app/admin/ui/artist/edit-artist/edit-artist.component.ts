@@ -142,11 +142,14 @@ export class EditArtistComponent implements OnInit {
   }
 
   updateArtType() {
-    if (this.artistData && this.artTypes) {
+    console.log('Trying to Update Art Type, ');
+    if (this.artistData.artType && this.artTypes ) {
       for (const artType of this.artTypes) {
         if (artType.name === this.artistData.artType) {
           this.artTypeId = artType.id;
+          console.log(`Trying ${artType.name} == ${this.artistData.artType}`);
         }
+        console.log(`Trying ${artType.name} != ${this.artistData.artType}`);
       }
     }
   }

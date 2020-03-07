@@ -12,6 +12,7 @@ import {MatDialog} from '@angular/material';
 import {UserInfo} from '../../entity/user/user-info';
 import {MostViewedListItem} from '../entity/most-viewed-list-item';
 import {UserService} from '../../shared/user/service/user.service';
+import {InteractionConsts} from '../../interactions/statics/interaction-consts';
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class PaintingService extends InteractionsService {
   private paintingsListSubject = new Subject<PaintingListItem[]>();
   private paintingsListBySubject = new Subject<any>();
   private viewSubject = new Subject<any>();
-  userInfo: UserInfo;
+  protected userInfo: UserInfo;
   userRequestSent = false;
   userLoggedIn = false;
 
@@ -33,9 +34,9 @@ export class PaintingService extends InteractionsService {
               protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserService,
+              protected userService: UserService,
               protected dialog: MatDialog) {
-    super(interactionsManagerService, pageTypeToNumberService, interactionTypeToNumberService, dialog);
+    super(interactionsManagerService, userService, dialog);
   }
 
   // Fetch All Paintings
@@ -59,11 +60,17 @@ export class PaintingService extends InteractionsService {
     this.paintingManager.getPainting(paintingId)
       .pipe(catchError(err => {
         this.paintingSubject.error('Error Getting Data');
+        console.error(err);
         return EMPTY;
       })).subscribe(
       paintingResponse => {
         // Send Data If Successfully Fetching
         this.paintingSubject.next(paintingResponse.Data);
+        this.interactionsManagerService.postInteractions(
+          InteractionConsts.ENTITY_TYPE_PAINTING,
+          paintingResponse.Data.id,
+          null,
+          `${InteractionConsts.INTERACTION_TYPE_VIEW}`).subscribe();
       }
     );
     // Return The Data To Print It In Component
@@ -86,52 +93,24 @@ export class PaintingService extends InteractionsService {
   }
 
   // Add View Interaction When User Inter To The Painting Detail
-  viewPainting(entityType: string, entityId: number) {
-    this.userLoggedIn = this.userService.isLoggedIn();
-    if (this.userLoggedIn) {
-      this.userService.getUserInfo().subscribe(
-          userInfoResponse => {
-            // Assign the Data to the User
-            if (this.isUserNode(userInfoResponse)) {
-              console.log('Assigning User');
-              this.userInfo = userInfoResponse;
-              this.postInteractionToAPI(
-                  entityType,
-                  entityId,
-                  this.userInfo.id,
-                  InteractionConstantService.INTERACTION_TYPE_VIEW,
-                  this.viewSubject);
-            }
-          }
-      );
-    }
-    // if (!this.userRequestSent) {
-    //   // If Not Request Him
-    //   this.userRequestSent = true;
-    //   this.userProfileService.requestUserDetails().subscribe(
-    //     (user: any) => {
-    //       // Assign the Data to the User
-    //       if (this.isUserNode(user.Data)) {
-    //         console.log('Assigning User');
-    //         this.userInfo = user.Data;
-    //         this.postInteractionToAPI(
-    //             entityType,
-    //             entityId,
-    //             this.userInfo.id,
-    //             InteractionConstantService.INTERACTION_TYPE_VIEW,
-    //             this.viewSubject);
-    //       }
-    //     }
-    //   );
-    // } else if (this.checkUserDetailsExists(this.userInfo)) {
-    //   console.log('User Exists, Requesting Love Status');
-    //   this.postInteractionToAPI(
-    //       entityType,
-    //       entityId,
-    //       this.userInfo.id,
-    //       InteractionConstantService.INTERACTION_TYPE_VIEW,
-    //       this.viewSubject);
-    // }
+  viewPainting(entityType: number, entityId: number) {
+    this.postInteractionToAPI(
+      entityType,
+      entityId,
+      InteractionConstantService.INTERACTION_TYPE_VIEW);
+  }
+
+  getFeaturedPaintings(): Observable<PaintingListItem[]> {
+    const featuredPaintingsSubject = new Subject<PaintingListItem[]>();
+    this.paintingManager.getFeaturedPaintings().subscribe(
+      paintingListResult => {
+        featuredPaintingsSubject.next(paintingListResult.Data);
+      }, error1 => {
+        console.log(error1);
+      }
+    );
+
+    return featuredPaintingsSubject.asObservable();
   }
 
   getMostViewedPaintings(): Observable<MostViewedListItem[]> {

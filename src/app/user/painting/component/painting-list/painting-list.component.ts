@@ -3,6 +3,7 @@ import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
 import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
 import {PaintingListItem} from '../../entity/painting-list-item';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-painting-list',
@@ -10,18 +11,21 @@ import {PaintingListItem} from '../../entity/painting-list-item';
   styleUrls: ['./painting-list.component.scss']
 })
 export class PaintingListComponent implements OnInit {
-
-
   constructor(private paintingService: PaintingService,
               private filterService: PaintingFilterService) {
   }
+
   @Input() filter = true;
   public artists: string[];
   public artTypes: string[];
   filterArtType = false;
   filterArtist = false;
   originalList: PaintingListItem[];
-  paintingList: PaintingListItem[];
+  filteredPaintingList: PaintingListItem[];
+
+  @Input() visiblePaintingsLimit = 12;
+  @Input() paintingSectionSize = 12;
+
   config: any;
   filterActiveArtist: string = null;
   filterActiveArtType: string = null;
@@ -50,11 +54,12 @@ export class PaintingListComponent implements OnInit {
       paintingList => {
 
         this.originalList = PaintingListComponent.shuffle(paintingList);
-        this.paintingList = PaintingListComponent.shuffle(paintingList);
+        this.filteredPaintingList = this.originalList.slice(0, this.visiblePaintingsLimit);
+
         this.config = {
           itemsPerPage: 12,
           currentPage: 1,
-          totalItems: this.paintingList.length
+          totalItems: this.filteredPaintingList.length
         };
 
         this.getArtistNamesList();
@@ -69,66 +74,72 @@ export class PaintingListComponent implements OnInit {
 
   public filterByArtType(name: string) {
     this.filterActiveArtType = name;
-    this.paintingList = this.getFilteredList();
+    this.filteredPaintingList = this.getFilteredList();
+
+    this.artists = [...new Set(this.filteredPaintingList.map(painting => painting.artist))];
   }
 
   public disableArtTypeFilter() {
     this.filterActiveArtType = null;
-    this.paintingList = this.getFilteredList();
+    this.filteredPaintingList = this.getFilteredList();
+    this.getArtistNamesList();
   }
 
   public filterByArtist(name: string) {
     this.filterActiveArtist = name;
-    this.paintingList = this.getFilteredList();
+    this.filteredPaintingList = this.getFilteredList();
+
+    this.artTypes = [...new Set(this.filteredPaintingList.map(painting => painting.artType))];
   }
 
   public disableArtistNameFilter() {
     this.filterActiveArtist = null;
-    this.paintingList = this.getFilteredList();
+    this.filteredPaintingList = this.getFilteredList();
+    this.getArtTypesList();
   }
 
   viewImage(paintingId: number) {
     // Dependent on Reaction
-    this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
+    this.paintingService.viewPainting(InteractionConsts.ENTITY_TYPE_PAINTING, paintingId);
   }
 
   // Fetch All Artists Filters Name
   getArtistNamesList() {
-    this.artists = [...new Set(this.paintingList.map(painting => painting.artist))];
+    this.artists = [...new Set(this.originalList.map(painting => painting.artist))];
   }
 
   // Fetch All Art Type Filters Name
   getArtTypesList() {
-    this.artTypes = [...new Set(this.paintingList.map(painting => painting.artType))];
+    this.artTypes = [...new Set(this.originalList.map(painting => painting.artType))];
   }
 
   private getFilteredList(): PaintingListItem[] {
     let resultList = this.originalList;
     if (this.filterActiveArtist !== null) {
       resultList = this.filterService.processArtistNameFilter(resultList, this.filterActiveArtist);
+      console.log(`result List After Artist Filter: ${resultList.length}`);
     }
     if (this.filterActiveArtType !== null) {
       resultList = this.filterService.processArtTypeFilter(resultList, this.filterActiveArtType);
+      console.log(`result List After Art Type Filter: ${resultList.length}`);
     }
     return resultList;
   }
 
   // view & hide filter button options
-  fiterArtTypeOptionsView() {
+  filterArtTypeOptionsView() {
     this.filterArtist = false;
-    if (this.filterArtType) {
-      this.filterArtType = false;
-    } else {
-      this.filterArtType = true;
-    }
+    this.filterArtType = !this.filterArtType;
   }
 
-  fiterArtistOptionsView() {
+  filterArtistOptionsView() {
     this.filterArtType = false;
-    if (this.filterArtist) {
-      this.filterArtist = false;
-    } else {
-      this.filterArtist = true;
-    }
+    this.filterArtist = !this.filterArtist;
+  }
+
+  addMorePaintings() {
+    this.visiblePaintingsLimit += this.paintingSectionSize;
+    console.log(`New Visible Painting Size: ${this.visiblePaintingsLimit}`);
+    this.filteredPaintingList = this.getFilteredList();
   }
 }

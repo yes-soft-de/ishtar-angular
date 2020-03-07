@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {LoveService} from '../../service/love.service';
-import {InteractionConstantService} from '../../../../interactions/service/interaction-constant.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { LoveService } from '../../service/love.service';
+import { InteractionConstantService } from '../../../../interactions/service/interaction-constant.service';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-love',
@@ -14,45 +15,67 @@ export class LoveComponent implements OnInit {
   loving = false;
   interactionId: number;
 
-  constructor(private loveService: LoveService) {}
+  parentCode = -1;
+
+  constructor(private loveService: LoveService) { }
 
   ngOnInit() {
-    // Fetch THe Follow Request
-    this.loveService.initLove(this.ParentType, this.ParentId);
+    this.checkIfLoved();
+  }
+
+  checkIfLoved() {
     // Response From Love Services
-    this.loveService.getLoveObservable().subscribe(
-        (loveResponse: { success: boolean, value: any }) => {
-          // Check If There Is Data Or Not Return From The Server
-          if (loveResponse) {
-            if (loveResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_LOVE ||
-              loveResponse.value.interaction.name == InteractionConstantService.INTERACTION_TYPE_LOVE) {
-              this.loved = loveResponse.success;  // this loveResponse = true if success
-              if (loveResponse.value.interactionID) {     // Response loveResponse After Reload The Page
-                this.interactionId = loveResponse.value.interactionID;
-              } else if (loveResponse.value.id) {         // Response loveResponse After Create New Love
-                this.interactionId = loveResponse.value.id;
-              }
-              // console.log('Love Interaction Response : ', loveResponse);
-            } else {
-              return;
-            }
-          } else {  // If Not Data That Mean This Interaction Was Deleted
-            this.loving = false;
-            this.loved = false;
-          }
+    this.loveService.getLoveStatus(this.ParentType, this.ParentId).subscribe(
+      isLoved => {
+        console.log(isLoved);
+        if (isLoved > 0) {
+          this.loved = true;
+          this.interactionId = isLoved;
+        } else {
+          this.loved = false;
+          this.loving = false;
         }
+      }
     );
   }
 
-  // Send love interaction
   sendLove() {
-    console.log(`Sending Some Love Buddy ;)`);
-    this.loveService.postLove( this.ParentType, this.ParentId, InteractionConstantService.INTERACTION_TYPE_LOVE);
+    switch (this.ParentType.toLowerCase()) {
+      case 'painting':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_PAINTING;
+        break;
+      case 'artist':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ARTIST;
+        break;
+      case 'arttype':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art-type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art_type':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'statue':
+        this.parentCode = InteractionConsts.ENTITY_TYPE_STATUE;
+        break;
+      default:
+        break;
+    }
+    this.loveService.postLove(this.parentCode, this.ParentId, `${InteractionConsts.INTERACTION_TYPE_LOVE}`).subscribe(
+      lovePostResult => {
+        this.checkIfLoved();
+      }
+    );
   }
 
-  // delete the love interaction
+  // delete the love interactionTypeString
   deleteLove() {
     this.loving = true;
-    this.loveService.deleteLoveInteraction(this.interactionId);
+    this.loveService.deleteLoveInteraction(this.interactionId).subscribe(
+      () => {
+        this.checkIfLoved();
+      }
+    );
   }
 }

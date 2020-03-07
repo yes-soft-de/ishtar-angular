@@ -45,6 +45,7 @@ export class RegisterRepoService {
       email: this.email,
       username: this.username,
       password: this.pass,
+      google: 0,
       image: 'https://api.adorable.io/avatars/285/abott@adorable.png'
     };
 

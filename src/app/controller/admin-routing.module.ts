@@ -19,6 +19,7 @@ import {EditPaintingComponent} from '../admin/ui/painting/edit-painting/edit-pai
 import {EditStatueComponent} from '../admin/ui/statue/edit-statue/edit-statue.component';
 import {ListCommentComponent} from '../admin/ui/comments/list-comment/list-comment.component';
 import {ListInteractionComponent} from '../admin/ui/interactions/list-interaction/list-interaction.component';
+import {EditFeaturedImagesComponent} from '../admin/ui/featured/edit-featured-images/edit-featured-images.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
       {path: 'add-artist', component: AddArtistComponent},
       {path: 'edit-artist/:id', component: EditArtistComponent},
       {path: 'add-painting', component: AddPaintingComponent},
+      {path: 'edit-featured', component: EditFeaturedImagesComponent},
       {path: 'list-paintings', component: ListPaintingComponent, data: {index: 2}},
       {path: 'edit-painting/:id', component: EditPaintingComponent},
       {path: 'list-statues', component: ListStatueComponent, data: {index: 3}},

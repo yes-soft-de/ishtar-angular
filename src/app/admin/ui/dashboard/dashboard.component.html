@@ -1,221 +1,233 @@
 <div *ngIf="artists != null && paintings != null" class="w-100">
-<div class="container">
-  <!--Start Home States Page-->
-  <div class="home-stat">
-    <h1 class="my-4 text-center text-monospace">Dashboard Page </h1>
-    <div class="row">
-      <div class="col-md-6 col-lg-3">
-        <div class="stat st_member">
-          <i class="fas fa-user-friends fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Artists</h6>
-            <span><a routerLink="/admin/list-artists">{{artists?.length}}</a></span>
+  <div class="container">
+    <!--Start Home States Page-->
+    <div class="home-stat">
+      <h1 class="my-4 text-center text-monospace">Dashboard Page </h1>
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="stat st_member">
+            <i class="fas fa-user-friends fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Artists</h6>
+              <span><a routerLink="/admin/list-artists">{{artists?.length}}</a></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="stat st_pending">
-          <i class="far fa-images fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Paintings</h6>
-            <span><a routerLink="/admin/list-paintings">{{paintings?.length}}</a></span>
+        <div class="col-md-6 col-lg-3">
+          <div class="stat st_pending">
+            <i class="far fa-images fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Paintings</h6>
+              <span><a routerLink="/admin/list-paintings">{{paintings?.length}}</a></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="stat st_item">
-          <i class="fas fa-archway fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Statues</h6>
+        <div class="col-md-6 col-lg-3">
+          <div class="stat st_item">
+            <i class="fas fa-archway fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Statues</h6>
 
-            <span><a routerLink="/admin/list-statues">{{statues?.length}}</a></span>
+              <span><a routerLink="/admin/list-statues">{{statues?.length}}</a></span>
 
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-6 col-lg-3">
-        <div class="stat st_comment">
-          <i class="fa fa-comments fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Comments</h6>
-            <span><a routerLink="/admin/list-comments">{{comments?.length}}</a></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="stat st_interactions">
-          <i class="fas fa-star-half-alt fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Interactions</h6>
-            <span><a routerLink="/admin/list-interactions">{{interactions?.length}}</a></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="stat st_clients">
-          <i class="fa fa-users fa-fw fa-5x"></i>
-          <div>
-            <h6>Total Clients</h6>
-            <span><a routerLink="/admin/list-clients">{{clients?.length}}</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Start Latest Section-->
-  <div class="latest mt-5">
-    <div class="row">
-      <div class="col-12 col-md-6 col-xl-4">
-        <!--Start Latest ArtistAdmin-->
-        <div class="late mb-3">
-          <div class="card">
-            <div class="card-header">
-              Latest {{latestArtistNumber}} Artists
-            </div>
-            <div class="card-body" *ngIf="artists?.length != 0">
-              <ng-container *ngFor="let artist of artists; let i = index">
-                <ng-container *ngIf="i < latestArtistNumber">
-                  <div class="late_info">
-                    {{artist?.name}}
-                    <a routerLink="/admin/edit-artist/{{artist?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </div>
-            <div class="card-body" *ngIf="artists?.length == 0">
-              <div class="late_info">
-                There isn't any Artists To Show Yet
-              </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="stat st_comment">
+            <i class="fa fa-comments fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Comments</h6>
+              <span><a routerLink="/admin/list-comments">{{comments?.length}}</a></span>
             </div>
           </div>
         </div>
-      </div>
-      <!--Start Latest Painting-->
-      <div class="col-12 col-md-6 col-xl-4">
-        <div class="late mb-3">
-          <div class="card">
-            <div class="card-header">
-              Latest {{latestPaintingNumber}} Paintings
-            </div>
-            <div class="card-body" *ngIf="paintings?.length != 0">
-              <ng-container *ngFor="let painting of paintings; let i = index">
-                <ng-container *ngIf="i < latestPaintingNumber">
-                  <div class="late_info">
-                    {{painting?.name}}
-                    <a routerLink="/admin/edit-painting/{{painting?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </div>
-            <div class="card-body" *ngIf="paintings?.length == 0">
-              <div class="late_info">
-                There isn't any Paintings To Show Yet
-              </div>
+        <div class="col-md-6">
+          <div class="stat st_interactions">
+            <i class="fas fa-star-half-alt fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Interactions</h6>
+              <span><a routerLink="/admin/list-interactions">{{interactions?.length}}</a></span>
             </div>
           </div>
         </div>
-      </div>
-      <!--Start Latest Statues-->
-      <div class="col-12 col-md-6 col-xl-4">
-        <div class="late mb-3">
-          <div class="card">
-            <div class="card-header">
-              Latest {{latestStatueNumber}} Statues
-            </div>
-            <div class="card-body" *ngIf="statues?.length != 0">
-              <ng-container *ngFor="let statue of statues; let i = index">
-                <ng-container *ngIf="i < latestStatueNumber">
-                  <div class="late_info">
-                    {{statue?.name}}
-                    <a routerLink="/admin/edit-statue/{{statue?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </div>
-            <div class="card-body" *ngIf="statues?.length == 0">
-              <div class="late_info">
-                There isn't any Statues To Show Yet
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Start Latest Auctions-->
-<!--      <div class="col-12 col-md-6">-->
-<!--        <div class="late mb-3">-->
-<!--          <div class="card">-->
-<!--            <div class="card-header">-->
-<!--              Latest {{latestAuctionNumber}} Auctions-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <ng-container *ngFor="let auction of auctions; let i = index">-->
-<!--                <ng-container *ngIf="i < latestAuctionNumber">-->
-<!--                  <div class="late_info">-->
-<!--                      {{auction.name}}-->
-<!--                      <a href="#" class="btn btn-success btn-sm py-0 float-right">Edit</a>-->
-<!--                  </div>-->
-<!--                </ng-container>-->
-<!--              </ng-container>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-      <!--Start Latest Comment-->
-      <div class="col-12 col-md-6">
-        <div class="late mb-3">
-          <div class="card">
-            <div class="card-header">
-              Latest {{latestCommentNumber}} Comments
-            </div>
-            <div class="card-body" *ngIf="comments?.length != 0">
-              <ng-container *ngFor="let comment of comments; let i = index">
-                <ng-container *ngIf="i < latestCommentNumber">
-                  <div class="member_comment">
-                    <span>{{comment?.username}}</span>
-                    <p>{{comment?.body}}</p>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </div>
-            <div class="card-body" *ngIf="comments?.length == 0">
-              <div class="late_info">
-                There isn't any Comments To Show Yet
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <!--Start Latest Clients-->
-        <div class="late mb-3">
-          <div class="card">
-            <div class="card-header">
-              Latest {{latestClientsNumber}} Clients
-            </div>
-            <div class="card-body" *ngIf="clients?.length != 0">
-              <ng-container *ngFor="let client of clients; let i = index">
-                <ng-container *ngIf="i < latestClientsNumber">
-                  <div class="late_info">
-                    {{client["0"]?.username == null ? 'User' : client["0"]?.username}}
-                    <a routerLink="/admin/edit-client/{{client['0']?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
-                  </div>
-                </ng-container>
-              </ng-container>
-            </div>
-            <div class="card-body" *ngIf="clients?.length == 0">
-              <div class="late_info">
-                There isn't any Clients To Show Yet
-              </div>
+        <div class="col-md-6">
+          <div class="stat st_clients">
+            <i class="fa fa-users fa-fw fa-5x"></i>
+            <div>
+              <h6>Total Clients</h6>
+              <span><a routerLink="/admin/list-clients">{{clients?.length}}</a></span>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!--Start Latest Section-->
+    <div class="latest mt-5">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--Start Latest ArtistAdmin-->
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Latest {{latestArtistNumber}} Artists
+              </div>
+              <div class="card-body" *ngIf="artists?.length != 0">
+                <ng-container *ngFor="let artist of artists; let i = index">
+                  <ng-container *ngIf="i < latestArtistNumber">
+                    <div class="late_info">
+                      {{artist?.name}}
+                      <a routerLink="/admin/edit-artist/{{artist?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="artists?.length == 0">
+                <div class="late_info">
+                  There isn't any Artists To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Start Latest Painting-->
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Latest {{latestPaintingNumber}} Paintings
+              </div>
+              <div class="card-body" *ngIf="paintings?.length != 0">
+                <ng-container *ngFor="let painting of paintings; let i = index">
+                  <ng-container *ngIf="i < latestPaintingNumber">
+                    <div class="late_info">
+                      {{painting?.name}}
+                      <a routerLink="/admin/edit-painting/{{painting?.id}}"
+                         class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="paintings?.length == 0">
+                <div class="late_info">
+                  There isn't any Paintings To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Start Latest Statues-->
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Latest {{latestStatueNumber}} Statues
+              </div>
+              <div class="card-body" *ngIf="statues?.length != 0">
+                <ng-container *ngFor="let statue of statues; let i = index">
+                  <ng-container *ngIf="i < latestStatueNumber">
+                    <div class="late_info">
+                      {{statue?.name}}
+                      <a routerLink="/admin/edit-statue/{{statue?.id}}" class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="statues?.length == 0">
+                <div class="late_info">
+                  There isn't any Statues To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Start Latest Comment-->
+        <div class="col-12 col-md-6">
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Latest {{latestCommentNumber}} Comments
+              </div>
+              <div class="card-body" *ngIf="comments?.length != 0">
+                <ng-container *ngFor="let comment of comments; let i = index">
+                  <ng-container *ngIf="i < latestCommentNumber">
+                    <div class="member_comment">
+                      <span>{{comment?.username}}</span>
+                      <p>{{comment?.body}}</p>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="comments?.length == 0">
+                <div class="late_info">
+                  There isn't any Comments To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <!--Start Latest Clients-->
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Latest {{latestClientsNumber}} Clients
+              </div>
+              <div class="card-body" *ngIf="clients?.length != 0">
+                <ng-container *ngFor="let client of clients; let i = index">
+                  <ng-container *ngIf="i < latestClientsNumber">
+                    <div class="late_info">
+                      {{client["0"]?.username == null ? 'User' : client["0"]?.username}}
+                      <a routerLink="/admin/edit-client/{{client['0']?.id}}"
+                         class="btn btn-success btn-sm py-0 float-right">Edit</a>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="clients?.length == 0">
+                <div class="late_info">
+                  There isn't any Clients To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="late mb-3">
+            <div class="card">
+              <div class="card-header">
+                Last 8 Featured Paintings
+              </div>
+              <div class="card-body" >
+                <ng-container *ngFor="let featuredImage of featuredImages; let i = index">
+                  <ng-container *ngIf="i < 8">
+                    <div class="late_info">
+                      {{featuredImage?.name}}
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <div class="card-body" *ngIf="featuredImages?.length == 0">
+                <div class="late_info">
+                  There isn't any Featured Images To Show Yet
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 <div *ngIf="artists == null || paintings == null" class="w-100">
-<!--  <h3 class="text-center text-primary">Loading Stats!</h3>-->
-  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  <!--  <h3 class="text-center text-primary">Loading Stats!</h3>-->
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>

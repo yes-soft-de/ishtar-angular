@@ -70,6 +70,10 @@ import {StatueCommentItemComponent} from './statue/component/statue-comment-item
 import {ArtistKnowledgeComponent} from './artist/component/artist-knowledge/artist-knowledge.component';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import { PaintingKnowledgeGraphComponent } from './painting/component/painting-knowledge-graph/painting-knowledge-graph.component';
+import { FeaturedImagesComponent } from './painting/component/featured-images/featured-images.component';
+import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
+import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
+import {MarkdownModule} from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -135,7 +139,10 @@ import { PaintingKnowledgeGraphComponent } from './painting/component/painting-k
     PaintingCommentItemComponent,
     StatueCommentItemComponent,
     ArtistKnowledgeComponent,
-    PaintingKnowledgeGraphComponent
+    PaintingKnowledgeGraphComponent,
+    FeaturedImagesComponent,
+    PaintingCardComponent,
+    ArtistCardComponent
   ],
   exports: [
     // User
@@ -181,7 +188,9 @@ import { PaintingKnowledgeGraphComponent } from './painting/component/painting-k
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     NgxPaginationModule,
-    NgxImageZoomModule.forRoot(), NgxJsonLdModule
+    NgxImageZoomModule.forRoot(),
+    NgxJsonLdModule,
+    MarkdownModule.forChild()
   ],
   schemas: [
     // NO_ERRORS_SCHEMA
