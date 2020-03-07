@@ -32,7 +32,7 @@ export class IshtarClientService {
           'Accept-Language': lang
         })
       };
-      return this.httpClient.get(url);
+      return this.httpClient.get(url, httpOptions);
     }
   }
 
