@@ -1,0 +1,16 @@
+<a routerLink="/artist/{{artist.id}}">
+  <div class="artist-card text-center my-2 my-lg-3 my-xl-4">
+    <img class="img-fluid" src="{{artist.path}}" alt="...">
+    <div class="w-100 details-container">
+      <div class="inner-details-container">
+        <h3 class="col-12 text-center">{{artist.name}}</h3>
+        <span class="col-12 text-center artist-detail-number">{{artist.painting }} painting(s)</span>
+        <span class="col-12 text-center artist-detail-follower">
+                    <app-interaction [EntityName]="'artist'" [Row]="artist?.id"
+                                     [interactionTypeString]="'follow'"></app-interaction>
+                    Follow
+                  </span>
+      </div>
+    </div>
+  </div>
+</a>

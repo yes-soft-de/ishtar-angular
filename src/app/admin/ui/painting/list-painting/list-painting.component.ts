@@ -102,14 +102,14 @@ export class ListPaintingComponent implements OnInit, OnDestroy {
     } else {
       this.paintingsFilterList = [];
       this.paintingsFilterList = this.paintingsList.filter(res => {
-        // Search In Entity Column
+        // Search In EntityName Column
         const nameResult = res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         // Search In Interactions Column
         const artistResult = res.artist.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         // Search In Art Type Column
         const artTypeResult = res.artType.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (nameResult) {
-          // display the Entity Column
+          // display the EntityName Column
           return nameResult;
         } else if (artistResult) {
           // display the Interactions Column

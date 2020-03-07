@@ -25,8 +25,8 @@ export class FollowComponent implements OnInit {
         (followResponse: { success: boolean, value: any }) => {
           // Check If There Is Data Or Not Return From The Server
           if (followResponse) {
-            if (followResponse.value.interaction == InteractionConstantService.INTERACTION_TYPE_FOLLOW ||
-              followResponse.value.interaction.name == InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
+            if (followResponse.value.interactionTypeString == InteractionConstantService.INTERACTION_TYPE_FOLLOW ||
+              followResponse.value.interactionTypeString.name == InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
               this.followed = followResponse.success;       // this followResponse = true if success
               if (followResponse.value.interactionID) {     // Response followResponse After Reload The Page
                 this.interactionId = followResponse.value.interactionID;

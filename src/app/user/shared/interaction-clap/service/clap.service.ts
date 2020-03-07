@@ -7,6 +7,7 @@ import {InteractionConstantService} from '../../../interactions/service/interact
 import {MatDialog} from '@angular/material';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
 import {UserService} from '../../user/service/user.service';
+import {IshtarClientService} from '../../client/ishtar-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -40,26 +41,9 @@ export class ClapService extends InteractionsService {
           }
       );
     }
-    // See If Loading User
-    // if (!this.userRequestSent) {
-    //   // If Not Request Him
-    //   this.userRequestSent = true;
-    //   this.userProfileService.requestUserDetails().subscribe(
-    //       (user: any) => {
-    //         // Assign the Data to the User
-    //         if (this.isUserNode(user.Data)) {
-    //           console.log('Assigning User');
-    //           this.userInfo = user.Data;
-    //           this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
-    //         }
-    //       }
-    //   );
-    // } else if (this.checkUserDetailsExists(this.userInfo)) {
-    //   this.getClientClap(this.userInfo.id, parentType, rowId, this.clapSubject);
-    // }
   }
 
-  // Check if The User is login to make his clap interaction
+  // Check if The User is login to make his clap interactionTypeString
   postClap(entityType: string, entityId: number, clapValue: number) {
     if (!this.checkUserDetailsExists(this.userInfo)) {
       // Open Dialog Box If User Not Login

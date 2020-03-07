@@ -1,44 +1,46 @@
+@import "variables";
+
 html {
   font-family: Arial, sans-serif !important;
   h1 {
     @media screen and (min-width: 0){
-      font-size: 30pt !important;
+      font-size: $font-sm-h1;
     }
     @media screen and (min-width: 960px){
-      font-size: 50pt;
+      font-size: $font-sm-h1;
     }
   }
   h2 {
     @media screen and (min-width: 0){
-      font-size: 24pt !important;
+      font-size: $font-sm-h2;
     }
     @media screen and (min-width: 960px){
-      font-size: 30pt !important;
+      font-size: $font-lg-h2;
     }
   }
   h3 {
     @media screen and (min-width: 0){
-      font-size: 24pt !important;
+      font-size: $font-sm-h3;
     }
     @media screen and (min-width: 960px){
-      font-size: 18pt !important;
+      font-size: $font-lg-h3;
     }
   }
   h4 {
     @media screen and (min-width: 0){
-      font-size: 16pt !important;
+      font-size: $font-sm-h4;
     }
     @media screen and (min-width: 960px){
-      font-size: 18pt !important;
+      font-size: $font-lg-h4;
     }
   }
 
   h5 {
     @media screen and (min-width: 0){
-      font-size: 12pt !important;
+      font-size: $font-sm-h5;
     }
     @media screen and (min-width: 960px){
-      font-size: 18pt;
+      font-size: $font-lg-h5;
     }
   }
 }

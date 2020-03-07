@@ -110,8 +110,8 @@
                 (change)="changeState($event)"
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('state').errors}">
           <option value="">Select Painting State</option>
-          <option value="0" [selected]="paintingData['0']?.state == false">Sold</option>
-          <option value="1" [selected]="paintingData['0']?.state == true">Not Sold</option>
+          <option value="0" [selected]="paintingData?.state == false">Sold</option>
+          <option value="1" [selected]="paintingData?.state == true">Not Sold</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('state').errors?.required">State Field Is Required</span>
       </div>
@@ -126,26 +126,25 @@
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('artType').errors}">
           <option value="">Select Art Type For This Painting</option>
           <option value="{{artType.id}}" *ngFor="let artType of artTypes"
-                  [selected]="paintingData['1'].artType == artType.name">{{artType.name}}</option>
+                  [selected]="paintingData.artType == artType.name">{{artType.name}}</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
       </div>
     </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Gallery</label>
-      <div class="col-10">
-        <select class="form-control"
-                name="gallery"
-                formControlName="gallery"
-                (change)="changeGallery($event)"
-                [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('gallery').errors}">
-          <option value="">Select Painting Gallery</option>
-          <option value="1">all (Default)</option>
-          <!--                    <option value="2">Like New</option>-->
-        </select>
-        <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('gallery').errors?.required">Gallery Field Is Required</span>
-      </div>
-    </div>
+<!--    <div class="form-group row">-->
+<!--      <label class="col-2 col-form-label">Gallery</label>-->
+<!--      <div class="col-10">-->
+<!--        <select class="form-control"-->
+<!--                name="gallery"-->
+<!--                formControlName="gallery"-->
+<!--                (change)="changeGallery($event)"-->
+<!--                [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('gallery').errors}">-->
+<!--          <option value="">Select Painting Gallery</option>-->
+<!--          <option value="1">all (Default)</option>-->
+<!--        </select>-->
+<!--        <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('gallery').errors?.required">Gallery Field Is Required</span>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Active</label>
@@ -156,8 +155,8 @@
                 (change)="changeActive($event)"
                 [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('active').errors}">
           <option value="">Select Active State</option>
-          <option value="0" [selected]="paintingData['0']?.active == false">Not Active</option>
-          <option value="1" [selected]="paintingData['0']?.active == true">Active</option>
+          <option value="0" [selected]="paintingData?.active == false">Not Active</option>
+          <option value="1" [selected]="paintingData?.active == true">Active</option>
         </select>
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('active').errors?.required">Active Field Is Required</span>
       </div>

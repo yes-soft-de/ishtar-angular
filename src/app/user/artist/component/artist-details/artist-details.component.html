@@ -1,16 +1,9 @@
 <!-- ######################################## Artist Page ######################################## -->
 <div *ngIf="artist != null">
-<div class="main-carousel" *ngIf="randomPaintingForArtist != null">
-  <div class="carousel-cell">
-    <section class="artist-page">
-      <div class="artist-header">
-          <div class="position-absolute">
-            <div class="artist-banner-text text-center p-3 p-md-5">
-              <h4 class="font-weight-bold">{{randomPaintingForArtist?.name}}</h4>
-              <span class="d-block artist-banner-dimension">{{randomPaintingForArtist?.width}}cm X {{randomPaintingForArtist?.height}}cm</span>
-              <span class="d-block artist-banner-type">{{randomPaintingForArtist?.colorsType}} On {{randomPaintingForArtist?.artType}}</span>
-            </div>
-          </div>
+  <div class="main-carousel" *ngIf="randomPaintingForArtist != null">
+    <div class="carousel-cell">
+      <section class="artist-page">
+        <div class="artist-header">
           <div class="banner-background">
             <img class="parallax d-block" [src]="randomPaintingForArtist?.image">
           </div>
@@ -34,65 +27,59 @@
                   </div>
                 </div>
                 <div class="col-12 col-lg-9">
-                    <div class="artist-header-details-bottom text-center">
-                      <div class="row">
-                        <div class="col-12 col-md-6 d-none d-lg-block text-left">
-                          <div class="artist-video-icon">
-                            <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
-                              <i class="fas fa-envelope fa-lg"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-5 col-sm-6 contact-artist">
-                          <app-follow [ParentId]="artist?.id" [ParentType]="'artist'" class="follow-artist"></app-follow>
-                        </div>
-
-                        <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
-                          <h2>{{artist?.name}}</h2>
-                          <ul class="list-unstyled">
-                            <li class="m-1" *ngIf="facebookValid">
-                              <a href="{{artist?.Facebook}}">
-                                <mdb-icon fab icon="facebook"></mdb-icon>
-                              </a>
-                            </li>
-                            <li class="m-1" *ngIf="twitterValid">
-                              <a href="{{artist?.Twitter}}">
-                                <mdb-icon fab icon="twitter"></mdb-icon>
-                              </a>
-                            </li>
-                            <li class="m-1" *ngIf="linkedInValid">
-                              <a href="{{artist?.Linkedin}}">
-                                <mdb-icon fab icon="linkedin"></mdb-icon>
-                              </a>
-                            </li>
-                          </ul>
+                  <div class="artist-header-details-bottom text-center">
+                    <div class="row">
+                      <div class="col-12 col-md-6 d-none d-lg-block text-left">
+                        <div class="artist-video-icon">
+                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{artist?.id}}">
+                            <i class="fas fa-envelope fa-lg"></i>
+                          </a>
                         </div>
                       </div>
+                      <div class="col-5 col-sm-6 contact-artist">
+                        <app-follow [ParentId]="artist?.id" [ParentType]="'artist'" class="follow-artist"></app-follow>
+                      </div>
+
+                      <div class="col-7 col-sm-6 col-lg-12 artist-name-social text-lg-left mt-3">
+                        <h2>{{artist?.name}}</h2>
+                        <ul class="list-unstyled">
+                          <li class="m-1" *ngIf="facebookValid">
+                            <a href="{{artist?.Facebook}}">
+                              <mdb-icon fab icon="facebook"></mdb-icon>
+                            </a>
+                          </li>
+                          <li class="m-1" *ngIf="twitterValid">
+                            <a href="{{artist?.Twitter}}">
+                              <mdb-icon fab icon="twitter"></mdb-icon>
+                            </a>
+                          </li>
+                          <li class="m-1" *ngIf="linkedInValid">
+                            <a href="{{artist?.Linkedin}}">
+                              <mdb-icon fab icon="linkedin"></mdb-icon>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
+                  </div>
                 </div>
               </div> <!--End Row Div-->
             </div>
           </div><!--End Artist-header-detail Div-->
-      </div> <!--End Artist-header Div-->
+        </div> <!--End Artist-header Div-->
 
-      <div class="artist-body bg-light pt-3">
-        <div class="container">
-          <div class="col-12 col-lg-9 col-xl-10 mx-auto">
-            <h3 class="text-dark pl-5">Biography</h3>
-            <p>{{artist?.story}}</p>
-            <hr class="border">
-          </div>
-<!--          <div class="col-12 col-md-9 col-lg-7 col-xl-6 mx-auto d-none">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LN820hIQ17Q" allowfullscreen></iframe>
+        <div class="artist-body bg-light pt-3">
+          <div class="container">
+            <div class="col-12 col-lg-9 col-xl-10 mx-auto">
+              <h3 class="text-dark pl-5">Biography</h3>
+              <markdown [data]="artist?.story"></markdown>
+              <hr class="border">
             </div>
-            <hr class="border">
-          </div> -->
+          </div>
         </div>
-      </div>
-    </section>
-  </div> <!--End Carousel cell-->
-</div> <!--End Main Carousel-->
+      </section>
+    </div> <!--End Carousel cell-->
+  </div> <!--End Main Carousel-->
 </div>
 
 <app-artist-knowledge *ngIf="artist !== null && artist !== undefined" [artist]="artist"></app-artist-knowledge>

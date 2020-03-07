@@ -17,6 +17,10 @@ export class ArtistListComponent implements OnInit {
   public activeTypes: string[];
   @Input() search = true;
   @Input() filter = true;
+
+  @Input() artistSectionSize = 12;
+  @Input() visibleArtistSize = 12;
+
   config: {
     itemsPerPage: number,
     currentPage: number,
@@ -55,7 +59,7 @@ export class ArtistListComponent implements OnInit {
     this.artistService.getArtistList().subscribe(
       artists => {
         this.originalList = ArtistListComponent.shuffle(artists);
-        this.filteredList = ArtistListComponent.shuffle(artists);
+        this.filteredList = this.originalList.slice(0, this.visibleArtistSize);
         this.config.totalItems = artists.length;
         this.calculateActiveArtTypes();
       }
@@ -90,6 +94,12 @@ export class ArtistListComponent implements OnInit {
   filterByArtistName(artistName: string) {
     this.activeArtist = artistName;
     this.filteredList = this.getFilteredList();
+  }
+
+  addMoreArtists() {
+    this.visibleArtistSize += this.artistSectionSize;
+    this.filteredList = this.getFilteredList();
+    console.log(`Showing ${this.filteredList.length} artists`);
   }
 
   cancelFilterByArtistName() {

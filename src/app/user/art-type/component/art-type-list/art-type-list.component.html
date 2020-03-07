@@ -1,12 +1,12 @@
 <section id="school-list-section">
   <div id="cards-list" style="display: flex; flex-wrap: wrap">
-    <div class="school-list-card mb-3 mx-auto" *ngFor="let i of artTypeList" routerLink="/art-type/{{i.id}}">
+    <div class="school-list-card mb-3 mx-auto" *ngFor="let i of artTypeList?.slice(0, viewedArtTypesLimit)" routerLink="/art-type/{{i.id}}">
       <div id="school-bg">
-        <img src="{{i.path}}" alt="...">
+        <img src="{{i?.path}}" alt="...">
       </div>
       <div id="school-fg">
         <div>
-          <h5>{{i.name}}</h5>
+          <h5>{{i?.name}}</h5>
         </div>
       </div>
     </div>

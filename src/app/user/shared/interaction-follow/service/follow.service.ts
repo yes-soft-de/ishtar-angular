@@ -59,7 +59,7 @@ export class FollowService extends InteractionsService {
     // }
   }
 
-  // Check if The User is login to make his love interaction
+  // Check if The User is login to make his love interactionTypeString
   postFollow(entityType: string, entityId: number, interactionsType: string) {
     if (!this.checkUserDetailsExists(this.userInfo)) {
       // Open Dialog Box If User Not Login

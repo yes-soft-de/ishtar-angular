@@ -183,6 +183,7 @@
                    [ngClass]="{'is-invalid': uploadForm.get('story').errors &&
                    (uploadForm.get('story').touched || uploadForm.get('story').dirty)}"
                    name="story"
+                   #story
                    formControlName="story"
                    placeholder="Type The Story"></textarea>
         <span class="invalid-feedback" *ngIf="uploadForm.get('story').errors?.required">Story Field Is Required</span>
@@ -190,7 +191,12 @@
               *ngIf="uploadForm.get('story').errors?.minlength">Story Must Be Greater Than  2</span>
       </div>
     </div>
-
+    <div class="form-group row">
+      <label class="col-12 col-form-label">Story Preview</label>
+      <div class="col-12">
+         <markdown [data]="story.value"></markdown>
+      </div>
+    </div>
 
     <div class="form-group offset-md-2 mt-3">
       <input class="btn btn-primary btn-block" type="submit" value="{{submitButtonValue}}" [disabled]="!imagePathReady">

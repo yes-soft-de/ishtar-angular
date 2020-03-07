@@ -111,13 +111,13 @@ export class ListCommentComponent implements OnInit {
       this.commentsFilterList = this.commentsList.filter(res => {
         // Search In Name Column
         const nameResult = res.username.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
-        // Search In Entity Column
+        // Search In EntityName Column
         const entitiesResult = res.entity.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
         if (nameResult) {
           // display the Name Column
           return nameResult;
         } else if (entitiesResult) {
-          // display the Entity Column
+          // display the EntityName Column
           return entitiesResult;
         }
       });

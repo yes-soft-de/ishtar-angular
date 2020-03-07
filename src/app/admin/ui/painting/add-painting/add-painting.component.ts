@@ -75,7 +75,7 @@ export class AddPaintingComponent implements OnInit {
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
       artType: ['', Validators.required],
-      gallery: ['', Validators.required],
+      // gallery: ['', Validators.required],
       story: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
@@ -150,19 +150,6 @@ export class AddPaintingComponent implements OnInit {
 
   mySubmit() {
     this.isSubmitted = true;
-    // console.log(this.uploadForm.get('name').errors, this.uploadForm.get('name').valid);
-    // console.log(this.uploadForm.get('artist').errors, this.uploadForm.get('artist').valid);
-    // console.log(this.uploadForm.get('height').errors, this.uploadForm.get('height').valid);
-    // console.log(this.uploadForm.get('width').errors, this.uploadForm.get('width').valid);
-    // console.log(this.uploadForm.get('colorsType').errors, this.uploadForm.get('colorsType').valid);
-    // console.log(this.uploadForm.get('price').errors, this.uploadForm.get('price').valid);
-    // console.log(this.uploadForm.get('state').errors, this.uploadForm.get('state').valid);
-    // console.log(this.uploadForm.get('image').errors, this.uploadForm.get('image').valid);
-    // console.log(this.uploadForm.get('active').errors, this.uploadForm.get('active').valid);
-    // console.log(this.uploadForm.get('keyWords').errors, this.uploadForm.get('keyWords').valid);
-    // console.log(this.uploadForm.get('artType').errors, this.uploadForm.get('artType').valid);
-    // console.log(this.uploadForm.get('gallery').errors, this.uploadForm.get('gallery').valid);
-    // console.log(this.uploadForm.get('story').errors, this.uploadForm.get('story').valid);
     if (!this.uploadForm.valid) {
       this.toaster.error(`Error: All Fields Are Required`);
       return false;
@@ -187,46 +174,4 @@ export class AddPaintingComponent implements OnInit {
       );
     }
   }
-
-  // Method To Check if The form Fields Is Empty
-  // isEverythingFilled() {
-  //   if (this.uploadForm.get('name').value.toString().length < 1) {
-  //     return 'name is not filled!';
-  //   }
-  //   if (this.uploadForm.get('height').value.toString().length < 1) {
-  //     return 'height is not filled!';
-  //   }
-  //   if (this.uploadForm.get('width').value.toString().length < 1) {
-  //     return 'width is not filled!';
-  //   }
-  //   if (this.uploadForm.get('colorsType').value.toString().length < 1) {
-  //     return 'colors is not filled!';
-  //   }
-  //   if (this.uploadForm.get('price').value.toString().length < 1) {
-  //     return 'price is not filled!';
-  //   }
-  //   if (this.uploadForm.get('name').value.toString().length < 1) {
-  //     return 'name is not filled!';
-  //   }
-  //   if (this.uploadForm.get('keyWords').value.toString().length < 1) {
-  //     return 'keys is not filled!';
-  //   }
-  //   if (this.uploadForm.get('state').value.toString().length < 1) {
-  //     return 'state is not filled!';
-  //   }
-  //   if (this.uploadForm.get('gallery').value.toString().length < 1) {
-  //     return 'gallery is not filled!';
-  //   }
-  //   if (this.uploadForm.get('active').value.toString().length < 1) {
-  //     return 'active is not filled!';
-  //   }
-  //   if (this.uploadForm.get('story').value.toString().length < 1) {
-  //     return 'story is not filled!';
-  //   }
-  //   if (this.imageUrl.length < 1) {
-  //     return 'file is not Uploaded!';
-  //   }
-  //   return true;
-  // }
-
 }
