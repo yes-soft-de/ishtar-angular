@@ -26,6 +26,12 @@ export class IshtarClientService {
       };
       return this.httpClient.get(url, httpOptions);
     } else {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept-Language': lang
+        })
+      };
       return this.httpClient.get(url);
     }
   }

@@ -74,6 +74,7 @@
          "list":{
             "filter-by-art-type":"Filter By Art Type",
             "all":"All",
+            "art-type": "Art Type",
             "filter-by-artist":"Filter By Artist"
          },
          "may-like":{
