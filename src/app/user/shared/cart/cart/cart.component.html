@@ -1,7 +1,7 @@
 <section id="cart-container" *ngIf="paintingList">
 
   <div id="payment-form">
-    <form [formGroup]="paymentForm">
+    <form [formGroup]="paymentForm" (ngSubmit)="submitBill()">
       <mat-horizontal-stepper>
         <mat-step label="Personal Info">
           <p class="h4 mb-4 mt-4">Customer Info</p>
@@ -72,7 +72,7 @@
           <div class="row">
             <p>Total Price: {{subTotalPrice}} plus {{tax}} as Taxes = {{totalPrice}}</p>
           </div>
-          <button type="submit">Start Payment Process</button>
+          <button type="submit" (click)="submitBill()">Start Payment Process</button>
         </mat-step>
       </mat-horizontal-stepper>
     </form>

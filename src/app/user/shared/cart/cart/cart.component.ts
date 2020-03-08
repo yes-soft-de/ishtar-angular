@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   totalPrice = 0;
   subTotalPrice = 0;
-  tax = 0;
+  tax = 12.5;
   address = 0;
 
   paymentForm: FormGroup;
