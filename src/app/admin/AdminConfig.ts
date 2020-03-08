@@ -42,6 +42,8 @@ export class AdminConfig {
   public static featuredAPI             = AdminConfig.sourceAPI + 'featuredpainting';
   public static featuredGetAPI             = AdminConfig.sourceAPI + 'featuredpaintings';
 
+
+  public static PaymentAPI = AdminConfig.sourceAPI + 'orders';
   // Translation API
   public static PaintingTranslationAPI = AdminConfig.sourceAPI + 'paintingtranslation';
 }

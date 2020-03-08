@@ -26,10 +26,10 @@ export class UserComponent implements OnInit {
   setLang() {
     if (this.router.url.toString().search('de') > -1) {
       console.log('Setting langs to Deutsch');
-      localStorage.setItem('lang', 'de');
+      sessionStorage.setItem('lang', 'de');
       this.translateService.use('de');
     } else {
-      localStorage.setItem('lang', 'en');
+      sessionStorage.setItem('lang', 'en');
       this.translateService.use('en');
     }
   }

@@ -85,6 +85,7 @@
       "header": {
         "login": "Login",
         "logout": "Logout",
+        "cart": "Cart",
         "search": "Search",
         "artists": "Artists",
         "paintings": "Paintings",

@@ -5,6 +5,7 @@ import {ArtistService} from '../../../artist/service/artist.service';
 import {ArtistDetails} from '../../../artist/entity/artist-details';
 import {PaintingDetails} from '../../entity/painting-details';
 import {Title} from '@angular/platform-browser';
+import { CartService } from 'src/app/user/shared/cart/service/cart.service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class PaintingDetailsComponent implements OnInit {
 
   constructor(private paintingService: PaintingService,
               private artistService: ArtistService,
+              private cartService: CartService,
               private activatedRoute: ActivatedRoute,
               private titleService: Title) {}
 
@@ -69,5 +71,9 @@ export class PaintingDetailsComponent implements OnInit {
 
   hideFullScreenMode() {
     this.fullImage = false;   // Exit From Painting Full Size
+  }
+
+  addToCart() {
+    this.cartService.addPaintingToCart(this.painting);
   }
 }

@@ -76,6 +76,8 @@ import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.com
 import {MarkdownModule} from 'ngx-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartComponent } from './shared/cart/cart/cart.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -178,7 +180,8 @@ import { CartComponent } from './shared/cart/cart/cart.component';
     FAQComponent,
     ImprintPageComponent,
     DataProcessingPageComponent,
-    ItemBriefComponent
+    ItemBriefComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -194,7 +197,8 @@ import { CartComponent } from './shared/cart/cart/cart.component';
     NgxImageZoomModule.forRoot(),
     NgxJsonLdModule,
     MarkdownModule.forChild(),
-    TranslateModule
+    TranslateModule,
+    MatStepperModule
   ],
   schemas: [
     // NO_ERRORS_SCHEMA

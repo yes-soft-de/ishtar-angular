@@ -22,6 +22,7 @@ import {HomePageComponent} from './home/component/home-page/home-page.component'
 import {ArtTypeDetailsPageComponent} from './art-type/component/art-type-details-page/art-type-details-page.component';
 import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/art-type-list-page.component';
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
+import { CartComponent } from './shared/cart/cart/cart.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,8 @@ const routes: Routes = [
       {path: 'profile', component: ProfilePageComponent},
       {path: 'edit-profile', component: ProfileEditPageComponent},
       {path: 'about-ishtar', component: AboutIshtarPageComponent},
-      {path: 'painting/:id', component: PaintingDetailsPageComponent}
+      {path: 'painting/:id', component: PaintingDetailsPageComponent},
+      {path: 'cart', component: CartComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'
   }

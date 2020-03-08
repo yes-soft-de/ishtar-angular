@@ -17,7 +17,7 @@ export class TranslateArtistComponent implements OnInit {
   fileUploaded = false;
   imageUrl: string;
   imagePathReady = false;
-  submitButtonValue = 'Waiting Uploading Image';
+  submitButtonValue = 'Submit Translation';
   selectedFile: ImageSnippet;
 
   constructor(

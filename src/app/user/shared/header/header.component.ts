@@ -8,6 +8,8 @@ import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component
 import {UserService} from '../user/service/user.service';
 import {UserManagerService} from '../user/manager/user-manager.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CartService } from '../cart/service/cart.service';
+import { CartComponent } from '../cart/cart/cart.component';
 
 @Component({
   selector: 'app-header',
@@ -77,4 +79,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }
 
+  openCartDialog() {
+    return this.dialog.open(CartComponent, {
+      minWidth: '100vw',
+      hasBackdrop: true
+    });
+  }
 }

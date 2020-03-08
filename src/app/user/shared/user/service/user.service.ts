@@ -74,10 +74,12 @@ export class UserService {
           if (userInfo.Data.email || userInfo.Data.username) {
             const userData: UserResponse = {
               Data: {
-                id: userInfo.Data.id
+                id: userInfo.Data.id,
+                lang: userInfo.Data.lang
               }
             };
             localStorage.setItem('userInfo', JSON.stringify(userData));
+            localStorage.setItem('lang', userData.Data.lang);
             userSubject.next(userInfo.Data);
           }
         }

@@ -35,7 +35,7 @@ export class TranslatePaintingComponent implements OnInit {
   fileSelected = false;
   imageUrl: string;
   imagePathReady = true;
-  submitButtonValue = 'Update Painting';
+  submitButtonValue = 'Submit Painting Translation';
   selectedFile: ImageSnippet;
 
   constructor(private formBuilder: FormBuilder,

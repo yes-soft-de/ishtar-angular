@@ -1,11 +1,86 @@
-<section class="row">
-    <div class="col-12" *ngFor="let painting of paintingList">
-        <img [src]="painting.image"]>
-        <p>{{painting.name}}</p>
-        <p>{{painting.price}}</p>
-    </div>
+<section id="cart-container" *ngIf="paintingList">
 
-    <div class="col-12 justify-content-end">
-        <button mat-button>Buy</button>
-    </div>
+  <div id="payment-form">
+    <form [formGroup]="paymentForm">
+      <mat-horizontal-stepper>
+        <mat-step label="Personal Info">
+          <p class="h4 mb-4 mt-4">Customer Info</p>
+          <div class="form-group row">
+            <input type="text" #firstName formControlName="firstName" id="firstName" mdbInput class="form-control mb-4 col-6"
+              placeholder="First Name">
+            <input type="text" #lastName formControlName="lastName" id="lastName" mdbInput class="form-control mb-4 col-6"
+              placeholder="Last Name">
+          </div>
+
+          <div class="form-group row">
+              <input #phone class="form-control" type="number" name="phone" formControlName="phone"
+                placeholder="Your Phone Number">
+          </div>
+
+          <div class="form-group row justify-content-end">
+            <button type="button" matStepperNext class="btn-form-next">Next</button>
+          </div>
+        </mat-step>
+        <mat-step label="Shipping Details">
+
+          <div class="form-group row align-content-center">
+            <div class="col-2">
+              Location
+            </div>
+            <div class="col-5">
+              <select class="form-control" name="country" formControlName="country">
+                <option *ngFor="let country of countries" [selected]="country == selectedCountry" value="{{country}}"
+                  (click)="selectCountry(country)">
+                  {{country}}
+                </option>
+              </select>
+            </div>
+            <div class="col-5">
+              <div class="col-10">
+                <input #city class="form-control" type="text" name="city" formControlName="city" placeholder="Type City Name">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-2">
+              Address
+            </div>
+            <div class="col-5">
+              <input #address class="form-control" type="text" name="address" formControlName="address"
+                placeholder="Type Address">
+            </div>
+            <div class="col-5">
+              <input #zipCode class="form-control" type="number" name="zipCode" formControlName="zipCode"
+                placeholder="Type Zip Code">
+            </div>
+          </div>
+
+          <div class="form-group row justify-content-end">
+            <button type="button" matStepperNext class="btn-form-next">Next</button>
+          </div>
+        </mat-step>
+        <mat-step label="Payment Selection">
+          <div class="row">
+            <p>Client Name: {{firstName.value}} {{lastName.value}}</p>
+          </div>
+          <div class="row">
+            <p>Delivery Address: {{selectedCountry}}, {{city.value}} at {{zipCode.value}}, {{address.value}}</p>
+          </div>
+          <div class="row">
+            Contact Phone: {{phone.value}}
+          </div>
+          <div class="row">
+            <p>Total Price: {{subTotalPrice}} plus {{tax}} as Taxes = {{totalPrice}}</p>
+          </div>
+          <button type="submit">Start Payment Process</button>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </div>
+  <div id="painting-list">
+
+  </div>
+</section>
+<section *ngIf="!paintingList">
+  There is nothing in Cart!
 </section>

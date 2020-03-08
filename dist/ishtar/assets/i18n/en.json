@@ -87,6 +87,7 @@
             "logout":"Logout",
             "search": "Search",
             "artists":"Artists",
+            "cart": "Cart",
             "paintings":"Paintings",
             "about":"About Ishtar"
          },
