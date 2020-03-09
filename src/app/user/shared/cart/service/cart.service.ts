@@ -3,8 +3,10 @@ import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
 import { MatDialog } from '@angular/material';
 import { CartComponent } from '../cart/cart.component';
 import { CheckOutManagerService } from '../manager/check-out-manager.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import {PaymentRequest} from '../entity/payment-request';
+import { UserService } from '../../user/service/user.service';
+import { LoginPageComponent } from 'src/app/user/ui/Pages/login-page/login-page.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +14,17 @@ import {PaymentRequest} from '../entity/payment-request';
 export class CartService {
 
   constructor(protected dialog: MatDialog,
+              protected userService: UserService,
               protected chackoutManager: CheckOutManagerService) {
   }
 
   addPaintingToCart(item: PaintingDetails): void {
-    console.log('Adding Item to Cart!');
+    if (!this.userService.isLoggedIn()) {
+      this.dialog.open(LoginPageComponent, {
+        height: '100vh'
+      });
+      return;
+    }
     if (sessionStorage.getItem('cart')) {
       const list = JSON.parse(sessionStorage.getItem('cart'));
       for (const i of list) {
@@ -54,12 +62,21 @@ export class CartService {
     return paintingList;
   }
 
-  submitPayment(paymentData: PaymentRequest) {
+  submitPayment(paymentData: PaymentRequest): Observable<boolean> {
     const subject = new Subject<boolean>();
-    this.chackoutManager.submitPayment(paymentData).subscribe(
-      data => {
-        subject.next(data.success);
-      }
-    );
+    if (!this.userService.isLoggedIn()) {
+      console.log('User is Not Logged On!');
+      this.dialog.open(LoginPageComponent, {
+        height: '100vh'
+      });
+      subject.error('User is Not Logged On!');
+    } else {
+      this.chackoutManager.submitPayment(paymentData).subscribe(
+        data => {
+          subject.next(data.success);
+        }
+      );
+    }
+    return subject.asObservable();
   }
 }

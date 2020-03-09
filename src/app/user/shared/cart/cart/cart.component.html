@@ -1,7 +1,7 @@
 <section id="cart-container" *ngIf="paintingList">
 
   <div id="payment-form">
-    <form [formGroup]="paymentForm" (ngSubmit)="submitBill()">
+    <form [formGroup]="paymentForm">
       <mat-horizontal-stepper>
         <mat-step label="Personal Info">
           <p class="h4 mb-4 mt-4">Customer Info</p>

@@ -4,6 +4,7 @@ import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {PaymentRequest} from '../entity/payment-request';
+import { UserService } from '../../user/service/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,11 +22,13 @@ export class CartComponent implements OnInit {
   subTotalPrice = 0;
   tax = 12.5;
   address = 0;
+  clientId = -1;
 
   paymentForm: FormGroup;
 
   constructor(private cartService: CartService,
               private httpClient: HttpClient,
+              private userService: UserService,
               private formBuilder: FormBuilder) {
   }
 
@@ -58,6 +61,8 @@ export class CartComponent implements OnInit {
     this.tax = this.subTotalPrice * 0.125;
 
     this.totalPrice = this.subTotalPrice + this.tax;
+
+    this.updateCurrentForm();
   }
 
   selectCountry(country: string) {
@@ -65,6 +70,10 @@ export class CartComponent implements OnInit {
   }
 
   submitBill() {
+    if (this.clientId < 0) {
+      console.log('User is Not Logged in or Client Id is not allocated yet');
+      return;
+    }
     const soldItems = [];
     for (const i of this.paintingList) {
       soldItems.push({
@@ -81,9 +90,28 @@ export class CartComponent implements OnInit {
       tax: this.tax * this.subTotalPrice,
       total: this.subTotalPrice + this.tax * this.subTotalPrice,
       paymentMethod: 'paypal',
-      items: soldItems
+      items: soldItems,
+      client: this.clientId
     };
 
     this.cartService.submitPayment(payment);
+  }
+
+  updateCurrentForm() {
+    this.userService.getUserInfo().subscribe(
+      userInfo => {
+        this.clientId = userInfo.id;
+        const nameWords = userInfo.fullName.split(' ');
+        const firstName = nameWords[0];
+        let lastName = '';
+        for (let i = 1; i < nameWords.length; i++) {
+          lastName = lastName +  nameWords[i] + ' ';
+        }
+        this.paymentForm.patchValue({
+          firstName,
+          lastName
+        });
+      }
+    );
   }
 }

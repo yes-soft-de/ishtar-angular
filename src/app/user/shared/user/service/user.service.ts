@@ -79,7 +79,9 @@ export class UserService {
               }
             };
             localStorage.setItem('userInfo', JSON.stringify(userData));
-            localStorage.setItem('lang', userData.Data.lang);
+            if (userData.Data.lang === 'en' || userData.Data.lang === 'de') {
+              sessionStorage.setItem('lang', userData.Data.lang);
+            }
             userSubject.next(userInfo.Data);
           }
         }
