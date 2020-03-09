@@ -109,7 +109,8 @@ export class CartComponent implements OnInit {
         }
         this.paymentForm.patchValue({
           firstName,
-          lastName
+          lastName,
+          phone: userInfo.phone
         });
       }
     );
