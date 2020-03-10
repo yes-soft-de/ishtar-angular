@@ -46,4 +46,6 @@ export class AdminConfig {
   public static PaymentAPI = AdminConfig.sourceAPI + 'orders';
   // Translation API
   public static PaintingTranslationAPI = AdminConfig.sourceAPI + 'paintingtranslation';
+
+  public static OrdersAPI = AdminConfig.sourceAPI + 'orders';
 }

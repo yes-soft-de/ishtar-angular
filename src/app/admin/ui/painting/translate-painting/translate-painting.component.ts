@@ -75,7 +75,8 @@ export class TranslatePaintingComponent implements OnInit {
     this.translationService.postTranslation({
       name: this.uploadForm.get('name').value,
       keyWords: this.uploadForm.get('keyWords').value,
-      story: this.uploadForm.get('story').value
+      story: this.uploadForm.get('story').value,
+      lang: 'de'
     }).subscribe(
       () => {
         console.log('Translation Post Success!');

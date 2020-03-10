@@ -78,6 +78,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CartComponent } from './shared/cart/cart/cart.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material';
+import { PendingTransactionsPageComponent } from './client/component/pending-transactions-page/pending-transactions-page.component';
+import { PendingTransactionsComponent } from './client/component/pending-transactions/pending-transactions.component';
 
 @NgModule({
   declarations: [
@@ -147,7 +149,9 @@ import { MatStepperModule } from '@angular/material';
     FeaturedImagesComponent,
     PaintingCardComponent,
     ArtistCardComponent,
-    CartComponent
+    CartComponent,
+    PendingTransactionsPageComponent,
+    PendingTransactionsComponent
   ],
   exports: [
     // User

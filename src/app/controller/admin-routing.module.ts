@@ -22,6 +22,7 @@ import {ListInteractionComponent} from '../admin/ui/interactions/list-interactio
 import {EditFeaturedImagesComponent} from '../admin/ui/featured/edit-featured-images/edit-featured-images.component';
 import { TranslateArtistComponent } from '../admin/ui/artist/translate-artist/translate-artist.component';
 import { TranslatePaintingComponent } from '../admin/ui/painting/translate-painting/translate-painting.component';
+import { OrdersListComponent } from '../admin/ui/orders/orders-list/orders-list.component';
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
       {path: 'edit-client/:id', component: EditClientComponent},
       {path: 'add-images', component: AddImagesComponent, data: {index: 7}},
       {path: 'list-auctions', component: ListAuctionsComponent},
-      {path: 'add-auction', component: AddAuctionComponent}
+      {path: 'add-auction', component: AddAuctionComponent},
+      {path: 'payments', component: OrdersListComponent}
     ]
   }
 ];

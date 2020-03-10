@@ -36,6 +36,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslatePaintingComponent } from './ui/painting/translate-painting/translate-painting.component';
 import { TranslateArtistComponent } from './ui/artist/translate-artist/translate-artist.component';
 import { TranslateStatueComponent } from './ui/statue/translate-statue/translate-statue.component';
+import { OrdersListComponent } from './ui/orders/orders-list/orders-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,7 +67,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditFeaturedImagesComponent,
     TranslatePaintingComponent,
     TranslateArtistComponent,
-    TranslateStatueComponent
+    TranslateStatueComponent,
+    OrdersListComponent
   ],
   exports: [
     AdminComponent,
