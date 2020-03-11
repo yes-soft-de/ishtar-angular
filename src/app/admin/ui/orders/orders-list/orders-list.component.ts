@@ -15,17 +15,22 @@ export class OrdersListComponent implements OnInit {
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
+    this.fetchOrders();
+  }
+
+  fetchOrders() {
     this.ordersService.requestOrdersList().subscribe(
       ordersResponse => {
+        console.log('Orders Response: ' + JSON.stringify(ordersResponse));
         this.orders = ordersResponse.Data;
+        console.log(this.orders.length + ' Orders Fetched');
+        this.config = {
+          itemsPerPage: 5,
+          currentPage: 1,
+          totalItems: this.orders.length
+        };
       }
     );
-
-    this.config = {
-      itemsPerPage: 5,
-      currentPage: 1,
-      totalItems: this.orders.length
-    };
   }
 
   // Fetch The Page Number On Page Change
@@ -33,4 +38,11 @@ export class OrdersListComponent implements OnInit {
     this.config.currentPage = event;
   }
 
+  processPayment(id: number) {
+    this.ordersService.processPayment(id).subscribe(
+      () => {
+        this.fetchOrders();
+      }
+    );
+  }
 }

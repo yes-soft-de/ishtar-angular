@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
 import { MatDialog } from '@angular/material';
 import { CartComponent } from '../cart/cart.component';
+import { DOCUMENT } from '@angular/common';
 import { CheckOutManagerService } from '../manager/check-out-manager.service';
 import { Subject, Observable } from 'rxjs';
 import {PaymentRequest} from '../entity/payment-request';
 import { UserService } from '../../user/service/user.service';
 import { LoginPageComponent } from 'src/app/user/ui/Pages/login-page/login-page.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class CartService {
 
   constructor(protected dialog: MatDialog,
               protected userService: UserService,
+              @Inject(DOCUMENT) private document: Document,
               protected chackoutManager: CheckOutManagerService) {
   }
 
@@ -73,7 +76,9 @@ export class CartService {
     } else {
       this.chackoutManager.submitPayment(paymentData).subscribe(
         data => {
-          subject.next(data.success);
+          console.log(data.Data.redirectUrl);
+          this.document.location.href = data.Data.redirectUrl;
+          subject.next(data.Data.success);
         }
       );
     }

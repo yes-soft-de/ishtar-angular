@@ -4,6 +4,7 @@ import { IshtarClientService } from 'src/app/user/shared/client/ishtar-client.se
 import { Observable } from 'rxjs';
 import { AdminConfig } from '../../AdminConfig';
 import { OrdersResoponse } from '../../entity/order/orders-resoponse';
+import { ProcessPaymentResponse } from '../../entity/order/process-payment-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class OrdersService {
 
   requestOrdersList(): Observable<OrdersResoponse> {
     return this.httpClient.get(`${AdminConfig.OrdersAPI}`);
+  }
+
+  processPayment(id: number): Observable<ProcessPaymentResponse> {
+    return this.httpClient.put(`${AdminConfig.ProcessPaymentAPI}/${id}`, null);
   }
 
 }

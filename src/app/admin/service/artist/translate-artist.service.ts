@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ArtistTranslation } from '../../entity/artist-translation/artist-translation';
 import { Observable } from 'rxjs';
+import { AdminConfig } from '../../AdminConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TranslateArtistService {
   postTranslation(translatedArtist: ArtistTranslation): Observable<any> {
     translatedArtist.lang = 'de';
 
-    return this.httpClient.post(`https://enagyxg19eahm.x.pipedream.net/`, JSON.stringify(translatedArtist), {
+    return this.httpClient.post(`${AdminConfig.ArtistTranslationAPI}`, JSON.stringify(translatedArtist), {
       headers: {
         'Content-Language': 'de-DE'
       }

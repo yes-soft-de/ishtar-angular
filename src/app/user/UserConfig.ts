@@ -65,4 +65,6 @@ export class UserConfig {
 
   public static featuredImages = UserConfig.sourceAPI + 'featuredpaintings';
 
+  public static PendingTransactions = UserConfig.sourceAPI + 'orders';
+  public static CancelPendingTransactions = UserConfig.sourceAPI + 'orders';
 }

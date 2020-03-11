@@ -13,9 +13,9 @@ export class TranslatePaintingService {
   }
 
   postTranslation(translatedPainting: PaintingTranslation): Observable<any> {
-    translatedPainting.lang = 'de';
+    translatedPainting.language = 'de';
 
-    return this.httpClient.post(`${AdminConfig}`, JSON.stringify(translatedPainting), {
+    return this.httpClient.post(`${AdminConfig.PaintingTranslationAPI}`, JSON.stringify(translatedPainting), {
       headers: {
         'Content-Language': 'de-DE'
       }

@@ -1,6 +1,7 @@
 export interface PaintingTranslation {
-  lang?: string;
+  language?: string;
   name?: string;
   keyWords?: string;
   story?: string;
+  originID: number;
 }

@@ -1,3 +1,6 @@
 export interface PaymentResponse {
-    success: boolean;
+    Data: {
+        redirectUrl: string;
+        success: boolean;
+    };
 }
