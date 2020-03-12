@@ -75,7 +75,7 @@ export class EditArtistComponent implements OnInit {
     // Subscribe Data After Merge it
     // Functions: Assign Art Type List, Assign Artist
     this.artistService.getArtistById(this.artistId).subscribe(
-      (artistResponse: ArtistDetailsResponse) => {
+      artistResponse => {
         this.artistData = artistResponse.Data;
 
         this.updateArtType();

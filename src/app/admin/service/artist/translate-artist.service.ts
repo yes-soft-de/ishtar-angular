@@ -12,7 +12,7 @@ export class TranslateArtistService {
   constructor(private httpClient: HttpClient) { }
 
   postTranslation(translatedArtist: ArtistTranslation): Observable<any> {
-    translatedArtist.lang = 'de';
+    translatedArtist.language = 'de';
 
     return this.httpClient.post(`${AdminConfig.ArtistTranslationAPI}`, JSON.stringify(translatedArtist), {
       headers: {

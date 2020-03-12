@@ -2,7 +2,7 @@
     <div *ngIf="orders.length !== 0">
       <div class="container-fluid">
         <h1 class="text-center my-4">Your Orders</h1>
-          
+
         <div class="table-responsive text-center">
             <table class="table table-bordered main-table">
                 <tr class="bg-dark text-white">
@@ -30,7 +30,7 @@
                     <td>{{order.paymentId}}</td>
                     <td>{{order.payerId}}</td>
                     <td>
-                        <a (click)="processPayment(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">
+                        <a (click)="cancelOrder(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">
                           Process
                         </a>
                     </td>

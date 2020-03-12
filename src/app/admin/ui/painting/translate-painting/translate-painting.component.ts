@@ -3,14 +3,10 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PhotosListService } from '../../../service/PhotosList/photos-list.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImageSnippet } from '../../../entity/image-snippet/image-snippet';
-import { ArtistService } from '../../../service/artist/artist.service';
 import { ToastrService } from 'ngx-toastr';
-import { ArtTypeService } from '../../../service/art-type/art-type.service';
 import { ArtistInterface } from '../../../entity/artist/artist-interface';
 import { PaintingDetailsResponse } from '../../../../user/painting/response/painting-details-response';
 import { PaintingDetails } from '../../../../user/painting/entity/painting-details';
-import { ArtistListResponse } from '../../../entity/ArtistList/artist-list-response';
-import { ArtTypeListResponse } from '../../../../user/art-type/response/art-type-list-response';
 import { ArtTypeListItem } from '../../../../user/art-type/entity/art-type-list-item';
 import { TranslatePaintingService } from 'src/app/admin/service/PhotosList/translate-painting.service';
 
@@ -24,19 +20,11 @@ export class TranslatePaintingComponent implements OnInit {
 
   paintingID: number;
   paintingData: PaintingDetails;
-  isSubmitted = false;
   uploadForm: FormGroup;
   artists: ArtistInterface[];
   artTypes: ArtTypeListItem[];
   artistId: number;
-  artTypeId: number;
-  uploadButtonValue = 'Upload';
-  imageName = 'Leave it if you don\'t want to change image';
-  fileSelected = false;
-  imageUrl: string;
-  imagePathReady = true;
   submitButtonValue = 'Submit Painting Translation';
-  selectedFile: ImageSnippet;
 
   constructor(private formBuilder: FormBuilder,
               private photosListService: PhotosListService,
@@ -68,6 +56,8 @@ export class TranslatePaintingComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
       story: ['', [Validators.required, Validators.minLength(4)]],
+      artType: ['', [Validators.required, Validators.minLength(4)]],
+      artist: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 
@@ -76,10 +66,13 @@ export class TranslatePaintingComponent implements OnInit {
       name: this.uploadForm.get('name').value,
       keyWords: this.uploadForm.get('keyWords').value,
       story: this.uploadForm.get('story').value,
+      artist: this.uploadForm.get('artist').value,
+      artType: this.uploadForm.get('artType').value,
       originID: this.paintingData.id
     }).subscribe(
       () => {
         console.log('Translation Post Success!');
+        this.router.navigate(['/admin/list-paintings']);
       }, err => {
         console.log('Translation Post Error :( ' + err);
       }

@@ -21,7 +21,6 @@ export class OrdersListComponent implements OnInit {
   fetchOrders() {
     this.ordersService.requestOrdersList().subscribe(
       ordersResponse => {
-        console.log('Orders Response: ' + JSON.stringify(ordersResponse));
         this.orders = ordersResponse.Data;
         console.log(this.orders.length + ' Orders Fetched');
         this.config = {

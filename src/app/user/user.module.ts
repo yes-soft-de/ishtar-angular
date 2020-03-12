@@ -76,10 +76,9 @@ import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.com
 import {MarkdownModule} from 'ngx-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { CartComponent } from './shared/cart/cart/cart.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material';
-import { PendingTransactionsPageComponent } from './client/component/pending-transactions-page/pending-transactions-page.component';
-import { PendingTransactionsComponent } from './client/component/pending-transactions/pending-transactions.component';
+import { PendingTransactionsComponent } from './profile/component/pending-transactions/pending-transactions.component';
+import { PendingTransactionPageComponent } from './profile/component/pending-transaction-page/pending-transaction-page.component';
 
 @NgModule({
   declarations: [
@@ -150,8 +149,8 @@ import { PendingTransactionsComponent } from './client/component/pending-transac
     PaintingCardComponent,
     ArtistCardComponent,
     CartComponent,
-    PendingTransactionsPageComponent,
-    PendingTransactionsComponent
+    PendingTransactionsComponent,
+    PendingTransactionPageComponent
   ],
   exports: [
     // User

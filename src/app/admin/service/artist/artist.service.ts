@@ -10,6 +10,7 @@ import {Observable, pipe, throwError} from 'rxjs';
 import {ArtistListResponse} from '../../entity/ArtistList/artist-list-response';
 import {ToastrService} from 'ngx-toastr';
 import {IshtarClientService} from '../../../user/shared/client/ishtar-client.service';
+import {ArtistDetailsResponse} from '../../../user/artist/response/artist-details-response';
 
 
 @Injectable({
@@ -17,8 +18,7 @@ import {IshtarClientService} from '../../../user/shared/client/ishtar-client.ser
 })
 export class ArtistService {
 
-  constructor(private httpClient: HttpClient,
-              private ishtarClient: IshtarClientService) {
+  constructor(private ishtarClient: IshtarClientService) {
   }
 
   // Handling the error
@@ -28,22 +28,15 @@ export class ArtistService {
 
   // Fetch All Artist
   getAllArtists(): Observable<ArtistListResponse> {
-    return this.httpClient.get<ArtistListResponse>(
-      AdminConfig.allArtistsAPI,
-      {responseType: 'json'}
+    return this.ishtarClient.get(
+      AdminConfig.allArtistsAPI
     ).pipe(catchError(ArtistService.errorHandler));
   }
 
   // get artist detail
-  getArtistById(artistId: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    return this.httpClient.get(
-      `${AdminConfig.artistAPI}/${artistId}`,
-      {responseType: 'json'}
+  getArtistById(artistId: number): Observable<ArtistDetailsResponse> {
+    return this.ishtarClient.get(
+      `${AdminConfig.artistAPI}/${artistId}`
     );
   }
 
@@ -57,11 +50,6 @@ export class ArtistService {
 
   // Admin Section - Update Artist
   updateArtist(artistId: number, data: ArtistInterface): Observable<Artist> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
     return this.ishtarClient.put(
       `${AdminConfig.artistAPI}/${artistId}`,
       JSON.stringify(data),
@@ -77,8 +65,6 @@ export class ArtistService {
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.httpClient.post<{
-      url: string
-    }>(`${AdminConfig.generalUploadAPI}`, formData);
+    return this.ishtarClient.post(`${AdminConfig.generalUploadAPI}`, formData);
   }
 }
