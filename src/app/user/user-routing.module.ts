@@ -24,6 +24,7 @@ import {ArtTypeListPageComponent} from './art-type/component/art-type-list-page/
 import {SearchPageComponent} from './search/component/search-page/search-page.component';
 import {CartComponent} from './shared/cart/cart/cart.component';
 import {PendingTransactionPageComponent} from './profile/component/pending-transaction-page/pending-transaction-page.component';
+import {ConfirmPaymentComponent} from './profile/component/confirm-payment/confirm-payment.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,8 @@ const routes: Routes = [
       {path: 'about-ishtar', component: AboutIshtarPageComponent},
       {path: 'painting/:id', component: PaintingDetailsPageComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'orders', component: PendingTransactionPageComponent}
+      {path: 'orders', component: PendingTransactionPageComponent},
+      {path: 'confirm-payment', component: ConfirmPaymentComponent}
     ],
     runGuardsAndResolvers: 'paramsChange'
   }

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { PendingTransationManagerService } from '../manager/pending-transation-manager.service';
 import { Observable, Subject } from 'rxjs';
 import { PendingTransactionListItem } from '../../client/entity/pending-transaction-list-item';
+import {OrderStatusChangeRequest} from '../request/order-status-change-request';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PendingTransationService {
+export class PendingTransactionService {
 
   constructor(private pendingTransactionsManager: PendingTransationManagerService) {
   }
@@ -24,9 +25,9 @@ export class PendingTransationService {
     return pendingTransactionsSubject.asObservable();
   }
 
-  cancelPendingTransaction(id: string): Observable<boolean> {
+  cancelPendingTransaction(token: string): Observable<boolean> {
     const ordersRequestSubject = new Subject<boolean>();
-    this.pendingTransactionsManager.cancelOrder(id).subscribe(
+    this.pendingTransactionsManager.cancelOrder(token).subscribe(
       () => {
         ordersRequestSubject.next(true);
       }, err => {
@@ -35,5 +36,17 @@ export class PendingTransationService {
       }
     );
     return ordersRequestSubject.asObservable();
+  }
+
+  confirmPayment(id: string, paymentData: OrderStatusChangeRequest): Observable<boolean> {
+    const confirmRequestSubject = new Subject<boolean>();
+    this.pendingTransactionsManager.confirmPayment(id, paymentData).subscribe(
+      confirmResponse => {
+        if (confirmResponse) {
+          confirmRequestSubject.next(true);
+        }
+      }
+    );
+    return confirmRequestSubject.asObservable();
   }
 }

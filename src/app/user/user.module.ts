@@ -79,6 +79,8 @@ import { CartComponent } from './shared/cart/cart/cart.component';
 import { MatStepperModule } from '@angular/material';
 import { PendingTransactionsComponent } from './profile/component/pending-transactions/pending-transactions.component';
 import { PendingTransactionPageComponent } from './profile/component/pending-transaction-page/pending-transaction-page.component';
+import { ConfirmPaymentComponent } from './profile/component/confirm-payment/confirm-payment.component';
+import { CancelOrderComponent } from './profile/component/cancel-order/cancel-order.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +152,9 @@ import { PendingTransactionPageComponent } from './profile/component/pending-tra
     ArtistCardComponent,
     CartComponent,
     PendingTransactionsComponent,
-    PendingTransactionPageComponent
+    PendingTransactionPageComponent,
+    ConfirmPaymentComponent,
+    CancelOrderComponent
   ],
   exports: [
     // User

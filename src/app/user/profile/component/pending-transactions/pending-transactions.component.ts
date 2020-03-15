@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PendingTransationService} from '../../service/pending-transation.service';
+import {PendingTransactionService} from '../../service/pending-transaction.service';
 import {PendingTransactionListItem} from 'src/app/user/client/entity/pending-transaction-list-item';
 
 @Component({
@@ -12,7 +12,7 @@ export class PendingTransactionsComponent implements OnInit {
   orders: PendingTransactionListItem[];
   config: any;
 
-  constructor(private pendingTransactionsService: PendingTransationService) {
+  constructor(private pendingTransactionsService: PendingTransactionService) {
   }
 
   ngOnInit() {
@@ -29,14 +29,6 @@ export class PendingTransactionsComponent implements OnInit {
           currentPage: 1,
           totalItems: this.orders.length
         };
-      }
-    );
-  }
-
-  cancelOrder(id: number) {
-    this.pendingTransactionsService.cancelPendingTransaction(`${id}`).subscribe(
-      () => {
-        this.fetchOrders();
       }
     );
   }

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PendingTransationRepositoryService } from './pending-transation-repository.service';
+import { PendingTransactionRepositoryService } from './pending-transaction-repository.service';
 
 describe('PendingTransationRepositoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PendingTransationRepositoryService = TestBed.get(PendingTransationRepositoryService);
+    const service: PendingTransactionRepositoryService = TestBed.get(PendingTransactionRepositoryService);
     expect(service).toBeTruthy();
   });
 });
