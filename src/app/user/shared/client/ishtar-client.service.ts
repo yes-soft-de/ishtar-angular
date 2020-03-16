@@ -14,7 +14,7 @@ export class IshtarClientService {
 
   get(url: string): Observable<any> {
 
-    const lang = sessionStorage.getItem('lang') ? sessionStorage.getItem('lang') : 'en';
+    const lang = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en';
 
     if (this.isLoggedIn()) {
       const httpOptions = {
@@ -92,7 +92,7 @@ export class IshtarClientService {
     if (diff / 60000 < 55) {
       return this.getToken() !== null && this.getToken() !== undefined;
     } else {
-      localStorage.clear();
+      localStorage.removeItem(this.KEY_TOKEN);
       return false;
     }
   }

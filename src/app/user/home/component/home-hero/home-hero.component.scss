@@ -2,8 +2,7 @@
   .floating-header {
     width: 100%;
     height: 3rem;
-    position: -webkit-sticky;
-    /* Safari */
+    position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
     z-index: 999;
@@ -13,13 +12,11 @@
     padding: 2rem 0;
     background: #343a40;
     color: #fff;
-
     .image {
       img {
         @media (min-height:768px) and (max-width:991px) {
           min-height: 250px;
         }
-
         @media (max-height: 767px) {
           max-height: 300px;
           display: block;
@@ -27,24 +24,20 @@
         }
       }
     }
-
     .content {
       .painting-name {
         a {
           color: #CCB832;
         }
       }
-
       .painting-artist-name,
       .painting-dimension {
         border-bottom: 1px solid;
       }
-
       .painting-artist-name a:hover,
       .painting-name a:hover {
         color: #f4db75;
       }
-
       .painting-artist-name a,
       .painting-story .h4,
       p span {
@@ -63,8 +56,7 @@
     height: calc(100vh - 90px);
     width: 35%;
     background-color: #1e1e1e;
-    padding: 20px;
-    padding-top: 12%;
+    padding: 12% 20px 20px;
     background-image: url('../../../../../assets/about-ishtar-page/Gods-Ishtar.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -73,11 +65,11 @@
 
   .overlay {
     position: absolute;
-    top: 0;
+    top:0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
     z-index: 1;
   }
 
@@ -93,22 +85,20 @@
     }
 
     .carousel-control-next,
-    .carousel-control-prev {
+    .carousel-control-prev{
       display: none !important;
     }
 
     .carousel-indicators {
       bottom: -50px;
     }
-
     .carousel .carousel-indicators li {
       width: 20px !important;
       height: 20px !important;
       opacity: 1;
       border: 0;
-      box-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+      box-shadow: 1px 1px 2px rgba(0,0,0,1);
     }
-
     .carousel .carousel-indicators li.active {
       background-color: #d0bd34;
     }
@@ -128,11 +118,9 @@
     font-size: 20px;
     font-weight: bold;
     color: #d0bd34;
-
     img {
       height: 100%;
     }
-
     .left {
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
@@ -140,21 +128,21 @@
   }
 
   @media (max-width:991px) and (min-width:768px) {
-    #painting-list {
+    #painting-list{
       .painting-list-item:last-child {
         visibility: hidden !important;
       }
     }
   }
 
-  @media (max-width:500px) {
+  @media (max-width:500px){
     h2 {
       font-size: 25pt !important;
       margin: 1rem !important;
     }
   }
 
-  @media (max-width: 991px) and (min-width:700px) {
+  @media (max-width: 991px) and (min-width:700px){
     .block-left {
       padding-top: 15px;
     }
@@ -164,36 +152,29 @@
     }
   }
 
-  @media (max-width:699px) {
-
+  @media (max-width:992px) {
     .block-left,
     .block-right {
       float: none;
       width: 100%;
       height: auto;
     }
-
     .block-left {
-      padding: 10px;
-      padding-top: 25px;
-      padding-bottom: 45px;
+      padding: 25px 10px 45px;
       background-image: none;
     }
-
     .read-more {
       width: auto;
       height: auto;
       left: 15px;
       border: none;
       font-size: 14px;
-
       img {
         display: none;
       }
     }
-
     mdb-carousel {
-      p {
+      p{
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -201,12 +182,10 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
-
       .carousel .carousel-indicators li {
         display: none;
       }
     }
-
     .overlay {
       position: absolute;
       top: auto;
@@ -218,9 +197,9 @@
       border-top-left-radius: 95%;
       border-bottom-left-radius: 25%;
       border-top-right-radius: 100%;
-      -webkit-box-shadow: inset 4px 20px 17px -16px rgba(0, 0, 0, 0.45);
-      -moz-box-shadow: inset 4px 20px 17px -16px rgba(0, 0, 0, 0.45);
-      box-shadow: inset 4px 20px 17px -16px rgba(0, 0, 0, 0.45);
+      -webkit-box-shadow: inset 4px 20px 17px -16px rgba(0,0,0,0.45);
+      -moz-box-shadow: inset 4px 20px 17px -16px rgba(0,0,0,0.45);
+      box-shadow: inset 4px 20px 17px -16px rgba(0,0,0,0.45);
     }
   }
 }

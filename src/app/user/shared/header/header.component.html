@@ -45,9 +45,14 @@
                   </div>
                 </div>
               </li>
-              <li class="float-right" (click)="openCartDialog()">
-                <a>
-                  {{'user.shared.header.cart' | translate}}
+              <!--              <li class="float-right" (click)="openCartDialog()">-->
+              <!--                <a>-->
+              <!--                  {{'user.shared.header.cart' | translate}}-->
+              <!--                </a>-->
+              <!--              </li>-->
+              <li class="float-right" *ngIf="showLangSwitch">
+                <a (click)="switchLanguage()">
+                  De/En
                 </a>
               </li>
               <li class="float-right">
@@ -81,14 +86,20 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/painting-list" class="nav-link waves-light"
-            mdbWavesEffect>{{'user.shared.header.paintings' | translate}}</a>
+             mdbWavesEffect>{{'user.shared.header.paintings' | translate}}</a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>{{'user.shared.header.artists' | translate}}</a>
+          <a routerLink="/artist-list" class="nav-link waves-light"
+             mdbWavesEffect>{{'user.shared.header.artists' | translate}}</a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/about-ishtar" class="nav-link waves-light"
-            mdbWavesEffect>{{'user.shared.header.about' | translate}}</a>
+             mdbWavesEffect>{{'user.shared.header.about' | translate}}</a>
+        </li>
+        <li class="float-right" *ngIf="showLangSwitch">
+          <a (click)="switchLanguage()">
+            De/En
+          </a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <div class="search-mobile">

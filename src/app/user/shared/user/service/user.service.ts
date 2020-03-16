@@ -80,7 +80,7 @@ export class UserService {
             };
             localStorage.setItem('userInfo', JSON.stringify(userData));
             if (userData.Data.lang === 'en' || userData.Data.lang === 'de') {
-              sessionStorage.setItem('lang', userData.Data.lang);
+              localStorage.setItem('lang', userData.Data.lang);
             }
             userSubject.next(userInfo.Data);
           }
@@ -122,7 +122,7 @@ export class UserService {
     if (diff / 60000 < 45) {
       return this.getToken() !== null && this.getToken() !== undefined;
     } else {
-      localStorage.clear();
+      localStorage.removeItem(this.KEY_TOKEN);
       return false;
     }
   }

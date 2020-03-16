@@ -12,11 +12,8 @@
                     <td>Total</td>
                     <td>Payment Method</td>
                     <td>Shipping Statues</td>
-                    <td>Payment Date</td>
+                    <td>Order State</td>
                     <td>Items</td>
-                    <td>Payment Id</td>
-                    <td>Payer Id</td>
-                    <td>Cancel Order</td>
                 </tr>
                 <tr *ngFor="let order of orders | paginate: config">
                     <td>{{order.id}}</td>
@@ -27,13 +24,6 @@
                     <td>{{order.shippingState}}</td>
                     <td>{{order.orderState}}</td>
                     <td>{{order.items}}</td>
-                    <td>{{order.paymentId}}</td>
-                    <td>{{order.payerId}}</td>
-                    <td>
-                        <a (click)="cancelOrder(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">
-                          Process
-                        </a>
-                    </td>
                 </tr>
             </table>
             <pagination-controls class="my-pagination"

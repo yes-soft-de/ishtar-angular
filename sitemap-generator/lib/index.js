@@ -10,8 +10,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var baseAPI = 'https://ishtar-art.de/ishtar-backend/public';
 var urls = ['artist-list', 'painting-list', 'art-schools-list', 'tos', 'privacy', 'about-us', 'faq', 'imprint', 'data-processing', 'about-ishtar'];
-var root_path = 'https://www.ishtar-art.de';
-var root_path_de = 'https://www.ishtar-art.de/de';
+var root_path = 'https://ishtar-art.de';
+var root_path_de = root_path + '/de';
 var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">';
 var newDate = new Date(Date.now()); // region English
 

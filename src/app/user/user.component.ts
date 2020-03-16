@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {animate, group, query, style, transition, trigger} from '@angular/animations';
+import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
+import {HeaderComponent} from './shared/header/header.component';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UserComponent implements OnInit {
   constructor(private router: Router,
-              private translateService: TranslateService) { }
+              private translateService: TranslateService) {
+  }
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -25,11 +26,15 @@ export class UserComponent implements OnInit {
 
   setLang() {
     if (this.router.url.toString().search('de') > -1) {
+      // This Happens When the user specifically for German
       console.log('Setting langs to Deutsch');
-      sessionStorage.setItem('lang', 'de');
+      localStorage.setItem('lang', 'de');
+      this.translateService.use('de');
+    } else if (localStorage.getItem('lang') === 'de') {
+      // This Happens When the user have German as their Language
       this.translateService.use('de');
     } else {
-      sessionStorage.setItem('lang', 'en');
+      localStorage.setItem('lang', 'en');
       this.translateService.use('en');
     }
   }
