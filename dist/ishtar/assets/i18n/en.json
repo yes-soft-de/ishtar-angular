@@ -19,7 +19,8 @@
          "list":{
             "all":"All",
             "sort-by":"Sort By",
-            "follow-nymber":"Follow  Number",
+            "flolow-number": "Follow  Number",
+            "follow-number":"Follow  Number",
             "filter-by":"Filter By",
             "art-type":"Art Type",
             "desc": "Descending",

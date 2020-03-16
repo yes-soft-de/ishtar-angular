@@ -76,7 +76,7 @@ export class InteractionsRepositoryService {
 
   // Delete Interactions
   deleteInteractions(interactionID: number): Observable<any> {
-    return this.httpClient.delete(`${UserConfig.interactionAPI}/${interactionID}`);
+    return this.httpClient.delete(`${UserConfig.deleteInteractionsAPI}/${interactionID}`);
   }
 
   // Delete Clap Interactions

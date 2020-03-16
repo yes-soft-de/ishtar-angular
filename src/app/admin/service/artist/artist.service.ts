@@ -18,7 +18,8 @@ import {ArtistDetailsResponse} from '../../../user/artist/response/artist-detail
 })
 export class ArtistService {
 
-  constructor(private ishtarClient: IshtarClientService) {
+  constructor(private ishtarClient: IshtarClientService,
+              private httpClient: HttpClient) {
   }
 
   // Handling the error
@@ -65,6 +66,6 @@ export class ArtistService {
   public uploadImage(image: File): Observable<{ url: string }> {
     const formData = new FormData();
     formData.append('image', image);
-    return this.ishtarClient.post(`${AdminConfig.generalUploadAPI}`, formData);
+    return this.httpClient.post<{ url: string }>(`${AdminConfig.generalUploadAPI}`, formData);
   }
 }
