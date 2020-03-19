@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
-import { PageTypeToNumberService } from '../../helper/page-type-to-number.service';
 import { InteractionsService } from '../../../interactions/service/interactions.service';
 import { InteractionsManagerService } from '../../../interactions/manager/interactions-manager.service';
-import { InteractionConstantService } from '../../../interactions/service/interaction-constant.service';
-import { UserInfo } from '../../../entity/user/user-info';
 import { Observable, Subject } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../user/service/user.service';
-import { LoveEntity } from '../entity/love-entity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoveService extends InteractionsService {
-  userRequestSent = false;
-  userLoggedIn = false;
-
   constructor(protected interactionsManagerService: InteractionsManagerService,
               protected userService: UserService,
               protected dialog: MatDialog) {
@@ -23,7 +16,7 @@ export class LoveService extends InteractionsService {
     this.setClientInfoIfExists();
   }
 
-  // Check if The User is login to make his love interactionTypeString
+  // Check if The User is login to make his love interactionType
   postLove(entityType: number, entityId: number, interactionsType: string): Observable<boolean> {
     if (!this.checkUserDetailsExists()) {
       // Open Dialog Box If User Not Login
