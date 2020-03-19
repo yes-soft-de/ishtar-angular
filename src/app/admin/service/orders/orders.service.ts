@@ -21,4 +21,7 @@ export class OrdersService {
     return this.httpClient.put(`${AdminConfig.ProcessPaymentAPI}/${id}`, null);
   }
 
+  shipOrder(id: number): Observable<ProcessPaymentResponse> {
+    return this.httpClient.put(`${AdminConfig.ProcessPaymentAPI}/${id}`, {shippingState: true});
+  }
 }

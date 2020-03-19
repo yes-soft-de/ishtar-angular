@@ -20,8 +20,8 @@ for (var _i = 0, _urls = urls; _i < _urls.length; _i++) {
   xml += '<url>';
   xml += "<loc>".concat(root_path, "/").concat(path, "</loc>");
   console.log("Adding Path ".concat(path));
-  xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/").concat(path, "\"/>");
-  xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
+  xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/").concat(path, "\"/>"); // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
+
   xml += "<changefreq>monthly</changefreq>";
   xml += "<priority>0.8</priority>";
   xml += '</url>';
@@ -38,8 +38,8 @@ _axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
       var i = _step.value;
       xml += '<url>';
       xml += "<loc>".concat(root_path, "/painting/").concat(i.id, "</loc>");
-      xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/painting/").concat(i.id, "\"/>");
-      xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
+      xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/painting/").concat(i.id, "\"/>"); // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
+
       xml += "<changefreq>monthly</changefreq>";
       xml += "<image:image>";
       xml += "<image:loc>".concat(i.image, "</image:loc>");
@@ -75,8 +75,8 @@ _axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
         var i = _step2.value;
         xml += '<url>';
         xml += "<loc>".concat(root_path, "/artist/").concat(i.id, "</loc>");
-        xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/artist/").concat(i.id, "\"/>");
-        xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
+        xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/artist/").concat(i.id, "\"/>"); // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
+
         xml += "<changefreq>monthly</changefreq>";
         xml += "<priority>0.7</priority>";
         xml += '</url>';

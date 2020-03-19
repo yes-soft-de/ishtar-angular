@@ -24,26 +24,25 @@ export class ConfirmPaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(
-      params => {
-        this.paymentId = params.get('paymentId');
-        this.token = params.get('token');
-        this.PayerID = params.get('PayerID');
-        if (this.userService.isLoggedIn()) {
-          this.activatedRoute.queryParams.subscribe(
-            queries => {
-              console.log('the Queries are: ' + JSON.stringify(queries));
-              this.submitOrderConfirmation();
-            }
-          );
-        } else {
-          this.dialog.open(LoginPageComponent,
-            {
-              height: '80vh'
-            });
+    if (this.userService.isLoggedIn()) {
+      this.activatedRoute.queryParams.subscribe(
+        queries => {
+          this.paymentId = queries.paymentId;
+          console.log('PAYMENT: ' + this.paymentId);
+          this.token = queries.token;
+          console.log('PAYMENT: ' + this.token);
+          this.PayerID = queries.PayerID;
+          console.log('PAYMENT: ' + this.PayerID);
+          console.log('the Queries are: ' + JSON.stringify(queries));
+          this.submitOrderConfirmation();
         }
-      }
-    );
+      );
+    } else {
+      this.dialog.open(LoginPageComponent,
+        {
+          height: '80vh'
+        });
+    }
   }
 
   submitOrderConfirmation() {

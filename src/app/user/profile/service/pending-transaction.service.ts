@@ -3,25 +3,31 @@ import { PendingTransationManagerService } from '../manager/pending-transation-m
 import { Observable, Subject } from 'rxjs';
 import { PendingTransactionListItem } from '../../client/entity/pending-transaction-list-item';
 import {OrderStatusChangeRequest} from '../request/order-status-change-request';
+import {UserService} from '../../shared/user/service/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PendingTransactionService {
 
-  constructor(private pendingTransactionsManager: PendingTransationManagerService) {
+  constructor(private pendingTransactionsManager: PendingTransationManagerService,
+              private userService: UserService) {
   }
 
   getPendingTransactions(): Observable<PendingTransactionListItem[]> {
     const pendingTransactionsSubject = new Subject<PendingTransactionListItem[]>();
-    this.pendingTransactionsManager.getPendingTransactions().subscribe(
-      pendingTransactionResponse => {
-        pendingTransactionsSubject.next(pendingTransactionResponse.Data);
-      }, err => {
-        console.error(err);
-        pendingTransactionsSubject.error(err);
-      }
-    );
+    if (this.userService.isLoggedIn()) {
+      this.pendingTransactionsManager.getPendingTransactions(this.userService.getSavedClientId()).subscribe(
+        pendingTransactionResponse => {
+          pendingTransactionsSubject.next(pendingTransactionResponse.Data);
+        }, err => {
+          console.error(err);
+          pendingTransactionsSubject.error(err);
+        }
+      );
+    } else {
+      pendingTransactionsSubject.error('User Not Logged in!');
+    }
     return pendingTransactionsSubject.asObservable();
   }
 

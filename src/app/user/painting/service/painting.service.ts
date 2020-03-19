@@ -22,18 +22,10 @@ import {InteractionConsts} from '../../interactions/statics/interaction-consts';
  * Painting Service Class For Subscribe Data And Send It To Component
  */
 export class PaintingService extends InteractionsService {
-  private paintingSubject = new Subject<PaintingDetails>();
-  private paintingsListSubject = new Subject<PaintingListItem[]>();
-  private paintingsListBySubject = new Subject<any>();
-  private viewSubject = new Subject<any>();
   protected userInfo: UserInfo;
-  userRequestSent = false;
-  userLoggedIn = false;
 
   constructor(private paintingManager: PaintingManagerService,
               protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToNumberService: PageTypeToNumberService,
-              protected interactionTypeToNumberService: InteractionConstantService,
               protected userService: UserService,
               protected dialog: MatDialog) {
     super(interactionsManagerService, userService, dialog);
@@ -41,31 +33,33 @@ export class PaintingService extends InteractionsService {
 
   // Fetch All Paintings
   getPaintings(): Observable<PaintingListItem[]> {
+    const paintingsListSubject = new Subject<PaintingListItem[]>();
     this.paintingManager.getPaintings()
       .pipe(catchError(err => {
-        this.paintingsListSubject.error('Error Getting Data');
+        paintingsListSubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
       paintingListResponse => {
         // Send Data If Successfully Fetching
-        this.paintingsListSubject.next(paintingListResponse.Data);
+        paintingsListSubject.next(paintingListResponse.Data);
       }
     );
     // Return The Data To Print It In Component
-    return this.paintingsListSubject.asObservable();
+    return paintingsListSubject.asObservable();
   }
 
   // Fetch Painting Details
   getPainting(paintingId): Observable<PaintingDetails> {
+    const paintingSubject = new Subject<PaintingDetails>();
     this.paintingManager.getPainting(paintingId)
       .pipe(catchError(err => {
-        this.paintingSubject.error('Error Getting Data');
+        paintingSubject.error('Error Getting Data');
         console.error(err);
         return EMPTY;
       })).subscribe(
       paintingResponse => {
         // Send Data If Successfully Fetching
-        this.paintingSubject.next(paintingResponse.Data);
+        paintingSubject.next(paintingResponse.Data);
         this.interactionsManagerService.postInteractions(
           InteractionConsts.ENTITY_TYPE_PAINTING,
           paintingResponse.Data.id,
@@ -74,22 +68,23 @@ export class PaintingService extends InteractionsService {
       }
     );
     // Return The Data To Print It In Component
-    return this.paintingSubject.asObservable();
+    return paintingSubject.asObservable();
   }
 
   // Fetch Every Thing From Painting Table
   getPaintingListBy(paintingColumnName: string, paintingColumnValue: number): Observable<any> {
+    const paintingsListBySubject = new Subject<any>();
     this.paintingManager.getPaintingListBy(paintingColumnName, paintingColumnValue)
       .pipe(catchError(err => {
-        this.paintingsListBySubject.error('Error Getting Data');
+        paintingsListBySubject.error('Error Getting Data');
         return EMPTY;
       })).subscribe(
       paintingListByResponse => {
-        this.paintingsListBySubject.next(paintingListByResponse.Data);
+        paintingsListBySubject.next(paintingListByResponse.Data);
       }
     );
     // Return The Data To Print It In Component
-    return this.paintingsListBySubject.asObservable();
+    return paintingsListBySubject.asObservable();
   }
 
   // Add View Interaction When User Inter To The Painting Detail

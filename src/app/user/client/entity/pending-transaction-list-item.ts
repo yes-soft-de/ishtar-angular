@@ -1,21 +1,11 @@
 export interface PendingTransactionListItem {
-  id: number;
   client: number;
   deliveryAddress: string;
-  subtotal: number;
-  total: number;
+  subtotal: string;
+  total: string;
   paymentMethod: string;
   orderState: string;
-  shippingState: false;
+  shippingState: boolean;
   addingDate: string;
-  items: {
-    id: number,
-    entity: string,
-    rowId: number,
-    order: number,
-    price: number,
-    addingDate: string
-  }[];
-  paymentId: string;
-  payerId: string;
+  items: [{ rowId: number, entity: number }];
 }

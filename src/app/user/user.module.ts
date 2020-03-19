@@ -81,6 +81,7 @@ import { PendingTransactionsComponent } from './profile/component/pending-transa
 import { PendingTransactionPageComponent } from './profile/component/pending-transaction-page/pending-transaction-page.component';
 import { ConfirmPaymentComponent } from './profile/component/confirm-payment/confirm-payment.component';
 import { CancelOrderComponent } from './profile/component/cancel-order/cancel-order.component';
+import { OrderImageCardComponent } from './profile/component/order-image-card/order-image-card.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +155,8 @@ import { CancelOrderComponent } from './profile/component/cancel-order/cancel-or
     PendingTransactionsComponent,
     PendingTransactionPageComponent,
     ConfirmPaymentComponent,
-    CancelOrderComponent
+    CancelOrderComponent,
+    OrderImageCardComponent
   ],
   exports: [
     // User
