@@ -4,7 +4,7 @@ import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserInfo } from '../../entity-protected/profile/user-info';
 import { LoginPageComponent } from '../../ui/Pages/login-page/login-page.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ClientInteractionListItem } from '../entity/client-interaction-list-item';
 import { UserService } from '../../shared/user/service/user.service';
 import { ClapEntity } from '../entity/clap-entity';

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {AdminComponent} from '../admin/admin.component';
 import {DashboardComponent} from '../admin/ui/dashboard/dashboard.component';
 import {ListArtistComponent} from '../admin/ui/artist/list-artist/list-artist.component';
@@ -20,10 +20,9 @@ import {EditStatueComponent} from '../admin/ui/statue/edit-statue/edit-statue.co
 import {ListCommentComponent} from '../admin/ui/comments/list-comment/list-comment.component';
 import {ListInteractionComponent} from '../admin/ui/interactions/list-interaction/list-interaction.component';
 import {EditFeaturedImagesComponent} from '../admin/ui/featured/edit-featured-images/edit-featured-images.component';
-import { TranslateArtistComponent } from '../admin/ui/artist/translate-artist/translate-artist.component';
-import { TranslatePaintingComponent } from '../admin/ui/painting/translate-painting/translate-painting.component';
-import { OrdersListComponent } from '../admin/ui/orders/orders-list/orders-list.component';
-
+import {TranslateArtistComponent} from '../admin/ui/artist/translate-artist/translate-artist.component';
+import {TranslatePaintingComponent} from '../admin/ui/painting/translate-painting/translate-painting.component';
+import {OrdersListComponent} from '../admin/ui/orders/orders-list/orders-list.component';
 
 
 const routes: Routes = [
@@ -35,12 +34,12 @@ const routes: Routes = [
       {path: 'list-artists', component: ListArtistComponent, data: {index: 1}},
       {path: 'add-artist', component: AddArtistComponent},
       {path: 'edit-artist/:id', component: EditArtistComponent},
-      { path: 'translate-artist/:id', component: TranslateArtistComponent },
+      {path: 'translate-artist/:id', component: TranslateArtistComponent},
       {path: 'add-painting', component: AddPaintingComponent},
       {path: 'edit-featured', component: EditFeaturedImagesComponent},
       {path: 'list-paintings', component: ListPaintingComponent, data: {index: 2}},
       {path: 'edit-painting/:id', component: EditPaintingComponent},
-      { path: 'translate-painting/:id', component: TranslatePaintingComponent },
+      {path: 'translate-painting/:id', component: TranslatePaintingComponent},
       {path: 'list-statues', component: ListStatueComponent, data: {index: 3}},
       {path: 'add-statue', component: AddStatueComponent},
       {path: 'edit-statue/:id', component: EditStatueComponent},
@@ -60,4 +59,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}

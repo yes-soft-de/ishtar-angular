@@ -24,7 +24,7 @@ export class InteractionsManagerService {
    * get the interactions from the API
    * @param entity <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
    * @param row number
-   * @param interactionsNumber <InteractionConsts.INTERACTION_TYPE_ ...>
+   * @param interactionsNumber <InteractionConsts.INTERACTION_TYPE_...>
    */
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.interactionsRepositoryService.getInteractionsNumber(entity, row, interactionsNumber);

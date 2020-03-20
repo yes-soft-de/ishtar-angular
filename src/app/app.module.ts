@@ -4,7 +4,6 @@ import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {AppRoutingModule, routingComponents} from './controller/app-routing.module';
 import {AppComponent} from './app/app.component';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
-import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
@@ -19,6 +18,8 @@ import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {NotFoundComponent} from './user/static-pages/not-found/not-found.component';
+import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
     routingComponents
   ],
   imports: [
@@ -37,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     NgxJsonLdModule,
-    NgxUIModule,
+    NgxImageZoomModule,
     IconsModule,
     HttpClientModule,
     NgwWowModule,
@@ -56,7 +58,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [CookieService],
   exports: [],
   bootstrap: [AppComponent]
-  // schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 }

@@ -34,9 +34,9 @@ const routes: Routes = [
     RouterModule,
     MDBBootstrapModule,
     TranslateModule,
-    NgxImageZoomModule,
     InteractionsModule,
-    SharedModule
+    SharedModule,
+    NgxImageZoomModule,
   ],
   exports: [
     StatueCommentComponent,

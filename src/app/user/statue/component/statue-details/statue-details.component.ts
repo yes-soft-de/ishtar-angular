@@ -46,7 +46,7 @@ export class StatueDetailsComponent implements OnInit {
     this.artist = statueDetails.artist;
   }
   // To Change Main View Image
-  setMainPainting(indexOfNewImage: number) {
+  setMainPainting(indexOfNewImage: any) {
     this.activePaintingUrl = this.secondaryStatues[indexOfNewImage].secondStatue;
   }
 

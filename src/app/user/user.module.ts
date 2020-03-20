@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
-import {NgxUIModule} from '@swimlane/ngx-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
-import {NgxImageZoomModule} from 'ngx-image-zoom';
 import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -22,7 +20,6 @@ import {ContactSupportComponent} from './static-pages/contact-support/contact-su
 import {PrivacyPolicyComponent} from './static-pages/privacy-policy/privacy-policy.component';
 import {TOSPageComponent} from './static-pages/tospage/tospage.component';
 import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
-import {NgxImageZoomComponent} from './ui/widgets/ngx-image-zoom/ngx-image-zoom.component';
 import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
 import {AboutIshtarPageComponent} from './static-pages/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
@@ -49,6 +46,7 @@ import {ArtistModule} from './artist/artist.module';
 import {SearchModule} from './search/search.module';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
+import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 @NgModule({
   declarations: [
@@ -67,7 +65,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     ImprintPageComponent,
     DataProcessingPageComponent,
     LoadingWidgetComponent,
-    NgxImageZoomComponent,
     ProfilePageComponent,
     AboutIshtarPageComponent,
     HomeHeroComponent,
@@ -104,17 +101,17 @@ import {MatDialogModule} from '@angular/material/dialog';
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    NgxUIModule, IconsModule,
+    IconsModule,
     HttpClientModule,
     NgwWowModule,
     StatueModule,
     UserRoutingModule,
+    NgxImageZoomModule,
     ToastrModule.forRoot(), CarouselModule,
     ReactiveFormsModule, ParallaxModule, TabsModule,
     MatDialogModule,
     MatStepperModule,
     NgxPaginationModule,
-    NgxImageZoomModule.forRoot(),
     NgxJsonLdModule,
     MarkdownModule.forChild(),
     TranslateModule,

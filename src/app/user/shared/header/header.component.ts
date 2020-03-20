@@ -1,14 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {UserInfo} from '../../entity/user/user-info';
-import {ArtTypeService} from '../../../admin/service/art-type/art-type.service';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserService} from '../user/service/user.service';
-import {UserManagerService} from '../user/manager/user-manager.service';
 import {TranslateService} from '@ngx-translate/core';
-import {CartService} from '../cart/service/cart.service';
 import {CartComponent} from '../cart/cart/cart.component';
 
 @Component({
