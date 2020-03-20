@@ -40,7 +40,7 @@ export class PaintingCommentComponent implements OnInit {
     );
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        this.activePaintingId = +urlSegments[1];
+        this.activePaintingId = +urlSegments[0];
         this.updateCommentList();
       }
     );

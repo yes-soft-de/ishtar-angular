@@ -19,6 +19,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import {SharedModule} from '../shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {PaintingRoutingModule} from './painting-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     RouterModule,
+    PaintingRoutingModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
     InteractionsModule,
@@ -60,8 +62,4 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ]
 })
 export class PaintingModule {
-  routes: Routes = [
-    {path: '', component: PaintingListPageComponent},
-    {path: ':id', component: PaintingDetailsComponent},
-  ];
 }

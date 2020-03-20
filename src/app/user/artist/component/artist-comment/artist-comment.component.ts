@@ -39,7 +39,7 @@ export class ArtistCommentComponent implements OnInit {
     );
     this.activatedRoute.url.subscribe(
         urlSegments => {
-          this.activeArtistId = +urlSegments[1];
+          this.activeArtistId = +urlSegments[0];
           // this.artistCommentService.getArtistComment(+urlSegments[1].path);
           this.updateCommentList();
         }

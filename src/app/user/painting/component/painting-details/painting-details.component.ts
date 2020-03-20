@@ -33,7 +33,7 @@ export class PaintingDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.url.subscribe(
       urlSegments => {
-        this.paintingService.getPainting(Number(urlSegments[1].path)).subscribe(
+        this.paintingService.getPainting(Number(urlSegments[0].path)).subscribe(
           paintingResponse => {
             this.painting = paintingResponse;
             this.setSeo(paintingResponse);
