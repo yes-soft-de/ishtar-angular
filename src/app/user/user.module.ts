@@ -12,16 +12,16 @@ import {ParallaxModule} from 'ngx-parallax';
 import {TabsModule} from 'ngx-bootstrap';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {DataProcessingPageComponent} from './static-pages/data-processing-page/data-processing-page.component';
-import {ImprintPageComponent} from './static-pages/imprint-page/imprint-page.component';
-import {FAQComponent} from './static-pages/faq/faq.component';
-import {AboutUsComponent} from './static-pages/about-us/about-us.component';
-import {ContactSupportComponent} from './static-pages/contact-support/contact-support.component';
-import {PrivacyPolicyComponent} from './static-pages/privacy-policy/privacy-policy.component';
-import {TOSPageComponent} from './static-pages/tospage/tospage.component';
+import {DataProcessingPageComponent} from './static-pages/component/data-processing-page/data-processing-page.component';
+import {ImprintPageComponent} from './static-pages/component/imprint-page/imprint-page.component';
+import {FAQComponent} from './static-pages/component/faq/faq.component';
+import {AboutUsComponent} from './static-pages/component/about-us/about-us.component';
+import {ContactSupportComponent} from './static-pages/component/contact-support/contact-support.component';
+import {PrivacyPolicyComponent} from './static-pages/component/privacy-policy/privacy-policy.component';
+import {TOSPageComponent} from './static-pages/component/tospage/tospage.component';
 import {LoadingWidgetComponent} from './ui/widgets/loading-widget/loading-widget.component';
 import {ProfilePageComponent} from './ui/Pages/profile-page/profile-page.component';
-import {AboutIshtarPageComponent} from './static-pages/about-ishtar-page/about-ishtar-page.component';
+import {AboutIshtarPageComponent} from './static-pages/component/about-ishtar-page/about-ishtar-page.component';
 import {ProfileEditPageComponent} from './ui/Pages/profile-edit-page/profile-edit-page.component';
 import {HomeHeroComponent} from './home/component/home-hero/home-hero.component';
 import {ArtTypeListComponent} from './art-type/component/art-type-list/art-type-list.component';
@@ -47,26 +47,16 @@ import {SearchModule} from './search/search.module';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgxImageZoomModule} from 'ngx-image-zoom';
+import {StaticPagesModule} from './static-pages/static-pages.module';
 
 @NgModule({
   declarations: [
-    // User
     UserComponent,
-    // Pages
     ProfileEditPageComponent,
-    // Components
     ArtTypeListPageComponent,
     LoginPageComponent,
-    TOSPageComponent,
-    PrivacyPolicyComponent,
-    ContactSupportComponent,
-    AboutUsComponent,
-    FAQComponent,
-    ImprintPageComponent,
-    DataProcessingPageComponent,
     LoadingWidgetComponent,
     ProfilePageComponent,
-    AboutIshtarPageComponent,
     HomeHeroComponent,
     ArtTypeListComponent,
     ArtTypeDetailsComponent,
@@ -81,20 +71,10 @@ import {NgxImageZoomModule} from 'ngx-image-zoom';
     OrderImageCardComponent
   ],
   exports: [
-    // User
     UserComponent,
-    // Pages
     ProfileEditPageComponent,
-    // Components
     ArtTypeListPageComponent,
     LoginPageComponent,
-    TOSPageComponent,
-    PrivacyPolicyComponent,
-    ContactSupportComponent,
-    AboutUsComponent,
-    FAQComponent,
-    ImprintPageComponent,
-    DataProcessingPageComponent,
     ItemBriefComponent,
     CartComponent,
   ],
@@ -118,7 +98,8 @@ import {NgxImageZoomModule} from 'ngx-image-zoom';
     SharedModule,
     PaintingModule,
     ArtistModule,
-    SearchModule
+    SearchModule,
+    StaticPagesModule
   ],
   schemas: [],
   providers: []

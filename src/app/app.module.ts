@@ -18,7 +18,7 @@ import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {NotFoundComponent} from './user/static-pages/not-found/not-found.component';
+import {NotFoundComponent} from './user/static-pages/component/not-found/not-found.component';
 import {NgxImageZoomModule} from 'ngx-image-zoom';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
