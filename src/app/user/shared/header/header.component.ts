@@ -2,16 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserInfo} from '../../entity/user/user-info';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
-import {UserService} from '../user/service/user.service';
+import {UserService} from '../user-services/service/user.service';
 import {TranslateService} from '@ngx-translate/core';
 import {CartComponent} from '../cart/cart/cart.component';
+import {UserInfo} from '../user-services/entity/user-info';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss', '../../home/component/home-page/home-page.component.scss']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   public showLangSwitch = true;

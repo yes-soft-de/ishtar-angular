@@ -9,10 +9,12 @@ import {ImprintPageComponent} from './component/imprint-page/imprint-page.compon
 import {DataProcessingPageComponent} from './component/data-processing-page/data-processing-page.component';
 import {AboutIshtarPageComponent} from './component/about-ishtar-page/about-ishtar-page.component';
 import {ContactSupportComponent} from './component/contact-support/contact-support.component';
+import {HomePageComponent} from '../home/component/home-page/home-page.component';
 
 const routes: Routes = [
   {
     path: '', component: StaticPagesComponent, children: [
+      {path: '', component: HomePageComponent},
       {path: 'tos', component: TOSPageComponent},
       {path: 'privacy', component: PrivacyPolicyComponent},
       {path: 'about-us', component: AboutUsComponent},

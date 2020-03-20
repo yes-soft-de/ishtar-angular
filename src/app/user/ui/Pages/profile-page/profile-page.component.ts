@@ -1,8 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {UserProfileManagerService} from 'src/app/user/manager/user-profile/user-profile-manager.service';
 import {Router} from '@angular/router';
-import {UserInfo} from '../../../entity-protected/profile/user-info';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
+import {UserInfo} from '../../../shared/user-services/entity/user-info';
 
 @Component({
   selector: 'app-profile-page',
@@ -15,21 +14,10 @@ export class ProfilePageComponent implements OnInit {
   public userProfileInfo: UserInfo;
 
   constructor(private interactionService: InteractionsService,
-              private userProfileManager: UserProfileManagerService,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.userProfileManager.getManagerObservable().subscribe(
-      data => {
-        this.userProfileInfo = data;
-      }, error1 => {
-        // TODO Implement A Way To Handle Unauthorized Profile Access
-        this.router.navigate(['/']);
-      }
-    );
-
-    this.userProfileManager.getUserProfile();
   }
 
   choseTab(event) {

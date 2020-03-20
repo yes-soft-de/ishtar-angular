@@ -37,7 +37,7 @@ export class AdminConfig {
   public static specialCommentAPI          = AdminConfig.sourceAPI + 'spacialcomment';
 
   public static interactionsAPI         = AdminConfig.sourceAPI + 'interactions';
-  // public static userProfileAPI = AdminConfig.sourceAPI + 'user';
+  // public static userProfileAPI = AdminConfig.sourceAPI + 'user-services';
 
   public static featuredAPI             = AdminConfig.sourceAPI + 'featuredpainting';
   public static featuredGetAPI             = AdminConfig.sourceAPI + 'featuredpaintings';

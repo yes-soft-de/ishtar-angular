@@ -3,7 +3,7 @@ import { PendingTransationManagerService } from '../manager/pending-transation-m
 import { Observable, Subject } from 'rxjs';
 import { PendingTransactionListItem } from '../../client/entity/pending-transaction-list-item';
 import {OrderStatusChangeRequest} from '../request/order-status-change-request';
-import {UserService} from '../../shared/user/service/user.service';
+import {UserService} from '../../shared/user-services/service/user.service';
 
 @Injectable({
   providedIn: 'root'

@@ -40,7 +40,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     RouterModule,
     MDBBootstrapModule,
     NgxPaginationModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     SharedModule,
     InteractionsModule,
     MarkdownModule,

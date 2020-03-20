@@ -3,7 +3,7 @@ import { InteractionsService } from '../../../interactions/service/interactions.
 import { InteractionsManagerService } from '../../../interactions/manager/interactions-manager.service';
 import { Observable, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { UserService } from '../../user/service/user.service';
+import { UserService } from '../../user-services/service/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class LoveService extends InteractionsService {
   getLoveStatus(parentType: string, rowId: number): Observable<number> {
     const loveSubject = new Subject<number>();
     if (!this.checkUserDetailsExists()) {
-      loveSubject.error('Please Login!, user info doesn\'t exists');
+      loveSubject.error('Please Login!, user-services info doesn\'t exists');
       return loveSubject.asObservable();
     }
 

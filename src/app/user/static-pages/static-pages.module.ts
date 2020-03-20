@@ -11,6 +11,7 @@ import {TOSPageComponent} from './component/tospage/tospage.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {StaticPagesComponent} from './static-pages/static-pages.component';
 import {UserRoutingModule} from '../user-routing.module';
+import {StaticPagesRoutingModule} from './static-pages-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import {UserRoutingModule} from '../user-routing.module';
   ],
   imports: [
     CommonModule,
-    TranslateModule,
-    UserRoutingModule,
+    TranslateModule.forChild(),
+    StaticPagesRoutingModule
   ],
   exports: [
     AboutIshtarPageComponent,

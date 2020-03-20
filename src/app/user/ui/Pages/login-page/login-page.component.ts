@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserConfig} from '../../../UserConfig';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -92,7 +92,7 @@ export class LoginPageComponent implements OnInit {
           this.submitLoginAfterRegister(this.registerForm.get('email').value, this.registerForm.get('password').value);
         }, () => {
           this.registerButtonActive = false;
-          this.toaster.error('Error in Registering user!');
+          this.toaster.error('Error in Registering user-services!');
         }
       );
     } else {

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {UserInfo} from '../../../entity/user/user-info';
 import {InteractionsManagerService} from '../../../interactions/manager/interactions-manager.service';
 import {MatDialog} from '@angular/material/dialog';
 import {InteractionsService} from '../../../interactions/service/interactions.service';
-import {UserService} from '../../user/service/user.service';
+import {UserService} from '../../user-services/service/user.service';
+import {UserInfo} from '../../user-services/entity/user-info';
 
 @Injectable({
   providedIn: 'root'

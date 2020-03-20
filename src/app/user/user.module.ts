@@ -94,7 +94,7 @@ import {StaticPagesModule} from './static-pages/static-pages.module';
     NgxPaginationModule,
     NgxJsonLdModule,
     MarkdownModule.forChild(),
-    TranslateModule,
+    TranslateModule.forChild(),
     SharedModule,
     PaintingModule,
     ArtistModule,

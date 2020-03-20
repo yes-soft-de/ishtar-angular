@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {UserService} from '../user/shared/user/service/user.service';
-import {UserManagerService} from '../user/shared/user/manager/user-manager.service';
+import {UserService} from '../user/shared/user-services/service/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -66,14 +65,13 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router,
               private userService: UserService,
-              private toaster: ToastrService,
-              private userManager: UserManagerService) { }
+              private toaster: ToastrService) { }
 
   ngOnInit() {
-    this.userManager.getUserProfile().subscribe(
+    this.userService.getUserInfo().subscribe(
         userInfoResponse => {
-           if (userInfoResponse.Data.username || userInfoResponse.Data.email) {
-             this.toaster.success('Welcome ' + userInfoResponse.Data.username);
+           if (userInfoResponse.username || userInfoResponse.email) {
+             this.toaster.success('Welcome ' + userInfoResponse.username);
            } else {
              alert('User Is Not Exists!');
              this.router.navigate(['/']);

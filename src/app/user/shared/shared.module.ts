@@ -12,7 +12,6 @@ import {RouterModule} from '@angular/router';
 import {InteractionsModule} from '../interactions/interactions.module';
 
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,7 +23,7 @@ import {InteractionsModule} from '../interactions/interactions.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     MDBBootstrapModule,
     RouterModule,
     InteractionsModule

@@ -37,7 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     ReactiveFormsModule,
     InteractionsModule,
     MDBBootstrapModule,

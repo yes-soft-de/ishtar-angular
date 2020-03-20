@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
 import {PendingTransactionListItem} from 'src/app/user/client/entity/pending-transaction-list-item';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginPageComponent} from '../../../ui/Pages/login-page/login-page.component';
 

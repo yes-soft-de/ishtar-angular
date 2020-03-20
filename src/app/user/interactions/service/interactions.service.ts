@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { InteractionsManagerService } from '../manager/interactions-manager.service';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { UserInfo } from '../../entity-protected/profile/user-info';
 import { LoginPageComponent } from '../../ui/Pages/login-page/login-page.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientInteractionListItem } from '../entity/client-interaction-list-item';
-import { UserService } from '../../shared/user/service/user.service';
+import { UserService } from '../../shared/user-services/service/user.service';
 import { ClapEntity } from '../entity/clap-entity';
+import {UserInfo} from '../../shared/user-services/entity/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class InteractionsService {
   }
 
   /**
-   * This function returns the interactions of the user
+   * This function returns the interactions of the user-services
    * @param clientId number
    * @param parentType painting, artist, statue
    * @param rowId number
@@ -56,7 +56,7 @@ export class InteractionsService {
       interactionSubject.error('Please Login');
     }
 
-    // check if user is login or not
+    // check if user-services is login or not
     this.interactionsManagerService.getClientInteraction(this.userInfo.id)
       .pipe(catchError(err => {
         interactionSubject.error('Error Getting Data');
@@ -215,7 +215,7 @@ export class InteractionsService {
    * sets client info
    */
   setClientInfoIfExists(): void {
-    console.log('Looking into user data');
+    console.log('Looking into user-services data');
     if (this.userService.getSavedClientId() < 1) {
       this.userService.getUserInfo().subscribe(
         userInfo => {

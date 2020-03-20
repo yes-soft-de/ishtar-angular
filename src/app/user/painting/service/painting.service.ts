@@ -8,10 +8,10 @@ import {InteractionsService} from '../../interactions/service/interactions.servi
 import {InteractionsManagerService} from '../../interactions/manager/interactions-manager.service';
 import {InteractionConstantService} from '../../interactions/service/interaction-constant.service';
 import {MatDialog} from '@angular/material/dialog';
-import {UserInfo} from '../../entity/user/user-info';
 import {MostViewedListItem} from '../entity/most-viewed-list-item';
-import {UserService} from '../../shared/user/service/user.service';
+import {UserService} from '../../shared/user-services/service/user.service';
 import {InteractionConsts} from '../../interactions/statics/interaction-consts';
+import {UserInfo} from '../../shared/user-services/entity/user-info';
 
 
 @Injectable({

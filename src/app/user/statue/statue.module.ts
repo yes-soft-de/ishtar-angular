@@ -33,7 +33,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule,
     MDBBootstrapModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     InteractionsModule,
     SharedModule,
     NgxImageZoomModule,

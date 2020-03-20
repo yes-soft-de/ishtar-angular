@@ -3,10 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {Observable, Subject} from 'rxjs';
 import {PaintingCommentService} from '../../service/painting-comment.service';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {UserInfo} from '../../../entity/user/user-info';
+import {UserInfo} from '../../../shared/user-services/entity/user-info';
 
 @Component({
   selector: 'app-comment',

@@ -3,7 +3,7 @@ import {ArtistCommentService} from '../../service/artist-comment.service';
 import {Observable, Subject} from 'rxjs';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 

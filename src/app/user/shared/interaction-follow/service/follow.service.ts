@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { InteractionsManagerService } from '../../../interactions/manager/interactions-manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { InteractionsService } from '../../../interactions/service/interactions.service';
-import { UserService } from '../../user/service/user.service';
+import { UserService } from '../../user-services/service/user.service';
 import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Injectable({

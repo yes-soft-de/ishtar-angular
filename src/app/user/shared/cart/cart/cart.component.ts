@@ -4,7 +4,7 @@ import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {PaymentRequest} from '../entity/payment-request';
-import { UserService } from '../../user/service/user.service';
+import { UserService } from '../../user-services/service/user.service';
 
 @Component({
   selector: 'app-cart',
