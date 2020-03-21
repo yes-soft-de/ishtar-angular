@@ -38,7 +38,7 @@ export class EditFeaturedImagesComponent implements OnInit {
         this.getFeaturedPaintings();
       }, error1 => {
         this.toaster.error(`Error Selecting Painting: ${painting.name}`);
-        console.error(error1);
+        console.log(error1);
       }
     );
   }

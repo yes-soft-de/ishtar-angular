@@ -1,174 +1,200 @@
-import {Injectable} from '@angular/core';
-import {InteractionsManagerService} from '../manager/interactions-manager.service';
-import {EMPTY, Observable, Subject} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-import {PageTypeToNumberService} from '../../shared/helper/page-type-to-number.service';
-import {InteractionConstantService} from './interaction-constant.service';
-import {UserInfo} from '../../entity-protected/profile/user-info';
-import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
-import {MatDialog} from '@angular/material';
+import { Injectable } from '@angular/core';
+import { InteractionsManagerService } from '../manager/interactions-manager.service';
+import { EMPTY, Observable, Subject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { UserInfo } from '../../entity-protected/profile/user-info';
+import { LoginPageComponent } from '../../ui/Pages/login-page/login-page.component';
+import { MatDialog } from '@angular/material';
+import { ClientInteractionListItem } from '../entity/client-interaction-list-item';
+import { UserService } from '../../shared/user/service/user.service';
+import { ClapEntity } from '../entity/clap-entity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteractionsService {
-  private interactionsNumberSubject = new Subject<number>();
-
+  protected userInfo: UserInfo = null;
   constructor(protected interactionsManagerService: InteractionsManagerService,
-              protected pageTypeToNumberService: PageTypeToNumberService,
-              protected interactionConstantService: InteractionConstantService,
+              protected userService: UserService,
               protected dialog: MatDialog) {
   }
 
-  // Get Interactions number
-  getInteractionsNumber(entity: number, row: number, interactionsCode: number): Observable<number> {
+  /**
+   * Gets the total number of iteractions performed on a specific painting/artist
+   * @param entityCode InteractionConsts.ENTITY_TYPE...
+   * @param row number
+   * @param interactionsCode number
+   */
+  getInteractionsNumber(entityCode: number, row: number, interactionsCode: number): Observable<number> {
     const interactionSubject = new Subject<number>();
-    this.interactionsManagerService.getInteractionsNumber(entity, row, interactionsCode)
+    this.interactionsManagerService.getInteractionsNumber(entityCode, row, interactionsCode)
       .pipe(
         catchError(() => {
-          this.interactionsNumberSubject.error('Error Getting Data');
+          interactionSubject.error('Error Getting Data');
           return EMPTY;
         }))
-        .subscribe(
-      interactionResponse => {
-        // Send Data If Successfully Fetching
-            interactionSubject.next(interactionResponse.Data.interactions);
-      }
-    );
+      .subscribe(
+        interactionResponse => {
+          // Send Data If Successfully Fetching
+          interactionSubject.next(interactionResponse.Data.interactions);
+        }
+      );
     // Return The Data To Print It In Component
     return interactionSubject.asObservable();
   }
 
-  // Get The All Client Interaction(love, view, follow) Dependence On Client ID
-  getClientInteraction(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
+  /**
+   * This function returns the interactions of the user
+   * @param clientId number
+   * @param parentType painting, artist, statue
+   * @param rowId number
+   */
+  getClientInteraction(entityId: number): Observable<ClientInteractionListItem[]> {
+    const interactionSubject = new Subject<ClientInteractionListItem[]>();
+
+    if (!this.checkUserDetailsExists()) {
+      interactionSubject.error('Please Login');
+    }
+
     // check if user is login or not
-    return this.interactionsManagerService.getClientInteraction(clientId)
-      .pipe(catchError(err => {
-        interactionSubject.error('Error Getting Data');
-        return EMPTY;
-      })).subscribe(
-        (clientInteractionsResponse: { Data: any }) => {
-          // Response: {entity: "painting", id: 2, interactionTypeString: "like", interactionID: 103}
-          clientInteractionsResponse.Data.map(interactionResponse => {
-            if (interactionResponse.interactionTypeString === InteractionConstantService.INTERACTION_TYPE_LOVE) {
-              // Check For EntityName Name and Interaction IS Like
-              if (interactionResponse.entity === parentType) {
-                // Check For Specify (artist, painting, ...)
-                if (interactionResponse.id === rowId) {
-                  interactionSubject.next({success: true, value: interactionResponse});
-                }
-              }
-            }
-            if (interactionResponse.interactionTypeString === InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-              // Check For EntityName Name and Interaction IS Follow
-              if (interactionResponse.entity === parentType) {
-                // Check For Specify (artist, painting, ...)
-                if (interactionResponse.id === rowId) {
-                  interactionSubject.next({success: true, value: interactionResponse});
-                }
-              }
-            }
-          });
-        }
-      );
-  }
-
-  // Post Interactions (entityType: artistTableNumber, entityId: artistID, interactionsType = (love, follow, clap)
-  postInteractionToAPI(entityType: string, entityId: number, userId: number, interactionsType: string, interactionSubject: Subject<any>) {
-    // Convert EntityName Name To EntityName Type
-    const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);
-    // Fetch Interactions Number
-    const interactionsNumber = +this.interactionConstantService.convertInteractionsTypeToNumber(interactionsType);
-    this.interactionsManagerService.postInteractions(entityTypeNumber, entityId, userId, interactionsNumber)
-      .pipe(catchError(err => {
-          interactionSubject.error('Error Getting Data');
-          return EMPTY;
-        }),
-        map(oldStructureInteraction => {
-          return {
-            success: true,
-            value: oldStructureInteraction.Data
-          };
-        }))
-      .subscribe(
-        (newStructureInteraction: any) => {
-          interactionSubject.next(newStructureInteraction);
-        }
-      );
-  }
-
-
-  // Get The Client Clap Dependence On Client ID , entityName: string, rowId
-  getClientClap(clientId: number, parentType: string, rowId: number, interactionSubject: Subject<any>) {
-    return this.interactionsManagerService.getClientClap(clientId).subscribe(
-      (clapInteractionsResponse: { Data: any }) => {
-        clapInteractionsResponse.Data.map(clapResponse => {  // Response: {entity: "painting", id: 24, value: 54, ClapID: 1}
-          // Check For EntityName Name and Interaction IS Clap
-          if (clapResponse.entity === parentType) {
-            // Check For Specify (artist, painting, ...)
-            if (clapResponse.id === rowId) {
-              interactionSubject.next({success: true, value: clapResponse});
-            }
-          }
-        });
-      }
-    );
-  }
-
-  postClapToAPI(entityType: string, entityId: number, clapValue: number, userId: number, interactionSubject: Subject<any>) {
-    // Convert EntityName Name To EntityName Type
-    const entityTypeNumber = +this.pageTypeToNumberService.convertPageTypeToNumber(entityType);
-    this.interactionsManagerService.postClap(entityTypeNumber, entityId, clapValue, userId)
+    this.interactionsManagerService.getClientInteraction(this.userInfo.id)
       .pipe(catchError(err => {
         interactionSubject.error('Error Getting Data');
         return EMPTY;
       }))
       .subscribe(
-        (createClapResponse: any) => {
-          if (createClapResponse.Data.value > 0) {
-            interactionSubject.next({success: true, value: createClapResponse});
-          }
+        clientInteractionResponse => {
+          interactionSubject.next(clientInteractionResponse.Data.filter(
+            a => {
+              // This will make sure that only the specific painting interactions exists
+              return a.id === entityId;
+            }
+          ));
         }
       );
+
+    return interactionSubject.asObservable();
   }
 
-  // Delete Love Interaction
-  deleteInteraction(interactionID: number, user: UserInfo, interactionSubject: Subject<any>) {
-    if (this.checkUserDetailsExists(user)) {
-      return this.interactionsManagerService.deleteInteractions(interactionID)
+  /**
+   * posts the interaction to the API
+   * @param entityCode InteractionConsts.ENTITY_TYPE...
+   * @param entityId number
+   * @param interactionsCode InteractionConsts.INTERACTION_TYPE_...
+   */
+  postInteractionToAPI(entityCode: number, entityId: number,
+                       interactionsCode: string): Observable<boolean> {
+    const interactionSubject = new Subject<boolean>();
+    this.interactionsManagerService.postInteractions(entityCode, entityId, this.userInfo.id, interactionsCode)
+      .pipe(catchError(err => {
+        interactionSubject.error('Error Getting Data From API');
+        return EMPTY;
+      }))
+      .subscribe(
+        () => {
+          interactionSubject.next(true);
+        }, error => {
+          console.log(JSON.stringify(error));
+          interactionSubject.next(false);
+        }
+      );
+
+    return interactionSubject.asObservable();
+  }
+
+  getClientClap(pageId: number): Observable<ClapEntity> {
+    const interactionSubject = new Subject<ClapEntity>();
+
+    if (!this.checkUserDetailsExists()) {
+      interactionSubject.error('Please Login');
+      return interactionSubject.asObservable();
+    }
+
+    this.interactionsManagerService.getClientClap(this.userInfo.id).subscribe(
+      clapInteractionsResponse => {
+        interactionSubject.next(
+          clapInteractionsResponse.Data.filter(
+            clap => {
+              return clap.id === pageId;
+          }
+        )[0]);
+      }
+    );
+
+    return interactionSubject.asObservable();
+  }
+
+  /**
+   * posts Claps to the API
+   * @param entityCode number InteractionConsts.ENTITY_TYPE_...
+   * @param entityId number
+   * @param clapValue number
+   */
+  postClapToAPI(entityCode: number, entityId: number, clapValue: number): Observable<number> {
+    const interactionSubject = new Subject<number>();
+
+    if (this.userInfo === null) {
+      interactionSubject.error('Please Login First!');
+      return interactionSubject.asObservable();
+    }
+
+    this.interactionsManagerService.postClap(entityCode, entityId, clapValue, this.userInfo.id)
+      .pipe(catchError(err => {
+        interactionSubject.error('Error Getting Data');
+        console.log(JSON.stringify(err));
+        return EMPTY;
+      }))
+      .subscribe(
+        () => {
+          interactionSubject.next(0);
+        }, err => {
+          interactionSubject.error(err);
+        }
+      );
+    return interactionSubject.asObservable();
+  }
+
+  /**
+   * this will delete the interaction from the API
+   * @param interactionID number
+   */
+  deleteInteraction(interactionID: number): Observable<boolean> {
+    const interactionSubject = new Subject <boolean>();
+    if (this.checkUserDetailsExists()) {
+      this.interactionsManagerService.deleteInteractions(interactionID)
         .pipe(catchError(err => {
           interactionSubject.error('Error Getting Data');
           return EMPTY;
         }))
         .subscribe(
-          (deleteInteraction: any) => {
+          () => {
             interactionSubject.next(false);
           }
         );
-    } else {
-      return false;
     }
+    return interactionSubject.asObservable();
   }
 
   // Delete Clap Interaction
-  deleteClap(interactionID: number, user: UserInfo, interactionSubject: Subject<any>) {
-    if (this.checkUserDetailsExists(user)) {
-      return this.interactionsManagerService.deleteClap(interactionID)
+  deleteClap(interactionID: number): Observable<boolean> {
+    const interactionSubject = new Subject <boolean>();
+    if (this.checkUserDetailsExists()) {
+      this.interactionsManagerService.deleteClap(interactionID)
         .pipe(catchError(err => {
           interactionSubject.error('Error Getting Data');
+          console.log(err);
           return EMPTY;
         }))
         .subscribe(
-          (deleteClapResponse: any) => {
+          () => {
+            interactionSubject.next(true);
+          }, err => {
             interactionSubject.next(false);
+            console.log(err);
           }
         );
-    } else {
-      return false;
     }
-  }
 
-  getInteractionsObservable(interactionSubject: Subject<any>): Observable<any> {
     return interactionSubject.asObservable();
   }
 
@@ -181,17 +207,26 @@ export class InteractionsService {
   }
 
   // region Class Specific Validators
-  checkUserDetailsExists(user: UserInfo): boolean {
-    if (user == null) {
-      return false;
+  checkUserDetailsExists(): boolean {
+    return this.userService.isLoggedIn();
+  }
+
+  /**
+   * sets client info
+   */
+  setClientInfoIfExists(): void {
+    console.log('Looking into user data');
+    if (this.userService.getSavedClientId() < 1) {
+      this.userService.getUserInfo().subscribe(
+        userInfo => {
+          console.log('Setting Client Info');
+          this.userInfo = userInfo;
+        }
+      );
+    } else {
+      this.userInfo = {
+        id: this.userService.getSavedClientId()
+      };
     }
-    console.log('Apparently user data is ' + user.id !== null);
-    return user.id !== undefined;
   }
-
-  isUserNode(user: UserInfo) {
-    return user.id !== undefined;
-  }
-
-
 }

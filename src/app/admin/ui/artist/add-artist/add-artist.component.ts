@@ -90,7 +90,6 @@ export class AddArtistComponent implements OnInit {
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
-
       this.selectedFile = new ImageSnippet(event.target.result, file);
 
       this.artistService.uploadImage(this.selectedFile.file).subscribe(

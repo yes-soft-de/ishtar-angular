@@ -13,16 +13,26 @@ export class IshtarClientService {
   }
 
   get(url: string): Observable<any> {
+
+    const lang = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en';
+
     if (this.isLoggedIn()) {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          Authorization: this.getToken()
+          Authorization: this.getToken(),
+          'Accept-Language': lang
         })
       };
       return this.httpClient.get(url, httpOptions);
     } else {
-      return this.httpClient.get(url);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept-Language': lang
+        })
+      };
+      return this.httpClient.get(url, httpOptions);
     }
   }
 
@@ -79,10 +89,10 @@ export class IshtarClientService {
   public isLoggedIn(): boolean {
     const diff = +new Date().valueOf() - +new Date(Date.parse(localStorage.getItem('date'))).valueOf();
     // Millisecond to Minutes
-    if (diff / 60000 < 45) {
+    if (diff / 60000 < 55) {
       return this.getToken() !== null && this.getToken() !== undefined;
     } else {
-      localStorage.clear();
+      localStorage.removeItem(this.KEY_TOKEN);
       return false;
     }
   }

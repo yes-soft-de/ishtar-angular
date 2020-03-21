@@ -28,8 +28,8 @@
                        (click)="showImageInFullSize()"
                        class="img-fluid mx-auto"
                        alt="{{painting?.name}} Image">
-                  <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus"></i> View the
-                    full Image
+                  <button class="full-size" (click)="showImageInFullSize()"><i class="fas fa-search-plus">
+                  </i> {{'user.painting.details.view-full-image' | translate}}
                   </button>
                   <div class="row mt-2 border border-dark p-1 d-none">
                     <div class="col p-0" *ngFor="let secondPainting of secondaryPaintings">
@@ -49,9 +49,9 @@
                           <app-love [ParentType]="'painting'" [ParentId]="painting?.id"></app-love>
                         </li>
                         <li class="my-1 mx-3 buy-painting">
-                          <a href="mailto:info@ishtar-art.de?subject=REQUEST%20FOR%20ITEM%20PAI00{{painting?.id}}"
+                          <a 
                              style="color: white">
-                            <mdb-icon fas icon="shopping-cart"></mdb-icon>
+                            <mdb-icon fas icon="shopping-cart" (click)="addToCart()"></mdb-icon>
                           </a>
                         </li>
                       </ul>
@@ -68,20 +68,25 @@
                         <a routerLink="/artist/{{artist?.id}}">
                           {{artist?.name}}
                         </a>
-                        <app-follow [ParentType]="'artist'" [ParentId]="artist?.id" class="follow-artist"></app-follow>
+                        <app-follow [ParentType]="'artist'" [ParentId]="artist?.id" class="follow-artist" *ngIf="artist"></app-follow>
                       </p>
                     </div>
                     <div class="col-12">
-                      <p class="painting-dimension border-bottom border-dark pb-1">Height: <span>{{painting?.height}}
-                        CM</span> | Width: <span>{{painting?.width}}CM</span></p>
-                      <p class=" border-bottom border-dark pb-1">Art Type : <span>{{painting?.artType}}</span></p>
-                      <p class=" border-bottom border-dark m-0 pb-1">Price :
-                        <span>{{painting.price | currency: 'EUR': true : undefined : 'fr-FR' }}</span></p> (VAT Not included)
+                      <p class="painting-dimension border-bottom border-dark pb-1">
+                        {{'user.painting.details.height' | translate}} <span>{{painting?.height}}
+                        CM</span> | {{'user.painting.details.width' | translate}}:
+                        <span>{{painting?.width}}CM</span></p>
+                      <p class=" border-bottom border-dark pb-1">{{'user.painting.details.art-type' | translate}}:
+                        <span>{{painting?.artType}}</span></p>
+                      <p class=" border-bottom border-dark m-0 pb-1">{{'user.painting.details.price' | translate}}:
+                        <span>{{painting.price | currency: 'EUR': true : undefined : 'fr-FR' }}</span></p>
+                        ({{'user.painting.details.vat' | translate}})
                     </div>
                     <div class="col-12">
                       <p class="painting-story">
-                        <strong class="h4">{{painting?.name}} Story :</strong>
-                        {{painting?.story ? painting?.story : 'There Isn\'t Any Story For This Painitng Yet.'}}
+                        <strong class="h4">{{painting?.name}}
+                          {{'user.painting.details.story' | translate}}:</strong>
+                        {{painting?.story ? painting?.story : 'user.painting.details.vat' | translate}}
                       </p>
                     </div>
                   </div>

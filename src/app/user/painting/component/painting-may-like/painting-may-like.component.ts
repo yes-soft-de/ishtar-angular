@@ -3,6 +3,7 @@ import {PaintingService} from '../../service/painting.service';
 import {ActivatedRoute} from '@angular/router';
 import {PaintingListItem} from '../../entity/painting-list-item';
 import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-paintings-may-like',
@@ -27,7 +28,7 @@ export class PaintingMayLikeComponent implements OnInit {
   }
 
   viewImage(paintingId: number) {
-    this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
+    this.paintingService.viewPainting(InteractionConsts.ENTITY_TYPE_PAINTING, paintingId);
   }
 
 }

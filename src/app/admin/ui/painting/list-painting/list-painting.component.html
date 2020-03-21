@@ -32,6 +32,7 @@
                 <td>Price</td>
                 <td>Story</td>
                 <td>Control</td>
+                <td>Translate</td>
               </tr>
               <tr *ngFor="let painting of paintingsFilterList | paginate: config">
                 <td>{{painting.id}}</td>
@@ -44,13 +45,15 @@
                 <td>{{painting.state ? 'Not Sold' : 'Sold'}}</td>
                 <td>{{painting.colorsType}}</td>
                 <td>{{painting.keyWords}}</td>
-<!--                <td>{{painting.gallery}}</td>-->
                 <td>{{painting.price | currency: 'EUR'}}</td>
                 <td class="td-custom">{{painting.story}}</td>
                 <td>
                   <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
                   <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
                   <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Active</a>
+                </td>
+                <td routerLink="/admin/translate-painting/{{painting.id}}">
+                  <button mdbBtn> Translate </button>
                 </td>
               </tr>
           </table>

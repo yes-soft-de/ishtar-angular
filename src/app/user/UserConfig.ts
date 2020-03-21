@@ -56,6 +56,7 @@ export class UserConfig {
   public static specificClientInteractions = UserConfig.sourceAPI + 'interactionsclient';
   public static interactionsNumberAPI   = UserConfig.sourceAPI + 'interactionsentity';
   public static mostViewedAPI           = UserConfig.sourceAPI + 'mostviews';
+  public static deleteInteractionsAPI = UserConfig.sourceAPI + 'interaction';
 
   // Clap Interactions API
   public static clapsAPI = UserConfig.sourceAPI + 'claps';
@@ -64,5 +65,10 @@ export class UserConfig {
   public static specificEntityClaps = UserConfig.sourceAPI + 'clapsentity';
 
   public static featuredImages = UserConfig.sourceAPI + 'featuredpaintings';
+
+  public static PendingTransactions = UserConfig.sourceAPI + 'orders';
+  public static CancelPendingTransactions = UserConfig.sourceAPI + 'canceledorder';
+  public static ConfirmPendingTransactions = UserConfig.sourceAPI + 'successorder';
+  public static ConfirmPayment = UserConfig.sourceAPI + 'confirmpayment';
 
 }

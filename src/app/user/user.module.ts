@@ -74,6 +74,13 @@ import { FeaturedImagesComponent } from './painting/component/featured-images/fe
 import { PaintingCardComponent } from './painting/widget/painting-card/painting-card.component';
 import { ArtistCardComponent } from './artist/widget/artist-card/artist-card.component';
 import {MarkdownModule} from 'ngx-markdown';
+import { TranslateModule } from '@ngx-translate/core';
+import { CartComponent } from './shared/cart/cart/cart.component';
+import { MatStepperModule } from '@angular/material';
+import { PendingTransactionsComponent } from './profile/component/pending-transactions/pending-transactions.component';
+import { PendingTransactionPageComponent } from './profile/component/pending-transaction-page/pending-transaction-page.component';
+import { ConfirmPaymentComponent } from './profile/component/confirm-payment/confirm-payment.component';
+import { CancelOrderComponent } from './profile/component/cancel-order/cancel-order.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +149,12 @@ import {MarkdownModule} from 'ngx-markdown';
     PaintingKnowledgeGraphComponent,
     FeaturedImagesComponent,
     PaintingCardComponent,
-    ArtistCardComponent
+    ArtistCardComponent,
+    CartComponent,
+    PendingTransactionsComponent,
+    PendingTransactionPageComponent,
+    ConfirmPaymentComponent,
+    CancelOrderComponent
   ],
   exports: [
     // User
@@ -175,7 +187,8 @@ import {MarkdownModule} from 'ngx-markdown';
     FAQComponent,
     ImprintPageComponent,
     DataProcessingPageComponent,
-    ItemBriefComponent
+    ItemBriefComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -190,7 +203,9 @@ import {MarkdownModule} from 'ngx-markdown';
     NgxPaginationModule,
     NgxImageZoomModule.forRoot(),
     NgxJsonLdModule,
-    MarkdownModule.forChild()
+    MarkdownModule.forChild(),
+    TranslateModule,
+    MatStepperModule
   ],
   schemas: [
     // NO_ERRORS_SCHEMA

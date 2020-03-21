@@ -6,7 +6,7 @@
       <div class="col-2 p-3 d-none d-lg-block" id="artist-sidebar" *ngIf="filter === true">
         <div>
           <h5>Filter By Art Type</h5>
-          <button mdbBtn class="btn-light" (click)="cancelFilterByArtType()">All</button>
+          <button mdbBtn class="btn-light" (click)="cancelFilterByArtType()">{{'user.artist.list.all' | translate}}</button>
           <button mdbBtn class="btn-light" *ngFor="let artType of activeTypes"
                   (click)="filterByArtType(artType)"
                   [ngClass]="artType === activeArtType ? 'active' : ''">{{artType}}</button>
@@ -20,11 +20,11 @@
               <li class="nav-item">
                 <a class="nav-link">
                   <div class="btn-group" mdbDropdown>
-                    Sort By <span class="d-none d-md-block pl-1">Follow  Number</span>
+                    {{'user.artist.list.sort-by' | translate}} <span class="d-none d-md-block pl-1">{{'user.artist.list.flolow-number' | translate}}</span>
                     <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
                     <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                      <a class="dropdown-item" (click)="sortArtistsByFollowerNumberDesc()">Descending</a>
-                      <a class="dropdown-item" (click)="sortArtistsByFollowerNumberAsc()">Ascending</a>
+                      <a class="dropdown-item" (click)="sortArtistsByFollowerNumberDesc()">{{'user.artist.list.desc' | translate}}</a>
+                      <a class="dropdown-item" (click)="sortArtistsByFollowerNumberAsc()">{{'user.artist.list.asc' | translate}}</a>
                     </div>
                   </div>
                 </a>
@@ -34,10 +34,10 @@
               <li class="nav-item">
                 <a class="nav-link">
                   <div class="btn-group" mdbDropdown>
-                    Filter By <span class="d-none d-md-block pl-1">Art Type</span>
+                    {{'user.artist.list.fliter-by' | translate}} <span class="d-none d-md-block pl-1">{{'user.artist.list.art-type' | translate}}</span>
                     <mdb-icon fas icon="angle-down fa-fw mt-1" mdbDropdownToggle></mdb-icon>
                     <div class="dropdown-menu dropdown-menu-right dropdown-primary sort-artist-dropdown">
-                      <a class="dropdown-item" (click)="cancelFilterByArtType()">All</a>
+                      <a class="dropdown-item" (click)="cancelFilterByArtType()">{{'user.artist.list.all' | translate}}</a>
                       <a class="dropdown-item" *ngFor="let i of activeTypes" (click)="filterByArtType(i)">{{i}}</a>
                     </div>
                   </div>

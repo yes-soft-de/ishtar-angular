@@ -26,7 +26,7 @@ export class PaintingService extends InteractionsService {
   private paintingsListSubject = new Subject<PaintingListItem[]>();
   private paintingsListBySubject = new Subject<any>();
   private viewSubject = new Subject<any>();
-  userInfo: UserInfo;
+  protected userInfo: UserInfo;
   userRequestSent = false;
   userLoggedIn = false;
 
@@ -34,9 +34,9 @@ export class PaintingService extends InteractionsService {
               protected interactionsManagerService: InteractionsManagerService,
               protected pageTypeToNumberService: PageTypeToNumberService,
               protected interactionTypeToNumberService: InteractionConstantService,
-              private userService: UserService,
+              protected userService: UserService,
               protected dialog: MatDialog) {
-    super(interactionsManagerService, pageTypeToNumberService, interactionTypeToNumberService, dialog);
+    super(interactionsManagerService, userService, dialog);
   }
 
   // Fetch All Paintings
@@ -70,7 +70,7 @@ export class PaintingService extends InteractionsService {
           InteractionConsts.ENTITY_TYPE_PAINTING,
           paintingResponse.Data.id,
           null,
-          InteractionConsts.INTERACTION_TYPE_VIEW).subscribe();
+          `${InteractionConsts.INTERACTION_TYPE_VIEW}`).subscribe();
       }
     );
     // Return The Data To Print It In Component
@@ -93,13 +93,11 @@ export class PaintingService extends InteractionsService {
   }
 
   // Add View Interaction When User Inter To The Painting Detail
-  viewPainting(entityType: string, entityId: number) {
-          this.postInteractionToAPI(
-            entityType,
-            entityId,
-            null,
-            InteractionConstantService.INTERACTION_TYPE_VIEW,
-            this.viewSubject);
+  viewPainting(entityType: number, entityId: number) {
+    this.postInteractionToAPI(
+      entityType,
+      entityId,
+      InteractionConstantService.INTERACTION_TYPE_VIEW);
   }
 
   getFeaturedPaintings(): Observable<PaintingListItem[]> {

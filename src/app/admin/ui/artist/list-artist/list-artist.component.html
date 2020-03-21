@@ -48,8 +48,15 @@
                     <td>{{artist.Twitter}}</td>
                     <td>{{artist.Linkedin}}</td>
                     <td>
-                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
-                        <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
+                        <a routerLink="/admin/edit-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1 mb-1">
+                          Edit
+                        </a>
+                        <a routerLink="/admin/translate-artist/{{artist.id}}" class="btn btn-success btn-sm mr-1 mb-1">
+                          Translate
+                        </a>
+                        <a (click)="delete(artist.id)" class="btn btn-danger confirm btn-sm mr-1">
+                          Delete
+                        </a>
                     </td>
                 </tr>
             </table>

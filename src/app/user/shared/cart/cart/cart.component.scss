@@ -1,0 +1,17 @@
+#cart-container {
+  display: flex;
+
+  #payment-form {
+    flex-basis: 75%;
+
+    .btn-form-next {
+      background-color: white;
+      padding: 1rem;
+      border: solid goldenrod;
+    }
+  }
+
+  #painting-list {
+    flex-basis: 25%;
+  }
+}

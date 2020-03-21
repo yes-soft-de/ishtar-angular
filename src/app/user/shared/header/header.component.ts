@@ -1,12 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserInfo} from '../../entity/user/user-info';
 import {ArtTypeService} from '../../../admin/service/art-type/art-type.service';
 import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
 import {UserService} from '../user/service/user.service';
 import {UserManagerService} from '../user/manager/user-manager.service';
+import {TranslateService} from '@ngx-translate/core';
+import {CartService} from '../cart/service/cart.service';
+import {CartComponent} from '../cart/cart/cart.component';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +17,8 @@ import {UserManagerService} from '../user/manager/user-manager.service';
   styleUrls: ['./header.component.scss', '../../home/component/home-page/home-page.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public showLangSwitch = true;
+
   userInfo: UserInfo = null;
   userLoggedIn = false;
   userGoogleLoggedIn = false;
@@ -21,27 +26,33 @@ export class HeaderComponent implements OnInit {
     search: new FormControl('')
   });
 
-  constructor(private artTpeService: ArtTypeService,
-              public dialog: MatDialog,
+  constructor(public dialog: MatDialog,
               private router: Router,
-              private userManager: UserManagerService,
-              private userService: UserService) {
+              private userService: UserService,
+              public translate: TranslateService) {
   }
 
   ngOnInit() {
+    if (this.router.url.toString().search('de') > -1) {
+      console.log('URL: DE');
+      this.showLangSwitch = false;
+    } else {
+      this.showLangSwitch = true;
+      console.log('URL: EN');
+    }
     // Check Login With Google
     this.userService.getTokenWithGoogleLogin().subscribe(
-        tokenGoogleResponse => {
-          if (tokenGoogleResponse) {
-            this.userGoogleLoggedIn = true;
-            this.userLoggedIn = this.userService.isLoggedIn();
-            this.userService.getUserInfo().subscribe(
-                userInfoResponse => {
-                  this.userInfo = userInfoResponse;
-                }
-            );
-          }
+      tokenGoogleResponse => {
+        if (tokenGoogleResponse) {
+          this.userGoogleLoggedIn = true;
+          this.userLoggedIn = this.userService.isLoggedIn();
+          this.userService.getUserInfo().subscribe(
+            userInfoResponse => {
+              this.userInfo = userInfoResponse;
+            }
+          );
         }
+      }
     );
 
     // Check Login Without Google
@@ -51,9 +62,9 @@ export class HeaderComponent implements OnInit {
       // console.log('userLoggedIn is true = ', this.userLoggedIn);
       if (this.userLoggedIn) {
         this.userService.getUserInfo().subscribe(
-            userInfoResponse => {
-              this.userInfo = userInfoResponse;
-            }
+          userInfoResponse => {
+            this.userInfo = userInfoResponse;
+          }
         );
       }
     }
@@ -77,4 +88,28 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
   }
 
+  openCartDialog() {
+    return this.dialog.open(CartComponent, {
+      minWidth: '100vw',
+      hasBackdrop: true
+    });
+  }
+
+  switchLanguage() {
+    console.log('Switching Languages');
+    if (this.router.url.toString().search('de') > -1) {
+      console.log('Switching to Deutsch Links');
+      localStorage.setItem('lang', 'de');
+      this.translate.use('de');
+    } else if (localStorage.getItem('lang') === 'en') {
+      console.log('Switching to Deutsch Links');
+      localStorage.setItem('lang', 'de');
+      this.translate.use('de');
+    } else {
+      console.log('Switching to English Links');
+      localStorage.setItem('lang', 'en');
+      this.translate.use('en');
+    }
+    window.location.reload();
+  }
 }

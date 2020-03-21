@@ -5,6 +5,7 @@ export interface UserInfo {
   password?: string;
   roles?: [string];
   email?: string;
+  lang?: string;
   fullName?: string;
   phone?: string;
   createdBy?: string;

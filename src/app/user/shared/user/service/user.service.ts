@@ -5,6 +5,7 @@ import {EMPTY, Observable, Subject} from 'rxjs';
 import {RegisterRequest} from '../request/register-request';
 import {catchError} from 'rxjs/operators';
 import {UserInfo} from '../../../entity/user/user-info';
+import { UserResponse } from '../../../entity/user/user-response';
 
 @Injectable({
   providedIn: 'root'
@@ -66,17 +67,27 @@ export class UserService {
   }
 
   getUserInfo(): Observable<UserInfo> {
-    // console.log('getUserInfo is started');
     const userSubject = new Subject<UserInfo>();
     if (this.isLoggedIn()) {
       this.userManager.getUserProfile().subscribe(
         userInfo => {
           if (userInfo.Data.email || userInfo.Data.username) {
+            const userData: UserResponse = {
+              Data: {
+                id: userInfo.Data.id,
+                lang: userInfo.Data.lang
+              }
+            };
+            localStorage.setItem('userInfo', JSON.stringify(userData));
+            if (userData.Data.lang === 'en' || userData.Data.lang === 'de') {
+              localStorage.setItem('lang', userData.Data.lang);
+            }
             userSubject.next(userInfo.Data);
           }
         }
       );
     } else {
+      localStorage.removeItem('userInfo');
       userSubject.error('User is Not Logged in!');
     }
     return userSubject.asObservable();
@@ -111,7 +122,7 @@ export class UserService {
     if (diff / 60000 < 45) {
       return this.getToken() !== null && this.getToken() !== undefined;
     } else {
-      localStorage.clear();
+      localStorage.removeItem(this.KEY_TOKEN);
       return false;
     }
   }
@@ -121,13 +132,7 @@ export class UserService {
   }
 
   public logout() {
-    // if (this.googleConnect) {
-    //   this.userManager.googleLogout().subscribe(
-    //     () => {
-    //       this.googleConnect = false;
-    //     }
-    //   );
-    // }
+    localStorage.removeItem('userInfo');
     this.userManager.googleLogout().subscribe(
         () => {
           this.googleConnect = false;
@@ -137,4 +142,12 @@ export class UserService {
     return localStorage.removeItem(this.KEY_TOKEN);
   }
 
+  getSavedClientId(): number {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      return userInfo.Data.id;
+    } else {
+      return -1;
+    }
+  }
 }

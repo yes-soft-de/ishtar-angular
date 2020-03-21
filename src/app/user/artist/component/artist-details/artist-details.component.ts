@@ -38,7 +38,6 @@ export class ArtistDetailsComponent implements OnInit {
           data => {
             this.artist = data;
             this.titleService.setTitle(`${this.artist.name} | Ishtar-Art`);
-            console.log(JSON.stringify(this.artist));
             this.linkedInValid = this.linkedInRegex.test(this.artist.Linkedin);
             this.facebookValid = this.facebookRegex.test(this.artist.Facebook);
             this.twitterValid = this.twitterRegex.test(this.artist.Twitter);

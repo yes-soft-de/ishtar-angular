@@ -1,34 +1,32 @@
-<div class="hero">
-  <div class="hero-side bg-dark">
-    <img src="../../../../../assets/logo.png" alt="...">
-    <div class="text-container">
-      <h5>ISHTAR</h5>
-      <p>From East to West</p>
-    </div>
-    <ol>
-      <li *ngFor="let i of paintings; index as j" (click)="setActiveSlide(j)"
-          [ngClass]="activeSlide == j? 'active': null"></li>
-    </ol>
+<div id="hero">
+  <div class="block-left">
+    <div class="overlay"></div>
+    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'" [isControls]="true">
+      <mdb-carousel-item>
+        <p>
+          {{'user.home.hero.slide-01' | translate}}
+        </p>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <p>
+          {{'user.home.hero.slide-02' | translate}}
+        </p>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <p>
+          {{'user.home.hero.slide-03' | translate}}
+        </p>
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <a routerLink="/about-ishtar" class="read-more">
+      <img src="../../../../../assets/slider-images/7.png" class="left">
+      Read more
+      <img src="../../../../../assets/slider-images/7.png">
+    </a>
   </div>
-  <div class="hero-main">
-    <div id="hero-body">
-      <div class="carousel-fg">
-        <h5 class="carousel-text">{{paintings[activeSlide].title}}</h5>
-        <p>{{paintings[activeSlide].text}}</p>
-      </div>
-      <mdb-carousel (activeSlideChange)="slideChanged($event)" [isControls]="false" #heroSlider>
-        <mdb-carousel-item *ngFor="let i of paintings">
-          <div class="carousel-bg">
-          </div>
-        </mdb-carousel-item>
-      </mdb-carousel>
-      <div class="trangle"></div>
-      <img src="../../../../../assets/slider-images/4.png" class="painting-img">
-      <img src="../../../../../assets/slider-images/2.png" class="box">
-      <div class="left-top-image">
-        <p>For Art Lovers</p>
-        <img src="../../../../../assets/slider-images/7.png" class="lion">
-      </div>
-    </div>
+  <div class="block-right">
+    <section class="w-100 d-flex justify-content-center flex-column align-items-center">
+      <app-featured-images class="w-100" style="display: flex; justify-content: center;"></app-featured-images>
+    </section>
   </div>
 </div>

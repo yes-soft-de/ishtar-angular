@@ -21,7 +21,7 @@
                 <div class="input-search">
                   <form (ngSubmit)="goToSearch()" [formGroup]="searchFrom">
                     <input mdbInput type="text" class="form-control py-0" id="inlineFormInputGroup"
-                           placeholder="Search" formControlName="search">
+                           placeholder="{{'user.shared.header.search' | translate}}" formControlName="search">
                   </form>
                 </div>
               </div>
@@ -32,35 +32,42 @@
               <li class="float-right">
                 <div class="dropdown">
                   <span class="login" *ngIf="!userLoggedIn">
-                        <a (click)="showDialog()">Login</a>
+                        <a (click)="showDialog()">{{'user.shared.header.login' | translate}}</a>
                   </span>
                   <div mdbDropdown class="letter-circle" *ngIf="userLoggedIn">
                     <span mdbDropdownToggle class="letter">{{userInfo?.username.substring(0, 1) | uppercase}}</span>
                     <div class="info">
                       <span class="email">{{userInfo?.username}}</span>
-                      <!--                      <div>-->
-                      <!--                        <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>-->
-                      <!--                      </div>-->
                       <div class="login-btn" *ngIf="userLoggedIn">
-                        <a (click)="logout()">Logout !</a>
+                        <a (click)="logout()">{{'user.shared.header.logout' | translate}}</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </li>
+              <!--              <li class="float-right" (click)="openCartDialog()">-->
+              <!--                <a>-->
+              <!--                  {{'user.shared.header.cart' | translate}}-->
+              <!--                </a>-->
+              <!--              </li>-->
+              <li class="float-right" *ngIf="showLangSwitch">
+                <a (click)="switchLanguage()">
+                  De/En
+                </a>
+              </li>
               <li class="float-right">
                 <a routerLink="/about-ishtar">
-                  About Ishtar
+                  {{'user.shared.header.about' | translate}}
                 </a>
               </li>
               <li class="float-right">
                 <a routerLink="/painting-list">
-                  Paintings
+                  {{'user.shared.header.paintings' | translate}}
                 </a>
               </li>
               <li class="float-right">
                 <a routerLink="/artist-list">
-                  Artists
+                  {{'user.shared.header.artists' | translate}}
                 </a>
               </li>
             </ul>
@@ -78,23 +85,28 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/painting-list" class="nav-link waves-light" mdbWavesEffect>Paintings</a>
+          <a routerLink="/painting-list" class="nav-link waves-light"
+             mdbWavesEffect>{{'user.shared.header.paintings' | translate}}</a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/artist-list" class="nav-link waves-light" mdbWavesEffect>Artists</a>
+          <a routerLink="/artist-list" class="nav-link waves-light"
+             mdbWavesEffect>{{'user.shared.header.artists' | translate}}</a>
         </li>
-        <!--      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
-        <!--        <a routerLink="/statue-list" class="nav-link waves-light" mdbWavesEffect>Statues</a>-->
-        <!--      </li>-->
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/about-ishtar" class="nav-link waves-light" mdbWavesEffect>About Ishtar</a>
+          <a routerLink="/about-ishtar" class="nav-link waves-light"
+             mdbWavesEffect>{{'user.shared.header.about' | translate}}</a>
+        </li>
+        <li class="float-right" *ngIf="showLangSwitch">
+          <a (click)="switchLanguage()">
+            De/En
+          </a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <div class="search-mobile">
             <div class="input-mobile-search">
               <form [formGroup]="searchFrom">
                 <input mdbInput type="text" class="form-control py-0"
-                       placeholder="Search" formControlName="search">
+                       placeholder="{{'user.shared.header.search' | translate}}" formControlName="search">
                 <mdb-icon fas icon="search" class="search-btn" (click)="goToSearch()"></mdb-icon>
               </form>
             </div>
@@ -105,7 +117,7 @@
     <a>
       <div class="dropdown" mdbDropdown>
         <div class="login-btn" *ngIf="!userLoggedIn">
-          <a class="dropdown-item" (click)="showDialog()">Login</a>
+          <a class="dropdown-item" (click)="showDialog()">{{'user.shared.header.login' | translate}}</a>
         </div>
 
         <div mdbDropdown class="letter-circle"
@@ -117,7 +129,7 @@
               <a routerLink="/profile" style="font-size: 17px; letter-spacing: 1px ;">Profile</a>
             </div>
             <div class="login-btn dropdown-item" *ngIf="userLoggedIn">
-              <a class="dropdown-item" (click)="logout()">Logout !</a>
+              <a class="dropdown-item" (click)="logout()">{{'user.shared.header.logout' | translate}}</a>
             </div>
           </div>
         </div>

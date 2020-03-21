@@ -10,15 +10,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var baseAPI = 'https://ishtar-art.de/ishtar-backend/public';
 var urls = ['artist-list', 'painting-list', 'art-schools-list', 'tos', 'privacy', 'about-us', 'faq', 'imprint', 'data-processing', 'about-ishtar'];
-var root_path = 'http://www.ishtar-art.de';
-var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-var newDate = new Date(Date.now());
+var root_path = 'https://ishtar-art.de';
+var root_path_de = root_path + '/de';
+var xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">';
+var newDate = new Date(Date.now()); // region English
 
 for (var _i = 0, _urls = urls; _i < _urls.length; _i++) {
   var path = _urls[_i];
   xml += '<url>';
-  xml += "<loc>".concat(baseAPI, "/").concat(path, "</loc>");
+  xml += "<loc>".concat(root_path, "/").concat(path, "</loc>");
   console.log("Adding Path ".concat(path));
+  xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/").concat(path, "\"/>");
   xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
   xml += "<changefreq>monthly</changefreq>";
   xml += "<priority>0.8</priority>";
@@ -36,11 +38,12 @@ _axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
       var i = _step.value;
       xml += '<url>';
       xml += "<loc>".concat(root_path, "/painting/").concat(i.id, "</loc>");
+      xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/painting/").concat(i.id, "\"/>");
       xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
       xml += "<changefreq>monthly</changefreq>";
       xml += "<image:image>";
       xml += "<image:loc>".concat(i.image, "</image:loc>");
-      xml += "<image:title> ".concat(i.name, "</image:title>");
+      xml += "<image:title> ".concat(i.name.replace('&', 'and'), "</image:title>");
       xml += "<image:geo_location>Berlin, Germany</image:geo_location>";
       xml += "</image:image>";
       xml += "<priority>0.8</priority>";
@@ -72,6 +75,7 @@ _axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
         var i = _step2.value;
         xml += '<url>';
         xml += "<loc>".concat(root_path, "/artist/").concat(i.id, "</loc>");
+        xml += "<xhtml:link\n               rel=\"alternate\"\n               hreflang=\"de\"\n               href=\"".concat(root_path_de, "/artist/").concat(i.id, "\"/>");
         xml += "<lastmod>".concat(newDate.toDateString(), " ").concat(newDate.toTimeString(), "</lastmod>");
         xml += "<changefreq>monthly</changefreq>";
         xml += "<priority>0.7</priority>";
@@ -98,4 +102,4 @@ _axios.default.get("".concat(baseAPI, "/paintings")).then(function (result) {
       console.log(err);
     });
   });
-});
+}); // endregion

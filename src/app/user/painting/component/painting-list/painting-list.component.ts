@@ -3,6 +3,7 @@ import {PaintingService} from '../../service/painting.service';
 import {PaintingFilterService} from '../../filter/painting-filter.service';
 import {PageTypeToNumberService} from '../../../shared/helper/page-type-to-number.service';
 import {PaintingListItem} from '../../entity/painting-list-item';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-painting-list',
@@ -99,7 +100,7 @@ export class PaintingListComponent implements OnInit {
 
   viewImage(paintingId: number) {
     // Dependent on Reaction
-    this.paintingService.viewPainting(PageTypeToNumberService.ENTITY_TYPE_PAINTING, paintingId);
+    this.paintingService.viewPainting(InteractionConsts.ENTITY_TYPE_PAINTING, paintingId);
   }
 
   // Fetch All Artists Filters Name

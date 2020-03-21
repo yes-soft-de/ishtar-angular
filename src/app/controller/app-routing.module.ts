@@ -5,6 +5,7 @@ import {NotFoundComponent} from '../user/static-pages/not-found/not-found.compon
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('../user/user.module').then(m => m.UserModule)},
+  {path: 'de', loadChildren: () => import('../user/user.module').then(m => m.UserModule) },
   {path: 'admin', loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)},
   {path: '**', component: NotFoundComponent}
 ];

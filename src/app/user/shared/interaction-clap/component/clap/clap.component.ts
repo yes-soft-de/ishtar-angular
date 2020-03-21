@@ -3,6 +3,7 @@ import {interval} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
 import {ClapService} from '../../service/clap.service';
 import { InteractionConstantService } from 'src/app/user/interactions/service/interaction-constant.service';
+import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Component({
   selector: 'app-clap',
@@ -10,8 +11,8 @@ import { InteractionConstantService } from 'src/app/user/interactions/service/in
   styleUrls: ['./clap.component.scss']
 })
 export class ClapComponent implements OnInit {
-  @Input() ParentType;
-  @Input() ParentId;
+  @Input() ParentType: string;
+  @Input() ParentId: number;
   clapFiled = '../../../../../assets/clap-icon.svg';
   clapOutlined = '../../../../../assets/clap-outline.svg';
   clapIconSize = 32;
@@ -27,42 +28,56 @@ export class ClapComponent implements OnInit {
   constructor(private clapService: ClapService) {}
 
   ngOnInit() {
-    this.ObserveClaps();
+    this.getClaps();
   }
 
-  ObserveClaps() {
-    // Fetch THe Clap Request
-    this.clapService.initClap(this.ParentType, this.ParentId);
-    // Response From Clap Services
-    this.clapService.getClapObservable().subscribe(
-        (clapResponse: { success: boolean, value: any }) => {
-          // Check If There Is Data Or Not Return From The Server
-          if (clapResponse) {
-            // Check If the Reponse Interaction Not follow And Love | Then Will Be Clap
-            if (clapResponse.value.interactionTypeString != InteractionConstantService.INTERACTION_TYPE_LOVE &&
-                clapResponse.value.interactionTypeString != InteractionConstantService.INTERACTION_TYPE_FOLLOW) {
-              this.clapped = clapResponse.success;  // this clapResponse = true if success
-              if (clapResponse.value.ClapID) {      // Response clapResponse After Reload The Page
-                this.clapId = clapResponse.value.ClapID;
-                this.clappedNumber = clapResponse.value.value;
-              } else if (clapResponse.value.Data.id) {  // Response  After Create New Clap
-                this.clapId = clapResponse.value.Data.id;
-                this.clappedNumber = clapResponse.value.Data.value;
-              }
-            } else {
-              return;
-            }
-          } else {  // If Not Data That Mean This Interaction Was Deleted
-            this.clapping = false;
-            this.clapped = false;
+  getClaps() {
+    this.clapService.getClientClap(this.ParentId).subscribe(
+      clapsEntity => {
+        if (clapsEntity) {
+          if (clapsEntity.value > 0) {
+            this.clapped = true;
+            this.clappedNumber = clapsEntity.value;
+
+            this.clapId = clapsEntity.clapId;
           }
         }
+      }
     );
   }
 
-  sendClap(value) {
+  sendClap(value: number) {
     console.log(`Sending Some Claps Buddy ;)`);
-    this.clapService.postClap(this.ParentType, this.ParentId, value);
+    let interactionType = -1;
+    switch (this.ParentType.toLowerCase()) {
+      case 'painting':
+        interactionType = InteractionConsts.ENTITY_TYPE_PAINTING;
+        break;
+      case 'statue':
+        interactionType = InteractionConsts.ENTITY_TYPE_STATUE;
+        break;
+      case 'artist':
+        interactionType = InteractionConsts.ENTITY_TYPE_ARTIST;
+        break;
+      case 'arttype':
+        interactionType = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art-type':
+        interactionType = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      case 'art_type':
+        interactionType = InteractionConsts.ENTITY_TYPE_ART_TYPE;
+        break;
+      default:
+        console.log('Error, unindetified parent type :(');
+    }
+
+    this.clapService.postClap(interactionType, this.ParentId, value).subscribe(
+      () => {
+        this.getClaps();
+      }
+    );
+
   }
 
   startCalc() {

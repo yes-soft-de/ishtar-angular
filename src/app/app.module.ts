@@ -5,7 +5,7 @@ import {AppRoutingModule, routingComponents} from './controller/app-routing.modu
 import {AppComponent} from './app/app.component';
 import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {NgxUIModule} from '@swimlane/ngx-ui';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
 import {UserModule} from './user/user.module';
@@ -17,8 +17,14 @@ import {MarkdownModule} from 'ngx-markdown';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +44,14 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     TabsModule.forRoot(),
     UserModule,
     AdminModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [CookieService],
   exports: [],

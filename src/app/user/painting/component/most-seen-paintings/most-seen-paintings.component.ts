@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PaintingService} from '../../service/painting.service';
 import {MostViewedListItem} from '../../entity/most-viewed-list-item';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-most-seen-paintings',
@@ -10,7 +11,8 @@ import {MostViewedListItem} from '../../entity/most-viewed-list-item';
 export class MostSeenPaintingsComponent implements OnInit {
   mostViewedData: MostViewedListItem[];
 
-  constructor(private paintingService: PaintingService) {
+  constructor(private paintingService: PaintingService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -20,5 +22,4 @@ export class MostSeenPaintingsComponent implements OnInit {
       }
     );
   }
-
 }
