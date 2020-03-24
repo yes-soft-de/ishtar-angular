@@ -12,6 +12,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {StaticPagesComponent} from './static-pages/static-pages.component';
 import {UserRoutingModule} from '../user-routing.module';
 import {StaticPagesRoutingModule} from './static-pages-routing.module';
+import {HomeModule} from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {StaticPagesRoutingModule} from './static-pages-routing.module';
   imports: [
     CommonModule,
     TranslateModule.forChild(),
-    StaticPagesRoutingModule
+    StaticPagesRoutingModule,
+    HomeModule,
   ],
   exports: [
     AboutIshtarPageComponent,

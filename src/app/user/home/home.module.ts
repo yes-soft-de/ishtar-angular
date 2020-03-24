@@ -8,6 +8,8 @@ import {TranslateModule} from '@ngx-translate/core';
 import {SharedModule} from '../shared/shared.module';
 import {PaintingModule} from '../painting/painting.module';
 import {ArtistModule} from '../artist/artist.module';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {ArtTypeModule} from '../art-type/art-type.module';
 
 
 @NgModule({
@@ -18,10 +20,12 @@ import {ArtistModule} from '../artist/artist.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    MDBBootstrapModule,
     TranslateModule,
     SharedModule,
     PaintingModule,
-    ArtistModule
+    ArtistModule,
+    ArtTypeModule
   ],
   exports: [
     HomePageComponent,

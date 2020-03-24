@@ -87,7 +87,9 @@ export class HeaderComponent implements OnInit {
 
   openCartDialog() {
     return this.dialog.open(CartComponent, {
-      minWidth: '100vw',
+      panelClass: 'custom-dialog-container',
+      width: '80vw',
+      height: '75vh',
       hasBackdrop: true
     });
   }

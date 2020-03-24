@@ -6,15 +6,17 @@
         <mat-step label="Personal Info">
           <p class="h4 mb-4 mt-4">Customer Info</p>
           <div class="form-group row">
-            <input type="text" #firstName formControlName="firstName" id="firstName" mdbInput class="form-control mb-4 col-6"
-              placeholder="First Name">
-            <input type="text" #lastName formControlName="lastName" id="lastName" mdbInput class="form-control mb-4 col-6"
-              placeholder="Last Name">
+            <input type="text" #firstName formControlName="firstName" id="firstName" mdbInput
+                   class="form-control mb-4 col-6"
+                   placeholder="First Name">
+            <input type="text" #lastName formControlName="lastName" id="lastName" mdbInput
+                   class="form-control mb-4 col-6"
+                   placeholder="Last Name">
           </div>
 
           <div class="form-group row">
-              <input #phone class="form-control" type="number" name="phone" formControlName="phone"
-                placeholder="Your Phone Number">
+            <input #phone class="form-control" type="number" name="phone" formControlName="phone"
+                   placeholder="Your Phone Number">
           </div>
 
           <div class="form-group row justify-content-end">
@@ -22,23 +24,24 @@
           </div>
         </mat-step>
         <mat-step label="Shipping Details">
-
+          <div class="row mt-3">
+            <h3 class="h4 mb-4 mt-4">Shipping Info</h3>
+          </div>
           <div class="form-group row align-content-center">
             <div class="col-2">
-              Location
+              Country
             </div>
             <div class="col-5">
               <select class="form-control" name="country" formControlName="country">
-                <option *ngFor="let country of countries" [selected]="country == selectedCountry" value="{{country}}"
-                  (click)="selectCountry(country)">
+                <option *ngFor="let country of countries" [selected]="country === 'Germany'" value="{{country}}"
+                        (click)="selectCountry(country)">
                   {{country}}
                 </option>
               </select>
             </div>
             <div class="col-5">
-              <div class="col-10">
-                <input #city class="form-control" type="text" name="city" formControlName="city" placeholder="Type City Name">
-              </div>
+              <input #city class="form-control" type="text" name="city" formControlName="city"
+                     placeholder="Type City Name">
             </div>
           </div>
           <div class="form-group row">
@@ -47,11 +50,11 @@
             </div>
             <div class="col-5">
               <input #address class="form-control" type="text" name="address" formControlName="address"
-                placeholder="Type Address">
+                     placeholder="Type Address">
             </div>
             <div class="col-5">
               <input #zipCode class="form-control" type="number" name="zipCode" formControlName="zipCode"
-                placeholder="Type Zip Code">
+                     placeholder="Type Zip Code">
             </div>
           </div>
 
@@ -59,26 +62,53 @@
             <button type="button" matStepperNext class="btn-form-next">Next</button>
           </div>
         </mat-step>
-        <mat-step label="Payment Selection">
-          <div class="row">
-            <p>Client Name: {{firstName.value}} {{lastName.value}}</p>
+        <mat-step label="Payment Selection" id="final-step">
+
+          <div class="row mt-3 d-flex justify-content-between p-3" id="cart-total-header">
+            <h4>Total</h4>
+            <h4>{{totalPrice | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</h4>
           </div>
-          <div class="row">
-            <p>Delivery Address: {{selectedCountry}}, {{city.value}} at {{zipCode.value}}, {{address.value}}</p>
+          <div class="row mt-3">
+            <h3>Payment Options</h3>
           </div>
-          <div class="row">
-            Contact Phone: {{phone.value}}
+          <div class="row justify-content-center align-items-center mt-3 p-2" id="pay-via-paypal"
+               (click)="submitBill()">
+            <div class="d-flex flex-column col-8">
+              <h5>PayPal</h5>
+              <p>Complete Your Payment using PayPal</p>
+            </div>
+            <div class="col-4 d-flex justify-content-end p-2">
+              <mdb-icon fab icon="paypal" size="4x"></mdb-icon>
+            </div>
           </div>
-          <div class="row">
-            <p>Total Price: {{subTotalPrice}} plus {{tax}} as Taxes = {{totalPrice}}</p>
-          </div>
-          <button type="submit" (click)="submitBill()">Start Payment Process</button>
         </mat-step>
       </mat-horizontal-stepper>
     </form>
   </div>
-  <div id="painting-list">
-
+  <div id="cart-painting-list">
+    <div *ngFor="let painting of paintingList" class="cart-item-container">
+      <img [src]="painting.image">
+      <div class="d-flex flex-column">
+        <p>{{painting.name}}</p>
+        <p>{{painting.price | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</p>
+      </div>
+      <mdb-icon far icon="trash-alt" (click)="deleteItem(painting)"></mdb-icon>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="cart-price-line">
+      <p>Total Price </p>
+      <p>{{subTotalPrice  | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</p>
+    </div>
+    <div class="cart-price-line">
+      <p>Taxes </p>
+      <p>{{tax  | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</p>
+    </div>
+    <div class="cart-price-line">
+      <p>Total </p>
+      <p>{{totalPrice | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</p>
+    </div>
   </div>
 </section>
 <section *ngIf="!paintingList">

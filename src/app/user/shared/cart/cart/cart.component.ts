@@ -58,7 +58,7 @@ export class CartComponent implements OnInit {
       this.subTotalPrice += +i.price;
     }
 
-    this.tax = this.subTotalPrice * 0.125;
+    this.tax = Math.round(this.subTotalPrice * 0.125);
 
     this.totalPrice = this.subTotalPrice + this.tax;
 
@@ -114,5 +114,10 @@ export class CartComponent implements OnInit {
         });
       }
     );
+  }
+
+  deleteItem(painting: PaintingDetails) {
+    this.cartService.removeFromCart(painting.id);
+    this.paintingList = this.cartService.getCart();
   }
 }

@@ -12,6 +12,9 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.custom-dialog-container .mat-dialog-container {
+  padding: 0;
+}
 
 /*** Admin Loader Style ***/
 .lds-ring {
