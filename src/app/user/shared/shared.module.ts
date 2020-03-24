@@ -12,12 +12,15 @@ import {RouterModule} from '@angular/router';
 import {InteractionsModule} from '../interactions/interactions.module';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CartComponent} from './cart/cart/cart.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {LoginPageComponent} from '../profile/component/login-page/login-page.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     CartComponent,
+    LoginPageComponent,
     NotFoundComponent,
     LoveComponent,
     FollowComponent,
@@ -29,6 +32,8 @@ import {CartComponent} from './cart/cart/cart.component';
     TranslateModule.forChild(),
     MDBBootstrapModule,
     RouterModule,
+    ReactiveFormsModule,
+    MatStepperModule,
     InteractionsModule
   ],
   exports: [
@@ -38,6 +43,7 @@ import {CartComponent} from './cart/cart/cart.component';
     NotFoundComponent,
     LoveComponent,
     FollowComponent,
+    LoginPageComponent,
     ClapComponent,
   ]
 })
