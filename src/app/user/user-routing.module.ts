@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {UserComponent} from './user.component';
 import {ImagesByArtistPageComponent} from './ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {LoginPageComponent} from './ui/Pages/login-page/login-page.component';
@@ -39,7 +39,7 @@ const routes: Routes = [
       {path: 'profile', component: ProfilePageComponent},
       {path: 'edit-profile', component: ProfileEditPageComponent},
     ],
-    runGuardsAndResolvers: 'paramsChange'
+    runGuardsAndResolvers: 'paramsChange',
   }
 ];
 

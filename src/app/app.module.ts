@@ -20,6 +20,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {NotFoundComponent} from './user/static-pages/component/not-found/not-found.component';
 import {NgxImageZoomModule} from 'ngx-image-zoom';
+import {QuicklinkModule} from 'ngx-quicklink';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
+    QuicklinkModule,
     NgxJsonLdModule,
     NgxImageZoomModule,
     IconsModule,
