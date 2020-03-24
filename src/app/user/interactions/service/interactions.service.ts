@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InteractionsManagerService } from '../manager/interactions-manager.service';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { LoginPageComponent } from '../../ui/Pages/login-page/login-page.component';
+import { LoginPageComponent } from '../../profile/component/login-page/login-page.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientInteractionListItem } from '../entity/client-interaction-list-item';
 import { UserService } from '../../shared/user-services/service/user.service';

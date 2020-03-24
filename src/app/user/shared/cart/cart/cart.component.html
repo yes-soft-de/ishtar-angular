@@ -1,4 +1,4 @@
-<section id="cart-container" *ngIf="paintingList">
+<div id="cart-container" *ngIf="paintingList !== null && paintingList !== undefined">
 
   <div id="payment-form">
     <form [formGroup]="paymentForm">
@@ -110,7 +110,7 @@
       <p>{{totalPrice | currency: 'EUR': true : '1.0-0' : 'fr-FR' }}</p>
     </div>
   </div>
-</section>
-<section *ngIf="!paintingList">
+</div>
+<div *ngIf="paintingList === null || paintingList == undefined">
   There is nothing in Cart!
-</section>
+</div>

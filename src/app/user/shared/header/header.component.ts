@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LoginPageComponent} from '../../ui/Pages/login-page/login-page.component';
+import {LoginPageComponent} from '../../profile/component/login-page/login-page.component';
 import {UserService} from '../user-services/service/user.service';
 import {TranslateService} from '@ngx-translate/core';
 import {CartComponent} from '../cart/cart/cart.component';

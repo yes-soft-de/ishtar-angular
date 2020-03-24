@@ -1,35 +1,47 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { HomeRoutingModule } from './home-routing.module';
-import {HomePageComponent} from './component/home-page/home-page.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {HomeHeroComponent} from './component/home-hero/home-hero.component';
+import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
+import {HomeComponent} from './component/home/home.component';
 import {SharedModule} from '../shared/shared.module';
 import {PaintingModule} from '../painting/painting.module';
 import {ArtistModule} from '../artist/artist.module';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {ArtTypeModule} from '../art-type/art-type.module';
+import {HomePageComponent} from './home-page/home-page.component';
+import {PaintingListModule} from '../painting/painting-list.module';
+import {ArtTypeListModule} from '../art-type/art-type-list.module';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent
+  }
+];
 
 @NgModule({
   declarations: [
-    HomePageComponent,
-    HomeHeroComponent
+    HomeHeroComponent,
+    HomeComponent,
+    HomePageComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
-    MDBBootstrapModule,
-    TranslateModule,
+    RouterModule.forChild(routes),
+    TranslateModule.forChild(),
     SharedModule,
     PaintingModule,
     ArtistModule,
-    ArtTypeModule
+    ArtTypeModule,
+    PaintingListModule,
+    ArtTypeListModule,
+    MDBBootstrapModule
   ],
   exports: [
-    HomePageComponent,
     HomeHeroComponent
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

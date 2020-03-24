@@ -1,26 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ArtTypeDetailsComponent} from './component/art-type-details/art-type-details.component';
 import {ArtTypeDetailsPageComponent} from './component/art-type-details-page/art-type-details-page.component';
-import {ArtTypeListComponent} from './component/art-type-list/art-type-list.component';
-import {ArtTypeListPageComponent} from './component/art-type-list-page/art-type-list-page.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import {ArtistModule} from '../artist/artist.module';
+import {RouterModule, Routes} from '@angular/router';
 
-
+const routes: Routes = [
+  {
+    path: 'art-type/:id',
+    pathMatch: 'full',
+    component: ArtTypeDetailsPageComponent
+  }
+];
 
 @NgModule({
   declarations: [
     ArtTypeDetailsComponent,
     ArtTypeDetailsPageComponent,
-    ArtTypeListComponent,
-    ArtTypeListPageComponent
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     SharedModule,
     ArtistModule,
     TranslateModule
@@ -28,8 +30,7 @@ import {ArtistModule} from '../artist/artist.module';
   exports: [
     ArtTypeDetailsComponent,
     ArtTypeDetailsPageComponent,
-    ArtTypeListComponent,
-    ArtTypeListPageComponent
   ]
 })
-export class ArtTypeModule { }
+export class ArtTypeModule {
+}

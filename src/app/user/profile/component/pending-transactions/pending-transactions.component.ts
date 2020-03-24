@@ -3,7 +3,7 @@ import {PendingTransactionService} from '../../service/pending-transaction.servi
 import {PendingTransactionListItem} from 'src/app/user/client/entity/pending-transaction-list-item';
 import {UserService} from '../../../shared/user-services/service/user.service';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginPageComponent} from '../../../ui/Pages/login-page/login-page.component';
+import {LoginPageComponent} from '../login-page/login-page.component';
 
 @Component({
   selector: 'app-pending-transactions',

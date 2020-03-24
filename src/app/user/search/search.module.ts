@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {InteractionsModule} from '../interactions/interactions.module';
 import {ArtistSearchComponent} from './component/artist-search/artist-search.component';
@@ -14,6 +14,9 @@ import {ArtistModule} from '../artist/artist.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
+const routes: Routes = [
+  {path: ':query', component: SearchPageComponent},
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +27,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     ReactiveFormsModule,
     MDBBootstrapModule,
     NgxPaginationModule,

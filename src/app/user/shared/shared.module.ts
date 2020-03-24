@@ -10,12 +10,15 @@ import {TranslateModule} from '@ngx-translate/core';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {RouterModule} from '@angular/router';
 import {InteractionsModule} from '../interactions/interactions.module';
-
+import {NotFoundComponent} from './not-found/not-found.component';
+import {CartComponent} from './cart/cart/cart.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
+    CartComponent,
+    NotFoundComponent,
     LoveComponent,
     FollowComponent,
     ClapComponent,
@@ -31,6 +34,8 @@ import {InteractionsModule} from '../interactions/interactions.module';
   exports: [
     HeaderComponent,
     FooterComponent,
+    CartComponent,
+    NotFoundComponent,
     LoveComponent,
     FollowComponent,
     ClapComponent,

@@ -31,9 +31,10 @@ export class PaintingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.url.subscribe(
+    this.activatedRoute.params.subscribe(
       urlSegments => {
-        this.paintingService.getPainting(Number(urlSegments[0].path)).subscribe(
+        console.log(JSON.stringify(urlSegments));
+        this.paintingService.getPainting(Number(urlSegments.id)).subscribe(
           paintingResponse => {
             this.painting = paintingResponse;
             this.setSeo(paintingResponse);

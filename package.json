@@ -4,10 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build-optimized": "run-s build:client, build:grunt",
-    "build:client": "ng build --prod --build-optimizer",
-    "build:grunt": "grunt build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -67,6 +64,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.0.0",
     "@angular-devkit/build-angular": "^0.900.7",
     "@angular/cli": "~9.0.7",
     "@angular/compiler-cli": "~9.0.7",
@@ -86,6 +84,8 @@
     "grunt-prettify": "^0.4.0",
     "grunt-purifycss": "^0.1.2",
     "grunt-string-replace": "^1.3.1",
+    "guess-parser": "^0.4.17",
+    "guess-webpack": "^0.4.17",
     "gulp": "^4.0.2",
     "gulp-purifycss": "^0.2.0",
     "jasmine-core": "~3.4.0",

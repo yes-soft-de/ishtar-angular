@@ -13,11 +13,8 @@ import {InteractionsModule} from '../interactions/interactions.module';
 import {SharedModule} from '../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxImageZoomModule} from 'ngx-image-zoom';
-
-const routes: Routes = [
-  {path: '', component: StatueListPageComponent},
-  {path: ':id', component: StatueDetailsPageComponent}
-];
+import {StatueComponent} from './statue/statue.component';
+import {StatueRoutingModule} from './statue-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,11 +24,12 @@ const routes: Routes = [
     StatueDetailsPageComponent,
     StatueListComponent,
     StatueListPageComponent,
+    StatueComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
+    StatueRoutingModule,
     MDBBootstrapModule,
     TranslateModule.forChild(),
     InteractionsModule,

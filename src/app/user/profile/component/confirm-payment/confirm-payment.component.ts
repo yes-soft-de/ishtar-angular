@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../shared/user-services/service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginPageComponent} from '../../../ui/Pages/login-page/login-page.component';
+import {LoginPageComponent} from '../login-page/login-page.component';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
 
 @Component({

@@ -6,7 +6,7 @@ import {CheckOutManagerService} from '../manager/check-out-manager.service';
 import {Observable, Subject} from 'rxjs';
 import {PaymentRequest} from '../entity/payment-request';
 import {UserService} from '../../user-services/service/user.service';
-import {LoginPageComponent} from 'src/app/user/ui/Pages/login-page/login-page.component';
+import {LoginPageComponent} from 'src/app/user/profile/component/login-page/login-page.component';
 
 @Injectable({
   providedIn: 'root'

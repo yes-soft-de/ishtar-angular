@@ -13,13 +13,19 @@ import {ArtistKnowledgeComponent} from './component/artist-knowledge/artist-know
 import {ArtistListComponent} from './component/artist-list/artist-list.component';
 import {ArtistListPageComponent} from './component/artist-list-page/artist-list-page.component';
 import {ArtistPaintingsComponent} from './component/artist-paintings/artist-paintings.component';
-import {ImagesByArtistPageComponent} from '../ui/Pages/images-by-artist-page/images-by-artist-page.component';
 import {MarkdownModule} from 'ngx-markdown';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
 import {ArtistCardComponent} from './widget/artist-card/artist-card.component';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+const routes: Routes = [
+  {
+    path: 'artist/:id',
+    pathMatch: 'full',
+    component: ArtistDetailsPageComponent
+  },
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +37,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ArtistListComponent,
     ArtistListPageComponent,
     ArtistPaintingsComponent,
-    ImagesByArtistPageComponent,
     ArtistCardComponent
   ],
   imports: [
@@ -44,6 +49,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SharedModule,
     InteractionsModule,
     MarkdownModule,
+    RouterModule.forChild(routes),
     NgxJsonLdModule
   ],
   exports: [
@@ -55,7 +61,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ArtistListComponent,
     ArtistListPageComponent,
     ArtistPaintingsComponent,
-    ImagesByArtistPageComponent,
     ArtistCardComponent
   ]
 })

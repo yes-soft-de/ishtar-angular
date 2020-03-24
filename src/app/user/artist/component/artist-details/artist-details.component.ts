@@ -34,9 +34,9 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.url.subscribe(
+    this.activatedRoute.params.subscribe(
       urlSegments => {
-        this.artistService.getArtist(Number(urlSegments[1].path)).subscribe(
+        this.artistService.getArtist(Number(urlSegments.id)).subscribe(
           artistDetails => {
             this.artist = artistDetails;
             this.setSeo(artistDetails);

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdminRoutingModule } from '../controller/admin-routing.module';
+import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { AdminHeaderComponent } from './ui/admin-header/admin-header.component';
