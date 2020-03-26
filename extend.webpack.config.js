@@ -8,7 +8,7 @@ module.exports = {
       // GA: 'XXXXXX',
       reportProvider() {
         return Promise.resolve({
-          GA: 'UA-142190160-2'
+          GA: '203199961'
         });
       },
       runtime: {

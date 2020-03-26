@@ -68,13 +68,70 @@ const routes: Routes = [
     path: 'art-type-list',
     loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
   },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./user/statue/statue.module').then(m => m.StatueModule),
-  // },
-  //
-  // // {path: 'de', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
-  // {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
+  {
+    path: 'de',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'de/tos',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/tos/tos.module').then(m => m.TosModule),
+  },
+  {
+    path: 'de/privacy',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule),
+  },
+  {
+    path: 'de/about-us',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/about-us/about-us.module').then(m => m.AboutUsModule),
+  },
+  {
+    path: 'de/faq',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/faq/faq.module').then(m => m.FaqModule),
+  },
+  {
+    path: 'de/imprint',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/imprint/imprint.module').then(m => m.ImprintModule),
+  },
+  {
+    path: 'de/data-processing',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/data-processing/data-processing.module').then(m => m.DataProcessingModule),
+  },
+  {
+    path: 'de/about-ishtar',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/static-pages/about-ishtar/about-ishtar.module').then(m => m.AboutIshtarModule),
+  },
+  {
+    path: 'de/painting-list',
+    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+  },
+  {
+    path: 'de/painting',
+    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+  },
+  {
+    path: 'de/artist',
+    loadChildren: () => import('./user/artist/artist-routing.module').then(m => m.ArtistRoutingModule),
+  },
+  {
+    path: 'de/artist-list',
+    loadChildren: () => import('./user/artist/artist-routing.module').then(m => m.ArtistRoutingModule),
+  },
+  {
+    path: 'de/art-type',
+    loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
+  },
+  {
+    path: 'de/art-type-list',
+    loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
+  },
   {path: '**', component: NotFoundComponent}
 ];
 
