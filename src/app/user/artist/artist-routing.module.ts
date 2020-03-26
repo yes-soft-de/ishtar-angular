@@ -4,13 +4,19 @@ import {RouterModule, Routes} from '@angular/router';
 import {ArtistListPageComponent} from './component/artist-list-page/artist-list-page.component';
 import {SharedModule} from '../shared/shared.module';
 import {PaintingListPageComponent} from '../painting/component/painting-list-page/painting-list-page.component';
+import {ArtistDetailsPageComponent} from './component/artist-details-page/artist-details-page.component';
 
 const routes: Routes = [
   {
     path: 'artist-list',
     pathMatch: 'full',
     component: ArtistListPageComponent,
-  }
+  },
+  {
+    path: 'artist/:id',
+    pathMatch: 'full',
+    component: ArtistDetailsPageComponent
+  },
 ];
 
 @NgModule({
@@ -21,5 +27,5 @@ const routes: Routes = [
     SharedModule
   ]
 })
-export class ArtistListModule {
+export class ArtistRoutingModule {
 }

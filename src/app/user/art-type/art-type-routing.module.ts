@@ -4,29 +4,27 @@ import {ArtTypeListComponent} from './component/art-type-list/art-type-list.comp
 import {ArtTypeListPageComponent} from './component/art-type-list-page/art-type-list-page.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
+import {ArtTypeDetailsPageComponent} from './component/art-type-details-page/art-type-details-page.component';
 
 const routes: Routes = [
   {
     path: 'art-type-list',
     pathMatch: 'full',
     component: ArtTypeListPageComponent
+  },
+  {
+    path: 'art-type/:id',
+    pathMatch: 'full',
+    component: ArtTypeDetailsPageComponent
   }
 ];
 
 @NgModule({
-  declarations: [
-    ArtTypeListComponent,
-    ArtTypeListPageComponent
-  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule
   ],
-  exports: [
-    ArtTypeListComponent,
-    ArtTypeListPageComponent,
-  ]
 })
-export class ArtTypeListModule {
+export class ArtTypeRoutingModule {
 }

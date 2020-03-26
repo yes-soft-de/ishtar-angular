@@ -5,13 +5,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {HomeComponent} from './component/home/home.component';
 import {SharedModule} from '../shared/shared.module';
-import {PaintingModule} from '../painting/painting.module';
 import {ArtistModule} from '../artist/artist.module';
 import {ArtTypeModule} from '../art-type/art-type.module';
 import {HomePageComponent} from './home-page/home-page.component';
-import {PaintingListModule} from '../painting/painting-list.module';
-import {ArtTypeListModule} from '../art-type/art-type-list.module';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {PaintingSharedModule} from '../painting/painting-shared.module';
 
 const routes: Routes = [
   {
@@ -32,11 +30,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
     SharedModule,
-    PaintingModule,
+    PaintingSharedModule,
     ArtistModule,
     ArtTypeModule,
-    PaintingListModule,
-    ArtTypeListModule,
     MDBBootstrapModule
   ],
   exports: [

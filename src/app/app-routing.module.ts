@@ -46,27 +46,15 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./user/painting/painting-list.module').then(m => m.PaintingListModule),
-  },
-  {
-    path: '',
     loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
   },
   {
     path: '',
-    loadChildren: () => import('./user/artist/artist-list.module').then(m => m.ArtistListModule),
+    loadChildren: () => import('./user/artist/artist-routing.module').then(m => m.ArtistRoutingModule),
   },
   {
     path: '',
-    loadChildren: () => import('./user/artist/artist.module').then(m => m.ArtistModule),
-  },
-  {
-    path: '',
-    loadChildren: () => import('./user/art-type/art-type-list.module').then(m => m.ArtTypeListModule),
-  },
-  {
-    path: '',
-    loadChildren: () => import('./user/art-type/art-type.module').then(m => m.ArtTypeModule),
+    loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
   },
   // {
   //   path: '',

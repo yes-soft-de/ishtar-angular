@@ -6,23 +6,19 @@ import {TranslateModule} from '@ngx-translate/core';
 import {SharedModule} from '../shared/shared.module';
 import {ArtistModule} from '../artist/artist.module';
 import {RouterModule, Routes} from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: 'art-type/:id',
-    pathMatch: 'full',
-    component: ArtTypeDetailsPageComponent
-  }
-];
+import {ArtTypeListComponent} from './component/art-type-list/art-type-list.component';
+import {ArtTypeListPageComponent} from './component/art-type-list-page/art-type-list-page.component';
 
 @NgModule({
   declarations: [
     ArtTypeDetailsComponent,
     ArtTypeDetailsPageComponent,
+    ArtTypeListComponent,
+    ArtTypeListPageComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule,
     SharedModule,
     ArtistModule,
     TranslateModule
@@ -30,6 +26,8 @@ const routes: Routes = [
   exports: [
     ArtTypeDetailsComponent,
     ArtTypeDetailsPageComponent,
+    ArtTypeListComponent,
+    ArtTypeListPageComponent,
   ]
 })
 export class ArtTypeModule {

@@ -19,14 +19,6 @@ import {ArtistCardComponent} from './widget/artist-card/artist-card.component';
 import {RouterModule, Routes} from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
 
-const routes: Routes = [
-  {
-    path: 'artist/:id',
-    pathMatch: 'full',
-    component: ArtistDetailsPageComponent
-  },
-];
-
 @NgModule({
   declarations: [
     ArtistCommentComponent,
@@ -49,7 +41,7 @@ const routes: Routes = [
     SharedModule,
     InteractionsModule,
     MarkdownModule,
-    RouterModule.forChild(routes),
+    RouterModule,
     NgxJsonLdModule
   ],
   exports: [
