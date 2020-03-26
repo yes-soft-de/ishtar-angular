@@ -70,5 +70,6 @@ export class UserConfig {
   public static CancelPendingTransactions = UserConfig.sourceAPI + 'canceledorder';
   public static ConfirmPendingTransactions = UserConfig.sourceAPI + 'successorder';
   public static ConfirmPayment = UserConfig.sourceAPI + 'confirmpayment';
+  public static PaymentAPI = UserConfig.sourceAPI + 'orders';
 
 }

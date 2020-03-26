@@ -3,9 +3,9 @@ import {InteractionsRepositoryService} from '../repository/interactions-reposito
 import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
 import { ClientInteractionResponse } from '../response/client-interaction-response';
-import { InteractionResponse } from 'src/app/admin/entity/interactions/interaction-response';
 import { ClapGetResponse } from '../response/clap-get-response';
 import { ClapEntity } from '../entity/clap-entity';
+import {InteractionResponse} from '../response/InteractionResponse';
 
 @Injectable({
   providedIn: 'root'

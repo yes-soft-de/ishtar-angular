@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Painting} from '../../../../admin/entity/painting/painting';
+import {Component, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../entity/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 

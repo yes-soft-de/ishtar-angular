@@ -7,7 +7,6 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {NgwWowModule} from 'ngx-wow';
 import {TabsModule} from 'ngx-bootstrap';
-import {AdminModule} from './admin/admin.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CookieService} from 'ngx-cookie-service';
 import {NgxJsonLdModule} from '@ngx-lite/json-ld';
@@ -61,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     TabsModule.forRoot(),
     MatDialogModule,
     ToastrModule.forRoot(),
-    AdminModule,
     MarkdownModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
