@@ -8,13 +8,13 @@ import {ArtistDetailsPageComponent} from './component/artist-details-page/artist
 
 const routes: Routes = [
   {
-    path: 'artist-list',
+    path: '',
     pathMatch: 'full',
     component: ArtistListPageComponent,
   },
   {
-    path: 'artist/:id',
-    pathMatch: 'full',
+    path: ':id',
+    pathMatch: '',
     component: ArtistDetailsPageComponent
   },
 ];

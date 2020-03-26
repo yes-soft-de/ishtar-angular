@@ -8,12 +8,12 @@ import {ArtTypeDetailsPageComponent} from './component/art-type-details-page/art
 
 const routes: Routes = [
   {
-    path: 'art-type-list',
+    path: '',
     pathMatch: 'full',
     component: ArtTypeListPageComponent
   },
   {
-    path: 'art-type/:id',
+    path: ':id',
     pathMatch: 'full',
     component: ArtTypeDetailsPageComponent
   }

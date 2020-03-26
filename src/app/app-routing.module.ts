@@ -45,15 +45,27 @@ const routes: Routes = [
     loadChildren: () => import('./user/static-pages/about-ishtar/about-ishtar.module').then(m => m.AboutIshtarModule),
   },
   {
-    path: '',
+    path: 'painting-list',
     loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
   },
   {
-    path: '',
+    path: 'painting',
+    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+  },
+  {
+    path: 'artist',
     loadChildren: () => import('./user/artist/artist-routing.module').then(m => m.ArtistRoutingModule),
   },
   {
-    path: '',
+    path: 'artist-list',
+    loadChildren: () => import('./user/artist/artist-routing.module').then(m => m.ArtistRoutingModule),
+  },
+  {
+    path: 'art-type',
+    loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
+  },
+  {
+    path: 'art-type-list',
     loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
   },
   // {

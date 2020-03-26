@@ -7,12 +7,12 @@ import {PaintingSharedModule} from './painting-shared.module';
 
 const routes: Routes = [
   {
-    path: 'painting/:id',
+    path: ':id',
     pathMatch: 'full',
     component: PaintingDetailsPageComponent,
   },
   {
-    path: 'painting-list',
+    path: '',
     pathMatch: 'full',
     component: PaintingListPageComponent,
   }
