@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="col-5 col-md-6 col-xl-8 align-self-center">
-        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-statue">
+        <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/add-statue">
           <i class="fa fa-plus"></i>
           Add New Statue
         </a>
@@ -64,7 +64,7 @@
             <td>{{statue.updatedDate ? (statue.updatedDate.timestamp * 1000 | date: 'short') : '-'}}</td>
             <td>{{statue.updatedBy ? statue.updatedBy : '-'}}</td>
             <td>
-              <a routerLink="/admin/edit-statue/{{statue.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
+              <a routerLink="/edit-statue/{{statue.id}}" class="btn btn-success btn-sm mr-1">Edit</a>
               <a (click)="delete(statue.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
               <a href="#" *ngIf="!statue.active" class="btn btn-primary btn-sm mr-1">Active</a>
             </td>
@@ -86,7 +86,7 @@
   <div *ngIf="statues.length === 0">
     <div class="container">
       <div class="alert alert-primary text-center mt-5">There Isn't Any Statue To Show</div>
-      <a routerLink="/admin/add-statue" class="btn btn-primary btn-sm mb-2 float-right">
+      <a routerLink="/add-statue" class="btn btn-primary btn-sm mb-2 float-right">
         <i class="fa fa-plus"></i>
         Add New Statue
       </a>

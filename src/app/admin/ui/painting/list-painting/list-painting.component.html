@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="col-5 col-md-6 col-xl-8 align-self-center">
-            <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-painting">
+            <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/add-painting">
               <i class="fa fa-plus"></i>
               Add New Painting
             </a>
@@ -48,11 +48,11 @@
                 <td>{{painting.price | currency: 'EUR'}}</td>
                 <td class="td-custom">{{painting.story}}</td>
                 <td>
-                  <a routerLink="/admin/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
+                  <a routerLink="/edit-painting/{{painting.id}}" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
                   <a (click)="delete(painting.id)" class="btn btn-danger confirm btn-sm mr-1 mb-1">Delete</a>
                   <a href="#" *ngIf="!painting.active" class="btn btn-primary btn-sm mr-1">Active</a>
                 </td>
-                <td routerLink="/admin/translate-painting/{{painting.id}}">
+                <td routerLink="/translate-painting/{{painting.id}}">
                   <button mdbBtn> Translate </button>
                 </td>
               </tr>
@@ -73,7 +73,7 @@
     <div *ngIf="paintings.length === 0">
         <div class="container">
             <div class="alert alert-primary text-center mt-5">There Isn't Any Painting To Show</div>
-            <a routerLink="/admin/add-painting" class="btn btn-primary btn-sm mb-2 float-right">
+            <a routerLink="/add-painting" class="btn btn-primary btn-sm mb-2 float-right">
                 <i class="fa fa-plus"></i>
                 Add New Painting
             </a>

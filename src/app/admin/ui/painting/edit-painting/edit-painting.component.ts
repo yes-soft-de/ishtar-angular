@@ -228,7 +228,7 @@ export class EditPaintingComponent implements OnInit {
         },
         () => {
           // If Success Navigate to Admin List Paintings Page
-          this.router.navigate(['admin/list-paintings']);
+          this.router.navigate(['list-paintings']);
         }
       );
     }

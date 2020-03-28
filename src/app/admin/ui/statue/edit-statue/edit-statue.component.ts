@@ -201,7 +201,7 @@ export class EditStatueComponent implements OnInit {
           },
           () => {
             // If Success Navigate to Admin List Paintings Page
-            this.router.navigate(['admin/list-statues']);
+            this.router.navigate(['list-statues']);
           }
       );
     }

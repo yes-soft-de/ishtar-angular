@@ -7,7 +7,7 @@
     "build": "ng build",
     "build-optimized": "run-s build:client, build:grunt",
     "build:client": "ng build --prod --build-optimizer",
-    "build:grunt": "grunt build",
+    "build:admin": "ng build --prod --base-href=/admin/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
