@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () => import('./user/profile/profile-routing.module').then(m => m.ProfileRoutingModule)
   },
   {
+    path: 'search',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/search/search.module').then(m => m.SearchModule)
+  },
+  {
     path: 'tos',
     pathMatch: 'full',
     loadChildren: () => import('./user/static-pages/tos/tos.module').then(m => m.TosModule),

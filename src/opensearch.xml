@@ -1,0 +1,8 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>ishtar-art search</ShortName>
+  <Description>Search in Ishtar Art</Description>
+  <Url type="text/html" method="get" template="http://dev-ishtar.96.lt/search?q={searchTerms}"/>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="32" width="32" type="image/png">linkToImage</Image>
+</OpenSearchDescription>

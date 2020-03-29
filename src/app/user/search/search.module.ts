@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -9,13 +9,13 @@ import {PaintingSearchComponent} from './component/painting-search/painting-sear
 import {SearchComponent} from './component/search/search.component';
 import {SearchPageComponent} from './component/search-page/search-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import {PaintingRoutingModule} from '../painting/painting-routing.module';
 import {ArtistModule} from '../artist/artist.module';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {PaintingModule} from '../painting/painting.module';
 
 
 const routes: Routes = [
-  {path: ':query', component: SearchPageComponent},
+  {path: '', component: SearchPageComponent},
 ];
 
 @NgModule({
@@ -31,7 +31,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MDBBootstrapModule,
     NgxPaginationModule,
-    PaintingRoutingModule,
+    PaintingModule,
     ArtistModule,
     SharedModule,
     InteractionsModule,
@@ -43,4 +43,5 @@ const routes: Routes = [
     SearchPageComponent
   ]
 })
-export class SearchModule { }
+export class SearchModule {
+}

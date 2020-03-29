@@ -81,8 +81,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goToSearch() {
-    // this.searchFrom.get('search').reset();
-    this.router.navigate([`/search/${this.searchFrom.get('search').value}`]);
+    this.router.navigate([`/search`], {
+      queryParams: {
+        q: this.searchFrom.get('search').value
+      }
+    });
   }
 
   openCartDialog() {
