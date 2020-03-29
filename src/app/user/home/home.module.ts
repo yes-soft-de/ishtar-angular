@@ -9,7 +9,7 @@ import {ArtistModule} from '../artist/artist.module';
 import {ArtTypeModule} from '../art-type/art-type.module';
 import {HomePageComponent} from './home-page/home-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import {PaintingSharedModule} from '../painting/painting-shared.module';
+import {PaintingModule} from '../painting/painting.module';
 
 const routes: Routes = [
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
     SharedModule,
-    PaintingSharedModule,
+    PaintingModule,
     ArtistModule,
     ArtTypeModule,
     MDBBootstrapModule

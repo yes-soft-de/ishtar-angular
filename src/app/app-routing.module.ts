@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./user/home/home.module').then(m => m.HomeModule)
   },
   {
+    path: '',
+    loadChildren: () => import('./user/profile/profile-routing.module').then(m => m.ProfileRoutingModule)
+  },
+  {
     path: 'tos',
     pathMatch: 'full',
     loadChildren: () => import('./user/static-pages/tos/tos.module').then(m => m.TosModule),
@@ -46,11 +50,11 @@ const routes: Routes = [
   },
   {
     path: 'painting-list',
-    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+    loadChildren: () => import('./user/painting/painting-routing.module').then(m => m.PaintingRoutingModule),
   },
   {
     path: 'painting',
-    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+    loadChildren: () => import('./user/painting/painting-routing.module').then(m => m.PaintingRoutingModule),
   },
   {
     path: 'artist',
@@ -110,11 +114,11 @@ const routes: Routes = [
   },
   {
     path: 'de/painting-list',
-    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+    loadChildren: () => import('./user/painting/painting-routing.module').then(m => m.PaintingRoutingModule),
   },
   {
     path: 'de/painting',
-    loadChildren: () => import('./user/painting/painting.module').then(m => m.PaintingModule),
+    loadChildren: () => import('./user/painting/painting-routing.module').then(m => m.PaintingRoutingModule),
   },
   {
     path: 'de/artist',

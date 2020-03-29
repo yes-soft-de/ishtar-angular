@@ -1,14 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {ProfileRoutingModule} from './profile-routing.module';
 import {ProfileComponent} from './profile.component';
 import {SharedModule} from '../shared/shared.module';
-import {PaintingModule} from '../painting/painting.module';
 import {PendingTransactionsComponent} from './component/pending-transactions/pending-transactions.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {OrderImageCardComponent} from './component/order-image-card/order-image-card.component';
 import {PendingTransactionPageComponent} from './component/pending-transaction-page/pending-transaction-page.component';
+import {ConfirmPaymentComponent} from './component/confirm-payment/confirm-payment.component';
+import {CancelOrderComponent} from './component/cancel-order/cancel-order.component';
+import {RouterModule} from '@angular/router';
+import {PaintingModule} from '../painting/painting.module';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import {PendingTransactionPageComponent} from './component/pending-transaction-p
     ProfileComponent,
     PendingTransactionsComponent,
     PendingTransactionPageComponent,
-    OrderImageCardComponent
+    OrderImageCardComponent,
+    ConfirmPaymentComponent,
+    CancelOrderComponent
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
     SharedModule,
+    RouterModule,
     PaintingModule,
     NgxPaginationModule
   ],

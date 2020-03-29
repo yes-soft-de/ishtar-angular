@@ -22,7 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {ToastrModule} from 'ngx-toastr';
 import {ArtTypeModule} from './user/art-type/art-type.module';
 import {ArtistModule} from './user/artist/artist.module';
-import {PaintingModule} from './user/painting/painting.module';
+import {PaintingRoutingModule} from './user/painting/painting-routing.module';
 import {ProfileModule} from './user/profile/profile.module';
 import {SearchModule} from './user/search/search.module';
 import {AboutIshtarModule} from './user/static-pages/about-ishtar/about-ishtar.module';
@@ -71,7 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     // User Pages Modules
     ArtTypeModule,
     ArtistModule,
-    PaintingModule,
+    PaintingRoutingModule,
     ProfileModule,
     SearchModule,
     AboutIshtarModule,

@@ -9,7 +9,7 @@ import {PaintingSearchComponent} from './component/painting-search/painting-sear
 import {SearchComponent} from './component/search/search.component';
 import {SearchPageComponent} from './component/search-page/search-page.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import {PaintingModule} from '../painting/painting.module';
+import {PaintingRoutingModule} from '../painting/painting-routing.module';
 import {ArtistModule} from '../artist/artist.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -31,7 +31,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MDBBootstrapModule,
     NgxPaginationModule,
-    PaintingModule,
+    PaintingRoutingModule,
     ArtistModule,
     SharedModule,
     InteractionsModule,

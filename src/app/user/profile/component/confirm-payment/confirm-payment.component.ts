@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../shared/user-services/service/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginPageComponent} from '../login-page/login-page.component';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
@@ -20,6 +20,7 @@ export class ConfirmPaymentComponent implements OnInit {
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private pendingTransactionService: PendingTransactionService,
+              private router: Router,
               private dialog: MatDialog) {
   }
 
@@ -53,6 +54,7 @@ export class ConfirmPaymentComponent implements OnInit {
     }).subscribe(
       () => {
         console.log('Successfully Confirmed Order');
+        this.router.navigate(['/pending-transactions']);
       }
     );
   }

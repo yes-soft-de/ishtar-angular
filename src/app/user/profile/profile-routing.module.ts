@@ -3,6 +3,9 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {LoginPageComponent} from './component/login-page/login-page.component';
 import {PendingTransactionsComponent} from './component/pending-transactions/pending-transactions.component';
+import {ConfirmPaymentComponent} from './component/confirm-payment/confirm-payment.component';
+import {CancelOrderComponent} from './component/cancel-order/cancel-order.component';
+import {ProfileModule} from './profile.module';
 
 const routes: Routes = [
   {
@@ -11,11 +14,20 @@ const routes: Routes = [
   }, {
     path: 'pending-transactions',
     component: PendingTransactionsComponent
+  }, {
+    path: 'successorder',
+    component: ConfirmPaymentComponent
+  }, {
+    path: 'cancelorder',
+    component: CancelOrderComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+    ProfileModule
+  ],
   exports: [RouterModule]
 })
 export class ProfileRoutingModule {
