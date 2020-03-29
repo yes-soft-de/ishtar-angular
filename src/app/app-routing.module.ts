@@ -141,7 +141,14 @@ const routes: Routes = [
     path: 'de/art-type-list',
     loadChildren: () => import('./user/art-type/art-type-routing.module').then(m => m.ArtTypeRoutingModule),
   },
-  {path: '**', component: NotFoundComponent}
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({
