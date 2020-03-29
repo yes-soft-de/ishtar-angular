@@ -7,6 +7,7 @@ import {Observable, Subject} from 'rxjs';
 import {PaymentRequest} from '../entity/payment-request';
 import {UserService} from '../../user-services/service/user.service';
 import {LoginPageComponent} from 'src/app/user/profile/component/login-page/login-page.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class CartService {
   constructor(protected dialog: MatDialog,
               protected userService: UserService,
               @Inject(DOCUMENT) private document: Document,
+              private toaster: ToastrService,
               protected checkOutManagerService: CheckOutManagerService) {
   }
 
@@ -31,15 +33,18 @@ export class CartService {
       for (const i of list) {
         if (i.id === item.id) {
           console.log('Already Added!');
+          this.toaster.info('Already Added!');
           return;
         }
       }
       list.push(item);
       sessionStorage.setItem('cart', JSON.stringify(list));
+      this.toaster.success('Painting Added');
     } else {
       const arr = [];
       arr.push(item);
       sessionStorage.setItem('cart', JSON.stringify(arr));
+      this.toaster.success('Painting Added');
     }
   }
 
