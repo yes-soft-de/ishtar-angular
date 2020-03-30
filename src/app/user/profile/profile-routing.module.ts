@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'successorder',
     component: ConfirmPaymentComponent
   }, {
-    path: 'cancelorder',
+    path: 'canceledorder',
     component: CancelOrderComponent
   }
 ];
