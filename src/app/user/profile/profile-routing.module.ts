@@ -11,13 +11,16 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
-  }, {
+  },
+  {
     path: 'pending-transactions',
     component: PendingTransactionsComponent
-  }, {
+  },
+  {
     path: 'successorder',
     component: ConfirmPaymentComponent
-  }, {
+  },
+  {
     path: 'canceledorder',
     component: CancelOrderComponent
   }
