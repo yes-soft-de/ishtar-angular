@@ -32,16 +32,16 @@
             <td>{{order.paymentId}}</td>
             <td>{{order.payerId}}</td>
             <td>
-              <div *ngIf="order.payerId && order.paymentId">
+              <div *ngIf="order.orderState === 'OnProccessing'">
                 <a (click)="processPayment(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">
                   Process
                 </a>
                 <br>
-                <a (click)="shipOrder(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">
-                  Ship
-                </a>
+<!--                <a (click)="shipOrder(order.id)" class="btn btn-success btn-sm mr-1 mb-1 text-light">-->
+<!--                  Ship-->
+<!--                </a>-->
               </div>
-              <div *ngIf="!order.payerId || !order.paymentId">
+              <div *ngIf="order.orderState !== 'OnProccessing'">
                 Pending Confirmation
               </div>
             </td>
