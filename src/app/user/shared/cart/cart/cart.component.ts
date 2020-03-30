@@ -26,6 +26,8 @@ export class CartComponent implements OnInit {
 
   paymentForm: FormGroup;
 
+  submittedPaymentRequest = false;
+
   constructor(private cartService: CartService,
               private httpClient: HttpClient,
               private userService: UserService,
@@ -101,7 +103,7 @@ export class CartComponent implements OnInit {
       items: soldItems,
       client: this.clientId
     };
-
+    this.submittedPaymentRequest = true;
     this.cartService.submitPayment(payment);
   }
 

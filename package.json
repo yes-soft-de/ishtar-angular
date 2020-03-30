@@ -48,6 +48,7 @@
     "ngx-bootstrap-slider": "^1.8.0",
     "ngx-carousel-lib": "^0.1.2",
     "ngx-cookie-service": "^2.4.0",
+    "ngx-google-analytics": "^8.0.0",
     "ngx-image-zoom": "^0.6.0",
     "ngx-markdown": "^8.2.2",
     "ngx-moment": "^3.5.0",

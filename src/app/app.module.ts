@@ -35,6 +35,7 @@ import {PrivacyPolicyModule} from './user/static-pages/privacy-policy/privacy-po
 import {TosModule} from './user/static-pages/tos/tos.module';
 import {StatueModule} from './user/statue/statue.module';
 import {HomeModule} from './user/home/home.module';
+import {NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule} from 'ngx-google-analytics';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -68,6 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    NgxGoogleAnalyticsModule.forRoot('UA-142190160-2'),
+    NgxGoogleAnalyticsRouterModule,
     // User Pages Modules
     ArtTypeModule,
     ArtistModule,

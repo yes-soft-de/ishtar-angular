@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {NavigationEnd, Router} from '@angular/router';
 
-declare let ga: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,12 +28,12 @@ export class AppComponent {
       translate.use('en');
     }
 
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     ga('set', 'page', event.urlAfterRedirects);
+    //     ga('send', 'pageview');
+    //   }
+    // });
   }
 
   onActivate(event) {
