@@ -67,6 +67,7 @@
         "height": "Height",
         "width": "Width",
         "art-type": "Art Type",
+        "location": "Location",
         "price": "Price",
         "vat": "VAT not included ",
         "story": "Story",
@@ -119,7 +120,6 @@
       }
     },
     "search": {
-
     }
   }
 }
