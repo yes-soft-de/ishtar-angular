@@ -16,7 +16,7 @@ export class FeaturedImagesComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getFeaturedPaintings().subscribe(
       result => {
-        this.painingList = result;
+        this.painingList = result.length > 8 ? result.slice(0, 8) : result;
       }
     );
   }
