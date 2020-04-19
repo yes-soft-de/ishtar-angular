@@ -6,7 +6,7 @@
       <div id="painting-list">
         <div class="row">
           <a class="painting-list-item col-lg-3 col-sm-6 col-xs-12 mx-auto"
-             *ngFor="let painting of paintingList" (click)="viewImage(painting.id)"
+             *ngFor="let painting of paintingList"
              href="/painting/{{painting?.id}}">
             <div class="img-container">
               <span class="painting-buy" data-toggle="modal" data-target="#exampleModal" style="display: none;">
