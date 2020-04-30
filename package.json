@@ -38,7 +38,7 @@
     "googleapis": "^47.0.0",
     "hammerjs": "^2.0.8",
     "jarallax": "^1.12.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "masonry-layout": "^4.2.2",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
