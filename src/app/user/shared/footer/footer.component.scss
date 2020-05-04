@@ -1,3 +1,32 @@
+.chat-icon {
+  position: fixed;
+  background: goldenrod;
+  color: white !important;
+  z-index: 999;
+  bottom: 3rem;
+  right: 1rem;
+
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 12px;
+
+  @media screen and (min-width: 766px) {
+    span {
+      padding-right: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 766px) {
+    #logo_text{
+      display: none;
+      padding-right: 0;
+    }
+  }
+}
+
 footer {
   div {
     padding-top: 0.5rem;
@@ -71,7 +100,7 @@ footer {
         a {
           color: #f4db75;
           &:hover {
-            color: #CCB832;  
+            color: #CCB832;
           }
         }
       }
