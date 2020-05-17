@@ -71,6 +71,7 @@ export class AddPaintingComponent implements OnInit {
       price: ['', Validators.required],
       state: ['', Validators.required],
       image: [''],
+      location: ['', Validators.required],
       // TODO tey it with radio box
       active: ['', Validators.required],
       keyWords: ['', [Validators.required, Validators.minLength(2)]],
