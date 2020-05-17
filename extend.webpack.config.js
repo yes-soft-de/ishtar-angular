@@ -1,16 +1,14 @@
 const {GuessPlugin} = require('guess-webpack');
 const {parseRoutes} = require('guess-parser');
+const credentials = require('./prefetching-credentials.json');
 
 module.exports = {
   plugins: [
     new GuessPlugin({
       // Alternatively you can provide a Google Analytics View ID
       // GA: 'XXXXXX',
-      reportProvider() {
-        return Promise.resolve({
-          GA: '203199961'
-        });
-      },
+      GA: '203199961',
+      jwt: credentials,
       runtime: {
         delegate: false
       },
