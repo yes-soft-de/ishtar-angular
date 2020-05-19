@@ -10,9 +10,6 @@
                 <img routerLink="/" src="../../../../../assets/logo.png" class="img-fluid logo"
                      alt="logo image">
               </div>
-              <div class="col-1 pl-0 align-self-center">
-                <img class="demo-img img-fluid align-text-top" src="../../../../../assets/demo.png" alt="Demo Icon">
-              </div>
             </div>
           </div>
           <div class="col-4">
@@ -45,11 +42,11 @@
                   </div>
                 </div>
               </li>
-              <!--              <li class="float-right" (click)="openCartDialog()">-->
-              <!--                <a>-->
-              <!--                  {{'user.shared.header.cart' | translate}}-->
-              <!--                </a>-->
-              <!--              </li>-->
+              <li class="float-right" (click)="openCartDialog()">
+                <a>
+                  <mdb-icon fas icon="shopping-cart"></mdb-icon>
+                </a>
+              </li>
               <li class="float-right" *ngIf="showLangSwitch">
                 <a (click)="switchLanguage()">
                   De/En

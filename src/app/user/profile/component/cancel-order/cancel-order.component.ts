@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
 
 @Component({
@@ -10,6 +10,7 @@ import {PendingTransactionService} from '../../service/pending-transaction.servi
 export class CancelOrderComponent implements OnInit {
   token: string;
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private pendingTransactionService: PendingTransactionService) { }
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class CancelOrderComponent implements OnInit {
         this.pendingTransactionService.cancelPendingTransaction(`${urlSegments.get('token')}`).subscribe(
           success => {
             console.log(`Success Canceling the Order, Payment didn't get Processed!`);
+            this.router.navigate(['/']);
           }
         );
       }

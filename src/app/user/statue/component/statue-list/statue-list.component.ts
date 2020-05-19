@@ -6,7 +6,7 @@ import {StatueListFilterService} from '../../filter/statue-list-filter.service';
 @Component({
   selector: 'app-statue-list',
   templateUrl: './statue-list.component.html',
-  styleUrls: ['./statue-list.component.scss', '../../../ui/widgets/ngx-image-zoom/ngx-image-zoom.component.scss'],
+  styleUrls: ['./statue-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class StatueListComponent implements OnInit {
@@ -40,10 +40,10 @@ export class StatueListComponent implements OnInit {
   }
 
   viewStatue(statue) {
-    
+
   }
 
-  MagnifyingImage(statueId: number) {    
+  MagnifyingImage(statueId: number) {
     const INFO_ID: string = 'info_' + statueId;
     if (this.magnifyingImage) {
       document.getElementById(INFO_ID).style.display = 'block';
@@ -51,7 +51,7 @@ export class StatueListComponent implements OnInit {
     } else {
       document.getElementById(INFO_ID).style.display = 'none';
       this.magnifyingImage = true;
-    }  
+    }
   }
 
   // region Filter Functions

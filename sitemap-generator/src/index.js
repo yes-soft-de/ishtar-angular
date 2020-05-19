@@ -33,7 +33,7 @@ for (const path of urls) {
                rel="alternate"
                hreflang="de"
                href="${root_path_de}/${path}"/>`;
-  xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
+  // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
   xml += `<changefreq>monthly</changefreq>`;
   xml += `<priority>0.8</priority>`;
   xml += '</url>';
@@ -49,7 +49,7 @@ axio.get(`${baseAPI}/paintings`).then(
                rel="alternate"
                hreflang="de"
                href="${root_path_de}/painting/${i.id}"/>`;
-      xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
+      // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
       xml += `<changefreq>monthly</changefreq>`;
       xml += `<image:image>`;
       xml += `<image:loc>${i.image}</image:loc>`;
@@ -70,7 +70,7 @@ axio.get(`${baseAPI}/paintings`).then(
                rel="alternate"
                hreflang="de"
                href="${root_path_de}/artist/${i.id}"/>`;
-          xml += `<lastmod>${newDate.toDateString()} ${newDate.toTimeString()}</lastmod>`;
+          // xml += `<lastmod>${newDate.getFullYear()}-${newDate.getMonth()}-${newDate.getDate()}T13:15:30Z</lastmod>`;
           xml += `<changefreq>monthly</changefreq>`;
           xml += `<priority>0.7</priority>`;
 

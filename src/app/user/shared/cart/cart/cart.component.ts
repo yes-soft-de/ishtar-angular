@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CartService } from '../service/cart.service';
-import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {CartService} from '../service/cart.service';
+import {PaintingDetails} from 'src/app/user/painting/entity/painting-details';
+import {HttpClient} from '@angular/common/http';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {PaymentRequest} from '../entity/payment-request';
-import { UserService } from '../../user/service/user.service';
+import {UserService} from '../../user-services/service/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +13,7 @@ import { UserService } from '../../user/service/user.service';
 })
 export class CartComponent implements OnInit {
 
-  paintingList: PaintingDetails[];
+  paintingList: PaintingDetails[] = null;
   countries: string[];
 
   selectedCountry = 'country';
@@ -26,6 +26,8 @@ export class CartComponent implements OnInit {
 
   paymentForm: FormGroup;
 
+  submittedPaymentRequest = false;
+
   constructor(private cartService: CartService,
               private httpClient: HttpClient,
               private userService: UserService,
@@ -33,7 +35,15 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchCart();
+  }
+
+  fetchCart() {
     this.paintingList = this.cartService.getCart();
+    if (!this.paintingList) {
+      console.log(this.paintingList);
+      return;
+    }
 
     this.httpClient.get('https://restcountries.eu/rest/v2/all').subscribe(
       (data: { name: string }[]) => {
@@ -58,7 +68,7 @@ export class CartComponent implements OnInit {
       this.subTotalPrice += +i.price;
     }
 
-    this.tax = this.subTotalPrice * 0.125;
+    this.tax = Math.round(this.subTotalPrice * 0.125);
 
     this.totalPrice = this.subTotalPrice + this.tax;
 
@@ -93,7 +103,7 @@ export class CartComponent implements OnInit {
       items: soldItems,
       client: this.clientId
     };
-
+    this.submittedPaymentRequest = true;
     this.cartService.submitPayment(payment);
   }
 
@@ -105,7 +115,7 @@ export class CartComponent implements OnInit {
         const firstName = nameWords[0];
         let lastName = '';
         for (let i = 1; i < nameWords.length; i++) {
-          lastName = lastName +  nameWords[i] + ' ';
+          lastName = lastName + nameWords[i] + ' ';
         }
         this.paymentForm.patchValue({
           firstName,
@@ -114,5 +124,10 @@ export class CartComponent implements OnInit {
         });
       }
     );
+  }
+
+  deleteItem(painting: PaintingDetails) {
+    this.cartService.removeFromCart(painting.id);
+    this.paintingList = this.cartService.getCart();
   }
 }

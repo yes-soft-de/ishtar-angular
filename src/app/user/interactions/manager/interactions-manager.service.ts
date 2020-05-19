@@ -3,9 +3,9 @@ import {InteractionsRepositoryService} from '../repository/interactions-reposito
 import {Observable} from 'rxjs';
 import {InteractionsResponse} from '../response/interactions-response';
 import { ClientInteractionResponse } from '../response/client-interaction-response';
-import { InteractionResponse } from 'src/app/admin/entity/interactions/interaction-response';
 import { ClapGetResponse } from '../response/clap-get-response';
 import { ClapEntity } from '../entity/clap-entity';
+import {InteractionResponse} from '../response/InteractionResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class InteractionsManagerService {
    * get the interactions from the API
    * @param entity <InteractionConsts.ENITITY_TYPE_PAINTING/InteractionConsts.ENITITY_TYPE_ARTIST ...>
    * @param row number
-   * @param interactionsNumber <InteractionConsts.INTERACTION_TYPE_ ...>
+   * @param interactionsNumber <InteractionConsts.INTERACTION_TYPE_...>
    */
   getInteractionsNumber(entity: number, row: number, interactionsNumber: number): Observable<InteractionsResponse> {
     return this.interactionsRepositoryService.getInteractionsNumber(entity, row, interactionsNumber);

@@ -10,20 +10,20 @@
           <div class="statue-img">
             <div class="row">
               <div class="col-12 statue-artist text-xl-left mb-3">
-                  <div class="statue-artist-img d-inline-block">
-                    <img
-                      src="{{!artist[0]?.path ? '../../../../../assets/default-avatar.jpg' : artist[0]?.path}}"
-                      class=""
-                      alt="">
-                  </div>
-                  <p class="statue-artist-name d-inline-block m-0">
-                    <a>
-                      <h5 routerLink="/artist/{{artist[0]?.id}}"
-                          class="mb-0">{{artist[0]?.name}}</h5>
-                      <span>Paintings: {{statueDetails.artist?.painting}}</span>
-                    </a>
-                  </p>
-                  <app-follow [ParentType]="'artist'" [ParentId]="statueDetails?.id" class="follow-artist"></app-follow>
+                <div class="statue-artist-img d-inline-block">
+                  <img
+                    src="{{!artist[0]?.path ? '../../../../../assets/default-avatar.jpg' : artist[0]?.path}}"
+                    class=""
+                    alt="">
+                </div>
+                <p class="statue-artist-name d-inline-block m-0">
+                  <a>
+                    <h5 routerLink="/artist/{{artist[0]?.id}}"
+                        class="mb-0">{{artist[0]?.name}}</h5>
+                    <span>Paintings: {{statueDetails.artist?.painting}}</span>
+                  </a>
+                </p>
+                <app-follow [ParentType]="'artist'" [ParentId]="statueDetails?.id" class="follow-artist"></app-follow>
               </div>
               <div class="col-2 d-none d-md-block invisible pr-0">
                 <div class="statue-seconds-img border border-secondary" *ngFor="let i of [1,1,1]">
@@ -46,7 +46,8 @@
                 <div class="statue-seconds-img">
                   <div class="row">
                     <div class="col" *ngFor="let secondaryStatue of secondaryStatues">
-                      <img class="img-fluid" src="{{secondaryStatue?.secondStatue}}" alt="..." (click)="setMainPainting($event)">
+                      <img class="img-fluid" src="{{secondaryStatue?.secondStatue}}" alt="..."
+                           (click)="setMainPainting($event)">
                     </div>
                   </div>
                 </div>
@@ -88,7 +89,8 @@
               </div>
               <div class="col-4 align-self-center">
                 <span>
-                  <app-interaction [EntityName]="'statue'" [Row]="statueDetails?.id" [interactionTypeString]="'view'"></app-interaction>
+                  <app-interaction [EntityName]="'statue'" [Row]="statueDetails?.id"
+                                   [interactionTypeString]="'view'"></app-interaction>
                   Seen
                 </span>
               </div>

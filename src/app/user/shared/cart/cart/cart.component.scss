@@ -1,7 +1,9 @@
 #cart-container {
   display: flex;
+  height: 100%;
 
   #payment-form {
+    padding: 1rem;
     flex-basis: 75%;
 
     .btn-form-next {
@@ -9,9 +11,55 @@
       padding: 1rem;
       border: solid goldenrod;
     }
+
+    #pay-via-paypal {
+      border: #6c757d 4px;
+      cursor: pointer;
+      box-shadow: #6c757d 1px 1px;
+    }
+
+    #cart-total-header {
+      background: goldenrod;
+      color: white;
+    }
   }
 
-  #painting-list {
+  #cart-painting-list {
+
     flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+
+    background: #F1ECC8;
+
+    padding: 1rem 1rem 1rem 1rem;
+
+    .cart-item-container {
+      border: solid;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        height: 5rem;
+      }
+      p {
+        margin-left: 1rem;
+        margin-bottom: 0;
+        margin-right: 1rem;
+        text-overflow-ellipsis: true;
+      }
+      mdb-icon {
+        margin-right: 1rem;
+      }
+    }
+
+    .cart-price-line {
+      display: flex;
+
+      justify-content: space-between;
+    }
+
   }
 }

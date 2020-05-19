@@ -22,7 +22,7 @@ export class ArtistPaintingsComponent implements OnInit {
     this.onResize();
     this.activatedRoute.url.subscribe(
         urlSegments => {
-          this.paintingService.getPaintingListBy('artist', Number(urlSegments[1].path)).subscribe(
+          this.paintingService.getPaintingListBy('artist', Number(urlSegments[0].path)).subscribe(
               data => {
                 this.paintingList = data;
                 this.paintingSlidesPage = this.chunk(this.paintingList, this.onResize());

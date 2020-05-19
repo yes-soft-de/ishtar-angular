@@ -24,14 +24,15 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
-      const searchParams = param.get('query').replace('%20', ' ');
-      this.searchService.search(searchParams).subscribe(
+    this.activatedRoute.queryParamMap.subscribe(
+      (param: ParamMap) => {
+        const searchParams = param.get('q');
+        this.searchService.search(searchParams).subscribe(
           result => {
             this.artistList = this.searchHelper.getArtistList(result);
             this.paintingList = this.searchHelper.getPaintingList(result);
           }
-      );
-    });
+        );
+      });
   }
 }

@@ -22,7 +22,7 @@ export class CommentsRepositoryService {
   }
 
   public createComment(comment: CreateCommentRequest): Observable<CreateCommentResponse> {
-    return this.ishtarClient.post(`${UserConfig.commentAPI}`, JSON.stringify(comment));
+    return this.ishtarClient.post(`${UserConfig.commentsAPI}`, JSON.stringify(comment));
   }
 
   public getComments(pageType: string, pageId: number): Observable<GetCommentResponse> {

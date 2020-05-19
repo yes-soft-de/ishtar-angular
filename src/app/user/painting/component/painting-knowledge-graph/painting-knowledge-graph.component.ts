@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Painting} from '../../../../admin/entity/painting/painting';
 import {PaintingDetails} from '../../entity/painting-details';
 
 @Component({

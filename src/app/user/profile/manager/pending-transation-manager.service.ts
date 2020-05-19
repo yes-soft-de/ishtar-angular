@@ -13,8 +13,8 @@ export class PendingTransationManagerService {
   constructor(private pendingTransactionsRepo: PendingTransactionRepositoryService) {
   }
 
-  getPendingTransactions(): Observable<PendingTransactionResponse> {
-    return this.pendingTransactionsRepo.getPendingTransactions();
+  getPendingTransactions(clientId: number): Observable<PendingTransactionResponse> {
+    return this.pendingTransactionsRepo.getPendingTransactions(clientId);
   }
 
   cancelOrder(token: string): Observable<CancelPendingTransactionResponse> {

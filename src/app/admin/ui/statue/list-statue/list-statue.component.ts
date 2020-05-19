@@ -14,7 +14,7 @@ import {Statue} from '../../../entity/statue/statue';
 export class ListStatueComponent implements OnInit {
   statues: StatueInterface[];
   statuesList: Statue[] = [];     // We Create It First For Pagination
-  statuesFilterList = [];         // We Create It Second For Filter
+  statuesFilterList: Statue[] = [];         // We Create It Second For Filter
   config: any;                    // Config Variable For Pagination Configuration
   name: string;                   // name variable to store the input search value
 
