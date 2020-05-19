@@ -1,14 +1,13 @@
-import { Injectable, Inject } from '@angular/core';
-import { PaintingDetails } from 'src/app/user/painting/entity/painting-details';
-import { MatDialog } from '@angular/material';
-import { CartComponent } from '../cart/cart.component';
-import { DOCUMENT } from '@angular/common';
-import { CheckOutManagerService } from '../manager/check-out-manager.service';
-import { Subject, Observable } from 'rxjs';
+import {Inject, Injectable} from '@angular/core';
+import {PaintingDetails} from 'src/app/user/painting/entity/painting-details';
+import {MatDialog} from '@angular/material/dialog';
+import {DOCUMENT} from '@angular/common';
+import {CheckOutManagerService} from '../manager/check-out-manager.service';
+import {Observable, Subject} from 'rxjs';
 import {PaymentRequest} from '../entity/payment-request';
-import { UserService } from '../../user/service/user.service';
-import { LoginPageComponent } from 'src/app/user/ui/Pages/login-page/login-page.component';
-import { Router } from '@angular/router';
+import {UserService} from '../../user-services/service/user.service';
+import {LoginPageComponent} from 'src/app/user/profile/component/login-page/login-page.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,8 @@ export class CartService {
   constructor(protected dialog: MatDialog,
               protected userService: UserService,
               @Inject(DOCUMENT) private document: Document,
-              protected chackoutManager: CheckOutManagerService) {
+              private toaster: ToastrService,
+              protected checkOutManagerService: CheckOutManagerService) {
   }
 
   addPaintingToCart(item: PaintingDetails): void {
@@ -33,15 +33,18 @@ export class CartService {
       for (const i of list) {
         if (i.id === item.id) {
           console.log('Already Added!');
+          this.toaster.info('Already Added!');
           return;
         }
       }
       list.push(item);
       sessionStorage.setItem('cart', JSON.stringify(list));
+      this.toaster.success('Painting Added');
     } else {
       const arr = [];
       arr.push(item);
       sessionStorage.setItem('cart', JSON.stringify(arr));
+      this.toaster.success('Painting Added');
     }
   }
 
@@ -61,8 +64,7 @@ export class CartService {
   }
 
   getCart(): PaintingDetails[] {
-    const paintingList = JSON.parse(sessionStorage.getItem('cart')) as PaintingDetails[];
-    return paintingList;
+    return JSON.parse(sessionStorage.getItem('cart')) as PaintingDetails[];
   }
 
   submitPayment(paymentData: PaymentRequest): Observable<boolean> {
@@ -74,7 +76,7 @@ export class CartService {
       });
       subject.error('User is Not Logged On!');
     } else {
-      this.chackoutManager.submitPayment(paymentData).subscribe(
+      this.checkOutManagerService.submitPayment(paymentData).subscribe(
         data => {
           console.log(data.Data.redirectUrl);
           this.document.location.href = data.Data.redirectUrl;

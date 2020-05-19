@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../shared/user/service/user.service';
-import {ActivatedRoute} from '@angular/router';
-import {MatDialog} from '@angular/material';
-import {LoginPageComponent} from '../../../ui/Pages/login-page/login-page.component';
+import {UserService} from '../../../shared/user-services/service/user.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {LoginPageComponent} from '../login-page/login-page.component';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
 
 @Component({
@@ -20,30 +20,30 @@ export class ConfirmPaymentComponent implements OnInit {
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private pendingTransactionService: PendingTransactionService,
+              private router: Router,
               private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(
-      params => {
-        this.paymentId = params.get('paymentId');
-        this.token = params.get('token');
-        this.PayerID = params.get('PayerID');
-        if (this.userService.isLoggedIn()) {
-          this.activatedRoute.queryParams.subscribe(
-            queries => {
-              console.log('the Queries are: ' + JSON.stringify(queries));
-              this.submitOrderConfirmation();
-            }
-          );
-        } else {
-          this.dialog.open(LoginPageComponent,
-            {
-              height: '80vh'
-            });
+    if (this.userService.isLoggedIn()) {
+      this.activatedRoute.queryParams.subscribe(
+        queries => {
+          this.paymentId = queries.paymentId;
+          console.log('PAYMENT: ' + this.paymentId);
+          this.token = queries.token;
+          console.log('PAYMENT: ' + this.token);
+          this.PayerID = queries.PayerID;
+          console.log('PAYMENT: ' + this.PayerID);
+          console.log('the Queries are: ' + JSON.stringify(queries));
+          this.submitOrderConfirmation();
         }
-      }
-    );
+      );
+    } else {
+      this.dialog.open(LoginPageComponent,
+        {
+          height: '80vh'
+        });
+    }
   }
 
   submitOrderConfirmation() {
@@ -54,6 +54,7 @@ export class ConfirmPaymentComponent implements OnInit {
     }).subscribe(
       () => {
         console.log('Successfully Confirmed Order');
+        this.router.navigate(['/pending-transactions']);
       }
     );
   }

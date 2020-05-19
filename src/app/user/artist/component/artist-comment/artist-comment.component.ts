@@ -3,7 +3,7 @@ import {ArtistCommentService} from '../../service/artist-comment.service';
 import {Observable, Subject} from 'rxjs';
 import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 
@@ -39,7 +39,7 @@ export class ArtistCommentComponent implements OnInit {
     );
     this.activatedRoute.url.subscribe(
         urlSegments => {
-          this.activeArtistId = +urlSegments[1];
+          this.activeArtistId = +urlSegments[0];
           // this.artistCommentService.getArtistComment(+urlSegments[1].path);
           this.updateCommentList();
         }

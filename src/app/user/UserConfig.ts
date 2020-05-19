@@ -66,9 +66,10 @@ export class UserConfig {
 
   public static featuredImages = UserConfig.sourceAPI + 'featuredpaintings';
 
-  public static PendingTransactions = UserConfig.sourceAPI + 'orders';
+  public static PendingTransactions = UserConfig.sourceAPI + 'clientorders';
   public static CancelPendingTransactions = UserConfig.sourceAPI + 'canceledorder';
   public static ConfirmPendingTransactions = UserConfig.sourceAPI + 'successorder';
   public static ConfirmPayment = UserConfig.sourceAPI + 'confirmpayment';
+  public static PaymentAPI = UserConfig.sourceAPI + 'orders';
 
 }

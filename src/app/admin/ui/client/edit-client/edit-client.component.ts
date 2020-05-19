@@ -131,7 +131,7 @@ export class EditClientComponent implements OnInit {
         },
         () => {
           // If Success Navigate to Admin List clients Page
-          this.router.navigate(['admin/list-clients']);
+          this.router.navigate(['list-clients']);
         }
       );
     }

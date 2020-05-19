@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PendingTransactionService} from '../../service/pending-transaction.service';
 import {PendingTransactionListItem} from 'src/app/user/client/entity/pending-transaction-list-item';
+import {UserService} from '../../../shared/user-services/service/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import {LoginPageComponent} from '../login-page/login-page.component';
 
 @Component({
   selector: 'app-pending-transactions',
@@ -8,15 +11,22 @@ import {PendingTransactionListItem} from 'src/app/user/client/entity/pending-tra
   styleUrls: ['./pending-transactions.component.scss']
 })
 export class PendingTransactionsComponent implements OnInit {
-
   orders: PendingTransactionListItem[];
   config: any;
 
-  constructor(private pendingTransactionsService: PendingTransactionService) {
+  constructor(private pendingTransactionsService: PendingTransactionService,
+              private userService: UserService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.fetchOrders();
+    if (this.userService.isLoggedIn()) {
+      this.fetchOrders();
+    } else {
+      this.dialog.open(LoginPageComponent, {
+        height: '100vh'
+      });
+    }
   }
 
   fetchOrders() {
@@ -36,5 +46,4 @@ export class PendingTransactionsComponent implements OnInit {
   pageChanged(event) {
     this.config.currentPage = event;
   }
-
 }

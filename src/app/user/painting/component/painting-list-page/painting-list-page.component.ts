@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-painting-list-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaintingListPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) { }
 
   ngOnInit() {
+    this.meta.addTag({ name: 'title', content: 'Painting List | Ishtar-Art'});
+    this.meta.addTag({ name: 'description', content: 'List of Available Paintings on Ishtar-Art'});
   }
 
 }

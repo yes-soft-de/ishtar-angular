@@ -15,8 +15,8 @@ export class PendingTransactionRepositoryService {
   constructor(private httpClient: IshtarClientService) {
   }
 
-  getPendingTransactions(): Observable<PendingTransactionResponse> {
-    return this.httpClient.get(`${UserConfig.PendingTransactions}`);
+  getPendingTransactions(clientId: number): Observable<PendingTransactionResponse> {
+    return this.httpClient.get(`${UserConfig.PendingTransactions}/${clientId}`);
   }
 
   cancelOrder(token: string): Observable<CancelPendingTransactionResponse> {
@@ -25,10 +25,9 @@ export class PendingTransactionRepositoryService {
 
   confirmPayment(id: string, paymentData: OrderStatusChangeRequest): Observable<OrderStatusChangeRequest> {
     return this.httpClient.put(
-      `${UserConfig.ConfirmPendingTransactions}?
-      paymentId=${paymentData.paymentId}&
-      token=${paymentData.token}&
-      PayerID=${paymentData.PayerID}`,
+      `${UserConfig.ConfirmPendingTransactions}?` +
+      `paymentId=${paymentData.paymentId}&token=${paymentData.token}&` +
+      `PayerID=${paymentData.PayerID}`,
       JSON.stringify(paymentData)
     );
   }

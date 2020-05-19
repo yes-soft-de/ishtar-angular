@@ -202,7 +202,7 @@ export class EditArtistComponent implements OnInit {
           console.log('Error fetching data', error);
         },
         () => {
-          this.router.navigate(['admin/list-artists']);
+          this.router.navigate(['list-artists']);
         }
       );
     }

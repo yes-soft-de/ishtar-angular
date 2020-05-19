@@ -33,10 +33,10 @@
   <div class="wrapper">
     <div class="statue"
          *ngFor="let statue of filteredList">
-      <ngx-image-zoom
-        thumbImage="{{statue.image}}"
+      <lib-ngx-image-zoom
+        [thumbImage]="statue.image"
         [enableLens]=false>
-      </ngx-image-zoom>
+      </lib-ngx-image-zoom>
       <div class="info" id="info_{{statue.id}}" routerLink="/statue/{{statue.id}}" (click)="viewStatue(statue.id)">
         <div class="info-wrapper">
           <h3>{{statue.name}}</h3>

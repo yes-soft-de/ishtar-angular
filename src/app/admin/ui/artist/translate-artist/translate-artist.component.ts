@@ -62,7 +62,7 @@ export class TranslateArtistComponent implements OnInit {
       artType: this.uploadForm.get('artType').value
     }).subscribe(
       () => {
-        this.router.navigate(['/admin/list-artists']);
+        this.router.navigate(['/list-artists']);
       }, err => {
         console.log('error: ' + err);
       }

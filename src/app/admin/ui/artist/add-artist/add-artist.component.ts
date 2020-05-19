@@ -127,7 +127,7 @@ export class AddArtistComponent implements OnInit {
           console.log(error);
         },
         () => {
-          this.router.navigate(['admin/list-artists']);
+          this.router.navigate(['/list-artists']);
         }
       );
     }

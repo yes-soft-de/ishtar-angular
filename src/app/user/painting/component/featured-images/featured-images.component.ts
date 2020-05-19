@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Painting} from '../../../../admin/entity/painting/painting';
+import {Component, OnInit} from '@angular/core';
 import {PaintingListItem} from '../../entity/painting-list-item';
 import {PaintingService} from '../../service/painting.service';
 
@@ -17,7 +16,7 @@ export class FeaturedImagesComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getFeaturedPaintings().subscribe(
       result => {
-        this.painingList = result;
+        this.painingList = result.length > 8 ? result.slice(0, 8) : result;
       }
     );
   }

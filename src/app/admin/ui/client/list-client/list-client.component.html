@@ -40,7 +40,7 @@
           <td>{{client.updatedBy ? client.updatedBy : '-'}}</td>
           <td>{{client.updateDate ? (client.updateDate.timestamp * 1000 | date: 'short') : '-'}}</td>
           <td>
-            <a [routerLink]="['/admin/edit-client', client.id]" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
+            <a [routerLink]="['/edit-client', client.id]" class="btn btn-success btn-sm mr-1 mb-1">Edit</a>
             <a (click)="delete(client.id)" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
           </td>
         </tr>
@@ -62,7 +62,7 @@
   <div *ngIf="clients.length === 0">
     <div class="container">
       <div class="alert alert-primary text-center mt-5">There Isn't Any Client To Show</div>
-      <a routerLink="/admin/add-client" class="btn btn-primary btn-sm mb-2 float-right">
+      <a routerLink="/add-client" class="btn btn-primary btn-sm mb-2 float-right">
         <i class="fa fa-plus"></i>
         Add New Client
       </a>

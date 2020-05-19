@@ -2,6 +2,7 @@ export interface PaintingDetails {
   id?: number;
   artistID?: number;
   name?: string;
+  location?: string;
   keyWords?: string;
   state?: boolean;
   height?: string;

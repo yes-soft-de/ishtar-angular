@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { UserInfo } from '../../../entity/user/user-info';
 import { InteractionsManagerService } from '../../../interactions/manager/interactions-manager.service';
-import { PageTypeToNumberService } from '../../helper/page-type-to-number.service';
-import { InteractionConstantService } from '../../../interactions/service/interaction-constant.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { InteractionsService } from '../../../interactions/service/interactions.service';
-import { UserService } from '../../user/service/user.service';
-import { filter } from 'rxjs/operators';
+import { UserService } from '../../user-services/service/user.service';
 import { InteractionConsts } from 'src/app/user/interactions/statics/interaction-consts';
 
 @Injectable({
@@ -35,15 +31,11 @@ export class FollowService extends InteractionsService {
     this.getClientInteraction(rowId).subscribe(
       clientInteractionList => {
         let followId = -1;
-        for (let followInteraction of clientInteractionList.filter(item => {
+        for (const followInteraction of clientInteractionList.filter(item => {
           if (item.entity !== parentType) {
             return false;
           }
-          if (item.interaction !== 'follow') {
-            // It means that the 2 ifs above was passed, and it can be love or like
-            return false;
-          }
-          return true;
+          return item.interaction === 'follow';
         })) {
           followId = followInteraction.interactionID;
         }
@@ -59,7 +51,6 @@ export class FollowService extends InteractionsService {
    * Check if The User is login to make his love interactionTypeString
    * @param entityType string ENTITY_TYPE_...
    * @param entityId number
-   * @param interactionsType number
    * @returns Observable<boolean>
    */
   postFollow(entityType: number, entityId: number): Observable<boolean> {

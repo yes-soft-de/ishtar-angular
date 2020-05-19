@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { OrderListItem } from '../../../entity/order/order-list-item';
-import { OrdersService } from 'src/app/admin/service/orders/orders.service';
+import {Component, OnInit} from '@angular/core';
+import {OrderListItem} from '../../../entity/order/order-list-item';
+import {OrdersService} from 'src/app/admin/service/orders/orders.service';
 
 @Component({
   selector: 'app-orders-list',
@@ -12,7 +12,8 @@ export class OrdersListComponent implements OnInit {
 
   config: any;                    // Config Variable For Pagination Configuration
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService) {
+  }
 
   ngOnInit() {
     this.fetchOrders();
@@ -39,6 +40,14 @@ export class OrdersListComponent implements OnInit {
 
   processPayment(id: number) {
     this.ordersService.processPayment(id).subscribe(
+      () => {
+        this.fetchOrders();
+      }
+    );
+  }
+
+  shipOrder(id: number) {
+    this.ordersService.shipOrder(id).subscribe(
       () => {
         this.fetchOrders();
       }

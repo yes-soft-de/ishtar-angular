@@ -4,9 +4,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdminRoutingModule } from '../controller/admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { AdminHeaderComponent } from './ui/admin-header/admin-header.component';
@@ -29,9 +27,8 @@ import { ListCommentComponent } from './ui/comments/list-comment/list-comment.co
 import { ListInteractionComponent } from './ui/interactions/list-interaction/list-interaction.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditFeaturedImagesComponent } from './ui/featured/edit-featured-images/edit-featured-images.component';
-import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule } from 'ngx-markdown';
 
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslatePaintingComponent } from './ui/painting/translate-painting/translate-painting.component';
 import { TranslateArtistComponent } from './ui/artist/translate-artist/translate-artist.component';
@@ -76,7 +73,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     FormsModule,

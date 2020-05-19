@@ -3,7 +3,7 @@ import {CommentObject} from '../../../shared/comment/entity/comment-object';
 import {ArtistCommentService} from '../../service/artist-comment.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../../shared/user/service/user.service';
+import {UserService} from '../../../shared/user-services/service/user.service';
 import {Subject} from 'rxjs';
 
 @Component({

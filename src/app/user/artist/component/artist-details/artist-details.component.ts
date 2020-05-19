@@ -3,7 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {ArtistDetails} from '../../entity/artist-details';
 import {ArtistService} from '../../service/artist.service';
 import {PaintingListItem} from '../../../painting/entity/painting-list-item';
-import {Title} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
+import {PaintingDetails} from '../../../painting/entity/painting-details';
 
 @Component({
   selector: 'app-artist-details',
@@ -28,16 +29,17 @@ export class ArtistDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private artistService: ArtistService,
-              private titleService: Title) {
+              private titleService: Title,
+              private meta: Meta) {
   }
 
   ngOnInit() {
-    this.activatedRoute.url.subscribe(
+    this.activatedRoute.params.subscribe(
       urlSegments => {
-        this.artistService.getArtist(Number(urlSegments[1].path)).subscribe(
-          data => {
-            this.artist = data;
-            this.titleService.setTitle(`${this.artist.name} | Ishtar-Art`);
+        this.artistService.getArtist(Number(urlSegments.id)).subscribe(
+          artistDetails => {
+            this.artist = artistDetails;
+            this.setSeo(artistDetails);
             this.linkedInValid = this.linkedInRegex.test(this.artist.Linkedin);
             this.facebookValid = this.facebookRegex.test(this.artist.Facebook);
             this.twitterValid = this.twitterRegex.test(this.artist.Twitter);
@@ -45,5 +47,11 @@ export class ArtistDetailsComponent implements OnInit {
         );
       }
     );
+  }
+
+  setSeo(artist: ArtistDetails) {
+    this.titleService.setTitle(`${artist.name} | Ishtar-Art`);
+    this.meta.addTag({ name: 'title', content: `${artist.name} | Ishtar-Art`});
+    this.meta.addTag({ name: 'description', content: `${artist.story}`});
   }
 }

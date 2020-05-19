@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-5 col-md-6 col-xl-8 align-self-center">
-                    <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/admin/add-auction">
+                    <a class="btn btn-primary btn-sm mb-2 float-right" routerLink="/add-auction">
                         <i class="fa fa-plus"></i>
                         Add New Auction
                     </a>
@@ -36,7 +36,7 @@
                         <td>{{auction.finalPrice == null ? 0 : auction.finalPrice}} $</td>
                         <td>{{auction.highiestPrice}} $</td>
                         <td>
-                            <a [routerLink]="['/admin/edit-auction', auction.id]" class="btn btn-success btn-sm mr-1">Edit</a>
+                            <a [routerLink]="['/edit-auction', auction.id]" class="btn btn-success btn-sm mr-1">Edit</a>
                             <a href="#" class="btn btn-danger confirm btn-sm mr-1">Delete</a>
                         </td>
                     </tr>
@@ -47,7 +47,7 @@
     <div *ngIf="auctions.length === 0">
         <div class="container">
             <div class="alert alert-primary text-center mt-5">There Isn't Auctions To Show</div>
-            <a routerLink="/admin/add-auction" class="btn btn-primary btn-sm mb-2 float-right">
+            <a routerLink="/add-auction" class="btn btn-primary btn-sm mb-2 float-right">
                 <i class="fa fa-plus"></i>
                 Add New auction
             </a>

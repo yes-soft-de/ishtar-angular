@@ -1,125 +1,125 @@
 {
-   "user":{
-      "art-type":{
-         "art-type-details":{
-            "history":"History"
-         }
-      },
-      "artist":{
-         "comments":{
-            "add":"Add"
-         },
-         "comment-item":{
-            "save":"Save",
-            "cancel":"Cancel"
-         },
-         "details":{
-            "biography":"Biography"
-         },
-         "list":{
-            "all":"All",
-            "sort-by":"Sort By",
-            "flolow-number": "Follow  Number",
-            "follow-number":"Follow  Number",
-            "filter-by":"Filter By",
-            "art-type":"Art Type",
-            "desc": "Descending",
-            "asc": "Ascending"
-         },
-         "paintings":{
-            "artist-painting":"Artist's Paintings"
-         }
-      },
-      "home":{
-         "hero":{
-            "slide-01":"With Ishtar, we try to unite artists from Syria and all over the world, to make, share and contribute with           others, because we believe in the power of inspiration, so, it's about time you start to get inspired and           inspire others like you, who are just waiting for that little push.",
-            "slide-02":"Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is           the counterpart to the Sumerian Inanna and is the cognate for the Northwest Semitic Aramean goddess Astarte.",
-            "slide-03":"Ishtar is a unique website that is designed for presenting modern Syrian painting art and artists. We are           trying to highlight the best Syrian artists in the art market today."
-         },
-         "page":{
-            "about":"About Ishtar",
-            "about-text":"Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is           the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.",
-            "read-more":"Read More",
-            "latest-painting":"Latest Paintings",
-            "latest-artists":"Latest Active Artists",
-            "about-art-schools":"Learn About Art Schools"
-         }
-      },
-      "painting":{
-         "most-seen":{
-            "head":"Most Seen Paintings",
-            "seen":"Seen",
-            "artist-name":"Artist Name",
-            "height":"Height",
-            "width":"Width",
-            "color-type":"Color Type",
-            "loading":"Loading ..."
-         },
-         "comments":{
-            "add":"Add"
-         },
-         "comment-item":{
-            "save":"Save",
-            "cancel":"Cancel "
-         },
-         "details":{
-            "view-full-image":"View the full image",
-            "height":"Height",
-            "width":"Width",
-            "art-type":"Art Type",
-            "price":"Price",
-            "vat":"VAT not included ",
-            "story":"Story",
-            "null-story":"There is no story for this painting"
-         },
-         "list":{
-            "filter-by-art-type":"Filter By Art Type",
-            "all":"All",
-            "art-type": "Art Type",
-            "filter-by-artist":"Filter By Artist"
-         },
-         "may-like":{
-            "head":"Paintings You May Like"
-         }
-      },
-      "shared":{
-         "header":{
-            "login":"Login",
-            "logout":"Logout",
-            "search": "Search",
-            "artists":"Artists",
-            "cart": "Cart",
-            "paintings":"Paintings",
-            "about":"About Ishtar"
-         },
-         "footer":{
-            "home":"Home",
-            "artists":"Artists",
-            "paintings":"Paintings ",
-            "about":"About us",
-            "faq":"FAQ",
-            "imprint":"Imprint",
-            "data-processing":"Data Processing ",
-            "tos":"Terms of Service",
-            "privacy":"Privacy Policy"
-         },
-         "clap":{
-            "clap":"Clap",
-            "clapped":"Clapped",
-            "clapping":"Clapping",
-            "times":"times",
-            "times-by-you":"Times By You!"
-         },
-         "follow":{
-            "follow":"Follow",
-            "followed":"Followed!"
-         },
-         "love":{
-            "love":"Love"
-         }
-      },
-      "search":{
-
+  "user": {
+    "art-type": {
+      "art-type-details": {
+        "history": "History"
       }
-   }
+    },
+    "artist": {
+      "comments": {
+        "add": "Add"
+      },
+      "comment-item": {
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "details": {
+        "biography": "Biography"
+      },
+      "list": {
+        "all": "All",
+        "sort-by": "Sort By",
+        "flolow-number": "Follow  Number",
+        "follow-number": "Follow  Number",
+        "filter-by": "Filter By",
+        "art-type": "Art Type",
+        "desc": "Descending",
+        "asc": "Ascending"
+      },
+      "paintings": {
+        "artist-painting": "Artist's Paintings"
+      }
+    },
+    "home": {
+      "hero": {
+        "slide-01": "With Ishtar, we try to unite artists from Syria and all over the world, to make, share and contribute with           others, because we believe in the power of inspiration, so, it's about time you start to get inspired and           inspire others like you, who are just waiting for that little push.",
+        "slide-02": "Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is           the counterpart to the Sumerian Inanna and is the cognate for the Northwest Semitic Aramean goddess Astarte.",
+        "slide-03": "Ishtar is a unique website that is designed for presenting modern Syrian painting art and artists. We are           trying to highlight the best Syrian artists in the art market today."
+      },
+      "page": {
+        "about": "About Ishtar",
+        "about-text": "Ishtar is the East Semitic Akkadian, Assyrian and Babylonian goddess of fertility, love, war, and sex. She is           the counterpart to the Sumerian Inanna, and is the cognate for the Northwest Semitic Aramean goddess Astarte.",
+        "read-more": "Read More",
+        "latest-painting": "Latest Paintings",
+        "latest-artists": "Latest Active Artists",
+        "about-art-schools": "Learn About Art Schools"
+      }
+    },
+    "painting": {
+      "most-seen": {
+        "head": "Most Seen Paintings",
+        "seen": "Seen",
+        "artist-name": "Artist Name",
+        "height": "Height",
+        "width": "Width",
+        "color-type": "Color Type",
+        "loading": "Loading ..."
+      },
+      "comments": {
+        "add": "Add"
+      },
+      "comment-item": {
+        "save": "Save",
+        "cancel": "Cancel "
+      },
+      "details": {
+        "view-full-image": "View the full image",
+        "height": "Height",
+        "width": "Width",
+        "art-type": "Art Type",
+        "location": "Location",
+        "price": "Price",
+        "vat": "VAT not included ",
+        "story": "Story",
+        "null-story": "There is no story for this painting"
+      },
+      "list": {
+        "filter-by-art-type": "Filter By Art Type",
+        "all": "All",
+        "art-type": "Art Type",
+        "filter-by-artist": "Filter By Artist"
+      },
+      "may-like": {
+        "head": "Paintings You May Like"
+      }
+    },
+    "shared": {
+      "header": {
+        "login": "Login",
+        "logout": "Logout",
+        "search": "Search",
+        "artists": "Artists",
+        "cart": "Cart",
+        "paintings": "Paintings",
+        "about": "About Ishtar"
+      },
+      "footer": {
+        "home": "Home",
+        "artists": "Artists",
+        "paintings": "Paintings ",
+        "about": "About us",
+        "faq": "FAQ",
+        "imprint": "Imprint",
+        "data-processing": "Data Processing ",
+        "tos": "Terms of Service",
+        "privacy": "Privacy Policy"
+      },
+      "clap": {
+        "clap": "Clap",
+        "clapped": "Clapped",
+        "clapping": "Clapping",
+        "times": "times",
+        "times-by-you": "Times By You!"
+      },
+      "follow": {
+        "follow": "Follow",
+        "followed": "Followed!"
+      },
+      "love": {
+        "love": "Love"
+      }
+    },
+    "search": {
+    }
+  }
 }

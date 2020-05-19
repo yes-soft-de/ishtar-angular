@@ -30,6 +30,19 @@
       </div>
     </div>
     <div class="form-group row">
+      <label class="col-2 col-form-label">Location</label>
+      <div class="col-10">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': uploadForm.get('location').errors &&
+               (uploadForm.get('height').touched || uploadForm.get('location').dirty)}"
+               type="number"
+               name="location"
+               formControlName="location"
+               placeholder="Type The Painting Location">
+        <span class="invalid-feedback" *ngIf="uploadForm.get('location').errors?.required">Location Field Is Required</span>
+      </div>
+    </div>
+    <div class="form-group row">
       <label class="col-2 col-form-label">Width</label>
       <div class="col-10">
         <input class="form-control"

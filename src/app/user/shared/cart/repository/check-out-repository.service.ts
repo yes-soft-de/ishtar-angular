@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IshtarClientService } from '../../client/ishtar-client.service';
 import { Observable } from 'rxjs';
-import { AdminConfig } from 'src/app/admin/AdminConfig';
 import { PaymentResponse } from '../entity/payment-response';
 import { PaymentRequest } from '../entity/payment-request';
+import {UserConfig} from '../../../UserConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,6 @@ export class CheckOutRepositoryService {
   }
 
   submitPayment(paymentData: PaymentRequest): Observable<PaymentResponse> {
-    return this.httpClient.post(`${AdminConfig.PaymentAPI}`, JSON.stringify(paymentData));
+    return this.httpClient.post(`${UserConfig.PaymentAPI}`, JSON.stringify(paymentData));
   }
 }
