@@ -24,7 +24,7 @@
         <input class="form-control"
                [ngClass]="{'is-invalid': uploadForm.get('location').errors &&
                        (uploadForm.get('height').touched || uploadForm.get('location').dirty)}"
-               type="number"
+               type="text"
                name="location"
                formControlName="location"
                placeholder="Type The Painting Location">
