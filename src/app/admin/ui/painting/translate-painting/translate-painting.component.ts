@@ -72,7 +72,7 @@ export class TranslatePaintingComponent implements OnInit {
     }).subscribe(
       () => {
         console.log('Translation Post Success!');
-        this.router.navigate(['/list-paintings']);
+        this.router.navigate(['/admin/list-paintings']);
       }, err => {
         console.log('Translation Post Error :( ' + err);
       }
