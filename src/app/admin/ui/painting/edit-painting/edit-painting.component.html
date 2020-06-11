@@ -18,6 +18,7 @@
               *ngIf="uploadForm.get('name').errors?.maxlength">Name Must Be Lower Than 45</span>
       </div>
     </div>
+    <!--
     <div class="form-group row">
       <label class="col-2 col-form-label">Location</label>
       <div class="col-10">
@@ -28,9 +29,11 @@
                name="location"
                formControlName="location"
                placeholder="Type The Painting Location">
-        <span class="invalid-feedback" *ngIf="uploadForm.get('location').errors?.required">Location Field Is Required</span>
+        <span class="invalid-feedback"
+              *ngIf="uploadForm.get('location').errors?.required">Location Field Is Required</span>
       </div>
     </div>
+    -->
     <div class="form-group row">
       <label class="col-2 col-form-label">Height</label>
       <div class="col-10">
@@ -144,20 +147,20 @@
         <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('artType').errors?.required">Art Type Field Is Required</span>
       </div>
     </div>
-<!--    <div class="form-group row">-->
-<!--      <label class="col-2 col-form-label">Gallery</label>-->
-<!--      <div class="col-10">-->
-<!--        <select class="form-control"-->
-<!--                name="gallery"-->
-<!--                formControlName="gallery"-->
-<!--                (change)="changeGallery($event)"-->
-<!--                [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('gallery').errors}">-->
-<!--          <option value="">Select Painting Gallery</option>-->
-<!--          <option value="1">all (Default)</option>-->
-<!--        </select>-->
-<!--        <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('gallery').errors?.required">Gallery Field Is Required</span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div class="form-group row">-->
+    <!--      <label class="col-2 col-form-label">Gallery</label>-->
+    <!--      <div class="col-10">-->
+    <!--        <select class="form-control"-->
+    <!--                name="gallery"-->
+    <!--                formControlName="gallery"-->
+    <!--                (change)="changeGallery($event)"-->
+    <!--                [ngClass]="{'is-invalid': isSubmitted && uploadForm.get('gallery').errors}">-->
+    <!--          <option value="">Select Painting Gallery</option>-->
+    <!--          <option value="1">all (Default)</option>-->
+    <!--        </select>-->
+    <!--        <span class="invalid-feedback" *ngIf="isSubmitted && this.uploadForm.get('gallery').errors?.required">Gallery Field Is Required</span>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Active</label>

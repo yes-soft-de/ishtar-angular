@@ -91,7 +91,7 @@ export class EditPaintingComponent implements OnInit {
       colorsType: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
       price: ['', Validators.required],
       state: ['', Validators.required],
-      location: ['', Validators.required],
+      // location: ['', Validators.required],
       image: [''],
       // TODO tey it with radio box
       active: ['', Validators.required],
@@ -114,7 +114,7 @@ export class EditPaintingComponent implements OnInit {
       price: this.paintingData.price,
       state: +this.paintingData.state,
       image: this.paintingData.image,
-      location: this.paintingData.location,
+      // location: this.paintingData.location,
       active: +this.paintingData.active,
       keyWords: this.paintingData.keyWords,
       artType: this.artTypeId,
