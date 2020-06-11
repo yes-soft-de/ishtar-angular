@@ -158,6 +158,8 @@ export class AddPaintingComponent implements OnInit {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
+      // TODO: Remove this to add location
+      delete formObj.location;
       console.log(formObj);
       this.photosListService.postAddPainting(formObj).subscribe(
           data => {
