@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: angular
+  name: frontangular
+  namespace: ishtar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: angular
+    spec:
+      containers:
+        - image: gcr.io/yescloud/github.com/yes-soft-de/ishtar-angular
+          imagePullPolicy: Always
+          name: ishtar-angular
+          ports:
+            - containerPort: 4200
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    run: front
+  name: front
+  namespace: ishtar
+spec:
+  clusterIP: 10.4.9.206
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 30685
+      port: 4200
+      protocol: TCP
+      targetPort: 4200
+  selector:
+    app: angular
+  sessionAffinity: None
+  type: LoadBalancer
