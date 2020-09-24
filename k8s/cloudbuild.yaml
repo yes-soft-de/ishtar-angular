@@ -10,7 +10,7 @@ steps:
      
     dir: $_DOCKERFILE_DIR
     id: Build
-    timeout: 5500s
+    timeout: 1200s
   - name: gcr.io/cloud-builders/docker
     args:
       - push

@@ -1,6 +1,4 @@
 FROM node:12.0.0 as build-step
-
-RUN mkdir -p /app
  
 WORKDIR /app
 
