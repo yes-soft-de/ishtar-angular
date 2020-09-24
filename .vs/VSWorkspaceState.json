@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\k8s"
+    "\\dist\\ishtar",
+    "\\src\\app\\app"
   ],
-  "SelectedNode": "\\Dockerfile",
+  "SelectedNode": "\\php-cgi.ps1",
   "PreviewInSolutionExplorer": false
 }

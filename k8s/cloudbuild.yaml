@@ -2,6 +2,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - build
+      - '--timeout 1200'
       - '-t'
       - '$_IMAGE_NAME:$COMMIT_SHA'
       - .
