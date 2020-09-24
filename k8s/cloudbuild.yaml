@@ -1,6 +1,7 @@
 steps:
+  timeout: 1800s
   - name: gcr.io/cloud-builders/docker
-  timeout: 1200s
+   
     args:
       - build
       -
@@ -9,7 +10,7 @@ steps:
       - .
       - '-f'
       - $_DOCKERFILE_NAME
-    
+     
      
     dir: $_DOCKERFILE_DIR
     id: Build
