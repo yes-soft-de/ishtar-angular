@@ -1,16 +1,19 @@
 steps:
   - name: gcr.io/cloud-builders/docker
+  timeout: 1200s
     args:
       - build
+      -
       - '-t'
       - '$_IMAGE_NAME:$COMMIT_SHA'
       - .
       - '-f'
       - $_DOCKERFILE_NAME
+    
      
     dir: $_DOCKERFILE_DIR
     id: Build
-    timeout: 1200s
+
   - name: gcr.io/cloud-builders/docker
     args:
       - push
