@@ -1,7 +1,7 @@
 steps:
 
-- name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', '$_IMAGE_NAME:$COMMIT_SHA', '.']
+- name: gcr.io/cloud-builders/gcloud
+  args: ['build','submit','--tag=$_IMAGE_NAME:$COMMIT_SHA' , '--timeout=1200']
   dir: $_DOCKERFILE_DIR
   id: Build
   timeout: 1800s
