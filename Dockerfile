@@ -10,7 +10,7 @@ RUN npm install --quiet --no-progress
 
 COPY . /app
 
-RUN npm run build --prod
+RUN npm run build --prod --quiet
 
 # Stag
 FROM nginx:1.17.1-alpine
