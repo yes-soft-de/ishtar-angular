@@ -2,7 +2,6 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - build
-      - '-t 1200'
       - '-t'
       - '$_IMAGE_NAME:$COMMIT_SHA'
       - .
