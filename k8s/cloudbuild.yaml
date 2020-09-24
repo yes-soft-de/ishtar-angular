@@ -7,6 +7,7 @@ steps:
       - .
       - '-f'
       - $_DOCKERFILE_NAME
+      - timeout 5000
     dir: $_DOCKERFILE_DIR
     id: Build
     timeout: 5500s
