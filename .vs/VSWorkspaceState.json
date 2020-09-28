@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dist\\ishtar",
-    "\\src\\app\\app"
+    "\\k8s"
   ],
-  "SelectedNode": "\\php-cgi.ps1",
+  "SelectedNode": "\\k8s\\cloudbuild.yaml",
   "PreviewInSolutionExplorer": false
 }
