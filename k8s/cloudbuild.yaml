@@ -1,10 +1,11 @@
 steps:
-  - name: gcr.io/cloud-builders/gcloud
+  - name: gcr.io/cloud-builders/docker
     args:
-      - builds submit
-      - '--tags'
+      - build
+      - '-t'
       - '$_IMAGE_NAME:$COMMIT_SHA'
-      - ' '
+      - .
+      - '-f'
       - $_DOCKERFILE_NAME
     dir: $_DOCKERFILE_DIR
     id: Build
