@@ -1,6 +1,6 @@
 steps:
   - name: gcr.io/cloud-builders/docker
-  timeout: 660s
+    timeout: 660s
     args:
       - build
       - '-t'
