@@ -1,5 +1,5 @@
 steps:
-  - name: gcr.io/cloud-builders/cloudbuild
+  - name: gcr.io/cloud-builders/gcloud
     args:
       - builds submit
       - '--tags'
