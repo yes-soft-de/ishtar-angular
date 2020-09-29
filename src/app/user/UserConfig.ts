@@ -1,5 +1,5 @@
 export class UserConfig {
-  public static sourceAPI = 'http://35.188.34.135/index.php/';
+  public static sourceAPI = 'http://35.188.34.135:4200/index.php/';
 
   public static diagnoseAPI = 'https://webhook.site/ed0764a6-f85a-4f5f-937d-127d0741832d';
 
