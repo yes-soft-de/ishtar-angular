@@ -16,7 +16,7 @@
   "author": "Mohammad Al Kalaleeb",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "fs": "0.0.1-security",
     "jsontoxml": "^1.0.1"
   },
