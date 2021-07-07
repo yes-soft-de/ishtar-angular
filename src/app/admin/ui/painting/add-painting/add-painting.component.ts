@@ -158,6 +158,8 @@ export class AddPaintingComponent implements OnInit {
       // Fetch All Form Data On Json Type
       const formObj = this.uploadForm.getRawValue();
       formObj.image = this.imageUrl;
+      // TODO: Remove this to add location
+      delete formObj.location;
       console.log(formObj);
       this.photosListService.postAddPainting(formObj).subscribe(
           data => {
@@ -170,7 +172,7 @@ export class AddPaintingComponent implements OnInit {
           },
           () => {
             // If Success Navigate to Admin List Paintings Page
-            this.router.navigate(['list-paintings']);
+            this.router.navigate(['/admin/list-paintings']);
           }
       );
     }

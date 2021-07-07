@@ -113,7 +113,7 @@ export class AddClientComponent implements OnInit {
             this.toast.error('Error: Client Not Uploaded Successfully');
           },
           () => {
-            this.router.navigate(['list-clients']);
+            this.router.navigate(['/admin/list-clients']);
           }
       );
     }

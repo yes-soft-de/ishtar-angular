@@ -22,6 +22,9 @@ speed-measure-plugin.json
 .settings/
 *.sublime-workspace
 
+# Prefetching
+prefetching-credentials.json
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

@@ -14,6 +14,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {CartComponent} from './cart/cart/cart.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {LoginPageComponent} from '../profile/component/login-page/login-page.component';
+import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -26,16 +27,17 @@ import {LoginPageComponent} from '../profile/component/login-page/login-page.com
     FollowComponent,
     ClapComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    TranslateModule.forChild(),
-    MDBBootstrapModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    InteractionsModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        TranslateModule.forChild(),
+        MDBBootstrapModule,
+        RouterModule,
+        ReactiveFormsModule,
+        MatStepperModule,
+        InteractionsModule,
+        NgxGoogleAnalyticsModule
+    ],
   exports: [
     HeaderComponent,
     FooterComponent,

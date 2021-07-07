@@ -56,7 +56,7 @@ export class AddAuctionComponent implements OnInit {
           },
           () => {
             // If Success Navigate to Admin Dashboard Page
-            this.router.navigate(['list-auctions']);
+            this.router.navigate(['/admin/list-auctions']);
           }
       );
     }
